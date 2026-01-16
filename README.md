@@ -1,6 +1,6 @@
 # Agent Skills
 
-A collection of specialized skills for the Gemini CLI agent.
+A collection of specialized skills following the open standard for agent capabilities.
 
 ## Included Skills
 
@@ -12,13 +12,11 @@ Interact with the Apple Container CLI to manage containers, images, volumes, net
 Create, configure, and manage `devcontainer.json` environments.
 - **Key Features:** Supports image-based, Dockerfile, and Docker Compose setups with automated "Features" integration and lifecycle scripts.
 
-## Installation
+## Usage
 
-To use these skills with your Gemini CLI, you can symlink them into your `.gemini/skills` directory:
+These skills are designed to be dropped into your agent's skills directory.
 
 ```bash
-ln -s $(pwd)/skills/apple-container-skill ~/.gemini/skills/
-ln -s $(pwd)/skills/devcontainer-helper ~/.gemini/skills/
+# Example: Symlink a skill to your agent's skills location
+ln -s $(pwd)/skills/apple-container-skill /path/to/agent/skills/
 ```
-
-Alternatively, if you are managing a project-specific skill set, ensure the `.gemini/skills` directory points to these locations.
