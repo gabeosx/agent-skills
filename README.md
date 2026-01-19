@@ -12,6 +12,10 @@ Interact with the Apple Container CLI to manage containers, images, volumes, net
 Create, configure, and manage `devcontainer.json` environments.
 - **Key Features:** Supports image-based, Dockerfile, and Docker Compose setups with automated "Features" integration and lifecycle scripts.
 
+### 🎨 [UX Designer](./skills/ux-designer)
+Expert UX/UI design assistant based on the "Refactoring UI" philosophy.
+- **Key Features:** Logic-based design rules, strict hierarchy enforcement, complete design system tokens, and production-ready specification generation.
+
 ## Usage
 
 These skills are designed to be dropped into your agent's skills directory.

@@ -3,7 +3,10 @@
   Enforces the logic-based system for spacing and typography.
 */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+/* 
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap'); 
+  Uncomment above if online. Otherwise, falls back to system stack below.
+*/
 
 /* Global Reset & Box Sizing */
 *, *::before, *::after {
@@ -24,6 +27,7 @@
   --space-48: 48px;
   --space-64: 64px;
   --space-96: 96px;
+  --space-128: 128px;
 
   /* Typography Scale (px) */
   --text-xs: 12px;
@@ -35,25 +39,73 @@
   --text-3xl: 30px;
   --text-4xl: 36px;
 
-  /* Neutral Palette (Saturated Grays) */
-  --color-text-primary: #111827;
-  --color-text-secondary: #6B7280;
-  --color-text-tertiary: #9CA3AF;
-  --color-bg-canvas: #F9FAFB;
+  /* Radius Scale */
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+  --radius-full: 9999px;
+
+  /* Z-Index Scale */
+  --z-0: 0;
+  --z-10: 10;   /* Raised elements */
+  --z-20: 20;   /* Dropdowns, Sticky */
+  --z-30: 30;   /* Overlays */
+  --z-40: 40;   /* Modals */
+  --z-50: 50;   /* Critical Notifications */
+
+  /* Neutral Palette (Cool Gray) */
+  --color-gray-50: #f9fafb;
+  --color-gray-100: #f3f4f6;
+  --color-gray-200: #e5e7eb;
+  --color-gray-300: #d1d5db;
+  --color-gray-400: #9ca3af;
+  --color-gray-500: #6b7280;
+  --color-gray-600: #4b5563;
+  --color-gray-700: #374151;
+  --color-gray-800: #1f2937;
+  --color-gray-900: #111827;
+
+  /* Brand Palette (Indigo) */
+  --color-brand-50: #eef2ff;
+  --color-brand-100: #e0e7ff;
+  --color-brand-500: #6366f1;
+  --color-brand-600: #4f46e5;
+  --color-brand-700: #4338ca;
+
+  /* Semantic Aliases */
+  --color-text-primary: var(--color-gray-900);
+  --color-text-secondary: var(--color-gray-500);
+  --color-text-tertiary: var(--color-gray-400);
+  
+  --color-bg-canvas: var(--color-gray-50);
   --color-bg-surface: #FFFFFF;
-  --color-border-subtle: #E5E7EB;
+  --color-bg-subtle: var(--color-gray-100);
+
+  --color-border-subtle: var(--color-gray-200);
+  --color-border-default: var(--color-gray-300);
+
+  --color-primary: var(--color-brand-600);
+  --color-primary-hover: var(--color-brand-700);
+  --color-on-primary: #FFFFFF;
+
+  --color-danger: #ef4444;
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
 
   /* Elevation (Two-part Shadows) */
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
 
 /* Base resets based on Refactoring UI principles */
 body {
   background-color: var(--color-bg-canvas);
   color: var(--color-text-primary);
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  /* Robust System Font Stack */
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   -webkit-font-smoothing: antialiased;
 }
 

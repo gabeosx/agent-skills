@@ -18,6 +18,7 @@ Produce UI that looks professional by applying logic-based design rules rather t
 2. **Systems over one-offs.** No arbitrary values. See [Design Standards](references/design-standards.md).
 3. **Design all states.** Empty/loading/error/edge cases are first-class.
 4. **Responsive is not proportional scaling.** Big elements shrink faster than small ones.
+5. **Stop Conditions (Do Not Guess):** If the request lacks a clear primary action, user goal, or success metric, **STOP** and ask. Do not produce a polished UI for an undefined problem. State assumptions clearly if proceeding.
 
 ---
 
@@ -27,11 +28,12 @@ When producing any UI, execute this procedure:
 
 1.  **Define Goal:** Identify the primary goal and primary action (the "One Thing").
 2.  **Establish Hierarchy:** Decide what is #1, #2, and #3. Use **Tactical Moves** (like de-emphasizing competitors) to clarify the page.
-3.  **Apply Systems:**
-    *   Use the **Spacing Scale** to group related elements.
-    *   Use the **Type Scale** to establish order.
-    *   Use the **Color System** to guide attention.
-    *   *Refer to [Design Standards](references/design-standards.md) for values.*
+3.  **Apply Systems (Deterministic Algorithm):**
+    *   **Container Width:** Pick one: `640px` (Reading), `768px` (Tablet), `1024px` (Laptop), `1280px` (Desktop).
+    *   **Spacing:** Choose *only* from the token list (`2, 4, 8, 12, 16, 24, 32...`).
+    *   **Typography:** Choose *only* from the token list (`text-xs` to `text-4xl`).
+    *   **Elevation:** Choose *only* from the shadow tokens (`shadow-sm` to `shadow-xl`).
+    *   *If a value is not in the system, you must extend the system first, then use it. Never use arbitrary inline values.*
 4.  **Define States:** Explicitly define Loading, Error, and Empty states.
 5.  **Pixel-Perfect Verification Protocol:**
     *   **Visual Inspection:** Open the build in a browser.

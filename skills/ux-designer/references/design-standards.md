@@ -26,20 +26,23 @@
 **Rule:** Maintain hue discipline. Ensure WCAG AA contrast.
 
 **Palette Structure:**
-- **Neutrals:**
-  - `text.primary`: Near-black (e.g., #111827)
-  - `text.secondary`: Mid-gray (e.g., #6B7280)
-  - `text.tertiary`: Light-gray (e.g., #9CA3AF)
-  - `bg.canvas`: Page background (e.g., #F9FAFB)
-  - `bg.surface`: Card/Modal background (e.g., #FFFFFF)
-  - `border.subtle`: Light borders (e.g., #E5E7EB)
-- **Primary Action:**
-  - `action.bg`: Brand color
-  - `action.text`: White or high-contrast
+- **Neutrals (Cool Gray):**
+  - Use `gray-50` to `gray-900` for the raw scale.
+  - **Aliases:**
+    - `text.primary`: `gray-900` (Near-black)
+    - `text.secondary`: `gray-500` (Mid-gray)
+    - `text.tertiary`: `gray-400` (Light-gray)
+    - `bg.canvas`: `gray-50` (Page background)
+    - `bg.surface`: `white` (Card/Modal background)
+    - `border.subtle`: `gray-200` (Light borders)
+- **Primary Action (Brand):**
+  - `primary`: `brand-600`
+  - `primary.hover`: `brand-700`
+  - `on-primary`: `white`
 - **Feedback:**
-  - `danger`: Destructive actions (Red)
-  - `success`: Completion/Good (Green)
-  - `warning`: Attention needed (Yellow/Orange)
+  - `danger`: Red (`#ef4444`)
+  - `success`: Green (`#10b981`)
+  - `warning`: Amber (`#f59e0b`)
 
 **Dark Mode Strategy:**
 - Flip to "Light text on Dark background".

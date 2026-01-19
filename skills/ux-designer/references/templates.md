@@ -37,7 +37,7 @@ For each screen:
 
 ## 2. Response Template (Copy & Paste)
 
-Use this markdown structure for your final output:
+Use this markdown structure for your final output. You MUST fill every section.
 
 ```markdown
 # Design Spec: [Feature Name]
@@ -47,44 +47,67 @@ Use this markdown structure for your final output:
 - **Primary Goal:** [Main Objective]
 - **Primary Action:** [Label of main button]
 - **Constraints:** [Tech/Brand constraints]
+- **Assumptions:** [List any assumptions made if prompt was underspecified]
 
 ## 2. Information Architecture
-- **Entities:**
+- **Entities & Fields:**
   - [Entity Name]: [Field 1], [Field 2]...
-- **Navigation Model:** [Description]
+- **Navigation Model:** [How users move here]
+- **Routes:** [List of URLs/Views]
 
 ## 3. Visual System Summary
-- **Spacing Scale:** [e.g., 4, 8, 16, 24, 32...]
-- **Type Scale:** [e.g., 14, 16, 20, 24, 30...]
-- **Color Strategy:** [Brief description of palette]
+*Refer to `assets/design-system-core.css` for full tokens.*
+- **Color Strategy:** [e.g., "Slate gray neutrals with Indigo primary actions"]
+- **Elevation Layering:** [How z-depth is used]
 
-## 4. Component Inventory
-### [Component Name]
-- **Purpose:** [Description]
-- **States:** Default, Hover, [Other]
-- **Variants:** [List]
+## 4. Layout & Responsive Breakpoints
+| Breakpoint | Width | Layout Behavior |
+| :--- | :--- | :--- |
+| **Mobile** | < 640px | [e.g., Stacked single column, hidden sidebar] |
+| **Tablet** | 640px - 1024px | [e.g., 2-column, condensed nav] |
+| **Desktop** | > 1024px | [e.g., 3-column, full sidebar] |
 
-## 5. Screen Specs
+## 5. Component Inventory & State Matrix
+*Define the behavior of every interactive element.*
+
+| Component | State | Visual Change / Behavior |
+| :--- | :--- | :--- |
+| **[Name]** | Default | [Base appearance] |
+| | Hover | [e.g., darken bg 10%] |
+| | Active/Focus | [e.g., ring-2 ring-primary] |
+| | Disabled | [e.g., opacity-50, no pointer] |
+| | Loading | [e.g., internal spinner, fixed width] |
+| | Error | [e.g., red border, message below] |
+| | Empty | [e.g., "No items found" placeholder] |
+
+*(Repeat for all key components)*
+
+## 6. Screen Specifications
 ### Screen: [Name]
 - **Purpose:** [What user does here]
-- **Layout:** [Grid/Stack description]
-- **Key Components:**
-  1. [Component A]
-  2. [Component B]
-- **Responsive:** [Mobile behavior]
-- **State Handling:**
-  - **Loading:** [Skeleton/Spinner]
-  - **Error:** [Message/Retry]
-  - **Empty:** [CTA]
+- **Layout Structure:** [Grid/Stack details]
+- **Key Hierarchy:**
+  1. [Element A]
+  2. [Element B]
+  3. [Element C]
+- **Detailed Layout Rules:**
+  - [Rule 1: e.g., "Card grid fills available space, min-width 300px"]
+  - [Rule 2]
 
-## 6. Accessibility Checklist
-- [ ] Contrast ratios met (AA)
-- [ ] Keyboard navigable (Focus rings)
-- [ ] Touch targets > 44px
-- [ ] Form labels explicit
+## 7. Implementation Handoff
+- [ ] **Tailwind Config:** Use `assets/tailwind.config.template.js` mapping.
+- [ ] **CSS Tokens:** Use `assets/design-system-core.css`.
+- **Assets Required:** [Icons, Images, Fonts]
 
----
-
+## 8. Accessibility & QA Rubric (Must Pass)
+- [ ] **Contrast:** All text meets WCAG AA (4.5:1).
+- [ ] **Touch Targets:** Interactive areas are at least 44x44px.
+- [ ] **Focus States:** Every interactive element has a visible `:focus` ring.
+- [ ] **Semantic HTML:** Buttons are `<button>`, Links are `<a>`.
+- [ ] **Labels:** Form inputs have visible labels or `aria-label`.
+- [ ] **Overflow:** Verified no horizontal scroll on Mobile (320px).
+- [ ] **State Check:** Error and Loading states defined for all forms/lists.
+```
 ## 3. Standard Layout Patterns
 
 ### A. Pro App (3-Pane)
