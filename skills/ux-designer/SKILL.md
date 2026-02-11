@@ -18,7 +18,7 @@ Produce professional UI through system integrity, not arbitrary styling.
 2. Systems over one-offs. Every value must map to system logic. See [Design Standards](references/design-standards.md).
 3. Design all states. Interactive and data states are first-class requirements.
 4. Responsive is not proportional scaling. Large elements compress faster than small ones.
-5. Stop conditions (do not guess). If primary action, user goal, or success metric is missing, stop and ask.
+5. Stop conditions (do not guess). If primary action, user goal, or success metric is missing, stop and ask. This rule overrides all inference guidance.
 6. No native browser UI. Never use native `alert()` or `confirm()`; use styled dialogs/toasts.
 7. Avoid generic defaults. Do not default to common SaaS patterns unless justified by declared design intent.
 
@@ -160,7 +160,8 @@ Answer all:
 
 ## 4) Required Inputs
 
-If not provided, infer safely and state assumptions.
+If not provided, infer safely and state assumptions only for low-risk implementation details.
+Do not infer missing core intent inputs (primary user goal, primary action, success metric); stop and ask instead.
 - Product context: users, tasks, data model.
 - Constraints: branding, tech stack, platform.
 - Output mode.
