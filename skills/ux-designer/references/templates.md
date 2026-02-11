@@ -1,156 +1,279 @@
-# Design Templates & Schemas
+# Design Templates and Schemas
 
-## 1. Design Report Schema (The Data Model)
+## 1. Design Report Schema (Data Model)
 
-When analyzing a design request, structure your thinking using this schema:
+Use this schema to structure analysis and output.
+
+### Design Intent Declaration (required)
+- Primary user goal
+- Primary UX constraint (speed/clarity/density/guidance/trust)
+- Risk tolerance (minimal change vs expressive UI)
+- Environmental constraints (internal tool/public SaaS/regulated)
 
 ### Design Brief
-- **Users:** Who is this for?
-- **Primary Goal:** What is the one thing they must achieve?
-- **Primary Action:** The specific button/interaction that fulfills the goal.
-- **Constraints:** Technical, Brand, or Platform limitations.
+- Users
+- Primary Goal
+- Primary Action
+- Constraints
+- Output Mode
+- Density Mode
 
 ### Information Architecture
-- **Entities:** Key data objects (User, Product, Order) and their visible fields.
-- **Navigation:** How users move between screens.
-- **Routes:** List of distinct views.
+- Entities and visible fields
+- Navigation model
+- Routes/views
 
 ### Component Inventory
-Define reusable UI parts:
-- **Name:** Standard nomenclature (e.g., "UserCard").
-- **Purpose:** When to use it.
-- **States:** Default, Hover, Active, Disabled, Loading, Empty, Error.
-- **Variants:** Primary, Secondary, etc.
+- Component name and purpose
+- Variants
+- Full state matrix requirements
 
-### Visual System Specs
-- **Spacing:** The used scale.
-- **Typography:** The used sizes/weights.
-- **Color:** Token mapping.
+### Visual System
+- Spacing/type/color/elevation mapping
+- Anti-generic rationale for conventional patterns
+- Motion behavior
 
-### Screen Specifications
-For each screen:
-- **Layout:** Zones (Header, Sidebar, Content).
-- **Hierarchy:** What catches the eye 1st, 2nd, 3rd.
-- **Responsive:** How it adapts to mobile.
+### Validation
+- Hierarchy Audit
+- Edge Case Simulation
+- Consistency Check
 
 ---
 
-## 2. Response Template (Copy & Paste)
+## 2. Full UX Spec Template (default)
 
-Use this markdown structure for your final output. You MUST fill every section.
+Use this structure for full outputs.
 
 ```markdown
 # Design Spec: [Feature Name]
 
+## 0. Design Intent Declaration
+- **Primary user goal:** [Goal]
+- **Primary UX constraint:** [speed/clarity/density/guidance/trust]
+- **Risk tolerance:** [minimal change vs expressive UI]
+- **Environmental constraints:** [internal/public/regulated]
+
 ## 1. Design Brief
-- **Users:** [Target Audience]
-- **Primary Goal:** [Main Objective]
-- **Primary Action:** [Label of main button]
-- **Constraints:** [Tech/Brand constraints]
-- **Assumptions:** [List any assumptions made if prompt was underspecified]
+- **Users:** [Audience]
+- **Primary Goal:** [Main objective]
+- **Primary Action:** [Main CTA]
+- **Constraints:** [Tech/Brand/Platform]
+- **Output Mode:** Full UX spec
+- **Density Mode:** [Compact/Balanced/Spacious]
+- **Assumptions:** [If prompt is underspecified]
 
 ## 2. Information Architecture
-- **Entities & Fields:**
-  - [Entity Name]: [Field 1], [Field 2]...
-- **Navigation Model:** [How users move here]
-- **Routes:** [List of URLs/Views]
+- **Entities and Fields:**
+  - [Entity]: [Field1], [Field2]
+- **Navigation Model:** [Flow]
+- **Routes:** [URLs or views]
 
 ## 3. Visual System Summary
-*Refer to `assets/design-system-core.css` for full tokens.*
-- **Color Strategy:** [e.g., "Slate gray neutrals with Indigo primary actions"]
-- **Elevation Layering:** [How z-depth is used]
+- **System Integrity Mapping:** [How values map to scales/tokens]
+- **Anti-Generic Justification:** [Why conventions are or are not used]
+- **Color Strategy:** [Semantic role usage]
+- **Elevation Strategy:** [Layer model]
 
-## 4. Layout & Responsive Breakpoints
+## 4. Layout and Responsive Breakpoints
 | Breakpoint | Width | Layout Behavior |
 | :--- | :--- | :--- |
-| **Mobile** | < 640px | [e.g., Stacked single column, hidden sidebar] |
-| **Tablet** | 640px - 1024px | [e.g., 2-column, condensed nav] |
-| **Desktop** | > 1024px | [e.g., 3-column, full sidebar] |
+| **Mobile** | < 640px | [Behavior] |
+| **Tablet** | 640px - 1024px | [Behavior] |
+| **Desktop** | > 1024px | [Behavior] |
 
-## 5. Component Inventory & State Matrix
-*Define the behavior of every interactive element.*
+## 5. Component Inventory and Full State Matrix
+| Component | State | Visual Change Mechanism | Accessibility Rationale |
+| :--- | :--- | :--- | :--- |
+| **[Name]** | Default | [Base style] | [Reason] |
+|  | Hover | [Change] | [Reason] |
+|  | Active | [Change] | [Reason] |
+|  | Focus | [Change] | [Reason] |
+|  | Disabled | [Change] | [Reason] |
+|  | Loading | [Change] | [Reason] |
+|  | Error | [Change] | [Reason] |
+|  | Empty | [Change] | [Reason] |
 
-| Component | State | Visual Change / Behavior |
-| :--- | :--- | :--- |
-| **[Name]** | Default | [Base appearance] |
-| | Hover | [e.g., darken bg 10%] |
-| | Active/Focus | [e.g., ring-2 ring-primary] |
-| | Disabled | [e.g., opacity-50, no pointer] |
-| | Loading | [e.g., internal spinner, fixed width] |
-| | Error | [e.g., red border, message below] |
-| | Empty | [e.g., "No items found" placeholder] |
+## 6. Motion Behavior
+- **Duration scale:** fast/base/slow values
+- **Easing standard:** [Curve]
+- **Use motion when:** [Conditions]
+- **Suppress motion when:** [Conditions]
+- **Reduced-motion fallback:** [Behavior]
 
-*(Repeat for all key components)*
-
-## 6. Screen Specifications
+## 7. Screen Specifications
 ### Screen: [Name]
-- **Purpose:** [What user does here]
-- **Layout Structure:** [Grid/Stack details]
-- **Key Hierarchy:**
-  1. [Element A]
-  2. [Element B]
-  3. [Element C]
-- **Detailed Layout Rules:**
-  - [Rule 1: e.g., "Card grid fills available space, min-width 300px"]
-  - [Rule 2]
+- **Purpose:** [Task]
+- **Layout structure:** [Zones]
+- **Key hierarchy:**
+  1. [Primary focal point]
+  2. [Secondary]
+  3. [Tertiary]
+- **Detailed layout rules:**
+  - [Rule]
+  - [Rule]
 
-## 7. Implementation Handoff
-- [ ] **Tailwind Config:** Use `assets/tailwind.config.template.js` mapping.
-- [ ] **CSS Tokens:** Use `assets/design-system-core.css`.
-- **Assets Required:** [Icons, Images, Fonts]
+## 8. Hierarchy Audit
+- Single dominant focal point: [Pass/Fail + note]
+- Scanning order unambiguous: [Pass/Fail + note]
+- Primary task <= 3 visual stops: [Pass/Fail + note]
+- Competing elements subordinate: [Pass/Fail + note]
 
-## 8. Accessibility & QA Rubric (Must Pass)
-- [ ] **Contrast:** All text meets WCAG AA (4.5:1).
-- [ ] **Touch Targets:** Interactive areas are at least 44x44px.
-- [ ] **Focus States:** Every interactive element has a visible `:focus` ring.
-- [ ] **Semantic HTML:** Buttons are `<button>`, Links are `<a>`.
-- [ ] **Labels:** Form inputs have visible labels or `aria-label`.
-- [ ] **Overflow:** Verified no horizontal scroll on Mobile (320px).
-- [ ] **State Check:** Error and Loading states defined for all forms/lists.
+## 9. Edge Case Simulation
+- 320px width: [Result]
+- 3x normal text length: [Result]
+- 0 results: [Result]
+- Destructive actions: [Result]
+
+## 10. Consistency Check
+- Spacing from scale only: [Pass/Fail]
+- Type from scale only: [Pass/Fail]
+- Color role integrity: [Pass/Fail]
+- One-off values justified: [Pass/Fail]
+
+## 11. Implementation Handoff
+- [ ] Tailwind config mapping from `assets/tailwind.config.template.js`
+- [ ] CSS tokens from `assets/design-system-core.css`
+- **Assets required:** [Icons/Images/Fonts]
+
+## 12. Accessibility and QA Rubric
+- [ ] Contrast meets WCAG AA
+- [ ] Touch targets >= 44x44
+- [ ] Visible keyboard focus for all interactive controls
+- [ ] Semantic HTML roles/elements
+- [ ] Labels and assistive text coverage
+- [ ] No horizontal overflow at 320px
+- [ ] State coverage complete (loading/error/empty)
 ```
-## 3. Standard Layout Patterns
 
-### A. Pro App (3-Pane)
-Use this for Email, SaaS, or Admin tools.
-**Structure:** Sidebar (Nav) | Master List (Search/Filter) | Detail View (Content).
+---
+
+## 3. Minimal Output Modes
+
+Use these when the request explicitly asks for a narrower deliverable.
+
+### 3.1 Component-only Template
+
+```markdown
+# Component Spec: [Feature/Component Set]
+
+## Design Intent Declaration
+- Primary user goal:
+- Primary UX constraint:
+- Risk tolerance:
+- Environmental constraints:
+
+## Component Inventory
+- [Component name]: purpose, variants, dependencies
+
+## Full State Matrix
+- Default, Hover, Active, Focus, Disabled, Loading, Error, Empty
+- Visual mechanisms and accessibility rationale for each state
+
+## Consistency Check
+- Token mapping and one-off justification
+```
+
+### 3.2 Layout-only Template
+
+```markdown
+# Layout Spec: [Feature Name]
+
+## Design Intent Declaration
+- Primary user goal:
+- Primary UX constraint:
+- Risk tolerance:
+- Environmental constraints:
+
+## Density Mode and Breakpoint Strategy
+- Density Mode:
+- Mobile behavior:
+- Tablet behavior:
+- Desktop behavior:
+
+## Zone Map
+- Header:
+- Navigation:
+- Primary content:
+- Secondary/supporting content:
+
+## Hierarchy Audit
+- Dominant focal point:
+- Scan order:
+- <=3 visual stops:
+- Subordination of competing elements:
+```
+
+### 3.3 Token definition-only Template
+
+```markdown
+# Token Spec: [Feature/System Scope]
+
+## Design Intent Declaration
+- Primary user goal:
+- Primary UX constraint:
+- Risk tolerance:
+- Environmental constraints:
+
+## Token Roles
+- Spacing scale usage:
+- Type scale usage:
+- Color role mapping:
+- Elevation role mapping:
+- Motion timing/easing mapping:
+
+## Density Mapping
+- Compact:
+- Balanced:
+- Spacious:
+
+## Consistency Check
+- Scale compliance:
+- Semantic role integrity:
+- Justified exceptions:
+```
+
+---
+
+## 4. Standard Layout Patterns
+
+### 4.1 Pro App (3-Pane)
+Use for email/SaaS/admin tools.
 
 ```css
-body { overflow: hidden; /* Prevent body scroll */ }
+body { overflow: hidden; }
 
 .app-container {
   display: grid;
-  grid-template-columns: 240px 320px 1fr; /* Fixed | Fixed | Fluid */
+  grid-template-columns: 240px 320px 1fr;
   height: 100vh;
   width: 100vw;
 }
 
-/* Individual Panes */
 .pane {
   display: flex;
   flex-direction: column;
-  overflow-y: auto; /* Independent scrolling */
+  overflow-y: auto;
   border-right: 1px solid var(--color-border-subtle);
 }
 ```
 
-### B. Dashboard Grid (12-Column)
-Use for Analytics or Home screens.
+### 4.2 Dashboard Grid
+Use for analytics/home screens.
 
 ```css
 .dashboard-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 24px;
   padding: 32px;
 }
 
-/* Spanning Utilities */
 .col-span-2 { grid-column: span 2; }
 .col-span-full { grid-column: 1 / -1; }
 ```
 
-### C. Centered Single Column
-Use for Settings, Profiles, or text-heavy pages.
+### 4.3 Centered Single Column
+Use for settings/profiles/text-heavy pages.
 
 ```css
 .container-sm {
@@ -158,5 +281,4 @@ Use for Settings, Profiles, or text-heavy pages.
   margin: 0 auto;
   padding: 48px 24px;
 }
-```
 ```
