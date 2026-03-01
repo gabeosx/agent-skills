@@ -19,6 +19,8 @@ Produce UI that looks professional by applying logic-based design rules rather t
 3. **Design all states.** Empty/loading/error/edge cases are first-class.
 4. **Responsive is not proportional scaling.** Big elements shrink faster than small ones.
 5. **Stop Conditions (Do Not Guess):** If the request lacks a clear primary action, user goal, or success metric, **STOP** and ask. Do not produce a polished UI for an undefined problem. State assumptions clearly if proceeding.
+6. **No Native Browser UI:** Never use native `alert()` or `confirm()`. Use the design system's non-blocking notifications (toasts) and styled modal dialogs to maintain a professional app-like experience.
+7. **Safe Destructive Actions:** High-risk actions (e.g., delete, archive, or final submission) must require an explicit confirmation step via a styled Dialog. Use high-contrast "Danger" styling (e.g., red buttons) to visually signal the risk level to the user.
 
 ---
 
@@ -39,15 +41,58 @@ When producing any UI, execute this procedure:
     *   **Visual Inspection:** Open the build in a browser.
     *   **Overflow Check:** Ensure no elements break their container (check `box-sizing` and fixed widths).
     *   **Alignment Check:** Verify text/icon alignment (use `flex` + `align-items: center`).
-    *   **Responsive Check:** Resize window to mobile width (<480px) to ensure stacking behavior works.
+    *   **Responsive Stress Test:**
+        *   **Mobile (<480px):** Verify stacking behavior and touch targets.
+        *   **Tablet (768px):** Verify grid density (e.g., 4-col grids often break here) and flex wrapping.
     *   **State Check:** Manually toggle error/loading states to verify they don't shift layout.
 
-### Component Standards
+---
+
+## 3) Responsive Design & Robustness
+Layouts must be resilient across screen sizes. Do not assume "mobile" and "desktop" are the only two states.
+
+### 1. Flex Wrapping (The "Action Group" Rule)
+Any horizontal group of actions, buttons, or tags MUST use `flex-wrap`. 
+- **Failure**: Elements overflow or get cut off on mobile.
+- **Fix**: Use `flex flex-wrap gap-2`. This ensures that as the viewport narrows, elements wrap to a second line rather than breaking the layout.
+
+### 2. Intermediate Breakpoints (Grid Density)
+Avoid jumping directly from 1 column (mobile) to 4+ columns (desktop).
+- **Rule of 2s**: Use intermediate breakpoints for grids. 
+- **Pattern**: `grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4`.
+- **Reasoning**: High grid density on tablet screens creates columns that are too narrow for meaningful content (e.g., KPI cards or charts).
+
+### 3. Defensive Content Handling
+- **Avoid Forced Nowrap**: Do not use `whitespace-nowrap` for supplemental data (like descriptions or secondary labels) in tight components like cards. 
+- **Safe Targets**: Ensure interactive elements have a minimum touch target of `44x44px` on mobile.
+
+---
+
+## 4) Data-Dense Interface Principles
+For applications involving complex data (tables, multi-line forms, dashboards):
+
+- **Fluid vs. Fixed Widths**: 
+    - Use **Fixed Width** (e.g., `max-w-4xl`) for text-heavy "reading" pages to maintain line-length legibility.
+    - Use **Full Width** (fluid) for data-heavy "management" pages to maximize horizontal space for tables and grids.
+- **Numeric Scanability**:
+    - **Alignment**: Always right-align numeric values in tables to allow for easy vertical comparison of magnitudes.
+    - **Typography**: Use tabular (monospaced) numerals where possible to ensure decimals align vertically.
+- **Input Precision**: Ensure numeric inputs use appropriate semantic types (`type="number"`) and granular steps (e.g., `step="0.01"` for currency).
+
+---
+
+## 5) Component Standards
 *   **Control Heights:** Always use fixed heights for buttons and inputs to ensure alignment.
     *   Small: `32px` (Dense interfaces)
     *   Medium: `40px` (Default/Standard)
     *   Large: `48px` (Touch/Hero actions)
+*   **Disabled States (Legibility First):** Avoid using only `opacity` for disabled states. 
+    *   **Rule:** Use solid, high-contrast colors (e.g., light gray background with medium gray text) to ensure labels remain legible while still appearing inactive.
 *   **Alignment:** When controls sit next to text (like a Header), use `display: flex; align-items: center;`.
+*   **Defensive Layouts:** Never assume content fits.
+    *   **Flex Containers:** Use `flex-wrap` for action groups, tag lists, or KPI metrics.
+    *   **Data Density:** If a grid has >3 columns, define a rule to drop to 2 columns at the Tablet (md) breakpoint. Avoid `whitespace-nowrap` for supplemental data (like trends/descriptions) in tight components like KPI cards.
+    *   **Overlays:** Drawers and Modals must explicitly close on navigation events (route changes).
 
 ### Styling Native Controls (A11y-First)
 When a design requires a styled dropdown, checkbox, or radio:
@@ -101,3 +146,10 @@ Before finalizing, ensure:
 - [ ] No "border soup" (use spacing/backgrounds instead).
 - [ ] Responsive rules are explicit (e.g., "Stack on mobile").
 - [ ] **Elevation Clearance:** Transformed/elevated elements have enough container padding to avoid clipping.
+
+### Specificity & System Integrity
+- **The "Reset" Trap:** Global styles (e.g., `h3 { color: ... }`) can silently break utility classes.
+- **Solution:** Do not simply swap tags (violates semantics).
+    1. **Check Computed Styles:** Confirm the source of the override.
+    2. **Enforce Utility:** Use the `!` modifier (e.g., `!text-white`) to force the utility style.
+    3. **Fix the System:** Ideally, adjust the global reset to have lower specificity (e.g. using `:where()`) so utilities always win.

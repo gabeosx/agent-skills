@@ -1,2 +1,3 @@
 .gemini/
-tmp/
+tmp/.DS_Store
+.DS_Store

@@ -30,20 +30,32 @@ Use `build.dockerfile` property pointing to their Dockerfile.
 **For Docker Compose:**
 Use `dockerComposeFile` and `service` properties.
 
-### 3. Add Features
+### 3. Service Architecture Principles
+- **Prefer Sidecars over In-Container Tools**: For databases, caches, or message brokers, use dedicated services in `docker-compose.yml` rather than installing them via `Dockerfile` or `features`. This improves build times, resource isolation, and container startup performance.
+- **Sidecars over Docker-in-Docker (DinD)**: When external services are needed for development/testing, prefer sidecar containers over DinD to reduce overhead and avoid the security complexities of privileged containers.
 
-Encourage using "Features" over manual `Dockerfile` commands when possible for better maintainability.
+### 4. Add Features
+
+Encourage using "Features" over manual `Dockerfile` commands for better maintainability and **Dependabot** support.
 Common features:
-- Node.js: `ghcr.io/devcontainers/features/node:1`
-- Python: `ghcr.io/devcontainers/features/python:1`
-- Docker-in-Docker: `ghcr.io/devcontainers/features/docker-in-docker:2`
-- Git: `ghcr.io/devcontainers/features/git:1`
+- **Node.js**: `ghcr.io/devcontainers/features/node:1` (Use versioned tags like `version: "22"` to enable automated updates).
+- **Playwright**: `ghcr.io/devcontainers/features/playwright:1` (Crucial for installing OS-level browser dependencies).
+- **pnpm**: `ghcr.io/devcontainers-contrib/features/pnpm:2`.
+- **Docker-in-Docker**: `ghcr.io/devcontainers/features/docker-in-docker:2`.
+- **Git**: `ghcr.io/devcontainers/features/git:1`.
 
-### 4. Lifecycle Scripts
+### 5. Performance Optimization: "Baking for Speed"
+- **Strategy**: Move global tool installations (e.g., `npm install -g cli-tool`) from `postCreateCommand` into a custom `Dockerfile`.
+- **Benefit**: This "bakes" the tools into the image layers, making daily container startup significantly faster as these tools are cached rather than re-installed.
+- **Implementation**: Reference the `Dockerfile` in `docker-compose.yml` or `devcontainer.json`.
 
-If the user needs to run commands (like `npm install` or `pip install`) after the container builds:
-- Use `postCreateCommand` for one-time setup.
-- Use `postStartCommand` for commands that run every time the container starts.
+### 6. Lifecycle Scripts vs. Features
+- **Prefer Features** for language runtimes and system tools (to get automated updates).
+- **Use Lifecycle Scripts** (`postCreateCommand`) only for local project setup like `pnpm install` or database migrations.
+- **Permissions**: Use specialized features or `remoteUser` context to handle volume permission issues instead of manual `chown` in scripts where possible.
+
+### 7. Automation & Dependabot
+- Always recommend adding `devcontainers` to `.github/dependabot.yml` when using Features. This ensures the dev environment stays up-to-date automatically.
 
 ## References
 
