@@ -23,10 +23,10 @@ Unlike standard Docker Desktop, the container system services are explicit.
     2.  `container system property set dns.domain <domain>`
     3.  Access containers via `http://<container-name>.<domain>`.
 *   **Inter-Container:** Containers are on a `vmnet`. Direct IP communication (`192.168.64.x`) works but can be fragile due to isolation.
-*   **Host Gateway Strategy (Reliable Fallback):** If network plugins are missing or you encounter "No route to host":
-    1.  Publish the service port to the host (e.g., `-p 5432:5432`).
-    2.  Connect from other containers using the **Host Gateway IP** (`192.168.64.1`).
-    3.  *Note:* Disable SSL (`sslmode=disable`) if connection resets occur via the gateway.
+*   **Host Gateway Strategy (Reliable Fallback):**
+    *   **Standard Method:** Use `host.docker.internal` to connect to services running on the host (macOS). This is the preferred and most portable method.
+    *   **Manual Method:** If for some reason the hostname fails, you can use the **Host Gateway IP** (`192.168.64.1`).
+    *   *Note:* Disable SSL (`sslmode=disable`) if connection resets occur via the gateway.
 *   **Localhost:** Port forwarding (`-p 8080:80`) works as expected for accessing containers from the host.
 
 ### 3. Data Persistence
@@ -51,8 +51,9 @@ Before running containers, the system services usually need to be running.
 *   **`container system start`**: Starts the container services.
     *   Options: `--enable-kernel-install`, `--disable-kernel-install`, `--app-root <path>`, `--install-root <path>`.
 *   **`container system stop`**: Stops the container services.
-    *   Options: `--prefix <string>`.
+    *   Options: `--prefix <string>`, `--all-domains` (stops services in all launchd domains).
 *   **`container system status`**: Checks if services are running.
+    *   Options: `--format <format>` (e.g., json).
 *   **`container system version`**: Shows CLI and API server versions.
 *   **`container system logs`**: Displays system logs.
     *   Options: `--follow`, `--last <time>` (e.g., `5m`, `1h`).
@@ -84,6 +85,10 @@ Before running containers, the system services usually need to be running.
         *   `-w, --workdir <dir>`: Set working directory.
         *   `-c, --cpus <count>`: CPU limit.
         *   `-m, --memory <size>`: Memory limit (e.g., `512M`, `2G`).
+        *   `--init`: Run an init process inside the container.
+        *   `--init-image <image>`: Specify a custom init filesystem image.
+        *   `--read-only`: Mount the container's root filesystem as read-only.
+        *   `--ulimit <type=soft:hard>`: Set ulimits.
 *   **`container create [OPTIONS] IMAGE [ARG...]`**: Creates a container without starting it (same options as `run`).
 *   **`container start [OPTIONS] CONTAINER...`**: Starts stopped containers.
     *   Options: `-a, --attach`, `-i, --interactive`.
@@ -102,16 +107,19 @@ Before running containers, the system services usually need to be running.
     *   Options: `-f, --follow`, `--tail <n>`, `--boot` (show boot logs).
 *   **`container stats`**: Live stream of resource usage.
     *   Options: `--no-stream`.
+*   **`container export CONTAINER`**: Exports container's filesystem to an image/tar archive.
+*   **`container prune`**: Removes all stopped containers.
 
 ### Image Management
 
 *   **`container build [OPTIONS] PATH`**: Builds an image from a Dockerfile.
-    *   Options: `-t <tag>`, `-f <dockerfile>`, `--build-arg <key=val>`, `--no-cache`, `-o, --output <type>`.
+    *   Options: `-t <tag>`, `-f <dockerfile>`, `--build-arg <key=val>`, `--no-cache`, `-o, --output <type>`, `--pull` (fetch latest image), `--dns <dns>` (custom DNS).
 *   **`container image pull [OPTIONS] NAME[:TAG]`**: Pulls an image from a registry.
-    *   Options: `--platform <os/arch>`, `--arch <arch>`, `--os <os>`.
+    *   Options: `--platform <os/arch>` (e.g., `linux/amd64`, `linux/arm64`), `--arch <arch>`, `--os <os>`.
 *   **`container image push NAME[:TAG]`**: Pushes an image.
 *   **`container image list`**: Lists local images (aliases: `ls`, `images`).
-*   **`container image delete IMAGE...`**: Deletes images (aliases: `rm`, `rmi`).
+*   **`container image delete [OPTIONS] IMAGE...`**: Deletes images (aliases: `rm`, `rmi`).
+    *   Options: `-f, --force` (force delete).
 *   **`container image prune`**: Removes unused images.
 *   **`container image tag SOURCE TARGET`**: Tags an image.
 *   **`container image inspect IMAGE...`**: JSON details of images.
@@ -142,6 +150,7 @@ Before running containers, the system services usually need to be running.
 *   **`container registry login SERVER`**: Log in to a registry.
     *   Options: `-u <username>`, `--password-stdin`, `--scheme <auto|https|http>`.
 *   **`container registry logout SERVER`**: Log out.
+*   **`container registry list`**: Lists configured registries.
 *   **`container builder status`**: Check BuildKit builder status.
 *   **`container builder start`**: Start the builder manually.
     *   Options: `--cpus <count>`, `--memory <size>`.
