@@ -1,138 +1,83 @@
-# Design Standards and System Integrity
-
-## Table of Contents
-1. Spacing System
-2. Typography System
-3. Color System
-4. Elevation and Depth
-5. Imagery
-6. Responsive Behavior
-7. Density Mode Mapping
-8. State Matrix Requirements
-9. Motion Standards
-10. Consistency and Drift Detection
+# Design Standards & Visual System
 
 ## 1. Spacing System
-Rule: use a fixed scale to avoid pixel-pushing and preserve rhythm.
+**Rule:** Use a fixed scale to avoid "pixel-pushing."
 
-Scale (px):
-- `2, 4, 8, 12, 16, 24, 32, 48, 64, 96, 128, 192, 256`
+**The Scale:**
+- `2, 4, 8, 12, 16, 24, 32, 48, 64, 96, 128, 192, 256` (px)
 
-Tactical rules:
-- Grouping: space between groups should be meaningfully larger than space within groups.
-- Prefer whitespace before borders when separating sections.
-- Use generous padding for hero sections and modals.
+**Tactical Rules:**
+- **Grouping:** Use spacing to group related elements. The space *between* groups should be significantly larger than the space *within* a group.
+- **Remove borders:** Before adding a border to separate sections, try adding more whitespace first.
+- **Padding:** Use generous padding for "hero" sections and modals to make them feel premium.
 
 ## 2. Typography System
-Rule: use a limited type scale to express hierarchy.
+**Rule:** Use a limited set of sizes to establish hierarchy.
 
-Scale (px):
-- `12, 14, 16, 18, 20, 24, 30, 36, 48, 60, 72`
+**The Scale:**
+- `12, 14, 16, 18, 20, 24, 30, 36, 48, 60, 72` (px)
 
-Hierarchy moves:
-- Prioritize contrast by de-emphasizing secondary text.
-- Avoid translucent white for secondary text on colored backgrounds.
-- Use high-contrast disabled text/background pairings, not opacity-only disabled states.
-- Keep readable line length around 45-75 characters.
+**Refactoring UI Moves:**
+- **Hierarchy through contrast:** Don't just make text bigger to make it more important. Try making the *other* text smaller, lighter in weight, or lighter in color (gray).
+- **Avoid "Gray Opacity":** On colored backgrounds, don't use white with opacity for secondary text (it looks washed out). Pick a hand-selected lighter shade of the background color.
+- **Limit line length:** For readability, keep body text containers between 45–75 characters wide.
 
 ## 3. Color System
-Rule: maintain semantic color role discipline and WCAG AA contrast.
+**Rule:** Maintain hue discipline. Ensure WCAG AA contrast.
 
-Palette structure:
-- Neutrals (`gray-50` to `gray-900`) for text/surfaces/borders.
-- Primary brand for primary actions and small accents.
-- Feedback colors for danger/success/warning.
+**Palette Structure:**
+- **Neutrals (Cool Gray):**
+  - Use `gray-50` to `gray-900` for the raw scale.
+  - **Aliases:**
+    - `text.primary`: `gray-900` (Near-black)
+    - `text.secondary`: `gray-500` (Mid-gray)
+    - `text.tertiary`: `gray-400` (Light-gray)
+    - `bg.canvas`: `gray-50` (Page background)
+    - `bg.surface`: `white` (Card/Modal background)
+    - `border.subtle`: `gray-200` (Light borders)
+- **Primary Action (Brand):**
+  - `primary`: `brand-600`
+  - `primary.hover`: `brand-700`
+  - `on-primary`: `white`
+- **Feedback:**
+  - `danger`: Red (`#ef4444`)
+  - `success`: Green (`#10b981`)
+  - `warning`: Amber (`#f59e0b`)
 
-Alias usage:
-- `text.primary`, `text.secondary`, `text.tertiary`
-- `bg.canvas`, `bg.surface`
-- `border.subtle`
-- `primary`, `primary.hover`, `on-primary`
+**Dark Mode Strategy:**
+- Flip to "Light text on Dark background".
+- Do not use pure black (#000000) for backgrounds; use dark grays (#121212).
 
-Dark mode strategy:
-- Light-on-dark using dark grays (avoid pure black backgrounds).
+## 4. Elevation & Depth
+**Rule:** Shadows encode elevation/z-index. Do not decorate.
 
-## 4. Elevation and Depth
-Rule: shadows communicate elevation state, not decoration.
+**Elevation Clearance:**
+- **Padding Formula:** If a component extends outside its bounds (e.g., `transform: translateY(-4px)` + `top: -8px` badge), the container MUST have padding > sum of extensions.
+  - *Example:* 12px extension → Use `pt-4` (16px) or `pt-6` (24px).
+- **Z-Index:** Explicitly define z-index layers for elevated elements to ensure they don't slide *under* headers or sidebars.
 
-Levels:
-- Level 0: flat/base content.
-- Level 1: raised hover states.
-- Level 2: overlays (dropdowns/popovers/sticky).
-- Level 3: modals and drawers.
-- Level 4: toasts and critical notifications.
+**Levels:**
+- **Level 0 (Flat):** Base content, cards on canvas (if bordered).
+- **Level 1 (Raised):** Hover states, small dropdowns.
+- **Level 2 (Overlay):** Dropdowns, popovers, sticky headers.
+- **Level 3 (Modal):** Dialogs, drawers.
+- **Level 4 (Toast):** Notifications, critical alerts.
 
-Elevation clearance:
-- If transformed/elevated elements extend outside bounds, container padding must exceed extension distance.
-- Define explicit z-index layering for overlays.
+**Shadow Composition:**
+- Use "Two-part" shadows:
+  1. **Ambient:** Soft, large spread, low opacity (adds depth).
+  2. **Key:** Sharp, vertical offset, higher opacity (defines edge).
 
 ## 5. Imagery
-- Do not use low-resolution placeholders in final designs.
-- When text overlays images, use scrims/contrast support to protect readability.
+- **Quality:** No low-res placeholders.
+- **Contrast:** When placing text on images, use scrims (overlays) or soft shadows to guarantee readability.
 
 ## 6. Responsive Behavior
-Rule: large elements compress faster than small ones.
+**Rule:** Large elements compress faster than small ones.
 
-- Scale down headings on mobile; body text remains near 16px.
-- Reduce section padding on smaller breakpoints.
-- Use `flex-wrap` for KPI/metric rows and dense action groups.
-- Desktop: multi-column where useful.
-- Mobile: stack to single-column by default.
-- Ensure touch targets are at least 44x44px.
-
-## 7. Density Mode Mapping
-Select one mode per screen or workflow:
-
-| Density Mode | Use Case | Token Mapping Strategy |
-| :--- | :--- | :--- |
-| `Compact` | Data-heavy dashboards, operations tables | Shift one token step down for intra-component spacing where possible (`24->16`, `16->12`, `12->8`) while preserving legibility. |
-| `Balanced` | Standard SaaS product surfaces | Use base token scale as defined. |
-| `Spacious` | Guidance-first flows, low-density interfaces | Shift one token step up for section and container spacing (`16->24`, `24->32`, `32->48`) while keeping controls aligned. |
-
-Rules:
-- Do not introduce non-scale spacing values when changing density.
-- State selected density mode in the spec.
-
-## 8. State Matrix Requirements
-For every interactive component, define all states:
-- `Default`, `Hover`, `Active`, `Focus`, `Disabled`, `Loading`, `Error`, `Empty`
-
-For each state, declare:
-- Visual change mechanism: color, border, elevation, opacity, motion.
-- Accessibility impact rationale.
-
-State guidance:
-- Focus: always visible keyboard indicator.
-- Disabled: legible text and clear non-interactive affordance.
-- Loading: preserve layout stability (avoid jank).
-- Error: combine color with icon/text cue.
-- Empty: include next-step guidance when possible.
-
-## 9. Motion Standards
-Motion must reinforce comprehension, not decoration.
-
-Canonical timing:
-- `fast`: 120ms (micro feedback)
-- `base`: 200ms (most state transitions)
-- `slow`: 320ms (layout-level transitions)
-
-Easing:
-- Standard: `cubic-bezier(0.2, 0, 0, 1)`
-- Emphasized entry (sparingly): `cubic-bezier(0.16, 1, 0.3, 1)`
-
-Motion usage:
-- Use to reinforce hierarchy changes, contextual transitions, and feedback.
-- Suppress in high-density data surfaces where motion harms scan speed.
-
-Reduced-motion fallback:
-- Respect `prefers-reduced-motion` by reducing duration and removing transform-heavy effects.
-
-## 10. Consistency and Drift Detection
-Use this checklist before handoff:
-- Are all spacing values from the defined scale?
-- Are all font sizes from the type scale?
-- Are semantic color roles used consistently?
-- Are elevation levels applied by meaning (not decoration)?
-- Are any one-off values present, and if yes, are they justified?
-- Does the selected density mode match the workflow context?
-- Are motion choices consistent with declared intent and reduced-motion behavior?
+- **Typography:** Scale down headers significantly on mobile; body text stays ~16px.
+- **Padding:** Reduce section padding (e.g., 64px → 24px).
+- **Layout:**
+  - Desktop: Multi-column.
+  - Mobile: Single column (stack).
+- **Touch:** Minimum tap target 44x44px.
