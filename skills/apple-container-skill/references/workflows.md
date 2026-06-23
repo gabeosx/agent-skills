@@ -202,6 +202,8 @@ Machine images:
 
 - Plain OCI application images may fail because they do not boot as machine images.
 - Plain `alpine:3.22` may create and inspect, but command execution can fail if `/sbin/openrc` is absent.
+- Agent rule: when the user requests a distro for `container machine`, derive a machine-capable image from that distro instead of using the plain app image directly. Preserve the base distro unless the user asks for a different one.
+- Use the plain requested image directly only for `container run` workflows.
 - For Alpine, build a machine image with OpenRC:
   ```dockerfile
   FROM docker.io/library/alpine:3.22
@@ -210,6 +212,7 @@ Machine images:
   CMD ["/sbin/init"]
   ```
 - For Ubuntu/Debian, build an image that includes `/sbin/init`, systemd, and required service setup.
+- Name derived images clearly, for example `local/alpine-machine:3.22` or `local/ubuntu-machine:24.04`, so agents do not confuse them with upstream app images.
 
 Command invocation:
 

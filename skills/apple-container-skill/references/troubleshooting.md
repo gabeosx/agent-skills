@@ -248,6 +248,7 @@ container machine ls
 Fixes:
 
 - Do not assume a plain OCI app image is bootable as a machine.
+- If the user asked for a machine from a distro image, derive a machine-capable image from that distro rather than switching distros silently.
 - If plain `alpine:3.22` logs `can't run '/sbin/openrc'`, treat that as a machine-image issue, not a generic CLI failure. Build an Alpine image with OpenRC:
   ```dockerfile
   FROM docker.io/library/alpine:3.22

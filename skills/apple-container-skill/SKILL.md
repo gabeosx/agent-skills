@@ -42,6 +42,17 @@ bash skills/apple-container-skill/scripts/diagnose.sh
 - Plain OCI application images may fail in machine mode because machines need a bootable init system. Plain `alpine:3.22` can create, inspect, and stop but fail command execution if `/sbin/openrc` is absent. Build an OpenRC-capable Alpine image or a systemd-capable Ubuntu/Debian image for reliable `container machine run`.
 - For scripted machine commands, prefer an option terminator: `container machine run -n dev -- whoami` or `container machine run -n dev -- /bin/sh -c 'whoami; pwd; echo "$HOME"'`. Avoid `-i` in heredoc/non-interactive scripts because it can consume the rest of the script from stdin.
 
+## Machine Image Selection
+
+When the user names a distro image, preserve the distro choice but choose the runtime shape correctly:
+
+- For one-shot commands or app containers, use the requested image directly with `container run`.
+- For `container machine`, treat the requested image as a base image unless it is already known to be machine-capable.
+- Do not silently try to use plain `ubuntu`, `debian`, or `alpine` app images as long-lived machines. Explain that machines boot an init system, then derive a machine image from the requested base.
+- For Alpine machines, add OpenRC and related user/network tools, set `CMD ["/sbin/init"]`, then build a local `*-machine` image.
+- For Ubuntu/Debian machines, add systemd, dbus, sudo, SSH/network tools as needed, set the systemd target, and build a local `*-machine` image.
+- If the user insists on the exact image without derivation, use `container run` or warn that `container machine` may create but fail to boot or execute commands.
+
 ## Safety Rules
 
 Ask before:
