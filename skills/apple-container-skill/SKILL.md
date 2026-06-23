@@ -1,159 +1,112 @@
 ---
 name: apple-container-skill
-description: Interact with the Apple Container CLI to manage containers, images, volumes, networks, and system services on macOS. Use this skill when the user asks to run, build, or inspect containers or manage the container runtime.
+description: Use Apple's `container` CLI on Apple silicon macOS for Linux containers, OCI image builds, registries, volumes, networks, port forwarding, host access, and persistent `container machine` Linux environments. Use this skill whenever the user asks to replace Docker Desktop with Apple Container, run Linux commands on macOS, build/run/inspect Apple containers, debug Apple Container service/network/build failures, or use Container Machines.
 ---
 
 # Apple Container Skill
 
-To use the Apple Container CLI, execute the commands below using the `run_shell_command` tool.
-**Note:** This CLI is specific to Apple's container implementation.
+Operate Apple's `container` CLI as a native macOS Linux container runtime. This skill should guide the agent's choices, not just provide command syntax.
 
-## Common Workflows & Architecture
-These patterns represent best practices for using the Apple Container CLI effectively.
+## First Moves
 
-### 1. System Lifecycle Management
-Unlike standard Docker Desktop, the container system services are explicit.
-*   **Startup:** Always verify `container system status` before running operations. If stopped, run `container system start`.
-*   **Kernel:** On first run, `system start` may prompt to install a Linux kernel. The agent should be aware of this initialization step.
-*   **Cleanup:** To save resources when not in use, run `container system stop`.
+Before doing real work, establish whether the host and runtime are usable:
 
-### 2. Networking & Connectivity
-*   **DNS:** For stable service discovery, configure a local domain:
-    1.  `sudo container system dns create <domain>` (e.g., `test`)
-    2.  `container system property set dns.domain <domain>`
-    3.  Access containers via `http://<container-name>.<domain>`.
-*   **Inter-Container:** Containers are on a `vmnet`. Direct IP communication (`192.168.64.x`) works but can be fragile due to isolation.
-*   **Host Gateway Strategy (Reliable Fallback):**
-    *   **Standard Method:** Use `host.docker.internal` to connect to services running on the host (macOS). This is the preferred and most portable method.
-    *   **Manual Method:** If for some reason the hostname fails, you can use the **Host Gateway IP** (`192.168.64.1`).
-    *   *Note:* Disable SSL (`sslmode=disable`) if connection resets occur via the gateway.
-*   **Localhost:** Port forwarding (`-p 8080:80`) works as expected for accessing containers from the host.
+```bash
+sw_vers
+uname -m
+command -v container
+container --version
+container system status
+```
 
-### 3. Data Persistence
-*   **Volume Initialization:** New volumes may contain a `lost+found` directory, which can cause "directory not empty" errors.
-*   **Best Practice:** Always configure services (like PostgreSQL) to use a **subdirectory** within the volume.
-    *   *Example:* `PGDATA=/var/lib/postgresql/data/pgdata` instead of the root mount point.
+- Require Apple silicon (`arm64`). Current Apple docs support macOS 26+ for real use; macOS 15 has important networking limitations.
+- If the CLI is missing, prefer Apple's signed installer from the GitHub releases page. Homebrew can work, but if `container system start` fails with missing plugins after a Homebrew install, upgrade/reinstall the formula.
+- Start services with `container system start` when status shows they are stopped. First start may prompt to install the recommended Linux kernel.
+- Run a smoke test before blaming application code:
 
-### 4. Development Patterns
-*   **Git/SSH:** Use the `--ssh` flag (`container run --ssh ...`) to forward the host's SSH agent. This is the preferred method for cloning private repositories inside containers.
-*   **Hot Reloading:** Use `--volume` (e.g., `-v $(pwd):/app`) to mount source code for immediate feedback, just like standard Docker.
-*   **Builder Tuning:** The build process runs in its own VM. For large builds, explicitly scale the builder: `container builder start --cpus 4 --memory 8g`.
+```bash
+container run --rm docker.io/library/alpine:latest sh -lc 'uname -a; nslookup github.com'
+```
 
-## Critical Setup
-Before running containers, the system services usually need to be running.
-*   **Check Status:** `container system status`
-*   **Start Services:** `container system start` (may require `sudo` if installing kernel/root components, but usually run as user)
+For an unknown or flaky environment, run the bundled diagnostic:
 
-## Commands
+```bash
+bash skills/apple-container-skill/scripts/diagnose.sh
+```
 
-### System Management
+## Choose The Right Runtime Shape
 
-*   **`container system start`**: Starts the container services.
-    *   Options: `--enable-kernel-install`, `--disable-kernel-install`, `--app-root <path>`, `--install-root <path>`.
-*   **`container system stop`**: Stops the container services.
-    *   Options: `--prefix <string>`, `--all-domains` (stops services in all launchd domains).
-*   **`container system status`**: Checks if services are running.
-    *   Options: `--format <format>` (e.g., json).
-*   **`container system version`**: Shows CLI and API server versions.
-*   **`container system logs`**: Displays system logs.
-    *   Options: `--follow`, `--last <time>` (e.g., `5m`, `1h`).
-*   **`container system df`**: Shows disk usage.
-*   **`container system dns create <domain>`**: Creates a local DNS domain (requires sudo).
-*   **`container system dns list`**: Lists configured local DNS domains.
-*   **`container system dns delete <domain>`**: Deletes a local DNS domain (requires sudo).
-*   **`container system property list`**: Lists system properties (config).
-*   **`container system property get <id>`**: Gets a system property value.
-*   **`container system property set <id> <value>`**: Sets a system property.
-    *   Examples: `container system property set dns.domain my.local`
-*   **`container system property clear <id>`**: Resets a system property to default.
-*   **`container system kernel set`**: Installs/updates the Linux kernel.
-    *   Options: `--recommended`, `--arch <arch>`, `--binary <path>`.
+- Use `container run` for disposable app containers, one-shot Linux commands, project dev shells, image smoke tests, and services whose state should live in bind mounts or named volumes.
+- Use `container machine` for a long-lived Linux workspace: repeated distro testing, system services, VS Code Remote SSH, a persistent root filesystem, or "edit on macOS, build inside Linux" loops.
+- Do not describe machines as merely "persistent containers." A machine is a convenience wrapper around a container, a separate persistent root disk, and host integration. It maps the host user, forwards SSH agent support, and mounts the macOS home at `/Users/<user>` while the Linux user's `$HOME` is `/home/<user>`.
+- Plain OCI application images may fail in machine mode because machines need a bootable init system. Plain `alpine:3.22` can create, inspect, and stop but fail command execution if `/sbin/openrc` is absent. Build an OpenRC-capable Alpine image or a systemd-capable Ubuntu/Debian image for reliable `container machine run`.
+- For scripted machine commands, prefer an option terminator: `container machine run -n dev -- whoami` or `container machine run -n dev -- /bin/sh -c 'whoami; pwd; echo "$HOME"'`. Avoid `-i` in heredoc/non-interactive scripts because it can consume the rest of the script from stdin.
 
-### Container Lifecycle
+## Machine Image Selection
 
-*   **`container run [OPTIONS] IMAGE [COMMAND] [ARG...]`**: Runs a command in a new container.
-    *   **Common Options:**
-        *   `-d, --detach`: Run in background.
-        *   `-i, --interactive`: Keep STDIN open.
-        *   `-t, --tty`: Allocate a pseudo-TTY.
-        *   `-p, --publish <host-port:container-port>`: Publish a port.
-        *   `-v, --volume <host-path:container-path>`: Mount a volume.
-        *   `--name <string>`: Assign a name.
-        *   `--rm`: Remove after stop.
-        *   `-e, --env <key=value>`: Set environment variable.
-        *   `-u, --user <user>`: Set user (name|uid[:gid]).
-        *   `-w, --workdir <dir>`: Set working directory.
-        *   `-c, --cpus <count>`: CPU limit.
-        *   `-m, --memory <size>`: Memory limit (e.g., `512M`, `2G`).
-        *   `--init`: Run an init process inside the container.
-        *   `--init-image <image>`: Specify a custom init filesystem image.
-        *   `--read-only`: Mount the container's root filesystem as read-only.
-        *   `--ulimit <type=soft:hard>`: Set ulimits.
-*   **`container create [OPTIONS] IMAGE [ARG...]`**: Creates a container without starting it (same options as `run`).
-*   **`container start [OPTIONS] CONTAINER...`**: Starts stopped containers.
-    *   Options: `-a, --attach`, `-i, --interactive`.
-*   **`container stop [OPTIONS] CONTAINER...`**: Stops running containers.
-    *   Options: `-t, --time <seconds>` (wait before kill), `-s, --signal <signal>`.
-*   **`container kill [OPTIONS] CONTAINER...`**: Kills containers immediately.
-    *   Options: `-s, --signal <signal>`.
-*   **`container delete [OPTIONS] CONTAINER...`**: Deletes containers (aliases: `rm`).
-    *   Options: `-f, --force` (delete even if running).
-*   **`container exec [OPTIONS] CONTAINER COMMAND [ARG...]`**: Executes a command in a running container.
-    *   Options: `-it`, `-d`, `-w`, `-e`, `-u, --user`.
-*   **`container list [OPTIONS]`**: Lists containers (aliases: `ls`, `ps`).
-    *   Options: `-a, --all` (show stopped too), `-q` (quiet, IDs only).
-*   **`container inspect CONTAINER...`**: JSON details of containers.
-*   **`container logs [OPTIONS] CONTAINER`**: Fetches container logs.
-    *   Options: `-f, --follow`, `--tail <n>`, `--boot` (show boot logs).
-*   **`container stats`**: Live stream of resource usage.
-    *   Options: `--no-stream`.
-*   **`container export CONTAINER`**: Exports container's filesystem to an image/tar archive.
-*   **`container prune`**: Removes all stopped containers.
+When the user names a distro image, preserve the distro choice but choose the runtime shape correctly:
 
-### Image Management
+- For one-shot commands or app containers, use the requested image directly with `container run`.
+- For `container machine`, treat the requested image as a base image unless it is already known to be machine-capable.
+- Do not silently try to use plain `ubuntu`, `debian`, or `alpine` app images as long-lived machines. Explain that machines boot an init system, then derive a machine image from the requested base.
+- For Alpine machines, add OpenRC and related user/network tools, set `CMD ["/sbin/init"]`, then build a local `*-machine` image.
+- For Ubuntu/Debian machines, add systemd, dbus, sudo, SSH/network tools as needed, set the systemd target, and build a local `*-machine` image.
+- If the user insists on the exact image without derivation, use `container run` or warn that `container machine` may create but fail to boot or execute commands.
 
-*   **`container build [OPTIONS] PATH`**: Builds an image from a Dockerfile.
-    *   Options: `-t <tag>`, `-f <dockerfile>`, `--build-arg <key=val>`, `--no-cache`, `-o, --output <type>`, `--pull` (fetch latest image), `--dns <dns>` (custom DNS).
-*   **`container image pull [OPTIONS] NAME[:TAG]`**: Pulls an image from a registry.
-    *   Options: `--platform <os/arch>` (e.g., `linux/amd64`, `linux/arm64`), `--arch <arch>`, `--os <os>`.
-*   **`container image push NAME[:TAG]`**: Pushes an image.
-*   **`container image list`**: Lists local images (aliases: `ls`, `images`).
-*   **`container image delete [OPTIONS] IMAGE...`**: Deletes images (aliases: `rm`, `rmi`).
-    *   Options: `-f, --force` (force delete).
-*   **`container image prune`**: Removes unused images.
-*   **`container image tag SOURCE TARGET`**: Tags an image.
-*   **`container image inspect IMAGE...`**: JSON details of images.
-*   **`container image save -o <path> IMAGE`**: Saves image to tar.
-    *   Options: `--platform <os/arch>`.
-*   **`container image load -i <path>`**: Loads image from tar.
+## Safety Rules
 
-### Volume Management
+Ask before:
 
-*   **`container volume create [OPTIONS] NAME`**: Creates a volume.
-    *   Options: `-s, --size <size>`, `--label <key=val>`.
-*   **`container volume list`**: Lists volumes (aliases: `ls`).
-*   **`container volume inspect NAME...`**: JSON details.
-*   **`container volume delete NAME...`**: Deletes volumes (aliases: `rm`).
-*   **`container volume prune`**: Removes unused volumes.
+- Running `sudo`, installing, upgrading, uninstalling, or changing DNS resolver entries.
+- Global cleanup: `container prune`, `container image prune`, `container volume prune`, `container network prune`, or deleting all resources.
+- Deleting named machines, volumes, images, or containers that were not created for the current task.
+- Editing `~/.ssh/config`, changing host firewall/VPN settings, or widening bind mounts beyond the project directory.
 
-### Network Management
+Prefer graceful stops (`container stop`, `container machine stop`) before forceful deletion or `container kill`.
 
-*   **`container network create NAME`**: Creates a network.
-    *   Options: `--subnet <cidr>`, `--subnet-v6 <cidr>`, `--label <key=val>`.
-*   **`container network list`**: Lists networks (aliases: `ls`).
-*   **`container network inspect NAME...`**: JSON details.
-*   **`container network delete NAME...`**: Deletes networks (aliases: `rm`).
-*   **`container network prune`**: Removes unused networks.
+## Practical Defaults
 
-### Registry & Builder
+Common project shell:
 
-*   **`container registry login SERVER`**: Log in to a registry.
-    *   Options: `-u <username>`, `--password-stdin`, `--scheme <auto|https|http>`.
-*   **`container registry logout SERVER`**: Log out.
-*   **`container registry list`**: Lists configured registries.
-*   **`container builder status`**: Check BuildKit builder status.
-*   **`container builder start`**: Start the builder manually.
-    *   Options: `--cpus <count>`, `--memory <size>`.
-*   **`container builder stop`**: Stops the builder.
-*   **`container builder delete`**: Deletes the builder.
-*   **`container builder prune`**: Clear builder cache.
+```bash
+container run --rm -it -v "$PWD:/work" -w /work docker.io/library/ubuntu:24.04 bash
+```
+
+Build and run an image:
+
+```bash
+container build -t local/app:dev .
+container run --rm -p 8080:8080 local/app:dev
+```
+
+Long-lived machine:
+
+```bash
+container machine create local/alpine-machine:latest --name dev --set-default --cpus 4 --memory 8G
+container machine run -n dev -- /bin/sh -c 'whoami; pwd; echo "$HOME"'
+container machine stop dev
+```
+
+## Important Current Behaviors
+
+- `container system property get`, `set`, and `clear` were removed in 1.0. Use `~/.config/container/config.toml` for defaults and `container system property list` only to inspect effective config.
+- Apple's signed installer places the CLI at `/usr/local/bin/container`; check that path directly when a fresh shell cannot find `container`.
+- `container build` may leave the BuildKit builder running. If a validation task must leave no runtime processes, inspect `container builder status`, then use `container builder stop` and `container builder delete`.
+- Host-to-container traffic should usually use `-p/--publish`; if it fails, check that the app listens on `0.0.0.0` inside the container.
+- Treat named volumes as single-attachment unless the workflow has proven otherwise; do not assume the same named volume can be attached concurrently to multiple running containers.
+- Container-to-host traffic does not use Docker's magic host alias. Configure a localhost DNS domain:
+
+```bash
+sudo container system dns create host.container.internal --localhost 203.0.113.113
+```
+
+This can disable Private Relay, and packet-filter rules may need recreation after reboot.
+
+- `container network` user-defined networks require macOS 26+. On macOS 15, container-to-container networking and multiple networks are limited.
+- If networking worked and then fails after VPN or endpoint security changes, suspect vmnet/VPN routing before changing application code.
+
+## References
+
+- Read [references/workflows.md](references/workflows.md) for common development, build, network, registry, volume, and machine playbooks.
+- Read [references/troubleshooting.md](references/troubleshooting.md) when service startup, DNS, VPN, vmnet, builder, Rosetta, port publishing, or machine mode fails.
+- Read [references/commands.md](references/commands.md) for concise command coverage after you know which workflow you need.
