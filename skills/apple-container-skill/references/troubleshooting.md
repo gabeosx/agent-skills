@@ -248,8 +248,20 @@ container machine ls
 Fixes:
 
 - Do not assume a plain OCI app image is bootable as a machine.
-- If `alpine:3.22` logs `can't run '/sbin/openrc'`, treat that as a machine-image issue, not a generic CLI failure.
+- If plain `alpine:3.22` logs `can't run '/sbin/openrc'`, treat that as a machine-image issue, not a generic CLI failure. Build an Alpine image with OpenRC:
+  ```dockerfile
+  FROM docker.io/library/alpine:3.22
+  RUN apk add --no-cache openrc shadow sudo bash busybox-extras iproute2 curl coreutils
+  RUN rc-update add local default || true
+  CMD ["/sbin/init"]
+  ```
 - Build or choose a proper machine image with `/sbin/init`, systemd, or openrc rather than using a plain Ubuntu/Debian/Alpine app image.
+- In scripts, run commands with an option terminator:
+  ```bash
+  container machine run -n <name> -- whoami
+  container machine run -n <name> -- /bin/sh -c 'whoami; pwd; echo "$HOME"'
+  ```
+- Avoid `-i` in non-interactive scripts; it can consume heredoc/stdin content and end the script early.
 - If config changed, restart:
   ```bash
   container machine stop <name>

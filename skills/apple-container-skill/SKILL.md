@@ -39,7 +39,8 @@ bash skills/apple-container-skill/scripts/diagnose.sh
 - Use `container run` for disposable app containers, one-shot Linux commands, project dev shells, image smoke tests, and services whose state should live in bind mounts or named volumes.
 - Use `container machine` for a long-lived Linux workspace: repeated distro testing, system services, VS Code Remote SSH, a persistent root filesystem, or "edit on macOS, build inside Linux" loops.
 - Do not describe machines as merely "persistent containers." A machine is a convenience wrapper around a container, a separate persistent root disk, and host integration. It maps the host user, forwards SSH agent support, and mounts the macOS home at `/Users/<user>` while the Linux user's `$HOME` is `/home/<user>`.
-- Plain OCI application images may fail in machine mode because machines need a bootable init system. Even `alpine:3.22` can create, inspect, and stop but fail command execution if `/sbin/openrc` is absent. Prefer an image known to be bootable as a machine, or build a systemd/openrc-capable machine image.
+- Plain OCI application images may fail in machine mode because machines need a bootable init system. Plain `alpine:3.22` can create, inspect, and stop but fail command execution if `/sbin/openrc` is absent. Build an OpenRC-capable Alpine image or a systemd-capable Ubuntu/Debian image for reliable `container machine run`.
+- For scripted machine commands, prefer an option terminator: `container machine run -n dev -- whoami` or `container machine run -n dev -- /bin/sh -c 'whoami; pwd; echo "$HOME"'`. Avoid `-i` in heredoc/non-interactive scripts because it can consume the rest of the script from stdin.
 
 ## Safety Rules
 
@@ -70,8 +71,8 @@ container run --rm -p 8080:8080 local/app:dev
 Long-lived machine:
 
 ```bash
-container machine create <bootable-machine-image> --name dev --set-default --cpus 4 --memory 8G
-container machine run
+container machine create local/alpine-machine:latest --name dev --set-default --cpus 4 --memory 8G
+container machine run -n dev -- /bin/sh -c 'whoami; pwd; echo "$HOME"'
 container machine stop dev
 ```
 

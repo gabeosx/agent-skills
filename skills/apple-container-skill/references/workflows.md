@@ -179,7 +179,7 @@ Use machines when the user wants a reusable Linux workspace rather than a single
 ```bash
 container machine create <bootable-machine-image> --name dev --set-default --cpus 4 --memory 8G --home-mount rw
 container machine run -n dev -- uname -a
-container machine run -n dev
+container machine run -n dev -- /bin/sh -c 'whoami; pwd; echo "$HOME"'
 container machine stop dev
 ```
 
@@ -201,8 +201,25 @@ Path model:
 Machine images:
 
 - Plain OCI application images may fail because they do not boot as machine images.
-- `alpine:3.22` may create and inspect, but command execution can fail if `/sbin/openrc` is absent.
-- Use an image known to be bootable as a machine, or build one that includes `/sbin/init`, systemd, openrc, and required service setup.
+- Plain `alpine:3.22` may create and inspect, but command execution can fail if `/sbin/openrc` is absent.
+- For Alpine, build a machine image with OpenRC:
+  ```dockerfile
+  FROM docker.io/library/alpine:3.22
+  RUN apk add --no-cache openrc shadow sudo bash busybox-extras iproute2 curl coreutils
+  RUN rc-update add local default || true
+  CMD ["/sbin/init"]
+  ```
+- For Ubuntu/Debian, build an image that includes `/sbin/init`, systemd, and required service setup.
+
+Command invocation:
+
+- In scripts, use `--` before the executable to stop CLI option parsing:
+  ```bash
+  container machine run -n dev -- whoami
+  container machine run -n dev -- /bin/sh -c 'whoami; pwd; echo "$HOME"'
+  ```
+- Avoid `-i` in heredoc-driven or non-interactive validation scripts; it can consume the rest of the script from stdin.
+- If host `$PWD` is under your mounted macOS home, `pwd` may print a `/Users/<user>/...` path while `$HOME` remains `/home/<user>`.
 
 Nested virtualization:
 

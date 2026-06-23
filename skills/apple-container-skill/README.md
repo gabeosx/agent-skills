@@ -27,4 +27,5 @@ Observed during validation:
 - `container build` starts a BuildKit builder container; stop/delete the builder when a validation task must leave no runtime processes.
 - Host port publishing worked on the default network and on a custom network after confirming the app listened on `0.0.0.0`.
 - Named volumes should be treated as single-attachment unless proven otherwise; do not rely on concurrently attaching one volume to multiple running containers.
-- Plain `alpine:3.22` could be created as a machine, inspected, logged, stopped, and deleted, but command execution was not reliable in this environment and logs reported missing `/sbin/openrc`. Prefer an image known to be bootable as a machine when validating `container machine run`.
+- Plain `alpine:3.22` could be created as a machine, inspected, logged, stopped, and deleted, but command execution was not reliable and logs reported missing `/sbin/openrc`. A minimal Alpine machine image with `openrc` installed did validate successfully.
+- In scripted machine tests, prefer `container machine run -n <name> -- <command>` or a shell wrapper such as `-- /bin/sh -c 'whoami; pwd; echo "$HOME"'`. Avoid `-i` in heredoc-driven scripts because it can consume the rest of the script from stdin.

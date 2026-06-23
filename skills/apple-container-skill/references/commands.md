@@ -135,7 +135,7 @@ container registry list|ls [-q] [--format json|table|yaml|toml]
 
 ```bash
 container machine create [options] <image>
-container machine run [-n name] [--root] [-d] [command...]
+container machine run [-n name] [--root] [-d] [--] [command...]
 container machine list|ls [-q] [--format json|table]
 container machine inspect [name]
 container machine set [-n name] cpus=4 memory=8G home-mount=ro
@@ -156,3 +156,5 @@ Create options:
 - `--scheme`, `--progress`, `--max-concurrent-downloads`
 
 Do not teach unmerged PR-only flags such as `--home-mount-path` until they land upstream.
+
+In scripts, prefer `container machine run -n dev -- <command>` or `container machine run -n dev -- /bin/sh -c '<commands>'`. Avoid `-i` unless the user is truly entering an interactive session.
