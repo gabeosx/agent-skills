@@ -20,6 +20,10 @@ Expert UX/UI design assistant based on the "Refactoring UI" philosophy.
 Unified expert for Project Management (Scrum/Agile) and GitHub Flow enforcement.
 - **Key Features:** Track orchestration, backlog hygiene, GitHub Issue synchronization, branch management, and enforcing strict PR-first workflows (Issue <-> Track <-> Branch).
 
+### 🎙️ [MacWhisper](./skills/macwhisper)
+Read-only access to [MacWhisper](https://goodsnooze.gumroad.com/l/macwhisper) transcription sessions from its local SQLite database. Zero configuration for a standard MacWhisper install.
+- **Key Features:** List unprocessed recordings, fetch diarized transcripts with hallucination filtering, keyword search, processed-session state tracking, and UTC time windows for calendar enrichment.
+
 ## Usage
 
 These skills are designed to be dropped into your agent's skills directory.
