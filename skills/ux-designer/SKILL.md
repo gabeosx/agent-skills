@@ -1,6 +1,8 @@
 ---
 name: ux-designer
 description: Expert UX/UI design assistant based on the "Refactoring UI" philosophy (by Wathan & Schoger). Enforces logic-based design, strict hierarchy, and "buildable" visual systems. Use for converting requirements into professional, high-fidelity specs.
+metadata:
+  version: "1.0.0"
 ---
 
 # UX Designer
