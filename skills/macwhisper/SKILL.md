@@ -5,6 +5,8 @@ description: >
   for new meeting transcriptions, fetch a transcript, search past recordings,
   or mark a session as processed. Does not write to Obsidian or any other
   system — use the obsidian skill for that.
+metadata:
+  version: "1.0.0"
 allowed-tools: Bash(node macwhisper.js:*)
 ---
 

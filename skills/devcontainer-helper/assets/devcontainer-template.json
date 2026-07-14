@@ -1,14 +1,11 @@
 {
-  "name": "My Dev Container",
-  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
-  "features": {
-    // "ghcr.io/devcontainers/features/node:1": {}
-  },
+  "name": "__CONTAINER_NAME__",
+  "image": "__VERIFIED_EXPLICIT_BASE_IMAGE__",
   "customizations": {
     "vscode": {
-      "settings": {},
-      "extensions": []
+      "extensions": [],
+      "settings": {}
     }
   },
-  "remoteUser": "vscode"
+  "remoteUser": "__VERIFIED_REMOTE_USER__"
 }
