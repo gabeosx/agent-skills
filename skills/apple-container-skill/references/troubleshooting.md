@@ -31,6 +31,21 @@ For broader context:
 bash skills/apple-container-skill/scripts/diagnose.sh
 ```
 
+## Check Known Fixed Defects Before Workarounds
+
+Compare both `container --version` and `container system version` with the current Apple release. Upgrade first when the symptom matches a fixed runtime defect:
+
+| Symptom | Fixed in | Temporary diagnostic |
+| --- | --- | --- |
+| Relative local path fails in `container cp` | 1.1 | Retry with an absolute host path. |
+| Non-root process cannot use a mounted Unix socket | 1.1 | Confirm ownership/mode, then reproduce on 1.1+. |
+| Image metadata unexpectedly inherits a same-named host environment variable | 1.2 | Remove the host variable and inspect image config; do not add implicit passthrough. |
+| Valid build context is missing or misread | 1.2 | Use `--progress plain`, verify context path, then reproduce on 1.2+. |
+| Published TCP/UDP connection opens but stalls | 1.2 | Prove the service works inside the container, then reproduce on 1.2+. |
+| Machine API operation times out under load | 1.2 | Inspect machine/system logs, then reproduce on 1.2+. |
+
+Do not turn a release-fixed defect into permanent project configuration.
+
 ## Unsupported Or Missing CLI
 
 Symptoms:
@@ -115,6 +130,7 @@ Fixes:
 - If package downloads fail during build, run a normal container network smoke test first.
 - For persistent build resources, edit `[build]` in `~/.config/container/config.toml` and restart services.
 - For cleanup-sensitive validation, remember that `container build` can leave the BuildKit builder running. Use `container builder stop` and `container builder delete` when the user wants no runtime remnants.
+- When testing an Apple Container source checkout, avoid building from macOS-protected or cloud-synchronized folders such as Desktop or Documents if `vmnet` entitlements or file access behave unexpectedly. Move the checkout to a neutral development path and retest before changing source.
 
 ## Rosetta Build Failures
 
@@ -208,9 +224,31 @@ lsof -nP -iTCP:<host-port> -sTCP:LISTEN
 
 Fixes:
 
+- Test the service inside the container first (`container exec ... curl http://127.0.0.1:<container-port>` or an equivalent client), then test the host mapping. This separates an application startup failure from forwarding.
 - Confirm the process inside the container listens on `0.0.0.0` or `::`, not just `127.0.0.1`.
 - Confirm `-p` is `host-port:container-port`.
 - Avoid host-port conflicts.
+
+If a published connection opens but transfers no data, reproduce on 1.2+ before adding keepalive or proxy workarounds; 1.2 fixed a port-forward buffering defect.
+
+## Unix Socket Fails
+
+First identify which side creates the socket:
+
+- Existing host socket consumed by a container: use `-v /absolute/host.sock:/run/service.sock`.
+- Socket created by a container and consumed by the host: use `--publish-socket /absolute/host.sock:/run/service.sock`.
+
+Do not swap these mechanisms just because the client reports permission denied. Check that the creating process is running, then inspect the socket type, numeric owner/group, and mode on both sides. Reproduce non-root failures on Apple Container 1.1+ because that release fixed mounted-socket access for non-root users.
+
+## Environment Value Appears From The Host
+
+Distinguish explicit from implicit inheritance:
+
+- `-e NAME` and a bare `NAME` in an env file intentionally copy the host value.
+- `-e NAME=value` and `NAME=value` in an env file are deterministic.
+- A bare name stored in image metadata should not copy the host value on 1.2+.
+
+For untrusted images, upgrade to 1.2+ rather than trying to scrub every host variable. Keep secrets out of image metadata and command lines even on the fixed runtime.
 
 ## Bind Mount Or Permission Issues
 
@@ -252,11 +290,13 @@ Fixes:
 - If plain `alpine:3.22` logs `can't run '/sbin/openrc'`, treat that as a machine-image issue, not a generic CLI failure. Build an Alpine image with OpenRC:
   ```dockerfile
   FROM docker.io/library/alpine:3.22
-  RUN apk add --no-cache openrc shadow sudo bash busybox-extras iproute2 curl coreutils
+  RUN apk add --no-cache openrc openrc-init shadow sudo bash busybox-extras iproute2 curl coreutils
   RUN rc-update add local default || true
-  CMD ["/sbin/init"]
+  CMD ["/sbin/openrc-init"]
   ```
+- Installing `openrc` alone and setting `CMD ["/sbin/init"]` is not enough on Alpine: BusyBox init can start OpenRC and immediately shut the machine down. Use the `openrc-init` package and its executable.
 - Build or choose a proper machine image with `/sbin/init`, systemd, or openrc rather than using a plain Ubuntu/Debian/Alpine app image.
+- If the first headless `machine run` fails with `Operation not supported by device`, run the initialization command once from a real host terminal/PTY. After that succeeds, verify the same command without a TTY before putting it in CI. Prefer `container run` when unattended first-use is a hard requirement and machine semantics are unnecessary.
 - In scripts, run commands with an option terminator:
   ```bash
   container machine run -n <name> -- whoami
@@ -273,6 +313,15 @@ Fixes:
   container machine stop <name>
   container machine rm <name>
   ```
+
+## Stop Signal Option Is Rejected
+
+The released 1.2.0 CLI does not expose `container run --stop-signal`, even though an earlier release note mentioned it. Use one of the supported control points:
+
+- Put `STOPSIGNAL SIG...` in the Dockerfile for an image-wide default.
+- Use `container stop -s SIGNAL <name>` for a one-off operator choice.
+
+Confirm the installed CLI surface with `container help run` instead of copying flags from a release summary.
 
 ## Nested Virtualization Fails
 
