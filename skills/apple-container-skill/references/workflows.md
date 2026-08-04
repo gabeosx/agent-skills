@@ -23,7 +23,10 @@ Use this file when the user asks "how should I do X with Apple Container?" Prefe
    container system start
    container system status
    container --version
+   container system version
    ```
+
+   Compare the CLI and running service versions. Upgrade before working around defects fixed in the current release. Version 1.1 fixed relative-path `container cp` and non-root Unix socket mounts; version 1.2 fixed unintended host environment inheritance from image metadata, build contexts, stalled TCP/UDP forwarding, and machine API timeouts.
 
 4. Upgrade:
    ```bash
@@ -64,6 +67,18 @@ Use `--ssh` for private Git access instead of copying keys:
 container run --rm -it --ssh -v "$PWD:/work" -w /work docker.io/library/ubuntu:24.04 bash
 ```
 
+Treat environment inheritance as an explicit decision:
+
+```bash
+# Reproducible value; preferred when the value is not secret.
+container run --rm -e APP_ENV=development local/app:dev
+
+# Intentional host passthrough; use only when that coupling is desired.
+container run --rm -e SSH_AUTH_SOCK local/app:dev
+```
+
+Apple Container 1.2 stops a bare environment name embedded in an image from silently reading the host value. Explicit `-e NAME` and bare names in an env file still request host passthrough. Use a secrets facility instead of command-line values for credentials.
+
 ## Build And Run An Image
 
 ```bash
@@ -99,6 +114,33 @@ container delete app
 ```
 
 If the port mapping fails, first check that the application listens on `0.0.0.0` inside the container, not only `127.0.0.1`.
+
+For shutdown behavior, put `STOPSIGNAL` in the Dockerfile when every deployment of the image needs the same signal. For a one-off operator choice, use `container stop -s SIGNAL app`. Do not suggest `container run --stop-signal`; the released 1.2.0 CLI does not expose that option.
+
+## Unix Socket Integration
+
+Choose the mechanism from the direction in which the socket is created:
+
+- Host creates the socket, container connects: bind-mount the existing socket with `-v`.
+- Container creates the socket, host connects: publish it with `--publish-socket`.
+
+Host-created socket:
+
+```bash
+container run --rm \
+  -v /absolute/host/service.sock:/run/service.sock \
+  local/client:dev
+```
+
+Container-created socket:
+
+```bash
+container run --rm \
+  --publish-socket /absolute/host/service.sock:/run/service.sock \
+  local/server:dev
+```
+
+Use absolute host paths and verify the socket exists on the creating side before testing the client. When either side is non-root, inspect numeric UID/GID and mode on both paths; Apple Container 1.1 fixed a runtime defect that otherwise blocked non-root access to mounted sockets.
 
 ## Volumes
 
@@ -207,15 +249,16 @@ Machine images:
 - For Alpine, build a machine image with OpenRC:
   ```dockerfile
   FROM docker.io/library/alpine:3.22
-  RUN apk add --no-cache openrc shadow sudo bash busybox-extras iproute2 curl coreutils
+  RUN apk add --no-cache openrc openrc-init shadow sudo bash busybox-extras iproute2 curl coreutils
   RUN rc-update add local default || true
-  CMD ["/sbin/init"]
+  CMD ["/sbin/openrc-init"]
   ```
 - For Ubuntu/Debian, build an image that includes `/sbin/init`, systemd, and required service setup.
 - Name derived images clearly, for example `local/alpine-machine:3.22` or `local/ubuntu-machine:24.04`, so agents do not confuse them with upstream app images.
 
 Command invocation:
 
+- Run the first machine command from a real host terminal. Initial user provisioning can require a PTY; a first command launched from a headless runner may fail with `Operation not supported by device`. Once initialization succeeds, ordinary non-interactive commands work without `-i`.
 - In scripts, use `--` before the executable to stop CLI option parsing:
   ```bash
   container machine run -n dev -- whoami
@@ -223,6 +266,21 @@ Command invocation:
   ```
 - Avoid `-i` in heredoc-driven or non-interactive validation scripts; it can consume the rest of the script from stdin.
 - If host `$PWD` is under your mounted macOS home, `pwd` may print a `/Users/<user>/...` path while `$HOME` remains `/home/<user>`.
+
+For automation that can never allocate a first-run PTY, prefer `container run` unless the workflow truly needs machine persistence or init services. If machine semantics are required, make PTY-backed initialization an explicit provisioning step and verify a later headless command before relying on the environment.
+
+## Custom Kernel Arguments
+
+Use `--kernel-arg` only when the requested behavior belongs to the Linux kernel—for example, validating an LSM setting or reproducing a kernel boot issue. It is repeatable and applies to `run`/`create`; it is not an application environment mechanism.
+
+```bash
+container run --rm \
+  --kernel-arg acme_debug=enabled \
+  docker.io/library/alpine:latest \
+  cat /proc/cmdline
+```
+
+Always verify `/proc/cmdline`; do not assume a duplicate key replaced every runtime default. Treat changes to `lsm`, module policy, panic behavior, or other security/reliability controls as privileged design decisions that require justification and user approval.
 
 Nested virtualization:
 

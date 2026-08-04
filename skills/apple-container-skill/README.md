@@ -13,19 +13,24 @@ Import `SKILL.md` into an agent's skill configuration.
 - **Operational Playbooks**: Host readiness checks, smoke tests, safe cleanup rules, and workflow selection.
 - **Container Machines**: Persistent Linux environments with host user/home integration and machine-specific troubleshooting.
 - **Container Runtime Workflows**: Disposable dev shells, bind mounts, port forwarding, image builds, registries, volumes, and networks.
+- **Release-Aware Decisions**: Known fixed-defect routing for 1.1 and 1.2, with guidance to upgrade before inventing permanent workarounds.
+- **Security And Integration Guidance**: Intentional environment inheritance, directional Unix socket handling, and justified kernel-argument use.
 - **Current Configuration Model**: `~/.config/container/config.toml` guidance instead of removed mutable system property commands.
 - **Diagnostics**: A read-only shell helper for collecting host, service, network, and log context.
 
 ## Runtime Validation Notes
 
-This skill was runtime-validated on macOS 26.5 arm64 with Apple Container 1.0.0 installed from the signed GitHub package.
+Version 1.1.0 of this skill was validated on macOS 26.5 arm64 against the signed and notarized Apple Container 1.2.0 release payload. The payload was staged under an isolated app/install/log root so it did not replace the host's installed 1.0.0 runtime. Release claims were checked against Apple's [release history](https://github.com/apple/container/releases), current command help, and targeted live experiments.
 
 Observed during validation:
 
-- The signed installer places the CLI at `/usr/local/bin/container`; agents should check that absolute path when `container` is not on `PATH`.
-- First service startup can install the recommended kernel when run with `container system start --enable-kernel-install`.
-- `container build` starts a BuildKit builder container; stop/delete the builder when a validation task must leave no runtime processes.
-- Host port publishing worked on the default network and on a custom network after confirming the app listened on `0.0.0.0`.
-- Named volumes should be treated as single-attachment unless proven otherwise; do not rely on concurrently attaching one volume to multiple running containers.
-- Plain `alpine:3.22` could be created as a machine, inspected, logged, stopped, and deleted, but command execution was not reliable and logs reported missing `/sbin/openrc`. A minimal Alpine machine image with `openrc` installed did validate successfully.
-- In scripted machine tests, prefer `container machine run -n <name> -- <command>` or a shell wrapper such as `-- /bin/sh -c 'whoami; pwd; echo "$HOME"'`. Avoid `-i` in heredoc-driven scripts because it can consume the rest of the script from stdin.
+- Basic image pull, DNS, and arm64 execution passed.
+- Relative-path `container cp` passed in both directions.
+- A non-root container process reached a host-created Unix socket through `-v`; a host process reached a container-created socket through `--publish-socket`. This established why the two mechanisms are not interchangeable.
+- A custom `--kernel-arg` appeared in `/proc/cmdline`; duplicate defaults remained possible, so the guidance requires verification instead of assuming replacement.
+- A harmless host environment sentinel did not enter an ordinary container and did enter only with explicit `-e NAME` passthrough.
+- TCP publishing passed after first proving the service was healthy and listening on `0.0.0.0` inside the container. An intentionally broken service fixture demonstrated why that diagnostic order matters.
+- Plain `alpine:3.22` failed machine execution with missing `/sbin/openrc`. The prior `openrc` plus `/sbin/init` recipe started and immediately shut down. Installing `openrc-init` and using `/sbin/openrc-init` produced a persistent machine.
+- The first machine command required a host PTY for user initialization; the same machine then accepted non-interactive commands without `-i`.
+- Shipped 1.2.0 help exposed `--kernel-arg` but not the release-note-only `run --stop-signal`, so the skill routes shutdown configuration to image `STOPSIGNAL` or `container stop -s`.
+- All named containers, machines, images, builder state, sockets, and isolated service state created for validation were removed after the test run.

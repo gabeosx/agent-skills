@@ -30,6 +30,19 @@ fi
 
 run container --version
 
+section "Released CLI Surface"
+run_help="$(container help run 2>&1 || true)"
+if printf '%s\n' "$run_help" | grep -q -- '--kernel-arg'; then
+  echo "run --kernel-arg: available"
+else
+  echo "run --kernel-arg: unavailable (upgrade before relying on 1.2 behavior)"
+fi
+if printf '%s\n' "$run_help" | grep -q -- '--stop-signal'; then
+  echo "run --stop-signal: available"
+else
+  echo "run --stop-signal: unavailable; use image STOPSIGNAL or container stop -s"
+fi
+
 section "System Status"
 run container system status
 
@@ -71,6 +84,8 @@ cat <<'EOF'
 
 Interpretation hints:
 - If container is missing, install it before continuing.
+- Compare CLI and service versions. Upgrade before working around defects already
+  fixed in the current Apple Container release.
 - If images pull but container DNS or ping fails, check VPN, endpoint security,
   firewall, or vmnet route conflicts before changing application code.
 - If host-side container DNS is flaky, test directly with:

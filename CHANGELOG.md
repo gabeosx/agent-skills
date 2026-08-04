@@ -9,6 +9,24 @@ All notable skill changes are recorded in this file. Each skill is versioned ind
 - Added canonical agent instructions and a dependency-free release-contract validator requiring every affected skill change to include an independent Semantic Version increment, a matching root changelog entry, relevant validation, and scoped cleanup evidence.
 - Required repository-only changes to be recorded without inventing unrelated skill version bumps, and documented the definition of done and release-tagging workflow.
 
+## apple-container-skill 1.1.0 - 2026-08-04
+
+### Added
+
+- Added release-aware symptom routing for Apple Container 1.1 and 1.2 fixes, including relative copy paths, non-root Unix sockets, environment inheritance, build contexts, published-port stalls, and machine timeouts.
+- Added decision guidance and live-tested workflows for host-created versus container-created Unix sockets, explicit environment passthrough, justified kernel arguments, service-first port diagnosis, and shutdown signals.
+- Added diagnostic probes for the shipped `run` command surface and blind forward evaluations for machine automation and socket troubleshooting outcomes.
+
+### Changed
+
+- Replaced the incomplete Alpine machine recipe with a validated `openrc-init` image and documented the PTY-backed first-run initialization boundary for later headless automation.
+- Reframed new 1.2 capabilities around when and why to use them, verification steps, security implications, and upgrade-before-workaround decisions instead of merely enumerating flags.
+- Updated runtime evidence from the signed Apple Container 1.2.0 payload on macOS 26.5 arm64.
+
+### Fixed
+
+- Corrected shutdown guidance after confirming the shipped 1.2.0 CLI does not expose the release-note-only `container run --stop-signal`; agents now use image `STOPSIGNAL` or `container stop -s`.
+
 ## devcontainer-helper 1.0.0 - 2026-07-14
 
 First formal versioned release. Earlier development was unversioned and remains in Git history.

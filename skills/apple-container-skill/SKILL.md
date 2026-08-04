@@ -2,7 +2,7 @@
 name: apple-container-skill
 description: Use Apple's `container` CLI on Apple silicon macOS for Linux containers, OCI image builds, registries, volumes, networks, port forwarding, host access, and persistent `container machine` Linux environments. Use this skill whenever the user asks to replace Docker Desktop with Apple Container, run Linux commands on macOS, build/run/inspect Apple containers, debug Apple Container service/network/build failures, or use Container Machines.
 metadata:
-  version: "1.0.0"
+  version: "1.1.0"
 ---
 
 # Apple Container Skill
@@ -22,6 +22,7 @@ container system status
 ```
 
 - Require Apple silicon (`arm64`). Current Apple docs support macOS 26+ for real use; macOS 15 has important networking limitations.
+- Record the CLI and service versions. If the host is older than 1.2.0, recommend upgrading before diagnosing image-environment leakage, build-context failures, stalled published ports, or machine API timeouts; those are known fixed defects. Do not assume the CLI and running service are the same version.
 - If the CLI is missing, prefer Apple's signed installer from the GitHub releases page. Homebrew can work, but if `container system start` fails with missing plugins after a Homebrew install, upgrade/reinstall the formula.
 - Start services with `container system start` when status shows they are stopped. First start may prompt to install the recommended Linux kernel.
 - Run a smoke test before blaming application code:
@@ -51,7 +52,7 @@ When the user names a distro image, preserve the distro choice but choose the ru
 - For one-shot commands or app containers, use the requested image directly with `container run`.
 - For `container machine`, treat the requested image as a base image unless it is already known to be machine-capable.
 - Do not silently try to use plain `ubuntu`, `debian`, or `alpine` app images as long-lived machines. Explain that machines boot an init system, then derive a machine image from the requested base.
-- For Alpine machines, add OpenRC and related user/network tools, set `CMD ["/sbin/init"]`, then build a local `*-machine` image.
+- For Alpine machines, install both `openrc` and `openrc-init`, add related user/network tools, set `CMD ["/sbin/openrc-init"]`, then build a local `*-machine` image. Installing only `openrc` and using BusyBox `/sbin/init` can start and immediately shut down.
 - For Ubuntu/Debian machines, add systemd, dbus, sudo, SSH/network tools as needed, set the systemd target, and build a local `*-machine` image.
 - If the user insists on the exact image without derivation, use `container run` or warn that `container machine` may create but fail to boot or execute commands.
 
@@ -63,6 +64,7 @@ Ask before:
 - Global cleanup: `container prune`, `container image prune`, `container volume prune`, `container network prune`, or deleting all resources.
 - Deleting named machines, volumes, images, or containers that were not created for the current task.
 - Editing `~/.ssh/config`, changing host firewall/VPN settings, or widening bind mounts beyond the project directory.
+- Passing kernel arguments that disable or weaken security controls. Use `--kernel-arg` only for a documented kernel-level requirement, not ordinary application configuration.
 
 Prefer graceful stops (`container stop`, `container machine stop`) before forceful deletion or `container kill`.
 
@@ -85,6 +87,7 @@ Long-lived machine:
 
 ```bash
 container machine create local/alpine-machine:latest --name dev --set-default --cpus 4 --memory 8G
+# Run the first command from a real terminal so initial user setup has a host PTY.
 container machine run -n dev -- /bin/sh -c 'whoami; pwd; echo "$HOME"'
 container machine stop dev
 ```
@@ -95,6 +98,11 @@ container machine stop dev
 - Apple's signed installer places the CLI at `/usr/local/bin/container`; check that path directly when a fresh shell cannot find `container`.
 - `container build` may leave the BuildKit builder running. If a validation task must leave no runtime processes, inspect `container builder status`, then use `container builder stop` and `container builder delete`.
 - Host-to-container traffic should usually use `-p/--publish`; if it fails, check that the app listens on `0.0.0.0` inside the container.
+- For Unix sockets, choose by direction: bind-mount (`-v`) a socket that already exists on the host into the container; use `--publish-socket host_path:container_path` when the process in the container creates the socket and the host must reach it. For non-root clients, verify ownership and mode on both endpoints. Apple Container 1.1 fixed non-root socket-mount access.
+- Apple Container 1.1 also fixed relative local paths for `container cp`; on older versions, use absolute paths or upgrade rather than debugging a correct relative path.
+- Apple Container 1.2 prevents an untrusted image's bare `ENV` entry from implicitly copying a same-named host variable. Still make inheritance explicit: use `-e NAME` only when host passthrough is intended, and prefer `KEY=value`, an env file, or a secret mechanism for reproducible runs.
+- Use repeatable `--kernel-arg key=value` only for a kernel/security/debug requirement and verify the effective command line with `cat /proc/cmdline`. Do not use it for application settings or casually replace security defaults such as `lsm=landlock`.
+- The 1.2.0 release does not expose `container run --stop-signal`, despite earlier release notes mentioning it. Put `STOPSIGNAL` in the image for a reusable default or use `container stop -s SIGNAL` for an operator-selected signal.
 - Treat named volumes as single-attachment unless the workflow has proven otherwise; do not assume the same named volume can be attached concurrently to multiple running containers.
 - Container-to-host traffic does not use Docker's magic host alias. Configure a localhost DNS domain:
 
@@ -106,6 +114,7 @@ This can disable Private Relay, and packet-filter rules may need recreation afte
 
 - `container network` user-defined networks require macOS 26+. On macOS 15, container-to-container networking and multiple networks are limited.
 - If networking worked and then fails after VPN or endpoint security changes, suspect vmnet/VPN routing before changing application code.
+- A machine's first command may need a real host terminal while user setup completes. If a headless first run fails with `Operation not supported by device`, retry the initialization from a PTY; subsequent non-interactive `machine run ... -- command` calls can be scripted. Do not add `-i` to a heredoc or unattended job.
 
 ## References
 

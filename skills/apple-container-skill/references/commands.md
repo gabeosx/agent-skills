@@ -51,7 +51,8 @@ Important `run/create` options:
 - `--rm`, `-d/--detach`, `-it`, `--name`
 - `-p/--publish [host-ip:]host-port:container-port[/protocol]`
 - `-v/--volume source:target`, `--mount type=...,source=...,target=...,readonly`
-- `--publish-socket host_path:container_path`
+- `-v host_socket:container_socket` when the socket already exists on the host
+- `--publish-socket host_path:container_path` when the container creates the socket for a host client
 - `-e/--env`, `--env-file`
 - `-w/--workdir/--cwd`, `-u/--user`, `--uid`, `--gid`
 - `--cpus`, `--memory`, `--shm-size`, `--tmpfs`
@@ -60,7 +61,10 @@ Important `run/create` options:
 - `--network name[,mac=XX:XX:XX:XX:XX:XX][,mtu=VALUE]`
 - `--platform`, `--arch`, `--os`, `--rosetta`
 - `--init`, `--init-image`, `--entrypoint`, `--read-only`, `--ssh`, `--virtualization`
+- `--kernel PATH`, repeatable `--kernel-arg key=value` for justified kernel-level requirements
 - `--scheme`, `--progress`, `--max-concurrent-downloads`
+
+The released 1.2.0 CLI has no `run --stop-signal`. Use Dockerfile `STOPSIGNAL` for the image default or `container stop -s SIGNAL` for a one-off signal.
 
 ## Build And Images
 
