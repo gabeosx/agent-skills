@@ -9,6 +9,35 @@ All notable skill changes are recorded in this file. Each skill is versioned ind
 - Added canonical agent instructions and a dependency-free release-contract validator requiring every affected skill change to include an independent Semantic Version increment, a matching root changelog entry, relevant validation, and scoped cleanup evidence.
 - Required repository-only changes to be recorded without inventing unrelated skill version bumps, and documented the definition of done and release-tagging workflow.
 
+## apple-container-skill 1.2.0 - 2026-09-20
+
+### Added
+
+- Added experimental single-node `container k8s` workflows, scoped `container clean` guidance, build-time SSH forwarding, additive masked/read-only path controls, and diagnostics for the current command surface.
+- Added security routing for Apple Container 1.3.1 and 1.4.1 fixes affecting crafted identifiers, image layers and layouts, registry authentication, and host-file access.
+
+### Changed
+
+- Raised the supported operating-system guidance to macOS 26+, made Apple Container 1.4.1 the September 2026 baseline for untrusted OCI inputs, and required comparison of the client, service, and current signed release.
+- Updated Container Machine selection for 1.3+ so agents first verify `/sbin/init` and can use current standard images directly, while retaining derived OpenRC/systemd recipes for older or service-oriented workloads.
+- Updated registry guidance for the removal of `--scheme auto`, documented default HTTPS, and made installed command help authoritative when generated references lag the parser.
+
+### Fixed
+
+- Corrected cleanup, Kubernetes lifecycle, and nested-command help examples against the signed and notarized 1.4.1 release payload without replacing the host runtime.
+
+## devcontainer-helper 1.1.0 - 2026-09-20
+
+### Added
+
+- Added Dev Container CLI 0.89.0 OCI authentication hardening guidance for bearer realms, registry credential forwarding, token redirects, and exact reviewed cross-origin authentication-host mappings.
+- Added hardened configuration/build validation and reporting requirements for externally hosted OCI Features, Templates, and registry metadata.
+
+### Changed
+
+- Added explicit WSL Containers Public Preview version floors of WSL 2.9.3+ and Dev Container CLI 0.88.0+, with target-specific validation instead of implied Docker or Compose parity.
+- Documented the Dev Container CLI version boundaries for stable lockfiles, WSL Containers support, and OCI authentication hardening.
+
 ## apple-container-skill 1.1.0 - 2026-08-04
 
 ### Added

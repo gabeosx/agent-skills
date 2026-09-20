@@ -43,6 +43,10 @@ Compare both `container --version` and `container system version` with the curre
 | Valid build context is missing or misread | 1.2 | Use `--progress plain`, verify context path, then reproduce on 1.2+. |
 | Published TCP/UDP connection opens but stalls | 1.2 | Prove the service works inside the container, then reproduce on 1.2+. |
 | Machine API operation times out under load | 1.2 | Inspect machine/system logs, then reproduce on 1.2+. |
+| Experimental `container k8s` plugin is absent from the signed package | 1.2.2 | Upgrade the complete installation; do not copy a plugin by hand. |
+| Registry `--scheme auto` is rejected | Changed in 1.3 | Use the HTTPS default or explicit HTTP only for a trusted local registry. |
+| Machine path setup fails under 1.2-era masked/read-only defaults | 1.3 | Upgrade before maintaining a custom path workaround. |
+| Crafted IDs, image layers/layouts, registry auth, or host paths can cross trust boundaries | 1.3.1 and 1.4.1 | Stop processing untrusted OCI input and upgrade to 1.4.1 or newer. |
 
 Do not turn a release-fixed defect into permanent project configuration.
 
@@ -61,7 +65,11 @@ uname -m
 sw_vers -productVersion
 ```
 
-Use Apple silicon (`arm64`). Treat macOS 26+ as supported. If the user is on macOS 15, explain the network limitations rather than trying to hide them.
+Use Apple silicon (`arm64`). Treat macOS 26+ as supported. Older macOS releases are unsupported; do not present a workaround as supported operation.
+
+## A Valid Command Reports A Plugin Or Service Error
+
+Apple Container command groups are singular: `image`, `network`, `volume`, `machine`, `registry`, and `builder`. A plural typo such as `container images` can fall through to plugin discovery and report a misleading plugin or service problem. Compare the command with `container --help` before restarting services.
 
 ## Homebrew Plugin Failure
 
@@ -127,6 +135,7 @@ Fixes:
   container builder start --cpus 8 --memory 16G
   ```
 - Use `--no-cache` for stale or corrupt cache suspicion.
+- For private dependencies, use `container build --ssh default`; do not copy private SSH keys into the build context or an image layer.
 - If package downloads fail during build, run a normal container network smoke test first.
 - For persistent build resources, edit `[build]` in `~/.config/container/config.toml` and restart services.
 - For cleanup-sensitive validation, remember that `container build` can leave the BuildKit builder running. Use `container builder stop` and `container builder delete` when the user wants no runtime remnants.
@@ -285,9 +294,9 @@ container machine ls
 
 Fixes:
 
-- Do not assume a plain OCI app image is bootable as a machine.
-- If the user asked for a machine from a distro image, derive a machine-capable image from that distro rather than switching distros silently.
-- If plain `alpine:3.22` logs `can't run '/sbin/openrc'`, treat that as a machine-image issue, not a generic CLI failure. Build an Alpine image with OpenRC:
+- Verify the image contains `/sbin/init`. On Apple Container 1.3+, try the requested standard image when it does; current Apple guidance uses `alpine:latest` directly.
+- If plain Alpine logs `can't run '/sbin/openrc'` on a 1.2-era runtime, upgrade before preserving a custom-image workaround.
+- If `/sbin/init` is absent, or managed services are required, derive a machine-capable image from the requested distro rather than switching distros silently. An Alpine service image can use OpenRC:
   ```dockerfile
   FROM docker.io/library/alpine:3.22
   RUN apk add --no-cache openrc openrc-init shadow sudo bash busybox-extras iproute2 curl coreutils
@@ -295,7 +304,7 @@ Fixes:
   CMD ["/sbin/openrc-init"]
   ```
 - Installing `openrc` alone and setting `CMD ["/sbin/init"]` is not enough on Alpine: BusyBox init can start OpenRC and immediately shut the machine down. Use the `openrc-init` package and its executable.
-- Build or choose a proper machine image with `/sbin/init`, systemd, or openrc rather than using a plain Ubuntu/Debian/Alpine app image.
+- Build or choose a proper machine image with `/sbin/init`, systemd, or OpenRC rather than forcing an image that lacks init to boot.
 - If the first headless `machine run` fails with `Operation not supported by device`, run the initialization command once from a real host terminal/PTY. After that succeeds, verify the same command without a TTY before putting it in CI. Prefer `container run` when unattended first-use is a hard requirement and machine semantics are unnecessary.
 - In scripts, run commands with an option terminator:
   ```bash
@@ -316,19 +325,39 @@ Fixes:
 
 ## Stop Signal Option Is Rejected
 
-The released 1.2.0 CLI does not expose `container run --stop-signal`, even though an earlier release note mentioned it. Use one of the supported control points:
+The released 1.4.1 CLI does not expose `container run --stop-signal`. Use one of the supported control points:
 
 - Put `STOPSIGNAL SIG...` in the Dockerfile for an image-wide default.
 - Use `container stop -s SIGNAL <name>` for a one-off operator choice.
 
 Confirm the installed CLI surface with `container help run` instead of copying flags from a release summary.
 
+## Registry Scheme Option Is Rejected
+
+Apple Container 1.3 removed the old `--scheme auto` value. Current releases default to HTTPS and accept only `https` or `http`:
+
+```bash
+container registry login --scheme https registry.example.com
+```
+
+Use `--scheme http` only for a deliberately trusted local registry. If a generated command reference disagrees with installed help, trust the shipped parser and `container registry login --help`.
+
+## Masked Or Read-Only Path Setup Fails
+
+Confirm the current experimental flags first:
+
+```bash
+container help run | grep -E -- '--masked-path|--read-only-path'
+```
+
+Apple Container 1.3 relaxed default path restrictions for Container Machines. Upgrade a 1.2-era runtime before baking a workaround into an image. Never suggest the special value `NONE` merely to make a workload start; it clears that class of runtime security defaults and requires explicit approval.
+
 ## Nested Virtualization Fails
 
 Requirements:
 
 - Apple Silicon M3 or newer.
-- macOS 15 or newer.
+- Supported macOS 26 or newer.
 - Custom Linux kernel with `CONFIG_KVM=y`; the default kernel does not provide KVM for this purpose.
 
 Verify:

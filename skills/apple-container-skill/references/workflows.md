@@ -9,7 +9,7 @@ Use this file when the user asks "how should I do X with Apple Container?" Prefe
    sw_vers
    uname -m
    ```
-   Apple silicon (`arm64`) is required. Treat macOS 26+ as the supported target. On macOS 15, warn about network limitations before proceeding.
+   Apple silicon (`arm64`) is required. Treat macOS 26+ as the supported target; older macOS releases are unsupported.
 
 2. Install:
    - Preferred documented path: download Apple's signed installer package from the `apple/container` GitHub releases page and install it.
@@ -26,7 +26,7 @@ Use this file when the user asks "how should I do X with Apple Container?" Prefe
    container system version
    ```
 
-   Compare the CLI and running service versions. Upgrade before working around defects fixed in the current release. Version 1.1 fixed relative-path `container cp` and non-root Unix socket mounts; version 1.2 fixed unintended host environment inheritance from image metadata, build contexts, stalled TCP/UDP forwarding, and machine API timeouts.
+   Compare the CLI and running service versions with the current signed release. Upgrade before working around defects fixed upstream. Version 1.3 removed registry `--scheme auto` and relaxed machine path restrictions. Versions 1.3.1 and 1.4.1 fixed path traversal, host-file access, registry credential handling, crafted image/layout, and unchecked-identifier defects. As of September 2026, use 1.4.1 or newer for untrusted OCI inputs.
 
 4. Upgrade:
    ```bash
@@ -94,7 +94,11 @@ container builder delete
 container builder start --cpus 8 --memory 16G
 ```
 
-If the project has both `Dockerfile` and `Containerfile`, pass `-f` explicitly. Use `--secret` for build secrets rather than putting tokens in Dockerfile layers.
+If the project has both `Dockerfile` and `Containerfile`, pass `-f` explicitly. Use `--secret` for build secrets rather than putting tokens in Dockerfile layers. For a private Git dependency, forward the agent rather than copying a private key into the context:
+
+```bash
+container build --ssh default -t local/app:dev .
+```
 
 `container build` starts a BuildKit builder container. For normal development, leave it alone. For validation tasks that must leave no runtime processes, finish with:
 
@@ -115,7 +119,18 @@ container delete app
 
 If the port mapping fails, first check that the application listens on `0.0.0.0` inside the container, not only `127.0.0.1`.
 
-For shutdown behavior, put `STOPSIGNAL` in the Dockerfile when every deployment of the image needs the same signal. For a one-off operator choice, use `container stop -s SIGNAL app`. Do not suggest `container run --stop-signal`; the released 1.2.0 CLI does not expose that option.
+For shutdown behavior, put `STOPSIGNAL` in the Dockerfile when every deployment of the image needs the same signal. For a one-off operator choice, use `container stop -s SIGNAL app`. Do not suggest `container run --stop-signal`; the released 1.4.1 CLI does not expose that option.
+
+Add experimental path isolation only when the installed help exposes it:
+
+```bash
+container run --rm \
+  --masked-path /proc/acpi \
+  --read-only-path /proc/bus \
+  docker.io/library/alpine:latest true
+```
+
+These flags add restrictions. The special value `NONE` clears the runtime's defaults, so require explicit approval before using it.
 
 ## Unix Socket Integration
 
@@ -214,12 +229,14 @@ container image load -i image.tar
 
 Use `--password-stdin` or interactive login for secrets. Do not put tokens directly in shell history.
 
+HTTPS is the registry default. Current releases accept only `--scheme https` or `--scheme http`; the latter is appropriate only for a deliberately trusted local registry. Do not carry forward old `--scheme auto` examples.
+
 ## Persistent Container Machines
 
 Use machines when the user wants a reusable Linux workspace rather than a single application container.
 
 ```bash
-container machine create <bootable-machine-image> --name dev --set-default --cpus 4 --memory 8G --home-mount rw
+container machine create docker.io/library/alpine:latest --name dev --set-default --cpus 4 --memory 8G --home-mount rw
 container machine run -n dev -- uname -a
 container machine run -n dev -- /bin/sh -c 'whoami; pwd; echo "$HOME"'
 container machine stop dev
@@ -242,11 +259,10 @@ Path model:
 
 Machine images:
 
-- Plain OCI application images may fail because they do not boot as machine images.
-- Plain `alpine:3.22` may create and inspect, but command execution can fail if `/sbin/openrc` is absent.
-- Agent rule: when the user requests a distro for `container machine`, derive a machine-capable image from that distro instead of using the plain app image directly. Preserve the base distro unless the user asks for a different one.
-- Use the plain requested image directly only for `container run` workflows.
-- For Alpine, build a machine image with OpenRC:
+- A machine image must contain `/sbin/init`. On Apple Container 1.3+, first try the requested standard image when it satisfies that contract; Apple's current quickstart uses `alpine:latest` directly.
+- On 1.2-era runtimes, plain Alpine could fail with missing `/sbin/openrc`, and runtime path restrictions could force a custom image. Upgrade before preserving that workaround on current releases.
+- When `/sbin/init` is absent, or the workflow needs managed system services, derive a machine-capable image from the requested distro rather than silently switching distributions.
+- For Alpine service workflows, one reliable derived image uses OpenRC:
   ```dockerfile
   FROM docker.io/library/alpine:3.22
   RUN apk add --no-cache openrc openrc-init shadow sudo bash busybox-extras iproute2 curl coreutils
@@ -269,6 +285,30 @@ Command invocation:
 
 For automation that can never allocate a first-run PTY, prefer `container run` unless the workflow truly needs machine persistence or init services. If machine semantics are required, make PTY-backed initialization an explicit provisioning step and verify a later headless command before relying on the environment.
 
+## Reclaim Container Filesystem Space
+
+`container clean` reclaims unused root-filesystem space and unused space in named volume mounts for specifically named running containers:
+
+```bash
+container clean app worker
+```
+
+Inspect the targets first. This is scoped reclamation, not a global prune command, and it requires the containers to be running.
+
+## Experimental Local Kubernetes
+
+Use `container k8s` only for a disposable single-node local cluster. It is experimental and updates kubeconfig state, so name the cluster explicitly and include teardown in the plan:
+
+```bash
+container k8s create --name local
+container k8s load-image --name local local/app:dev
+container k8s write-config --name local
+kubectl --context local get nodes
+container k8s delete --name local
+```
+
+Check `container k8s --help` on the installed version before scripting exact flags. Do not present this as production or multi-node Kubernetes. There is no `container compose`; translate a simple trusted stack into explicit lifecycle commands or keep a Compose-capable runtime.
+
 ## Custom Kernel Arguments
 
 Use `--kernel-arg` only when the requested behavior belongs to the Linux kernel—for example, validating an LSM setting or reproducing a kernel boot issue. It is repeatable and applies to `run`/`create`; it is not an application environment mechanism.
@@ -289,7 +329,7 @@ container machine create --virtualization --kernel /path/to/vmlinux-kvm --name k
 container machine run -n kvm-dev -- ls -l /dev/kvm
 ```
 
-Requirements: Apple Silicon M3 or later, macOS 15 or later, and a Linux kernel with `CONFIG_KVM=y`. Clear a custom kernel override with:
+Requirements: Apple Silicon M3 or later, supported macOS 26 or later, and a Linux kernel with `CONFIG_KVM=y`. Clear a custom kernel override with:
 
 ```bash
 container machine set -n kvm-dev kernel=
@@ -357,6 +397,7 @@ container image list
 container volume list
 container network list
 container machine ls
+container k8s list
 container system df
 ```
 

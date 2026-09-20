@@ -2,7 +2,7 @@
 name: devcontainer-helper
 description: Design, create, audit, update, troubleshoot, or optimize Dev Container and GitHub Codespaces environments, including devcontainer.json, Dockerfiles, Compose sidecars, Features, lockfiles, prebuilds, runtime compatibility, and related CI. Use when an agent must choose a development-container architecture, not merely recall configuration syntax.
 metadata:
-  version: "1.0.0"
+  version: "1.1.0"
 ---
 
 # DevContainer Helper
@@ -15,7 +15,7 @@ Inspect before editing or asking questions:
 
 1. Read repository and nested agent instructions.
 2. Find existing `.devcontainer.json`, `.devcontainer/`, Dockerfiles, Compose files, CI workflows, language manifests, lockfiles, version-manager files, and documented ports.
-3. Identify target surfaces: local Docker, Podman, GitHub Codespaces, CI/prebuilds, or preview WSL Containers.
+3. Identify target surfaces: local Docker, Podman, GitHub Codespaces, CI/prebuilds, or preview WSL Containers. For WSL Containers, record both `wsl --version` and `devcontainer --version`; current preview support requires WSL 2.9.3+ and Dev Container CLI 0.88.0+.
 4. Determine required languages, versions, services, architectures, extensions, secrets, ports, and persistence.
 5. Preserve the existing distro, user model, and working environment unless the user requests a migration or evidence makes one necessary. Never silently upgrade an OS major.
 
@@ -28,6 +28,7 @@ Treat image tags, Features, release status, and runtime support as time-sensitiv
 - For a greenfield generic Ubuntu environment, verify the newest Ubuntu release marked LTS using an official Ubuntu source, then confirm through the registry manifest or an actual pull/build that an explicit `mcr.microsoft.com/devcontainers/base:ubuntuYY.MM` variant is published for every required architecture. Emit that explicit tag; never emit floating `:ubuntu` or `:latest`.
 - If current official information is unavailable, preserve a repository-pinned choice or report that the selection cannot be verified. Do not guess the current LTS.
 - Resolve Features from the official index at <https://containers.dev/features> and open the selected Feature's documentation before using it. Use the major reference recommended by the current documentation and let the lockfile capture the exact version and digest.
+- Record the Dev Container CLI version before relying on current behavior. CLI 0.87.0 made Feature lockfiles stable and enabled them by default; 0.88.0 added WSL Containers support; 0.89.0 added opt-in OCI authentication hardening.
 - Vet third-party Features for publisher identity, source code, release recency, supported architectures, privilege requirements, and install behavior. Prefer official Features or a Dockerfile when trust or maintenance is unclear.
 - Do not invent an official Playwright Feature. Prefer a version-matched official Playwright image or the project's Playwright package with `playwright install --with-deps`.
 - When using the official Node Feature, prefer its supported pnpm option over adding a redundant standalone pnpm Feature.
@@ -79,7 +80,8 @@ Object-form lifecycle commands run in parallel. Use an ordered shell command or 
 - Declare recommended secret names and descriptions with `secrets`, but never store secret values in the configuration, image, build arguments, or committed environment files.
 - Use `hostRequirements` when CPU, memory, storage, or GPU capacity is a real prerequisite.
 - Treat bind mounts, host paths, Docker sockets, `localEnv`, and port behavior as runtime-specific. Codespaces ignores most bind mounts and does not behave like a developer's local host.
-- Treat Podman and WSL Containers as explicit compatibility targets that require validation. WSL Containers remains a preview path until official documentation says otherwise; do not promise full Docker or Compose parity.
+- With Dev Container CLI 0.89.0+, use `--oci-auth-hardening` when resolving untrusted or externally hosted OCI Features, Templates, or registry metadata. It restricts bearer-auth realms, credential forwarding, and token redirects. If a legitimate registry needs cross-origin authentication, add an exact `--allow-cross-origin-auth-host registry-host=auth-host` mapping only after independently verifying both hosts; never trust the challenged realm as proof.
+- Treat Podman and WSL Containers as explicit compatibility targets that require validation. WSL Containers remains a public-preview path until official documentation says otherwise; require WSL 2.9.3+ and Dev Container CLI 0.88.0+, then test the actual flags, mounts, networking, and Compose needs instead of promising parity.
 - Keep Codespaces-only behavior under `customizations.codespaces` and editor behavior under the appropriate tool customization.
 
 Read [references/configuration.md](references/configuration.md) for modern configuration shapes and Codespaces caveats.
@@ -89,7 +91,7 @@ Read [references/configuration.md](references/configuration.md) for modern confi
 1. For an image-based environment, start from [assets/devcontainer-template.json](assets/devcontainer-template.json) only after choosing the architecture. For Dockerfile or Compose environments, generate the corresponding modern shape from the configuration reference.
 2. Replace every `__UPPER_SNAKE_CASE__` sentinel. Do not deliver a configuration containing unresolved sentinels.
 3. Use modern `build.dockerfile` and `build.context`; do not introduce legacy top-level `dockerFile` or `context` properties.
-4. Read the resolved configuration, build it, confirm lockfile behavior, start a smoke-test container when practical, and execute a command as the intended remote user.
+4. Read the resolved configuration, build it, confirm lockfile behavior, start a smoke-test container when practical, and execute a command as the intended remote user. When OCI assets cross trust boundaries and CLI 0.89.0+ is available, repeat resolution/build with `--oci-auth-hardening`; allow a cross-origin auth host only through a reviewed exact mapping.
 5. Test each declared target runtime or state clearly which targets were not exercised and why.
 6. Remove only containers, networks, volumes, or temporary files created by validation. Never perform global cleanup.
 
@@ -103,5 +105,6 @@ Include:
 - The official sources used to resolve time-sensitive images and Features.
 - Lifecycle and prebuild decisions.
 - Security and portability tradeoffs, including Docker access if present.
+- OCI authentication hardening results, including every explicitly allowed registry-to-auth-host mapping.
 - Lockfile and update automation behavior.
 - Validation performed, failures or untested targets, and cleanup evidence.

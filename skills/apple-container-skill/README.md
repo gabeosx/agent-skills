@@ -1,6 +1,6 @@
 # Apple Container Skill
 
-This repository contains the `apple-container-skill` Agent Skill. It guides agents using Apple's `container` CLI on Apple silicon macOS, including ordinary containers, OCI image builds, networking, volumes, registries, and persistent Container Machines.
+This repository contains the `apple-container-skill` Agent Skill. It guides agents using Apple's `container` CLI on Apple silicon macOS, including ordinary containers, OCI image builds, networking, volumes, registries, persistent Container Machines, filesystem reclamation, and experimental local Kubernetes.
 
 It complies with the [Agent Skills specification](https://agentskills.io/specification).
 
@@ -13,14 +13,15 @@ Import `SKILL.md` into an agent's skill configuration.
 - **Operational Playbooks**: Host readiness checks, smoke tests, safe cleanup rules, and workflow selection.
 - **Container Machines**: Persistent Linux environments with host user/home integration and machine-specific troubleshooting.
 - **Container Runtime Workflows**: Disposable dev shells, bind mounts, port forwarding, image builds, registries, volumes, and networks.
-- **Release-Aware Decisions**: Known fixed-defect routing for 1.1 and 1.2, with guidance to upgrade before inventing permanent workarounds.
-- **Security And Integration Guidance**: Intentional environment inheritance, directional Unix socket handling, and justified kernel-argument use.
+- **Release-Aware Decisions**: Known fixed-defect and security routing through 1.4.1, with guidance to upgrade before inventing permanent workarounds.
+- **Security And Integration Guidance**: Safe registry schemes and OCI trust boundaries, additive path isolation, SSH forwarding, intentional environment inheritance, directional Unix socket handling, and justified kernel-argument use.
+- **Current Runtime Surface**: `container clean`, version-aware Container Machine images, and the experimental single-node `container k8s` workflow.
 - **Current Configuration Model**: `~/.config/container/config.toml` guidance instead of removed mutable system property commands.
 - **Diagnostics**: A read-only shell helper for collecting host, service, network, and log context.
 
 ## Runtime Validation Notes
 
-Version 1.1.0 of this skill was validated on macOS 26.5 arm64 against the signed and notarized Apple Container 1.2.0 release payload. The payload was staged under an isolated app/install/log root so it did not replace the host's installed 1.0.0 runtime. Release claims were checked against Apple's [release history](https://github.com/apple/container/releases), current command help, and targeted live experiments.
+The 1.1.0 skill release was validated on macOS 26.5 arm64 against an isolated signed and notarized Apple Container 1.2.0 payload. The 1.2.0 skill update preserves those live results and updates current guidance through Apple Container 1.4.1 using Apple's release history, tagged source, bundled skill, and staged CLI help without replacing the host runtime.
 
 Observed during validation:
 

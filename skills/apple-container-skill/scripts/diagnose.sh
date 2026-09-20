@@ -42,6 +42,37 @@ if printf '%s\n' "$run_help" | grep -q -- '--stop-signal'; then
 else
   echo "run --stop-signal: unavailable; use image STOPSIGNAL or container stop -s"
 fi
+if printf '%s\n' "$run_help" | grep -q -- '--masked-path' && printf '%s\n' "$run_help" | grep -q -- '--read-only-path'; then
+  echo "run isolation paths: available"
+else
+  echo "run isolation paths: unavailable (upgrade before relying on 1.2.1+ behavior)"
+fi
+
+build_help="$(container help build 2>&1 || true)"
+if printf '%s\n' "$build_help" | grep -q -- '--ssh'; then
+  echo "build --ssh: available"
+else
+  echo "build --ssh: unavailable (upgrade before forwarding SSH into builds)"
+fi
+
+registry_help="$(container registry login --help 2>&1 || true)"
+if printf '%s\n' "$registry_help" | grep -q -- 'auto'; then
+  echo "registry scheme: legacy auto value present; current releases accept https or http"
+else
+  echo "registry scheme: no legacy auto value found"
+fi
+
+if container help clean >/dev/null 2>&1; then
+  echo "container clean: available"
+else
+  echo "container clean: unavailable (added in 1.4.1)"
+fi
+
+if container k8s --help >/dev/null 2>&1; then
+  echo "experimental container k8s: available"
+else
+  echo "experimental container k8s: unavailable"
+fi
 
 section "System Status"
 run container system status
@@ -85,7 +116,7 @@ cat <<'EOF'
 Interpretation hints:
 - If container is missing, install it before continuing.
 - Compare CLI and service versions. Upgrade before working around defects already
-  fixed in the current Apple Container release.
+  fixed in the current Apple Container release. Use 1.4.1+ for untrusted OCI input.
 - If images pull but container DNS or ping fails, check VPN, endpoint security,
   firewall, or vmnet route conflicts before changing application code.
 - If host-side container DNS is flaky, test directly with:

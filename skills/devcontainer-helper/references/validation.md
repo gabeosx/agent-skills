@@ -19,6 +19,8 @@ Validate the actual configuration and its intended runtime behavior. Do not repo
    devcontainer read-configuration --workspace-folder .
    ```
 
+6. Record `devcontainer --version`. Use 0.87.0+ for stable default lockfiles, 0.88.0+ for WSL Containers, and 0.89.0+ for the OCI authentication checks below.
+
 `read-configuration` may warn when it cannot extract image metadata from a new registry manifest shape even though the registry and builder can consume the image. Record the warning, inspect the registry manifest, and run the build; do not equate a metadata warning with either build success or build failure.
 
 If the CLI is not installed globally, use a temporary invocation of the current `@devcontainers/cli` package rather than permanently changing the host merely to validate.
@@ -36,6 +38,24 @@ Then verify reproducibility:
 ```bash
 devcontainer build --workspace-folder . --frozen-lockfile
 ```
+
+When the configuration resolves OCI assets across a trust boundary, repeat the checks with Dev Container CLI 0.89.0+ hardening enabled:
+
+```bash
+devcontainer read-configuration --workspace-folder . --oci-auth-hardening
+devcontainer build --workspace-folder . --frozen-lockfile --oci-auth-hardening
+```
+
+If a legitimate registry uses a separate HTTPS authentication host, independently verify both endpoints and add only the exact required pair:
+
+```bash
+devcontainer build --workspace-folder . \
+  --frozen-lockfile \
+  --oci-auth-hardening \
+  --allow-cross-origin-auth-host registry.example.com=auth.example.com
+```
+
+Record any hardening diagnostic and every allowed mapping. A mapping is a credential trust decision, not a generic compatibility workaround.
 
 Confirm that:
 
@@ -72,7 +92,7 @@ Do not print environment variables or secret values as a generic smoke test.
 - **Compose:** validate the fully merged model with `docker compose config`; test service health and primary-service startup.
 - **Codespaces:** verify prebuild placement, port visibility, secret availability, machine requirements, mount assumptions, and organization policy. Do not claim local Docker success proves Codespaces behavior.
 - **Podman:** validate the requested socket, Compose implementation, UID mapping, and Feature behavior with Podman itself.
-- **WSL Containers:** consult current preview limitations, then exercise the actual required flags, mounts, and networking. Do not infer support from Docker-only testing.
+- **WSL Containers:** verify `wsl --version` is 2.9.3+ and `devcontainer --version` is 0.88.0+, consult current preview limitations, then exercise the actual required flags, mounts, networking, and Compose behavior. Do not infer support from Docker-only testing.
 - **Multi-architecture images:** build on native target runners when possible and inspect the published manifest for every promised architecture.
 
 State any target that was not exercised and the exact reason.
@@ -88,6 +108,7 @@ Finish by reporting:
 - Commands attempted and pass/fail status.
 - Relevant diagnostics for failures or skips.
 - Lockfile creation and frozen-build results.
+- OCI authentication hardening status, diagnostics, and exact cross-origin mappings, if any.
 - Runtime targets exercised.
 - IDs or names of test resources removed.
 - A final runtime listing or label-filtered query showing no test containers remain.

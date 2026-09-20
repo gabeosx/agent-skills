@@ -43,6 +43,7 @@ container stats [--no-stream] [--format json|table|yaml|toml] [container]
 container copy|cp <local> <container:path>
 container copy|cp <container:path> <local>
 container export [-o path.tar] <container>
+container clean <running-container...>
 container prune
 ```
 
@@ -61,10 +62,11 @@ Important `run/create` options:
 - `--network name[,mac=XX:XX:XX:XX:XX:XX][,mtu=VALUE]`
 - `--platform`, `--arch`, `--os`, `--rosetta`
 - `--init`, `--init-image`, `--entrypoint`, `--read-only`, `--ssh`, `--virtualization`
+- `--masked-path PATH`, `--read-only-path PATH` (experimental, repeatable)
 - `--kernel PATH`, repeatable `--kernel-arg key=value` for justified kernel-level requirements
 - `--scheme`, `--progress`, `--max-concurrent-downloads`
 
-The released 1.2.0 CLI has no `run --stop-signal`. Use Dockerfile `STOPSIGNAL` for the image default or `container stop -s SIGNAL` for a one-off signal.
+The released 1.4.1 CLI has no `run --stop-signal`. Use Dockerfile `STOPSIGNAL` for the image default or `container stop -s SIGNAL` for a one-off signal. Passing `NONE` to `--masked-path` or `--read-only-path` clears that class of default restrictions; do not do that without explicit approval.
 
 ## Build And Images
 
@@ -76,7 +78,7 @@ container image list|ls [-q] [-v] [--format json|table|yaml|toml]
 container image inspect <image...>
 container image tag <source> <target>
 container image save -o image.tar <image...>
-container image load -i image.tar
+container image load -i image.tar [--force]
 container image delete|rm [-a] [-f] [image...]
 container image prune [-a]
 ```
@@ -85,6 +87,7 @@ Useful build flags:
 
 - `--build-arg key=value`
 - `--secret id=key[,env=ENV_VAR|,src=local/path]`
+- `--ssh default`
 - `--target stage`
 - `--no-cache`, `--pull`, `--quiet`
 - `--platform os/arch[/variant]`, `--arch`, `--os`
@@ -128,10 +131,12 @@ Anonymous volumes are created by `-v /path` or `--mount type=volume,dst=/path`; 
 ## Registry
 
 ```bash
-container registry login [--scheme auto|https|http] [-u user] [--password-stdin] <server>
+container registry login [--scheme https|http] [-u user] [--password-stdin] <server>
 container registry logout <server>
 container registry list|ls [-q] [--format json|table|yaml|toml]
 ```
+
+HTTPS is the default. Apple Container 1.3 removed `--scheme auto`; use explicit HTTP only for a deliberately trusted local registry. Treat `image load --force` as unsafe for untrusted archives because it bypasses archive validation.
 
 ## Container Machines
 
@@ -157,8 +162,23 @@ Create options:
 - `--cpus`, `--memory`, `--home-mount rw|ro|none`
 - `--virtualization`, `--kernel`
 - `--platform`, `--arch`, `--os`
-- `--scheme`, `--progress`, `--max-concurrent-downloads`
+- `--scheme https|http`, `--progress`, `--max-concurrent-downloads`
 
 Do not teach unmerged PR-only flags such as `--home-mount-path` until they land upstream.
 
 In scripts, prefer `container machine run -n dev -- <command>` or `container machine run -n dev -- /bin/sh -c '<commands>'`. Avoid `-i` unless the user is truly entering an interactive session.
+
+## Experimental Local Kubernetes
+
+`container k8s` creates a disposable single-node cluster and writes a kubeconfig entry. Confirm exact flags with the installed 1.4.1+ help before scripting because this command group is experimental.
+
+```bash
+container k8s create --name local
+container k8s start local
+container k8s list|ls
+container k8s load-image --name local local/app:dev
+container k8s write-config --name local
+container k8s delete|rm --name local
+```
+
+Command groups are singular (`image`, `network`, `volume`, `machine`, `registry`, `builder`). A plural typo can fall through to plugin discovery and produce a misleading service or plugin error. There is no `container compose` command.

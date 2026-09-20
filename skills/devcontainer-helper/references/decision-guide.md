@@ -53,6 +53,25 @@ Before using a third-party Feature, verify:
 - Install scripts do not add unjustified repositories, credentials, privileges, or persistent daemons.
 - The Feature does not duplicate functionality already offered by the base image or another selected Feature.
 
+## Harden OCI Authentication
+
+Dev Container CLI 0.89.0 added opt-in OCI authentication hardening. Use it when resolving Features, Templates, or registry metadata from outside a fully trusted registry boundary:
+
+```bash
+devcontainer read-configuration --workspace-folder . --oci-auth-hardening
+devcontainer build --workspace-folder . --oci-auth-hardening
+```
+
+The mode restricts bearer-authentication realms, registry credential forwarding, and token redirects. If a legitimate registry delegates authentication to another HTTPS host, verify the registry and authentication service independently, then allow that exact pair:
+
+```bash
+devcontainer build --workspace-folder . \
+  --oci-auth-hardening \
+  --allow-cross-origin-auth-host registry.example.com=auth.example.com
+```
+
+The mapping is a trust grant and may be repeated for distinct verified pairs. Never create it from the challenged realm alone, never use a wildcard or broad suffix, and never disable the protection merely because an unknown registry fails. The mode remains opt-in in CLI 0.89.0, so validation must pass the flag explicitly.
+
 Special cases:
 
 - **Node and pnpm:** inspect the current official Node Feature options. Use its pnpm support when available instead of stacking a separate pnpm Feature.
@@ -99,13 +118,14 @@ For Codespaces prebuilds, favor `onCreateCommand` and `updateContentCommand` for
 - **Docker:** baseline implementation target, but still validate architecture, user, mounts, and Compose behavior.
 - **Podman:** target only when requested or already used. Validate Docker-compatible socket assumptions, Compose support, UID mapping, and Feature behavior rather than claiming transparent compatibility.
 - **GitHub Codespaces:** avoid host-path assumptions. Consider prebuilds, `hostRequirements`, port visibility, secrets, default-image storage behavior, and organization policy.
-- **WSL Containers:** consult current Microsoft and Dev Container CLI documentation. While marked preview, present it as an opt-in Windows runtime and enumerate unsupported Docker flags or Compose behavior relevant to the project.
+- **WSL Containers:** consult current Microsoft and Dev Container CLI documentation. Public Preview currently requires WSL 2.9.3+ and Dev Container CLI 0.88.0+; present it as an opt-in Windows runtime and enumerate unsupported Docker flags or Compose behavior relevant to the project.
 - **CI/prebuilt images:** use `devcontainers/ci` when publishing a reusable environment. For multiple architectures, use native runner matrices and manifest merging when available instead of defaulting to QEMU.
 
 Official starting points:
 
 - Dev Container specification: <https://containers.dev/implementors/spec/>
 - Dev Container CLI: <https://github.com/devcontainers/cli>
+- Dev Container CLI changelog: <https://github.com/devcontainers/cli/blob/main/CHANGELOG.md>
 - GitHub Codespaces configuration: <https://docs.github.com/en/codespaces/setting-up-your-project-for-codespaces/configuring-dev-containers>
 - Codespaces prebuilds: <https://docs.github.com/en/codespaces/prebuilding-your-codespaces/about-github-codespaces-prebuilds>
 - WSL Containers: <https://learn.microsoft.com/windows/wsl/wsl-container>

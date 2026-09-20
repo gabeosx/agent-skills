@@ -6,11 +6,11 @@ A collection of specialized skills following the open standard for agent capabil
 
 ### 🍎 [Apple Container Skill](./skills/apple-container-skill)
 Interact with the Apple Container CLI to manage containers, images, volumes, networks, and system services on macOS.
-- **Key Features:** System lifecycle management, networking setup, and persistent data handling for Apple's native container runtime.
+- **Key Features:** Release-aware security guidance through Apple Container 1.4.1, system lifecycle and diagnostics, current Container Machine selection, build SSH forwarding, safe isolation paths, scoped filesystem cleanup, and experimental local Kubernetes.
 
 ### 🛠️ [DevContainer Helper](./skills/devcontainer-helper)
 Design, audit, troubleshoot, and optimize Dev Container and GitHub Codespaces environments.
-- **Key Features:** Inspection-first architecture choices, current image and Feature verification, explicit LTS selection, sidecar and Docker-access safety, Feature lockfiles and Dependabot, Codespaces prebuild guidance, runtime portability, and end-to-end validation.
+- **Key Features:** Inspection-first architecture choices, current image and Feature verification, explicit LTS selection, sidecar and Docker-access safety, Feature lockfiles and Dependabot, OCI authentication hardening, Codespaces prebuild guidance, WSL Containers version checks, runtime portability, and end-to-end validation.
 
 ### 🎨 [UX Designer](./skills/ux-designer)
 Expert UX/UI design assistant based on the "Refactoring UI" philosophy.
