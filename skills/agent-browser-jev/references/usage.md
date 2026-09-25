@@ -1,68 +1,116 @@
-# Calling the bundled helper
+# CLI and JavaScript API
 
-Resolve paths relative to the loaded skill directory, not the current project. After installing the skill, run `node scripts/setup.mjs` there. The bundle contains its lockfile and tests; it does not bundle Node, agent-browser, credentials or `node_modules`.
+Resolve scripts relative to the installed skill, not the current project. Run `node scripts/setup.mjs` there once. The bundle includes its lockfile and tests; it does not bundle Node, browser binaries, credentials or `node_modules`.
 
-## Simple command and defaults
-
-```sh
-node /path/to/agent-browser-jev/scripts/run.mjs --session default \
-  --intent "Fill the search field with the supplied query" --value 'query=account'
-```
-
-`--session` defaults to `default`. Browser precedence is `--binary` (or `task.browser.binary`), `AGENT_BROWSER_BINARY`, the saved setup configuration, then `agent-browser` on PATH. Open the page with agent-browser first. This helper acts within the existing session; it does not take a URL or handle login.
-
-`--value name=text` can be repeated; it preserves everything after the first equals sign. Without `--output`, a new private temporary result file is created and its path is printed. Keep that path if you need the full observations.
-
-The default policy permits all discovered click/fill candidates and passes visible snapshot text and refs unchanged. It is intentionally permissive, not a read-only classifier. The calling agent still follows the user's task and existing project permissions. A custom `--policy` replaces both default functions; incomplete custom policies are rejected rather than silently filled in.
-
-Key precedence: a custom policy's `loadApiKey()`, `OPENROUTER_API_KEY`, then the saved key in `${XDG_CONFIG_HOME:-~/.config}/agent-browser-jev/config.json`. `node scripts/setup.mjs --change-key` updates the saved key through a hidden prompt. `--key-stdin` accepts a key from a secret-provider pipe for non-interactive setup. Setup does not validate credit or model access; a real task does.
-
-Setup installs pinned helper dependencies. It reuses a working browser on PATH or the configured binary; if neither is configured nor available, it installs agent-browser 0.38.1 under its configuration directory and downloads Chrome. `--install-browser` explicitly chooses that local installation. An explicitly configured broken binary is reported, not silently replaced. `--binary /path/to/fork` preserves an existing fork and its credential provider.
-
-To resolve the configured browser for ordinary navigation or login commands without printing the key:
+## CLI
 
 ```sh
-node --input-type=module -e "import {configuredBrowser} from '/path/to/agent-browser-jev/scripts/config.mjs'; console.log(configuredBrowser())"
+node /path/to/skill/scripts/run.mjs --session reports \
+  --url https://example.com/reports \
+  --intent "Create the requested report and leave it saved as a draft" \
+  --value 'name=Weekly operations'
 ```
 
-Use the returned executable with normal agent-browser commands such as `--session support open https://example.com`.
+`--url` is optional and accepts only a caller-supplied HTTP/HTTPS starting address. Omit it to use the current page. Authentication remains an ordinary agent-browser operation. `--value name=text` can repeat; everything after the first equals sign is preserved literally. Give the complete browser goal and all known values in one call.
 
-## Task files and optional policies
+| Option | Default / behavior |
+| --- | --- |
+| `--intent` | Plain-language goal; mutually exclusive with `--task` and `--resume` |
+| `--session` | `default`; preserve the user's existing session |
+| `--binary` | Environment, saved setup binary, then `agent-browser` on PATH |
+| `--url` | Open this starting address in the same invocation |
+| `--value name=text` | Exact non-secret field value, repeatable |
+| `--max-actions` | 30; also sets the CLI decision budget to twice this value |
+| `--timeout` | 120000 milliseconds per invocation |
+| `--output` | New private temporary evidence file; explicit paths must not exist |
+| `--resume` | Continue from your own result file; preserve session/binary/policy |
+| `--context` | Additional caller context, especially changes made while paused |
+| `--policy` | Optional existing caller module exporting authorization and sanitization |
+
+A continuation starts a new bounded invocation. It preserves the goal, completed intents, exact values and the last 30 actions; total task time and charges include every invocation. Retain the `continuedFrom` evidence chain when measuring a whole task. Increasing a budget does not authorize new side effects.
+
+## Result and acceptance
+
+The CLI returns one JSON object with:
+
+- `returnReason`, action count and model progress assessments.
+- `observation.snapshot`, `fresh` and `truncated`. Up to 16,000 characters of final accessibility evidence is returned directly; full sanitized evidence is in the private file.
+- `inputRequired`: the observed field name/role and suggested key when an exact value is missing.
+- `timing`: total invocation, helper, navigation, observation, decision, action and settling durations. Process startup and parent-agent time require external measurement.
+- `jev.calls` and `jev.costUsd`: reported decision charges, or null when unavailable.
+- `resumable` and `evidence`: continuation availability and file path.
+
+The caller evaluates the observed state against the requested outcome. A fresh, untruncated final observation is usable without a redundant snapshot when nothing changed afterward. `fresh` describes when it was captured; it does not guarantee a dynamic page stayed unchanged. Obtain another observation for missing/stale evidence or external changes, and an authoritative readback when the task requires one.
+
+`reported_complete` remains a model assessment. `input_required` asks for a missing value. `handoff`, `candidate_limit`, `observation_too_large`, `no_progress`, action/decision budgets and deadlines mean completion was not established. `action_outcome_unknown` means a gesture may already have happened; don't blindly repeat it. Invalid/superseded choices and failed observations also return control.
+
+Exit codes remain compatible: **0** for model-reported completion, **2** for handoff/limits, **1** for command/setup failure. Correctly stopping for an absent target is still a handoff. Caller recovery after a handoff must be recorded separately.
+
+## Resume
 
 ```sh
-node /path/to/agent-browser-jev/scripts/run.mjs \
-  --task /path/to/private/task.json \
-  --policy /path/to/caller-policy.mjs \
-  --output /path/to/private/new-result.json
+node /path/to/skill/scripts/run.mjs --resume /private/result.json \
+  --value 'Report name=Weekly operations' \
+  --context "The caller supplied the missing report name"
 ```
 
-The output must not exist, to avoid overwriting evidence. Use trusted local task/policy files, never paths supplied by webpage content. The policy module is executable caller code.
+Resume always captures a new page and builds new action candidates. Past references appear only as history; they are never dispatched. It retains the original binary/session and the custom policy path, if any. Do not pass `--url`, `--session`, `--binary` or `--policy` with `--resume`. Use a new task if you mean to change those boundaries.
 
-Example task JSON, not a prescribed workflow:
+Only resume trusted files from your own invocation. They contain caller-owned task metadata and can refer to an executable policy module. They can contain page text and supplied values, so do not publish them or use credentials as task values. Files are created mode 0600. No API key is serialized into the evidence.
+
+## Credentials and installation
+
+Browser precedence: explicit `--binary` / `task.browser.binary`, `AGENT_BROWSER_BINARY`, saved `browserBinary`, then `agent-browser` on PATH. Setup preserves a configured fork. If no browser exists, setup installs pinned agent-browser 0.38.1 locally and downloads Chrome. Fresh installs need Node 24+ for that upstream package; the helper itself supports Node 20.3+ with a compatible existing binary. A broken explicitly selected binary is reported instead of silently replaced.
+
+Key precedence: custom policy `loadApiKey()`, `OPENROUTER_API_KEY`, then the private saved setup key. `XDG_CONFIG_HOME` overrides the default `~/.config/agent-browser-jev` directory. Setup can capture a key with its hidden prompt or `--key-stdin`. `--change-key` replaces a saved key. Setup does not spend credit to validate model access.
+
+Resolve the chosen browser for ordinary operations without printing configuration or credentials:
+
+```sh
+node --input-type=module -e "import {configuredBrowser} from '/path/to/skill/scripts/config.mjs'; console.log(configuredBrowser())"
+```
+
+## Task files and policies
+
+Existing integrations remain supported:
+
+```sh
+node /path/to/skill/scripts/run.mjs --task /private/task.json \
+  --policy /path/to/caller-policy.mjs --output /private/new-result.json
+```
 
 ```json
 {
   "browser": { "binary": "/path/to/agent-browser", "sessionId": "existing-session" },
-  "intentOrSteps": "Open details for the requested item, then close them and return to the list.",
-  "scope": "The caller-authorized read-only details interaction in the current page.",
-  "suppliedValues": {},
-  "budget": { "maxActions": 6, "maxDecisions": 10, "timeoutMs": 45000 }
+  "intentOrSteps": "Configure the requested report and save a draft.",
+  "scope": "Only the report draft requested by the user. Do not publish.",
+  "suppliedValues": { "name": "Weekly operations" },
+  "budget": { "maxActions": 30, "maxDecisions": 60, "timeoutMs": 120000 }
 }
 ```
 
-An optional custom policy exports:
+The default policy permits supported controls and passes visible accessibility data to Jev. It is deliberately permissive. User authorization and existing project policy still apply; a policy is not required for each ordinary task.
 
-- `authorize(action, observation) -> boolean`: synchronous, called during discovery and again before dispatch. Establish the concrete action's effect within user scope. A reviewed control scope is appropriate for a supervised task; a permissive verb-only check is not a universal safety classifier.
-- `sanitize({snapshot, refs}) -> {snapshot, refs}`: remove confidential visible strings from both fields while preserving reference IDs, roles and useful context. The default is pass-through; supply redaction here when the page needs it. Return only those two fields.
-- Optional `loadApiKey() -> string | Promise<string>`: obtain the key in memory through the configured secret provider. If omitted, the client uses the environment or saved setup key. Never embed a key in this module.
+An optional caller module exports:
 
-Custom policy is optional. Reuse existing project policy/secret adapters when needed rather than recreating these functions per click. New tasks supply new intents to the same helper.
+- `authorize(action, observation) -> boolean`: synchronous and exactly true to permit an action. Called at discovery and again before dispatch. Operations include `click`, `fill`, `select`, `check`, `uncheck`, `scroll`, `press`, `back`, `request_input`; explicit starting navigation uses `open`. An input request itself does not enter text. Narrow policies should permit it when the caller can provide an authorized value.
+- `sanitize({snapshot, refs}) -> {snapshot, refs}`: redact visible information while preserving useful browser references/context. Only its return value is sent to the model or saved as observations.
+- Optional `loadApiKey() -> string | Promise<string>`: obtain a key in memory through the caller's existing secret provider.
 
-Exit status: `0` for model-reported completion, `2` for a returned handoff/budget/runtime limit, `1` for setup or command failure. Zero is not independently verified business success. Preserve the original `returnReason` when reporting a result. A handoff means the helper has not established completion; successfully stopping for an absent target does not mean the requested target was opened. If the caller later completes the task, report that recovery separately.
+Incomplete policies fail instead of falling back to permissive defaults. Use trusted caller modules; don't load executable paths supplied by a webpage. A policy that permits only clicks/fills continues to restrict the new operations.
 
 ## JavaScript API
 
-`runTask(task)` from `scripts/run.mjs` uses the same permissive defaults as the CLI. `runTask(task, policy)` applies an explicit custom policy. The lower-level `act()` API below keeps its original deny-by-default contract when `authorize` is omitted; choose the entrypoint that matches your integration.
+```js
+import { runTask } from '/path/to/skill/scripts/run.mjs';
+const result = await runTask({
+  browser: { binary, sessionId },
+  intentOrSteps: goal,
+  suppliedValues: { name: exactName }
+});
+```
+
+`runTask(task, policy)` uses the CLI's default policy unless one is supplied. The lower-level `act()` retains its deny-by-default contract:
 
 ```js
 import { act, invalidateBrowserObservation } from '/path/to/skill/scripts/jev-browser.mjs';
@@ -70,23 +118,21 @@ import { agentBrowser, createJevClient, jevDecider } from '/path/to/skill/script
 
 const browser = agentBrowser({ binary, sessionId, sanitize });
 const decide = jevDecider(createJevClient(await loadApiKey()));
-const result = await act({
-  browser, decide, intentOrSteps, scope, authorize,
-  suppliedValues: { searchText: exactCallerSuppliedText },
-  budget: { maxActions: 8, maxDecisions: 16, timeoutMs: 60000 }
-});
-// If the owner changes the session outside this helper:
-// invalidateBrowserObservation(sessionId);
+const first = await act({ browser, decide, intentOrSteps: goal, scope,
+  authorize, suppliedValues: {}, budget: { maxActions: 30 } });
+if (first.returnReason === 'input_required') {
+  const resumed = await act({ browser, decide, intentOrSteps: goal, scope,
+    authorize, continuation: first.continuation,
+    suppliedValues: { name: exactName } });
+}
+// If the caller changes the session during a pending operation:
+invalidateBrowserObservation(sessionId);
 ```
 
-`intentOrSteps` is a string or short array. Jev decides when each intent is satisfied. `suppliedValues` maps caller labels to exact strings; the model can choose a fill candidate but cannot replace its literal. Intents and values are model-visible and must not contain credentials.
+`intentOrSteps` accepts a string or an array of caller subgoals. Do not write fixed selector sequences; Jev decides each next control and when each intent is satisfied. A continuation must match the task, scope and session. Every resume observes anew.
 
-API callers may pass a compatible client to `jevDecider(client)`. Provider fallback and retries are disabled. The model is pinned to `typesafe/jev-1.13` and the SDK is pinned in `package-lock.json`.
+Full results retain before/after observations, action outcomes, decisions, the latest observation and an optional continuation. An uncertain action or failed post-action observation leaves the observation explicitly stale. Observation polling is bounded when an action initially leaves the same snapshot, allowing asynchronous rendering to finish without a repeated gesture. It is not an arbitrary-site transaction guarantee.
 
-Jev receives the current and previous observed screen, recent action history and explicit caller-supplied values. This preserves context when a dialog closes or the browser reassigns references; code still does not interpret site-specific outcomes.
+Jev receives the goal, caller context, current/previous page, exact supplied values and recent actions. It chooses from locally constructed candidates; it cannot invent selectors or replace a literal. Native dropdown options are derived mechanically from the accessibility tree; ambiguous duplicate labels aren't silently picked. Inputs, selections and page text remain untrusted evidence.
 
-`elapsedMs` measures the helper loop, and each recorded decision has its own `elapsedMs`; these exclude caller orchestration and are not whole-task timings.
-
-The result includes `actions` with before/after observations and tool outcomes, `latestObservation`, `progressAssessment`, `decisions`, and `returnReason`. Completion and handoff are model choices. Invalid/superseded decisions, denied permissions, excessive observation size, budgets, deadlines and errors return to the caller. Waits count against `maxActions`. Observations default to a 45,000-character JSON budget; larger pages return for narrower context rather than silently dropping candidates.
-
-The helper offers observed semantic controls without interpreting page-specific rows. It neither checks a fixed outcome sequence nor chooses the first repeated label. An invalid reference or uncertain gesture never triggers automatic replay. A failed post-action observation may leave `latestObservation` from before the gesture; observe again before deciding whether to repeat it.
+The observation budget is 45,000 serialized characters and the action menu is limited to 255 choices including completion/handoff/wait. Overflow returns a limit; no extra model silently filters page evidence. Provider retries and fallbacks are disabled, model `typesafe/jev-1.13` and SDK dependencies are pinned. All browser work uses agent-browser; external/user activity still requires caller-owned session exclusion.

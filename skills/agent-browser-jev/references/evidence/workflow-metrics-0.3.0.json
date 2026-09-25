@@ -1,0 +1,98 @@
+{
+  "source": "codex-workflow-0.3.0.json",
+  "pricingDate": "2026-09-25",
+  "pricingSource": "https://developers.openai.com/api/docs/models/gpt-5.5",
+  "estimateAssumptions": "Standard API-equivalent rates: $5 uncached input, $0.50 cached input, $30 output per million. Cached input is a subset of input. Reasoning is included in output. Includes session instructions and skill loading; excludes development diagnostics. No subscription billing, long-context, priority or regional adjustments. CLI aggregates do not expose each request context length.",
+  "arms": {
+    "direct": {
+      "trials": 3,
+      "passed": 3,
+      "medianMs": 69643,
+      "timesMs": [
+        62877,
+        69643,
+        76372
+      ],
+      "summedMs": 208892,
+      "commands": [
+        19,
+        24,
+        22
+      ],
+      "gptUsage": {
+        "input_tokens": 1848003,
+        "cached_input_tokens": 1751296,
+        "output_tokens": 8221,
+        "reasoning_output_tokens": 570
+      },
+      "gptApiEquivalentUsd": 1.605813,
+      "jevReportedUsd": 0,
+      "combinedApiEquivalentUsd": 1.605813,
+      "helper": []
+    },
+    "jev": {
+      "trials": 3,
+      "passed": 3,
+      "medianMs": 15941,
+      "timesMs": [
+        13642,
+        15941,
+        19766
+      ],
+      "summedMs": 49349,
+      "commands": [
+        5,
+        4,
+        4
+      ],
+      "gptUsage": {
+        "input_tokens": 312457,
+        "cached_input_tokens": 283648,
+        "output_tokens": 1928,
+        "reasoning_output_tokens": 90
+      },
+      "gptApiEquivalentUsd": 0.343709,
+      "jevReportedUsd": 0.0026336519999999998,
+      "combinedApiEquivalentUsd": 0.346342652,
+      "helper": [
+        {
+          "actions": 12,
+          "totalMs": 4253.757041,
+          "elapsedMs": 4251.322292000001,
+          "timing": {
+            "observationMs": 120.84795799999984,
+            "decisionMs": 2507.4325419999996,
+            "actionMs": 96.8340390000003,
+            "settleMs": 328.1321270000003
+          }
+        },
+        {
+          "actions": 12,
+          "totalMs": 4504.395375,
+          "elapsedMs": 4501.595084,
+          "timing": {
+            "observationMs": 126.00925299999926,
+            "decisionMs": 2602.9556650000004,
+            "actionMs": 118.61362600000098,
+            "settleMs": 328.8124590000007
+          }
+        },
+        {
+          "actions": 12,
+          "totalMs": 9480.401667,
+          "elapsedMs": 9478.090041,
+          "timing": {
+            "observationMs": 159.52895699999908,
+            "decisionMs": 2551.9707900000008,
+            "actionMs": 4509.2292099999995,
+            "settleMs": 492.19095700000025
+          }
+        }
+      ]
+    }
+  },
+  "medianSpeedup": 4.368797440562073,
+  "medianTimeReduction": 0.7711040592737246,
+  "estimatedCostReduction": 0.7843194369456469,
+  "redactions": "Local home/workspace, executable and temporary paths and workflow session identifiers normalized for publication. Timings, verdicts, actions, synthetic payloads, usage and source hashes are unchanged."
+}

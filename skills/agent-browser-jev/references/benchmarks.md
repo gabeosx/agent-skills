@@ -1,4 +1,74 @@
-# Codex with Jev versus Codex with agent-browser directly
+# Browser workflow benchmarks
+
+## v0.3.0: sustained browser control
+
+Measured 2026-09-25T12:33:12Z–12:38:00Z. Three fresh isolated native Codex sessions per arm; one complete task per session. Both use GPT-5.5, low reasoning effort, Codex CLI 0.147.0, Node 26.5.0 on macOS ARM, the same agent-browser 0.33.2 fork and Chrome for Testing 151.0.7922.71. The browser fork includes the user's existing credential-provider integration; no authentication or real account is used in this fixture.
+
+The generic report workspace requires a name, project and region selections, excluding archived records, enabling email, selecting weekly frequency, reviewing and saving a draft, then returning to the report list. The Jev helper executes 12 actions. A Publish button is present but not authorized. Neither agent gets source code, expected refs, a control sequence, verification assertions or the other agent's results.
+
+| Trial | Direct Codex | Codex + Jev | Independent result |
+| --- | ---: | ---: | --- |
+| 1 | 62.877 s | 13.642 s | Both passed |
+| 2 | 69.643 s | 15.941 s | Both passed |
+| 3 | 76.372 s | 19.766 s | Both passed |
+| Median | **69.643 s** | **15.941 s** | **3/3 each** |
+
+Median elapsed time was 77.1% lower (4.37× faster). Summed task times were 208.892 and 49.349 seconds. Direct callers issued 19/24/22 shell commands, assisted callers 5/4/4; these include harness task retrieval/reporting and skill loading, so they are not browser-action counts or a direct count of model turns. Every assisted run used one helper invocation.
+
+The helper itself, including starting navigation but excluding process startup/caller orchestration, took a median 4.502 seconds. It issued 13 Jev decisions per workflow (12 actions and completion). The third run retained a slower browser action; no outlier was discarded.
+
+### Boundaries and fairness
+
+Each round runs direct and assisted arms concurrently in separate browser sessions on the same host. Timing starts at task delivery and ends at the caller's completion/handoff assessment. It includes initial page navigation, all caller/model/tool orchestration, browser work, model calls and caller acceptance. It excludes initial Codex process startup and the harness's independent outcome assertion.
+
+Direct Codex uses ordinary agent-browser and may batch commands naturally. Assisted Codex reads the matching skill, passes the same goal, URL and exact value to the packaged CLI, and may recover directly if it hands off. Both get a 30-gesture task budget. Both can evaluate their latest post-action observation instead of being forced to issue a redundant inspection. The helper's `reported_complete` flag alone is insufficient.
+
+Independent checks require exactly one saved payload with the requested fields, no Publish event, and a final report list displaying the saved draft. All failures and recovery time remain in the report. The source hashes identify the measured files. This is a capability-focused synthetic workflow with only three trials per arm; it does not establish arbitrary-site reliability, long-horizon planning quality, or a universal speedup.
+
+The first pair overlapped a separate capability acceptance run on another owned browser session. The later pairs did not. That local workload, live provider latency and browser scheduling are not controlled hardware measurements. The paired arms share the same host conditions.
+
+### Model usage and estimated cost
+
+| All three sessions per arm | Direct | Assisted caller |
+| --- | ---: | ---: |
+| GPT input tokens (including cached) | 1,848,003 | 312,457 |
+| GPT cached input tokens (subset) | 1,751,296 | 283,648 |
+| GPT output tokens (including reasoning) | 8,221 | 1,928 |
+| GPT API-equivalent estimate | $1.605813 | $0.343709 |
+| Reported Jev charge | $0 | $0.002633652 |
+| Combined estimate | **$1.605813** | **$0.346342652** |
+
+Combined estimated model cost was 78.4% lower. This uses [standard GPT-5.5 API rates](https://developers.openai.com/api/docs/models/gpt-5.5), checked 2026-09-25: $5 uncached input, $0.50 cached input and $30 output per million. Formula: `((input - cached) * 5 + cached * 0.50 + output * 30) / 1e6`. Cached tokens are already part of input; reasoning tokens are already part of output. Do not add them twice.
+
+These are API-equivalent estimates, not Codex subscription bills or invoices. They include session instruction/skill context and all recorded caller usage, but not development/acceptance runs. No long-context, priority or regional adjustments are applied; aggregate CLI usage does not expose every request's context length. Jev charges are the provider-reported amounts, kept separate from GPT tokens. Browser infrastructure is excluded from both estimates.
+
+### Reproduction and evidence
+
+```sh
+npm ci
+npm run benchmark:codex -- --suite workflow --rounds 3 \
+  --binary /path/to/agent-browser --output /absolute/path/to/new-comparison.json
+npm run test:workflow -- --binary /path/to/agent-browser \
+  --output /absolute/path/to/new-acceptance.json
+```
+
+Supply the configured OpenRouter key without printing it and a signed-in Codex CLI. To reproduce this Chrome build, set `AGENT_BROWSER_EXECUTABLE_PATH` to Chrome for Testing 151.0.7922.71. As recorded in v0.2.1, the local Chrome 154 build stalled during earlier diagnostics; no global browser configuration was changed for these tests.
+
+- [Final native-Codex comparison](evidence/codex-workflow-0.3.0.json): every task, prompt, command log, usage, independent outcome and source hash.
+- [Derived metrics](evidence/workflow-metrics-0.3.0.json): arithmetic and pricing assumptions.
+- [Final capability acceptance](evidence/workflow-0.3.0.json): sustained execution, missing-input resume, budget resume, keyboard search/back and scrolling; 5/5 passed on the existing 0.33.2 fork.
+- [Upstream compatibility acceptance](evidence/workflow-upstream-0.3.0.json): the same five cases passed on agent-browser 0.38.1, the version installed by setup, with Chrome 151.0.7922.71. This verifies browser compatibility, not a separate Codex speed comparison.
+- [Existing browser regression suite](evidence/regression-0.3.0.json): 6/6 passed on the final runtime, covering duplicate labels, reordered controls, literal text, delayed rendering and appropriate handoffs.
+- [Initial development acceptance](evidence/workflow-development-0.3.0.json): 3/5 passed. Immediate post-action snapshots sometimes preceded asynchronous rendering, causing a repeated old control or premature completion. These failures are retained.
+- [Transition correction acceptance](evidence/workflow-transition-fix-0.3.0.json): 5/5 passed after bounded observation polling when an action initially leaves the same snapshot.
+- [Development comparison](evidence/codex-workflow-development-0.3.0.json): 3/3 per arm, 64.941 versus 14.103 seconds median. It predates the reviewed navigation-lock/freshness/path fixes and is not substituted for the final results.
+
+An independent offline forward review found and reproduced three defects: starting navigation before the session lock, superseded evidence marked fresh, and a relative executable path failing when resuming from another directory. All were corrected, then the reviewer reran its fixtures: 4/4 passed. The package also has 48 offline regression tests. Session, server and temporary-directory cleanup is recorded in each live report.
+
+## Historical short-task comparisons
+
+The following evidence is preserved with its original versions and methodology. It measures different tasks and is not directly comparable to the sustained-workflow figures above.
+
 
 The original 0.2.0 measurements below remain unchanged. A follow-up with corrected handoff instructions is recorded separately; changed benchmark setup is not treated as a speed optimization of the runtime.
 
