@@ -6,7 +6,7 @@
 
 The caller supplies the goal, permissions and exact input values. Jev interprets labels and surrounding context. Agent-browser performs the gestures. The caller checks the final evidence.
 
-**Version:** 0.1.0. Live acceptance currently covers supervised read-only Xero interactions. The implementation is generic; those results do not establish reliability across every website or authorize accounting writes.
+**Version:** 0.1.1. A general-purpose browser helper, with public fixtures, an opt-in real-browser/real-Jev acceptance suite, and recorded evidence. It contains no application-specific selectors, workflows or business logic.
 
 ## Why it was built
 
@@ -59,7 +59,7 @@ Before using the helper, provide:
 | An OpenRouter key with access to `typesafe/jev-1.13` | Supply it through a secret provider or inherited `OPENROUTER_API_KEY`. |
 | Caller authorization and privacy functions | Define which effects are permitted and which page content may reach Jev. |
 
-The live pilot used an agent-browser fork reporting version 0.33.2 with a Bitwarden credential provider. Other builds must support the JSON snapshot/ref and action interface used here. No browser installation, fork replacement, Bitwarden setup, login or credential migration happens automatically. Follow your selected binary's `skills get core` guidance for setup.
+The recorded live suite uses an agent-browser fork reporting version 0.33.2. Other builds must support the JSON snapshot/ref and action interface used here; run the included acceptance suite against your chosen binary. Keep your existing authentication provider, including Bitwarden when configured. The helper does not install a browser, replace a fork, or migrate credentials. Follow your binary's `skills get core` guidance for setup. The core tests cover macOS locally and Linux in CI; Windows is not yet validated.
 
 ## Using the skill with an agent
 
@@ -171,7 +171,7 @@ const result = await act({
 });
 ```
 
-Fill candidates use exact caller-supplied strings such as `{ searchText: 'April' }`; Jev can select a candidate but cannot replace its value. Live form behavior has not been established by the read-only pilot. See the [usage reference](references/usage.md) for session invalidation and detailed API behavior.
+Fill candidates use exact caller-supplied strings such as `{ searchText: 'April' }`; Jev can select a candidate but cannot replace its value. The live suite verifies exact text entry and preservation of a neighboring field on the bundled editor fixture; application-specific form behavior needs its own acceptance check. See the [usage reference](references/usage.md) for session invalidation and detailed API behavior.
 
 ## How it works
 
@@ -188,54 +188,50 @@ flowchart LR
 
 The runtime consists of a bounded loop, an agent-browser/Jev adapter and a CLI. It discovers ordinary semantic controls, preserves the full current accessibility context, and offers click/fill candidates plus a short wait, completion and handoff. It refreshes observations after gestures and never executes an invented selector or a response against a substituted candidate map.
 
-There is no second browser stack, separate fallback agent, Xero row parser, fixed outcome sequence or background service. Provider retries and fallback are disabled. Unsupported actions and exhausted budgets return to the same caller.
+There is no second browser stack, separate fallback agent, site-specific row parser, fixed outcome sequence or background service. Provider retries and fallback are disabled. Unsupported actions and exhausted budgets return to the same caller.
 
-## Benchmarks and evidence
+## Reproducible proof and measurements
 
-### Historical live comparison — September 24, 2026
+The current release ships the tests used to validate its claims. They use generic catalog, editor and delayed-preview pages, so there is no dependency on a private application, customer account or proprietary test data.
 
-These measurements came from the **development prototype**, before the generic packaged loop and its model-based completion handling. They explain the design decision; they are **not latency measurements of this package**.
+| Claim | Reproducible check |
+| --- | --- |
+| Installed CLI actually runs, including symlinked paths | Command tests exercise direct, directory-symlink and file-symlink entrypoints; the live suite performs real actions through both direct and symlinked installs. |
+| Jev distinguishes repeated labels using page context | Open and close project Beta with two identical Details buttons, then repeat with the cards in the opposite order. Fixture events identify the item actually opened. |
+| Caller text reaches the intended field unchanged | Fill a message containing quotes, punctuation, Unicode and a newline; independently read back both fields and verify the unrelated title stayed unchanged. |
+| The loop handles delayed rendering | Load a delayed preview and dismiss it after readiness. Server-recorded events must show load, ready, dismiss. |
+| Missing targets and withheld permissions return control | Ask for an absent item and an unauthorized Publish action; require handoff and no UI mutation events. |
+| Choices, permissions and budgets are checked mechanically | Offline tests cover unoffered choices, literal preservation, request/session binding, invalidation, revocation, concurrency, limits, timeouts and uncertain actions. |
 
-Each task opened statement details, closed them, opened Find & Match, and cancelled back to the reconciliation list. Tests used two real statement rows in one Xero screen family, with repeated labels and changing references.
-
-| Approach | Tasks completed without fallback | Measured task time | Main-agent action decisions during execution |
-| --- | ---: | --- | ---: |
-| Codex selecting each action from a fresh observation | 2/2 | 22.40–22.41 s | 4 per task |
-| Original Jev formulation given the entire four-step task | 0/2 | Both handed off before clicking | Caller needed |
-| Caller supplied four step intents; Jev grounded each step | 4/4 | 1.35–1.48 s; median 1.41 s | 0 |
-| Deterministic lookup for the known row/control sequence | 2/2 | 0.41–0.70 s; median 0.56 s | 0 |
-
-The successful Jev prototype episodes made 16 model decisions and 16 clicks, with no fallback or observed wrong-row result. Their total reported Jev provider charge was **$0.000858312**. That excludes the main agent's planning/review token costs; no comparable Codex dollar measurement was available. This is observed usage, not a current pricing promise.
-
-The lesson is specific: batching the interaction loop removed per-click caller overhead. Deterministic execution was still fastest on the known sequences. Jev provides contextual interpretation without requiring a permanent script for each screen; this small study does not prove it beats maintained scripts or generalizes to unseen sites.
-
-**Method and limits:** task timing included helper/client initialization, decisions, snapshots, gestures and readiness waits. Codex timing also included its tool/turn orchestration. Initial planning, authentication, preparation and later record review were excluded from every arm. The same supervisor reviewed the tasks; this was not a blinded trial. Repeating two rows does not create broad workflow coverage. The original whole-task handoffs are retained as failures of that formulation, not omitted from the comparison. Private source observations and account details are not distributed in this repository.
-
-### Acceptance of the generic helper
-
-After removing screen-specific runtime parsing and completion checks, the new helper completed two bounded natural-language tasks in the existing authenticated Xero session:
-
-- Open and close the intended statement details.
-- Open and cancel that row's Find & Match panel without selecting a transaction.
-
-Jev selected four clicks, one short wait for rendering, and two completion assessments across seven decisions. No per-click Codex decision or fallback was required. Independent test assertions and caller review checked the dialog's payee/amount, the matching panel's target and unselected state, closed panels at completion, preserved rows and unchanged reconciliation count. No accounting write occurred.
-
-The test caller supplied a reviewed read-only permission scope allowing controls on either row. It did not supply the correct row/ref or the next action. Screen-specific assertions stayed outside the runtime. This was functional acceptance, not another speed benchmark or an evaluation of search results/accounting matches.
-
-### Automated validation
-
-**22 tests pass**, including a fresh dependency installation outside the originating project:
-
-- Offered-choice validation, duplicate control identity and exact literal preservation.
-- Request/session binding, invalidation, revoked/missing authority and concurrent calls.
-- Action/decision budgets, deadlines, uncertain gestures and provider failures.
-- CLI operation from an unrelated directory, sanitized private evidence and no overwrite of existing output.
-
-These tests use controlled browser/model doubles and do not establish live accuracy on arbitrary websites. They need no API key or live browser:
+### Offline tests
 
 ```sh
 npm --prefix .agents/skills/agent-browser-jev test
 ```
+
+There are **24 offline tests**. They need no API key or browser. CI runs them on Node 20.3.0 and 24; the command tests create temporary fake browser executables to verify the adapter/CLI boundary. These are not substitutes for the live suite below.
+
+### Real browser + real Jev
+
+With an OpenRouter key already supplied through your secret environment:
+
+```sh
+npm --prefix .agents/skills/agent-browser-jev run test:live -- \
+  --binary /absolute/path/to/agent-browser \
+  --output /absolute/path/to/new-acceptance-report.json
+```
+
+This starts a loopback-only fixture server and one uniquely named, disposable browser session. It runs the installed **command-line entrypoint**, using real agent-browser snapshots/actions and real Jev API calls. It never attaches to your existing application session. The harness closes only its own browser session/server and removes its temporary task files. The report remains at the requested new path.
+
+This suite makes billable model calls. It uses synthetic public fixture data, no login and no application writes outside the fixture. Its policy permits fixture controls on all eligible items; it does not provide the correct row/ref or action sequence. Assertions inspect DOM-generated server events and independent final browser readbacks, not just the helper's completion claim. A failed case stops the suite and is retained in the report; it is never automatically retried into a pass.
+
+The report records each outcome, before/after observations, actual events, model usage cost, elapsed time, Node/browser versions, source hashes and cleanup status. See [the recorded results and development failures](references/proof.md) for the current measurements and exact evidence files.
+
+**Performance interpretation:** timings include CLI startup, decisions, browser gestures and observations for these local fixtures. Browser startup/navigation to each case is excluded. Model charges exclude caller planning/review and browser infrastructure. These are single-run acceptance measurements, not a statistical benchmark or a comparison with another agent. Historical prototype speed comparisons have been removed from this README because they did not measure the packaged implementation and their private source data was not reproducible here.
+
+### What this does not prove
+
+Passing the suite demonstrates these particular behaviors on the recorded browser/model configuration. It does not prove all websites, all browsers, all layouts, or every future model response. It does not automatically discover safe actions, verify a business result, or make browser observations atomic with gestures. Unsupported and ambiguous work still belongs with the caller.
 
 ## Results, limits and troubleshooting
 
@@ -255,10 +251,10 @@ The CLI exits `0` for model-reported completion, `2` for a returned handoff/runt
 
 The in-process lock complements the caller's existing session coordination; it cannot prevent another process or person from changing the page. Observation and gesture are not atomic. On a failed post-action observation, the last available snapshot may predate the gesture. Never equate a successful tool call with completed business work.
 
-The current primitive set does not include a navigation planner, autocomplete-selection engine, upload/download workflow or automatic authentication recovery. Use existing authorized agent-browser operations for those capabilities. Saves, reconciliation, payments and other consequential actions require the caller's established authorization and readback arrangements; the read-only pilot does not validate them.
+The current primitive set does not include a navigation planner, autocomplete-selection engine, upload/download workflow or automatic authentication recovery. Use existing authorized agent-browser operations for those capabilities. Publishing, purchases, account changes and other consequential actions require the caller's established authorization and readback arrangements. Synthetic fixture interactions do not validate those business operations.
 
 ## Maintaining the skill
 
-The bundled implementation is in [`scripts/`](scripts/), operating instructions in [`SKILL.md`](SKILL.md), and tests in [`tests/`](tests/). No accounting project dependency, credentials, bank aliases, private traces, browser profile or `node_modules` directory is included.
+The bundled implementation is in [`scripts/`](scripts/), operating instructions in [`SKILL.md`](SKILL.md), and tests in [`tests/`](tests/). No originating-project dependency, credentials, private traces, browser profile or `node_modules` directory is included.
 
 After changing the helper, run `npm test`. For repository contributions, also follow [the repository policy](https://github.com/gabeosx/agent-skills/blob/main/.agents/AGENTS.md), update `metadata.version` and the npm version together, and record the change in the [root changelog](https://github.com/gabeosx/agent-skills/blob/main/CHANGELOG.md). Keep `SKILL.md` focused on agent behavior and this README focused on human setup, usage and evidence.

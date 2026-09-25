@@ -2,7 +2,7 @@
 name: agent-browser-jev
 description: Use Jev to ground bounded natural-language browser actions against current agent-browser controls, execute them in an existing session, and return observed progress. Use for short UI tasks where interpreting labels or repeated controls would otherwise require per-click agent decisions.
 metadata:
-  version: "0.1.0"
+  version: "0.1.1"
 ---
 
 # Agent Browser Jev
@@ -24,14 +24,14 @@ Keep the session exclusive for the bounded task. The in-process lock cannot coor
 
 - Node.js 20.3+ and the existing `agent-browser` executable. Configure its path and session; the skill does not install or replace a browser, fork or credential plugin.
 - Install the pinned JavaScript dependency once in this skill directory: `npm ci --ignore-scripts --no-audit --no-fund`.
-- Use the caller's secret provider or an inherited `OPENROUTER_API_KEY`. Keep keys out of task files, skill files, command arguments and logs. Other projects do not need an accounting repository or its credential mapping.
-- Supply a privacy filter before sending visible accessibility data to Jev. Reuse the project's sensitive-name/account redactions. Do not send credential-entry screens, passwords or OTPs; authenticate through the existing provider first. Intents and supplied values also reach the model, so keep secrets out of them.
+- Use the caller's secret provider or an inherited `OPENROUTER_API_KEY`. Keep keys out of task files, skill files, command arguments and logs. Projects supply their own secret provider; no originating repository or credential mapping is required.
+- Supply a privacy filter before sending visible accessibility data to Jev. Reuse the project's sensitive-data redactions. Do not send credential-entry screens, passwords or OTPs; authenticate through the existing provider first. Intents and supplied values also reach the model, so keep secrets out of them.
 - Store evidence privately. The CLI creates a new mode-600 evidence file and prints a summary; API callers own storage.
 
 ## Supported boundary
 
-The helper offers clicks on ordinary semantic controls, fills using caller-supplied values, and a short wait. Unsupported actions return for caller continuation. It has no navigation planner, autocomplete engine, upload helper or accounting verifier. Use ordinary authorized agent-browser operations when those are needed.
+The helper offers clicks on ordinary semantic controls, fills using caller-supplied values, and a short wait. Unsupported actions return for caller continuation. It has no navigation planner, autocomplete engine, upload helper or business-outcome verifier. Use ordinary authorized agent-browser operations when those are needed.
 
-Live acceptance covered supervised read-only statement-detail and matching-panel opening/closing in Xero. This establishes the loop on those screens, not arbitrary-site reliability or write safety. Fill literal preservation is mechanically tested; live forms and writes need task-appropriate authorization and acceptance. Business-specific readback stays with the caller.
+The bundled live suite uses general-purpose catalog, text-editor and delayed-preview fixtures. It exercises repeated/reordered controls, literal filling, asynchronous rendering, missing targets and withheld permissions through the actual CLI, browser and Jev API. See [references/proof.md](references/proof.md) for evidence and reproduction. These finite checks do not establish arbitrary-site reliability or authority for consequential actions; business-specific readback stays with the caller.
 
 Run `npm test` here after changing the helper. Tests cover binding, budgets, permissions, literal preservation, error handling and the portable command interface. No live browser or API key is needed for these tests.

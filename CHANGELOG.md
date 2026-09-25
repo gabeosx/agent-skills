@@ -6,10 +6,28 @@ All notable skill changes are recorded in this file. Each skill is versioned ind
 
 ### Repository
 
+- Added CI for Agent Browser Jev's offline regression suite on Node 20.3.0 and 24, including symlink installation behavior and the repository release contract.
+
 - Added Agent Browser Jev to the skill catalog with `npx skills` installation guidance and a detailed human-facing README requested for this skill.
 
 - Added canonical agent instructions and a dependency-free release-contract validator requiring every affected skill change to include an independent Semantic Version increment, a matching root changelog entry, relevant validation, and scoped cleanup evidence.
 - Required repository-only changes to be recorded without inventing unrelated skill version bumps, and documented the definition of done and release-tagging workflow.
+
+## agent-browser-jev 0.1.1 - 2026-09-24
+
+### Fixed
+
+- Fixed CLI execution through symlinked files and skill directories; the previous entrypoint could silently exit with success without running.
+- Preserved the previous observed screen and explicit caller-supplied values in Jev's request, so progress and fill decisions retain their context.
+
+### Added
+
+- Added an opt-in real-browser/real-Jev suite using general-purpose local fixtures, independent event/readback assertions, source hashes, model charges, elapsed times and scoped cleanup. Published all development attempts as well as the passing six-scenario run.
+- Added regression coverage for symlink entrypoints and retained prior observation context, bringing the offline suite to 24 tests.
+
+### Changed
+
+- Made the README and skill instructions application-neutral. Replaced private historical prototype timing claims with reproducible measurements of the current packaged CLI, explicit claim-to-test mappings and a documented proof boundary.
 
 ## agent-browser-jev 0.1.0 - 2026-09-24
 

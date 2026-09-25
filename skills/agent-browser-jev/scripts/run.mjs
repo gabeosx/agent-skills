@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 import { readFile, mkdir, writeFile } from 'node:fs/promises';
+import { realpathSync } from 'node:fs';
 import { resolve, dirname } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { parseArgs } from 'node:util';
@@ -39,7 +40,7 @@ async function main() {
   if (result.returnReason !== 'reported_complete') process.exitCode = 2;
 }
 
-if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1])).href) {
+if (process.argv[1] && import.meta.url === pathToFileURL(realpathSync(process.argv[1])).href) {
   main().catch(() => {
     console.error('agent-browser-jev could not run. Check task/policy paths, dependencies, credentials and that the output file is new.');
     process.exitCode = 1;
