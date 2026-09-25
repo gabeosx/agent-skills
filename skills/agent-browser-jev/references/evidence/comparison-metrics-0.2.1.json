@@ -1,0 +1,48 @@
+{
+  "source": "codex-comparison-0.2.1.json",
+  "pricingDate": "2026-09-25",
+  "pricingSource": "https://developers.openai.com/api/docs/models/gpt-5.5",
+  "estimateAssumptions": "Standard API-equivalent text rates ($5 uncached input, $0.50 cached input, $30 output per million). No long-context, priority, regional or subscription-billing adjustments. Includes initial session/skill context; excludes development diagnostics. Cached tokens are a subset of input, reasoning tokens a subset of output.",
+  "arms": {
+    "direct": {
+      "trials": 18,
+      "strictPassed": 18,
+      "medianMs": 19999.0,
+      "summedMs": 354316,
+      "gptUsage": {
+        "input_tokens": 2242734,
+        "cached_input_tokens": 2128640,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 14574,
+        "reasoning_output_tokens": 483
+      },
+      "uncachedInputTokens": 114094,
+      "gptApiEquivalentUsd": 2.07201,
+      "jevReportedUsd": 0,
+      "combinedApiEquivalentUsd": 2.07201,
+      "helperMedianMs": null,
+      "helperSummedMs": 0,
+      "commandCount": 91
+    },
+    "jev": {
+      "trials": 18,
+      "strictPassed": 16,
+      "medianMs": 17900.0,
+      "summedMs": 333505,
+      "gptUsage": {
+        "input_tokens": 2015440,
+        "cached_input_tokens": 1930112,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 11882,
+        "reasoning_output_tokens": 562
+      },
+      "uncachedInputTokens": 85328,
+      "gptApiEquivalentUsd": 1.748156,
+      "jevReportedUsd": 0.002027466,
+      "combinedApiEquivalentUsd": 1.750183466,
+      "helperMedianMs": 880.2134584999999,
+      "helperSummedMs": 15123.650998,
+      "commandCount": 84
+    }
+  }
+}

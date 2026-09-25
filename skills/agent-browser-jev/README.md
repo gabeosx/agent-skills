@@ -59,7 +59,7 @@ node "$HOME/.agents/skills/agent-browser-jev/scripts/run.mjs" \
   --value 'message=Please check order #42.'
 ```
 
-No task file or policy module is required. The command prints a result summary and the path to its saved evidence. `reported_complete` means Jev believes it finished; your agent can inspect the final page to confirm.
+No task file or policy module is required. The command prints a result summary and the path to its saved evidence. `reported_complete` means Jev believes it finished; your agent can inspect the final page to confirm. A `handoff` means control returned without establishing completion, including when the target is absent. The caller preserves that result unless later work completes the goal.
 
 ## Why use it?
 
@@ -67,26 +67,28 @@ Ordinary agent-driven browsing often repeats the same cycle: read a page, decide
 
 This skill lets Jev handle those short loops. The main agent keeps the overall task; Jev chooses from controls that actually exist on the current page; agent-browser executes them. That is useful for repeated button labels, dialogs, short forms and searches where you know the goal but don't want to maintain a fixed selector sequence.
 
-The goal is fewer trips through the main agent for small UI tasks. The fresh comparison below measures whether that saves time while completing the same work. A direct agent-browser command is still simpler when you already know exactly which control to use.
+The goal is fewer trips through the main agent for small UI tasks. [Published integrations and the design lessons we applied](references/published-evidence.md) explain why this division of work is useful. The fresh comparison below measures whether that saves time while completing the same work. A direct agent-browser command is still simpler when you already know exactly which control to use.
 
 ## Codex comparison
 
-**Actual Codex on both sides: GPT-5.5, low reasoning effort.** Run on 2026-09-25 (UTC), using upstream agent-browser 0.38.1. Six generic tasks, three trials per task per mode. Times are medians and include Codex's reasoning, tool calls, navigation and final page checks.
+**Actual Codex on both sides: GPT-5.5, low reasoning effort.** Fresh run on 2026-09-25 (UTC), using agent-browser 0.38.1 and Chrome for Testing 151.0.7922.71. Six generic tasks, three trials per task per mode. Times include Codex reasoning, tool calls, navigation and final page checks.
 
-| Task | Codex + agent-browser | Codex + Jev | Checks passed: direct / Jev |
+| Task | Codex + agent-browser | Codex + Jev | Strict checks: direct / Jev |
 | --- | ---: | ---: | ---: |
-| Open Returns article and go back | 17.6 s | 12.3 s | 3/3 / 3/3 |
-| Choose Warranty after articles reorder | 16.9 s | 12.2 s | 3/3 / 3/3 |
-| Fill two fields without sending | 21.5 s | 20.6 s | 3/3 / 3/3 |
-| Open settings, enable email and save | 18.4 s | 14.3 s | 3/3 / 3/3 |
-| Search, open matching result and return | 24.1 s | 14.4 s | 3/3 / 3/3 |
-| Return when the requested article is absent | 7.9 s | 15.0 s | 2/3 / 0/3 |
+| Open Returns article and go back | 20.3 s | 18.4 s | 3/3 / 3/3 |
+| Choose Warranty after articles reorder | 19.6 s | 15.4 s | 3/3 / 3/3 |
+| Fill two fields without sending | 24.2 s | 21.5 s | 3/3 / 3/3 |
+| Open settings, enable email and save | 19.7 s | 21.5 s | 3/3 / 1/3 |
+| Search, open matching result and return | 21.6 s | 18.3 s | 3/3 / 3/3 |
+| Return when the requested article is absent | 8.4 s | 17.6 s | 3/3 / 3/3 |
 
-Across all tasks, median elapsed time was **18.0 seconds directly versus 14.3 seconds with Jev**—about **20% less time** in this sample. All 30 multi-action trials passed. Direct Codex was faster at checking for an absent target.
+Across all 18 trials per mode, median elapsed time was **20.0 seconds directly versus 17.9 seconds with Jev**: **10.5% less time** in this sample. Summed task time fell 5.9%; the median is not the total runtime. All six missing-target checks passed after the caller handoff correction.
 
-**The handoff check exposed a limitation:** all six absent-target trials correctly avoided clicking, and Jev itself returned a handoff every time. But the Codex caller labeled that outcome “complete” in 1/3 direct trials and 3/3 Jev-assisted trials. Those remain failed checks: **17/18 direct versus 15/18 with Jev**. The helper saves time on these multi-step tasks; this test does not establish equal end-to-end reliability.
+**Strict checks: 18/18 direct, 16/18 with Jev.** In the two failures, Jev enabled and saved email updates correctly; Codex then reopened the dialog to inspect the checkbox and left it open. The expected final screen/interaction checks failed. These failures remain in the report, so this is not a claim of perfect or superior end-to-end reliability.
 
-No cost comparison or earlier application results are used. Initial Codex-session startup and the harness's independent verification are excluded. [Exact method, every trial, commands and reproduction](references/benchmarks.md).
+**Cost and overhead:** GPT usage plus reported Jev charges corresponds to about **$2.07 direct versus $1.75 with Jev** across the 18 tasks, using standard API-equivalent rates. That is an estimate, not a Codex subscription bill. Jev itself reported **$0.00203 total**. Its median helper loop took **0.88 seconds**; 95.5% of the assisted run's summed task time was outside that loop, including navigation, caller orchestration, benchmark reporting and final checks.
+
+Initial Codex startup and independent harness verification are excluded from timings; initial context is included in token usage. The earlier run and interrupted Chrome 154 attempts are retained. [Exact method, token categories, pricing assumptions, every trial and reproduction](references/benchmarks.md).
 
 ## Defaults
 
@@ -105,8 +107,9 @@ For restricted or sensitive workflows, you can provide `--policy` with your own 
 | Wrong browser/session | Pass `--binary` and `--session` explicitly. |
 | `handoff` or an execution limit | Let the calling agent inspect the page and continue. |
 | An action's outcome is uncertain | Check the page before repeating it. |
+| Browser commands stall | Check the Chrome build as well as the CLI version. Our follow-up uses Chrome for Testing 151.0.7922.71; local Chrome 154 sessions stalled. Select an existing working browser with `AGENT_BROWSER_EXECUTABLE_PATH=/absolute/path/to/chrome`. |
 | Browser installation fails on Linux | Follow [agent-browser's Linux setup](https://github.com/vercel-labs/agent-browser#linux-dependencies). |
 
 The helper currently supports clicks, exact text fills and brief waits. Navigation, login, uploads and downloads use ordinary agent-browser commands. This is a general-purpose control helper, not a guarantee that every website or model decision will work.
 
-**Version 0.2.0.** Tested on macOS; offline CI covers Linux with Node 20.3.0 and 24. Windows is not validated. Run `npm test` in the skill directory for the offline regression suite (Python 3 is used only by the terminal-prompt test), or `npm run benchmark:codex -- --output /absolute/path/to/new-report.json` for the live Codex comparison. Live runs use your OpenRouter credit.
+**Version 0.2.1.** Tested on macOS; offline CI covers Linux with Node 20.3.0 and 24. Windows is not validated. Run `npm test` in the skill directory for the offline regression suite (Python 3 is used only by the terminal-prompt test), or `npm run benchmark:codex -- --output /absolute/path/to/new-report.json` for the live Codex comparison. Live runs use your OpenRouter credit.

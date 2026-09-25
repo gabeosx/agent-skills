@@ -1,0 +1,152 @@
+{
+  "schema": 1,
+  "startedAt": "2026-09-25T04:49:30.282Z",
+  "version": "0.2.1",
+  "model": "typesafe/jev-1.13",
+  "sdk": "1.3.2",
+  "node": "v26.5.0",
+  "platform": "darwin-arm64",
+  "rounds": 1,
+  "mode": "Default permissive CLI; no task file, custom policy, browser mocks or provider mocks",
+  "sourceSha256": {
+    "scripts/run.mjs": "451876bed56bc77bf7bac989367b0baf487674c891943679e33a8e3f9f6c6079",
+    "scripts/config.mjs": "ed3b9120c31cf4e69d1f33f2b2f55949249cfc9d83355ee3e713518152b5f387",
+    "scripts/setup.mjs": "fa45d4b297ed251a8a00c535492358e8ce49c7e9b361a4c088a1bdd7aff4078e",
+    "scripts/jev-browser.mjs": "7056a039111b96d49c1bf5bd98ab13557f458184cad7871741f3310b75254f13",
+    "scripts/agent-browser-jev.mjs": "8a2709dc4833273925272580ab6e2754cc0d27a34afba983ebe16ac3573d974b",
+    "tests/benchmark.mjs": "cf3eaccbea15d2b4340442c0a61f33c9268404d6b861f580608ee294337b7626",
+    "tests/fixtures/benchmark-pages.mjs": "d2330e6acb4dc758e644ffe609ddc885768145baee8162d11e1c425007e6617f"
+  },
+  "trials": [
+    {
+      "id": "help-article",
+      "label": "Open Returns article and go back",
+      "round": 1,
+      "elapsedMs": 16006,
+      "exitCode": 2,
+      "result": {
+        "sessionId": "<session>",
+        "returnReason": "action_outcome_unknown",
+        "actions": [
+          {
+            "stepIndex": 0,
+            "action": {
+              "ref": "@e5",
+              "role": "button",
+              "name": "Read article",
+              "op": "click"
+            },
+            "before": {
+              "snapshot": "- heading \"Help articles\" [level=1, ref=e1]\n- main\n  - article\n    - heading \"Shipping\" [level=2, ref=e2]\n    - paragraph\n      - StaticText \"Learn about our shipping policy.\"\n    - button \"Read article\" [ref=e3]\n  - article\n    - heading \"Returns\" [level=2, ref=e4]\n    - paragraph\n      - StaticText \"Learn about our returns policy.\"\n    - button \"Read article\" [ref=e5]\n  - article\n    - heading \"Warranty\" [level=2, ref=e6]\n    - paragraph\n      - StaticText \"Learn about our warranty policy.\"\n    - button \"Read article\" [ref=e7]",
+              "refs": {
+                "e1": {
+                  "name": "Help articles",
+                  "role": "heading"
+                },
+                "e2": {
+                  "name": "Shipping",
+                  "role": "heading"
+                },
+                "e3": {
+                  "name": "Read article",
+                  "role": "button"
+                },
+                "e4": {
+                  "name": "Returns",
+                  "role": "heading"
+                },
+                "e5": {
+                  "name": "Read article",
+                  "role": "button"
+                },
+                "e6": {
+                  "name": "Warranty",
+                  "role": "heading"
+                },
+                "e7": {
+                  "name": "Read article",
+                  "role": "button"
+                }
+              }
+            },
+            "outcome": "unknown"
+          }
+        ],
+        "progressAssessment": [],
+        "decisions": [
+          {
+            "stepIndex": 0,
+            "choice": "c1",
+            "op": "click",
+            "confidence": 1,
+            "cost": 3.4272e-05,
+            "elapsedMs": 335.17729199999997
+          }
+        ],
+        "latestObservation": {
+          "snapshot": "- heading \"Help articles\" [level=1, ref=e1]\n- main\n  - article\n    - heading \"Shipping\" [level=2, ref=e2]\n    - paragraph\n      - StaticText \"Learn about our shipping policy.\"\n    - button \"Read article\" [ref=e3]\n  - article\n    - heading \"Returns\" [level=2, ref=e4]\n    - paragraph\n      - StaticText \"Learn about our returns policy.\"\n    - button \"Read article\" [ref=e5]\n  - article\n    - heading \"Warranty\" [level=2, ref=e6]\n    - paragraph\n      - StaticText \"Learn about our warranty policy.\"\n    - button \"Read article\" [ref=e7]",
+          "refs": {
+            "e1": {
+              "name": "Help articles",
+              "role": "heading"
+            },
+            "e2": {
+              "name": "Shipping",
+              "role": "heading"
+            },
+            "e3": {
+              "name": "Read article",
+              "role": "button"
+            },
+            "e4": {
+              "name": "Returns",
+              "role": "heading"
+            },
+            "e5": {
+              "name": "Read article",
+              "role": "button"
+            },
+            "e6": {
+              "name": "Warranty",
+              "role": "heading"
+            },
+            "e7": {
+              "name": "Read article",
+              "role": "button"
+            }
+          }
+        },
+        "elapsedMs": 15402.794875000001
+      },
+      "verdict": "failed",
+      "failure": "Command failed: <agent-browser> --session <session> --json snapshot\n"
+    },
+    {
+      "id": "reordered-articles",
+      "label": "Choose Warranty after articles reorder",
+      "round": 1,
+      "verdict": "failed",
+      "failure": "Command failed: <agent-browser> --session <session> --json open http://127.0.0.1:60230/reordered\n"
+    },
+    {
+      "id": "support-draft",
+      "label": "Fill two fields without sending",
+      "round": 1,
+      "verdict": "failed",
+      "failure": "Command failed: <agent-browser> --session <session> --json open http://127.0.0.1:60230/support\n"
+    },
+    {
+      "id": "preferences",
+      "label": "Open settings, enable email and save",
+      "round": 1,
+      "verdict": "failed",
+      "failure": "Command failed: <agent-browser> --session <session> --json open http://127.0.0.1:60230/preferences\n"
+    }
+  ],
+  "cleanup": {
+    "forcedScopedTeardownCompleted": true
+  },
+  "browserVersion": "agent-browser 0.38.1",
+  "verdict": "aborted",
+  "failure": "Default Chrome 154 browser commands stalled; standalone acceptance stopped. Chrome 151 subsequently passed an independent five-command probe."
+}
