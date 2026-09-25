@@ -19,6 +19,12 @@ All notable skill changes are recorded in this file. Each skill is versioned ind
 - Added canonical agent instructions and a dependency-free release-contract validator requiring every affected skill change to include an independent Semantic Version increment, a matching root changelog entry, relevant validation, and scoped cleanup evidence.
 - Required repository-only changes to be recorded without inventing unrelated skill version bumps, and documented the definition of done and release-tagging workflow.
 
+## agent-browser-jev 1.0.2 - 2026-09-25
+
+### Added
+
+- Licensed the skill and its bundled helper under MIT, allowing reuse and redistribution with the copyright and license notice retained.
+
 ## agent-browser-jev 1.0.1 - 2026-09-25
 
 ### Changed

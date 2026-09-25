@@ -2,6 +2,8 @@
 
 A small browser helper for agents that already use [agent-browser](https://github.com/vercel-labs/agent-browser). Give it a goal such as “set up this report and leave it as a draft.” Jev chooses the next control on each page, and agent-browser performs the action. Your agent supplies the goal and any exact text, then checks the result.
 
+Licensed under the [MIT License](LICENSE).
+
 This is useful when a task takes several browser steps. For a button or field your agent can already identify, a direct agent-browser command is simpler.
 
 ## Install
