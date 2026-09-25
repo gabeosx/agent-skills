@@ -2,7 +2,7 @@
 name: agent-browser-jev
 description: Delegate multi-step browser tasks to Jev through agent-browser. It operates current page controls, requests missing input, and returns final observations or resumable handoffs without a caller turn per click.
 metadata:
-  version: "1.0.0"
+  version: "1.0.1"
 ---
 
 # Agent Browser Jev
