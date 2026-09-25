@@ -21,7 +21,7 @@ All notable skill changes are recorded in this file. Each skill is versioned ind
 
 - Added one-time setup with a hidden OpenRouter key prompt, private saved configuration, dependency installation and automatic local agent-browser installation when absent. Existing browser forks and environment/secret-provider credentials remain supported.
 - Added a plain-language `--intent` command with named exact values, default session/browser settings and automatic evidence storage. Task files and custom policies are now optional; the default offers all observed supported controls and passes visible page content to Jev. The low-level API retains its original authorization contract.
-- Added fresh repeated benchmarks on new generic help-center, support-form, preferences and search fixtures through the installed default CLI, using upstream agent-browser. Each trial retains independent checks, timings, charges and failures.
+- Added fresh repeated benchmarks on new generic help-center, support-form, preferences and search fixtures. The comparison runs actual Codex sessions using agent-browser directly versus Codex using Jev, including caller orchestration and independent success checks; it does not substitute a GPT API call into the Jev loop.
 
 ### Changed
 

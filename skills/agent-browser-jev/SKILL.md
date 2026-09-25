@@ -35,4 +35,4 @@ The defaults are 8 actions, 16 decisions and 60 seconds. Clicks, literal fills a
 
 ## Validation
 
-Run `npm test` for offline regressions. `npm run benchmark -- --output /absolute/path/to/new-report.json` runs fresh local fixtures with the real browser and Jev, makes billable model calls, and records every trial including failures. See [references/benchmarks.md](references/benchmarks.md) for measurements and reproduction.
+Run `npm test` for offline regressions. `npm run benchmark -- --output /absolute/path/to/new-report.json` runs fresh local fixtures with the real browser and Jev, makes billable model calls, and records every trial including failures. `npm run benchmark:codex -- --output /absolute/path/to/new-report.json` compares actual Codex sessions using direct agent-browser versus the helper. See [references/benchmarks.md](references/benchmarks.md) for measurements and reproduction.
