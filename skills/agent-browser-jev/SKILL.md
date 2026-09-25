@@ -2,7 +2,7 @@
 name: agent-browser-jev
 description: Use Jev to ground bounded natural-language browser actions against current agent-browser controls, execute them in an existing session, and return observed progress. Use for short UI tasks where interpreting labels or repeated controls would otherwise require per-click agent decisions.
 metadata:
-  version: "0.1.1"
+  version: "0.1.2"
 ---
 
 # Agent Browser Jev

@@ -13,6 +13,12 @@ All notable skill changes are recorded in this file. Each skill is versioned ind
 - Added canonical agent instructions and a dependency-free release-contract validator requiring every affected skill change to include an independent Semantic Version increment, a matching root changelog entry, relevant validation, and scoped cleanup evidence.
 - Required repository-only changes to be recorded without inventing unrelated skill version bumps, and documented the definition of done and release-tagging workflow.
 
+## agent-browser-jev 0.1.2 - 2026-09-24
+
+### Fixed
+
+- Corrected the global Codex dependency-installation path to the actual `npx skills` destination, `~/.agents/skills/agent-browser-jev`, and documented stale manual-copy migration. Runtime and acceptance-fixture sources are unchanged from 0.1.1. Published a second six-scenario passing report from a fresh GitHub installation.
+
 ## agent-browser-jev 0.1.1 - 2026-09-24
 
 ### Fixed
