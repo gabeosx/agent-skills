@@ -101,7 +101,8 @@ export async function act({ browser, decide, intentOrSteps, suppliedValues = {},
       candidates.handoff = { op: 'handoff' };
       freeze(candidates);
       const request = freeze({ binding, sessionId: browser.sessionId, intent: steps[step],
-        stepIndex: step, scope, observation, candidates,
+        stepIndex: step, scope, observation, candidates, suppliedValues: values,
+        previousObservation: result.actions.at(-1)?.before.snapshot,
         history: result.actions.map(a => ({ stepIndex: a.stepIndex, action: a.action, outcome: a.outcome })) });
       const decision = await bounded(() => decide(request, abort.signal));
       if (abort.signal.aborted) return finish('deadline');

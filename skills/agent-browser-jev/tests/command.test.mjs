@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { execFileSync } from 'node:child_process';
-import { mkdtempSync, writeFileSync, readFileSync, statSync, rmSync } from 'node:fs';
+import { mkdtempSync, writeFileSync, readFileSync, statSync, rmSync, symlinkSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -12,6 +12,18 @@ const cli = fileURLToPath(new URL('../scripts/run.mjs', import.meta.url));
 test('command help works from an unrelated directory without project configuration', () => {
   const stdout = execFileSync(process.execPath, [cli, '--help'], { cwd: tmpdir(), encoding: 'utf8' });
   assert.match(stdout, /--task task.json --policy caller-policy.mjs/);
+});
+
+test('directory and file symlink entrypoints execute instead of silently exiting', () => {
+  const root = mkdtempSync(join(tmpdir(), 'jev-skill-symlink-'));
+  try {
+    symlinkSync(fileURLToPath(new URL('..', import.meta.url)), join(root, 'skill'), 'dir');
+    symlinkSync(cli, join(root, 'run.mjs'));
+    for (const entry of ['skill/scripts/run.mjs', 'run.mjs']) {
+      const stdout = execFileSync(process.execPath, [entry, '--help'], { cwd: root, encoding: 'utf8' });
+      assert.match(stdout, /--task task.json --policy caller-policy.mjs/);
+    }
+  } finally { rmSync(root, { recursive: true, force: true }); }
 });
 
 test('command uses caller browser/policy and creates private sanitized evidence outside any project', () => {

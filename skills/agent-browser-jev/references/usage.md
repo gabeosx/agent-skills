@@ -56,6 +56,8 @@ const result = await act({
 
 API callers may pass a compatible client to `jevDecider(client)`. Provider fallback and retries are disabled. The model is pinned to `typesafe/jev-1.13` and the SDK is pinned in `package-lock.json`.
 
+Jev receives the current and previous observed screen, recent action history and explicit caller-supplied values. This preserves context when a dialog closes or the browser reassigns references; code still does not interpret site-specific outcomes.
+
 The result includes `actions` with before/after observations and tool outcomes, `latestObservation`, `progressAssessment`, `decisions`, and `returnReason`. Completion and handoff are model choices. Invalid/superseded decisions, denied permissions, excessive observation size, budgets, deadlines and errors return to the caller. Waits count against `maxActions`. Observations default to a 45,000-character JSON budget; larger pages return for narrower context rather than silently dropping candidates.
 
 The helper offers observed semantic controls without interpreting page-specific rows. It neither checks a fixed outcome sequence nor chooses the first repeated label. An invalid reference or uncertain gesture never triggers automatic replay. A failed post-action observation may leave `latestObservation` from before the gesture; observe again before deciding whether to repeat it.

@@ -49,6 +49,17 @@ test('duplicate labels keep distinct refs and full context for the model', () =>
   assert.deepEqual(actions.map(a => a.ref), ['@e1', '@e2']);
 });
 
+test('next decision retains the previous screen so reused refs do not erase target context', async () => {
+  const f = fixture({ decide: async r => {
+    if (r.history.length) {
+      assert.equal(r.previousObservation, 'Aperture is closed');
+      assert.equal(r.observation.snapshot, 'Aperture is open');
+    }
+    return { binding:r.binding, choice:r.history.length?'step_complete':'c0' };
+  } });
+  assert.equal((await f.run()).returnReason,'reported_complete');
+});
+
 for (const choice of ['@e999', 'c999', '__proto__']) {
   test(`unoffered choice ${choice} cannot execute`, async () => {
     const f = fixture({ decide: async r => ({ binding: r.binding, choice }) });
@@ -167,11 +178,12 @@ test('Jev adapter offers progress choices, disables retries/fallbacks and binds 
     assert.equal(opts.retries.strategy, 'none');
     assert.equal(opts.fetchOptions.signal.aborted, false);
     assert.equal(r.state.observation, 'untrusted page evidence');
+    assert.deepEqual(r.state.suppliedValues, { message:'Exact caller text' });
     assert.ok(r.questions.action.criteria.step_complete);
     return { answers: { action: { type: 'choice', choice: 'step_complete' } }, usage: { cost: 0.001 } };
   } } } };
   const result = await jevDecider(api)({ binding: 'bound', intent: 'test', scope: 'test',
-    observation: { snapshot: 'untrusted page evidence' }, history: [],
+    observation: { snapshot: 'untrusted page evidence' }, history: [], suppliedValues: { message:'Exact caller text' },
     candidates: { step_complete: { op: 'step_complete' }, handoff: { op: 'handoff' } } }, signal);
   assert.equal(result.binding, 'bound');
   assert.equal(result.choice, 'step_complete');

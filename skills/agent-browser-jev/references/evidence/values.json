@@ -1,0 +1,511 @@
+{
+  "schema": 1,
+  "startedAt": "2026-09-25T03:08:28.380Z",
+  "kind": "real-jeV-and-agent-browser-local-fixtures",
+  "node": "v26.5.0",
+  "platform": "darwin-arm64",
+  "skillVersion": "0.1.1",
+  "model": "typesafe/jev-1.13",
+  "sourceSha256": {
+    "scripts/run.mjs": "f3f46aee9271b410f796590b2c1836beeb84f9baf240b898a92341e1ea135211",
+    "scripts/jev-browser.mjs": "b8b8e05e69704479c93fc8e0c1d5df3838c17e8e2a1ae83dbb16a6e43dacebff",
+    "scripts/agent-browser-jev.mjs": "5f50a6d11436dc2eb66bf5c8b67738c255905e2df41f490b59ccd68ff0661e46",
+    "tests/live.mjs": "c9e6346b74f1fdfe71e78530e6aadc277b4800db58a30ee61b4560b763a51b4c",
+    "tests/fixtures/pages.mjs": "f5a7aac9990cb29dde259788b5baa16c2c237f0be8fa0e066d0418d08eaf7177"
+  },
+  "cases": [
+    {
+      "id": "duplicate-labels-copy",
+      "invocation": "direct",
+      "elapsedMs": 1311,
+      "exitCode": 0,
+      "result": {
+        "sessionId": "jev-proof-db894315-92b6-451e-a8c0-5de8bf33f5a2",
+        "returnReason": "reported_complete",
+        "actions": [
+          {
+            "stepIndex": 0,
+            "action": {
+              "ref": "@e5",
+              "role": "button",
+              "name": "Details",
+              "op": "click"
+            },
+            "before": {
+              "snapshot": "- heading \"Project catalog\" [level=1, ref=e1]\n- main\n  - article\n    - heading \"Alpha\" [level=2, ref=e2]\n    - paragraph\n      - StaticText \"Project Alpha reference material.\"\n    - button \"Details\" [ref=e3]\n  - article\n    - heading \"Beta\" [level=2, ref=e4]\n    - paragraph\n      - StaticText \"Project Beta reference material.\"\n    - button \"Details\" [ref=e5]",
+              "refs": {
+                "e1": {
+                  "name": "Project catalog",
+                  "role": "heading"
+                },
+                "e2": {
+                  "name": "Alpha",
+                  "role": "heading"
+                },
+                "e3": {
+                  "name": "Details",
+                  "role": "button"
+                },
+                "e4": {
+                  "name": "Beta",
+                  "role": "heading"
+                },
+                "e5": {
+                  "name": "Details",
+                  "role": "button"
+                }
+              }
+            },
+            "outcome": "tool_succeeded",
+            "after": {
+              "snapshot": "- dialog\n  - heading \"Beta details\" [level=2, ref=e1]\n  - paragraph\n    - StaticText \"Read-only project details.\"\n  - button \"Close\" [ref=e2]",
+              "refs": {
+                "e1": {
+                  "name": "Beta details",
+                  "role": "heading"
+                },
+                "e2": {
+                  "name": "Close",
+                  "role": "button"
+                }
+              }
+            }
+          },
+          {
+            "stepIndex": 0,
+            "action": {
+              "ref": "@e2",
+              "role": "button",
+              "name": "Close",
+              "op": "click"
+            },
+            "before": {
+              "snapshot": "- dialog\n  - heading \"Beta details\" [level=2, ref=e1]\n  - paragraph\n    - StaticText \"Read-only project details.\"\n  - button \"Close\" [ref=e2]",
+              "refs": {
+                "e1": {
+                  "name": "Beta details",
+                  "role": "heading"
+                },
+                "e2": {
+                  "name": "Close",
+                  "role": "button"
+                }
+              }
+            },
+            "outcome": "tool_succeeded",
+            "after": {
+              "snapshot": "- heading \"Project catalog\" [level=1, ref=e1]\n- main\n  - article\n    - heading \"Alpha\" [level=2, ref=e2]\n    - paragraph\n      - StaticText \"Project Alpha reference material.\"\n    - button \"Details\" [ref=e3]\n  - article\n    - heading \"Beta\" [level=2, ref=e4]\n    - paragraph\n      - StaticText \"Project Beta reference material.\"\n    - button \"Details\" [ref=e5]",
+              "refs": {
+                "e1": {
+                  "name": "Project catalog",
+                  "role": "heading"
+                },
+                "e2": {
+                  "name": "Alpha",
+                  "role": "heading"
+                },
+                "e3": {
+                  "name": "Details",
+                  "role": "button"
+                },
+                "e4": {
+                  "name": "Beta",
+                  "role": "heading"
+                },
+                "e5": {
+                  "name": "Details",
+                  "role": "button"
+                }
+              }
+            }
+          }
+        ],
+        "progressAssessment": [
+          {
+            "stepIndex": 0,
+            "intent": "Open the details for project Beta, then close them and return to the catalog.",
+            "judgment": "model_reported_complete"
+          }
+        ],
+        "decisions": [
+          {
+            "stepIndex": 0,
+            "choice": "c1",
+            "op": "click",
+            "confidence": 1,
+            "cost": 0.000031164
+          },
+          {
+            "stepIndex": 0,
+            "choice": "c0",
+            "op": "click",
+            "confidence": 0.99,
+            "cost": 0.000034818
+          },
+          {
+            "stepIndex": 0,
+            "choice": "step_complete",
+            "op": "step_complete",
+            "confidence": 0.9,
+            "cost": 0.000038766
+          }
+        ],
+        "latestObservation": {
+          "snapshot": "- heading \"Project catalog\" [level=1, ref=e1]\n- main\n  - article\n    - heading \"Alpha\" [level=2, ref=e2]\n    - paragraph\n      - StaticText \"Project Alpha reference material.\"\n    - button \"Details\" [ref=e3]\n  - article\n    - heading \"Beta\" [level=2, ref=e4]\n    - paragraph\n      - StaticText \"Project Beta reference material.\"\n    - button \"Details\" [ref=e5]",
+          "refs": {
+            "e1": {
+              "name": "Project catalog",
+              "role": "heading"
+            },
+            "e2": {
+              "name": "Alpha",
+              "role": "heading"
+            },
+            "e3": {
+              "name": "Details",
+              "role": "button"
+            },
+            "e4": {
+              "name": "Beta",
+              "role": "heading"
+            },
+            "e5": {
+              "name": "Details",
+              "role": "button"
+            }
+          }
+        }
+      },
+      "events": [
+        {
+          "type": "open",
+          "item": "Beta"
+        },
+        {
+          "type": "close",
+          "item": "Beta"
+        }
+      ],
+      "independentFinalSnapshot": "- heading \"Project catalog\" [level=1, ref=e1]\n- main\n  - article\n    - heading \"Alpha\" [level=2, ref=e2]\n    - paragraph\n      - StaticText \"Project Alpha reference material.\"\n    - button \"Details\" [ref=e3]\n  - article\n    - heading \"Beta\" [level=2, ref=e4]\n    - paragraph\n      - StaticText \"Project Beta reference material.\"\n    - button \"Details\" [ref=e5]",
+      "verdict": "passed"
+    },
+    {
+      "id": "reordered-labels-symlink",
+      "invocation": "symlink",
+      "elapsedMs": 1056,
+      "exitCode": 0,
+      "result": {
+        "sessionId": "jev-proof-db894315-92b6-451e-a8c0-5de8bf33f5a2",
+        "returnReason": "reported_complete",
+        "actions": [
+          {
+            "stepIndex": 0,
+            "action": {
+              "ref": "@e3",
+              "role": "button",
+              "name": "Details",
+              "op": "click"
+            },
+            "before": {
+              "snapshot": "- heading \"Project catalog\" [level=1, ref=e1]\n- main\n  - article\n    - heading \"Beta\" [level=2, ref=e2]\n    - paragraph\n      - StaticText \"Project Beta reference material.\"\n    - button \"Details\" [ref=e3]\n  - article\n    - heading \"Alpha\" [level=2, ref=e4]\n    - paragraph\n      - StaticText \"Project Alpha reference material.\"\n    - button \"Details\" [ref=e5]",
+              "refs": {
+                "e1": {
+                  "name": "Project catalog",
+                  "role": "heading"
+                },
+                "e2": {
+                  "name": "Beta",
+                  "role": "heading"
+                },
+                "e3": {
+                  "name": "Details",
+                  "role": "button"
+                },
+                "e4": {
+                  "name": "Alpha",
+                  "role": "heading"
+                },
+                "e5": {
+                  "name": "Details",
+                  "role": "button"
+                }
+              }
+            },
+            "outcome": "tool_succeeded",
+            "after": {
+              "snapshot": "- dialog\n  - heading \"Beta details\" [level=2, ref=e1]\n  - paragraph\n    - StaticText \"Read-only project details.\"\n  - button \"Close\" [ref=e2]",
+              "refs": {
+                "e1": {
+                  "name": "Beta details",
+                  "role": "heading"
+                },
+                "e2": {
+                  "name": "Close",
+                  "role": "button"
+                }
+              }
+            }
+          },
+          {
+            "stepIndex": 0,
+            "action": {
+              "ref": "@e2",
+              "role": "button",
+              "name": "Close",
+              "op": "click"
+            },
+            "before": {
+              "snapshot": "- dialog\n  - heading \"Beta details\" [level=2, ref=e1]\n  - paragraph\n    - StaticText \"Read-only project details.\"\n  - button \"Close\" [ref=e2]",
+              "refs": {
+                "e1": {
+                  "name": "Beta details",
+                  "role": "heading"
+                },
+                "e2": {
+                  "name": "Close",
+                  "role": "button"
+                }
+              }
+            },
+            "outcome": "tool_succeeded",
+            "after": {
+              "snapshot": "- heading \"Project catalog\" [level=1, ref=e1]\n- main\n  - article\n    - heading \"Beta\" [level=2, ref=e2]\n    - paragraph\n      - StaticText \"Project Beta reference material.\"\n    - button \"Details\" [ref=e3]\n  - article\n    - heading \"Alpha\" [level=2, ref=e4]\n    - paragraph\n      - StaticText \"Project Alpha reference material.\"\n    - button \"Details\" [ref=e5]",
+              "refs": {
+                "e1": {
+                  "name": "Project catalog",
+                  "role": "heading"
+                },
+                "e2": {
+                  "name": "Beta",
+                  "role": "heading"
+                },
+                "e3": {
+                  "name": "Details",
+                  "role": "button"
+                },
+                "e4": {
+                  "name": "Alpha",
+                  "role": "heading"
+                },
+                "e5": {
+                  "name": "Details",
+                  "role": "button"
+                }
+              }
+            }
+          }
+        ],
+        "progressAssessment": [
+          {
+            "stepIndex": 0,
+            "intent": "Open the details for project Beta, then close them and return to the catalog.",
+            "judgment": "model_reported_complete"
+          }
+        ],
+        "decisions": [
+          {
+            "stepIndex": 0,
+            "choice": "c0",
+            "op": "click",
+            "confidence": 1,
+            "cost": 0.000031164
+          },
+          {
+            "stepIndex": 0,
+            "choice": "c0",
+            "op": "click",
+            "confidence": 0.99,
+            "cost": 0.000034818
+          },
+          {
+            "stepIndex": 0,
+            "choice": "step_complete",
+            "op": "step_complete",
+            "confidence": 0.91,
+            "cost": 0.000038766
+          }
+        ],
+        "latestObservation": {
+          "snapshot": "- heading \"Project catalog\" [level=1, ref=e1]\n- main\n  - article\n    - heading \"Beta\" [level=2, ref=e2]\n    - paragraph\n      - StaticText \"Project Beta reference material.\"\n    - button \"Details\" [ref=e3]\n  - article\n    - heading \"Alpha\" [level=2, ref=e4]\n    - paragraph\n      - StaticText \"Project Alpha reference material.\"\n    - button \"Details\" [ref=e5]",
+          "refs": {
+            "e1": {
+              "name": "Project catalog",
+              "role": "heading"
+            },
+            "e2": {
+              "name": "Beta",
+              "role": "heading"
+            },
+            "e3": {
+              "name": "Details",
+              "role": "button"
+            },
+            "e4": {
+              "name": "Alpha",
+              "role": "heading"
+            },
+            "e5": {
+              "name": "Details",
+              "role": "button"
+            }
+          }
+        }
+      },
+      "events": [
+        {
+          "type": "open",
+          "item": "Beta"
+        },
+        {
+          "type": "close",
+          "item": "Beta"
+        }
+      ],
+      "independentFinalSnapshot": "- heading \"Project catalog\" [level=1, ref=e1]\n- main\n  - article\n    - heading \"Beta\" [level=2, ref=e2]\n    - paragraph\n      - StaticText \"Project Beta reference material.\"\n    - button \"Details\" [ref=e3]\n  - article\n    - heading \"Alpha\" [level=2, ref=e4]\n    - paragraph\n      - StaticText \"Project Alpha reference material.\"\n    - button \"Details\" [ref=e5]",
+      "verdict": "passed"
+    },
+    {
+      "id": "literal-fill-symlink",
+      "invocation": "symlink",
+      "elapsedMs": 840,
+      "exitCode": 0,
+      "result": {
+        "sessionId": "jev-proof-db894315-92b6-451e-a8c0-5de8bf33f5a2",
+        "returnReason": "reported_complete",
+        "actions": [
+          {
+            "stepIndex": 0,
+            "action": {
+              "ref": "@e4",
+              "role": "textbox",
+              "name": "Message",
+              "op": "fill",
+              "valueId": "message",
+              "value": "Exact A&B \"quoted\" — €42\nSecond line $(literal)"
+            },
+            "before": {
+              "snapshot": "- heading \"Draft editor\" [level=1, ref=e1]\n- LabelText\n  - StaticText \"Title \"\n  - textbox \"Title \" [ref=e3]: Keep this title\n    - StaticText \"Keep this title\"\n- LabelText\n  - StaticText \"Message\"\n  - textbox \"Message\" [ref=e4]\n- button \"Publish\" [ref=e2]\n- paragraph\n  - StaticText \"Draft changes remain local until published.\"",
+              "refs": {
+                "e1": {
+                  "name": "Draft editor",
+                  "role": "heading"
+                },
+                "e2": {
+                  "name": "Publish",
+                  "role": "button"
+                },
+                "e3": {
+                  "name": "Title ",
+                  "role": "textbox"
+                },
+                "e4": {
+                  "name": "Message",
+                  "role": "textbox"
+                }
+              }
+            },
+            "outcome": "tool_succeeded",
+            "after": {
+              "snapshot": "- heading \"Draft editor\" [level=1, ref=e1]\n- LabelText\n  - StaticText \"Title \"\n  - textbox \"Title \" [ref=e3]: Keep this title\n    - StaticText \"Keep this title\"\n- LabelText\n  - StaticText \"Message\"\n  - textbox \"Message\" [ref=e4]: Exact A&B \"quoted\" — €42\nSecond line $(literal)\n    - generic\n      - StaticText \"Exact A&B \\\"quoted\\\" — €42\"\n      - LineBreak \"\\n\"\n      - StaticText \"Second line $(literal)\"\n- button \"Publish\" [ref=e2]\n- paragraph\n  - StaticText \"Draft changes remain local until published.\"",
+              "refs": {
+                "e1": {
+                  "name": "Draft editor",
+                  "role": "heading"
+                },
+                "e2": {
+                  "name": "Publish",
+                  "role": "button"
+                },
+                "e3": {
+                  "name": "Title ",
+                  "role": "textbox"
+                },
+                "e4": {
+                  "name": "Message",
+                  "role": "textbox"
+                }
+              }
+            }
+          }
+        ],
+        "progressAssessment": [
+          {
+            "stepIndex": 0,
+            "intent": "Fill the Message field with the supplied message value. Leave the Title unchanged and do not publish.",
+            "judgment": "model_reported_complete"
+          }
+        ],
+        "decisions": [
+          {
+            "stepIndex": 0,
+            "choice": "c1",
+            "op": "fill",
+            "confidence": 1,
+            "cost": 0.000034104
+          },
+          {
+            "stepIndex": 0,
+            "choice": "step_complete",
+            "op": "step_complete",
+            "confidence": 0.99,
+            "cost": 0.000045192
+          }
+        ],
+        "latestObservation": {
+          "snapshot": "- heading \"Draft editor\" [level=1, ref=e1]\n- LabelText\n  - StaticText \"Title \"\n  - textbox \"Title \" [ref=e3]: Keep this title\n    - StaticText \"Keep this title\"\n- LabelText\n  - StaticText \"Message\"\n  - textbox \"Message\" [ref=e4]: Exact A&B \"quoted\" — €42\nSecond line $(literal)\n    - generic\n      - StaticText \"Exact A&B \\\"quoted\\\" — €42\"\n      - LineBreak \"\\n\"\n      - StaticText \"Second line $(literal)\"\n- button \"Publish\" [ref=e2]\n- paragraph\n  - StaticText \"Draft changes remain local until published.\"",
+          "refs": {
+            "e1": {
+              "name": "Draft editor",
+              "role": "heading"
+            },
+            "e2": {
+              "name": "Publish",
+              "role": "button"
+            },
+            "e3": {
+              "name": "Title ",
+              "role": "textbox"
+            },
+            "e4": {
+              "name": "Message",
+              "role": "textbox"
+            }
+          }
+        }
+      },
+      "events": [
+        {
+          "type": "input",
+          "field": "message",
+          "value": ""
+        },
+        {
+          "type": "input",
+          "field": "message",
+          "value": "Exact A&B \"quoted\" — €42\nSecond line $(literal)"
+        },
+        {
+          "type": "input",
+          "field": "message",
+          "value": "Exact A&B \"quoted\" — €42\nSecond line $(literal)"
+        },
+        {
+          "type": "input",
+          "field": "message",
+          "value": "Exact A&B \"quoted\" — €42\nSecond line $(literal)"
+        }
+      ],
+      "independentFinalSnapshot": "- heading \"Draft editor\" [level=1, ref=e1]\n- LabelText\n  - StaticText \"Title \"\n  - textbox \"Title \" [ref=e3]: Keep this title\n    - StaticText \"Keep this title\"\n- LabelText\n  - StaticText \"Message\"\n  - textbox \"Message\" [ref=e4]: Exact A&B \"quoted\" — €42\nSecond line $(literal)\n    - generic\n      - StaticText \"Exact A&B \\\"quoted\\\" — €42\"\n      - LineBreak \"\\n\"\n      - StaticText \"Second line $(literal)\"\n- button \"Publish\" [ref=e2]\n- paragraph\n  - StaticText \"Draft changes remain local until published.\"",
+      "verdict": "failed",
+      "failure": "Expected values to be strictly deep-equal:\n+ actual - expected\n\n  [\n    {\n      field: 'message',\n      type: 'input',\n+     value: ''\n+   },\n+   {\n+     field: 'message',\n+     type: 'input',\n      value: 'Exact A&B \"quoted\" — €42\\nSecond line $(literal)'\n    },\n+   {\n+     field: 'message',\n+     type: 'input',\n+     value: 'Exact A&B \"quoted\" — €42\\nSecond line $(literal)'\n+   },\n+   {\n+     field: 'message',\n+     type: 'input',\n+     value: 'Exact A&B \"quoted\" — €42\\nSecond line $(literal)'\n+   }\n  ]\n"
+    }
+  ],
+  "cleanup": {
+    "browserClosed": true,
+    "serverClosed": true,
+    "tempRemoved": true
+  },
+  "browserVersion": "agent-browser 0.33.2",
+  "finishedAt": "2026-09-25T03:08:33.462Z",
+  "verdict": "failed"
+}
