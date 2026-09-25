@@ -7,10 +7,16 @@ export function controlState(observation) {
     const indent = line.match(/^\s*/)[0].length;
     if (!line.trimStart().startsWith('- ')) continue;
     while (stack.length && stack.at(-1).indent >= indent) stack.pop();
+    // Chromium exposes a native select popup as MenuListPopup. An ARIA
+    // listbox/combobox alone does not establish a native HTML select.
+    if (/^- MenuListPopup(?:\s|$)/.test(line.trimStart())) {
+      const owner = [...stack].reverse().find(s => s.role === 'combobox');
+      if (owner) stack.push({indent, id:owner.id, role:'native-options'});
+    }
     if (!match) continue;
     const id = match[2], control = observation.refs?.[id];
     if (!control) continue;
-    const parent = [...stack].reverse().find(s => ['combobox','listbox'].includes(s.role));
+    const parent = [...stack].reverse().find(s => s.role === 'native-options');
     const flags = [...line.matchAll(/\[([^\]]*)\]/g)].map(m => m[1]).join(',');
     const state = { disabled: /\bdisabled(?:=true)?(?:,|$)/.test(flags),
       checked: /\bchecked(?:=true)?(?:,|$)/.test(flags),
@@ -41,7 +47,7 @@ export function discoverActions(observation, suppliedValues = {}) {
       }
       continue;
     }
-    if (clickRoles.has(control.role)) actions.push({ ...base, op:'click' });
+    if (clickRoles.has(control.role) || (control.role === 'combobox' && !selects.has(ref))) actions.push({ ...base, op:'click' });
     if (control.role === 'checkbox') actions.push({ ...base, op:state.checked ? 'uncheck' : 'check' });
     if (inputRoles.has(control.role) && !selects.has(ref) && !state.readonly) {
       for (const [valueId,value] of Object.entries(suppliedValues)) {
@@ -49,8 +55,9 @@ export function discoverActions(observation, suppliedValues = {}) {
         actions.push({ ...base, op:'fill', valueId, value });
       }
       actions.push({ ...base, op:'request_input' });
-      actions.push({ ...base, op:'press', key:'Enter' });
-      if (control.role === 'combobox') actions.push({ ...base, op:'press', key:'ArrowDown' });
+    }
+    if (inputRoles.has(control.role) && !selects.has(ref)) {
+      for (const key of ['Enter','ArrowDown','ArrowUp']) actions.push({ ...base, op:'press', key });
     }
   }
   actions.push({op:'scroll',direction:'down',amount:600}, {op:'scroll',direction:'up',amount:600},

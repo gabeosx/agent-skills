@@ -45,7 +45,7 @@ The expensive part of agent-driven browsing is often the repeated conversation a
 
 - **Delegate the whole browser subtask.** Jev follows a goal across screens, without a parent-model turn per action.
 - **Keep the browser you already use.** Existing agent-browser sessions, forks and authentication continue to work.
-- **Use live controls.** Targets come from the current accessibility snapshot, including context that distinguishes repeated labels. There are no hard-coded site selectors or click sequences.
+- **Use live controls.** Targets come from the current accessibility snapshot, including context that distinguishes repeated labels. Searchable dropdowns require selecting a suggestion after typing. The helper can click observed options; keyboard-only selection currently needs direct caller control and verification. There are no hard-coded site selectors or click sequences.
 - **Receive useful evidence immediately.** The response includes the final page, freshness/truncation flags, missing input, elapsed times and reported Jev charges. Your agent can evaluate the result without reading another file.
 - **Resume instead of restarting.** Missing a field value or reaching a limit returns a continuation. Supply the value or let the caller help, then continue with fresh controls and retained progress.
 
@@ -53,7 +53,7 @@ A direct agent-browser command remains useful when you already know the control.
 
 ## Measured performance
 
-Tested on **2026-09-25**, using actual **Codex GPT-5.5 with low reasoning effort** in both arms. The task creates a report draft across several screens: text entry, three dropdowns, two checkbox settings, review, save and return to the list. Twelve browser actions; no supplied selectors or expected action sequence.
+Measured with **v0.3.0 on 2026-09-25**, using actual **Codex GPT-5.5 with low reasoning effort** in both arms. The task creates a report draft across several screens: text entry, three dropdowns, two checkbox settings, review, save and return to the list. Twelve browser actions; no supplied selectors or expected action sequence.
 
 | Three trials per approach | Codex + agent-browser | Codex + Jev |
 | --- | ---: | ---: |
@@ -67,6 +67,8 @@ That's **77% less elapsed time (4.4× faster)** and **78% lower estimated model 
 Timing includes navigation, Codex/model orchestration, browser actions and caller acceptance. Cost uses standard API-equivalent GPT rates with cached input counted correctly; it is **not a Codex subscription bill**. Both arms used the same agent-browser 0.33.2 fork and Chrome 151. Separate live acceptance checks cover the upstream version used by setup.
 
 This is one synthetic workflow with three trials per approach, not an arbitrary-site reliability claim. All runs and failures are retained. [Raw comparison](references/evidence/codex-workflow-0.3.0.json) · [Metrics and cost assumptions](references/evidence/workflow-metrics-0.3.0.json) · [Full methodology, development failures and prior short-task results](references/benchmarks.md).
+
+The v0.3.1 autocomplete checks found a remaining limitation: Jev can issue keyboard actions but sometimes commits the wrong suggestion and reports completion. Use direct agent-browser for keyboard-only dropdowns, and verify selected values before consequential actions. [Autocomplete results and retained failures](references/benchmarks.md#v031-searchable-dropdowns).
 
 ## Command-line examples
 
@@ -114,7 +116,7 @@ After caller intervention, add context such as `--context "Dismissed the welcome
 | --- | --- |
 | Clicks, exact text fills, native dropdown selections | Login, passwords and OTPs |
 | Explicit checkbox check/uncheck | Text composition and missing user facts |
-| Page scrolling, Enter, Escape, ArrowDown | Uploads, downloads and tab management |
+| Page scrolling, Enter, Escape, ArrowDown/Up | Uploads, downloads and tab management |
 | Back navigation, brief waits | Visual-only widgets and unsupported interactions |
 | Missing-input requests and resumable handoffs | Business decisions, permissions and final acceptance |
 
