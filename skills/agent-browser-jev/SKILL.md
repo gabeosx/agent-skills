@@ -1,38 +1,50 @@
 ---
 name: agent-browser-jev
-description: Use Jev to perform short browser tasks through agent-browser, including contextual clicks, forms, dialogs and searches. Give the helper an intent instead of making each UI decision yourself; it returns observations and completion or handoff.
+description: Delegate multi-step browser tasks to Jev through agent-browser. It operates current page controls, requests missing input, and returns final observations or resumable handoffs without a caller turn per click.
 metadata:
-  version: "0.2.1"
+  version: "0.3.0"
 ---
 
 # Agent Browser Jev
 
-Use Jev for a short browser task when interpreting the page would otherwise require repeated caller decisions. The helper observes the page, offers its actual controls to Jev, executes the selected action through agent-browser, and returns evidence. Prefer a direct browser command when the current control is already known.
+Give the helper a complete, bounded browser goal and exact non-secret values. Jev reads each new page and chooses the next action; agent-browser executes it. Keep planning, authorization, text composition and final acceptance with the caller. Use a direct browser command when the control is already known.
 
 ## Setup
 
-Resolve script paths relative to this skill directory. Run `node scripts/setup.mjs` once to install dependencies and configure the OpenRouter key. Setup reuses agent-browser from PATH or installs a local copy if absent. Preserve the user's chosen fork: pass `--binary /path/to/agent-browser` when needed. For subsequent direct browser commands, resolve its path with `configuredBrowser()` from `scripts/config.mjs`; do not print the raw configuration file, which may contain the key.
+Resolve scripts relative to this skill directory. Run `node scripts/setup.mjs` once; it installs dependencies, reuses agent-browser or installs a local copy, and prompts for an OpenRouter API key with input hidden. An existing `OPENROUTER_API_KEY` or saved key skips the prompt. Never request a key in chat. Keep an existing browser fork and credential provider with `--binary /path/to/agent-browser`. See [README](README.md#install-and-set-up).
 
-If no saved key or `OPENROUTER_API_KEY` exists, setup prompts in the terminal without echoing the key. Direct the user to that prompt; never ask them to paste a secret into chat. A saved key is stored outside the project with owner-only file permissions. Environment credentials take precedence. See the [README](README.md) for installation and key links.
+## Delegate a goal
 
-## Run
+```sh
+node /path/to/skill/scripts/run.mjs --session current-session \
+  --intent "Configure the requested report and save it as a draft. Finish on the report list." \
+  --value 'name=Weekly operations'
+```
 
-1. Use agent-browser to open the website and authenticate with the existing credential provider. Continue in the user's chosen session; preserve project-specific account binding and permissions.
-2. Invoke the bundled helper with the authorized intent, existing session and exact non-secret fill values:
+Use the existing authenticated session. Optional `--url https://example.com` opens a caller-supplied starting URL in the same invocation. Login, credentials and OTPs remain with agent-browser's authentication provider, outside model input. Resolve the saved binary via `configuredBrowser()` from `scripts/config.mjs` for direct browser operations; never print the raw configuration.
 
-   ```sh
-   node /path/to/skill/scripts/run.mjs --session current-session \
-     --intent "Fill Subject with the supplied subject; leave the form as a draft" \
-     --value 'subject=Delivery question'
-   ```
+Delegate the coherent goal once instead of splitting it into individual clicks. Supply all known field values up front. No task file, custom policy, site parser or verification script is required. Defaults offer all supported controls and send visible page text to Jev. Existing project permissions/privacy still apply; reuse them via `--policy` when needed. See [API and options](references/usage.md).
 
-   Use `--binary` for a selected fork. No task file or custom policy is required. The default offers every supported observed click/fill and passes visible page text to Jev. This does not add authority beyond the user's task. Reuse any existing project permissions/redaction via `--policy`; see [references/usage.md](references/usage.md). Do not build a new policy module or screen parser for an ordinary task just to call the helper.
-3. Review the summary and evidence path. `reported_complete` is Jev's assessment, so confirm the final outcome as appropriate to the task. On handoff or limits (exit 2), preserve that result: the helper returned control without establishing completion. A missing target is a handoff even when stopping was the correct behavior. Continue in the same caller when useful; report completion only if subsequent evidence establishes the requested outcome, and distinguish that caller recovery from the helper result. An uncertain action may already have happened: observe before repeating it.
+## Read the result
 
-Keep credentials and OTPs with the browser's authentication provider, outside model input. Keep the browser session exclusive during a call. Other processes or human activity can change a page between observation and gesture; the in-process lock cannot prevent that.
+The command returns `returnReason`, the final `observation`, missing input, timings, charges and a private `evidence` path.
 
-The defaults are 8 actions, 16 decisions and 60 seconds. Clicks, literal fills and brief waits are supported. Use ordinary agent-browser operations for navigation, login, uploads and downloads. The JavaScript API and custom policy remain available for application integrations.
+- Evaluate the returned page against the requested outcome. `reported_complete` is the model's assessment, not proof. A fresh, untruncated observation can supply the evidence without another tool call. Re-observe when the page changed after the call, evidence is missing, the result says `fresh:false`, or the task requires a separate authoritative readback. Do not reopen a dialog just to reconfirm a value already established by the returned page.
+- `input_required` identifies a field whose exact value is missing. Supply it from user instructions or authorized caller work, then resume. Do not invent missing user facts.
+- A handoff or limit means completion was not established. Preserve that result. If later caller work completes the task, distinguish it from the helper's result. An absent target remains a handoff even when stopping was correct.
+- An uncertain gesture may already have happened. Observe before deciding what to do next; never blindly repeat it.
+
+## Continue the same task
+
+```sh
+node /path/to/skill/scripts/run.mjs --resume /path/from/evidence/result.json \
+  --value 'Report name=Weekly operations'
+```
+
+Resume preserves the original session, binary, policy, goal, completed intents and recent actions. It always observes again and chooses new controls. It does not replay stored references. After caller intervention, add `--context "Dismissed the account notice; continue from the current page"`. Do not open the starting URL again. Use only trusted result files from your own task.
+
+Defaults: 30 actions, 60 decisions, 120 seconds per invocation. Override with `--max-actions` and `--timeout` (milliseconds). Clicks, literal fills, native selects, checkbox check/uncheck, page scrolling, Enter/Escape/ArrowDown, back and brief waits are supported. Uploads, downloads, authentication, visual-only widgets and tab management remain direct agent-browser work. Keep the session exclusive during each call; the process-local lock cannot exclude people or other processes.
 
 ## Validation
 
-Run `npm test` for offline regressions. `npm run benchmark -- --output /absolute/path/to/new-report.json` runs fresh local fixtures with the real browser and Jev, makes billable model calls, and records every trial including failures. `npm run benchmark:codex -- --output /absolute/path/to/new-report.json` compares actual Codex sessions using direct agent-browser versus the helper. See [references/benchmarks.md](references/benchmarks.md) for measurements and reproduction.
+`npm test` runs offline regressions. `npm run test:workflow -- --output new-report.json` tests sustained tasks and resume with real Jev/browser calls. `npm run benchmark:codex -- --suite workflow --output new-comparison.json` compares isolated native Codex sessions directly controlling agent-browser with Codex delegating the same goal. See [benchmarks and limits](references/benchmarks.md).

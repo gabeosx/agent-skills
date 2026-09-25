@@ -41,12 +41,12 @@ test('caller steps advance only on model assessment, without an expected control
   const result = await f.run({ intentOrSteps: ['First caller intent', 'Second caller intent'] });
   assert.equal(result.returnReason, 'reported_complete');
   assert.deepEqual(seen, ['First caller intent', 'First caller intent', 'Second caller intent', 'Second caller intent']);
-  assert.equal(f.observations(), 3);
+  assert.equal(f.calls.length, 2);
 });
 
 test('duplicate labels keep distinct refs and full context for the model', () => {
   const actions = discoverActions({ refs: { e1: { role: 'button', name: 'Open' }, e2: { role: 'button', name: 'Open' } } });
-  assert.deepEqual(actions.map(a => a.ref), ['@e1', '@e2']);
+  assert.deepEqual(actions.filter(a => a.ref).map(a => a.ref), ['@e1', '@e2']);
 });
 
 test('next decision retains the previous screen so reused refs do not erase target context', async () => {

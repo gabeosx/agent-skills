@@ -5,8 +5,8 @@ A collection of specialized skills following the open standard for agent capabil
 ## Included Skills
 
 ### 🌐 [Agent Browser Jev](./skills/agent-browser-jev)
-Ground short natural-language browser tasks with Jev, execute through an existing agent-browser session, and return observed progress to the calling agent.
-- **Key Features:** One-time API-key setup, plain-language browser commands, permissive defaults, optional custom policies, and a fresh comparison with direct Codex browser control. The [skill README](./skills/agent-browser-jev/README.md) includes setup, examples, benchmark methodology and validation limits.
+Delegate multi-step browser goals to Jev in an existing agent-browser session, receive the final page immediately, and resume interrupted tasks without starting over.
+- **Key Features:** One-time API-key setup, continuous browser control, missing-input requests, resumable tasks, direct result evidence, and a fresh sustained-task comparison with direct Codex browser control. The [skill README](./skills/agent-browser-jev/README.md) includes setup, examples, benchmark methodology and validation limits.
 
 ### 🍎 [Apple Container Skill](./skills/apple-container-skill)
 Interact with the Apple Container CLI to manage containers, images, volumes, networks, and system services on macOS.

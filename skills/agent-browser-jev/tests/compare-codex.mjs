@@ -8,18 +8,20 @@ import { resolve, dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createHash, randomUUID } from 'node:crypto';
 import assert from 'node:assert/strict';
+import { workflowPage, workflowIntent, workflowValues, workflowExpected } from './fixtures/workflow-pages.mjs';
 import { benchmarkPage } from './fixtures/benchmark-pages.mjs';
 import { configuredBrowser, configuredApiKey } from '../scripts/config.mjs';
 
 const execute=promisify(execFile);
-const {values}=parseArgs({options:{output:{type:'string'},rounds:{type:'string',default:'3'},binary:{type:'string'},codex:{type:'string',default:'codex'},model:{type:'string',default:'gpt-5.5'},effort:{type:'string',default:'low'}}});
+const {values}=parseArgs({options:{suite:{type:'string',default:'short'},output:{type:'string'},rounds:{type:'string',default:'3'},binary:{type:'string'},codex:{type:'string',default:'codex'},model:{type:'string',default:'gpt-5.5'},effort:{type:'string',default:'low'}}});
 const rounds=Number(values.rounds);
 if(!values.output||!Number.isSafeInteger(rounds)||rounds<1||rounds>10)throw new Error('Use --output new-report.json [--rounds 3] [--binary /path/to/agent-browser] [--codex /path/to/codex] [--model gpt-5.5] [--effort low]');
 const apiKey=configuredApiKey(), binary=values.binary||configuredBrowser();
 const skill=fileURLToPath(new URL('..',import.meta.url)),output=resolve(values.output);
 await mkdir(dirname(output),{recursive:true,mode:0o700});await writeFile(output,'{}\n',{flag:'wx',mode:0o600});
 const root=await mkdtemp(join(tmpdir(),'jev-codex-comparison-'));
-const scenarios=[
+if(!['short','workflow'].includes(values.suite))throw Error('Use --suite short or workflow');
+const scenarios=values.suite==='workflow'?[{id:'report-draft',route:'/workflow',intent:workflowIntent,values:workflowValues}]:[
   {id:'help-article',route:'/articles',intent:'Read the Returns article, then go back to the article list.',expected:[{type:'article',article:'Returns'},{type:'back',article:'Returns'}]},
   {id:'reordered-articles',route:'/reordered',intent:'Read the Warranty article, then go back to the article list.',expected:[{type:'article',article:'Warranty'},{type:'back',article:'Warranty'}]},
   {id:'support-draft',route:'/support',intent:'Fill Subject with the supplied subject and Message with the supplied message. Leave the request as a draft; do not send it.',values:{subject:'Delivery question',message:'Please check order #42 — "blue" & green.\nThank you!'}},
@@ -27,11 +29,11 @@ const scenarios=[
   {id:'search-topic',route:'/search',intent:'Search topics using the supplied query, open Account recovery, then go back to the results.',values:{query:'account'}},
   {id:'missing-article',route:'/articles',intent:'Read the Billing article. If it is not listed, return to the caller without clicking.',expected:[],status:'handoff'},
 ];
-const report={schema:2,startedAt:new Date().toISOString(),version:JSON.parse(await readFile(join(skill,'package.json'),'utf8')).version,
+const report={schema:3,suite:values.suite,startedAt:new Date().toISOString(),version:JSON.parse(await readFile(join(skill,'package.json'),'utf8')).version,
   codexModel:values.model,reasoningEffort:values.effort,node:process.version,platform:`${process.platform}-${process.arch}`,rounds,
   timing:'Task delivery via /next to agent POST /done; includes navigation, Codex reasoning/tool orchestration, browser actions, and agent final readback. Excludes Codex session startup, independent harness verification.',
   sourceSha256:{},trials:[],sessions:[],cleanup:{}};
-for(const file of ['SKILL.md','scripts/run.mjs','scripts/config.mjs','scripts/agent-browser-jev.mjs','scripts/jev-browser.mjs','tests/compare-codex.mjs','tests/fixtures/benchmark-pages.mjs'])report.sourceSha256[file]=createHash('sha256').update(await readFile(join(skill,file))).digest('hex');
+for(const file of ['SKILL.md','scripts/run.mjs','scripts/config.mjs','scripts/agent-browser-jev.mjs','scripts/jev-browser.mjs','scripts/controls.mjs','tests/compare-codex.mjs','tests/fixtures/benchmark-pages.mjs','tests/fixtures/workflow-pages.mjs'])report.sourceSha256[file]=createHash('sha256').update(await readFile(join(skill,file))).digest('hex');
 const save=()=>writeFile(output,JSON.stringify(report,null,2));
 const shellQuote=s=>`'${s.replaceAll("'","'\\''")}'`;
 const owned=[],children=[];
@@ -65,6 +67,11 @@ async function lane(round,arm){
           trial.agentReportedStatus=JSON.parse(body).status;
           trial.finalSnapshot=(await browser(['snapshot'])).snapshot;trial.events=structuredClone(events);
           trial.statusVerdict=trial.agentReportedStatus===(scenario.status??'complete')?'passed':'failed';
+          if(scenario.id==='report-draft'){
+            assert.deepEqual(trial.events.filter(e=>e.type==='save').map(e=>e.data),[workflowExpected]);
+            assert.ok(!trial.events.some(e=>e.type==='publish'));
+            assert.match(trial.finalSnapshot,/Saved draft/);assert.doesNotMatch(trial.finalSnapshot,/Publish report/);
+          }
           if(scenario.expected)assert.deepEqual(trial.events,scenario.expected);
           if(scenario.id==='support-draft'){
             trial.readbacks={subject:(await browser(['get','value','#subject'])).value,message:(await browser(['get','value','#message'])).value};
@@ -83,7 +90,7 @@ async function lane(round,arm){
             const evidence=JSON.parse(await readFile(evidencePath,'utf8'));
             const decisions=evidence.decisions??[];
             trial.helper={returnReason:evidence.returnReason,actions:evidence.actions?.length,
-              elapsedMs:evidence.elapsedMs??null,decisions:decisions.map(({op,cost,elapsedMs})=>({op,cost:cost??null,elapsedMs:elapsedMs??null})),
+              elapsedMs:evidence.elapsedMs??null,totalMs:evidence.totalMs??null,timing:evidence.timing??null,decisions:decisions.map(({op,cost,elapsedMs})=>({op,cost:cost??null,elapsedMs:elapsedMs??null})),
               costUsd:decisions.length&&decisions.every(d=>Number.isFinite(d.cost))?decisions.reduce((sum,d)=>sum+d.cost,0):null,
               latestObservation:evidence.latestObservation};
           }catch{trial.helperEvidenceMissing=true;}
@@ -92,7 +99,7 @@ async function lane(round,arm){
         active=undefined;index++;await save();console.log(JSON.stringify({round,arm,id:trial.id,elapsedMs:trial.elapsedMs,verdict:trial.verdict}));
         send({recorded:true});return; // Do not give the agent fixture answers or a chance to retry an assertion.
       }
-      res.writeHead(200,{'content-type':'text/html; charset=utf-8'});res.end(benchmarkPage(req.url));
+      res.writeHead(200,{'content-type':'text/html; charset=utf-8'});res.end(values.suite==='workflow'?workflowPage(req.url):benchmarkPage(req.url));
     }catch{res.writeHead(500);res.end('Harness error');}
   });
   await new Promise((resolve,reject)=>{server.once('error',reject);server.listen(0,'127.0.0.1',resolve);});
@@ -101,19 +108,19 @@ async function lane(round,arm){
   const browserCommand=`${shellQuote(binary)} --session ${shellQuote(session)} --json`;
   const helperCommand=`node ${shellQuote(join(skill,'scripts/run.mjs'))} --binary ${shellQuote(binary)} --session ${shellQuote(session)}`;
   const method=arm==='direct'
-    ? `Complete each task yourself using normal agent-browser CLI commands. Do not invoke Jev or any other model/helper. Use snapshots to choose refs, then click/fill/wait/get as appropriate. You may batch known independent commands as you normally would.`
-    : `Complete each task by calling the Jev helper with the supplied intent and exact values: ${helperCommand} --intent '<task intent>' [--value 'name=text' ...] --output '<task evidencePath>'. First read ${shellQuote(join(skill,'SKILL.md'))}; use this version of the skill. Do not write a task file or policy. After handoff or failure, follow the skill's caller-handling instructions. Inspect the page and continue with ordinary browser commands if appropriate; retain time spent handling the exception.`;
+    ? `Complete each task yourself using normal agent-browser CLI commands. Do not invoke Jev or any other model/helper. Use snapshots to choose refs, then click/fill/select/check/uncheck/press/scroll/back/wait/get as appropriate. You may batch known independent commands as you normally would.`
+    : `Complete each task by calling the Jev helper with the supplied intent and exact values: ${helperCommand} --url '<task URL>' --intent '<task intent>' [--value 'name=text' ...] --output '<task evidencePath>'. First read ${shellQuote(join(skill,'SKILL.md'))}; use this version of the skill. Do not write a task file or policy. After handoff or failure, follow the skill's caller-handling instructions. Inspect the page and continue with ordinary browser commands if appropriate; retain time spent handling the exception.`;
   const prompt=`You are completing authorized browser tasks on synthetic local pages. Use only the browser UI as evidence. Do not inspect fixture source, test files, other sessions, reports, repository files (except the specified SKILL.md) or environment secrets. You have no preselected refs or expected action sequences. Do not delegate or call external model APIs.
 
 Browser command: ${browserCommand}
-Useful commands: open <url>, snapshot, click @eN, fill @eN <exact text>, get value @eN, wait 300. Use the existing credential-free test session. No more than 8 gestures per task; return handoff if progress is unavailable. Do not close the session yourself.
+Useful commands: open <url>, snapshot, click @eN, fill @eN <exact text>, select @eN <option label>, check/uncheck @eN, press Enter, scroll down 600, back, get value @eN, wait 300. Use the existing credential-free test session. No more than 30 gestures per task; return handoff if progress is unavailable. Do not close the session yourself.
 
 Method: ${method}
 
 Workflow:
 1. Get the next task with curl -s ${origin}/next. If finished is true, stop.
-2. Open its URL with the browser command. Execute the intent using the method above. Only the requested changes are authorized.
-3. Read a fresh browser snapshot to assess the final state. For a filled field, read back its value. Do not treat a helper success flag alone as success.
+2. Execute the intent using the method above. Direct mode opens the URL with agent-browser; Jev mode passes --url to the helper so navigation and execution share a call. Only the requested changes are authorized.
+3. Assess the final observed state against the task. A helper observation marked fresh and untruncated, or your latest post-action browser snapshot, is usable evidence if nothing changed afterward. Read a new snapshot or field value when evidence is missing or stale. Do not reopen dialogs or change state just to recheck what is already visible. Do not treat a helper success flag alone as success.
 4. POST your assessment using curl -s -X POST ${origin}/done -H 'Content-Type: application/json' -d '{"status":"complete"}' (or status "handoff" if the requested outcome is unavailable or could not be completed). Completing a safe stopping instruction is not completing the requested browser outcome. An absent requested target therefore remains a handoff. Preserve a helper handoff unless later caller work actually establishes the requested outcome.
 5. Repeat from step 1 until finished. Be concise, avoid narration, and do not add research or unrelated checks.
 `;
@@ -122,12 +129,13 @@ Workflow:
   const child=spawn(values.codex,args,{cwd,env:{...process.env,OPENROUTER_API_KEY:apiKey},stdio:['pipe','pipe','pipe']});
   children.push(child);
   child.stdin.end(prompt);
-  let buffer='';
+  let buffer='';const commandStarts=new Map();
   child.stdout.on('data',chunk=>{
     buffer+=chunk;let end;
     while((end=buffer.indexOf('\n'))!==-1){const line=buffer.slice(0,end);buffer=buffer.slice(end+1);let event;try{event=JSON.parse(line);}catch{continue;}
+      if(event.type==='item.started'&&event.item?.type==='command_execution')commandStarts.set(event.item.id,performance.now());
       if(event.type==='item.completed'&&event.item?.type==='command_execution'){
-        info.commandCount++;info.commands.push({command:event.item.command.replaceAll(binary,'<agent-browser>').replaceAll(skill,'<installed-skill>').replaceAll(session,'<session>').replaceAll(origin,'<fixture-origin>').replaceAll(root,'<temporary-directory>'),exitCode:event.item.exit_code});
+        info.commandCount++;info.commands.push({command:event.item.command.replaceAll(binary,'<agent-browser>').replaceAll(skill,'<installed-skill>').replaceAll(session,'<session>').replaceAll(origin,'<fixture-origin>').replaceAll(root,'<temporary-directory>'),exitCode:event.item.exit_code,elapsedMs:commandStarts.has(event.item.id)?Math.round(performance.now()-commandStarts.get(event.item.id)):null});
       }
       if(event.type==='turn.completed')info.usage=event.usage??null;
       if(event.type==='turn.failed')info.failed=true;

@@ -1,0 +1,1129 @@
+{
+  "schema": 3,
+  "suite": "workflow",
+  "startedAt": "2026-09-25T12:33:12.593Z",
+  "version": "0.3.0",
+  "codexModel": "gpt-5.5",
+  "reasoningEffort": "low",
+  "node": "v26.5.0",
+  "platform": "darwin-arm64",
+  "rounds": 3,
+  "timing": "Task delivery via /next to agent POST /done; includes navigation, Codex reasoning/tool orchestration, browser actions, and agent final readback. Excludes Codex session startup, independent harness verification.",
+  "sourceSha256": {
+    "SKILL.md": "b371c8f3cca07c135db0f0c759ec773887c7aa93f061d291966c0e8dba541f4d",
+    "scripts/run.mjs": "68580b450fa6fc26ef071d8388939f113621b19b6888fbcc2d3468ea9f0a7c71",
+    "scripts/config.mjs": "ed3b9120c31cf4e69d1f33f2b2f55949249cfc9d83355ee3e713518152b5f387",
+    "scripts/agent-browser-jev.mjs": "8c33528e09b70de46f7373177af2282c576b9150426e3401a5332bfe4cbbb8a3",
+    "scripts/jev-browser.mjs": "8cac98966637e04d759dc322f45aeeacc2d1a3bd497cde20512a0fea7decb836",
+    "scripts/controls.mjs": "f71ac9d95e65d78a81aeb9d48496c8d244ccc9464238a5091ecb9188447af44d",
+    "tests/compare-codex.mjs": "f901361d1bfc81fb8c8544423ced9bdb4e479669388b038c0db989467fa4d3a3",
+    "tests/fixtures/benchmark-pages.mjs": "d2330e6acb4dc758e644ffe609ddc885768145baee8162d11e1c425007e6617f",
+    "tests/fixtures/workflow-pages.mjs": "365ca1ea0e7f8d2610b192127971662ec5a25eb2f5ae730ae9e9157dad7d7961"
+  },
+  "trials": [
+    {
+      "round": 1,
+      "arm": "jev",
+      "id": "report-draft",
+      "intent": "Create and save a report draft using the supplied report name. Choose project Atlas, North region, exclude archived records, enable email updates and use Weekly delivery. Finish on the report list with the saved draft visible. Do not publish.",
+      "startedAt": "2026-09-25T12:33:21.149Z",
+      "elapsedMs": 13642,
+      "finishedAt": "2026-09-25T12:33:34.791Z",
+      "agentReportedStatus": "complete",
+      "finalSnapshot": "- main\n  - heading \"Reports\" [level=1, ref=e1]\n  - button \"Create report\" [ref=e2]\n  - article\n    - heading \"Saved draft\" [level=2, ref=e3]\n    - StaticText \"{\\n  \\\"name\\\": \\\"Weekly operations \u2014 review only\\\",\\n  \\\"project\\\": \\\"atlas\\\",\\n  \\\"region\\\": \\\"north\\\",\\n  \\\"archived\\\": false,\\n  \\\"email\\\": true,\\n  \\\"frequency\\\": \\\"weekly\\\"\\n}\"",
+      "events": [
+        {
+          "type": "start"
+        },
+        {
+          "type": "details",
+          "name": "Weekly operations \u2014 review only",
+          "project": "atlas"
+        },
+        {
+          "type": "coverage",
+          "region": "north",
+          "archived": false
+        },
+        {
+          "type": "delivery",
+          "email": true,
+          "frequency": "weekly"
+        },
+        {
+          "type": "save",
+          "data": {
+            "name": "Weekly operations \u2014 review only",
+            "project": "atlas",
+            "region": "north",
+            "archived": false,
+            "email": true,
+            "frequency": "weekly"
+          }
+        },
+        {
+          "type": "return"
+        }
+      ],
+      "statusVerdict": "passed",
+      "uiVerdict": "passed",
+      "helper": {
+        "returnReason": "reported_complete",
+        "actions": 12,
+        "elapsedMs": 4251.322292000001,
+        "totalMs": 4253.757041,
+        "timing": {
+          "observationMs": 120.84795799999984,
+          "decisionMs": 2507.4325419999996,
+          "actionMs": 96.8340390000003,
+          "settleMs": 328.1321270000003
+        },
+        "decisions": [
+          {
+            "op": "click",
+            "cost": 3.6582e-05,
+            "elapsedMs": 217.2097080000001
+          },
+          {
+            "op": "fill",
+            "cost": 5.544e-05,
+            "elapsedMs": 205.88441699999998
+          },
+          {
+            "op": "select",
+            "cost": 6.4218e-05,
+            "elapsedMs": 145.057417
+          },
+          {
+            "op": "click",
+            "cost": 6.804e-05,
+            "elapsedMs": 202.13574999999992
+          },
+          {
+            "op": "select",
+            "cost": 6.5646e-05,
+            "elapsedMs": 180.7956250000002
+          },
+          {
+            "op": "uncheck",
+            "cost": 6.7368e-05,
+            "elapsedMs": 301.61841700000014
+          },
+          {
+            "op": "click",
+            "cost": 7.0056e-05,
+            "elapsedMs": 152.45966700000008
+          },
+          {
+            "op": "check",
+            "cost": 7.2702e-05,
+            "elapsedMs": 167.95291700000007
+          },
+          {
+            "op": "select",
+            "cost": 7.5516e-05,
+            "elapsedMs": 167.66533300000037
+          },
+          {
+            "op": "click",
+            "cost": 7.8582e-05,
+            "elapsedMs": 155.57658300000003
+          },
+          {
+            "op": "click",
+            "cost": 7.5432e-05,
+            "elapsedMs": 169.1823330000002
+          },
+          {
+            "op": "click",
+            "cost": 7.266e-05,
+            "elapsedMs": 164.94891700000016
+          },
+          {
+            "op": "step_complete",
+            "cost": 7.5642e-05,
+            "elapsedMs": 276.9826659999999
+          }
+        ],
+        "costUsd": 0.0008778839999999999,
+        "latestObservation": {
+          "snapshot": "- main\n  - heading \"Reports\" [level=1, ref=e1]\n  - button \"Create report\" [ref=e2]\n  - article\n    - heading \"Saved draft\" [level=2, ref=e3]\n    - StaticText \"{\\n  \\\"name\\\": \\\"Weekly operations \u2014 review only\\\",\\n  \\\"project\\\": \\\"atlas\\\",\\n  \\\"region\\\": \\\"north\\\",\\n  \\\"archived\\\": false,\\n  \\\"email\\\": true,\\n  \\\"frequency\\\": \\\"weekly\\\"\\n}\"",
+          "refs": {
+            "e1": {
+              "name": "Reports",
+              "role": "heading"
+            },
+            "e2": {
+              "name": "Create report",
+              "role": "button"
+            },
+            "e3": {
+              "name": "Saved draft",
+              "role": "heading"
+            }
+          }
+        }
+      },
+      "verdict": "passed"
+    },
+    {
+      "round": 1,
+      "arm": "direct",
+      "id": "report-draft",
+      "intent": "Create and save a report draft using the supplied report name. Choose project Atlas, North region, exclude archived records, enable email updates and use Weekly delivery. Finish on the report list with the saved draft visible. Do not publish.",
+      "startedAt": "2026-09-25T12:33:26.743Z",
+      "elapsedMs": 62877,
+      "finishedAt": "2026-09-25T12:34:29.620Z",
+      "agentReportedStatus": "complete",
+      "finalSnapshot": "- main\n  - heading \"Reports\" [level=1, ref=e1]\n  - button \"Create report\" [ref=e2]\n  - article\n    - heading \"Saved draft\" [level=2, ref=e3]\n    - StaticText \"{\\n  \\\"name\\\": \\\"Weekly operations \u2014 review only\\\",\\n  \\\"project\\\": \\\"atlas\\\",\\n  \\\"region\\\": \\\"north\\\",\\n  \\\"archived\\\": false,\\n  \\\"email\\\": true,\\n  \\\"frequency\\\": \\\"weekly\\\"\\n}\"",
+      "events": [
+        {
+          "type": "start"
+        },
+        {
+          "type": "details",
+          "name": "Weekly operations \u2014 review only",
+          "project": "atlas"
+        },
+        {
+          "type": "coverage",
+          "region": "north",
+          "archived": false
+        },
+        {
+          "type": "delivery",
+          "email": true,
+          "frequency": "weekly"
+        },
+        {
+          "type": "save",
+          "data": {
+            "name": "Weekly operations \u2014 review only",
+            "project": "atlas",
+            "region": "north",
+            "archived": false,
+            "email": true,
+            "frequency": "weekly"
+          }
+        },
+        {
+          "type": "return"
+        }
+      ],
+      "statusVerdict": "passed",
+      "uiVerdict": "passed",
+      "verdict": "passed"
+    },
+    {
+      "round": 2,
+      "arm": "jev",
+      "id": "report-draft",
+      "intent": "Create and save a report draft using the supplied report name. Choose project Atlas, North region, exclude archived records, enable email updates and use Weekly delivery. Finish on the report list with the saved draft visible. Do not publish.",
+      "startedAt": "2026-09-25T12:34:41.868Z",
+      "elapsedMs": 15941,
+      "finishedAt": "2026-09-25T12:34:57.810Z",
+      "agentReportedStatus": "complete",
+      "finalSnapshot": "- main\n  - heading \"Reports\" [level=1, ref=e1]\n  - button \"Create report\" [ref=e2]\n  - article\n    - heading \"Saved draft\" [level=2, ref=e3]\n    - StaticText \"{\\n  \\\"name\\\": \\\"Weekly operations \u2014 review only\\\",\\n  \\\"project\\\": \\\"atlas\\\",\\n  \\\"region\\\": \\\"north\\\",\\n  \\\"archived\\\": false,\\n  \\\"email\\\": true,\\n  \\\"frequency\\\": \\\"weekly\\\"\\n}\"",
+      "events": [
+        {
+          "type": "start"
+        },
+        {
+          "type": "details",
+          "name": "Weekly operations \u2014 review only",
+          "project": "atlas"
+        },
+        {
+          "type": "coverage",
+          "region": "north",
+          "archived": false
+        },
+        {
+          "type": "delivery",
+          "email": true,
+          "frequency": "weekly"
+        },
+        {
+          "type": "save",
+          "data": {
+            "name": "Weekly operations \u2014 review only",
+            "project": "atlas",
+            "region": "north",
+            "archived": false,
+            "email": true,
+            "frequency": "weekly"
+          }
+        },
+        {
+          "type": "return"
+        }
+      ],
+      "statusVerdict": "passed",
+      "uiVerdict": "passed",
+      "helper": {
+        "returnReason": "reported_complete",
+        "actions": 12,
+        "elapsedMs": 4501.595084,
+        "totalMs": 4504.395375,
+        "timing": {
+          "observationMs": 126.00925299999926,
+          "decisionMs": 2602.9556650000004,
+          "actionMs": 118.61362600000098,
+          "settleMs": 328.8124590000007
+        },
+        "decisions": [
+          {
+            "op": "click",
+            "cost": 3.6582e-05,
+            "elapsedMs": 288.44574999999986
+          },
+          {
+            "op": "fill",
+            "cost": 5.544e-05,
+            "elapsedMs": 203.331416
+          },
+          {
+            "op": "select",
+            "cost": 6.4218e-05,
+            "elapsedMs": 196.92191600000024
+          },
+          {
+            "op": "click",
+            "cost": 6.804e-05,
+            "elapsedMs": 191.64291600000024
+          },
+          {
+            "op": "select",
+            "cost": 6.5646e-05,
+            "elapsedMs": 209.8379170000003
+          },
+          {
+            "op": "uncheck",
+            "cost": 6.7368e-05,
+            "elapsedMs": 206.00829199999998
+          },
+          {
+            "op": "click",
+            "cost": 7.0056e-05,
+            "elapsedMs": 194.83816700000034
+          },
+          {
+            "op": "check",
+            "cost": 7.2702e-05,
+            "elapsedMs": 178.78983300000027
+          },
+          {
+            "op": "select",
+            "cost": 7.5516e-05,
+            "elapsedMs": 160.136125
+          },
+          {
+            "op": "click",
+            "cost": 7.8582e-05,
+            "elapsedMs": 220.9762499999997
+          },
+          {
+            "op": "click",
+            "cost": 7.5432e-05,
+            "elapsedMs": 172.31887499999993
+          },
+          {
+            "op": "click",
+            "cost": 7.266e-05,
+            "elapsedMs": 177.88079199999993
+          },
+          {
+            "op": "step_complete",
+            "cost": 7.5642e-05,
+            "elapsedMs": 201.8974159999998
+          }
+        ],
+        "costUsd": 0.0008778839999999999,
+        "latestObservation": {
+          "snapshot": "- main\n  - heading \"Reports\" [level=1, ref=e1]\n  - button \"Create report\" [ref=e2]\n  - article\n    - heading \"Saved draft\" [level=2, ref=e3]\n    - StaticText \"{\\n  \\\"name\\\": \\\"Weekly operations \u2014 review only\\\",\\n  \\\"project\\\": \\\"atlas\\\",\\n  \\\"region\\\": \\\"north\\\",\\n  \\\"archived\\\": false,\\n  \\\"email\\\": true,\\n  \\\"frequency\\\": \\\"weekly\\\"\\n}\"",
+          "refs": {
+            "e1": {
+              "name": "Reports",
+              "role": "heading"
+            },
+            "e2": {
+              "name": "Create report",
+              "role": "button"
+            },
+            "e3": {
+              "name": "Saved draft",
+              "role": "heading"
+            }
+          }
+        }
+      },
+      "verdict": "passed"
+    },
+    {
+      "round": 2,
+      "arm": "direct",
+      "id": "report-draft",
+      "intent": "Create and save a report draft using the supplied report name. Choose project Atlas, North region, exclude archived records, enable email updates and use Weekly delivery. Finish on the report list with the saved draft visible. Do not publish.",
+      "startedAt": "2026-09-25T12:34:45.788Z",
+      "elapsedMs": 69643,
+      "finishedAt": "2026-09-25T12:35:55.432Z",
+      "agentReportedStatus": "complete",
+      "finalSnapshot": "- main\n  - heading \"Reports\" [level=1, ref=e1]\n  - button \"Create report\" [ref=e2]\n  - article\n    - heading \"Saved draft\" [level=2, ref=e3]\n    - StaticText \"{\\n  \\\"name\\\": \\\"Weekly operations \u2014 review only\\\",\\n  \\\"project\\\": \\\"atlas\\\",\\n  \\\"region\\\": \\\"north\\\",\\n  \\\"archived\\\": false,\\n  \\\"email\\\": true,\\n  \\\"frequency\\\": \\\"weekly\\\"\\n}\"",
+      "events": [
+        {
+          "type": "start"
+        },
+        {
+          "type": "details",
+          "name": "Weekly operations \u2014 review only",
+          "project": "atlas"
+        },
+        {
+          "type": "coverage",
+          "region": "north",
+          "archived": false
+        },
+        {
+          "type": "delivery",
+          "email": true,
+          "frequency": "weekly"
+        },
+        {
+          "type": "save",
+          "data": {
+            "name": "Weekly operations \u2014 review only",
+            "project": "atlas",
+            "region": "north",
+            "archived": false,
+            "email": true,
+            "frequency": "weekly"
+          }
+        },
+        {
+          "type": "return"
+        }
+      ],
+      "statusVerdict": "passed",
+      "uiVerdict": "passed",
+      "verdict": "passed"
+    },
+    {
+      "round": 3,
+      "arm": "jev",
+      "id": "report-draft",
+      "intent": "Create and save a report draft using the supplied report name. Choose project Atlas, North region, exclude archived records, enable email updates and use Weekly delivery. Finish on the report list with the saved draft visible. Do not publish.",
+      "startedAt": "2026-09-25T12:36:05.164Z",
+      "elapsedMs": 19766,
+      "finishedAt": "2026-09-25T12:36:24.930Z",
+      "agentReportedStatus": "complete",
+      "finalSnapshot": "- main\n  - heading \"Reports\" [level=1, ref=e1]\n  - button \"Create report\" [ref=e2]\n  - article\n    - heading \"Saved draft\" [level=2, ref=e3]\n    - StaticText \"{\\n  \\\"name\\\": \\\"Weekly operations \u2014 review only\\\",\\n  \\\"project\\\": \\\"atlas\\\",\\n  \\\"region\\\": \\\"north\\\",\\n  \\\"archived\\\": false,\\n  \\\"email\\\": true,\\n  \\\"frequency\\\": \\\"weekly\\\"\\n}\"",
+      "events": [
+        {
+          "type": "start"
+        },
+        {
+          "type": "details",
+          "name": "Weekly operations \u2014 review only",
+          "project": "atlas"
+        },
+        {
+          "type": "coverage",
+          "region": "north",
+          "archived": false
+        },
+        {
+          "type": "delivery",
+          "email": true,
+          "frequency": "weekly"
+        },
+        {
+          "type": "save",
+          "data": {
+            "name": "Weekly operations \u2014 review only",
+            "project": "atlas",
+            "region": "north",
+            "archived": false,
+            "email": true,
+            "frequency": "weekly"
+          }
+        },
+        {
+          "type": "return"
+        }
+      ],
+      "statusVerdict": "passed",
+      "uiVerdict": "passed",
+      "helper": {
+        "returnReason": "reported_complete",
+        "actions": 12,
+        "elapsedMs": 9478.090041,
+        "totalMs": 9480.401667,
+        "timing": {
+          "observationMs": 159.52895699999908,
+          "decisionMs": 2551.9707900000008,
+          "actionMs": 4509.2292099999995,
+          "settleMs": 492.19095700000025
+        },
+        "decisions": [
+          {
+            "op": "click",
+            "cost": 3.6582e-05,
+            "elapsedMs": 330.2281250000001
+          },
+          {
+            "op": "fill",
+            "cost": 5.544e-05,
+            "elapsedMs": 192.35975000000008
+          },
+          {
+            "op": "select",
+            "cost": 6.4218e-05,
+            "elapsedMs": 218.85279100000025
+          },
+          {
+            "op": "click",
+            "cost": 6.804e-05,
+            "elapsedMs": 186.23004200000014
+          },
+          {
+            "op": "select",
+            "cost": 6.5646e-05,
+            "elapsedMs": 199.8640830000004
+          },
+          {
+            "op": "uncheck",
+            "cost": 6.7368e-05,
+            "elapsedMs": 169.54466600000023
+          },
+          {
+            "op": "click",
+            "cost": 7.0056e-05,
+            "elapsedMs": 199.56583299999966
+          },
+          {
+            "op": "check",
+            "cost": 7.2702e-05,
+            "elapsedMs": 157.17216699999972
+          },
+          {
+            "op": "select",
+            "cost": 7.5516e-05,
+            "elapsedMs": 200.9832919999999
+          },
+          {
+            "op": "click",
+            "cost": 7.8582e-05,
+            "elapsedMs": 201.52766599999995
+          },
+          {
+            "op": "click",
+            "cost": 7.5432e-05,
+            "elapsedMs": 151.64345800000046
+          },
+          {
+            "op": "click",
+            "cost": 7.266e-05,
+            "elapsedMs": 161.5002919999988
+          },
+          {
+            "op": "step_complete",
+            "cost": 7.5642e-05,
+            "elapsedMs": 182.5365839999995
+          }
+        ],
+        "costUsd": 0.0008778839999999999,
+        "latestObservation": {
+          "snapshot": "- main\n  - heading \"Reports\" [level=1, ref=e1]\n  - button \"Create report\" [ref=e2]\n  - article\n    - heading \"Saved draft\" [level=2, ref=e3]\n    - StaticText \"{\\n  \\\"name\\\": \\\"Weekly operations \u2014 review only\\\",\\n  \\\"project\\\": \\\"atlas\\\",\\n  \\\"region\\\": \\\"north\\\",\\n  \\\"archived\\\": false,\\n  \\\"email\\\": true,\\n  \\\"frequency\\\": \\\"weekly\\\"\\n}\"",
+          "refs": {
+            "e1": {
+              "name": "Reports",
+              "role": "heading"
+            },
+            "e2": {
+              "name": "Create report",
+              "role": "button"
+            },
+            "e3": {
+              "name": "Saved draft",
+              "role": "heading"
+            }
+          }
+        }
+      },
+      "verdict": "passed"
+    },
+    {
+      "round": 3,
+      "arm": "direct",
+      "id": "report-draft",
+      "intent": "Create and save a report draft using the supplied report name. Choose project Atlas, North region, exclude archived records, enable email updates and use Weekly delivery. Finish on the report list with the saved draft visible. Do not publish.",
+      "startedAt": "2026-09-25T12:36:12.266Z",
+      "elapsedMs": 76372,
+      "finishedAt": "2026-09-25T12:37:28.638Z",
+      "agentReportedStatus": "complete",
+      "finalSnapshot": "- main\n  - heading \"Reports\" [level=1, ref=e1]\n  - button \"Create report\" [ref=e2]\n  - article\n    - heading \"Saved draft\" [level=2, ref=e3]\n    - StaticText \"{\\n  \\\"name\\\": \\\"Weekly operations \u2014 review only\\\",\\n  \\\"project\\\": \\\"atlas\\\",\\n  \\\"region\\\": \\\"north\\\",\\n  \\\"archived\\\": false,\\n  \\\"email\\\": true,\\n  \\\"frequency\\\": \\\"weekly\\\"\\n}\"",
+      "events": [
+        {
+          "type": "start"
+        },
+        {
+          "type": "details",
+          "name": "Weekly operations \u2014 review only",
+          "project": "atlas"
+        },
+        {
+          "type": "coverage",
+          "region": "north",
+          "archived": false
+        },
+        {
+          "type": "delivery",
+          "email": true,
+          "frequency": "weekly"
+        },
+        {
+          "type": "save",
+          "data": {
+            "name": "Weekly operations \u2014 review only",
+            "project": "atlas",
+            "region": "north",
+            "archived": false,
+            "email": true,
+            "frequency": "weekly"
+          }
+        },
+        {
+          "type": "return"
+        }
+      ],
+      "statusVerdict": "passed",
+      "uiVerdict": "passed",
+      "verdict": "passed"
+    }
+  ],
+  "sessions": [
+    {
+      "round": 1,
+      "arm": "jev",
+      "commandCount": 5,
+      "commands": [
+        {
+          "command": "/bin/zsh -lc \"sed -n '1,240p' <installed-skill>SKILL.md\"",
+          "exitCode": 0,
+          "elapsedMs": 0
+        },
+        {
+          "command": "/bin/zsh -lc 'curl -s <fixture-origin>/next'",
+          "exitCode": 0,
+          "elapsedMs": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"node '<installed-skill>scripts/run.mjs' --binary '<agent-browser>' --session '<session>' --url '<fixture-origin>/workflow' --intent 'Create and save a report draft using the supplied report name. Choose project Atlas, North region, exclude archived records, enable email updates and use Weekly delivery. Finish on the report list with the saved draft visible. Do not publish.' --value 'reportName=Weekly operations \u2014 review only' --output '<temporary-directory>/1-jev/report-draft.json'\"",
+          "exitCode": 0,
+          "elapsedMs": 4528
+        },
+        {
+          "command": "/bin/zsh -lc \"curl -s -X POST <fixture-origin>/done -H 'Content-Type: application/json' -d '{\\\"status\\\":\\\"complete\\\"}'\"",
+          "exitCode": 0,
+          "elapsedMs": 0
+        },
+        {
+          "command": "/bin/zsh -lc 'curl -s <fixture-origin>/next'",
+          "exitCode": 0,
+          "elapsedMs": 0
+        }
+      ],
+      "prompt": "You are completing authorized browser tasks on synthetic local pages. Use only the browser UI as evidence. Do not inspect fixture source, test files, other sessions, reports, repository files (except the specified SKILL.md) or environment secrets. You have no preselected refs or expected action sequences. Do not delegate or call external model APIs.\n\nBrowser command: '<agent-browser>' --session '<session>' --json\nUseful commands: open <url>, snapshot, click @eN, fill @eN <exact text>, select @eN <option label>, check/uncheck @eN, press Enter, scroll down 600, back, get value @eN, wait 300. Use the existing credential-free test session. No more than 30 gestures per task; return handoff if progress is unavailable. Do not close the session yourself.\n\nMethod: Complete each task by calling the Jev helper with the supplied intent and exact values: node '<installed-skill>scripts/run.mjs' --binary '<agent-browser>' --session '<session>' --url '<task URL>' --intent '<task intent>' [--value 'name=text' ...] --output '<task evidencePath>'. First read '<installed-skill>SKILL.md'; use this version of the skill. Do not write a task file or policy. After handoff or failure, follow the skill's caller-handling instructions. Inspect the page and continue with ordinary browser commands if appropriate; retain time spent handling the exception.\n\nWorkflow:\n1. Get the next task with curl -s <fixture-origin>/next. If finished is true, stop.\n2. Execute the intent using the method above. Direct mode opens the URL with agent-browser; Jev mode passes --url to the helper so navigation and execution share a call. Only the requested changes are authorized.\n3. Assess the final observed state against the task. A helper observation marked fresh and untruncated, or your latest post-action browser snapshot, is usable evidence if nothing changed afterward. Read a new snapshot or field value when evidence is missing or stale. Do not reopen dialogs or change state just to recheck what is already visible. Do not treat a helper success flag alone as success.\n4. POST your assessment using curl -s -X POST <fixture-origin>/done -H 'Content-Type: application/json' -d '{\"status\":\"complete\"}' (or status \"handoff\" if the requested outcome is unavailable or could not be completed). Completing a safe stopping instruction is not completing the requested browser outcome. An absent requested target therefore remains a handoff. Preserve a helper handoff unless later caller work actually establishes the requested outcome.\n5. Repeat from step 1 until finished. Be concise, avoid narration, and do not add research or unrelated checks.\n",
+      "usage": {
+        "input_tokens": 120306,
+        "cached_input_tokens": 105728,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 667,
+        "reasoning_output_tokens": 12
+      },
+      "exitCode": 0,
+      "tasksSubmitted": 1
+    },
+    {
+      "round": 1,
+      "arm": "direct",
+      "commandCount": 19,
+      "commands": [
+        {
+          "command": "/bin/zsh -lc \"sed -n '1,240p' <home>/.agents/skills/agent-browser/SKILL.md\"",
+          "exitCode": 0,
+          "elapsedMs": 0
+        },
+        {
+          "command": "/bin/zsh -lc '<agent-browser> skills get core'",
+          "exitCode": 0,
+          "elapsedMs": 0
+        },
+        {
+          "command": "/bin/zsh -lc 'curl -s <fixture-origin>/next'",
+          "exitCode": 0,
+          "elapsedMs": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"<agent-browser> --session '<session>' --json open <fixture-origin>/workflow\"",
+          "exitCode": 0,
+          "elapsedMs": 980
+        },
+        {
+          "command": "/bin/zsh -lc \"<agent-browser> --session '<session>' --json snapshot -i\"",
+          "exitCode": 0,
+          "elapsedMs": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"<agent-browser> --session '<session>' --json click @e2\"",
+          "exitCode": 0,
+          "elapsedMs": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"<agent-browser> --session '<session>' --json snapshot -i\"",
+          "exitCode": 0,
+          "elapsedMs": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"<agent-browser> --session '<session>' --json fill @e3 'Weekly operations \u2014 review only' && <agent-browser> --session '<session>' --json select @e4 Atlas && <agent-browser> --session '<session>' --json click @e2\"",
+          "exitCode": 0,
+          "elapsedMs": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"<agent-browser> --session '<session>' --json snapshot -i\"",
+          "exitCode": 0,
+          "elapsedMs": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"<agent-browser> --session '<session>' --json select @e4 North && <agent-browser> --session '<session>' --json uncheck @e2 && <agent-browser> --session '<session>' --json click @e3\"",
+          "exitCode": 0,
+          "elapsedMs": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"<agent-browser> --session '<session>' --json snapshot -i\"",
+          "exitCode": 0,
+          "elapsedMs": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"<agent-browser> --session '<session>' --json check @e2 && <agent-browser> --session '<session>' --json select @e4 Weekly && <agent-browser> --session '<session>' --json click @e3\"",
+          "exitCode": 0,
+          "elapsedMs": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"<agent-browser> --session '<session>' --json snapshot -i\"",
+          "exitCode": 0,
+          "elapsedMs": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"<agent-browser> --session '<session>' --json click @e2 && <agent-browser> --session '<session>' --json snapshot -i\"",
+          "exitCode": 0,
+          "elapsedMs": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"<agent-browser> --session '<session>' --json wait 300 && <agent-browser> --session '<session>' --json snapshot -i\"",
+          "exitCode": 0,
+          "elapsedMs": 183
+        },
+        {
+          "command": "/bin/zsh -lc \"<agent-browser> --session '<session>' --json click @e2 && <agent-browser> --session '<session>' --json snapshot -i\"",
+          "exitCode": 0,
+          "elapsedMs": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"<agent-browser> --session '<session>' --json wait 300 && <agent-browser> --session '<session>' --json snapshot -i\"",
+          "exitCode": 0,
+          "elapsedMs": 174
+        },
+        {
+          "command": "/bin/zsh -lc \"<agent-browser> --session '<session>' --json snapshot\"",
+          "exitCode": 0,
+          "elapsedMs": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"curl -s -X POST <fixture-origin>/done -H 'Content-Type: application/json' -d '{\\\"status\\\":\\\"complete\\\"}' && curl -s <fixture-origin>/next\"",
+          "exitCode": 0,
+          "elapsedMs": 0
+        }
+      ],
+      "prompt": "You are completing authorized browser tasks on synthetic local pages. Use only the browser UI as evidence. Do not inspect fixture source, test files, other sessions, reports, repository files (except the specified SKILL.md) or environment secrets. You have no preselected refs or expected action sequences. Do not delegate or call external model APIs.\n\nBrowser command: '<agent-browser>' --session '<session>' --json\nUseful commands: open <url>, snapshot, click @eN, fill @eN <exact text>, select @eN <option label>, check/uncheck @eN, press Enter, scroll down 600, back, get value @eN, wait 300. Use the existing credential-free test session. No more than 30 gestures per task; return handoff if progress is unavailable. Do not close the session yourself.\n\nMethod: Complete each task yourself using normal agent-browser CLI commands. Do not invoke Jev or any other model/helper. Use snapshots to choose refs, then click/fill/select/check/uncheck/press/scroll/back/wait/get as appropriate. You may batch known independent commands as you normally would.\n\nWorkflow:\n1. Get the next task with curl -s <fixture-origin>/next. If finished is true, stop.\n2. Execute the intent using the method above. Direct mode opens the URL with agent-browser; Jev mode passes --url to the helper so navigation and execution share a call. Only the requested changes are authorized.\n3. Assess the final observed state against the task. A helper observation marked fresh and untruncated, or your latest post-action browser snapshot, is usable evidence if nothing changed afterward. Read a new snapshot or field value when evidence is missing or stale. Do not reopen dialogs or change state just to recheck what is already visible. Do not treat a helper success flag alone as success.\n4. POST your assessment using curl -s -X POST <fixture-origin>/done -H 'Content-Type: application/json' -d '{\"status\":\"complete\"}' (or status \"handoff\" if the requested outcome is unavailable or could not be completed). Completing a safe stopping instruction is not completing the requested browser outcome. An absent requested target therefore remains a handoff. Preserve a helper handoff unless later caller work actually establishes the requested outcome.\n5. Repeat from step 1 until finished. Be concise, avoid narration, and do not add research or unrelated checks.\n",
+      "usage": {
+        "input_tokens": 594430,
+        "cached_input_tokens": 555520,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 2674,
+        "reasoning_output_tokens": 166
+      },
+      "exitCode": 0,
+      "tasksSubmitted": 1
+    },
+    {
+      "round": 2,
+      "arm": "direct",
+      "commandCount": 24,
+      "commands": [
+        {
+          "command": "/bin/zsh -lc \"sed -n '1,220p' <home>/.agents/skills/agent-browser/SKILL.md\"",
+          "exitCode": 0,
+          "elapsedMs": 0
+        },
+        {
+          "command": "/bin/zsh -lc '<agent-browser> skills get core'",
+          "exitCode": 0,
+          "elapsedMs": 0
+        },
+        {
+          "command": "/bin/zsh -lc 'curl -s <fixture-origin>/next'",
+          "exitCode": 0,
+          "elapsedMs": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"<agent-browser> --session '<session>' --json open '<fixture-origin>/workflow'\"",
+          "exitCode": 0,
+          "elapsedMs": 1190
+        },
+        {
+          "command": "/bin/zsh -lc \"<agent-browser> --session '<session>' --json snapshot\"",
+          "exitCode": 0,
+          "elapsedMs": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"<agent-browser> --session '<session>' --json click @e2\"",
+          "exitCode": 0,
+          "elapsedMs": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"<agent-browser> --session '<session>' --json snapshot\"",
+          "exitCode": 0,
+          "elapsedMs": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"<agent-browser> --session '<session>' --json fill @e3 'Weekly operations \u2014 review only'\"",
+          "exitCode": 0,
+          "elapsedMs": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"<agent-browser> --session '<session>' --json select @e4 'Atlas'\"",
+          "exitCode": 0,
+          "elapsedMs": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"<agent-browser> --session '<session>' --json click @e2\"",
+          "exitCode": 0,
+          "elapsedMs": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"<agent-browser> --session '<session>' --json snapshot\"",
+          "exitCode": 0,
+          "elapsedMs": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"<agent-browser> --session '<session>' --json select @e4 'North'\"",
+          "exitCode": 0,
+          "elapsedMs": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"<agent-browser> --session '<session>' --json uncheck @e2\"",
+          "exitCode": 0,
+          "elapsedMs": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"<agent-browser> --session '<session>' --json click @e3\"",
+          "exitCode": 0,
+          "elapsedMs": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"<agent-browser> --session '<session>' --json snapshot\"",
+          "exitCode": 0,
+          "elapsedMs": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"<agent-browser> --session '<session>' --json check @e2\"",
+          "exitCode": 0,
+          "elapsedMs": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"<agent-browser> --session '<session>' --json select @e4 'Weekly'\"",
+          "exitCode": 0,
+          "elapsedMs": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"<agent-browser> --session '<session>' --json click @e3\"",
+          "exitCode": 0,
+          "elapsedMs": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"<agent-browser> --session '<session>' --json snapshot\"",
+          "exitCode": 0,
+          "elapsedMs": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"<agent-browser> --session '<session>' --json click @e2\"",
+          "exitCode": 0,
+          "elapsedMs": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"<agent-browser> --session '<session>' --json snapshot\"",
+          "exitCode": 0,
+          "elapsedMs": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"<agent-browser> --session '<session>' --json click @e2\"",
+          "exitCode": 0,
+          "elapsedMs": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"<agent-browser> --session '<session>' --json snapshot\"",
+          "exitCode": 0,
+          "elapsedMs": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"curl -s -X POST <fixture-origin>/done -H 'Content-Type: application/json' -d '{\\\"status\\\":\\\"complete\\\"}' && curl -s <fixture-origin>/next\"",
+          "exitCode": 0,
+          "elapsedMs": 0
+        }
+      ],
+      "prompt": "You are completing authorized browser tasks on synthetic local pages. Use only the browser UI as evidence. Do not inspect fixture source, test files, other sessions, reports, repository files (except the specified SKILL.md) or environment secrets. You have no preselected refs or expected action sequences. Do not delegate or call external model APIs.\n\nBrowser command: '<agent-browser>' --session '<session>' --json\nUseful commands: open <url>, snapshot, click @eN, fill @eN <exact text>, select @eN <option label>, check/uncheck @eN, press Enter, scroll down 600, back, get value @eN, wait 300. Use the existing credential-free test session. No more than 30 gestures per task; return handoff if progress is unavailable. Do not close the session yourself.\n\nMethod: Complete each task yourself using normal agent-browser CLI commands. Do not invoke Jev or any other model/helper. Use snapshots to choose refs, then click/fill/select/check/uncheck/press/scroll/back/wait/get as appropriate. You may batch known independent commands as you normally would.\n\nWorkflow:\n1. Get the next task with curl -s <fixture-origin>/next. If finished is true, stop.\n2. Execute the intent using the method above. Direct mode opens the URL with agent-browser; Jev mode passes --url to the helper so navigation and execution share a call. Only the requested changes are authorized.\n3. Assess the final observed state against the task. A helper observation marked fresh and untruncated, or your latest post-action browser snapshot, is usable evidence if nothing changed afterward. Read a new snapshot or field value when evidence is missing or stale. Do not reopen dialogs or change state just to recheck what is already visible. Do not treat a helper success flag alone as success.\n4. POST your assessment using curl -s -X POST <fixture-origin>/done -H 'Content-Type: application/json' -d '{\"status\":\"complete\"}' (or status \"handoff\" if the requested outcome is unavailable or could not be completed). Completing a safe stopping instruction is not completing the requested browser outcome. An absent requested target therefore remains a handoff. Preserve a helper handoff unless later caller work actually establishes the requested outcome.\n5. Repeat from step 1 until finished. Be concise, avoid narration, and do not add research or unrelated checks.\n",
+      "usage": {
+        "input_tokens": 656366,
+        "cached_input_tokens": 626944,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 2663,
+        "reasoning_output_tokens": 229
+      },
+      "exitCode": 0,
+      "tasksSubmitted": 1
+    },
+    {
+      "round": 2,
+      "arm": "jev",
+      "commandCount": 4,
+      "commands": [
+        {
+          "command": "/bin/zsh -lc \"sed -n '1,240p' <installed-skill>SKILL.md\"",
+          "exitCode": 0,
+          "elapsedMs": 0
+        },
+        {
+          "command": "/bin/zsh -lc 'curl -s <fixture-origin>/next'",
+          "exitCode": 0,
+          "elapsedMs": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"node '<installed-skill>scripts/run.mjs' --binary '<agent-browser>' --session '<session>' --url '<fixture-origin>/workflow' --intent 'Create and save a report draft using the supplied report name. Choose project Atlas, North region, exclude archived records, enable email updates and use Weekly delivery. Finish on the report list with the saved draft visible. Do not publish.' --value 'reportName=Weekly operations \u2014 review only' --output '<temporary-directory>/2-jev/report-draft.json'\"",
+          "exitCode": 0,
+          "elapsedMs": 4797
+        },
+        {
+          "command": "/bin/zsh -lc \"curl -s -X POST <fixture-origin>/done -H 'Content-Type: application/json' -d '{\\\"status\\\":\\\"complete\\\"}' && curl -s <fixture-origin>/next\"",
+          "exitCode": 0,
+          "elapsedMs": 0
+        }
+      ],
+      "prompt": "You are completing authorized browser tasks on synthetic local pages. Use only the browser UI as evidence. Do not inspect fixture source, test files, other sessions, reports, repository files (except the specified SKILL.md) or environment secrets. You have no preselected refs or expected action sequences. Do not delegate or call external model APIs.\n\nBrowser command: '<agent-browser>' --session '<session>' --json\nUseful commands: open <url>, snapshot, click @eN, fill @eN <exact text>, select @eN <option label>, check/uncheck @eN, press Enter, scroll down 600, back, get value @eN, wait 300. Use the existing credential-free test session. No more than 30 gestures per task; return handoff if progress is unavailable. Do not close the session yourself.\n\nMethod: Complete each task by calling the Jev helper with the supplied intent and exact values: node '<installed-skill>scripts/run.mjs' --binary '<agent-browser>' --session '<session>' --url '<task URL>' --intent '<task intent>' [--value 'name=text' ...] --output '<task evidencePath>'. First read '<installed-skill>SKILL.md'; use this version of the skill. Do not write a task file or policy. After handoff or failure, follow the skill's caller-handling instructions. Inspect the page and continue with ordinary browser commands if appropriate; retain time spent handling the exception.\n\nWorkflow:\n1. Get the next task with curl -s <fixture-origin>/next. If finished is true, stop.\n2. Execute the intent using the method above. Direct mode opens the URL with agent-browser; Jev mode passes --url to the helper so navigation and execution share a call. Only the requested changes are authorized.\n3. Assess the final observed state against the task. A helper observation marked fresh and untruncated, or your latest post-action browser snapshot, is usable evidence if nothing changed afterward. Read a new snapshot or field value when evidence is missing or stale. Do not reopen dialogs or change state just to recheck what is already visible. Do not treat a helper success flag alone as success.\n4. POST your assessment using curl -s -X POST <fixture-origin>/done -H 'Content-Type: application/json' -d '{\"status\":\"complete\"}' (or status \"handoff\" if the requested outcome is unavailable or could not be completed). Completing a safe stopping instruction is not completing the requested browser outcome. An absent requested target therefore remains a handoff. Preserve a helper handoff unless later caller work actually establishes the requested outcome.\n5. Repeat from step 1 until finished. Be concise, avoid narration, and do not add research or unrelated checks.\n",
+      "usage": {
+        "input_tokens": 99398,
+        "cached_input_tokens": 92032,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 627,
+        "reasoning_output_tokens": 30
+      },
+      "exitCode": 0,
+      "tasksSubmitted": 1
+    },
+    {
+      "round": 3,
+      "arm": "direct",
+      "commandCount": 22,
+      "commands": [
+        {
+          "command": "/bin/zsh -lc \"sed -n '1,220p' <home>/.agents/skills/agent-browser/SKILL.md\"",
+          "exitCode": 0,
+          "elapsedMs": 0
+        },
+        {
+          "command": "/bin/zsh -lc '<agent-browser> skills get core'",
+          "exitCode": 0,
+          "elapsedMs": 0
+        },
+        {
+          "command": "/bin/zsh -lc 'curl -s <fixture-origin>/next'",
+          "exitCode": 0,
+          "elapsedMs": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"<agent-browser> --session '<session>' --json open <fixture-origin>/workflow\"",
+          "exitCode": 0,
+          "elapsedMs": 1144
+        },
+        {
+          "command": "/bin/zsh -lc \"<agent-browser> --session '<session>' --json snapshot -i\"",
+          "exitCode": 0,
+          "elapsedMs": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"<agent-browser> --session '<session>' --json click @e2\"",
+          "exitCode": 0,
+          "elapsedMs": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"<agent-browser> --session '<session>' --json snapshot -i\"",
+          "exitCode": 0,
+          "elapsedMs": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"<agent-browser> --session '<session>' --json fill @e3 'Weekly operations \u2014 review only'\"",
+          "exitCode": 0,
+          "elapsedMs": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"<agent-browser> --session '<session>' --json select @e4 Atlas\"",
+          "exitCode": 0,
+          "elapsedMs": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"<agent-browser> --session '<session>' --json click @e2 && <agent-browser> --session '<session>' --json snapshot -i\"",
+          "exitCode": 0,
+          "elapsedMs": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"<agent-browser> --session '<session>' --json click @e2\"",
+          "exitCode": 0,
+          "elapsedMs": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"<agent-browser> --session '<session>' --json wait 300 && <agent-browser> --session '<session>' --json snapshot -i\"",
+          "exitCode": 0,
+          "elapsedMs": 181
+        },
+        {
+          "command": "/bin/zsh -lc \"<agent-browser> --session '<session>' --json select @e4 North\"",
+          "exitCode": 0,
+          "elapsedMs": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"<agent-browser> --session '<session>' --json uncheck @e2\"",
+          "exitCode": 0,
+          "elapsedMs": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"<agent-browser> --session '<session>' --json click @e3 && <agent-browser> --session '<session>' --json wait 300 && <agent-browser> --session '<session>' --json snapshot -i\"",
+          "exitCode": 0,
+          "elapsedMs": 187
+        },
+        {
+          "command": "/bin/zsh -lc \"<agent-browser> --session '<session>' --json check @e2\"",
+          "exitCode": 0,
+          "elapsedMs": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"<agent-browser> --session '<session>' --json select @e4 Weekly\"",
+          "exitCode": 0,
+          "elapsedMs": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"<agent-browser> --session '<session>' --json click @e3 && <agent-browser> --session '<session>' --json wait 300 && <agent-browser> --session '<session>' --json snapshot -i\"",
+          "exitCode": 0,
+          "elapsedMs": 192
+        },
+        {
+          "command": "/bin/zsh -lc \"<agent-browser> --session '<session>' --json click @e2 && <agent-browser> --session '<session>' --json wait 300 && <agent-browser> --session '<session>' --json snapshot -i\"",
+          "exitCode": 0,
+          "elapsedMs": 194
+        },
+        {
+          "command": "/bin/zsh -lc \"<agent-browser> --session '<session>' --json click @e2 && <agent-browser> --session '<session>' --json wait 300 && <agent-browser> --session '<session>' --json snapshot -i\"",
+          "exitCode": 0,
+          "elapsedMs": 205
+        },
+        {
+          "command": "/bin/zsh -lc \"<agent-browser> --session '<session>' --json snapshot\"",
+          "exitCode": 0,
+          "elapsedMs": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"curl -s -X POST <fixture-origin>/done -H 'Content-Type: application/json' -d '{\\\"status\\\":\\\"complete\\\"}' && curl -s <fixture-origin>/next\"",
+          "exitCode": 0,
+          "elapsedMs": 0
+        }
+      ],
+      "prompt": "You are completing authorized browser tasks on synthetic local pages. Use only the browser UI as evidence. Do not inspect fixture source, test files, other sessions, reports, repository files (except the specified SKILL.md) or environment secrets. You have no preselected refs or expected action sequences. Do not delegate or call external model APIs.\n\nBrowser command: '<agent-browser>' --session '<session>' --json\nUseful commands: open <url>, snapshot, click @eN, fill @eN <exact text>, select @eN <option label>, check/uncheck @eN, press Enter, scroll down 600, back, get value @eN, wait 300. Use the existing credential-free test session. No more than 30 gestures per task; return handoff if progress is unavailable. Do not close the session yourself.\n\nMethod: Complete each task yourself using normal agent-browser CLI commands. Do not invoke Jev or any other model/helper. Use snapshots to choose refs, then click/fill/select/check/uncheck/press/scroll/back/wait/get as appropriate. You may batch known independent commands as you normally would.\n\nWorkflow:\n1. Get the next task with curl -s <fixture-origin>/next. If finished is true, stop.\n2. Execute the intent using the method above. Direct mode opens the URL with agent-browser; Jev mode passes --url to the helper so navigation and execution share a call. Only the requested changes are authorized.\n3. Assess the final observed state against the task. A helper observation marked fresh and untruncated, or your latest post-action browser snapshot, is usable evidence if nothing changed afterward. Read a new snapshot or field value when evidence is missing or stale. Do not reopen dialogs or change state just to recheck what is already visible. Do not treat a helper success flag alone as success.\n4. POST your assessment using curl -s -X POST <fixture-origin>/done -H 'Content-Type: application/json' -d '{\"status\":\"complete\"}' (or status \"handoff\" if the requested outcome is unavailable or could not be completed). Completing a safe stopping instruction is not completing the requested browser outcome. An absent requested target therefore remains a handoff. Preserve a helper handoff unless later caller work actually establishes the requested outcome.\n5. Repeat from step 1 until finished. Be concise, avoid narration, and do not add research or unrelated checks.\n",
+      "usage": {
+        "input_tokens": 597207,
+        "cached_input_tokens": 568832,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 2884,
+        "reasoning_output_tokens": 175
+      },
+      "exitCode": 0,
+      "tasksSubmitted": 1
+    },
+    {
+      "round": 3,
+      "arm": "jev",
+      "commandCount": 4,
+      "commands": [
+        {
+          "command": "/bin/zsh -lc \"sed -n '1,240p' <installed-skill>SKILL.md\"",
+          "exitCode": 0,
+          "elapsedMs": 0
+        },
+        {
+          "command": "/bin/zsh -lc 'curl -s <fixture-origin>/next'",
+          "exitCode": 0,
+          "elapsedMs": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"node '<installed-skill>scripts/run.mjs' --binary '<agent-browser>' --session '<session>' --url '<fixture-origin>/workflow' --intent 'Create and save a report draft using the supplied report name. Choose project Atlas, North region, exclude archived records, enable email updates and use Weekly delivery. Finish on the report list with the saved draft visible. Do not publish.' --value 'reportName=Weekly operations \u2014 review only' --output '<temporary-directory>/3-jev/report-draft.json'\"",
+          "exitCode": 0,
+          "elapsedMs": 9848
+        },
+        {
+          "command": "/bin/zsh -lc \"curl -s -X POST <fixture-origin>/done -H 'Content-Type: application/json' -d '{\\\"status\\\":\\\"complete\\\"}' && curl -s <fixture-origin>/next\"",
+          "exitCode": 0,
+          "elapsedMs": 0
+        }
+      ],
+      "prompt": "You are completing authorized browser tasks on synthetic local pages. Use only the browser UI as evidence. Do not inspect fixture source, test files, other sessions, reports, repository files (except the specified SKILL.md) or environment secrets. You have no preselected refs or expected action sequences. Do not delegate or call external model APIs.\n\nBrowser command: '<agent-browser>' --session '<session>' --json\nUseful commands: open <url>, snapshot, click @eN, fill @eN <exact text>, select @eN <option label>, check/uncheck @eN, press Enter, scroll down 600, back, get value @eN, wait 300. Use the existing credential-free test session. No more than 30 gestures per task; return handoff if progress is unavailable. Do not close the session yourself.\n\nMethod: Complete each task by calling the Jev helper with the supplied intent and exact values: node '<installed-skill>scripts/run.mjs' --binary '<agent-browser>' --session '<session>' --url '<task URL>' --intent '<task intent>' [--value 'name=text' ...] --output '<task evidencePath>'. First read '<installed-skill>SKILL.md'; use this version of the skill. Do not write a task file or policy. After handoff or failure, follow the skill's caller-handling instructions. Inspect the page and continue with ordinary browser commands if appropriate; retain time spent handling the exception.\n\nWorkflow:\n1. Get the next task with curl -s <fixture-origin>/next. If finished is true, stop.\n2. Execute the intent using the method above. Direct mode opens the URL with agent-browser; Jev mode passes --url to the helper so navigation and execution share a call. Only the requested changes are authorized.\n3. Assess the final observed state against the task. A helper observation marked fresh and untruncated, or your latest post-action browser snapshot, is usable evidence if nothing changed afterward. Read a new snapshot or field value when evidence is missing or stale. Do not reopen dialogs or change state just to recheck what is already visible. Do not treat a helper success flag alone as success.\n4. POST your assessment using curl -s -X POST <fixture-origin>/done -H 'Content-Type: application/json' -d '{\"status\":\"complete\"}' (or status \"handoff\" if the requested outcome is unavailable or could not be completed). Completing a safe stopping instruction is not completing the requested browser outcome. An absent requested target therefore remains a handoff. Preserve a helper handoff unless later caller work actually establishes the requested outcome.\n5. Repeat from step 1 until finished. Be concise, avoid narration, and do not add research or unrelated checks.\n",
+      "usage": {
+        "input_tokens": 92753,
+        "cached_input_tokens": 85888,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 634,
+        "reasoning_output_tokens": 48
+      },
+      "exitCode": 0,
+      "tasksSubmitted": 1
+    }
+  ],
+  "cleanup": {
+    "browserSessionsClosed": true,
+    "serversClosed": true,
+    "temporaryDirectoriesRemoved": true,
+    "helperEvidenceRemoved": true
+  },
+  "codexVersion": "codex-cli 0.147.0",
+  "browserVersion": "agent-browser 0.33.2",
+  "browserExecutableVersion": "Google Chrome for Testing 151.0.7922.71",
+  "summary": [
+    {
+      "id": "report-draft",
+      "direct": {
+        "passed": 3,
+        "total": 3,
+        "medianMs": 69643,
+        "minMs": 62877,
+        "maxMs": 76372
+      },
+      "jev": {
+        "passed": 3,
+        "total": 3,
+        "medianMs": 15941,
+        "minMs": 13642,
+        "maxMs": 19766
+      }
+    }
+  ],
+  "finishedAt": "2026-09-25T12:38:00.875Z",
+  "verdict": "passed",
+  "redactions": "Local home/workspace, executable and temporary paths and workflow session identifiers normalized for publication. Timings, verdicts, actions, synthetic payloads, usage and source hashes are unchanged."
+}

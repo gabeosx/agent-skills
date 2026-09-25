@@ -6,6 +6,8 @@ All notable skill changes are recorded in this file. Each skill is versioned ind
 
 ### Repository
 
+- Updated the Agent Browser Jev catalog entry for continuous control, resumable tasks and direct final-page evidence.
+
 - Updated the Agent Browser Jev catalog entry and setup link for its simplified installation and fresh benchmarks.
 
 - Added CI for Agent Browser Jev's offline regression suite on Node 20.3.0 and 24, including symlink installation behavior and the repository release contract.
@@ -14,6 +16,19 @@ All notable skill changes are recorded in this file. Each skill is versioned ind
 
 - Added canonical agent instructions and a dependency-free release-contract validator requiring every affected skill change to include an independent Semantic Version increment, a matching root changelog entry, relevant validation, and scoped cleanup evidence.
 - Required repository-only changes to be recorded without inventing unrelated skill version bumps, and documented the definition of done and release-tagging workflow.
+
+## agent-browser-jev 0.3.0 - 2026-09-25
+
+### Added
+
+- Added continuous browser control for native selects, explicit checkbox states, scrolling, keyboard actions and back navigation, alongside observed clicks and exact-value fills.
+- Added resumable tasks and missing-input requests: preserve the goal, completed intents and recent actions, then observe fresh controls before continuing in the original session and policy.
+- Return the final observed page directly with freshness/truncation flags, Jev charges and separate observation, decision, action and navigation timings. An optional starting URL combines navigation and execution in one invocation.
+- Added real-browser acceptance for sustained report creation, input and budget continuation, keyboard searches and scrolling; retain results separately from model-reported completion. Published a fresh native-Codex comparison: 69.6 versus 15.9 seconds median on one 12-action workflow, with 3/3 independently verified outcomes per arm and explicit cost-estimate limits.
+
+### Changed
+
+- Default execution budgets now allow 30 actions, 60 decisions and 120 seconds, with direct CLI overrides. Candidate overflow and repeated actions without an observed effect return control explicitly.
 
 ## agent-browser-jev 0.2.1 - 2026-09-25
 

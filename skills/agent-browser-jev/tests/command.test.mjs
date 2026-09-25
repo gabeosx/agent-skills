@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { execFileSync } from 'node:child_process';
-import { mkdtempSync, writeFileSync, readFileSync, statSync, rmSync, symlinkSync } from 'node:fs';
+import { mkdtempSync, writeFileSync, readFileSync, statSync, rmSync, symlinkSync, realpathSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -81,4 +81,20 @@ test('existing evidence is never overwritten and raw setup errors are not printe
     assert.ok(!failure.stderr.includes(root));
     assert.ok(!failure.stderr.includes('EEXIST'));
   } finally { rmSync(root, { recursive: true, force: true }); }
+});
+
+test('relative browser paths and custom policies survive resume from another directory',()=>{
+  const root=mkdtempSync(join(tmpdir(),'jev-relative-resume-'));
+  try{
+    const binary=join(root,'browser.mjs');
+    writeFileSync(binary,`#!/usr/bin/env node\nconsole.log(JSON.stringify({success:true,data:{snapshot:'x'.repeat(1000),refs:{}}}));`,{mode:0o700});
+    writeFileSync(join(root,'policy.mjs'),"export const authorize=()=>true; export const sanitize=x=>x; export const loadApiKey=()=> 'offline-no-network';");
+    writeFileSync(join(root,'task.json'),JSON.stringify({browser:{binary:'./browser.mjs',sessionId:'relative'},intentOrSteps:'Continue the draft',budget:{maxObservationChars:100}}));
+    const first=join(root,'first.json'),second=join(root,'second.json');
+    const invoke=(args,cwd)=>{try{execFileSync(process.execPath,[cli,...args],{cwd,encoding:'utf8',stdio:['ignore','pipe','pipe']});assert.fail('Expected handoff');}catch(e){assert.equal(e.status,2);return JSON.parse(e.stdout);}};
+    assert.equal(invoke(['--task','task.json','--policy','policy.mjs','--output',first],root).returnReason,'observation_too_large');
+    assert.equal(realpathSync(JSON.parse(readFileSync(first,'utf8')).invocation.browser.binary),realpathSync(binary));
+    assert.equal(invoke(['--resume',first,'--output',second],tmpdir()).returnReason,'observation_too_large');
+    assert.equal(realpathSync(JSON.parse(readFileSync(second,'utf8')).invocation.policyPath),realpathSync(join(root,'policy.mjs')));
+  }finally{rmSync(root,{recursive:true,force:true});}
 });
