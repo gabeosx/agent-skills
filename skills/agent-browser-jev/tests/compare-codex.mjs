@@ -27,14 +27,14 @@ const scenarios=[
   {id:'search-topic',route:'/search',intent:'Search topics using the supplied query, open Account recovery, then go back to the results.',values:{query:'account'}},
   {id:'missing-article',route:'/articles',intent:'Read the Billing article. If it is not listed, return to the caller without clicking.',expected:[],status:'handoff'},
 ];
-const report={schema:1,startedAt:new Date().toISOString(),version:JSON.parse(await readFile(join(skill,'package.json'),'utf8')).version,
+const report={schema:2,startedAt:new Date().toISOString(),version:JSON.parse(await readFile(join(skill,'package.json'),'utf8')).version,
   codexModel:values.model,reasoningEffort:values.effort,node:process.version,platform:`${process.platform}-${process.arch}`,rounds,
-  timing:'Task delivery via /next to agent POST /done; includes navigation, Codex reasoning/tool orchestration, browser actions, and agent final readback. Excludes Codex session startup and independent harness verification.',
+  timing:'Task delivery via /next to agent POST /done; includes navigation, Codex reasoning/tool orchestration, browser actions, and agent final readback. Excludes Codex session startup, independent harness verification.',
   sourceSha256:{},trials:[],sessions:[],cleanup:{}};
-for(const file of ['scripts/run.mjs','scripts/config.mjs','scripts/agent-browser-jev.mjs','scripts/jev-browser.mjs','tests/compare-codex.mjs','tests/fixtures/benchmark-pages.mjs'])report.sourceSha256[file]=createHash('sha256').update(await readFile(join(skill,file))).digest('hex');
+for(const file of ['SKILL.md','scripts/run.mjs','scripts/config.mjs','scripts/agent-browser-jev.mjs','scripts/jev-browser.mjs','tests/compare-codex.mjs','tests/fixtures/benchmark-pages.mjs'])report.sourceSha256[file]=createHash('sha256').update(await readFile(join(skill,file))).digest('hex');
 const save=()=>writeFile(output,JSON.stringify(report,null,2));
 const shellQuote=s=>`'${s.replaceAll("'","'\\''")}'`;
-const owned=[];
+const owned=[],children=[];
 async function lane(round,arm){
   const session=`jev-compare-${arm}-${randomUUID()}`,cwd=join(root,`${round}-${arm}`);await mkdir(cwd);
   let events=[],index=0,active;
@@ -51,20 +51,20 @@ async function lane(round,arm){
         if(index>=ordered.length){send({finished:true});return;}
         const scenario=ordered[index];events=[];
         const trial={round,arm,id:scenario.id,intent:scenario.intent,startedAt:new Date().toISOString()};
-        active={scenario,trial,start:performance.now()};report.trials.push(trial);
-        send({id:scenario.id,url:`http://127.0.0.1:${server.address().port}${scenario.route}`,intent:scenario.intent,suppliedValues:scenario.values??{}});return;
+        active={scenario,trial,start:performance.now(),evidencePath:join(cwd,`${scenario.id}.json`)};report.trials.push(trial);await save();
+        send({id:scenario.id,url:`http://127.0.0.1:${server.address().port}${scenario.route}`,intent:scenario.intent,suppliedValues:scenario.values??{},...(arm==='jev'?{evidencePath:active.evidencePath}:{})});return;
       }
       if(req.url==='/events'&&req.method==='POST'){
         let body='';for await(const chunk of req)body+=chunk;events.push(JSON.parse(body));send({recorded:true});return;
       }
       if(req.url==='/done'&&req.method==='POST'){
         if(!active){send({error:'No active task'});return;}
-        const {trial,scenario,start}=active;trial.elapsedMs=Math.round(performance.now()-start);trial.finishedAt=new Date().toISOString();
+        const {trial,scenario,start,evidencePath}=active;trial.elapsedMs=Math.round(performance.now()-start);trial.finishedAt=new Date().toISOString();
         let body='';for await(const chunk of req)body+=chunk;
         try{
           trial.agentReportedStatus=JSON.parse(body).status;
           trial.finalSnapshot=(await browser(['snapshot'])).snapshot;trial.events=structuredClone(events);
-          assert.equal(trial.agentReportedStatus,scenario.status??'complete');
+          trial.statusVerdict=trial.agentReportedStatus===(scenario.status??'complete')?'passed':'failed';
           if(scenario.expected)assert.deepEqual(trial.events,scenario.expected);
           if(scenario.id==='support-draft'){
             trial.readbacks={subject:(await browser(['get','value','#subject'])).value,message:(await browser(['get','value','#message'])).value};
@@ -76,8 +76,19 @@ async function lane(round,arm){
             assert.deepEqual(trial.events.filter(e=>e.type!=='search'),[{type:'topic',name:'Account recovery'},{type:'close-topic'}]);
           }
           assert.doesNotMatch(trial.finalSnapshot,/dialog/);if(scenario.id==='preferences')assert.match(trial.finalSnapshot,/Preferences saved/);
-          trial.verdict='passed';
-        }catch(error){trial.verdict='failed';trial.failure=String(error.message);}
+          trial.uiVerdict='passed';
+        }catch(error){trial.uiVerdict='failed';trial.failure=String(error.message).replaceAll(binary,'<agent-browser>').replaceAll(session,'<session>').replaceAll(root,'<temporary-directory>');}
+        if(arm==='jev'){
+          try{
+            const evidence=JSON.parse(await readFile(evidencePath,'utf8'));
+            const decisions=evidence.decisions??[];
+            trial.helper={returnReason:evidence.returnReason,actions:evidence.actions?.length,
+              elapsedMs:evidence.elapsedMs??null,decisions:decisions.map(({op,cost,elapsedMs})=>({op,cost:cost??null,elapsedMs:elapsedMs??null})),
+              costUsd:decisions.length&&decisions.every(d=>Number.isFinite(d.cost))?decisions.reduce((sum,d)=>sum+d.cost,0):null,
+              latestObservation:evidence.latestObservation};
+          }catch{trial.helperEvidenceMissing=true;}
+        }
+        trial.verdict=trial.uiVerdict==='passed'&&trial.statusVerdict==='passed'&&!trial.helperEvidenceMissing?'passed':'failed';
         active=undefined;index++;await save();console.log(JSON.stringify({round,arm,id:trial.id,elapsedMs:trial.elapsedMs,verdict:trial.verdict}));
         send({recorded:true});return; // Do not give the agent fixture answers or a chance to retry an assertion.
       }
@@ -91,8 +102,8 @@ async function lane(round,arm){
   const helperCommand=`node ${shellQuote(join(skill,'scripts/run.mjs'))} --binary ${shellQuote(binary)} --session ${shellQuote(session)}`;
   const method=arm==='direct'
     ? `Complete each task yourself using normal agent-browser CLI commands. Do not invoke Jev or any other model/helper. Use snapshots to choose refs, then click/fill/wait/get as appropriate. You may batch known independent commands as you normally would.`
-    : `Complete each task by calling the Jev helper with the supplied intent and exact values: ${helperCommand} --intent '<task intent>' [--value 'name=text' ...]. Do not write a task file or policy. After handoff or failure, inspect the page and continue with ordinary browser commands if appropriate; retain time spent handling the exception.`;
-  const prompt=`You are completing authorized browser tasks on synthetic local pages. Use only the browser UI as evidence. Do not inspect fixture source, test files, other sessions, reports, repository files or environment secrets. You have no preselected refs or expected action sequences. Do not delegate or call external model APIs.
+    : `Complete each task by calling the Jev helper with the supplied intent and exact values: ${helperCommand} --intent '<task intent>' [--value 'name=text' ...] --output '<task evidencePath>'. First read ${shellQuote(join(skill,'SKILL.md'))}; use this version of the skill. Do not write a task file or policy. After handoff or failure, follow the skill's caller-handling instructions. Inspect the page and continue with ordinary browser commands if appropriate; retain time spent handling the exception.`;
+  const prompt=`You are completing authorized browser tasks on synthetic local pages. Use only the browser UI as evidence. Do not inspect fixture source, test files, other sessions, reports, repository files (except the specified SKILL.md) or environment secrets. You have no preselected refs or expected action sequences. Do not delegate or call external model APIs.
 
 Browser command: ${browserCommand}
 Useful commands: open <url>, snapshot, click @eN, fill @eN <exact text>, get value @eN, wait 300. Use the existing credential-free test session. No more than 8 gestures per task; return handoff if progress is unavailable. Do not close the session yourself.
@@ -103,12 +114,13 @@ Workflow:
 1. Get the next task with curl -s ${origin}/next. If finished is true, stop.
 2. Open its URL with the browser command. Execute the intent using the method above. Only the requested changes are authorized.
 3. Read a fresh browser snapshot to assess the final state. For a filled field, read back its value. Do not treat a helper success flag alone as success.
-4. POST your assessment using curl -s -X POST ${origin}/done -H 'Content-Type: application/json' -d '{"status":"complete"}' (or status "handoff" if the task could not be completed).
+4. POST your assessment using curl -s -X POST ${origin}/done -H 'Content-Type: application/json' -d '{"status":"complete"}' (or status "handoff" if the requested outcome is unavailable or could not be completed). Completing a safe stopping instruction is not completing the requested browser outcome. An absent requested target therefore remains a handoff. Preserve a helper handoff unless later caller work actually establishes the requested outcome.
 5. Repeat from step 1 until finished. Be concise, avoid narration, and do not add research or unrelated checks.
 `;
   const info={round,arm,commandCount:0,commands:[],prompt:prompt.replaceAll(binary,'<agent-browser>').replaceAll(skill,'<installed-skill>').replaceAll(session,'<session>').replaceAll(origin,'<fixture-origin>')};report.sessions.push(info);
   const args=['exec','--ignore-user-config','--ephemeral','--skip-git-repo-check','-C',cwd,'-m',values.model,'-c',`model_reasoning_effort="${values.effort}"`,'-c','approval_policy="never"','--sandbox','danger-full-access','--json','-'];
   const child=spawn(values.codex,args,{cwd,env:{...process.env,OPENROUTER_API_KEY:apiKey},stdio:['pipe','pipe','pipe']});
+  children.push(child);
   child.stdin.end(prompt);
   let buffer='';
   child.stdout.on('data',chunk=>{
@@ -117,6 +129,7 @@ Workflow:
       if(event.type==='item.completed'&&event.item?.type==='command_execution'){
         info.commandCount++;info.commands.push({command:event.item.command.replaceAll(binary,'<agent-browser>').replaceAll(skill,'<installed-skill>').replaceAll(session,'<session>').replaceAll(origin,'<fixture-origin>').replaceAll(root,'<temporary-directory>'),exitCode:event.item.exit_code});
       }
+      if(event.type==='turn.completed')info.usage=event.usage??null;
       if(event.type==='turn.failed')info.failed=true;
     }
   });
@@ -129,17 +142,19 @@ Workflow:
 }
 try{
   report.codexVersion=(await execute(values.codex,['--version'])).stdout.trim();report.browserVersion=(await execute(binary,['--version'])).stdout.trim();
+  report.browserExecutableVersion=process.env.AGENT_BROWSER_EXECUTABLE_PATH?(await execute(process.env.AGENT_BROWSER_EXECUTABLE_PATH,['--version'])).stdout.trim():null;
   for(let round=1;round<=rounds;round++)await Promise.all([lane(round,'direct'),lane(round,'jev')]);
 }catch(error){report.failure=String(error.message);process.exitCode=1;}
 finally{
+  for(const child of children)if(child.exitCode===null)child.kill('SIGTERM');
   report.cleanup.browserSessionsClosed=true;
   for(const {server,browser}of owned){try{await browser(['close']);}catch{report.cleanup.browserSessionsClosed=false;}await new Promise(resolve=>server.close(resolve));}
-  report.cleanup.serversClosed=true;await rm(root,{recursive:true,force:true});report.cleanup.temporaryDirectoriesRemoved=true;
+  report.cleanup.serversClosed=true;await rm(root,{recursive:true,force:true});report.cleanup.temporaryDirectoriesRemoved=true;report.cleanup.helperEvidenceRemoved=true;
   const median=a=>{const b=a.toSorted((x,y)=>x-y);return b.length%2?b[(b.length-1)/2]:(b[b.length/2-1]+b[b.length/2])/2;};
   report.summary=scenarios.map(s=>({id:s.id,...Object.fromEntries(['direct','jev'].map(arm=>{
-    const trials=report.trials.filter(t=>t.id===s.id&&t.arm===arm),times=trials.map(t=>t.elapsedMs);
+    const trials=report.trials.filter(t=>t.id===s.id&&t.arm===arm),times=trials.map(t=>t.elapsedMs).filter(Number.isFinite);
     return [arm,{passed:trials.filter(t=>t.verdict==='passed').length,total:trials.length,medianMs:times.length?median(times):null,minMs:times.length?Math.min(...times):null,maxMs:times.length?Math.max(...times):null}];
   }))}));
-  report.finishedAt=new Date().toISOString();report.verdict=report.trials.length===rounds*scenarios.length*2&&report.trials.every(t=>t.verdict==='passed')&&report.cleanup.browserSessionsClosed?'passed':'failed';
+  report.finishedAt=new Date().toISOString();report.verdict=report.trials.length===rounds*scenarios.length*2&&report.trials.every(t=>t.verdict==='passed')&&report.sessions.length===rounds*2&&report.sessions.every(s=>s.exitCode===0&&!s.failed&&s.tasksSubmitted===scenarios.length)&&report.cleanup.browserSessionsClosed?'passed':'failed';
   if(report.verdict!=='passed')process.exitCode=1;await save();console.log(JSON.stringify({verdict:report.verdict,report:output,summary:report.summary}));
 }

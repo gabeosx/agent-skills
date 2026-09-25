@@ -69,7 +69,8 @@ export async function act({ browser, decide, intentOrSteps, suppliedValues = {},
     progressAssessment: [], decisions: [], latestObservation: null };
   let step = 0;
   let pending;
-  const finish = reason => ({ ...result, returnReason: reason });
+  const started = performance.now();
+  const finish = reason => ({ ...result, returnReason: reason, elapsedMs: performance.now() - started });
   async function bounded(operation) {
     if (abort.signal.aborted) throw new Error('deadline');
     let rejectAbort;
@@ -104,13 +105,15 @@ export async function act({ browser, decide, intentOrSteps, suppliedValues = {},
         stepIndex: step, scope, observation, candidates, suppliedValues: values,
         previousObservation: result.actions.at(-1)?.before.snapshot,
         history: result.actions.map(a => ({ stepIndex: a.stepIndex, action: a.action, outcome: a.outcome })) });
+      const decisionStarted = performance.now();
       const decision = await bounded(() => decide(request, abort.signal));
+      const elapsedMs = performance.now() - decisionStarted;
       if (abort.signal.aborted) return finish('deadline');
       if (decision?.binding !== binding || session.revision !== revision) return finish('superseded_observation');
       if (typeof decision.choice !== 'string' || !Object.hasOwn(candidates, decision.choice)) return finish('invalid_choice');
       const action = candidates[decision.choice];
       result.decisions.push({ stepIndex: step, choice: decision.choice, op: action.op,
-        confidence: decision.confidence, cost: decision.cost });
+        confidence: decision.confidence, cost: decision.cost, elapsedMs });
       if (action.op === 'handoff') return finish('handoff');
       if (action.op === 'step_complete') {
         result.progressAssessment.push({ stepIndex: step, intent: steps[step], judgment: 'model_reported_complete' });

@@ -1,0 +1,520 @@
+{
+  "scope": "Interrupted diagnostics, not a completed speed or cost comparison. No failed trial was retried within a run. Setup changes and all three attempts retained.",
+  "attempts": [
+    {
+      "schema": 2,
+      "startedAt": "2026-09-25T04:36:47.389Z",
+      "version": "0.2.1",
+      "codexModel": "gpt-5.5",
+      "reasoningEffort": "low",
+      "node": "v26.5.0",
+      "platform": "darwin-arm64",
+      "rounds": 3,
+      "timing": "Task delivery via /next to agent POST /done; includes navigation, Codex reasoning/tool orchestration, browser actions, and agent final readback. Excludes Codex session startup and independent harness verification.",
+      "sourceSha256": {
+        "SKILL.md": "77b4580267e4e9d85c2c0ae7d6a2ffe8a884fe04f5fcb1a73306ec37f2f5f481",
+        "scripts/run.mjs": "451876bed56bc77bf7bac989367b0baf487674c891943679e33a8e3f9f6c6079",
+        "scripts/config.mjs": "ed3b9120c31cf4e69d1f33f2b2f55949249cfc9d83355ee3e713518152b5f387",
+        "scripts/agent-browser-jev.mjs": "8a2709dc4833273925272580ab6e2754cc0d27a34afba983ebe16ac3573d974b",
+        "scripts/jev-browser.mjs": "7056a039111b96d49c1bf5bd98ab13557f458184cad7871741f3310b75254f13",
+        "tests/compare-codex.mjs": "05e52a5d3576b4eb2e4354f0b8e789d0e71e3a17a1eb18f3242b8fe61f7def56",
+        "tests/fixtures/benchmark-pages.mjs": "d2330e6acb4dc758e644ffe609ddc885768145baee8162d11e1c425007e6617f"
+      },
+      "trials": [
+        {
+          "round": 1,
+          "arm": "jev",
+          "id": "help-article",
+          "intent": "Read the Returns article, then go back to the article list.",
+          "startedAt": "2026-09-25T04:36:55.858Z",
+          "elapsedMs": 116464,
+          "finishedAt": "2026-09-25T04:38:52.323Z",
+          "agentReportedStatus": "handoff",
+          "uiVerdict": "failed",
+          "failure": "Command failed: <temporary-browser> --session <session> --json snapshot\n",
+          "helper": {
+            "returnReason": "helper_error",
+            "actions": 0,
+            "elapsedMs": 15009.250124999999,
+            "decisions": [],
+            "costUsd": null,
+            "latestObservation": null
+          },
+          "verdict": "failed"
+        },
+        {
+          "round": 1,
+          "arm": "direct",
+          "id": "help-article",
+          "intent": "Read the Returns article, then go back to the article list.",
+          "startedAt": "2026-09-25T04:36:56.112Z",
+          "elapsedMs": 163402,
+          "finishedAt": "2026-09-25T04:39:39.515Z",
+          "agentReportedStatus": "handoff",
+          "uiVerdict": "failed",
+          "failure": "Command failed: <temporary-browser> --session <session> --json snapshot\n",
+          "verdict": "failed"
+        },
+        {
+          "round": 1,
+          "arm": "jev",
+          "id": "reordered-articles",
+          "intent": "Read the Warranty article, then go back to the article list.",
+          "startedAt": "2026-09-25T04:39:24.882Z",
+          "elapsedMs": 52515,
+          "finishedAt": "2026-09-25T04:40:17.397Z",
+          "agentReportedStatus": "handoff",
+          "uiVerdict": "failed",
+          "failure": "Command failed: <temporary-browser> --session <session> --json snapshot\n",
+          "helperEvidenceMissing": true,
+          "verdict": "failed"
+        },
+        {
+          "round": 1,
+          "arm": "direct",
+          "id": "reordered-articles",
+          "intent": "Read the Warranty article, then go back to the article list.",
+          "startedAt": "2026-09-25T04:40:09.536Z",
+          "elapsedMs": 31320,
+          "finishedAt": "2026-09-25T04:40:40.857Z",
+          "agentReportedStatus": "handoff",
+          "verdict": "interrupted"
+        }
+      ],
+      "sessions": [
+        {
+          "round": 1,
+          "arm": "direct",
+          "commandCount": 10,
+          "commands": [
+            {
+              "command": "/bin/zsh -lc \"sed -n '1,220p' <home>/.agents/skills/agent-browser/SKILL.md\"",
+              "exitCode": 0
+            },
+            {
+              "command": "/bin/zsh -lc 'curl -s <fixture-origin>/next'",
+              "exitCode": 0
+            },
+            {
+              "command": "/bin/zsh -lc \"'<agent-browser>' skills get core | sed -n '1,220p'\"",
+              "exitCode": 0
+            },
+            {
+              "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json open '<fixture-origin>/articles'\"",
+              "exitCode": 0
+            },
+            {
+              "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json snapshot\"",
+              "exitCode": 130
+            },
+            {
+              "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json snapshot -i\"",
+              "exitCode": 130
+            },
+            {
+              "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json get url\"",
+              "exitCode": 130
+            },
+            {
+              "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json open '<fixture-origin>/articles' && '<agent-browser>' --session '<session>' snapshot -i --json\"",
+              "exitCode": 130
+            },
+            {
+              "command": "/bin/zsh -lc \"curl -s -X POST <fixture-origin>/done -H 'Content-Type: application/json' -d '{\\\"status\\\":\\\"handoff\\\"}' && curl -s <fixture-origin>/next\"",
+              "exitCode": 0
+            },
+            {
+              "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json open '<fixture-origin>/reordered'\"",
+              "exitCode": 130
+            }
+          ],
+          "prompt": "You are completing authorized browser tasks on synthetic local pages. Use only the browser UI as evidence. Do not inspect fixture source, test files, other sessions, reports, repository files (except the specified SKILL.md) or environment secrets. You have no preselected refs or expected action sequences. Do not delegate or call external model APIs.\n\nBrowser command: '<agent-browser>' --session '<session>' --json\nUseful commands: open <url>, snapshot, click @eN, fill @eN <exact text>, get value @eN, wait 300. Use the existing credential-free test session. No more than 8 gestures per task; return handoff if progress is unavailable. Do not close the session yourself.\n\nMethod: Complete each task yourself using normal agent-browser CLI commands. Do not invoke Jev or any other model/helper. Use snapshots to choose refs, then click/fill/wait/get as appropriate. You may batch known independent commands as you normally would.\n\nWorkflow:\n1. Get the next task with curl -s <fixture-origin>/next. If finished is true, stop.\n2. Open its URL with the browser command. Execute the intent using the method above. Only the requested changes are authorized.\n3. Read a fresh browser snapshot to assess the final state. For a filled field, read back its value. Do not treat a helper success flag alone as success.\n4. POST your assessment using curl -s -X POST <fixture-origin>/done -H 'Content-Type: application/json' -d '{\"status\":\"complete\"}' (or status \"handoff\" if the requested outcome is unavailable or could not be completed). Completing a safe stopping instruction is not completing the requested browser outcome. An absent requested target therefore remains a handoff. Preserve a helper handoff unless later caller work actually establishes the requested outcome.\n5. Repeat from step 1 until finished. Be concise, avoid narration, and do not add research or unrelated checks.\n"
+        },
+        {
+          "round": 1,
+          "arm": "jev",
+          "commandCount": 9,
+          "commands": [
+            {
+              "command": "/bin/zsh -lc \"sed -n '1,240p' <installed-skill>SKILL.md\"",
+              "exitCode": 0
+            },
+            {
+              "command": "/bin/zsh -lc 'curl -s <fixture-origin>/next'",
+              "exitCode": 0
+            },
+            {
+              "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json open <fixture-origin>/articles\"",
+              "exitCode": 0
+            },
+            {
+              "command": "/bin/zsh -lc \"node '<installed-skill>scripts/run.mjs' --binary '<agent-browser>' --session '<session>' --intent 'Read the Returns article, then go back to the article list.' --output '<temporary-directory>/1-jev/help-article.json'\"",
+              "exitCode": 2
+            },
+            {
+              "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json snapshot\"",
+              "exitCode": 130
+            },
+            {
+              "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json snapshot\"",
+              "exitCode": 130
+            },
+            {
+              "command": "/bin/zsh -lc \"curl -s -X POST <fixture-origin>/done -H 'Content-Type: application/json' -d '{\\\"status\\\":\\\"handoff\\\"}'\"",
+              "exitCode": 0
+            },
+            {
+              "command": "/bin/zsh -lc 'curl -s <fixture-origin>/next'",
+              "exitCode": 0
+            },
+            {
+              "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json open <fixture-origin>/reordered\"",
+              "exitCode": 130
+            }
+          ],
+          "prompt": "You are completing authorized browser tasks on synthetic local pages. Use only the browser UI as evidence. Do not inspect fixture source, test files, other sessions, reports, repository files (except the specified SKILL.md) or environment secrets. You have no preselected refs or expected action sequences. Do not delegate or call external model APIs.\n\nBrowser command: '<agent-browser>' --session '<session>' --json\nUseful commands: open <url>, snapshot, click @eN, fill @eN <exact text>, get value @eN, wait 300. Use the existing credential-free test session. No more than 8 gestures per task; return handoff if progress is unavailable. Do not close the session yourself.\n\nMethod: Complete each task by calling the Jev helper with the supplied intent and exact values: node '<installed-skill>scripts/run.mjs' --binary '<agent-browser>' --session '<session>' --intent '<task intent>' [--value 'name=text' ...] --output '<task evidencePath>'. First read '<installed-skill>SKILL.md'; use this version of the skill. Do not write a task file or policy. After handoff or failure, follow the skill's caller-handling instructions. Inspect the page and continue with ordinary browser commands if appropriate; retain time spent handling the exception.\n\nWorkflow:\n1. Get the next task with curl -s <fixture-origin>/next. If finished is true, stop.\n2. Open its URL with the browser command. Execute the intent using the method above. Only the requested changes are authorized.\n3. Read a fresh browser snapshot to assess the final state. For a filled field, read back its value. Do not treat a helper success flag alone as success.\n4. POST your assessment using curl -s -X POST <fixture-origin>/done -H 'Content-Type: application/json' -d '{\"status\":\"complete\"}' (or status \"handoff\" if the requested outcome is unavailable or could not be completed). Completing a safe stopping instruction is not completing the requested browser outcome. An absent requested target therefore remains a handoff. Preserve a helper handoff unless later caller work actually establishes the requested outcome.\n5. Repeat from step 1 until finished. Be concise, avoid narration, and do not add research or unrelated checks.\n"
+        }
+      ],
+      "cleanup": {
+        "browserSessionsClosed": false,
+        "serversClosed": true,
+        "temporaryDirectoriesRemoved": true,
+        "forcedScopedTeardownCompleted": true
+      },
+      "codexVersion": "codex-cli 0.147.0",
+      "browserVersion": "agent-browser 0.38.1",
+      "verdict": "aborted",
+      "finishedAt": "2026-09-25T04:41:03.580Z",
+      "failure": "Stopped after both initial browser sessions became unresponsive to snapshot/get operations. Independent sessions using the same executable and fixture URL responded normally. No successful-model timing claim is derived from this attempt.",
+      "diagnosticAttempt": "codex-comparison.json"
+    },
+    {
+      "schema": 2,
+      "startedAt": "2026-09-25T04:41:44.196Z",
+      "version": "0.2.1",
+      "codexModel": "gpt-5.5",
+      "reasoningEffort": "low",
+      "node": "v26.5.0",
+      "platform": "darwin-arm64",
+      "rounds": 3,
+      "timing": "Task delivery via /next to agent POST /done; includes navigation, Codex reasoning/tool orchestration, browser actions, and agent final readback. Excludes Codex session startup, browser preflight and independent harness verification.",
+      "sourceSha256": {
+        "SKILL.md": "77b4580267e4e9d85c2c0ae7d6a2ffe8a884fe04f5fcb1a73306ec37f2f5f481",
+        "scripts/run.mjs": "451876bed56bc77bf7bac989367b0baf487674c891943679e33a8e3f9f6c6079",
+        "scripts/config.mjs": "ed3b9120c31cf4e69d1f33f2b2f55949249cfc9d83355ee3e713518152b5f387",
+        "scripts/agent-browser-jev.mjs": "8a2709dc4833273925272580ab6e2754cc0d27a34afba983ebe16ac3573d974b",
+        "scripts/jev-browser.mjs": "7056a039111b96d49c1bf5bd98ab13557f458184cad7871741f3310b75254f13",
+        "tests/compare-codex.mjs": "129216f963fa768b0fb66f3381cdef0bc3532ad9c96351cd765d6ce179c01a72",
+        "tests/fixtures/benchmark-pages.mjs": "d2330e6acb4dc758e644ffe609ddc885768145baee8162d11e1c425007e6617f"
+      },
+      "trials": [
+        {
+          "round": 1,
+          "arm": "jev",
+          "id": "help-article",
+          "intent": "Read the Returns article, then go back to the article list.",
+          "startedAt": "2026-09-25T04:41:54.684Z",
+          "verdict": "failed",
+          "failure": "Codex exited before submitting an outcome",
+          "elapsedMs": 80901
+        }
+      ],
+      "sessions": [
+        {
+          "round": 1,
+          "arm": "jev",
+          "browserPreflightPassed": true,
+          "commandCount": 6,
+          "commands": [
+            {
+              "command": "/bin/zsh -lc \"sed -n '1,240p' <installed-skill>SKILL.md\"",
+              "exitCode": 0
+            },
+            {
+              "command": "/bin/zsh -lc 'curl -s <fixture-origin>/next'",
+              "exitCode": 0
+            },
+            {
+              "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json open <fixture-origin>/articles\"",
+              "exitCode": 130
+            },
+            {
+              "command": "/bin/zsh -lc \"printf 'open <fixture-origin>/articles\\\\n' | <agent-browser> --session <session> --json\"",
+              "exitCode": 0
+            },
+            {
+              "command": "/bin/zsh -lc '<agent-browser> --session <session> --json open <fixture-origin>/articles'",
+              "exitCode": 1
+            },
+            {
+              "command": "/bin/zsh -lc 'curl -s -v <fixture-origin>/next'",
+              "exitCode": 7
+            }
+          ],
+          "prompt": "You are completing authorized browser tasks on synthetic local pages. Use only the browser UI as evidence. Do not inspect fixture source, test files, other sessions, reports, repository files (except the specified SKILL.md) or environment secrets. You have no preselected refs or expected action sequences. Do not delegate or call external model APIs.\n\nBrowser command: '<agent-browser>' --session '<session>' --json\nUseful commands: open <url>, snapshot, click @eN, fill @eN <exact text>, get value @eN, wait 300. Use the existing credential-free test session. No more than 8 gestures per task; return handoff if progress is unavailable. Do not close the session yourself.\n\nMethod: Complete each task by calling the Jev helper with the supplied intent and exact values: node '<installed-skill>scripts/run.mjs' --binary '<agent-browser>' --session '<session>' --intent '<task intent>' [--value 'name=text' ...] --output '<task evidencePath>'. First read '<installed-skill>SKILL.md'; use this version of the skill. Do not write a task file or policy. After handoff or failure, follow the skill's caller-handling instructions. Inspect the page and continue with ordinary browser commands if appropriate; retain time spent handling the exception.\n\nWorkflow:\n1. Get the next task with curl -s <fixture-origin>/next. If finished is true, stop.\n2. Open its URL with the browser command. Execute the intent using the method above. Only the requested changes are authorized.\n3. Read a fresh browser snapshot to assess the final state. For a filled field, read back its value. Do not treat a helper success flag alone as success.\n4. POST your assessment using curl -s -X POST <fixture-origin>/done -H 'Content-Type: application/json' -d '{\"status\":\"complete\"}' (or status \"handoff\" if the requested outcome is unavailable or could not be completed). Completing a safe stopping instruction is not completing the requested browser outcome. An absent requested target therefore remains a handoff. Preserve a helper handoff unless later caller work actually establishes the requested outcome.\n5. Repeat from step 1 until finished. Be concise, avoid narration, and do not add research or unrelated checks.\n",
+          "usage": {
+            "input_tokens": 259021,
+            "cached_input_tokens": 226816,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 1377,
+            "reasoning_output_tokens": 277
+          },
+          "exitCode": 0,
+          "tasksSubmitted": 0
+        }
+      ],
+      "cleanup": {
+        "browserSessionsClosed": true,
+        "serversClosed": true,
+        "temporaryDirectoriesRemoved": true,
+        "helperEvidenceRemoved": true,
+        "forcedScopedTeardownCompleted": true
+      },
+      "codexVersion": "codex-cli 0.147.0",
+      "browserVersion": "agent-browser 0.38.1",
+      "failure": "Command failed: <temporary-browser> --session <session> --json open http://127.0.0.1:59479/preflight\n",
+      "summary": [
+        {
+          "id": "help-article",
+          "direct": {
+            "passed": 0,
+            "total": 0,
+            "medianMs": null,
+            "minMs": null,
+            "maxMs": null
+          },
+          "jev": {
+            "passed": 0,
+            "total": 1,
+            "minMs": null,
+            "maxMs": null
+          }
+        },
+        {
+          "id": "reordered-articles",
+          "direct": {
+            "passed": 0,
+            "total": 0,
+            "medianMs": null,
+            "minMs": null,
+            "maxMs": null
+          },
+          "jev": {
+            "passed": 0,
+            "total": 0,
+            "medianMs": null,
+            "minMs": null,
+            "maxMs": null
+          }
+        },
+        {
+          "id": "support-draft",
+          "direct": {
+            "passed": 0,
+            "total": 0,
+            "medianMs": null,
+            "minMs": null,
+            "maxMs": null
+          },
+          "jev": {
+            "passed": 0,
+            "total": 0,
+            "medianMs": null,
+            "minMs": null,
+            "maxMs": null
+          }
+        },
+        {
+          "id": "preferences",
+          "direct": {
+            "passed": 0,
+            "total": 0,
+            "medianMs": null,
+            "minMs": null,
+            "maxMs": null
+          },
+          "jev": {
+            "passed": 0,
+            "total": 0,
+            "medianMs": null,
+            "minMs": null,
+            "maxMs": null
+          }
+        },
+        {
+          "id": "search-topic",
+          "direct": {
+            "passed": 0,
+            "total": 0,
+            "medianMs": null,
+            "minMs": null,
+            "maxMs": null
+          },
+          "jev": {
+            "passed": 0,
+            "total": 0,
+            "medianMs": null,
+            "minMs": null,
+            "maxMs": null
+          }
+        },
+        {
+          "id": "missing-article",
+          "direct": {
+            "passed": 0,
+            "total": 0,
+            "medianMs": null,
+            "minMs": null,
+            "maxMs": null
+          },
+          "jev": {
+            "passed": 0,
+            "total": 0,
+            "medianMs": null,
+            "minMs": null,
+            "maxMs": null
+          }
+        }
+      ],
+      "finishedAt": "2026-09-25T04:42:37.909Z",
+      "verdict": "failed",
+      "diagnosticAttempt": "codex-comparison-preflight.json"
+    },
+    {
+      "schema": 2,
+      "startedAt": "2026-09-25T04:44:04.557Z",
+      "version": "0.2.1",
+      "codexModel": "gpt-5.5",
+      "reasoningEffort": "low",
+      "node": "v26.5.0",
+      "platform": "darwin-arm64",
+      "rounds": 3,
+      "timing": "Task delivery via /next to agent POST /done; includes navigation, Codex reasoning/tool orchestration, browser actions, and agent final readback. Excludes Codex session startup, browser preflight and independent harness verification.",
+      "sourceSha256": {
+        "SKILL.md": "77b4580267e4e9d85c2c0ae7d6a2ffe8a884fe04f5fcb1a73306ec37f2f5f481",
+        "scripts/run.mjs": "451876bed56bc77bf7bac989367b0baf487674c891943679e33a8e3f9f6c6079",
+        "scripts/config.mjs": "ed3b9120c31cf4e69d1f33f2b2f55949249cfc9d83355ee3e713518152b5f387",
+        "scripts/agent-browser-jev.mjs": "8a2709dc4833273925272580ab6e2754cc0d27a34afba983ebe16ac3573d974b",
+        "scripts/jev-browser.mjs": "7056a039111b96d49c1bf5bd98ab13557f458184cad7871741f3310b75254f13",
+        "tests/compare-codex.mjs": "e3bb7ccceef3fa0128ee0f21e30e1526d0ce40f77fb557bfc16addc06f3b4fd5",
+        "tests/fixtures/benchmark-pages.mjs": "d2330e6acb4dc758e644ffe609ddc885768145baee8162d11e1c425007e6617f"
+      },
+      "trials": [
+        {
+          "round": 1,
+          "arm": "direct",
+          "id": "help-article",
+          "intent": "Read the Returns article, then go back to the article list.",
+          "startedAt": "2026-09-25T04:44:15.178Z",
+          "elapsedMs": 99710,
+          "finishedAt": "2026-09-25T04:45:54.887Z",
+          "agentReportedStatus": "handoff",
+          "uiVerdict": "failed",
+          "failure": "Command failed: <agent-browser> --session <session> --json snapshot\n",
+          "verdict": "failed"
+        },
+        {
+          "round": 1,
+          "arm": "direct",
+          "id": "reordered-articles",
+          "intent": "Read the Warranty article, then go back to the article list.",
+          "startedAt": "2026-09-25T04:46:27.772Z",
+          "elapsedMs": 22425,
+          "finishedAt": "2026-09-25T04:46:50.197Z",
+          "agentReportedStatus": "handoff",
+          "uiVerdict": "failed",
+          "failure": "Command failed: <agent-browser> --session <session> --json snapshot\n",
+          "verdict": "failed"
+        },
+        {
+          "round": 1,
+          "arm": "direct",
+          "id": "support-draft",
+          "intent": "Fill Subject with the supplied subject and Message with the supplied message. Leave the request as a draft; do not send it.",
+          "startedAt": "2026-09-25T04:47:22.412Z",
+          "verdict": "interrupted"
+        }
+      ],
+      "sessions": [
+        {
+          "round": 1,
+          "arm": "direct",
+          "browserPreflightPassed": true,
+          "commandCount": 15,
+          "commands": [
+            {
+              "command": "/bin/zsh -lc \"sed -n '1,220p' <home>/.agents/skills/agent-browser/SKILL.md\"",
+              "exitCode": 0
+            },
+            {
+              "command": "/bin/zsh -lc 'curl -s <fixture-origin>/next'",
+              "exitCode": 0
+            },
+            {
+              "command": "/bin/zsh -lc \"'<agent-browser>' --help\"",
+              "exitCode": 0
+            },
+            {
+              "command": "/bin/zsh -lc \"'<agent-browser>' session list --json\"",
+              "exitCode": 0
+            },
+            {
+              "command": "/bin/zsh -lc 'ps -ef | rg \"agent-browser|jev-compare-direct\"'",
+              "exitCode": 0
+            },
+            {
+              "command": "/bin/zsh -lc \"AGENT_BROWSER_SESSION='<session>' '<agent-browser>' snapshot --json\"",
+              "exitCode": 143
+            },
+            {
+              "command": "/bin/zsh -lc \"'<agent-browser>' open <fixture-origin>/articles --session '<session>' --json\"",
+              "exitCode": 143
+            },
+            {
+              "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json snapshot\"",
+              "exitCode": 143
+            },
+            {
+              "command": "/bin/zsh -lc 'kill 8521 8522 8538 8539 8630 8631 2>/dev/null || true'",
+              "exitCode": 0
+            },
+            {
+              "command": "/bin/zsh -lc 'ps -ef | rg \"agent-browser|curl -s -X POST|59604\"'",
+              "exitCode": 0
+            },
+            {
+              "command": "/bin/zsh -lc \"curl -s -X POST <fixture-origin>/done -H 'Content-Type: application/json' -d '{\\\"status\\\":\\\"handoff\\\"}'\"",
+              "exitCode": 0
+            },
+            {
+              "command": "/bin/zsh -lc 'curl -s <fixture-origin>/next'",
+              "exitCode": 0
+            },
+            {
+              "command": "/bin/zsh -lc \"AGENT_BROWSER_SESSION='<session>' timeout 8s '<agent-browser>' open <fixture-origin>/reordered\"",
+              "exitCode": 127
+            },
+            {
+              "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json open <fixture-origin>/articles\"",
+              "exitCode": 1
+            },
+            {
+              "command": "/bin/zsh -lc \"curl -s -X POST <fixture-origin>/done -H 'Content-Type: application/json' -d '{\\\"status\\\":\\\"handoff\\\"}'\"",
+              "exitCode": 0
+            }
+          ],
+          "prompt": "You are completing authorized browser tasks on synthetic local pages. Use only the browser UI as evidence. Do not inspect fixture source, test files, other sessions, reports, repository files (except the specified SKILL.md) or environment secrets. You have no preselected refs or expected action sequences. Do not delegate or call external model APIs.\n\nBrowser command: '<agent-browser>' --session '<session>' --json\nUseful commands: open <url>, snapshot, click @eN, fill @eN <exact text>, get value @eN, wait 300. Use the existing credential-free test session. No more than 8 gestures per task; return handoff if progress is unavailable. Do not close the session yourself.\n\nMethod: Complete each task yourself using normal agent-browser CLI commands. Do not invoke Jev or any other model/helper. Use snapshots to choose refs, then click/fill/wait/get as appropriate. You may batch known independent commands as you normally would.\n\nWorkflow:\n1. Get the next task with curl -s <fixture-origin>/next. If finished is true, stop.\n2. Open its URL with the browser command. Execute the intent using the method above. Only the requested changes are authorized.\n3. Read a fresh browser snapshot to assess the final state. For a filled field, read back its value. Do not treat a helper success flag alone as success.\n4. POST your assessment using curl -s -X POST <fixture-origin>/done -H 'Content-Type: application/json' -d '{\"status\":\"complete\"}' (or status \"handoff\" if the requested outcome is unavailable or could not be completed). Completing a safe stopping instruction is not completing the requested browser outcome. An absent requested target therefore remains a handoff. Preserve a helper handoff unless later caller work actually establishes the requested outcome.\n5. Repeat from step 1 until finished. Be concise, avoid narration, and do not add research or unrelated checks.\n"
+        }
+      ],
+      "cleanup": {
+        "forcedScopedTeardown": true,
+        "forcedScopedTeardownCompleted": true
+      },
+      "codexVersion": "codex-cli 0.147.0",
+      "browserVersion": "agent-browser 0.38.1",
+      "verdict": "aborted",
+      "failure": "Stopped after the serial Codex caller also stalled on browser commands; no comparable timing or token result was obtained.",
+      "diagnosticAttempt": "codex-comparison-serial.json"
+    }
+  ]
+}

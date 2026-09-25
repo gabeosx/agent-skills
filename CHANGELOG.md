@@ -15,6 +15,14 @@ All notable skill changes are recorded in this file. Each skill is versioned ind
 - Added canonical agent instructions and a dependency-free release-contract validator requiring every affected skill change to include an independent Semantic Version increment, a matching root changelog entry, relevant validation, and scoped cleanup evidence.
 - Required repository-only changes to be recorded without inventing unrelated skill version bumps, and documented the definition of done and release-tagging workflow.
 
+## agent-browser-jev 0.2.1 - 2026-09-25
+
+### Fixed
+
+- Clarified caller handling of handoffs: stopping correctly does not establish the requested outcome, and any later caller recovery must remain distinct from the helper's result.
+- Updated the actual-Codex comparison to load the matching skill instructions, retain helper outcomes automatically, separate UI checks from caller-status checks, and preserve GPT usage and Jev charges. Earlier failed trials remain available.
+- Added helper and decision elapsed times to evidence, and reviewed published browser integrations to distinguish action latency, whole-task latency, browser overhead and interface-dependent reliability. Published the fresh 36-trial replay, including two caller verification failures, token totals and explicitly estimated API-equivalent cost. Documented the local Chrome 154 stalls and the Chrome 151 build used for the completed replay.
+
 ## agent-browser-jev 0.2.0 - 2026-09-25
 
 ### Added

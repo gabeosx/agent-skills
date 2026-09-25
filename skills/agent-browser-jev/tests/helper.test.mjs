@@ -188,3 +188,16 @@ test('Jev adapter offers progress choices, disables retries/fallbacks and binds 
   assert.equal(result.binding, 'bound');
   assert.equal(result.choice, 'step_complete');
 });
+
+
+test('handoff preserves partial work without reporting completion and retains measured decision time', async () => {
+  const f = fixture({decide: async r => ({binding:r.binding, choice:r.history.length?'handoff':'c0', cost:0.001})});
+  const result = await f.run();
+  assert.equal(result.returnReason, 'handoff');
+  assert.equal(result.actions.length, 1);
+  assert.deepEqual(result.progressAssessment, []);
+  assert.equal(result.latestObservation.snapshot, 'Aperture is open');
+  assert.deepEqual(result.decisions.map(d=>d.cost), [0.001,0.001]);
+  assert.ok(result.decisions.every(d=>Number.isFinite(d.elapsedMs)&&d.elapsedMs>=0));
+  assert.ok(result.elapsedMs>=result.decisions.reduce((sum,d)=>sum+d.elapsedMs,0));
+});

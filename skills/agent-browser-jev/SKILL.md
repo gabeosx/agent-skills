@@ -2,7 +2,7 @@
 name: agent-browser-jev
 description: Use Jev to perform short browser tasks through agent-browser, including contextual clicks, forms, dialogs and searches. Give the helper an intent instead of making each UI decision yourself; it returns observations and completion or handoff.
 metadata:
-  version: "0.2.0"
+  version: "0.2.1"
 ---
 
 # Agent Browser Jev
@@ -27,7 +27,7 @@ If no saved key or `OPENROUTER_API_KEY` exists, setup prompts in the terminal wi
    ```
 
    Use `--binary` for a selected fork. No task file or custom policy is required. The default offers every supported observed click/fill and passes visible page text to Jev. This does not add authority beyond the user's task. Reuse any existing project permissions/redaction via `--policy`; see [references/usage.md](references/usage.md). Do not build a new policy module or screen parser for an ordinary task just to call the helper.
-3. Review the summary and evidence path. `reported_complete` is Jev's assessment, so confirm the final outcome as appropriate to the task. On handoff or limits, continue in the same caller. An uncertain action may already have happened: observe before repeating it.
+3. Review the summary and evidence path. `reported_complete` is Jev's assessment, so confirm the final outcome as appropriate to the task. On handoff or limits (exit 2), preserve that result: the helper returned control without establishing completion. A missing target is a handoff even when stopping was the correct behavior. Continue in the same caller when useful; report completion only if subsequent evidence establishes the requested outcome, and distinguish that caller recovery from the helper result. An uncertain action may already have happened: observe before repeating it.
 
 Keep credentials and OTPs with the browser's authentication provider, outside model input. Keep the browser session exclusive during a call. Other processes or human activity can change a page between observation and gesture; the in-process lock cannot prevent that.
 

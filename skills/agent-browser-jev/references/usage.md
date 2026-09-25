@@ -58,7 +58,7 @@ An optional custom policy exports:
 
 Custom policy is optional. Reuse existing project policy/secret adapters when needed rather than recreating these functions per click. New tasks supply new intents to the same helper.
 
-Exit status: `0` for model-reported completion, `2` for a returned handoff/budget/runtime limit, `1` for setup or command failure. Zero is not independently verified business success.
+Exit status: `0` for model-reported completion, `2` for a returned handoff/budget/runtime limit, `1` for setup or command failure. Zero is not independently verified business success. Preserve the original `returnReason` when reporting a result. A handoff means the helper has not established completion; successfully stopping for an absent target does not mean the requested target was opened. If the caller later completes the task, report that recovery separately.
 
 ## JavaScript API
 
@@ -84,6 +84,8 @@ const result = await act({
 API callers may pass a compatible client to `jevDecider(client)`. Provider fallback and retries are disabled. The model is pinned to `typesafe/jev-1.13` and the SDK is pinned in `package-lock.json`.
 
 Jev receives the current and previous observed screen, recent action history and explicit caller-supplied values. This preserves context when a dialog closes or the browser reassigns references; code still does not interpret site-specific outcomes.
+
+`elapsedMs` measures the helper loop, and each recorded decision has its own `elapsedMs`; these exclude caller orchestration and are not whole-task timings.
 
 The result includes `actions` with before/after observations and tool outcomes, `latestObservation`, `progressAssessment`, `decisions`, and `returnReason`. Completion and handoff are model choices. Invalid/superseded decisions, denied permissions, excessive observation size, budgets, deadlines and errors return to the caller. Waits count against `maxActions`. Observations default to a 45,000-character JSON budget; larger pages return for narrower context rather than silently dropping candidates.
 

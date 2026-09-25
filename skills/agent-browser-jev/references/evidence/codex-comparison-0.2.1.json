@@ -1,0 +1,2869 @@
+{
+  "schema": 2,
+  "startedAt": "2026-09-25T04:52:04.894Z",
+  "version": "0.2.1",
+  "codexModel": "gpt-5.5",
+  "reasoningEffort": "low",
+  "node": "v26.5.0",
+  "platform": "darwin-arm64",
+  "rounds": 3,
+  "timing": "Task delivery via /next to agent POST /done; includes navigation, Codex reasoning/tool orchestration, browser actions, and agent final readback. Excludes Codex session startup, independent harness verification.",
+  "sourceSha256": {
+    "SKILL.md": "77b4580267e4e9d85c2c0ae7d6a2ffe8a884fe04f5fcb1a73306ec37f2f5f481",
+    "scripts/run.mjs": "451876bed56bc77bf7bac989367b0baf487674c891943679e33a8e3f9f6c6079",
+    "scripts/config.mjs": "ed3b9120c31cf4e69d1f33f2b2f55949249cfc9d83355ee3e713518152b5f387",
+    "scripts/agent-browser-jev.mjs": "8a2709dc4833273925272580ab6e2754cc0d27a34afba983ebe16ac3573d974b",
+    "scripts/jev-browser.mjs": "7056a039111b96d49c1bf5bd98ab13557f458184cad7871741f3310b75254f13",
+    "tests/compare-codex.mjs": "130ea310c660fbffb2378b0ca230953cd8a8b9fb9cdb75bfc060e079eec7c142",
+    "tests/fixtures/benchmark-pages.mjs": "d2330e6acb4dc758e644ffe609ddc885768145baee8162d11e1c425007e6617f"
+  },
+  "trials": [
+    {
+      "round": 1,
+      "arm": "jev",
+      "id": "help-article",
+      "intent": "Read the Returns article, then go back to the article list.",
+      "startedAt": "2026-09-25T04:52:13.829Z",
+      "elapsedMs": 18404,
+      "finishedAt": "2026-09-25T04:52:32.232Z",
+      "agentReportedStatus": "complete",
+      "finalSnapshot": "- heading \"Help articles\" [level=1, ref=e1]\n- main\n  - article\n    - heading \"Shipping\" [level=2, ref=e2]\n    - paragraph\n      - StaticText \"Learn about our shipping policy.\"\n    - button \"Read article\" [ref=e3]\n  - article\n    - heading \"Returns\" [level=2, ref=e4]\n    - paragraph\n      - StaticText \"Learn about our returns policy.\"\n    - button \"Read article\" [ref=e5]\n  - article\n    - heading \"Warranty\" [level=2, ref=e6]\n    - paragraph\n      - StaticText \"Learn about our warranty policy.\"\n    - button \"Read article\" [ref=e7]",
+      "events": [
+        {
+          "type": "article",
+          "article": "Returns"
+        },
+        {
+          "type": "back",
+          "article": "Returns"
+        }
+      ],
+      "statusVerdict": "passed",
+      "uiVerdict": "passed",
+      "helper": {
+        "returnReason": "reported_complete",
+        "actions": 2,
+        "elapsedMs": 898.7673749999999,
+        "decisions": [
+          {
+            "op": "click",
+            "cost": 0.000034272,
+            "elapsedMs": 264.74858400000005
+          },
+          {
+            "op": "click",
+            "cost": 0.000036624,
+            "elapsedMs": 171.70275000000004
+          },
+          {
+            "op": "step_complete",
+            "cost": 0.000042,
+            "elapsedMs": 194.47675000000004
+          }
+        ],
+        "costUsd": 0.000112896,
+        "latestObservation": {
+          "snapshot": "- heading \"Help articles\" [level=1, ref=e1]\n- main\n  - article\n    - heading \"Shipping\" [level=2, ref=e2]\n    - paragraph\n      - StaticText \"Learn about our shipping policy.\"\n    - button \"Read article\" [ref=e3]\n  - article\n    - heading \"Returns\" [level=2, ref=e4]\n    - paragraph\n      - StaticText \"Learn about our returns policy.\"\n    - button \"Read article\" [ref=e5]\n  - article\n    - heading \"Warranty\" [level=2, ref=e6]\n    - paragraph\n      - StaticText \"Learn about our warranty policy.\"\n    - button \"Read article\" [ref=e7]",
+          "refs": {
+            "e1": {
+              "name": "Help articles",
+              "role": "heading"
+            },
+            "e2": {
+              "name": "Shipping",
+              "role": "heading"
+            },
+            "e3": {
+              "name": "Read article",
+              "role": "button"
+            },
+            "e4": {
+              "name": "Returns",
+              "role": "heading"
+            },
+            "e5": {
+              "name": "Read article",
+              "role": "button"
+            },
+            "e6": {
+              "name": "Warranty",
+              "role": "heading"
+            },
+            "e7": {
+              "name": "Read article",
+              "role": "button"
+            }
+          }
+        }
+      },
+      "verdict": "passed"
+    },
+    {
+      "round": 1,
+      "arm": "direct",
+      "id": "help-article",
+      "intent": "Read the Returns article, then go back to the article list.",
+      "startedAt": "2026-09-25T04:52:14.404Z",
+      "elapsedMs": 24687,
+      "finishedAt": "2026-09-25T04:52:39.092Z",
+      "agentReportedStatus": "complete",
+      "finalSnapshot": "- heading \"Help articles\" [level=1, ref=e1]\n- main\n  - article\n    - heading \"Shipping\" [level=2, ref=e2]\n    - paragraph\n      - StaticText \"Learn about our shipping policy.\"\n    - button \"Read article\" [ref=e3]\n  - article\n    - heading \"Returns\" [level=2, ref=e4]\n    - paragraph\n      - StaticText \"Learn about our returns policy.\"\n    - button \"Read article\" [ref=e5]\n  - article\n    - heading \"Warranty\" [level=2, ref=e6]\n    - paragraph\n      - StaticText \"Learn about our warranty policy.\"\n    - button \"Read article\" [ref=e7]",
+      "events": [
+        {
+          "type": "article",
+          "article": "Returns"
+        },
+        {
+          "type": "back",
+          "article": "Returns"
+        }
+      ],
+      "statusVerdict": "passed",
+      "uiVerdict": "passed",
+      "verdict": "passed"
+    },
+    {
+      "round": 1,
+      "arm": "jev",
+      "id": "reordered-articles",
+      "intent": "Read the Warranty article, then go back to the article list.",
+      "startedAt": "2026-09-25T04:52:32.306Z",
+      "elapsedMs": 15650,
+      "finishedAt": "2026-09-25T04:52:47.956Z",
+      "agentReportedStatus": "complete",
+      "finalSnapshot": "- heading \"Help articles\" [level=1, ref=e10]\n- main\n  - article\n    - heading \"Warranty\" [level=2, ref=e11]\n    - paragraph\n      - StaticText \"Learn about our warranty policy.\"\n    - button \"Read article\" [ref=e12]\n  - article\n    - heading \"Shipping\" [level=2, ref=e13]\n    - paragraph\n      - StaticText \"Learn about our shipping policy.\"\n    - button \"Read article\" [ref=e14]\n  - article\n    - heading \"Returns\" [level=2, ref=e15]\n    - paragraph\n      - StaticText \"Learn about our returns policy.\"\n    - button \"Read article\" [ref=e16]",
+      "events": [
+        {
+          "type": "article",
+          "article": "Warranty"
+        },
+        {
+          "type": "back",
+          "article": "Warranty"
+        }
+      ],
+      "statusVerdict": "passed",
+      "uiVerdict": "passed",
+      "helper": {
+        "returnReason": "reported_complete",
+        "actions": 2,
+        "elapsedMs": 796.58075,
+        "decisions": [
+          {
+            "op": "click",
+            "cost": 0.000034692,
+            "elapsedMs": 217.99350000000004
+          },
+          {
+            "op": "click",
+            "cost": 0.000037212,
+            "elapsedMs": 173.69108300000016
+          },
+          {
+            "op": "step_complete",
+            "cost": 0.000042714,
+            "elapsedMs": 166.90241600000013
+          }
+        ],
+        "costUsd": 0.00011461799999999999,
+        "latestObservation": {
+          "snapshot": "- heading \"Help articles\" [level=1, ref=e10]\n- main\n  - article\n    - heading \"Warranty\" [level=2, ref=e11]\n    - paragraph\n      - StaticText \"Learn about our warranty policy.\"\n    - button \"Read article\" [ref=e12]\n  - article\n    - heading \"Shipping\" [level=2, ref=e13]\n    - paragraph\n      - StaticText \"Learn about our shipping policy.\"\n    - button \"Read article\" [ref=e14]\n  - article\n    - heading \"Returns\" [level=2, ref=e15]\n    - paragraph\n      - StaticText \"Learn about our returns policy.\"\n    - button \"Read article\" [ref=e16]",
+          "refs": {
+            "e10": {
+              "name": "Help articles",
+              "role": "heading"
+            },
+            "e11": {
+              "name": "Warranty",
+              "role": "heading"
+            },
+            "e12": {
+              "name": "Read article",
+              "role": "button"
+            },
+            "e13": {
+              "name": "Shipping",
+              "role": "heading"
+            },
+            "e14": {
+              "name": "Read article",
+              "role": "button"
+            },
+            "e15": {
+              "name": "Returns",
+              "role": "heading"
+            },
+            "e16": {
+              "name": "Read article",
+              "role": "button"
+            }
+          }
+        }
+      },
+      "verdict": "passed"
+    },
+    {
+      "round": 1,
+      "arm": "direct",
+      "id": "reordered-articles",
+      "intent": "Read the Warranty article, then go back to the article list.",
+      "startedAt": "2026-09-25T04:52:39.145Z",
+      "elapsedMs": 23616,
+      "finishedAt": "2026-09-25T04:53:02.761Z",
+      "agentReportedStatus": "complete",
+      "finalSnapshot": "- heading \"Help articles\" [level=1, ref=e10]\n- main\n  - article\n    - heading \"Warranty\" [level=2, ref=e11]\n    - paragraph\n      - StaticText \"Learn about our warranty policy.\"\n    - button \"Read article\" [ref=e12]\n  - article\n    - heading \"Shipping\" [level=2, ref=e13]\n    - paragraph\n      - StaticText \"Learn about our shipping policy.\"\n    - button \"Read article\" [ref=e14]\n  - article\n    - heading \"Returns\" [level=2, ref=e15]\n    - paragraph\n      - StaticText \"Learn about our returns policy.\"\n    - button \"Read article\" [ref=e16]",
+      "events": [
+        {
+          "type": "article",
+          "article": "Warranty"
+        },
+        {
+          "type": "back",
+          "article": "Warranty"
+        }
+      ],
+      "statusVerdict": "passed",
+      "uiVerdict": "passed",
+      "verdict": "passed"
+    },
+    {
+      "round": 1,
+      "arm": "jev",
+      "id": "support-draft",
+      "intent": "Fill Subject with the supplied subject and Message with the supplied message. Leave the request as a draft; do not send it.",
+      "startedAt": "2026-09-25T04:52:48.005Z",
+      "elapsedMs": 25075,
+      "finishedAt": "2026-09-25T04:53:13.080Z",
+      "agentReportedStatus": "complete",
+      "finalSnapshot": "- heading \"Contact support\" [level=1, ref=e19]\n- LabelText\n  - StaticText \"Subject\"\n  - textbox \"Subject\" [ref=e21]: Delivery question\n    - StaticText \"Delivery question\"\n- LabelText\n  - StaticText \"Message\"\n  - textbox \"Message\" [ref=e22]: Please check order #42 — \"blue\" & green.\nThank you!\n    - generic\n      - StaticText \"Please check order #42 — \\\"blue\\\" & green.\"\n      - LineBreak \"\\n\"\n      - StaticText \"Thank you!\"\n- button \"Send request\" [ref=e20]",
+      "events": [
+        {
+          "type": "input",
+          "field": "subject",
+          "value": ""
+        },
+        {
+          "type": "input",
+          "field": "subject",
+          "value": "Delivery question"
+        },
+        {
+          "type": "input",
+          "field": "message",
+          "value": ""
+        },
+        {
+          "type": "input",
+          "field": "message",
+          "value": "Please check order #42 — \"blue\" & green.\nThank you!"
+        },
+        {
+          "type": "input",
+          "field": "message",
+          "value": "Please check order #42 — \"blue\" & green.\nThank you!"
+        },
+        {
+          "type": "input",
+          "field": "message",
+          "value": "Please check order #42 — \"blue\" & green.\nThank you!"
+        }
+      ],
+      "statusVerdict": "passed",
+      "readbacks": {
+        "subject": "Delivery question",
+        "message": "Please check order #42 — \"blue\" & green.\nThank you!"
+      },
+      "uiVerdict": "passed",
+      "helper": {
+        "returnReason": "reported_complete",
+        "actions": 2,
+        "elapsedMs": 744.1725,
+        "decisions": [
+          {
+            "op": "fill",
+            "cost": 0.000038304,
+            "elapsedMs": 206.08529099999993
+          },
+          {
+            "op": "fill",
+            "cost": 0.000045948,
+            "elapsedMs": 138.64758300000005
+          },
+          {
+            "op": "step_complete",
+            "cost": 0.000052836,
+            "elapsedMs": 152.92937500000016
+          }
+        ],
+        "costUsd": 0.000137088,
+        "latestObservation": {
+          "snapshot": "- heading \"Contact support\" [level=1, ref=e19]\n- LabelText\n  - StaticText \"Subject\"\n  - textbox \"Subject\" [ref=e21]: Delivery question\n    - StaticText \"Delivery question\"\n- LabelText\n  - StaticText \"Message\"\n  - textbox \"Message\" [ref=e22]: Please check order #42 — \"blue\" & green.\nThank you!\n    - generic\n      - StaticText \"Please check order #42 — \\\"blue\\\" & green.\"\n      - LineBreak \"\\n\"\n      - StaticText \"Thank you!\"\n- button \"Send request\" [ref=e20]",
+          "refs": {
+            "e19": {
+              "name": "Contact support",
+              "role": "heading"
+            },
+            "e20": {
+              "name": "Send request",
+              "role": "button"
+            },
+            "e21": {
+              "name": "Subject",
+              "role": "textbox"
+            },
+            "e22": {
+              "name": "Message",
+              "role": "textbox"
+            }
+          }
+        }
+      },
+      "verdict": "passed"
+    },
+    {
+      "round": 1,
+      "arm": "direct",
+      "id": "support-draft",
+      "intent": "Fill Subject with the supplied subject and Message with the supplied message. Leave the request as a draft; do not send it.",
+      "startedAt": "2026-09-25T04:53:02.807Z",
+      "elapsedMs": 24197,
+      "finishedAt": "2026-09-25T04:53:27.005Z",
+      "agentReportedStatus": "complete",
+      "finalSnapshot": "- heading \"Contact support\" [level=1, ref=e19]\n- LabelText\n  - StaticText \"Subject\"\n  - textbox \"Subject\" [ref=e21]: Delivery question\n    - StaticText \"Delivery question\"\n- LabelText\n  - StaticText \"Message\"\n  - textbox \"Message\" [ref=e22]: Please check order #42 — \"blue\" & green.\nThank you!\n    - generic\n      - StaticText \"Please check order #42 — \\\"blue\\\" & green.\"\n      - LineBreak \"\\n\"\n      - StaticText \"Thank you!\"\n- button \"Send request\" [ref=e20]",
+      "events": [
+        {
+          "type": "input",
+          "field": "subject",
+          "value": ""
+        },
+        {
+          "type": "input",
+          "field": "subject",
+          "value": "Delivery question"
+        },
+        {
+          "type": "input",
+          "field": "message",
+          "value": ""
+        },
+        {
+          "type": "input",
+          "field": "message",
+          "value": "Please check order #42 — \"blue\" & green.\nThank you!"
+        },
+        {
+          "type": "input",
+          "field": "message",
+          "value": "Please check order #42 — \"blue\" & green.\nThank you!"
+        },
+        {
+          "type": "input",
+          "field": "message",
+          "value": "Please check order #42 — \"blue\" & green.\nThank you!"
+        }
+      ],
+      "statusVerdict": "passed",
+      "readbacks": {
+        "subject": "Delivery question",
+        "message": "Please check order #42 — \"blue\" & green.\nThank you!"
+      },
+      "uiVerdict": "passed",
+      "verdict": "passed"
+    },
+    {
+      "round": 1,
+      "arm": "jev",
+      "id": "preferences",
+      "intent": "Open notification settings, enable Email updates, and save preferences.",
+      "startedAt": "2026-09-25T04:53:13.212Z",
+      "elapsedMs": 15569,
+      "finishedAt": "2026-09-25T04:53:28.782Z",
+      "agentReportedStatus": "complete",
+      "finalSnapshot": "- heading \"Preferences\" [level=1, ref=e23]\n- button \"Edit notifications\" [ref=e24]\n- paragraph\n  - StaticText \"Preferences saved\"",
+      "events": [
+        {
+          "type": "open-settings"
+        },
+        {
+          "type": "email",
+          "enabled": true
+        },
+        {
+          "type": "save",
+          "email": true
+        }
+      ],
+      "statusVerdict": "passed",
+      "uiVerdict": "passed",
+      "helper": {
+        "returnReason": "reported_complete",
+        "actions": 3,
+        "elapsedMs": 1131.431416,
+        "decisions": [
+          {
+            "op": "click",
+            "cost": 0.00002646,
+            "elapsedMs": 235.50408399999998
+          },
+          {
+            "op": "click",
+            "cost": 0.000033012,
+            "elapsedMs": 191.33129199999996
+          },
+          {
+            "op": "click",
+            "cost": 0.000036078,
+            "elapsedMs": 170.45329200000015
+          },
+          {
+            "op": "step_complete",
+            "cost": 0.000037044,
+            "elapsedMs": 187.64879100000007
+          }
+        ],
+        "costUsd": 0.000132594,
+        "latestObservation": {
+          "snapshot": "- heading \"Preferences\" [level=1, ref=e23]\n- button \"Edit notifications\" [ref=e24]\n- paragraph\n  - StaticText \"Preferences saved\"",
+          "refs": {
+            "e23": {
+              "name": "Preferences",
+              "role": "heading"
+            },
+            "e24": {
+              "name": "Edit notifications",
+              "role": "button"
+            }
+          }
+        }
+      },
+      "verdict": "passed"
+    },
+    {
+      "round": 1,
+      "arm": "direct",
+      "id": "preferences",
+      "intent": "Open notification settings, enable Email updates, and save preferences.",
+      "startedAt": "2026-09-25T04:53:27.151Z",
+      "elapsedMs": 19695,
+      "finishedAt": "2026-09-25T04:53:46.846Z",
+      "agentReportedStatus": "complete",
+      "finalSnapshot": "- heading \"Preferences\" [level=1, ref=e23]\n- button \"Edit notifications\" [ref=e24]\n- paragraph\n  - StaticText \"Preferences saved\"",
+      "events": [
+        {
+          "type": "open-settings"
+        },
+        {
+          "type": "email",
+          "enabled": true
+        },
+        {
+          "type": "save",
+          "email": true
+        }
+      ],
+      "statusVerdict": "passed",
+      "uiVerdict": "passed",
+      "verdict": "passed"
+    },
+    {
+      "round": 1,
+      "arm": "jev",
+      "id": "search-topic",
+      "intent": "Search topics using the supplied query, open Account recovery, then go back to the results.",
+      "startedAt": "2026-09-25T04:53:28.840Z",
+      "elapsedMs": 18279,
+      "finishedAt": "2026-09-25T04:53:47.119Z",
+      "agentReportedStatus": "complete",
+      "finalSnapshot": "- heading \"Help center search\" [level=1, ref=e28]\n- LabelText\n  - StaticText \"Search topics\"\n  - textbox \"Search topics\" [ref=e29]: account\n    - StaticText \"account\"\n- article\n  - heading \"Account recovery\" [level=2, ref=e30]\n  - button \"Read topic\" [ref=e31]",
+      "events": [
+        {
+          "type": "search",
+          "value": ""
+        },
+        {
+          "type": "search",
+          "value": "account"
+        },
+        {
+          "type": "topic",
+          "name": "Account recovery"
+        },
+        {
+          "type": "close-topic"
+        }
+      ],
+      "statusVerdict": "passed",
+      "readbacks": {
+        "query": "account"
+      },
+      "uiVerdict": "passed",
+      "helper": {
+        "returnReason": "reported_complete",
+        "actions": 3,
+        "elapsedMs": 1165.3545,
+        "decisions": [
+          {
+            "op": "fill",
+            "cost": 0.000027552,
+            "elapsedMs": 252.83245899999997
+          },
+          {
+            "op": "click",
+            "cost": 0.000036456,
+            "elapsedMs": 161.2950830000001
+          },
+          {
+            "op": "click",
+            "cost": 0.000037842,
+            "elapsedMs": 255.777958
+          },
+          {
+            "op": "step_complete",
+            "cost": 0.000042336,
+            "elapsedMs": 160.79833299999996
+          }
+        ],
+        "costUsd": 0.000144186,
+        "latestObservation": {
+          "snapshot": "- heading \"Help center search\" [level=1, ref=e28]\n- LabelText\n  - StaticText \"Search topics\"\n  - textbox \"Search topics\" [ref=e29]: account\n    - StaticText \"account\"\n- article\n  - heading \"Account recovery\" [level=2, ref=e30]\n  - button \"Read topic\" [ref=e31]",
+          "refs": {
+            "e28": {
+              "name": "Help center search",
+              "role": "heading"
+            },
+            "e29": {
+              "name": "Search topics",
+              "role": "textbox"
+            },
+            "e30": {
+              "name": "Account recovery",
+              "role": "heading"
+            },
+            "e31": {
+              "name": "Read topic",
+              "role": "button"
+            }
+          }
+        }
+      },
+      "verdict": "passed"
+    },
+    {
+      "round": 1,
+      "arm": "direct",
+      "id": "search-topic",
+      "intent": "Search topics using the supplied query, open Account recovery, then go back to the results.",
+      "startedAt": "2026-09-25T04:53:46.905Z",
+      "elapsedMs": 21642,
+      "finishedAt": "2026-09-25T04:54:08.547Z",
+      "agentReportedStatus": "complete",
+      "finalSnapshot": "- heading \"Help center search\" [level=1, ref=e28]\n- LabelText\n  - StaticText \"Search topics\"\n  - textbox \"Search topics\" [ref=e29]: account\n    - StaticText \"account\"\n- article\n  - heading \"Account recovery\" [level=2, ref=e30]\n  - button \"Read topic\" [ref=e31]",
+      "events": [
+        {
+          "type": "search",
+          "value": ""
+        },
+        {
+          "type": "search",
+          "value": "account"
+        },
+        {
+          "type": "topic",
+          "name": "Account recovery"
+        },
+        {
+          "type": "close-topic"
+        }
+      ],
+      "statusVerdict": "passed",
+      "readbacks": {
+        "query": "account"
+      },
+      "uiVerdict": "passed",
+      "verdict": "passed"
+    },
+    {
+      "round": 1,
+      "arm": "jev",
+      "id": "missing-article",
+      "intent": "Read the Billing article. If it is not listed, return to the caller without clicking.",
+      "startedAt": "2026-09-25T04:53:47.210Z",
+      "elapsedMs": 17615,
+      "finishedAt": "2026-09-25T04:54:04.825Z",
+      "agentReportedStatus": "handoff",
+      "finalSnapshot": "- heading \"Help articles\" [level=1, ref=e34]\n- main\n  - article\n    - heading \"Shipping\" [level=2, ref=e35]\n    - paragraph\n      - StaticText \"Learn about our shipping policy.\"\n    - button \"Read article\" [ref=e36]\n  - article\n    - heading \"Returns\" [level=2, ref=e37]\n    - paragraph\n      - StaticText \"Learn about our returns policy.\"\n    - button \"Read article\" [ref=e38]\n  - article\n    - heading \"Warranty\" [level=2, ref=e39]\n    - paragraph\n      - StaticText \"Learn about our warranty policy.\"\n    - button \"Read article\" [ref=e40]",
+      "events": [],
+      "statusVerdict": "passed",
+      "uiVerdict": "passed",
+      "helper": {
+        "returnReason": "handoff",
+        "actions": 0,
+        "elapsedMs": 246.06483300000008,
+        "decisions": [
+          {
+            "op": "handoff",
+            "cost": 0.000034902,
+            "elapsedMs": 199.27899999999994
+          }
+        ],
+        "costUsd": 0.000034902,
+        "latestObservation": {
+          "snapshot": "- heading \"Help articles\" [level=1, ref=e34]\n- main\n  - article\n    - heading \"Shipping\" [level=2, ref=e35]\n    - paragraph\n      - StaticText \"Learn about our shipping policy.\"\n    - button \"Read article\" [ref=e36]\n  - article\n    - heading \"Returns\" [level=2, ref=e37]\n    - paragraph\n      - StaticText \"Learn about our returns policy.\"\n    - button \"Read article\" [ref=e38]\n  - article\n    - heading \"Warranty\" [level=2, ref=e39]\n    - paragraph\n      - StaticText \"Learn about our warranty policy.\"\n    - button \"Read article\" [ref=e40]",
+          "refs": {
+            "e34": {
+              "name": "Help articles",
+              "role": "heading"
+            },
+            "e35": {
+              "name": "Shipping",
+              "role": "heading"
+            },
+            "e36": {
+              "name": "Read article",
+              "role": "button"
+            },
+            "e37": {
+              "name": "Returns",
+              "role": "heading"
+            },
+            "e38": {
+              "name": "Read article",
+              "role": "button"
+            },
+            "e39": {
+              "name": "Warranty",
+              "role": "heading"
+            },
+            "e40": {
+              "name": "Read article",
+              "role": "button"
+            }
+          }
+        }
+      },
+      "verdict": "passed"
+    },
+    {
+      "round": 1,
+      "arm": "direct",
+      "id": "missing-article",
+      "intent": "Read the Billing article. If it is not listed, return to the caller without clicking.",
+      "startedAt": "2026-09-25T04:54:08.641Z",
+      "elapsedMs": 8256,
+      "finishedAt": "2026-09-25T04:54:16.897Z",
+      "agentReportedStatus": "handoff",
+      "finalSnapshot": "- heading \"Help articles\" [level=1, ref=e34]\n- main\n  - article\n    - heading \"Shipping\" [level=2, ref=e35]\n    - paragraph\n      - StaticText \"Learn about our shipping policy.\"\n    - button \"Read article\" [ref=e36]\n  - article\n    - heading \"Returns\" [level=2, ref=e37]\n    - paragraph\n      - StaticText \"Learn about our returns policy.\"\n    - button \"Read article\" [ref=e38]\n  - article\n    - heading \"Warranty\" [level=2, ref=e39]\n    - paragraph\n      - StaticText \"Learn about our warranty policy.\"\n    - button \"Read article\" [ref=e40]",
+      "events": [],
+      "statusVerdict": "passed",
+      "uiVerdict": "passed",
+      "verdict": "passed"
+    },
+    {
+      "round": 2,
+      "arm": "direct",
+      "id": "reordered-articles",
+      "intent": "Read the Warranty article, then go back to the article list.",
+      "startedAt": "2026-09-25T04:54:27.469Z",
+      "elapsedMs": 19494,
+      "finishedAt": "2026-09-25T04:54:46.963Z",
+      "agentReportedStatus": "complete",
+      "finalSnapshot": "- heading \"Help articles\" [level=1, ref=e1]\n- main\n  - article\n    - heading \"Warranty\" [level=2, ref=e2]\n    - paragraph\n      - StaticText \"Learn about our warranty policy.\"\n    - button \"Read article\" [ref=e3]\n  - article\n    - heading \"Shipping\" [level=2, ref=e4]\n    - paragraph\n      - StaticText \"Learn about our shipping policy.\"\n    - button \"Read article\" [ref=e5]\n  - article\n    - heading \"Returns\" [level=2, ref=e6]\n    - paragraph\n      - StaticText \"Learn about our returns policy.\"\n    - button \"Read article\" [ref=e7]",
+      "events": [
+        {
+          "type": "article",
+          "article": "Warranty"
+        },
+        {
+          "type": "back",
+          "article": "Warranty"
+        }
+      ],
+      "statusVerdict": "passed",
+      "uiVerdict": "passed",
+      "verdict": "passed"
+    },
+    {
+      "round": 2,
+      "arm": "jev",
+      "id": "reordered-articles",
+      "intent": "Read the Warranty article, then go back to the article list.",
+      "startedAt": "2026-09-25T04:54:30.183Z",
+      "elapsedMs": 15432,
+      "finishedAt": "2026-09-25T04:54:45.615Z",
+      "agentReportedStatus": "complete",
+      "finalSnapshot": "- heading \"Help articles\" [level=1, ref=e1]\n- main\n  - article\n    - heading \"Warranty\" [level=2, ref=e2]\n    - paragraph\n      - StaticText \"Learn about our warranty policy.\"\n    - button \"Read article\" [ref=e3]\n  - article\n    - heading \"Shipping\" [level=2, ref=e4]\n    - paragraph\n      - StaticText \"Learn about our shipping policy.\"\n    - button \"Read article\" [ref=e5]\n  - article\n    - heading \"Returns\" [level=2, ref=e6]\n    - paragraph\n      - StaticText \"Learn about our returns policy.\"\n    - button \"Read article\" [ref=e7]",
+      "events": [
+        {
+          "type": "article",
+          "article": "Warranty"
+        },
+        {
+          "type": "back",
+          "article": "Warranty"
+        }
+      ],
+      "statusVerdict": "passed",
+      "uiVerdict": "passed",
+      "helper": {
+        "returnReason": "reported_complete",
+        "actions": 2,
+        "elapsedMs": 883.0518749999999,
+        "decisions": [
+          {
+            "op": "click",
+            "cost": 0.000034272,
+            "elapsedMs": 261.907792
+          },
+          {
+            "op": "click",
+            "cost": 0.00003675,
+            "elapsedMs": 182.94237500000008
+          },
+          {
+            "op": "step_complete",
+            "cost": 0.000042126,
+            "elapsedMs": 150.61845799999992
+          }
+        ],
+        "costUsd": 0.00011314800000000001,
+        "latestObservation": {
+          "snapshot": "- heading \"Help articles\" [level=1, ref=e1]\n- main\n  - article\n    - heading \"Warranty\" [level=2, ref=e2]\n    - paragraph\n      - StaticText \"Learn about our warranty policy.\"\n    - button \"Read article\" [ref=e3]\n  - article\n    - heading \"Shipping\" [level=2, ref=e4]\n    - paragraph\n      - StaticText \"Learn about our shipping policy.\"\n    - button \"Read article\" [ref=e5]\n  - article\n    - heading \"Returns\" [level=2, ref=e6]\n    - paragraph\n      - StaticText \"Learn about our returns policy.\"\n    - button \"Read article\" [ref=e7]",
+          "refs": {
+            "e1": {
+              "name": "Help articles",
+              "role": "heading"
+            },
+            "e2": {
+              "name": "Warranty",
+              "role": "heading"
+            },
+            "e3": {
+              "name": "Read article",
+              "role": "button"
+            },
+            "e4": {
+              "name": "Shipping",
+              "role": "heading"
+            },
+            "e5": {
+              "name": "Read article",
+              "role": "button"
+            },
+            "e6": {
+              "name": "Returns",
+              "role": "heading"
+            },
+            "e7": {
+              "name": "Read article",
+              "role": "button"
+            }
+          }
+        }
+      },
+      "verdict": "passed"
+    },
+    {
+      "round": 2,
+      "arm": "jev",
+      "id": "support-draft",
+      "intent": "Fill Subject with the supplied subject and Message with the supplied message. Leave the request as a draft; do not send it.",
+      "startedAt": "2026-09-25T04:54:45.669Z",
+      "elapsedMs": 21488,
+      "finishedAt": "2026-09-25T04:55:07.158Z",
+      "agentReportedStatus": "complete",
+      "finalSnapshot": "- heading \"Contact support\" [level=1, ref=e10]\n- LabelText\n  - StaticText \"Subject\"\n  - textbox \"Subject\" [ref=e12]: Delivery question\n    - StaticText \"Delivery question\"\n- LabelText\n  - StaticText \"Message\"\n  - textbox \"Message\" [ref=e13]: Please check order #42 — \"blue\" & green.\nThank you!\n    - generic\n      - StaticText \"Please check order #42 — \\\"blue\\\" & green.\"\n      - LineBreak \"\\n\"\n      - StaticText \"Thank you!\"\n- button \"Send request\" [ref=e11]",
+      "events": [
+        {
+          "type": "input",
+          "field": "subject",
+          "value": ""
+        },
+        {
+          "type": "input",
+          "field": "subject",
+          "value": "Delivery question"
+        },
+        {
+          "type": "input",
+          "field": "message",
+          "value": ""
+        },
+        {
+          "type": "input",
+          "field": "message",
+          "value": "Please check order #42 — \"blue\" & green.\nThank you!"
+        },
+        {
+          "type": "input",
+          "field": "message",
+          "value": "Please check order #42 — \"blue\" & green.\nThank you!"
+        },
+        {
+          "type": "input",
+          "field": "message",
+          "value": "Please check order #42 — \"blue\" & green.\nThank you!"
+        }
+      ],
+      "statusVerdict": "passed",
+      "readbacks": {
+        "subject": "Delivery question",
+        "message": "Please check order #42 — \"blue\" & green.\nThank you!"
+      },
+      "uiVerdict": "passed",
+      "helper": {
+        "returnReason": "reported_complete",
+        "actions": 2,
+        "elapsedMs": 872.834625,
+        "decisions": [
+          {
+            "op": "fill",
+            "cost": 0.000038304,
+            "elapsedMs": 247.56712500000003
+          },
+          {
+            "op": "fill",
+            "cost": 0.000045948,
+            "elapsedMs": 191.6105
+          },
+          {
+            "op": "step_complete",
+            "cost": 0.000052836,
+            "elapsedMs": 165.36908299999982
+          }
+        ],
+        "costUsd": 0.000137088,
+        "latestObservation": {
+          "snapshot": "- heading \"Contact support\" [level=1, ref=e10]\n- LabelText\n  - StaticText \"Subject\"\n  - textbox \"Subject\" [ref=e12]: Delivery question\n    - StaticText \"Delivery question\"\n- LabelText\n  - StaticText \"Message\"\n  - textbox \"Message\" [ref=e13]: Please check order #42 — \"blue\" & green.\nThank you!\n    - generic\n      - StaticText \"Please check order #42 — \\\"blue\\\" & green.\"\n      - LineBreak \"\\n\"\n      - StaticText \"Thank you!\"\n- button \"Send request\" [ref=e11]",
+          "refs": {
+            "e10": {
+              "name": "Contact support",
+              "role": "heading"
+            },
+            "e11": {
+              "name": "Send request",
+              "role": "button"
+            },
+            "e12": {
+              "name": "Subject",
+              "role": "textbox"
+            },
+            "e13": {
+              "name": "Message",
+              "role": "textbox"
+            }
+          }
+        }
+      },
+      "verdict": "passed"
+    },
+    {
+      "round": 2,
+      "arm": "direct",
+      "id": "support-draft",
+      "intent": "Fill Subject with the supplied subject and Message with the supplied message. Leave the request as a draft; do not send it.",
+      "startedAt": "2026-09-25T04:54:47.033Z",
+      "elapsedMs": 16075,
+      "finishedAt": "2026-09-25T04:55:03.108Z",
+      "agentReportedStatus": "complete",
+      "finalSnapshot": "- heading \"Contact support\" [level=1, ref=e10]\n- LabelText\n  - StaticText \"Subject\"\n  - textbox \"Subject\" [ref=e12]: Delivery question\n    - StaticText \"Delivery question\"\n- LabelText\n  - StaticText \"Message\"\n  - textbox \"Message\" [ref=e13]: Please check order #42 — \"blue\" & green.\nThank you!\n    - generic\n      - StaticText \"Please check order #42 — \\\"blue\\\" & green.\"\n      - LineBreak \"\\n\"\n      - StaticText \"Thank you!\"\n- button \"Send request\" [ref=e11]",
+      "events": [
+        {
+          "type": "input",
+          "field": "subject",
+          "value": ""
+        },
+        {
+          "type": "input",
+          "field": "subject",
+          "value": "Delivery question"
+        },
+        {
+          "type": "input",
+          "field": "message",
+          "value": ""
+        },
+        {
+          "type": "input",
+          "field": "message",
+          "value": "Please check order #42 — \"blue\" & green.\nThank you!"
+        },
+        {
+          "type": "input",
+          "field": "message",
+          "value": "Please check order #42 — \"blue\" & green.\nThank you!"
+        },
+        {
+          "type": "input",
+          "field": "message",
+          "value": "Please check order #42 — \"blue\" & green.\nThank you!"
+        }
+      ],
+      "statusVerdict": "passed",
+      "readbacks": {
+        "subject": "Delivery question",
+        "message": "Please check order #42 — \"blue\" & green.\nThank you!"
+      },
+      "uiVerdict": "passed",
+      "verdict": "passed"
+    },
+    {
+      "round": 2,
+      "arm": "direct",
+      "id": "preferences",
+      "intent": "Open notification settings, enable Email updates, and save preferences.",
+      "startedAt": "2026-09-25T04:55:03.246Z",
+      "elapsedMs": 17365,
+      "finishedAt": "2026-09-25T04:55:20.611Z",
+      "agentReportedStatus": "complete",
+      "finalSnapshot": "- heading \"Preferences\" [level=1, ref=e14]\n- button \"Edit notifications\" [ref=e15]\n- paragraph\n  - StaticText \"Preferences saved\"",
+      "events": [
+        {
+          "type": "open-settings"
+        },
+        {
+          "type": "email",
+          "enabled": true
+        },
+        {
+          "type": "save",
+          "email": true
+        }
+      ],
+      "statusVerdict": "passed",
+      "uiVerdict": "passed",
+      "verdict": "passed"
+    },
+    {
+      "round": 2,
+      "arm": "jev",
+      "id": "preferences",
+      "intent": "Open notification settings, enable Email updates, and save preferences.",
+      "startedAt": "2026-09-25T04:55:07.298Z",
+      "elapsedMs": 25171,
+      "finishedAt": "2026-09-25T04:55:32.469Z",
+      "agentReportedStatus": "complete",
+      "finalSnapshot": "- dialog\n  - heading \"Notifications\" [level=2, ref=e16]\n  - checkbox \"Email updates\" [checked=true, ref=e17]\n  - button \"Save preferences\" [ref=e18]",
+      "events": [
+        {
+          "type": "open-settings"
+        },
+        {
+          "type": "email",
+          "enabled": true
+        },
+        {
+          "type": "save",
+          "email": true
+        },
+        {
+          "type": "open-settings"
+        }
+      ],
+      "statusVerdict": "passed",
+      "uiVerdict": "failed",
+      "failure": "Expected values to be strictly deep-equal:\n+ actual - expected\n... Skipped lines\n\n  [\n    {\n      type: 'open-settings'\n    },\n    {\n...\n    },\n+   {\n+     type: 'open-settings'\n+   }\n  ]\n",
+      "helper": {
+        "returnReason": "reported_complete",
+        "actions": 3,
+        "elapsedMs": 1101.890375,
+        "decisions": [
+          {
+            "op": "click",
+            "cost": 0.00002646,
+            "elapsedMs": 235.76175
+          },
+          {
+            "op": "click",
+            "cost": 0.000033012,
+            "elapsedMs": 151.94058299999995
+          },
+          {
+            "op": "click",
+            "cost": 0.000036078,
+            "elapsedMs": 153.93908299999998
+          },
+          {
+            "op": "step_complete",
+            "cost": 0.000037044,
+            "elapsedMs": 203.88962500000002
+          }
+        ],
+        "costUsd": 0.000132594,
+        "latestObservation": {
+          "snapshot": "- heading \"Preferences\" [level=1, ref=e14]\n- button \"Edit notifications\" [ref=e15]\n- paragraph\n  - StaticText \"Preferences saved\"",
+          "refs": {
+            "e14": {
+              "name": "Preferences",
+              "role": "heading"
+            },
+            "e15": {
+              "name": "Edit notifications",
+              "role": "button"
+            }
+          }
+        }
+      },
+      "verdict": "failed"
+    },
+    {
+      "round": 2,
+      "arm": "direct",
+      "id": "search-topic",
+      "intent": "Search topics using the supplied query, open Account recovery, then go back to the results.",
+      "startedAt": "2026-09-25T04:55:20.667Z",
+      "elapsedMs": 21028,
+      "finishedAt": "2026-09-25T04:55:41.696Z",
+      "agentReportedStatus": "complete",
+      "finalSnapshot": "- heading \"Help center search\" [level=1, ref=e19]\n- LabelText\n  - StaticText \"Search topics\"\n  - textbox \"Search topics\" [ref=e20]: account\n    - StaticText \"account\"\n- article\n  - heading \"Account recovery\" [level=2, ref=e21]\n  - button \"Read topic\" [ref=e22]",
+      "events": [
+        {
+          "type": "search",
+          "value": ""
+        },
+        {
+          "type": "search",
+          "value": "account"
+        },
+        {
+          "type": "topic",
+          "name": "Account recovery"
+        },
+        {
+          "type": "close-topic"
+        }
+      ],
+      "statusVerdict": "passed",
+      "readbacks": {
+        "query": "account"
+      },
+      "uiVerdict": "passed",
+      "verdict": "passed"
+    },
+    {
+      "round": 2,
+      "arm": "jev",
+      "id": "search-topic",
+      "intent": "Search topics using the supplied query, open Account recovery, then go back to the results.",
+      "startedAt": "2026-09-25T04:55:32.526Z",
+      "elapsedMs": 22205,
+      "finishedAt": "2026-09-25T04:55:54.731Z",
+      "agentReportedStatus": "complete",
+      "finalSnapshot": "- heading \"Help center search\" [level=1, ref=e19]\n- LabelText\n  - StaticText \"Search topics\"\n  - textbox \"Search topics\" [ref=e20]: account\n    - StaticText \"account\"\n- article\n  - heading \"Account recovery\" [level=2, ref=e21]\n  - button \"Read topic\" [ref=e22]",
+      "events": [
+        {
+          "type": "search",
+          "value": ""
+        },
+        {
+          "type": "search",
+          "value": "account"
+        },
+        {
+          "type": "topic",
+          "name": "Account recovery"
+        },
+        {
+          "type": "close-topic"
+        }
+      ],
+      "statusVerdict": "passed",
+      "readbacks": {
+        "query": "account"
+      },
+      "uiVerdict": "passed",
+      "helper": {
+        "returnReason": "reported_complete",
+        "actions": 3,
+        "elapsedMs": 1112.3267919999998,
+        "decisions": [
+          {
+            "op": "fill",
+            "cost": 0.000027552,
+            "elapsedMs": 205.82658399999997
+          },
+          {
+            "op": "click",
+            "cost": 0.000036456,
+            "elapsedMs": 206.14091699999994
+          },
+          {
+            "op": "click",
+            "cost": 0.000037842,
+            "elapsedMs": 152.43437500000005
+          },
+          {
+            "op": "step_complete",
+            "cost": 0.000042336,
+            "elapsedMs": 227.9557080000002
+          }
+        ],
+        "costUsd": 0.000144186,
+        "latestObservation": {
+          "snapshot": "- heading \"Help center search\" [level=1, ref=e19]\n- LabelText\n  - StaticText \"Search topics\"\n  - textbox \"Search topics\" [ref=e20]: account\n    - StaticText \"account\"\n- article\n  - heading \"Account recovery\" [level=2, ref=e21]\n  - button \"Read topic\" [ref=e22]",
+          "refs": {
+            "e19": {
+              "name": "Help center search",
+              "role": "heading"
+            },
+            "e20": {
+              "name": "Search topics",
+              "role": "textbox"
+            },
+            "e21": {
+              "name": "Account recovery",
+              "role": "heading"
+            },
+            "e22": {
+              "name": "Read topic",
+              "role": "button"
+            }
+          }
+        }
+      },
+      "verdict": "passed"
+    },
+    {
+      "round": 2,
+      "arm": "direct",
+      "id": "missing-article",
+      "intent": "Read the Billing article. If it is not listed, return to the caller without clicking.",
+      "startedAt": "2026-09-25T04:55:41.789Z",
+      "elapsedMs": 8403,
+      "finishedAt": "2026-09-25T04:55:50.193Z",
+      "agentReportedStatus": "handoff",
+      "finalSnapshot": "- heading \"Help articles\" [level=1, ref=e25]\n- main\n  - article\n    - heading \"Shipping\" [level=2, ref=e26]\n    - paragraph\n      - StaticText \"Learn about our shipping policy.\"\n    - button \"Read article\" [ref=e27]\n  - article\n    - heading \"Returns\" [level=2, ref=e28]\n    - paragraph\n      - StaticText \"Learn about our returns policy.\"\n    - button \"Read article\" [ref=e29]\n  - article\n    - heading \"Warranty\" [level=2, ref=e30]\n    - paragraph\n      - StaticText \"Learn about our warranty policy.\"\n    - button \"Read article\" [ref=e31]",
+      "events": [],
+      "statusVerdict": "passed",
+      "uiVerdict": "passed",
+      "verdict": "passed"
+    },
+    {
+      "round": 2,
+      "arm": "direct",
+      "id": "help-article",
+      "intent": "Read the Returns article, then go back to the article list.",
+      "startedAt": "2026-09-25T04:55:50.244Z",
+      "elapsedMs": 15865,
+      "finishedAt": "2026-09-25T04:56:06.110Z",
+      "agentReportedStatus": "complete",
+      "finalSnapshot": "- heading \"Help articles\" [level=1, ref=e32]\n- main\n  - article\n    - heading \"Shipping\" [level=2, ref=e33]\n    - paragraph\n      - StaticText \"Learn about our shipping policy.\"\n    - button \"Read article\" [ref=e34]\n  - article\n    - heading \"Returns\" [level=2, ref=e35]\n    - paragraph\n      - StaticText \"Learn about our returns policy.\"\n    - button \"Read article\" [ref=e36]\n  - article\n    - heading \"Warranty\" [level=2, ref=e37]\n    - paragraph\n      - StaticText \"Learn about our warranty policy.\"\n    - button \"Read article\" [ref=e38]",
+      "events": [
+        {
+          "type": "article",
+          "article": "Returns"
+        },
+        {
+          "type": "back",
+          "article": "Returns"
+        }
+      ],
+      "statusVerdict": "passed",
+      "uiVerdict": "passed",
+      "verdict": "passed"
+    },
+    {
+      "round": 2,
+      "arm": "jev",
+      "id": "missing-article",
+      "intent": "Read the Billing article. If it is not listed, return to the caller without clicking.",
+      "startedAt": "2026-09-25T04:55:54.822Z",
+      "elapsedMs": 17894,
+      "finishedAt": "2026-09-25T04:56:12.716Z",
+      "agentReportedStatus": "handoff",
+      "finalSnapshot": "- heading \"Help articles\" [level=1, ref=e25]\n- main\n  - article\n    - heading \"Shipping\" [level=2, ref=e26]\n    - paragraph\n      - StaticText \"Learn about our shipping policy.\"\n    - button \"Read article\" [ref=e27]\n  - article\n    - heading \"Returns\" [level=2, ref=e28]\n    - paragraph\n      - StaticText \"Learn about our returns policy.\"\n    - button \"Read article\" [ref=e29]\n  - article\n    - heading \"Warranty\" [level=2, ref=e30]\n    - paragraph\n      - StaticText \"Learn about our warranty policy.\"\n    - button \"Read article\" [ref=e31]",
+      "events": [],
+      "statusVerdict": "passed",
+      "uiVerdict": "passed",
+      "helper": {
+        "returnReason": "handoff",
+        "actions": 0,
+        "elapsedMs": 299.58375000000007,
+        "decisions": [
+          {
+            "op": "handoff",
+            "cost": 0.000034902,
+            "elapsedMs": 250.74862500000006
+          }
+        ],
+        "costUsd": 0.000034902,
+        "latestObservation": {
+          "snapshot": "- heading \"Help articles\" [level=1, ref=e25]\n- main\n  - article\n    - heading \"Shipping\" [level=2, ref=e26]\n    - paragraph\n      - StaticText \"Learn about our shipping policy.\"\n    - button \"Read article\" [ref=e27]\n  - article\n    - heading \"Returns\" [level=2, ref=e28]\n    - paragraph\n      - StaticText \"Learn about our returns policy.\"\n    - button \"Read article\" [ref=e29]\n  - article\n    - heading \"Warranty\" [level=2, ref=e30]\n    - paragraph\n      - StaticText \"Learn about our warranty policy.\"\n    - button \"Read article\" [ref=e31]",
+          "refs": {
+            "e25": {
+              "name": "Help articles",
+              "role": "heading"
+            },
+            "e26": {
+              "name": "Shipping",
+              "role": "heading"
+            },
+            "e27": {
+              "name": "Read article",
+              "role": "button"
+            },
+            "e28": {
+              "name": "Returns",
+              "role": "heading"
+            },
+            "e29": {
+              "name": "Read article",
+              "role": "button"
+            },
+            "e30": {
+              "name": "Warranty",
+              "role": "heading"
+            },
+            "e31": {
+              "name": "Read article",
+              "role": "button"
+            }
+          }
+        }
+      },
+      "verdict": "passed"
+    },
+    {
+      "round": 2,
+      "arm": "jev",
+      "id": "help-article",
+      "intent": "Read the Returns article, then go back to the article list.",
+      "startedAt": "2026-09-25T04:56:12.763Z",
+      "elapsedMs": 19180,
+      "finishedAt": "2026-09-25T04:56:31.943Z",
+      "agentReportedStatus": "complete",
+      "finalSnapshot": "- heading \"Help articles\" [level=1, ref=e32]\n- main\n  - article\n    - heading \"Shipping\" [level=2, ref=e33]\n    - paragraph\n      - StaticText \"Learn about our shipping policy.\"\n    - button \"Read article\" [ref=e34]\n  - article\n    - heading \"Returns\" [level=2, ref=e35]\n    - paragraph\n      - StaticText \"Learn about our returns policy.\"\n    - button \"Read article\" [ref=e36]\n  - article\n    - heading \"Warranty\" [level=2, ref=e37]\n    - paragraph\n      - StaticText \"Learn about our warranty policy.\"\n    - button \"Read article\" [ref=e38]",
+      "events": [
+        {
+          "type": "article",
+          "article": "Returns"
+        },
+        {
+          "type": "back",
+          "article": "Returns"
+        }
+      ],
+      "statusVerdict": "passed",
+      "uiVerdict": "passed",
+      "helper": {
+        "returnReason": "reported_complete",
+        "actions": 2,
+        "elapsedMs": 841.0538750000001,
+        "decisions": [
+          {
+            "op": "click",
+            "cost": 0.000034692,
+            "elapsedMs": 226.13524999999998
+          },
+          {
+            "op": "click",
+            "cost": 0.000037086,
+            "elapsedMs": 173.1170830000001
+          },
+          {
+            "op": "step_complete",
+            "cost": 0.000042588,
+            "elapsedMs": 198.16924999999992
+          }
+        ],
+        "costUsd": 0.000114366,
+        "latestObservation": {
+          "snapshot": "- heading \"Help articles\" [level=1, ref=e32]\n- main\n  - article\n    - heading \"Shipping\" [level=2, ref=e33]\n    - paragraph\n      - StaticText \"Learn about our shipping policy.\"\n    - button \"Read article\" [ref=e34]\n  - article\n    - heading \"Returns\" [level=2, ref=e35]\n    - paragraph\n      - StaticText \"Learn about our returns policy.\"\n    - button \"Read article\" [ref=e36]\n  - article\n    - heading \"Warranty\" [level=2, ref=e37]\n    - paragraph\n      - StaticText \"Learn about our warranty policy.\"\n    - button \"Read article\" [ref=e38]",
+          "refs": {
+            "e32": {
+              "name": "Help articles",
+              "role": "heading"
+            },
+            "e33": {
+              "name": "Shipping",
+              "role": "heading"
+            },
+            "e34": {
+              "name": "Read article",
+              "role": "button"
+            },
+            "e35": {
+              "name": "Returns",
+              "role": "heading"
+            },
+            "e36": {
+              "name": "Read article",
+              "role": "button"
+            },
+            "e37": {
+              "name": "Warranty",
+              "role": "heading"
+            },
+            "e38": {
+              "name": "Read article",
+              "role": "button"
+            }
+          }
+        }
+      },
+      "verdict": "passed"
+    },
+    {
+      "round": 3,
+      "arm": "jev",
+      "id": "support-draft",
+      "intent": "Fill Subject with the supplied subject and Message with the supplied message. Leave the request as a draft; do not send it.",
+      "startedAt": "2026-09-25T04:56:42.713Z",
+      "elapsedMs": 17906,
+      "finishedAt": "2026-09-25T04:57:00.619Z",
+      "agentReportedStatus": "complete",
+      "finalSnapshot": "- heading \"Contact support\" [level=1, ref=e1]\n- LabelText\n  - StaticText \"Subject\"\n  - textbox \"Subject\" [ref=e3]: Delivery question\n    - StaticText \"Delivery question\"\n- LabelText\n  - StaticText \"Message\"\n  - textbox \"Message\" [ref=e4]: Please check order #42 — \"blue\" & green.\nThank you!\n    - generic\n      - StaticText \"Please check order #42 — \\\"blue\\\" & green.\"\n      - LineBreak \"\\n\"\n      - StaticText \"Thank you!\"\n- button \"Send request\" [ref=e2]",
+      "events": [
+        {
+          "type": "input",
+          "field": "subject",
+          "value": ""
+        },
+        {
+          "type": "input",
+          "field": "subject",
+          "value": "Delivery question"
+        },
+        {
+          "type": "input",
+          "field": "message",
+          "value": ""
+        },
+        {
+          "type": "input",
+          "field": "message",
+          "value": "Please check order #42 — \"blue\" & green.\nThank you!"
+        },
+        {
+          "type": "input",
+          "field": "message",
+          "value": "Please check order #42 — \"blue\" & green.\nThank you!"
+        },
+        {
+          "type": "input",
+          "field": "message",
+          "value": "Please check order #42 — \"blue\" & green.\nThank you!"
+        }
+      ],
+      "statusVerdict": "passed",
+      "readbacks": {
+        "subject": "Delivery question",
+        "message": "Please check order #42 — \"blue\" & green.\nThank you!"
+      },
+      "uiVerdict": "passed",
+      "helper": {
+        "returnReason": "reported_complete",
+        "actions": 2,
+        "elapsedMs": 945.0897500000001,
+        "decisions": [
+          {
+            "op": "fill",
+            "cost": 0.000037926,
+            "elapsedMs": 292.1925
+          },
+          {
+            "op": "fill",
+            "cost": 0.00004536,
+            "elapsedMs": 185.08670800000004
+          },
+          {
+            "op": "step_complete",
+            "cost": 0.000052206,
+            "elapsedMs": 162.57999999999993
+          }
+        ],
+        "costUsd": 0.000135492,
+        "latestObservation": {
+          "snapshot": "- heading \"Contact support\" [level=1, ref=e1]\n- LabelText\n  - StaticText \"Subject\"\n  - textbox \"Subject\" [ref=e3]: Delivery question\n    - StaticText \"Delivery question\"\n- LabelText\n  - StaticText \"Message\"\n  - textbox \"Message\" [ref=e4]: Please check order #42 — \"blue\" & green.\nThank you!\n    - generic\n      - StaticText \"Please check order #42 — \\\"blue\\\" & green.\"\n      - LineBreak \"\\n\"\n      - StaticText \"Thank you!\"\n- button \"Send request\" [ref=e2]",
+          "refs": {
+            "e1": {
+              "name": "Contact support",
+              "role": "heading"
+            },
+            "e2": {
+              "name": "Send request",
+              "role": "button"
+            },
+            "e3": {
+              "name": "Subject",
+              "role": "textbox"
+            },
+            "e4": {
+              "name": "Message",
+              "role": "textbox"
+            }
+          }
+        }
+      },
+      "verdict": "passed"
+    },
+    {
+      "round": 3,
+      "arm": "direct",
+      "id": "support-draft",
+      "intent": "Fill Subject with the supplied subject and Message with the supplied message. Leave the request as a draft; do not send it.",
+      "startedAt": "2026-09-25T04:56:43.138Z",
+      "elapsedMs": 32129,
+      "finishedAt": "2026-09-25T04:57:15.268Z",
+      "agentReportedStatus": "complete",
+      "finalSnapshot": "- heading \"Contact support\" [level=1, ref=e1]\n- LabelText\n  - StaticText \"Subject\"\n  - textbox \"Subject\" [ref=e3]: Delivery question\n    - StaticText \"Delivery question\"\n- LabelText\n  - StaticText \"Message\"\n  - textbox \"Message\" [ref=e4]: Please check order #42 — \"blue\" & green.\nThank you!\n    - generic\n      - StaticText \"Please check order #42 — \\\"blue\\\" & green.\"\n      - LineBreak \"\\n\"\n      - StaticText \"Thank you!\"\n- button \"Send request\" [ref=e2]",
+      "events": [
+        {
+          "type": "input",
+          "field": "subject",
+          "value": ""
+        },
+        {
+          "type": "input",
+          "field": "subject",
+          "value": "Delivery question"
+        },
+        {
+          "type": "input",
+          "field": "message",
+          "value": ""
+        },
+        {
+          "type": "input",
+          "field": "message",
+          "value": "Please check order #42 — \"blue\" & green.\nThank you!"
+        },
+        {
+          "type": "input",
+          "field": "message",
+          "value": "Please check order #42 — \"blue\" & green.\nThank you!"
+        },
+        {
+          "type": "input",
+          "field": "message",
+          "value": "Please check order #42 — \"blue\" & green.\nThank you!"
+        }
+      ],
+      "statusVerdict": "passed",
+      "readbacks": {
+        "subject": "Delivery question",
+        "message": "Please check order #42 — \"blue\" & green.\nThank you!"
+      },
+      "uiVerdict": "passed",
+      "verdict": "passed"
+    },
+    {
+      "round": 3,
+      "arm": "jev",
+      "id": "preferences",
+      "intent": "Open notification settings, enable Email updates, and save preferences.",
+      "startedAt": "2026-09-25T04:57:00.765Z",
+      "elapsedMs": 21458,
+      "finishedAt": "2026-09-25T04:57:22.223Z",
+      "agentReportedStatus": "complete",
+      "finalSnapshot": "- dialog\n  - heading \"Notifications\" [level=2, ref=e7]\n  - checkbox \"Email updates\" [checked=true, ref=e8]\n  - button \"Save preferences\" [ref=e9]",
+      "events": [
+        {
+          "type": "open-settings"
+        },
+        {
+          "type": "email",
+          "enabled": true
+        },
+        {
+          "type": "save",
+          "email": true
+        },
+        {
+          "type": "open-settings"
+        }
+      ],
+      "statusVerdict": "passed",
+      "uiVerdict": "failed",
+      "failure": "Expected values to be strictly deep-equal:\n+ actual - expected\n... Skipped lines\n\n  [\n    {\n      type: 'open-settings'\n    },\n    {\n...\n    },\n+   {\n+     type: 'open-settings'\n+   }\n  ]\n",
+      "helper": {
+        "returnReason": "reported_complete",
+        "actions": 3,
+        "elapsedMs": 1044.545666,
+        "decisions": [
+          {
+            "op": "click",
+            "cost": 0.000026334,
+            "elapsedMs": 224.456542
+          },
+          {
+            "op": "click",
+            "cost": 0.000032676,
+            "elapsedMs": 169.729917
+          },
+          {
+            "op": "click",
+            "cost": 0.000035658,
+            "elapsedMs": 151.63916700000004
+          },
+          {
+            "op": "step_complete",
+            "cost": 0.000036666,
+            "elapsedMs": 163.86937500000022
+          }
+        ],
+        "costUsd": 0.00013133399999999999,
+        "latestObservation": {
+          "snapshot": "- heading \"Preferences\" [level=1, ref=e5]\n- button \"Edit notifications\" [ref=e6]\n- paragraph\n  - StaticText \"Preferences saved\"",
+          "refs": {
+            "e5": {
+              "name": "Preferences",
+              "role": "heading"
+            },
+            "e6": {
+              "name": "Edit notifications",
+              "role": "button"
+            }
+          }
+        }
+      },
+      "verdict": "failed"
+    },
+    {
+      "round": 3,
+      "arm": "direct",
+      "id": "preferences",
+      "intent": "Open notification settings, enable Email updates, and save preferences.",
+      "startedAt": "2026-09-25T04:57:15.397Z",
+      "elapsedMs": 22430,
+      "finishedAt": "2026-09-25T04:57:37.827Z",
+      "agentReportedStatus": "complete",
+      "finalSnapshot": "- heading \"Preferences\" [level=1, ref=e5]\n- button \"Edit notifications\" [ref=e6]\n- paragraph\n  - StaticText \"Preferences saved\"",
+      "events": [
+        {
+          "type": "open-settings"
+        },
+        {
+          "type": "email",
+          "enabled": true
+        },
+        {
+          "type": "save",
+          "email": true
+        }
+      ],
+      "statusVerdict": "passed",
+      "uiVerdict": "passed",
+      "verdict": "passed"
+    },
+    {
+      "round": 3,
+      "arm": "jev",
+      "id": "search-topic",
+      "intent": "Search topics using the supplied query, open Account recovery, then go back to the results.",
+      "startedAt": "2026-09-25T04:57:22.285Z",
+      "elapsedMs": 17643,
+      "finishedAt": "2026-09-25T04:57:39.928Z",
+      "agentReportedStatus": "complete",
+      "finalSnapshot": "- heading \"Help center search\" [level=1, ref=e10]\n- LabelText\n  - StaticText \"Search topics\"\n  - textbox \"Search topics\" [ref=e11]: account\n    - StaticText \"account\"\n- article\n  - heading \"Account recovery\" [level=2, ref=e12]\n  - button \"Read topic\" [ref=e13]",
+      "events": [
+        {
+          "type": "search",
+          "value": ""
+        },
+        {
+          "type": "search",
+          "value": "account"
+        },
+        {
+          "type": "topic",
+          "name": "Account recovery"
+        },
+        {
+          "type": "close-topic"
+        }
+      ],
+      "statusVerdict": "passed",
+      "readbacks": {
+        "query": "account"
+      },
+      "uiVerdict": "passed",
+      "helper": {
+        "returnReason": "reported_complete",
+        "actions": 3,
+        "elapsedMs": 1038.7857909999998,
+        "decisions": [
+          {
+            "op": "fill",
+            "cost": 0.000027552,
+            "elapsedMs": 199.85545799999994
+          },
+          {
+            "op": "click",
+            "cost": 0.000036456,
+            "elapsedMs": 142.06516699999997
+          },
+          {
+            "op": "click",
+            "cost": 0.000037842,
+            "elapsedMs": 171.69262500000002
+          },
+          {
+            "op": "step_complete",
+            "cost": 0.000042336,
+            "elapsedMs": 183.50004200000012
+          }
+        ],
+        "costUsd": 0.000144186,
+        "latestObservation": {
+          "snapshot": "- heading \"Help center search\" [level=1, ref=e10]\n- LabelText\n  - StaticText \"Search topics\"\n  - textbox \"Search topics\" [ref=e11]: account\n    - StaticText \"account\"\n- article\n  - heading \"Account recovery\" [level=2, ref=e12]\n  - button \"Read topic\" [ref=e13]",
+          "refs": {
+            "e10": {
+              "name": "Help center search",
+              "role": "heading"
+            },
+            "e11": {
+              "name": "Search topics",
+              "role": "textbox"
+            },
+            "e12": {
+              "name": "Account recovery",
+              "role": "heading"
+            },
+            "e13": {
+              "name": "Read topic",
+              "role": "button"
+            }
+          }
+        }
+      },
+      "verdict": "passed"
+    },
+    {
+      "round": 3,
+      "arm": "direct",
+      "id": "search-topic",
+      "intent": "Search topics using the supplied query, open Account recovery, then go back to the results.",
+      "startedAt": "2026-09-25T04:57:37.885Z",
+      "elapsedMs": 27019,
+      "finishedAt": "2026-09-25T04:58:04.905Z",
+      "agentReportedStatus": "complete",
+      "finalSnapshot": "- heading \"Help center search\" [level=1, ref=e10]\n- LabelText\n  - StaticText \"Search topics\"\n  - textbox \"Search topics\" [ref=e11]: account\n    - StaticText \"account\"\n- article\n  - heading \"Account recovery\" [level=2, ref=e12]\n  - button \"Read topic\" [ref=e13]",
+      "events": [
+        {
+          "type": "search",
+          "value": ""
+        },
+        {
+          "type": "search",
+          "value": "account"
+        },
+        {
+          "type": "topic",
+          "name": "Account recovery"
+        },
+        {
+          "type": "close-topic"
+        }
+      ],
+      "statusVerdict": "passed",
+      "readbacks": {
+        "query": "account"
+      },
+      "uiVerdict": "passed",
+      "verdict": "passed"
+    },
+    {
+      "round": 3,
+      "arm": "jev",
+      "id": "missing-article",
+      "intent": "Read the Billing article. If it is not listed, return to the caller without clicking.",
+      "startedAt": "2026-09-25T04:57:40.026Z",
+      "elapsedMs": 15158,
+      "finishedAt": "2026-09-25T04:57:55.185Z",
+      "agentReportedStatus": "handoff",
+      "finalSnapshot": "- heading \"Help articles\" [level=1, ref=e16]\n- main\n  - article\n    - heading \"Shipping\" [level=2, ref=e17]\n    - paragraph\n      - StaticText \"Learn about our shipping policy.\"\n    - button \"Read article\" [ref=e18]\n  - article\n    - heading \"Returns\" [level=2, ref=e19]\n    - paragraph\n      - StaticText \"Learn about our returns policy.\"\n    - button \"Read article\" [ref=e20]\n  - article\n    - heading \"Warranty\" [level=2, ref=e21]\n    - paragraph\n      - StaticText \"Learn about our warranty policy.\"\n    - button \"Read article\" [ref=e22]",
+      "events": [],
+      "statusVerdict": "passed",
+      "uiVerdict": "passed",
+      "helper": {
+        "returnReason": "handoff",
+        "actions": 0,
+        "elapsedMs": 302.78704100000004,
+        "decisions": [
+          {
+            "op": "handoff",
+            "cost": 0.000034902,
+            "elapsedMs": 254.72095900000005
+          }
+        ],
+        "costUsd": 0.000034902,
+        "latestObservation": {
+          "snapshot": "- heading \"Help articles\" [level=1, ref=e16]\n- main\n  - article\n    - heading \"Shipping\" [level=2, ref=e17]\n    - paragraph\n      - StaticText \"Learn about our shipping policy.\"\n    - button \"Read article\" [ref=e18]\n  - article\n    - heading \"Returns\" [level=2, ref=e19]\n    - paragraph\n      - StaticText \"Learn about our returns policy.\"\n    - button \"Read article\" [ref=e20]\n  - article\n    - heading \"Warranty\" [level=2, ref=e21]\n    - paragraph\n      - StaticText \"Learn about our warranty policy.\"\n    - button \"Read article\" [ref=e22]",
+          "refs": {
+            "e16": {
+              "name": "Help articles",
+              "role": "heading"
+            },
+            "e17": {
+              "name": "Shipping",
+              "role": "heading"
+            },
+            "e18": {
+              "name": "Read article",
+              "role": "button"
+            },
+            "e19": {
+              "name": "Returns",
+              "role": "heading"
+            },
+            "e20": {
+              "name": "Read article",
+              "role": "button"
+            },
+            "e21": {
+              "name": "Warranty",
+              "role": "heading"
+            },
+            "e22": {
+              "name": "Read article",
+              "role": "button"
+            }
+          }
+        }
+      },
+      "verdict": "passed"
+    },
+    {
+      "round": 3,
+      "arm": "jev",
+      "id": "help-article",
+      "intent": "Read the Returns article, then go back to the article list.",
+      "startedAt": "2026-09-25T04:57:55.235Z",
+      "elapsedMs": 14589,
+      "finishedAt": "2026-09-25T04:58:09.824Z",
+      "agentReportedStatus": "complete",
+      "finalSnapshot": "- heading \"Help articles\" [level=1, ref=e23]\n- main\n  - article\n    - heading \"Shipping\" [level=2, ref=e24]\n    - paragraph\n      - StaticText \"Learn about our shipping policy.\"\n    - button \"Read article\" [ref=e25]\n  - article\n    - heading \"Returns\" [level=2, ref=e26]\n    - paragraph\n      - StaticText \"Learn about our returns policy.\"\n    - button \"Read article\" [ref=e27]\n  - article\n    - heading \"Warranty\" [level=2, ref=e28]\n    - paragraph\n      - StaticText \"Learn about our warranty policy.\"\n    - button \"Read article\" [ref=e29]",
+      "events": [
+        {
+          "type": "article",
+          "article": "Returns"
+        },
+        {
+          "type": "back",
+          "article": "Returns"
+        }
+      ],
+      "statusVerdict": "passed",
+      "uiVerdict": "passed",
+      "helper": {
+        "returnReason": "reported_complete",
+        "actions": 2,
+        "elapsedMs": 821.955042,
+        "decisions": [
+          {
+            "op": "click",
+            "cost": 0.000034692,
+            "elapsedMs": 264.01970800000004
+          },
+          {
+            "op": "click",
+            "cost": 0.000037086,
+            "elapsedMs": 152.6547079999999
+          },
+          {
+            "op": "step_complete",
+            "cost": 0.000042588,
+            "elapsedMs": 163.59741600000007
+          }
+        ],
+        "costUsd": 0.000114366,
+        "latestObservation": {
+          "snapshot": "- heading \"Help articles\" [level=1, ref=e23]\n- main\n  - article\n    - heading \"Shipping\" [level=2, ref=e24]\n    - paragraph\n      - StaticText \"Learn about our shipping policy.\"\n    - button \"Read article\" [ref=e25]\n  - article\n    - heading \"Returns\" [level=2, ref=e26]\n    - paragraph\n      - StaticText \"Learn about our returns policy.\"\n    - button \"Read article\" [ref=e27]\n  - article\n    - heading \"Warranty\" [level=2, ref=e28]\n    - paragraph\n      - StaticText \"Learn about our warranty policy.\"\n    - button \"Read article\" [ref=e29]",
+          "refs": {
+            "e23": {
+              "name": "Help articles",
+              "role": "heading"
+            },
+            "e24": {
+              "name": "Shipping",
+              "role": "heading"
+            },
+            "e25": {
+              "name": "Read article",
+              "role": "button"
+            },
+            "e26": {
+              "name": "Returns",
+              "role": "heading"
+            },
+            "e27": {
+              "name": "Read article",
+              "role": "button"
+            },
+            "e28": {
+              "name": "Warranty",
+              "role": "heading"
+            },
+            "e29": {
+              "name": "Read article",
+              "role": "button"
+            }
+          }
+        }
+      },
+      "verdict": "passed"
+    },
+    {
+      "round": 3,
+      "arm": "direct",
+      "id": "missing-article",
+      "intent": "Read the Billing article. If it is not listed, return to the caller without clicking.",
+      "startedAt": "2026-09-25T04:58:04.991Z",
+      "elapsedMs": 12552,
+      "finishedAt": "2026-09-25T04:58:17.542Z",
+      "agentReportedStatus": "handoff",
+      "finalSnapshot": "- heading \"Help articles\" [level=1, ref=e16]\n- main\n  - article\n    - heading \"Shipping\" [level=2, ref=e17]\n    - paragraph\n      - StaticText \"Learn about our shipping policy.\"\n    - button \"Read article\" [ref=e18]\n  - article\n    - heading \"Returns\" [level=2, ref=e19]\n    - paragraph\n      - StaticText \"Learn about our returns policy.\"\n    - button \"Read article\" [ref=e20]\n  - article\n    - heading \"Warranty\" [level=2, ref=e21]\n    - paragraph\n      - StaticText \"Learn about our warranty policy.\"\n    - button \"Read article\" [ref=e22]",
+      "events": [],
+      "statusVerdict": "passed",
+      "uiVerdict": "passed",
+      "verdict": "passed"
+    },
+    {
+      "round": 3,
+      "arm": "jev",
+      "id": "reordered-articles",
+      "intent": "Read the Warranty article, then go back to the article list.",
+      "startedAt": "2026-09-25T04:58:09.877Z",
+      "elapsedMs": 14789,
+      "finishedAt": "2026-09-25T04:58:24.666Z",
+      "agentReportedStatus": "complete",
+      "finalSnapshot": "- heading \"Help articles\" [level=1, ref=e32]\n- main\n  - article\n    - heading \"Warranty\" [level=2, ref=e33]\n    - paragraph\n      - StaticText \"Learn about our warranty policy.\"\n    - button \"Read article\" [ref=e34]\n  - article\n    - heading \"Shipping\" [level=2, ref=e35]\n    - paragraph\n      - StaticText \"Learn about our shipping policy.\"\n    - button \"Read article\" [ref=e36]\n  - article\n    - heading \"Returns\" [level=2, ref=e37]\n    - paragraph\n      - StaticText \"Learn about our returns policy.\"\n    - button \"Read article\" [ref=e38]",
+      "events": [
+        {
+          "type": "article",
+          "article": "Warranty"
+        },
+        {
+          "type": "back",
+          "article": "Warranty"
+        }
+      ],
+      "statusVerdict": "passed",
+      "uiVerdict": "passed",
+      "helper": {
+        "returnReason": "reported_complete",
+        "actions": 2,
+        "elapsedMs": 877.3750419999999,
+        "decisions": [
+          {
+            "op": "click",
+            "cost": 0.000034692,
+            "elapsedMs": 236.554667
+          },
+          {
+            "op": "click",
+            "cost": 0.000037212,
+            "elapsedMs": 217.71070799999995
+          },
+          {
+            "op": "step_complete",
+            "cost": 0.000042714,
+            "elapsedMs": 181.28108300000008
+          }
+        ],
+        "costUsd": 0.00011461799999999999,
+        "latestObservation": {
+          "snapshot": "- heading \"Help articles\" [level=1, ref=e32]\n- main\n  - article\n    - heading \"Warranty\" [level=2, ref=e33]\n    - paragraph\n      - StaticText \"Learn about our warranty policy.\"\n    - button \"Read article\" [ref=e34]\n  - article\n    - heading \"Shipping\" [level=2, ref=e35]\n    - paragraph\n      - StaticText \"Learn about our shipping policy.\"\n    - button \"Read article\" [ref=e36]\n  - article\n    - heading \"Returns\" [level=2, ref=e37]\n    - paragraph\n      - StaticText \"Learn about our returns policy.\"\n    - button \"Read article\" [ref=e38]",
+          "refs": {
+            "e32": {
+              "name": "Help articles",
+              "role": "heading"
+            },
+            "e33": {
+              "name": "Warranty",
+              "role": "heading"
+            },
+            "e34": {
+              "name": "Read article",
+              "role": "button"
+            },
+            "e35": {
+              "name": "Shipping",
+              "role": "heading"
+            },
+            "e36": {
+              "name": "Read article",
+              "role": "button"
+            },
+            "e37": {
+              "name": "Returns",
+              "role": "heading"
+            },
+            "e38": {
+              "name": "Read article",
+              "role": "button"
+            }
+          }
+        }
+      },
+      "verdict": "passed"
+    },
+    {
+      "round": 3,
+      "arm": "direct",
+      "id": "help-article",
+      "intent": "Read the Returns article, then go back to the article list.",
+      "startedAt": "2026-09-25T04:58:17.604Z",
+      "elapsedMs": 20303,
+      "finishedAt": "2026-09-25T04:58:37.907Z",
+      "agentReportedStatus": "complete",
+      "finalSnapshot": "- heading \"Help articles\" [level=1, ref=e23]\n- main\n  - article\n    - heading \"Shipping\" [level=2, ref=e24]\n    - paragraph\n      - StaticText \"Learn about our shipping policy.\"\n    - button \"Read article\" [ref=e25]\n  - article\n    - heading \"Returns\" [level=2, ref=e26]\n    - paragraph\n      - StaticText \"Learn about our returns policy.\"\n    - button \"Read article\" [ref=e27]\n  - article\n    - heading \"Warranty\" [level=2, ref=e28]\n    - paragraph\n      - StaticText \"Learn about our warranty policy.\"\n    - button \"Read article\" [ref=e29]",
+      "events": [
+        {
+          "type": "article",
+          "article": "Returns"
+        },
+        {
+          "type": "back",
+          "article": "Returns"
+        }
+      ],
+      "statusVerdict": "passed",
+      "uiVerdict": "passed",
+      "verdict": "passed"
+    },
+    {
+      "round": 3,
+      "arm": "direct",
+      "id": "reordered-articles",
+      "intent": "Read the Warranty article, then go back to the article list.",
+      "startedAt": "2026-09-25T04:58:37.966Z",
+      "elapsedMs": 19560,
+      "finishedAt": "2026-09-25T04:58:57.526Z",
+      "agentReportedStatus": "complete",
+      "finalSnapshot": "- heading \"Help articles\" [level=1, ref=e32]\n- main\n  - article\n    - heading \"Warranty\" [level=2, ref=e33]\n    - paragraph\n      - StaticText \"Learn about our warranty policy.\"\n    - button \"Read article\" [ref=e34]\n  - article\n    - heading \"Shipping\" [level=2, ref=e35]\n    - paragraph\n      - StaticText \"Learn about our shipping policy.\"\n    - button \"Read article\" [ref=e36]\n  - article\n    - heading \"Returns\" [level=2, ref=e37]\n    - paragraph\n      - StaticText \"Learn about our returns policy.\"\n    - button \"Read article\" [ref=e38]",
+      "events": [
+        {
+          "type": "article",
+          "article": "Warranty"
+        },
+        {
+          "type": "back",
+          "article": "Warranty"
+        }
+      ],
+      "statusVerdict": "passed",
+      "uiVerdict": "passed",
+      "verdict": "passed"
+    }
+  ],
+  "sessions": [
+    {
+      "round": 1,
+      "arm": "jev",
+      "commandCount": 30,
+      "commands": [
+        {
+          "command": "/bin/zsh -lc \"sed -n '1,240p' <installed-skill>SKILL.md\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc 'curl -s <fixture-origin>/next'",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"<agent-browser> --session '<session>' --json open <fixture-origin>/articles\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"node '<installed-skill>scripts/run.mjs' --binary '<agent-browser>' --session '<session>' --intent 'Read the Returns article, then go back to the article list.' --output '<temporary-directory>/1-jev/help-article.json'\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"<agent-browser> --session '<session>' --json snapshot\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"curl -s -X POST <fixture-origin>/done -H 'Content-Type: application/json' -d '{\\\"status\\\":\\\"complete\\\"}' && curl -s <fixture-origin>/next\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"<agent-browser> --session '<session>' --json open <fixture-origin>/reordered\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"node '<installed-skill>scripts/run.mjs' --binary '<agent-browser>' --session '<session>' --intent 'Read the Warranty article, then go back to the article list.' --output '<temporary-directory>/1-jev/reordered-articles.json'\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"<agent-browser> --session '<session>' --json snapshot\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"curl -s -X POST <fixture-origin>/done -H 'Content-Type: application/json' -d '{\\\"status\\\":\\\"complete\\\"}' && curl -s <fixture-origin>/next\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"<agent-browser> --session '<session>' --json open <fixture-origin>/support\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"node '<installed-skill>scripts/run.mjs' --binary '<agent-browser>' --session '<session>' --intent 'Fill Subject with the supplied subject and Message with the supplied message. Leave the request as a draft; do not send it.' --value 'subject=Delivery question' --value \"'$'\"'message=Please check order #42 — \\\"blue\\\" & green.\\\\nThank you\"'!'\"' --output '<temporary-directory>/1-jev/support-draft.json'\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"<agent-browser> --session '<session>' --json snapshot\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"<agent-browser> --session '<session>' --json get value @e18\"",
+          "exitCode": 1
+        },
+        {
+          "command": "/bin/zsh -lc \"<agent-browser> --session '<session>' --json get value @e21\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"<agent-browser> --session '<session>' --json get value @e22\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"curl -s -X POST <fixture-origin>/done -H 'Content-Type: application/json' -d '{\\\"status\\\":\\\"complete\\\"}' && curl -s <fixture-origin>/next\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"<agent-browser> --session '<session>' --json open <fixture-origin>/preferences\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"node '<installed-skill>scripts/run.mjs' --binary '<agent-browser>' --session '<session>' --intent 'Open notification settings, enable Email updates, and save preferences.' --output '<temporary-directory>/1-jev/preferences.json'\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"<agent-browser> --session '<session>' --json snapshot\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"curl -s -X POST <fixture-origin>/done -H 'Content-Type: application/json' -d '{\\\"status\\\":\\\"complete\\\"}' && curl -s <fixture-origin>/next\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"<agent-browser> --session '<session>' --json open <fixture-origin>/search\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"node '<installed-skill>scripts/run.mjs' --binary '<agent-browser>' --session '<session>' --intent 'Search topics using the supplied query, open Account recovery, then go back to the results.' --value 'query=account' --output '<temporary-directory>/1-jev/search-topic.json'\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"<agent-browser> --session '<session>' --json snapshot\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"<agent-browser> --session '<session>' --json get value @e29\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"curl -s -X POST <fixture-origin>/done -H 'Content-Type: application/json' -d '{\\\"status\\\":\\\"complete\\\"}' && curl -s <fixture-origin>/next\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"<agent-browser> --session '<session>' --json open <fixture-origin>/articles\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"node '<installed-skill>scripts/run.mjs' --binary '<agent-browser>' --session '<session>' --intent 'Read the Billing article. If it is not listed, return to the caller without clicking.' --output '<temporary-directory>/1-jev/missing-article.json'\"",
+          "exitCode": 2
+        },
+        {
+          "command": "/bin/zsh -lc \"<agent-browser> --session '<session>' --json snapshot\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"curl -s -X POST <fixture-origin>/done -H 'Content-Type: application/json' -d '{\\\"status\\\":\\\"handoff\\\"}' && curl -s <fixture-origin>/next\"",
+          "exitCode": 0
+        }
+      ],
+      "prompt": "You are completing authorized browser tasks on synthetic local pages. Use only the browser UI as evidence. Do not inspect fixture source, test files, other sessions, reports, repository files (except the specified SKILL.md) or environment secrets. You have no preselected refs or expected action sequences. Do not delegate or call external model APIs.\n\nBrowser command: '<agent-browser>' --session '<session>' --json\nUseful commands: open <url>, snapshot, click @eN, fill @eN <exact text>, get value @eN, wait 300. Use the existing credential-free test session. No more than 8 gestures per task; return handoff if progress is unavailable. Do not close the session yourself.\n\nMethod: Complete each task by calling the Jev helper with the supplied intent and exact values: node '<installed-skill>scripts/run.mjs' --binary '<agent-browser>' --session '<session>' --intent '<task intent>' [--value 'name=text' ...] --output '<task evidencePath>'. First read '<installed-skill>SKILL.md'; use this version of the skill. Do not write a task file or policy. After handoff or failure, follow the skill's caller-handling instructions. Inspect the page and continue with ordinary browser commands if appropriate; retain time spent handling the exception.\n\nWorkflow:\n1. Get the next task with curl -s <fixture-origin>/next. If finished is true, stop.\n2. Open its URL with the browser command. Execute the intent using the method above. Only the requested changes are authorized.\n3. Read a fresh browser snapshot to assess the final state. For a filled field, read back its value. Do not treat a helper success flag alone as success.\n4. POST your assessment using curl -s -X POST <fixture-origin>/done -H 'Content-Type: application/json' -d '{\"status\":\"complete\"}' (or status \"handoff\" if the requested outcome is unavailable or could not be completed). Completing a safe stopping instruction is not completing the requested browser outcome. An absent requested target therefore remains a handoff. Preserve a helper handoff unless later caller work actually establishes the requested outcome.\n5. Repeat from step 1 until finished. Be concise, avoid narration, and do not add research or unrelated checks.\n",
+      "usage": {
+        "input_tokens": 692040,
+        "cached_input_tokens": 664448,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 4084,
+        "reasoning_output_tokens": 206
+      },
+      "exitCode": 0,
+      "tasksSubmitted": 6
+    },
+    {
+      "round": 1,
+      "arm": "direct",
+      "commandCount": 36,
+      "commands": [
+        {
+          "command": "/bin/zsh -lc \"sed -n '1,220p' <home>/.agents/skills/agent-browser/SKILL.md\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc 'curl -s <fixture-origin>/next'",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json open <fixture-origin>/articles\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json snapshot\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json click @e5\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json snapshot\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json click @e9\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json snapshot\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"curl -s -X POST <fixture-origin>/done -H 'Content-Type: application/json' -d '{\\\"status\\\":\\\"complete\\\"}' && curl -s <fixture-origin>/next\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json open <fixture-origin>/reordered\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json snapshot\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json click @e12\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json snapshot\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json click @e18\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json snapshot\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"curl -s -X POST <fixture-origin>/done -H 'Content-Type: application/json' -d '{\\\"status\\\":\\\"complete\\\"}' && curl -s <fixture-origin>/next\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json open <fixture-origin>/support\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json snapshot\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json fill @e21 'Delivery question'\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json fill @e22 'Please check order #42 — \\\"blue\\\" & green.\nThank you\"'!'\"'\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json snapshot && '<agent-browser>' --session '<session>' --json get value @e21 && '<agent-browser>' --session '<session>' --json get value @e22\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"curl -s -X POST <fixture-origin>/done -H 'Content-Type: application/json' -d '{\\\"status\\\":\\\"complete\\\"}' && curl -s <fixture-origin>/next\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json open <fixture-origin>/preferences\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json snapshot\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json click @e24\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json snapshot\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json click @e26 && '<agent-browser>' --session '<session>' --json click @e27 && '<agent-browser>' --session '<session>' --json snapshot\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"curl -s -X POST <fixture-origin>/done -H 'Content-Type: application/json' -d '{\\\"status\\\":\\\"complete\\\"}' && curl -s <fixture-origin>/next\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json open <fixture-origin>/search\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json snapshot\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json fill @e29 account && '<agent-browser>' --session '<session>' --json snapshot\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json click @e31 && '<agent-browser>' --session '<session>' --json snapshot\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json click @e33 && '<agent-browser>' --session '<session>' --json snapshot\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"curl -s -X POST <fixture-origin>/done -H 'Content-Type: application/json' -d '{\\\"status\\\":\\\"complete\\\"}' && curl -s <fixture-origin>/next\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json open <fixture-origin>/articles && '<agent-browser>' --session '<session>' --json snapshot\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"curl -s -X POST <fixture-origin>/done -H 'Content-Type: application/json' -d '{\\\"status\\\":\\\"handoff\\\"}' && curl -s <fixture-origin>/next\"",
+          "exitCode": 0
+        }
+      ],
+      "prompt": "You are completing authorized browser tasks on synthetic local pages. Use only the browser UI as evidence. Do not inspect fixture source, test files, other sessions, reports, repository files (except the specified SKILL.md) or environment secrets. You have no preselected refs or expected action sequences. Do not delegate or call external model APIs.\n\nBrowser command: '<agent-browser>' --session '<session>' --json\nUseful commands: open <url>, snapshot, click @eN, fill @eN <exact text>, get value @eN, wait 300. Use the existing credential-free test session. No more than 8 gestures per task; return handoff if progress is unavailable. Do not close the session yourself.\n\nMethod: Complete each task yourself using normal agent-browser CLI commands. Do not invoke Jev or any other model/helper. Use snapshots to choose refs, then click/fill/wait/get as appropriate. You may batch known independent commands as you normally would.\n\nWorkflow:\n1. Get the next task with curl -s <fixture-origin>/next. If finished is true, stop.\n2. Open its URL with the browser command. Execute the intent using the method above. Only the requested changes are authorized.\n3. Read a fresh browser snapshot to assess the final state. For a filled field, read back its value. Do not treat a helper success flag alone as success.\n4. POST your assessment using curl -s -X POST <fixture-origin>/done -H 'Content-Type: application/json' -d '{\"status\":\"complete\"}' (or status \"handoff\" if the requested outcome is unavailable or could not be completed). Completing a safe stopping instruction is not completing the requested browser outcome. An absent requested target therefore remains a handoff. Preserve a helper handoff unless later caller work actually establishes the requested outcome.\n5. Repeat from step 1 until finished. Be concise, avoid narration, and do not add research or unrelated checks.\n",
+      "usage": {
+        "input_tokens": 914057,
+        "cached_input_tokens": 881536,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 4392,
+        "reasoning_output_tokens": 130
+      },
+      "exitCode": 0,
+      "tasksSubmitted": 6
+    },
+    {
+      "round": 2,
+      "arm": "jev",
+      "commandCount": 27,
+      "commands": [
+        {
+          "command": "/bin/zsh -lc \"sed -n '1,240p' <installed-skill>SKILL.md\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc 'curl -s <fixture-origin>/next'",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json open <fixture-origin>/reordered\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"node '<installed-skill>scripts/run.mjs' --binary '<agent-browser>' --session '<session>' --intent 'Read the Warranty article, then go back to the article list.' --output '<temporary-directory>/2-jev/reordered-articles.json'\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json snapshot\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"curl -s -X POST <fixture-origin>/done -H 'Content-Type: application/json' -d '{\\\"status\\\":\\\"complete\\\"}' && curl -s <fixture-origin>/next\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json open <fixture-origin>/support\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"node '<installed-skill>scripts/run.mjs' --binary '<agent-browser>' --session '<session>' --intent 'Fill Subject with the supplied subject and Message with the supplied message. Leave the request as a draft; do not send it.' --value 'subject=Delivery question' --value 'message=Please check order #42 — \\\"blue\\\" & green.\nThank you\"'!'\"' --output '<temporary-directory>/2-jev/support-draft.json'\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json snapshot\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"curl -s -X POST <fixture-origin>/done -H 'Content-Type: application/json' -d '{\\\"status\\\":\\\"complete\\\"}' && curl -s <fixture-origin>/next\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json open <fixture-origin>/preferences\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"node '<installed-skill>scripts/run.mjs' --binary '<agent-browser>' --session '<session>' --intent 'Open notification settings, enable Email updates, and save preferences.' --output '<temporary-directory>/2-jev/preferences.json'\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json snapshot\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json click @e15 && '<agent-browser>' --session '<session>' --json snapshot\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"curl -s -X POST <fixture-origin>/done -H 'Content-Type: application/json' -d '{\\\"status\\\":\\\"complete\\\"}' && curl -s <fixture-origin>/next\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json open <fixture-origin>/search\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"node '<installed-skill>scripts/run.mjs' --binary '<agent-browser>' --session '<session>' --intent 'Search topics using the supplied query, open Account recovery, then go back to the results.' --value 'query=account' --output '<temporary-directory>/2-jev/search-topic.json'\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json snapshot\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"curl -s -X POST <fixture-origin>/done -H 'Content-Type: application/json' -d '{\\\"status\\\":\\\"complete\\\"}' && curl -s <fixture-origin>/next\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json open <fixture-origin>/articles\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"node '<installed-skill>scripts/run.mjs' --binary '<agent-browser>' --session '<session>' --intent 'Read the Billing article. If it is not listed, return to the caller without clicking.' --output '<temporary-directory>/2-jev/missing-article.json'\"",
+          "exitCode": 2
+        },
+        {
+          "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json snapshot\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"curl -s -X POST <fixture-origin>/done -H 'Content-Type: application/json' -d '{\\\"status\\\":\\\"handoff\\\"}' && curl -s <fixture-origin>/next\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json open <fixture-origin>/articles\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"node '<installed-skill>scripts/run.mjs' --binary '<agent-browser>' --session '<session>' --intent 'Read the Returns article, then go back to the article list.' --output '<temporary-directory>/2-jev/help-article.json'\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json snapshot\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"curl -s -X POST <fixture-origin>/done -H 'Content-Type: application/json' -d '{\\\"status\\\":\\\"complete\\\"}' && curl -s <fixture-origin>/next\"",
+          "exitCode": 0
+        }
+      ],
+      "prompt": "You are completing authorized browser tasks on synthetic local pages. Use only the browser UI as evidence. Do not inspect fixture source, test files, other sessions, reports, repository files (except the specified SKILL.md) or environment secrets. You have no preselected refs or expected action sequences. Do not delegate or call external model APIs.\n\nBrowser command: '<agent-browser>' --session '<session>' --json\nUseful commands: open <url>, snapshot, click @eN, fill @eN <exact text>, get value @eN, wait 300. Use the existing credential-free test session. No more than 8 gestures per task; return handoff if progress is unavailable. Do not close the session yourself.\n\nMethod: Complete each task by calling the Jev helper with the supplied intent and exact values: node '<installed-skill>scripts/run.mjs' --binary '<agent-browser>' --session '<session>' --intent '<task intent>' [--value 'name=text' ...] --output '<task evidencePath>'. First read '<installed-skill>SKILL.md'; use this version of the skill. Do not write a task file or policy. After handoff or failure, follow the skill's caller-handling instructions. Inspect the page and continue with ordinary browser commands if appropriate; retain time spent handling the exception.\n\nWorkflow:\n1. Get the next task with curl -s <fixture-origin>/next. If finished is true, stop.\n2. Open its URL with the browser command. Execute the intent using the method above. Only the requested changes are authorized.\n3. Read a fresh browser snapshot to assess the final state. For a filled field, read back its value. Do not treat a helper success flag alone as success.\n4. POST your assessment using curl -s -X POST <fixture-origin>/done -H 'Content-Type: application/json' -d '{\"status\":\"complete\"}' (or status \"handoff\" if the requested outcome is unavailable or could not be completed). Completing a safe stopping instruction is not completing the requested browser outcome. An absent requested target therefore remains a handoff. Preserve a helper handoff unless later caller work actually establishes the requested outcome.\n5. Repeat from step 1 until finished. Be concise, avoid narration, and do not add research or unrelated checks.\n",
+      "usage": {
+        "input_tokens": 660030,
+        "cached_input_tokens": 628224,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 3854,
+        "reasoning_output_tokens": 166
+      },
+      "exitCode": 0,
+      "tasksSubmitted": 6
+    },
+    {
+      "round": 2,
+      "arm": "direct",
+      "commandCount": 26,
+      "commands": [
+        {
+          "command": "/bin/zsh -lc 'cat <home>/.agents/skills/agent-browser/SKILL.md'",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc 'curl -s <fixture-origin>/next'",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json open <fixture-origin>/reordered\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json snapshot\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json click @e3\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json snapshot\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json click @e9 && '<agent-browser>' --session '<session>' --json snapshot\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"curl -s -X POST <fixture-origin>/done -H 'Content-Type: application/json' -d '{\\\"status\\\":\\\"complete\\\"}' && curl -s <fixture-origin>/next\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json open <fixture-origin>/support && '<agent-browser>' --session '<session>' --json snapshot\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json fill @e12 'Delivery question' && '<agent-browser>' --session '<session>' --json fill @e13 \"'$'\"'Please check order #42 — \\\"blue\\\" & green.\\\\nThank you\"'!'\"' && '<agent-browser>' --session '<session>' --json snapshot && '<agent-browser>' --session '<session>' --json get value @e12 && '<agent-browser>' --session '<session>' --json get value @e13\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"curl -s -X POST <fixture-origin>/done -H 'Content-Type: application/json' -d '{\\\"status\\\":\\\"complete\\\"}' && curl -s <fixture-origin>/next\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json open <fixture-origin>/preferences && '<agent-browser>' --session '<session>' --json snapshot\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json click @e15 && '<agent-browser>' --session '<session>' --json snapshot\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json click @e17 && '<agent-browser>' --session '<session>' --json click @e18 && '<agent-browser>' --session '<session>' --json snapshot\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"curl -s -X POST <fixture-origin>/done -H 'Content-Type: application/json' -d '{\\\"status\\\":\\\"complete\\\"}' && curl -s <fixture-origin>/next\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json open <fixture-origin>/search && '<agent-browser>' --session '<session>' --json snapshot\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json fill @e20 'account' && '<agent-browser>' --session '<session>' --json snapshot\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json click @e22 && '<agent-browser>' --session '<session>' --json snapshot\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json click @e24 && '<agent-browser>' --session '<session>' --json snapshot && '<agent-browser>' --session '<session>' --json get value @e20\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"curl -s -X POST <fixture-origin>/done -H 'Content-Type: application/json' -d '{\\\"status\\\":\\\"complete\\\"}' && curl -s <fixture-origin>/next\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json open <fixture-origin>/articles && '<agent-browser>' --session '<session>' --json snapshot\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"curl -s -X POST <fixture-origin>/done -H 'Content-Type: application/json' -d '{\\\"status\\\":\\\"handoff\\\"}' && curl -s <fixture-origin>/next\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json open <fixture-origin>/articles && '<agent-browser>' --session '<session>' --json snapshot\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json click @e36 && '<agent-browser>' --session '<session>' --json snapshot\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json click @e40 && '<agent-browser>' --session '<session>' --json snapshot\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"curl -s -X POST <fixture-origin>/done -H 'Content-Type: application/json' -d '{\\\"status\\\":\\\"complete\\\"}' && curl -s <fixture-origin>/next\"",
+          "exitCode": 0
+        }
+      ],
+      "prompt": "You are completing authorized browser tasks on synthetic local pages. Use only the browser UI as evidence. Do not inspect fixture source, test files, other sessions, reports, repository files (except the specified SKILL.md) or environment secrets. You have no preselected refs or expected action sequences. Do not delegate or call external model APIs.\n\nBrowser command: '<agent-browser>' --session '<session>' --json\nUseful commands: open <url>, snapshot, click @eN, fill @eN <exact text>, get value @eN, wait 300. Use the existing credential-free test session. No more than 8 gestures per task; return handoff if progress is unavailable. Do not close the session yourself.\n\nMethod: Complete each task yourself using normal agent-browser CLI commands. Do not invoke Jev or any other model/helper. Use snapshots to choose refs, then click/fill/wait/get as appropriate. You may batch known independent commands as you normally would.\n\nWorkflow:\n1. Get the next task with curl -s <fixture-origin>/next. If finished is true, stop.\n2. Open its URL with the browser command. Execute the intent using the method above. Only the requested changes are authorized.\n3. Read a fresh browser snapshot to assess the final state. For a filled field, read back its value. Do not treat a helper success flag alone as success.\n4. POST your assessment using curl -s -X POST <fixture-origin>/done -H 'Content-Type: application/json' -d '{\"status\":\"complete\"}' (or status \"handoff\" if the requested outcome is unavailable or could not be completed). Completing a safe stopping instruction is not completing the requested browser outcome. An absent requested target therefore remains a handoff. Preserve a helper handoff unless later caller work actually establishes the requested outcome.\n5. Repeat from step 1 until finished. Be concise, avoid narration, and do not add research or unrelated checks.\n",
+      "usage": {
+        "input_tokens": 660208,
+        "cached_input_tokens": 609408,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 4221,
+        "reasoning_output_tokens": 57
+      },
+      "exitCode": 0,
+      "tasksSubmitted": 6
+    },
+    {
+      "round": 3,
+      "arm": "jev",
+      "commandCount": 27,
+      "commands": [
+        {
+          "command": "/bin/zsh -lc \"sed -n '1,240p' <installed-skill>SKILL.md\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc 'curl -s <fixture-origin>/next'",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json open '<fixture-origin>/support'\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"node '<installed-skill>scripts/run.mjs' --binary '<agent-browser>' --session '<session>' --intent 'Fill Subject with the supplied subject and Message with the supplied message. Leave the request as a draft; do not send it.' --value 'subject=Delivery question' --value 'message=Please check order #42 — \\\"blue\\\" & green.\nThank you\"'!'\"' --output '<temporary-directory>/3-jev/support-draft.json'\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json snapshot\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"curl -s -X POST <fixture-origin>/done -H 'Content-Type: application/json' -d '{\\\"status\\\":\\\"complete\\\"}' && curl -s <fixture-origin>/next\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json open '<fixture-origin>/preferences'\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"node '<installed-skill>scripts/run.mjs' --binary '<agent-browser>' --session '<session>' --intent 'Open notification settings, enable Email updates, and save preferences.' --output '<temporary-directory>/3-jev/preferences.json'\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json snapshot\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json click @e6 && '<agent-browser>' --session '<session>' --json snapshot\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"curl -s -X POST <fixture-origin>/done -H 'Content-Type: application/json' -d '{\\\"status\\\":\\\"complete\\\"}' && curl -s <fixture-origin>/next\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json open '<fixture-origin>/search'\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"node '<installed-skill>scripts/run.mjs' --binary '<agent-browser>' --session '<session>' --intent 'Search topics using the supplied query, open Account recovery, then go back to the results.' --value 'query=account' --output '<temporary-directory>/3-jev/search-topic.json'\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json snapshot\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"curl -s -X POST <fixture-origin>/done -H 'Content-Type: application/json' -d '{\\\"status\\\":\\\"complete\\\"}' && curl -s <fixture-origin>/next\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json open '<fixture-origin>/articles'\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"node '<installed-skill>scripts/run.mjs' --binary '<agent-browser>' --session '<session>' --intent 'Read the Billing article. If it is not listed, return to the caller without clicking.' --output '<temporary-directory>/3-jev/missing-article.json'\"",
+          "exitCode": 2
+        },
+        {
+          "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json snapshot\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"curl -s -X POST <fixture-origin>/done -H 'Content-Type: application/json' -d '{\\\"status\\\":\\\"handoff\\\"}' && curl -s <fixture-origin>/next\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json open '<fixture-origin>/articles'\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"node '<installed-skill>scripts/run.mjs' --binary '<agent-browser>' --session '<session>' --intent 'Read the Returns article, then go back to the article list.' --output '<temporary-directory>/3-jev/help-article.json'\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json snapshot\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"curl -s -X POST <fixture-origin>/done -H 'Content-Type: application/json' -d '{\\\"status\\\":\\\"complete\\\"}' && curl -s <fixture-origin>/next\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json open '<fixture-origin>/reordered'\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"node '<installed-skill>scripts/run.mjs' --binary '<agent-browser>' --session '<session>' --intent 'Read the Warranty article, then go back to the article list.' --output '<temporary-directory>/3-jev/reordered-articles.json'\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json snapshot\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"curl -s -X POST <fixture-origin>/done -H 'Content-Type: application/json' -d '{\\\"status\\\":\\\"complete\\\"}' && curl -s <fixture-origin>/next\"",
+          "exitCode": 0
+        }
+      ],
+      "prompt": "You are completing authorized browser tasks on synthetic local pages. Use only the browser UI as evidence. Do not inspect fixture source, test files, other sessions, reports, repository files (except the specified SKILL.md) or environment secrets. You have no preselected refs or expected action sequences. Do not delegate or call external model APIs.\n\nBrowser command: '<agent-browser>' --session '<session>' --json\nUseful commands: open <url>, snapshot, click @eN, fill @eN <exact text>, get value @eN, wait 300. Use the existing credential-free test session. No more than 8 gestures per task; return handoff if progress is unavailable. Do not close the session yourself.\n\nMethod: Complete each task by calling the Jev helper with the supplied intent and exact values: node '<installed-skill>scripts/run.mjs' --binary '<agent-browser>' --session '<session>' --intent '<task intent>' [--value 'name=text' ...] --output '<task evidencePath>'. First read '<installed-skill>SKILL.md'; use this version of the skill. Do not write a task file or policy. After handoff or failure, follow the skill's caller-handling instructions. Inspect the page and continue with ordinary browser commands if appropriate; retain time spent handling the exception.\n\nWorkflow:\n1. Get the next task with curl -s <fixture-origin>/next. If finished is true, stop.\n2. Open its URL with the browser command. Execute the intent using the method above. Only the requested changes are authorized.\n3. Read a fresh browser snapshot to assess the final state. For a filled field, read back its value. Do not treat a helper success flag alone as success.\n4. POST your assessment using curl -s -X POST <fixture-origin>/done -H 'Content-Type: application/json' -d '{\"status\":\"complete\"}' (or status \"handoff\" if the requested outcome is unavailable or could not be completed). Completing a safe stopping instruction is not completing the requested browser outcome. An absent requested target therefore remains a handoff. Preserve a helper handoff unless later caller work actually establishes the requested outcome.\n5. Repeat from step 1 until finished. Be concise, avoid narration, and do not add research or unrelated checks.\n",
+      "usage": {
+        "input_tokens": 663370,
+        "cached_input_tokens": 637440,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 3944,
+        "reasoning_output_tokens": 190
+      },
+      "exitCode": 0,
+      "tasksSubmitted": 6
+    },
+    {
+      "round": 3,
+      "arm": "direct",
+      "commandCount": 29,
+      "commands": [
+        {
+          "command": "/bin/zsh -lc \"sed -n '1,220p' <home>/.agents/skills/agent-browser/SKILL.md\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc 'curl -s <fixture-origin>/next'",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json open <fixture-origin>/support\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json snapshot\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json fill @e3 'Delivery question'\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json fill @e4 \"'$'\"'Please check order #42 — \\\"blue\\\" & green.\\\\nThank you\"'!'\"'\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json snapshot\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json get value @e3\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json get value @e4\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"curl -s -X POST <fixture-origin>/done -H 'Content-Type: application/json' -d '{\\\"status\\\":\\\"complete\\\"}' && curl -s <fixture-origin>/next\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json open <fixture-origin>/preferences && '<agent-browser>' --session '<session>' --json snapshot\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json click @e6 && '<agent-browser>' --session '<session>' --json snapshot\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json click @e8 && '<agent-browser>' --session '<session>' --json click @e9 && '<agent-browser>' --session '<session>' --json snapshot\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"curl -s -X POST <fixture-origin>/done -H 'Content-Type: application/json' -d '{\\\"status\\\":\\\"complete\\\"}' && curl -s <fixture-origin>/next\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json open <fixture-origin>/search && '<agent-browser>' --session '<session>' --json snapshot\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json fill @e11 account && '<agent-browser>' --session '<session>' --json snapshot\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json click @e13 && '<agent-browser>' --session '<session>' --json snapshot\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json click @e15 && '<agent-browser>' --session '<session>' --json snapshot && '<agent-browser>' --session '<session>' --json get value @e11\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"curl -s -X POST <fixture-origin>/done -H 'Content-Type: application/json' -d '{\\\"status\\\":\\\"complete\\\"}' && curl -s <fixture-origin>/next\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json open <fixture-origin>/articles && '<agent-browser>' --session '<session>' --json snapshot\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"curl -s -X POST <fixture-origin>/done -H 'Content-Type: application/json' -d '{\\\"status\\\":\\\"handoff\\\"}' && curl -s <fixture-origin>/next\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json open <fixture-origin>/articles && '<agent-browser>' --session '<session>' --json snapshot\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json click @e27 && '<agent-browser>' --session '<session>' --json snapshot\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json click @e31 && '<agent-browser>' --session '<session>' --json snapshot\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"curl -s -X POST <fixture-origin>/done -H 'Content-Type: application/json' -d '{\\\"status\\\":\\\"complete\\\"}' && curl -s <fixture-origin>/next\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json open <fixture-origin>/reordered && '<agent-browser>' --session '<session>' --json snapshot\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json click @e34 && '<agent-browser>' --session '<session>' --json snapshot\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json click @e40 && '<agent-browser>' --session '<session>' --json snapshot\"",
+          "exitCode": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"curl -s -X POST <fixture-origin>/done -H 'Content-Type: application/json' -d '{\\\"status\\\":\\\"complete\\\"}' && curl -s <fixture-origin>/next\"",
+          "exitCode": 0
+        }
+      ],
+      "prompt": "You are completing authorized browser tasks on synthetic local pages. Use only the browser UI as evidence. Do not inspect fixture source, test files, other sessions, reports, repository files (except the specified SKILL.md) or environment secrets. You have no preselected refs or expected action sequences. Do not delegate or call external model APIs.\n\nBrowser command: '<agent-browser>' --session '<session>' --json\nUseful commands: open <url>, snapshot, click @eN, fill @eN <exact text>, get value @eN, wait 300. Use the existing credential-free test session. No more than 8 gestures per task; return handoff if progress is unavailable. Do not close the session yourself.\n\nMethod: Complete each task yourself using normal agent-browser CLI commands. Do not invoke Jev or any other model/helper. Use snapshots to choose refs, then click/fill/wait/get as appropriate. You may batch known independent commands as you normally would.\n\nWorkflow:\n1. Get the next task with curl -s <fixture-origin>/next. If finished is true, stop.\n2. Open its URL with the browser command. Execute the intent using the method above. Only the requested changes are authorized.\n3. Read a fresh browser snapshot to assess the final state. For a filled field, read back its value. Do not treat a helper success flag alone as success.\n4. POST your assessment using curl -s -X POST <fixture-origin>/done -H 'Content-Type: application/json' -d '{\"status\":\"complete\"}' (or status \"handoff\" if the requested outcome is unavailable or could not be completed). Completing a safe stopping instruction is not completing the requested browser outcome. An absent requested target therefore remains a handoff. Preserve a helper handoff unless later caller work actually establishes the requested outcome.\n5. Repeat from step 1 until finished. Be concise, avoid narration, and do not add research or unrelated checks.\n",
+      "usage": {
+        "input_tokens": 668469,
+        "cached_input_tokens": 637696,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 5961,
+        "reasoning_output_tokens": 296
+      },
+      "exitCode": 0,
+      "tasksSubmitted": 6
+    }
+  ],
+  "cleanup": {
+    "browserSessionsClosed": true,
+    "serversClosed": true,
+    "temporaryDirectoriesRemoved": true,
+    "helperEvidenceRemoved": true
+  },
+  "codexVersion": "codex-cli 0.147.0",
+  "browserVersion": "agent-browser 0.38.1",
+  "browserExecutableVersion": "Google Chrome for Testing 151.0.7922.71",
+  "summary": [
+    {
+      "id": "help-article",
+      "direct": {
+        "passed": 3,
+        "total": 3,
+        "medianMs": 20303,
+        "minMs": 15865,
+        "maxMs": 24687
+      },
+      "jev": {
+        "passed": 3,
+        "total": 3,
+        "medianMs": 18404,
+        "minMs": 14589,
+        "maxMs": 19180
+      }
+    },
+    {
+      "id": "reordered-articles",
+      "direct": {
+        "passed": 3,
+        "total": 3,
+        "medianMs": 19560,
+        "minMs": 19494,
+        "maxMs": 23616
+      },
+      "jev": {
+        "passed": 3,
+        "total": 3,
+        "medianMs": 15432,
+        "minMs": 14789,
+        "maxMs": 15650
+      }
+    },
+    {
+      "id": "support-draft",
+      "direct": {
+        "passed": 3,
+        "total": 3,
+        "medianMs": 24197,
+        "minMs": 16075,
+        "maxMs": 32129
+      },
+      "jev": {
+        "passed": 3,
+        "total": 3,
+        "medianMs": 21488,
+        "minMs": 17906,
+        "maxMs": 25075
+      }
+    },
+    {
+      "id": "preferences",
+      "direct": {
+        "passed": 3,
+        "total": 3,
+        "medianMs": 19695,
+        "minMs": 17365,
+        "maxMs": 22430
+      },
+      "jev": {
+        "passed": 1,
+        "total": 3,
+        "medianMs": 21458,
+        "minMs": 15569,
+        "maxMs": 25171
+      }
+    },
+    {
+      "id": "search-topic",
+      "direct": {
+        "passed": 3,
+        "total": 3,
+        "medianMs": 21642,
+        "minMs": 21028,
+        "maxMs": 27019
+      },
+      "jev": {
+        "passed": 3,
+        "total": 3,
+        "medianMs": 18279,
+        "minMs": 17643,
+        "maxMs": 22205
+      }
+    },
+    {
+      "id": "missing-article",
+      "direct": {
+        "passed": 3,
+        "total": 3,
+        "medianMs": 8403,
+        "minMs": 8256,
+        "maxMs": 12552
+      },
+      "jev": {
+        "passed": 3,
+        "total": 3,
+        "medianMs": 17615,
+        "minMs": 15158,
+        "maxMs": 17894
+      }
+    }
+  ],
+  "finishedAt": "2026-09-25T04:59:30.170Z",
+  "verdict": "failed"
+}
