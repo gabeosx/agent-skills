@@ -1,0 +1,1070 @@
+{
+  "schema": 1,
+  "startedAt": "2026-09-25T16:01:51.863Z",
+  "skillVersion": "0.4.0",
+  "node": "v26.5.0",
+  "platform": "darwin-arm64",
+  "measurement": "Helper invocation time excludes process startup and independent assertion; suite wall time includes both. Charges are provider-reported Jev amounts, not browser or caller-model cost.",
+  "rounds": 2,
+  "selectedSuites": [
+    "workflow",
+    "autocomplete",
+    "scenarios",
+    "components"
+  ],
+  "sourceSha256": {
+    "tests/gym.mjs": "ac5802444003ec8fb69a7bc9ca269b2a2d50d6f37b193e545cdcae8a05e25d04"
+  },
+  "suites": [
+    {
+      "name": "workflow",
+      "run": 1,
+      "report": "/Users/gabe/agent-skills-jev/skills/agent-browser-jev/references/evidence/gym-0.4.0.details/workflow-1.json",
+      "exitCode": 0,
+      "wallMs": 18484,
+      "verdict": "passed",
+      "cleanup": {
+        "browserClosed": true,
+        "serverClosed": true,
+        "temporaryDirectoryRemoved": true
+      },
+      "browserVersion": "agent-browser 0.33.2",
+      "sourceSha256": {
+        "scripts/controls.mjs": "d13cad00bb63bb7df202fc095a8a19e0326192bd20ab9273488b91bf6f8336f2",
+        "scripts/jev-browser.mjs": "8d714c8631cf0a9795a585d67b3dde2b79e082c774f63acd41ad21d3e9ece84f",
+        "scripts/agent-browser-jev.mjs": "4e4df07a022d48af9feb326417596ee0c3f0c6584fa6d4e3fbf781a09e0bc3de",
+        "scripts/run.mjs": "56f76f66b765bd3f4e745c2c18ed3608a6703901aaf7059d68c58cfeb2d4884e",
+        "tests/workflow-live.mjs": "b70f357f03c9ff36bcc97025d71b1906d42d48feec806e6e0d384bd3046f5992",
+        "tests/fixtures/workflow-pages.mjs": "365ca1ea0e7f8d2610b192127971662ec5a25eb2f5ae730ae9e9157dad7d7961"
+      },
+      "caseCount": 5
+    },
+    {
+      "name": "workflow",
+      "run": 2,
+      "report": "/Users/gabe/agent-skills-jev/skills/agent-browser-jev/references/evidence/gym-0.4.0.details/workflow-2.json",
+      "exitCode": 0,
+      "wallMs": 18744,
+      "verdict": "passed",
+      "cleanup": {
+        "browserClosed": true,
+        "serverClosed": true,
+        "temporaryDirectoryRemoved": true
+      },
+      "browserVersion": "agent-browser 0.33.2",
+      "sourceSha256": {
+        "scripts/controls.mjs": "d13cad00bb63bb7df202fc095a8a19e0326192bd20ab9273488b91bf6f8336f2",
+        "scripts/jev-browser.mjs": "8d714c8631cf0a9795a585d67b3dde2b79e082c774f63acd41ad21d3e9ece84f",
+        "scripts/agent-browser-jev.mjs": "4e4df07a022d48af9feb326417596ee0c3f0c6584fa6d4e3fbf781a09e0bc3de",
+        "scripts/run.mjs": "56f76f66b765bd3f4e745c2c18ed3608a6703901aaf7059d68c58cfeb2d4884e",
+        "tests/workflow-live.mjs": "b70f357f03c9ff36bcc97025d71b1906d42d48feec806e6e0d384bd3046f5992",
+        "tests/fixtures/workflow-pages.mjs": "365ca1ea0e7f8d2610b192127971662ec5a25eb2f5ae730ae9e9157dad7d7961"
+      },
+      "caseCount": 5
+    },
+    {
+      "name": "autocomplete",
+      "run": 1,
+      "report": "/Users/gabe/agent-skills-jev/skills/agent-browser-jev/references/evidence/gym-0.4.0.details/autocomplete-1.json",
+      "exitCode": 0,
+      "wallMs": 6449,
+      "verdict": "passed",
+      "cleanup": {
+        "browserClosed": true,
+        "serverClosed": true,
+        "temporaryDirectoryRemoved": true
+      },
+      "browserVersion": "agent-browser 0.33.2",
+      "sourceSha256": {
+        "scripts/controls.mjs": "d13cad00bb63bb7df202fc095a8a19e0326192bd20ab9273488b91bf6f8336f2",
+        "scripts/agent-browser-jev.mjs": "4e4df07a022d48af9feb326417596ee0c3f0c6584fa6d4e3fbf781a09e0bc3de",
+        "scripts/jev-browser.mjs": "8d714c8631cf0a9795a585d67b3dde2b79e082c774f63acd41ad21d3e9ece84f",
+        "scripts/run.mjs": "56f76f66b765bd3f4e745c2c18ed3608a6703901aaf7059d68c58cfeb2d4884e",
+        "tests/autocomplete-live.mjs": "b401c712a265e9e56056ce41a3a1c941a7c366bb5f335a74721dd2ba6c042667",
+        "tests/fixtures/autocomplete-page.mjs": "4bbcd01467fac0dba0db281f870f7727ef9eeb4b1de1cec450158c743cfe353f"
+      },
+      "caseCount": 2
+    },
+    {
+      "name": "autocomplete",
+      "run": 2,
+      "report": "/Users/gabe/agent-skills-jev/skills/agent-browser-jev/references/evidence/gym-0.4.0.details/autocomplete-2.json",
+      "exitCode": 0,
+      "wallMs": 6415,
+      "verdict": "passed",
+      "cleanup": {
+        "browserClosed": true,
+        "serverClosed": true,
+        "temporaryDirectoryRemoved": true
+      },
+      "browserVersion": "agent-browser 0.33.2",
+      "sourceSha256": {
+        "scripts/controls.mjs": "d13cad00bb63bb7df202fc095a8a19e0326192bd20ab9273488b91bf6f8336f2",
+        "scripts/agent-browser-jev.mjs": "4e4df07a022d48af9feb326417596ee0c3f0c6584fa6d4e3fbf781a09e0bc3de",
+        "scripts/jev-browser.mjs": "8d714c8631cf0a9795a585d67b3dde2b79e082c774f63acd41ad21d3e9ece84f",
+        "scripts/run.mjs": "56f76f66b765bd3f4e745c2c18ed3608a6703901aaf7059d68c58cfeb2d4884e",
+        "tests/autocomplete-live.mjs": "b401c712a265e9e56056ce41a3a1c941a7c366bb5f335a74721dd2ba6c042667",
+        "tests/fixtures/autocomplete-page.mjs": "4bbcd01467fac0dba0db281f870f7727ef9eeb4b1de1cec450158c743cfe353f"
+      },
+      "caseCount": 2
+    },
+    {
+      "name": "scenarios",
+      "run": 1,
+      "report": "/Users/gabe/agent-skills-jev/skills/agent-browser-jev/references/evidence/gym-0.4.0.details/scenarios-1.json",
+      "exitCode": 0,
+      "wallMs": 15335,
+      "verdict": "passed",
+      "cleanup": {
+        "browserClosed": true,
+        "serverClosed": true,
+        "temporaryFilesRemoved": true
+      },
+      "browserVersion": "agent-browser 0.33.2",
+      "sourceSha256": {
+        "scripts/run.mjs": "56f76f66b765bd3f4e745c2c18ed3608a6703901aaf7059d68c58cfeb2d4884e",
+        "scripts/config.mjs": "ed3b9120c31cf4e69d1f33f2b2f55949249cfc9d83355ee3e713518152b5f387",
+        "scripts/setup.mjs": "fa45d4b297ed251a8a00c535492358e8ce49c7e9b361a4c088a1bdd7aff4078e",
+        "scripts/jev-browser.mjs": "8d714c8631cf0a9795a585d67b3dde2b79e082c774f63acd41ad21d3e9ece84f",
+        "scripts/agent-browser-jev.mjs": "4e4df07a022d48af9feb326417596ee0c3f0c6584fa6d4e3fbf781a09e0bc3de",
+        "tests/benchmark.mjs": "cf3eaccbea15d2b4340442c0a61f33c9268404d6b861f580608ee294337b7626",
+        "tests/fixtures/benchmark-pages.mjs": "d2330e6acb4dc758e644ffe609ddc885768145baee8162d11e1c425007e6617f"
+      },
+      "caseCount": 12
+    },
+    {
+      "name": "components",
+      "run": 1,
+      "report": "/Users/gabe/agent-skills-jev/skills/agent-browser-jev/references/evidence/gym-0.4.0.details/components-1.json",
+      "exitCode": 0,
+      "wallMs": 41998,
+      "verdict": "passed",
+      "cleanup": {
+        "browserClosed": true,
+        "serverClosed": true,
+        "temporaryFilesRemoved": true
+      },
+      "browserVersion": "agent-browser 0.33.2",
+      "sourceSha256": {
+        "tests/component-live.mjs": "3adacc51aaa5f3b0eccb29de3b7b949852f28db32d298a26bcc59f7d8bc0e25a",
+        "tests/fixtures/component-pages.mjs": "f90bc02daab51c67c03097420022ae8f8cf79cf23d0fbf992af6c7145b9bac04",
+        "scripts/run.mjs": "56f76f66b765bd3f4e745c2c18ed3608a6703901aaf7059d68c58cfeb2d4884e",
+        "scripts/controls.mjs": "d13cad00bb63bb7df202fc095a8a19e0326192bd20ab9273488b91bf6f8336f2",
+        "scripts/jev-browser.mjs": "8d714c8631cf0a9795a585d67b3dde2b79e082c774f63acd41ad21d3e9ece84f",
+        "scripts/agent-browser-jev.mjs": "4e4df07a022d48af9feb326417596ee0c3f0c6584fa6d4e3fbf781a09e0bc3de"
+      },
+      "caseCount": 26
+    }
+  ],
+  "cases": [
+    {
+      "suite": "workflow",
+      "id": "continuous-report-12-actions",
+      "round": 1,
+      "passed": true,
+      "failure": null,
+      "helperMs": 4393.866542,
+      "jevCostUsd": 0.001009764,
+      "actions": 12,
+      "decisions": 13,
+      "returnReason": "reported_complete"
+    },
+    {
+      "suite": "workflow",
+      "id": "input-request-and-resume",
+      "round": 1,
+      "passed": true,
+      "failure": null,
+      "helperMs": 3837.5598330000003,
+      "jevCostUsd": 0.001074528,
+      "actions": 12,
+      "decisions": 14,
+      "returnReason": "reported_complete"
+    },
+    {
+      "suite": "workflow",
+      "id": "budget-pause-and-resume",
+      "round": 1,
+      "passed": true,
+      "failure": null,
+      "helperMs": 4469.500792,
+      "jevCostUsd": 0.001079904,
+      "actions": 12,
+      "decisions": 14,
+      "returnReason": "reported_complete"
+    },
+    {
+      "suite": "workflow",
+      "id": "keyboard-search-and-back",
+      "round": 1,
+      "passed": true,
+      "failure": null,
+      "helperMs": 1605.2102920000002,
+      "jevCostUsd": 0.000301896,
+      "actions": 4,
+      "decisions": 5,
+      "returnReason": "reported_complete"
+    },
+    {
+      "suite": "workflow",
+      "id": "scroll-to-reveal-control",
+      "round": 1,
+      "passed": true,
+      "failure": null,
+      "helperMs": 746.8726670000001,
+      "jevCostUsd": 0.00013776,
+      "actions": 2,
+      "decisions": 3,
+      "returnReason": "reported_complete"
+    },
+    {
+      "suite": "workflow",
+      "id": "continuous-report-12-actions",
+      "round": 2,
+      "passed": true,
+      "failure": null,
+      "helperMs": 4804.728833,
+      "jevCostUsd": 0.001009764,
+      "actions": 12,
+      "decisions": 13,
+      "returnReason": "reported_complete"
+    },
+    {
+      "suite": "workflow",
+      "id": "input-request-and-resume",
+      "round": 2,
+      "passed": true,
+      "failure": null,
+      "helperMs": 3647.818166,
+      "jevCostUsd": 0.001074528,
+      "actions": 12,
+      "decisions": 14,
+      "returnReason": "reported_complete"
+    },
+    {
+      "suite": "workflow",
+      "id": "budget-pause-and-resume",
+      "round": 2,
+      "passed": true,
+      "failure": null,
+      "helperMs": 4387.132917,
+      "jevCostUsd": 0.001079904,
+      "actions": 12,
+      "decisions": 14,
+      "returnReason": "reported_complete"
+    },
+    {
+      "suite": "workflow",
+      "id": "keyboard-search-and-back",
+      "round": 2,
+      "passed": true,
+      "failure": null,
+      "helperMs": 1642.3005830000002,
+      "jevCostUsd": 0.000301896,
+      "actions": 4,
+      "decisions": 5,
+      "returnReason": "reported_complete"
+    },
+    {
+      "suite": "workflow",
+      "id": "scroll-to-reveal-control",
+      "round": 2,
+      "passed": true,
+      "failure": null,
+      "helperMs": 788.3141250000001,
+      "jevCostUsd": 0.00013776,
+      "actions": 2,
+      "decisions": 3,
+      "returnReason": "reported_complete"
+    },
+    {
+      "suite": "autocomplete",
+      "id": "click",
+      "round": 1,
+      "passed": true,
+      "failure": null,
+      "helperMs": 2139.8170419999997,
+      "jevCostUsd": 0.00052059,
+      "actions": 5,
+      "decisions": 6,
+      "returnReason": "reported_complete"
+    },
+    {
+      "suite": "autocomplete",
+      "id": "enter",
+      "round": 1,
+      "passed": true,
+      "failure": null,
+      "helperMs": 3146.993375,
+      "jevCostUsd": 0.00120603,
+      "actions": 11,
+      "decisions": 12,
+      "returnReason": "reported_complete"
+    },
+    {
+      "suite": "autocomplete",
+      "id": "click",
+      "round": 2,
+      "passed": true,
+      "failure": null,
+      "helperMs": 2088.947291,
+      "jevCostUsd": 0.00052059,
+      "actions": 5,
+      "decisions": 6,
+      "returnReason": "reported_complete"
+    },
+    {
+      "suite": "autocomplete",
+      "id": "enter",
+      "round": 2,
+      "passed": true,
+      "failure": null,
+      "helperMs": 3129.328583,
+      "jevCostUsd": 0.0010932179999999998,
+      "actions": 10,
+      "decisions": 11,
+      "returnReason": "reported_complete"
+    },
+    {
+      "suite": "scenarios",
+      "id": "help-article",
+      "round": 1,
+      "passed": true,
+      "failure": null,
+      "helperMs": 777.8304579999999,
+      "jevCostUsd": 0.000163674,
+      "actions": 2,
+      "decisions": 3,
+      "returnReason": "reported_complete"
+    },
+    {
+      "suite": "scenarios",
+      "id": "reordered-articles",
+      "round": 1,
+      "passed": true,
+      "failure": null,
+      "helperMs": 832.449417,
+      "jevCostUsd": 0.000163926,
+      "actions": 2,
+      "decisions": 3,
+      "returnReason": "reported_complete"
+    },
+    {
+      "suite": "scenarios",
+      "id": "support-draft",
+      "round": 1,
+      "passed": true,
+      "failure": null,
+      "helperMs": 645.2004999999999,
+      "jevCostUsd": 0.00023830799999999998,
+      "actions": 2,
+      "decisions": 3,
+      "returnReason": "reported_complete"
+    },
+    {
+      "suite": "scenarios",
+      "id": "preferences",
+      "round": 1,
+      "passed": true,
+      "failure": null,
+      "helperMs": 1059.5635000000002,
+      "jevCostUsd": 0.00019912199999999998,
+      "actions": 3,
+      "decisions": 4,
+      "returnReason": "reported_complete"
+    },
+    {
+      "suite": "scenarios",
+      "id": "search-topic",
+      "round": 1,
+      "passed": true,
+      "failure": null,
+      "helperMs": 1054.41125,
+      "jevCostUsd": 0.000236628,
+      "actions": 3,
+      "decisions": 4,
+      "returnReason": "reported_complete"
+    },
+    {
+      "suite": "scenarios",
+      "id": "missing-article",
+      "round": 1,
+      "passed": true,
+      "failure": null,
+      "helperMs": 226.72283399999998,
+      "jevCostUsd": 0.000051408,
+      "actions": 0,
+      "decisions": 1,
+      "returnReason": "handoff"
+    },
+    {
+      "suite": "scenarios",
+      "id": "help-article",
+      "round": 2,
+      "passed": true,
+      "failure": null,
+      "helperMs": 838.07,
+      "jevCostUsd": 0.000163674,
+      "actions": 2,
+      "decisions": 3,
+      "returnReason": "reported_complete"
+    },
+    {
+      "suite": "scenarios",
+      "id": "reordered-articles",
+      "round": 2,
+      "passed": true,
+      "failure": null,
+      "helperMs": 797.5113330000001,
+      "jevCostUsd": 0.000163926,
+      "actions": 2,
+      "decisions": 3,
+      "returnReason": "reported_complete"
+    },
+    {
+      "suite": "scenarios",
+      "id": "support-draft",
+      "round": 2,
+      "passed": true,
+      "failure": null,
+      "helperMs": 610.598459,
+      "jevCostUsd": 0.00023830799999999998,
+      "actions": 2,
+      "decisions": 3,
+      "returnReason": "reported_complete"
+    },
+    {
+      "suite": "scenarios",
+      "id": "preferences",
+      "round": 2,
+      "passed": true,
+      "failure": null,
+      "helperMs": 887.0122909999999,
+      "jevCostUsd": 0.00019912199999999998,
+      "actions": 3,
+      "decisions": 4,
+      "returnReason": "reported_complete"
+    },
+    {
+      "suite": "scenarios",
+      "id": "search-topic",
+      "round": 2,
+      "passed": true,
+      "failure": null,
+      "helperMs": 934.555625,
+      "jevCostUsd": 0.000236628,
+      "actions": 3,
+      "decisions": 4,
+      "returnReason": "reported_complete"
+    },
+    {
+      "suite": "scenarios",
+      "id": "missing-article",
+      "round": 2,
+      "passed": true,
+      "failure": null,
+      "helperMs": 223.86299999999994,
+      "jevCostUsd": 0.000051408,
+      "actions": 0,
+      "decisions": 1,
+      "returnReason": "handoff"
+    },
+    {
+      "suite": "components",
+      "id": "accordion",
+      "round": 1,
+      "passed": true,
+      "failure": null,
+      "helperMs": 866.762917,
+      "jevCostUsd": 0.000155568,
+      "actions": 2,
+      "decisions": 3,
+      "returnReason": "reported_complete"
+    },
+    {
+      "suite": "components",
+      "id": "tabs",
+      "round": 1,
+      "passed": true,
+      "failure": null,
+      "helperMs": 841.7115420000001,
+      "jevCostUsd": 0.000155568,
+      "actions": 2,
+      "decisions": 3,
+      "returnReason": "reported_complete"
+    },
+    {
+      "suite": "components",
+      "id": "dropdown-menu",
+      "round": 1,
+      "passed": true,
+      "failure": null,
+      "helperMs": 795.3400839999999,
+      "jevCostUsd": 0.00014695799999999998,
+      "actions": 2,
+      "decisions": 3,
+      "returnReason": "reported_complete"
+    },
+    {
+      "suite": "components",
+      "id": "nested-menu",
+      "round": 1,
+      "passed": true,
+      "failure": null,
+      "helperMs": 1141.5405420000002,
+      "jevCostUsd": 0.00020915999999999998,
+      "actions": 3,
+      "decisions": 4,
+      "returnReason": "reported_complete"
+    },
+    {
+      "suite": "components",
+      "id": "dialog-form",
+      "round": 1,
+      "passed": true,
+      "failure": null,
+      "helperMs": 1282.2107079999998,
+      "jevCostUsd": 0.00032936399999999996,
+      "actions": 4,
+      "decisions": 5,
+      "returnReason": "reported_complete"
+    },
+    {
+      "suite": "components",
+      "id": "alert-dialog",
+      "round": 1,
+      "passed": true,
+      "failure": null,
+      "helperMs": 794.246333,
+      "jevCostUsd": 0.00014742,
+      "actions": 2,
+      "decisions": 3,
+      "returnReason": "reported_complete"
+    },
+    {
+      "suite": "components",
+      "id": "radio-switch",
+      "round": 1,
+      "passed": true,
+      "failure": null,
+      "helperMs": 1068.122417,
+      "jevCostUsd": 0.00022793400000000003,
+      "actions": 3,
+      "decisions": 4,
+      "returnReason": "reported_complete"
+    },
+    {
+      "suite": "components",
+      "id": "toggle-group",
+      "round": 1,
+      "passed": true,
+      "failure": null,
+      "helperMs": 1742.423333,
+      "jevCostUsd": 0.00023620799999999999,
+      "actions": 3,
+      "decisions": 4,
+      "returnReason": "reported_complete"
+    },
+    {
+      "suite": "components",
+      "id": "custom-select",
+      "round": 1,
+      "passed": true,
+      "failure": null,
+      "helperMs": 1149.0294999999999,
+      "jevCostUsd": 0.000240324,
+      "actions": 3,
+      "decisions": 4,
+      "returnReason": "reported_complete"
+    },
+    {
+      "suite": "components",
+      "id": "multi-select",
+      "round": 1,
+      "passed": true,
+      "failure": null,
+      "helperMs": 1153.810459,
+      "jevCostUsd": 0.00021596399999999997,
+      "actions": 3,
+      "decisions": 4,
+      "returnReason": "reported_complete"
+    },
+    {
+      "suite": "components",
+      "id": "pagination",
+      "round": 1,
+      "passed": true,
+      "failure": null,
+      "helperMs": 850.1491669999999,
+      "jevCostUsd": 0.000163044,
+      "actions": 2,
+      "decisions": 3,
+      "returnReason": "reported_complete"
+    },
+    {
+      "suite": "components",
+      "id": "sortable-table",
+      "round": 1,
+      "passed": true,
+      "failure": null,
+      "helperMs": 834.938041,
+      "jevCostUsd": 0.00018643799999999998,
+      "actions": 2,
+      "decisions": 3,
+      "returnReason": "reported_complete"
+    },
+    {
+      "suite": "components",
+      "id": "tree-view",
+      "round": 1,
+      "passed": true,
+      "failure": null,
+      "helperMs": 3690.317125,
+      "jevCostUsd": 0.000509754,
+      "actions": 8,
+      "decisions": 9,
+      "returnReason": "reported_complete"
+    },
+    {
+      "suite": "components",
+      "id": "command-palette",
+      "round": 1,
+      "passed": true,
+      "failure": null,
+      "helperMs": 1236.564167,
+      "jevCostUsd": 0.00029862,
+      "actions": 4,
+      "decisions": 5,
+      "returnReason": "reported_complete"
+    },
+    {
+      "suite": "components",
+      "id": "popover-filters",
+      "round": 1,
+      "passed": true,
+      "failure": null,
+      "helperMs": 1005.566125,
+      "jevCostUsd": 0.00020924399999999998,
+      "actions": 3,
+      "decisions": 4,
+      "returnReason": "reported_complete"
+    },
+    {
+      "suite": "components",
+      "id": "stepper",
+      "round": 1,
+      "passed": true,
+      "failure": null,
+      "helperMs": 2068.655333,
+      "jevCostUsd": 0.000386778,
+      "actions": 5,
+      "decisions": 6,
+      "returnReason": "reported_complete"
+    },
+    {
+      "suite": "components",
+      "id": "drawer",
+      "round": 1,
+      "passed": true,
+      "failure": null,
+      "helperMs": 812.35025,
+      "jevCostUsd": 0.000148008,
+      "actions": 2,
+      "decisions": 3,
+      "returnReason": "reported_complete"
+    },
+    {
+      "suite": "components",
+      "id": "carousel",
+      "round": 1,
+      "passed": true,
+      "failure": null,
+      "helperMs": 1125.0081249999998,
+      "jevCostUsd": 0.00021235200000000002,
+      "actions": 3,
+      "decisions": 4,
+      "returnReason": "reported_complete"
+    },
+    {
+      "suite": "components",
+      "id": "delayed-toast",
+      "round": 1,
+      "passed": true,
+      "failure": null,
+      "helperMs": 1510.735167,
+      "jevCostUsd": 0.000191058,
+      "actions": 3,
+      "decisions": 4,
+      "returnReason": "reported_complete"
+    },
+    {
+      "suite": "components",
+      "id": "spinbutton",
+      "round": 1,
+      "passed": true,
+      "failure": null,
+      "helperMs": 740.8410000000001,
+      "jevCostUsd": 0.000169722,
+      "actions": 2,
+      "decisions": 3,
+      "returnReason": "reported_complete"
+    },
+    {
+      "suite": "components",
+      "id": "tri-state-checkbox",
+      "round": 1,
+      "passed": true,
+      "failure": null,
+      "helperMs": 633.843208,
+      "jevCostUsd": 0.00015993599999999998,
+      "actions": 2,
+      "decisions": 3,
+      "returnReason": "reported_complete"
+    },
+    {
+      "suite": "components",
+      "id": "rating",
+      "round": 1,
+      "passed": true,
+      "failure": null,
+      "helperMs": 880.847541,
+      "jevCostUsd": 0.000166446,
+      "actions": 2,
+      "decisions": 3,
+      "returnReason": "reported_complete"
+    },
+    {
+      "suite": "components",
+      "id": "breadcrumb",
+      "round": 1,
+      "passed": true,
+      "failure": null,
+      "helperMs": 872.9359169999999,
+      "jevCostUsd": 0.000159306,
+      "actions": 2,
+      "decisions": 3,
+      "returnReason": "reported_complete"
+    },
+    {
+      "suite": "components",
+      "id": "missing-target",
+      "round": 1,
+      "passed": true,
+      "failure": null,
+      "helperMs": 215.01225000000005,
+      "jevCostUsd": 0.000045906,
+      "actions": 0,
+      "decisions": 1,
+      "returnReason": "handoff"
+    },
+    {
+      "suite": "components",
+      "id": "file-upload",
+      "round": 1,
+      "passed": true,
+      "failure": null,
+      "helperMs": 741.2354169999999,
+      "jevCostUsd": 0.000161658,
+      "actions": 2,
+      "decisions": 3,
+      "returnReason": "reported_complete"
+    },
+    {
+      "suite": "components",
+      "id": "hover-card",
+      "round": 1,
+      "passed": true,
+      "failure": null,
+      "helperMs": 842.7648330000001,
+      "jevCostUsd": 0.000150486,
+      "actions": 2,
+      "decisions": 3,
+      "returnReason": "reported_complete"
+    }
+  ],
+  "summary": {
+    "passed": 52,
+    "total": 52,
+    "medianHelperMs": 970.060875,
+    "helperTimeCoverage": 52,
+    "totalJevCostUsd": 0.018037487999999997,
+    "costCoverage": 52,
+    "byCase": [
+      {
+        "id": "workflow/continuous-report-12-actions",
+        "passed": 2,
+        "total": 2,
+        "medianHelperMs": 4599.2976875,
+        "meanJevCostUsd": 0.001009764
+      },
+      {
+        "id": "workflow/input-request-and-resume",
+        "passed": 2,
+        "total": 2,
+        "medianHelperMs": 3742.6889995,
+        "meanJevCostUsd": 0.001074528
+      },
+      {
+        "id": "workflow/budget-pause-and-resume",
+        "passed": 2,
+        "total": 2,
+        "medianHelperMs": 4428.3168545,
+        "meanJevCostUsd": 0.001079904
+      },
+      {
+        "id": "workflow/keyboard-search-and-back",
+        "passed": 2,
+        "total": 2,
+        "medianHelperMs": 1623.7554375000002,
+        "meanJevCostUsd": 0.000301896
+      },
+      {
+        "id": "workflow/scroll-to-reveal-control",
+        "passed": 2,
+        "total": 2,
+        "medianHelperMs": 767.5933960000001,
+        "meanJevCostUsd": 0.00013776
+      },
+      {
+        "id": "autocomplete/click",
+        "passed": 2,
+        "total": 2,
+        "medianHelperMs": 2114.3821664999996,
+        "meanJevCostUsd": 0.00052059
+      },
+      {
+        "id": "autocomplete/enter",
+        "passed": 2,
+        "total": 2,
+        "medianHelperMs": 3138.160979,
+        "meanJevCostUsd": 0.001149624
+      },
+      {
+        "id": "scenarios/help-article",
+        "passed": 2,
+        "total": 2,
+        "medianHelperMs": 807.950229,
+        "meanJevCostUsd": 0.000163674
+      },
+      {
+        "id": "scenarios/reordered-articles",
+        "passed": 2,
+        "total": 2,
+        "medianHelperMs": 814.9803750000001,
+        "meanJevCostUsd": 0.000163926
+      },
+      {
+        "id": "scenarios/support-draft",
+        "passed": 2,
+        "total": 2,
+        "medianHelperMs": 627.8994795,
+        "meanJevCostUsd": 0.00023830799999999998
+      },
+      {
+        "id": "scenarios/preferences",
+        "passed": 2,
+        "total": 2,
+        "medianHelperMs": 973.2878955000001,
+        "meanJevCostUsd": 0.00019912199999999998
+      },
+      {
+        "id": "scenarios/search-topic",
+        "passed": 2,
+        "total": 2,
+        "medianHelperMs": 994.4834375,
+        "meanJevCostUsd": 0.000236628
+      },
+      {
+        "id": "scenarios/missing-article",
+        "passed": 2,
+        "total": 2,
+        "medianHelperMs": 225.29291699999996,
+        "meanJevCostUsd": 0.000051408
+      },
+      {
+        "id": "components/accordion",
+        "passed": 1,
+        "total": 1,
+        "medianHelperMs": 866.762917,
+        "meanJevCostUsd": 0.000155568
+      },
+      {
+        "id": "components/tabs",
+        "passed": 1,
+        "total": 1,
+        "medianHelperMs": 841.7115420000001,
+        "meanJevCostUsd": 0.000155568
+      },
+      {
+        "id": "components/dropdown-menu",
+        "passed": 1,
+        "total": 1,
+        "medianHelperMs": 795.3400839999999,
+        "meanJevCostUsd": 0.00014695799999999998
+      },
+      {
+        "id": "components/nested-menu",
+        "passed": 1,
+        "total": 1,
+        "medianHelperMs": 1141.5405420000002,
+        "meanJevCostUsd": 0.00020915999999999998
+      },
+      {
+        "id": "components/dialog-form",
+        "passed": 1,
+        "total": 1,
+        "medianHelperMs": 1282.2107079999998,
+        "meanJevCostUsd": 0.00032936399999999996
+      },
+      {
+        "id": "components/alert-dialog",
+        "passed": 1,
+        "total": 1,
+        "medianHelperMs": 794.246333,
+        "meanJevCostUsd": 0.00014742
+      },
+      {
+        "id": "components/radio-switch",
+        "passed": 1,
+        "total": 1,
+        "medianHelperMs": 1068.122417,
+        "meanJevCostUsd": 0.00022793400000000003
+      },
+      {
+        "id": "components/toggle-group",
+        "passed": 1,
+        "total": 1,
+        "medianHelperMs": 1742.423333,
+        "meanJevCostUsd": 0.00023620799999999999
+      },
+      {
+        "id": "components/custom-select",
+        "passed": 1,
+        "total": 1,
+        "medianHelperMs": 1149.0294999999999,
+        "meanJevCostUsd": 0.000240324
+      },
+      {
+        "id": "components/multi-select",
+        "passed": 1,
+        "total": 1,
+        "medianHelperMs": 1153.810459,
+        "meanJevCostUsd": 0.00021596399999999997
+      },
+      {
+        "id": "components/pagination",
+        "passed": 1,
+        "total": 1,
+        "medianHelperMs": 850.1491669999999,
+        "meanJevCostUsd": 0.000163044
+      },
+      {
+        "id": "components/sortable-table",
+        "passed": 1,
+        "total": 1,
+        "medianHelperMs": 834.938041,
+        "meanJevCostUsd": 0.00018643799999999998
+      },
+      {
+        "id": "components/tree-view",
+        "passed": 1,
+        "total": 1,
+        "medianHelperMs": 3690.317125,
+        "meanJevCostUsd": 0.000509754
+      },
+      {
+        "id": "components/command-palette",
+        "passed": 1,
+        "total": 1,
+        "medianHelperMs": 1236.564167,
+        "meanJevCostUsd": 0.00029862
+      },
+      {
+        "id": "components/popover-filters",
+        "passed": 1,
+        "total": 1,
+        "medianHelperMs": 1005.566125,
+        "meanJevCostUsd": 0.00020924399999999998
+      },
+      {
+        "id": "components/stepper",
+        "passed": 1,
+        "total": 1,
+        "medianHelperMs": 2068.655333,
+        "meanJevCostUsd": 0.000386778
+      },
+      {
+        "id": "components/drawer",
+        "passed": 1,
+        "total": 1,
+        "medianHelperMs": 812.35025,
+        "meanJevCostUsd": 0.000148008
+      },
+      {
+        "id": "components/carousel",
+        "passed": 1,
+        "total": 1,
+        "medianHelperMs": 1125.0081249999998,
+        "meanJevCostUsd": 0.00021235200000000002
+      },
+      {
+        "id": "components/delayed-toast",
+        "passed": 1,
+        "total": 1,
+        "medianHelperMs": 1510.735167,
+        "meanJevCostUsd": 0.000191058
+      },
+      {
+        "id": "components/spinbutton",
+        "passed": 1,
+        "total": 1,
+        "medianHelperMs": 740.8410000000001,
+        "meanJevCostUsd": 0.000169722
+      },
+      {
+        "id": "components/tri-state-checkbox",
+        "passed": 1,
+        "total": 1,
+        "medianHelperMs": 633.843208,
+        "meanJevCostUsd": 0.00015993599999999998
+      },
+      {
+        "id": "components/rating",
+        "passed": 1,
+        "total": 1,
+        "medianHelperMs": 880.847541,
+        "meanJevCostUsd": 0.000166446
+      },
+      {
+        "id": "components/breadcrumb",
+        "passed": 1,
+        "total": 1,
+        "medianHelperMs": 872.9359169999999,
+        "meanJevCostUsd": 0.000159306
+      },
+      {
+        "id": "components/missing-target",
+        "passed": 1,
+        "total": 1,
+        "medianHelperMs": 215.01225000000005,
+        "meanJevCostUsd": 0.000045906
+      },
+      {
+        "id": "components/file-upload",
+        "passed": 1,
+        "total": 1,
+        "medianHelperMs": 741.2354169999999,
+        "meanJevCostUsd": 0.000161658
+      },
+      {
+        "id": "components/hover-card",
+        "passed": 1,
+        "total": 1,
+        "medianHelperMs": 842.7648330000001,
+        "meanJevCostUsd": 0.000150486
+      }
+    ]
+  },
+  "finishedAt": "2026-09-25T16:03:39.315Z",
+  "verdict": "passed"
+}

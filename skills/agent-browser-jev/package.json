@@ -1,6 +1,6 @@
 {
   "name": "agent-browser-jev",
-  "version": "0.3.1",
+  "version": "1.0.0",
   "private": true,
   "type": "module",
   "engines": {
@@ -11,6 +11,10 @@
     "test:live": "node tests/live.mjs",
     "setup": "node scripts/setup.mjs",
     "benchmark": "node tests/benchmark.mjs",
+    "benchmark:projects": "node tests/cross-project-live.mjs",
+    "gym": "node tests/gym.mjs",
+    "gym:components": "node tests/component-live.mjs",
+    "gym:generated": "node tests/generated-gym.mjs",
     "benchmark:codex": "node tests/compare-codex.mjs",
     "test:caller": "node tests/handoff-caller.mjs",
     "test:workflow": "node tests/workflow-live.mjs",

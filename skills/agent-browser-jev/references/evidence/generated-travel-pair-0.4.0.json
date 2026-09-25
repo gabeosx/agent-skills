@@ -1,0 +1,648 @@
+{
+  "schema": 1,
+  "kind": "generated-travel-isolated-caller",
+  "startedAt": "2026-09-25T14:37:11.818Z",
+  "seed": 1234,
+  "casesRequested": 2,
+  "model": "gpt-5.5",
+  "effort": "low",
+  "timing": "Task delivery to caller POST /done; includes caller reasoning, Jev, browser actions and final caller assessment. Excludes Codex startup and independent verification.",
+  "cost": "Jev amounts are provider-reported. Codex tokens are reported separately; no dollar equivalent is assumed.",
+  "sourceSha256": {
+    "tests/generated-gym.mjs": "599a5f62ff2998c96472da7c2a9900c3c97a438d7b89ec827c7e3cde1a581e99",
+    "tests/fixtures/generated-travel.mjs": "40f760e4857ba88c5a40c3ac93a3e85c432962eedb19bdff5cf94a32fe691d50",
+    "SKILL.md": "e9b70a9c431ebd52bd92fa35d77df715b781102ce462b7ebd701d93df5dda7fa",
+    "scripts/run.mjs": "a34f7e5ccfa7639145e32bc2b59bdda816920297ed0a01d41b30e8737dee11e9"
+  },
+  "trials": [
+    {
+      "index": 0,
+      "seed": 1234,
+      "features": {
+        "dateMode": "native",
+        "airportPicker": "delayed suggestions",
+        "flightDecoys": 3,
+        "travelerBelowFold": true,
+        "conditionalBag": true,
+        "reviewTerms": true
+      },
+      "goal": "On this demo travel site, hold a Business itinerary from Boston Logan to Seattle Tacoma on 2026-11-08. Choose Northstar Air departing at 13:25. The traveler is Morgan Ellis (morgan.ellis@example.test); choose a no preference seat and standard meal. Add one checked bag at 15 kg. Accept the booking terms and finish on the confirmation page. This is a local fake booking; no payment is involved.",
+      "suppliedValues": {
+        "From airport": "Boston Logan",
+        "To airport": "Seattle Tacoma",
+        "Departure date": "2026-11-08",
+        "Cabin": "Business",
+        "Airline": "Northstar Air",
+        "Departure time": "13:25",
+        "Full name": "Morgan Ellis",
+        "Email": "morgan.ellis@example.test",
+        "Seat preference": "No preference",
+        "Meal preference": "Standard",
+        "Bag weight": "15 kg"
+      },
+      "startedAt": "2026-09-25T14:37:11.877Z",
+      "commandCount": 4,
+      "commands": [
+        {
+          "command": "/bin/zsh -lc \"sed -n '1,240p' <skill>SKILL.md\"",
+          "exitCode": 0,
+          "elapsedMs": 0
+        },
+        {
+          "command": "/bin/zsh -lc 'curl -s <fixture>/task'",
+          "exitCode": 0,
+          "elapsedMs": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"node '<skill>scripts/run.mjs' --binary '<agent-browser>' --session '<session>' --url '<fixture>/search' --intent 'On this demo travel site, hold a Business itinerary from Boston Logan to Seattle Tacoma on 2026-11-08. Choose Northstar Air departing at 13:25. The traveler is Morgan Ellis (morgan.ellis@example.test); choose a no preference seat and standard meal. Add one checked bag at 15 kg. Accept the booking terms and finish on the confirmation page. This is a local fake booking; n",
+          "exitCode": 2,
+          "elapsedMs": 32234
+        },
+        {
+          "command": "/bin/zsh -lc \"curl -s -X POST <fixture>/done -H 'Content-Type: application/json' --data '{\\\"status\\\":\\\"handoff\\\",\\\"assessment\\\":\\\"Helper hit action_budget after 60 actions. Final observation is still the Search flights form, not the confirmation page; requested itinerary hold was not established.\\\"}'\"",
+          "exitCode": 0,
+          "elapsedMs": 0
+        }
+      ],
+      "codexUsage": {
+        "input_tokens": 101122,
+        "cached_input_tokens": 80768,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1078,
+        "reasoning_output_tokens": 70
+      },
+      "codexExitCode": 0,
+      "agentStatus": "handoff",
+      "elapsedMs": 47536,
+      "independent": {
+        "passed": false,
+        "mismatches": [
+          "from",
+          "to",
+          "date",
+          "cabin",
+          "flightId",
+          "name",
+          "email",
+          "seat",
+          "meal",
+          "bag",
+          "bagWeight"
+        ],
+        "held": false,
+        "stageReached": "search",
+        "actual": {
+          "flightId": null
+        },
+        "events": []
+      },
+      "helper": {
+        "returnReason": "action_budget",
+        "elapsedMs": 31618.6815,
+        "totalMs": 31620.761292,
+        "actions": 60,
+        "actionTrace": [
+          {
+            "op": "fill",
+            "name": "From airport",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "fill",
+            "name": "To airport",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "select",
+            "name": "Cabin",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "fill",
+            "name": "Month Month",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "click",
+            "name": "Find flights",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "wait",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "wait",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "wait",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "wait",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "wait",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "wait",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "wait",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "wait",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "wait",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "wait",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "wait",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "wait",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "wait",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "wait",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "wait",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "wait",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "wait",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "wait",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "wait",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "wait",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "click",
+            "name": "Show date picker Show date picker",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "click",
+            "name": "Show next month",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "fill",
+            "name": "Month Month",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "click",
+            "name": "Find flights",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "wait",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "wait",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "wait",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "wait",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "wait",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "wait",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "wait",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "wait",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "wait",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "wait",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "wait",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "wait",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "wait",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "wait",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "wait",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "click",
+            "name": "Find flights",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "wait",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "wait",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "wait",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "wait",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "wait",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "wait",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "wait",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "wait",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "wait",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "wait",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "wait",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "click",
+            "name": "Show date picker Show date picker",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "click",
+            "name": "Show next month",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "fill",
+            "name": "Month Month",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "fill",
+            "name": "Day Day",
+            "outcome": "tool_succeeded"
+          }
+        ],
+        "costUsd": 0.018698652000000003,
+        "decisionCount": 61
+      },
+      "directBrowserGestures": [],
+      "verdict": "failed",
+      "finishedAt": "2026-09-25T14:38:10.610Z"
+    },
+    {
+      "index": 1,
+      "seed": 1235,
+      "features": {
+        "dateMode": "text",
+        "airportPicker": "delayed suggestions",
+        "flightDecoys": 3,
+        "travelerBelowFold": true,
+        "conditionalBag": true,
+        "reviewTerms": true
+      },
+      "goal": "On this demo travel site, hold a Business itinerary from Boston Logan to Miami International on 2026-11-17. Choose Northstar Air departing at 13:25. The traveler is Morgan Ellis (morgan.ellis@example.test); choose a aisle seat and vegan meal. Do not add a checked bag. Accept the booking terms and finish on the confirmation page. This is a local fake booking; no payment is involved.",
+      "suppliedValues": {
+        "From airport": "Boston Logan",
+        "To airport": "Miami International",
+        "Departure date": "2026-11-17",
+        "Cabin": "Business",
+        "Airline": "Northstar Air",
+        "Departure time": "13:25",
+        "Full name": "Morgan Ellis",
+        "Email": "morgan.ellis@example.test",
+        "Seat preference": "Aisle",
+        "Meal preference": "Vegan"
+      },
+      "startedAt": "2026-09-25T14:38:10.771Z",
+      "commandCount": 5,
+      "commands": [
+        {
+          "command": "/bin/zsh -lc 'curl -s <fixture>/task'",
+          "exitCode": 0,
+          "elapsedMs": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"sed -n '1,240p' <skill>SKILL.md\"",
+          "exitCode": 0,
+          "elapsedMs": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"node '<skill>scripts/run.mjs' --binary '<agent-browser>' --session '<session>' --url '<fixture>/search' --intent 'On this demo travel site, hold a Business itinerary from Boston Logan to Miami International on 2026-11-17. Choose Northstar Air departing at 13:25. The traveler is Morgan Ellis (morgan.ellis@example.test); choose a aisle seat and vegan meal. Do not add a checked bag. Accept the booking terms and finish on the confirmation page. This is a local fake booking; no payment ",
+          "exitCode": 0,
+          "elapsedMs": 10670
+        },
+        {
+          "command": "/bin/zsh -lc \"<agent-browser> --session '<session>' --json snapshot\"",
+          "exitCode": 0,
+          "elapsedMs": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"curl -s -X POST <fixture>/done -H 'Content-Type: application/json' --data '{\\\"status\\\":\\\"complete\\\",\\\"assessment\\\":\\\"Confirmed browser is on the confirmation page showing Itinerary held with reference F-4551.\\\"}'\"",
+          "exitCode": 0,
+          "elapsedMs": 0
+        }
+      ],
+      "codexUsage": {
+        "input_tokens": 101552,
+        "cached_input_tokens": 87936,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1220,
+        "reasoning_output_tokens": 106
+      },
+      "codexExitCode": 0,
+      "agentStatus": "complete",
+      "elapsedMs": 30639,
+      "independent": {
+        "passed": true,
+        "mismatches": [],
+        "held": true,
+        "stageReached": "confirmation",
+        "actual": {
+          "from": "BOS",
+          "to": "MIA",
+          "date": "2026-11-17",
+          "cabin": "Business",
+          "flightId": "F-4551",
+          "name": "Morgan Ellis",
+          "email": "morgan.ellis@example.test",
+          "seat": "Aisle",
+          "meal": "Vegan",
+          "bag": false,
+          "bagWeight": null
+        },
+        "events": [
+          {
+            "type": "search",
+            "body": {
+              "type": "search",
+              "from": "",
+              "to": "",
+              "date": "2026-11-17",
+              "cabin": "Business"
+            }
+          },
+          {
+            "type": "search",
+            "body": {
+              "type": "search",
+              "from": "BOS",
+              "to": "MIA",
+              "date": "2026-11-17",
+              "cabin": "Business"
+            }
+          },
+          {
+            "type": "flight",
+            "body": {
+              "type": "flight",
+              "id": "F-4551"
+            }
+          },
+          {
+            "type": "traveler",
+            "body": {
+              "type": "traveler",
+              "name": "Morgan Ellis",
+              "email": "morgan.ellis@example.test",
+              "meal": "Vegan",
+              "seat": "Aisle",
+              "bag": false,
+              "bagWeight": null
+            }
+          },
+          {
+            "type": "hold",
+            "body": {
+              "type": "hold",
+              "terms": true
+            }
+          }
+        ]
+      },
+      "helper": {
+        "returnReason": "reported_complete",
+        "elapsedMs": 10256.629917,
+        "totalMs": 10260.058459,
+        "actions": 26,
+        "actionTrace": [
+          {
+            "op": "click",
+            "name": "From airport",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "fill",
+            "name": "From airport",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "fill",
+            "name": "To airport",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "fill",
+            "name": "Departure date",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "select",
+            "name": "Cabin",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "click",
+            "name": "Find flights",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "wait",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "wait",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "wait",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "wait",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "wait",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "wait",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "wait",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "wait",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "wait",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "click",
+            "name": "Boston Logan (BOS)",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "click",
+            "name": "Miami International (MIA)",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "click",
+            "name": "Find flights",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "click",
+            "name": "Choose this flight",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "fill",
+            "name": "Full name",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "fill",
+            "name": "Email address",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "select",
+            "name": "Meal preference",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "select",
+            "name": "Seat preference",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "click",
+            "name": "Continue to review",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "check",
+            "name": "I accept the demo booking terms",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "click",
+            "name": "Hold itinerary",
+            "outcome": "tool_succeeded"
+          }
+        ],
+        "costUsd": 0.005053314,
+        "decisionCount": 27
+      },
+      "directBrowserGestures": [],
+      "verdict": "passed",
+      "finishedAt": "2026-09-25T14:38:52.787Z"
+    }
+  ],
+  "cleanup": {
+    "browserSessionsClosed": true,
+    "serversClosed": true,
+    "temporaryDirectoriesRemoved": true
+  },
+  "codexVersion": "codex-cli 0.147.0",
+  "browserVersion": "agent-browser 0.33.2",
+  "finishedAt": "2026-09-25T14:38:52.962Z",
+  "summary": {
+    "passed": 1,
+    "total": 2,
+    "medianEndToEndMs": 47536,
+    "jevCostUsd": 0.023751966000000003
+  },
+  "verdict": "failed"
+}

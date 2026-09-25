@@ -6,6 +6,8 @@ All notable skill changes are recorded in this file. Each skill is versioned ind
 
 ### Repository
 
+- Updated the skill catalog description and setup link to match the simpler Agent Browser Jev README.
+
 - Updated the Agent Browser Jev catalog entry for continuous control, resumable tasks and direct final-page evidence.
 
 - Updated the Agent Browser Jev catalog entry and setup link for its simplified installation and fresh benchmarks.
@@ -16,6 +18,35 @@ All notable skill changes are recorded in this file. Each skill is versioned ind
 
 - Added canonical agent instructions and a dependency-free release-contract validator requiring every affected skill change to include an independent Semantic Version increment, a matching root changelog entry, relevant validation, and scoped cleanup evidence.
 - Required repository-only changes to be recorded without inventing unrelated skill version bumps, and documented the definition of done and release-tagging workflow.
+
+## agent-browser-jev 1.0.0 - 2026-09-25
+
+### Added
+
+- Added a local browser gym that repeats workflow, autocomplete and short-task cases, retains failed outcomes, and reports independently checked results, helper time and Jev charges. The refreshed current-version run passed 52/52 synthetic checks; earlier keyboard-selection failures remain documented.
+- Added a 26-case common-component gym derived from WAI-ARIA APG and current Base UI, Radix, MUI and shadcn inventories. It independently checks accordions, menus, overlays, selection controls, navigation, data views, workflows, delayed feedback, upload, hover and safe handoffs; the final 1.0 run passed 26/26 at $0.005191 in provider-reported Jev charges.
+- Added a reproducible cross-project component benchmark for the same OpenRouter Decisions endpoint, Jev model and agent-browser runtime. Against pinned `forvela/jev-agent-browser` 0.1.7, this helper passed 26/26 while the comparison arm passed 11/26; the 15 differential cases were repeated twice more, passing 30/30 versus 0/30. This is a synthetic functional comparison, not an ecosystem ranking.
+- Added a seeded multi-page travel challenge. An isolated Codex caller receives a generated goal, exact values and starting page, delegates the whole task to Jev without browser takeover, and is scored against server-side selections and the final fake hold. Reports retain seeds, failures, whole-task timing, caller tokens and Jev charges for replay.
+- Initial strict challenges independently passed 2/3 selected seeds. The native-date case stalled on repeated waits and exhausted its action budget; two text-date cases completed, including one with conditional checked baggage. After the resulting date and wait fixes, the 1.0 release run passed 3/3 newly generated seeds, including two native-date cases. The failure and earlier caller-recovery attempt remain in the evidence.
+
+### Changed
+
+- Replaced the file-oriented integration surface with a direct agent invocation: one bounded command accepts the goal and exact values, then returns the final observation, compact action trace, timings and Jev usage as a single JSON object on stdout. Expected handoffs are now valid tool results rather than nonzero process exits.
+- Resume now uses a compressed, encrypted, authenticated token returned in the result. The token carries the original session, goal, operation allowlist, progress and recent actions without a result file or resident process, expires after 30 minutes and fails closed if changed or opened under another configured key.
+- Added repeatable operation and exact-accessible-name allowlist arguments so the calling agent can narrow browser authority without loading executable policy code.
+- Rewrote the README and benchmark guide for general users: setup and API-key instructions come first, benchmark clocks and costs are separated, and limitations sit beside the measured results. Removed local browser-build and accounting-pilot language from the public overview.
+- Updated the open-source comparison to describe current project strengths without claiming a head-to-head win. Default permissions are unchanged.
+- Added grounded contextual hover and exact caller-path file upload actions. Both are independently checked in the component gym; uploads never open a chooser or invent a path.
+
+### Fixed
+
+- Withhold arrow/Enter selection from autocomplete inputs after repeated live runs showed that similar keyboard-only options can commit the wrong record. Accessible options remain clickable, ordinary text/search fields retain Enter submission, and keyboard-only pickers now return control without a false successful confirmation.
+- Enter caller-supplied ISO dates through observed native Month, Day and Year controls when browser `fill` on their virtual refs reports success without changing the input. Stop offering waits after five unchanged attempts so a static validation error prompts another action or handoff. Both the previously failing native-date seed and a text-date regression seed passed on final replay without caller browser takeover.
+- Take one bounded quiescence observation when a clicked target remains on screen, preventing asynchronous command palettes and similar widgets from turning an intermediate selected state into a repeated stale click. After an uncertain gesture, attempt one fresh readback for the caller without replaying or allowing another gesture.
+
+### Removed
+
+- Removed task JSON files, executable policy modules, caller-selected result/evidence paths and file-based resume. This is an intentional incompatible reset for the unreleased project: the helper is an agent tool, not an interactive or backwards-compatible CLI product.
 
 ## agent-browser-jev 0.3.1 - 2026-09-25
 

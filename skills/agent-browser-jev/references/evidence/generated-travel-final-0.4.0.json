@@ -1,0 +1,280 @@
+{
+  "schema": 1,
+  "kind": "generated-travel-isolated-caller",
+  "startedAt": "2026-09-25T14:42:06.521Z",
+  "seed": 1241,
+  "casesRequested": 1,
+  "model": "gpt-5.5",
+  "effort": "low",
+  "timing": "Task delivery to caller POST /done; includes caller reasoning, Jev, browser actions and final caller assessment. Excludes Codex startup and independent verification.",
+  "cost": "Jev amounts are provider-reported. Codex tokens are reported separately; no dollar equivalent is assumed.",
+  "sourceSha256": {
+    "tests/generated-gym.mjs": "671a0e03d00c54ec41e04ba79c2de5bb1c67e6450508c3f29de4933e23d7a7c6",
+    "tests/fixtures/generated-travel.mjs": "a3ede53a03cde96912ff46fe4ddfcb1f4bbf8e0227d942681e281ca39d27dcae",
+    "SKILL.md": "e9b70a9c431ebd52bd92fa35d77df715b781102ce462b7ebd701d93df5dda7fa",
+    "scripts/run.mjs": "a34f7e5ccfa7639145e32bc2b59bdda816920297ed0a01d41b30e8737dee11e9"
+  },
+  "trials": [
+    {
+      "index": 0,
+      "seed": 1241,
+      "features": {
+        "dateMode": "text",
+        "airportPicker": "delayed suggestions",
+        "flightDecoys": 3,
+        "travelerBelowFold": true,
+        "conditionalBag": true,
+        "reviewTerms": true
+      },
+      "goal": "On this demo travel site, hold an Economy itinerary from Boston Logan to Austin Bergstrom on 2026-11-11. Choose Northstar Air departing at 07:15. The traveler is Jordan Lee (jordan.lee@example.test); choose a window seat and a vegetarian meal. Add one checked bag at 15 kg. Accept the booking terms and finish on the confirmation page. This is a local fake booking; no payment is involved.",
+      "suppliedValues": {
+        "From airport": "Boston Logan",
+        "To airport": "Austin Bergstrom",
+        "Departure date": "2026-11-11",
+        "Cabin": "Economy",
+        "Airline": "Northstar Air",
+        "Departure time": "07:15",
+        "Full name": "Jordan Lee",
+        "Email": "jordan.lee@example.test",
+        "Seat preference": "Window",
+        "Meal preference": "Vegetarian",
+        "Bag weight": "15 kg"
+      },
+      "startedAt": "2026-09-25T14:42:06.584Z",
+      "commandCount": 6,
+      "commands": [
+        {
+          "command": "/bin/zsh -lc 'curl -s <fixture>/task'",
+          "exitCode": 0,
+          "elapsedMs": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"sed -n '1,240p' <skill>SKILL.md\"",
+          "exitCode": 0,
+          "elapsedMs": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"node '<skill>scripts/run.mjs' --binary '<agent-browser>' --session '<session>' --url '<fixture>/search' --intent 'On this demo travel site, hold an Economy itinerary from Boston Logan to Austin Bergstrom on 2026-11-11. Choose Northstar Air departing at 07:15. The traveler is Jordan Lee (jordan.lee@example.test); choose a window seat and a vegetarian meal. Add one checked bag at 15 kg. Accept the booking terms and finish on the confirmation page. This is a local fake booking; no pay",
+          "exitCode": 0,
+          "elapsedMs": 6539
+        },
+        {
+          "command": "/bin/zsh -lc \"sed -n '1,260p' '<temporary-directory>/helper.json'\"",
+          "exitCode": 0,
+          "elapsedMs": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"node -e \\\"const r=require('./helper.json'); console.log(JSON.stringify({returnReason:r.returnReason, finalObservation:r.finalObservation||r.observation, progressAssessment:r.progressAssessment, actionCount:r.actions?.length, lastActions:r.actions?.slice(-8).map(a=>({action:a.action, after:a.after&&a.after.snapshot}))}, null, 2))\\\"\"",
+          "exitCode": 0,
+          "elapsedMs": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"curl -s -X POST <fixture>/done -H 'Content-Type: application/json' --data '{\\\"status\\\":\\\"complete\\\",\\\"assessment\\\":\\\"Established confirmation page: Itinerary held, reference F-6613. Helper evidence shows review matched Boston Logan to Austin Bergstrom on 2026-11-11, Northstar Air 07:15 Economy, Jordan Lee jordan.lee@example.test, Window, Vegetarian, 15 kg bag, terms accepted before hold.\\\"}'\"",
+          "exitCode": 0,
+          "elapsedMs": 0
+        }
+      ],
+      "codexUsage": {
+        "input_tokens": 137666,
+        "cached_input_tokens": 123136,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1486,
+        "reasoning_output_tokens": 166
+      },
+      "codexExitCode": 0,
+      "agentStatus": "complete",
+      "elapsedMs": 35219,
+      "independent": {
+        "passed": true,
+        "mismatches": [],
+        "held": true,
+        "stageReached": "confirmation",
+        "actual": {
+          "from": "BOS",
+          "to": "AUS",
+          "date": "2026-11-11",
+          "cabin": "Economy",
+          "flightId": "F-6613",
+          "name": "Jordan Lee",
+          "email": "jordan.lee@example.test",
+          "seat": "Window",
+          "meal": "Vegetarian",
+          "bag": true,
+          "bagWeight": "15 kg"
+        },
+        "events": [
+          {
+            "type": "search",
+            "body": {
+              "type": "search",
+              "from": "",
+              "to": "",
+              "date": "2026-11-11",
+              "cabin": "Economy"
+            }
+          },
+          {
+            "type": "search",
+            "body": {
+              "type": "search",
+              "from": "BOS",
+              "to": "AUS",
+              "date": "2026-11-11",
+              "cabin": "Economy"
+            }
+          },
+          {
+            "type": "flight",
+            "body": {
+              "type": "flight",
+              "id": "F-6613"
+            }
+          },
+          {
+            "type": "traveler",
+            "body": {
+              "type": "traveler",
+              "name": "Jordan Lee",
+              "email": "jordan.lee@example.test",
+              "meal": "Vegetarian",
+              "seat": "Window",
+              "bag": true,
+              "bagWeight": "15 kg"
+            }
+          },
+          {
+            "type": "hold",
+            "body": {
+              "type": "hold",
+              "terms": true
+            }
+          }
+        ]
+      },
+      "helper": {
+        "returnReason": "reported_complete",
+        "elapsedMs": 5968.272166,
+        "totalMs": 5972.756375,
+        "actions": 19,
+        "actionTrace": [
+          {
+            "op": "click",
+            "name": "From airport",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "fill",
+            "name": "From airport",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "fill",
+            "name": "To airport",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "fill",
+            "name": "Departure date",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "select",
+            "name": "Cabin",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "click",
+            "name": "Find flights",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "click",
+            "name": "Boston Logan (BOS)",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "click",
+            "name": "Austin Bergstrom (AUS)",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "click",
+            "name": "Find flights",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "click",
+            "name": "Choose this flight",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "fill",
+            "name": "Full name",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "fill",
+            "name": "Email address",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "select",
+            "name": "Meal preference",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "select",
+            "name": "Seat preference",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "check",
+            "name": "Add a checked bag",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "select",
+            "name": "Bag weight",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "click",
+            "name": "Continue to review",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "check",
+            "name": "I accept the demo booking terms",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "click",
+            "name": "Hold itinerary",
+            "outcome": "tool_succeeded"
+          }
+        ],
+        "costUsd": 0.003541188,
+        "decisionCount": 20
+      },
+      "longestWaitStreak": 0,
+      "directBrowserGestures": [],
+      "verdict": "passed",
+      "finishedAt": "2026-09-25T14:42:53.636Z"
+    }
+  ],
+  "cleanup": {
+    "browserSessionsClosed": true,
+    "serversClosed": true,
+    "temporaryDirectoriesRemoved": true
+  },
+  "codexVersion": "codex-cli 0.147.0",
+  "browserVersion": "agent-browser 0.33.2",
+  "finishedAt": "2026-09-25T14:42:53.811Z",
+  "summary": {
+    "passed": 1,
+    "total": 1,
+    "medianEndToEndMs": 35219,
+    "jevCostUsd": 0.003541188
+  },
+  "verdict": "passed"
+}

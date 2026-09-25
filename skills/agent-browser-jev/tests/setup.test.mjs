@@ -1,11 +1,10 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { execFileSync } from 'node:child_process';
-import { mkdtempSync, readFileSync, writeFileSync, statSync, rmSync } from 'node:fs';
+import { mkdtempSync, readFileSync, writeFileSync, statSync, rmSync, readdirSync } from 'node:fs';
 import { tmpdir } from 'node:os';
-import { join, dirname } from 'node:path';
+import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { defaultPolicy } from '../scripts/run.mjs';
 
 const configModule = new URL('../scripts/config.mjs', import.meta.url).href;
 const setup = fileURLToPath(new URL('../scripts/setup.mjs', import.meta.url));
@@ -84,24 +83,17 @@ if(args[0]==='install'){
     assert.equal(commands[0][0],'ci');assert.ok(commands[1].includes('agent-browser@0.38.1'));
   }finally{rmSync(root,{recursive:true,force:true});}
 });
-test('default policy permits observed actions and passes only visible observation fields',()=>{
-  assert.equal(defaultPolicy.authorize({op:'click',name:'Save preferences'}),true);
-  assert.equal(defaultPolicy.authorize({op:'fill',value:'Exact value'}),true);
-  assert.deepEqual(defaultPolicy.sanitize({snapshot:'Visible',refs:{},storage:'not observation data'}),{snapshot:'Visible',refs:{}});
-});
-test('plain intent works without task/policy/output files and creates private evidence',()=>{
+test('plain intent returns its handoff directly and creates no evidence file',()=>{
   const root=mkdtempSync(join(tmpdir(),'jev-default-cli-'));
-  let evidence;
   try{
     const binary=join(root,'browser.mjs');
     writeFileSync(binary,`#!${process.execPath}\nconsole.log(JSON.stringify({success:true,data:{snapshot:'x'.repeat(46000),refs:{}}}));`,{mode:0o700});
-    assert.throws(()=>execFileSync(process.execPath,[fileURLToPath(new URL('../scripts/run.mjs',import.meta.url)),'--intent','Inspect the page','--binary',binary],{
+    const stdout=execFileSync(process.execPath,[fileURLToPath(new URL('../scripts/run.mjs',import.meta.url)),'--intent','Inspect the page','--binary',binary],{
       cwd:root,env:{...process.env,XDG_CONFIG_HOME:root,OPENROUTER_API_KEY:'fixture-no-network'},encoding:'utf8',stdio:['ignore','pipe','pipe'],
-    }),error=>{
-      assert.equal(error.status,2);const result=JSON.parse(error.stdout);evidence=result.evidence;
-      assert.equal(result.returnReason,'observation_too_large');
-      assert.equal(statSync(evidence).mode&0o777,0o600);
-      assert.equal(JSON.parse(readFileSync(evidence,'utf8')).sessionId,'default');return true;
     });
-  }finally{rmSync(root,{recursive:true,force:true});if(evidence)rmSync(dirname(evidence),{recursive:true,force:true});}
+    const result=JSON.parse(stdout);
+    assert.equal(result.returnReason,'observation_too_large');
+    assert.match(result.resumeToken,/^jev1\./);
+    assert.deepEqual(readdirSync(root),['browser.mjs']);
+  }finally{rmSync(root,{recursive:true,force:true});}
 });

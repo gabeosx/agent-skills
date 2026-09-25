@@ -1,0 +1,202 @@
+{
+  "version": "1.0.0",
+  "startedAt": "2026-09-25T17:08:04.212Z",
+  "sourceSha256": {
+    "scripts/controls.mjs": "d13cad00bb63bb7df202fc095a8a19e0326192bd20ab9273488b91bf6f8336f2",
+    "scripts/agent-browser-jev.mjs": "4e4df07a022d48af9feb326417596ee0c3f0c6584fa6d4e3fbf781a09e0bc3de",
+    "scripts/jev-browser.mjs": "8d714c8631cf0a9795a585d67b3dde2b79e082c774f63acd41ad21d3e9ece84f",
+    "scripts/run.mjs": "75ed45bd730e5e982a0cc8fc63dccaa79b88200aa7cfe16f05b2ba8a4c402a5a",
+    "tests/autocomplete-live.mjs": "7ff0f470410ad71f1ce9615137aa3df5453d88dc971923881f33d77d17bfdfd8",
+    "tests/fixtures/autocomplete-page.mjs": "4bbcd01467fac0dba0db281f870f7727ef9eeb4b1de1cec450158c743cfe353f"
+  },
+  "cases": [
+    {
+      "mode": "click",
+      "result": {
+        "returnReason": "reported_complete",
+        "actions": [
+          {
+            "stepIndex": 0,
+            "operation": "fill",
+            "target": "contact",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "stepIndex": 0,
+            "operation": "fill",
+            "target": "account",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "stepIndex": 0,
+            "operation": "click",
+            "target": "Adobe Systems",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "stepIndex": 0,
+            "operation": "click",
+            "target": "Software subscriptions",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "stepIndex": 0,
+            "operation": "click",
+            "target": "Confirm selection",
+            "outcome": "tool_succeeded"
+          }
+        ],
+        "progressAssessment": [
+          {
+            "stepIndex": 0,
+            "intent": "Select Adobe Systems as the contact and Software subscriptions as the account, using the supplied search queries. Finish on the Selection confirmed screen.",
+            "judgment": "model_reported_complete"
+          }
+        ],
+        "inputRequired": null,
+        "observation": {
+          "snapshot": "- heading \"Selection confirmed\" [level=1, ref=e1]\n- paragraph\n  - StaticText \"contact: Adobe Systems\"\n- paragraph\n  - StaticText \"account: Software subscriptions\"",
+          "truncated": false,
+          "fresh": true
+        },
+        "timing": {
+          "totalMs": 1878.0214999999998,
+          "helperMs": 1310.6461249999998,
+          "navigationMs": 565.398458,
+          "observationMs": 69.95595900000023,
+          "decisionMs": 1034.9260000000002,
+          "actionMs": 40.47691699999973,
+          "settleMs": 162.52908399999978
+        },
+        "jev": {
+          "calls": 6,
+          "costUsd": 0.00052185
+        },
+        "resumable": false,
+        "resumeToken": null
+      },
+      "independentSnapshot": "- heading \"Selection confirmed\" [level=1, ref=e1]\n- paragraph\n  - StaticText \"contact: Adobe Systems\"\n- paragraph\n  - StaticText \"account: Software subscriptions\"",
+      "verdict": "passed",
+      "events": [
+        {
+          "type": "confirm",
+          "selected": {
+            "contact": "contact-adobe-systems",
+            "account": "account-software-subscriptions"
+          }
+        }
+      ]
+    },
+    {
+      "mode": "enter",
+      "result": {
+        "returnReason": "reported_complete",
+        "actions": [
+          {
+            "stepIndex": 0,
+            "operation": "fill",
+            "target": "contact",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "stepIndex": 0,
+            "operation": "press",
+            "target": "contact",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "stepIndex": 0,
+            "operation": "press",
+            "target": "contact",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "stepIndex": 0,
+            "operation": "press",
+            "target": "contact",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "stepIndex": 0,
+            "operation": "fill",
+            "target": "account",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "stepIndex": 0,
+            "operation": "wait",
+            "target": null,
+            "outcome": "tool_succeeded"
+          },
+          {
+            "stepIndex": 0,
+            "operation": "press",
+            "target": "account",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "stepIndex": 0,
+            "operation": "press",
+            "target": "account",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "stepIndex": 0,
+            "operation": "click",
+            "target": "Confirm selection",
+            "outcome": "tool_succeeded"
+          }
+        ],
+        "progressAssessment": [
+          {
+            "stepIndex": 0,
+            "intent": "Select Adobe Systems as the contact and Software subscriptions as the account, using the supplied search queries. Finish on the Selection confirmed screen. Use keyboard selection for BOTH fields; commit the highlighted match with Enter.",
+            "judgment": "model_reported_complete"
+          }
+        ],
+        "inputRequired": null,
+        "observation": {
+          "snapshot": "- heading \"Selection confirmed\" [level=1, ref=e1]\n- paragraph\n  - StaticText \"contact: Adobe Stock\"\n- paragraph\n  - StaticText \"account: Software assets\"",
+          "truncated": false,
+          "fresh": true
+        },
+        "timing": {
+          "totalMs": 2533.3508330000004,
+          "helperMs": 2513.6545419999998,
+          "navigationMs": 16.73075,
+          "observationMs": 79.92920900000058,
+          "decisionMs": 1989.6822910000008,
+          "actionMs": 440.6789560000004,
+          "settleMs": 0
+        },
+        "jev": {
+          "calls": 10,
+          "costUsd": 0.0009719640000000001
+        },
+        "resumable": false,
+        "resumeToken": null
+      },
+      "independentSnapshot": "- heading \"Selection confirmed\" [level=1, ref=e1]\n- paragraph\n  - StaticText \"contact: Adobe Stock\"\n- paragraph\n  - StaticText \"account: Software assets\"",
+      "verdict": "failed",
+      "failure": "Expected values to be strictly deep-equal:\n+ actual - expected\n\n  [\n    {\n      selected: {\n+       account: 'account-software-assets',\n+       contact: 'contact-adobe-stock'\n-       account: 'account-software-subscriptions',\n-       contact: 'contact-adobe-systems'\n      },\n      type: 'confirm'\n    }\n  ]\n",
+      "events": [
+        {
+          "type": "confirm",
+          "selected": {
+            "contact": "contact-adobe-stock",
+            "account": "account-software-assets"
+          }
+        }
+      ]
+    }
+  ],
+  "cleanup": {
+    "browserClosed": true,
+    "serverClosed": true,
+    "temporaryDirectoryRemoved": true
+  },
+  "browserVersion": "agent-browser 0.33.2",
+  "finishedAt": "2026-09-25T17:08:09.675Z",
+  "verdict": "failed",
+  "publicationRedaction": "Opaque resume tokens replaced with [redacted] before publication."
+}

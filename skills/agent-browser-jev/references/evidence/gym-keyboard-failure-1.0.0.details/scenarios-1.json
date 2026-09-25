@@ -1,0 +1,913 @@
+{
+  "schema": 1,
+  "startedAt": "2026-09-25T17:08:09.744Z",
+  "version": "1.0.0",
+  "model": "typesafe/jev-1.13",
+  "sdk": "1.3.2",
+  "node": "v26.5.0",
+  "platform": "darwin-arm64",
+  "rounds": 2,
+  "mode": "Direct agent invocation; no task, policy or result files; no browser or provider mocks",
+  "sourceSha256": {
+    "scripts/run.mjs": "75ed45bd730e5e982a0cc8fc63dccaa79b88200aa7cfe16f05b2ba8a4c402a5a",
+    "scripts/config.mjs": "ed3b9120c31cf4e69d1f33f2b2f55949249cfc9d83355ee3e713518152b5f387",
+    "scripts/setup.mjs": "fa45d4b297ed251a8a00c535492358e8ce49c7e9b361a4c088a1bdd7aff4078e",
+    "scripts/jev-browser.mjs": "8d714c8631cf0a9795a585d67b3dde2b79e082c774f63acd41ad21d3e9ece84f",
+    "scripts/agent-browser-jev.mjs": "4e4df07a022d48af9feb326417596ee0c3f0c6584fa6d4e3fbf781a09e0bc3de",
+    "tests/benchmark.mjs": "dda1d48a3bea111ddebd0f5ff50c7e9df15d3bb96f0af6bd7b011919136ffeeb",
+    "tests/fixtures/benchmark-pages.mjs": "d2330e6acb4dc758e644ffe609ddc885768145baee8162d11e1c425007e6617f"
+  },
+  "trials": [
+    {
+      "id": "help-article",
+      "label": "Open Returns article and go back",
+      "round": 1,
+      "elapsedMs": 1141,
+      "exitCode": 0,
+      "result": {
+        "returnReason": "reported_complete",
+        "actions": [
+          {
+            "stepIndex": 0,
+            "operation": "click",
+            "target": "Read article",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "stepIndex": 0,
+            "operation": "click",
+            "target": "Back to articles",
+            "outcome": "tool_succeeded"
+          }
+        ],
+        "progressAssessment": [
+          {
+            "stepIndex": 0,
+            "intent": "Read the Returns article, then go back to the article list.",
+            "judgment": "model_reported_complete"
+          }
+        ],
+        "inputRequired": null,
+        "observation": {
+          "snapshot": "- heading \"Help articles\" [level=1, ref=e1]\n- main\n  - article\n    - heading \"Shipping\" [level=2, ref=e2]\n    - paragraph\n      - StaticText \"Learn about our shipping policy.\"\n    - button \"Read article\" [ref=e3]\n  - article\n    - heading \"Returns\" [level=2, ref=e4]\n    - paragraph\n      - StaticText \"Learn about our returns policy.\"\n    - button \"Read article\" [ref=e5]\n  - article\n    - heading \"Warranty\" [level=2, ref=e6]\n    - paragraph\n      - StaticText \"Learn about our warranty policy.\"\n    - button \"Read article\" [ref=e7]",
+          "truncated": false,
+          "fresh": true
+        },
+        "timing": {
+          "totalMs": 714.3343339999999,
+          "helperMs": 712.1972910000001,
+          "navigationMs": 0,
+          "observationMs": 36.599875999999995,
+          "decisionMs": 574.5710010000001,
+          "actionMs": 18.223375000000146,
+          "settleMs": 81.23500000000001
+        },
+        "jev": {
+          "calls": 3,
+          "costUsd": 0.000164304
+        },
+        "resumable": false,
+        "resumeToken": null
+      },
+      "finalSnapshot": "- heading \"Help articles\" [level=1, ref=e1]\n- main\n  - article\n    - heading \"Shipping\" [level=2, ref=e2]\n    - paragraph\n      - StaticText \"Learn about our shipping policy.\"\n    - button \"Read article\" [ref=e3]\n  - article\n    - heading \"Returns\" [level=2, ref=e4]\n    - paragraph\n      - StaticText \"Learn about our returns policy.\"\n    - button \"Read article\" [ref=e5]\n  - article\n    - heading \"Warranty\" [level=2, ref=e6]\n    - paragraph\n      - StaticText \"Learn about our warranty policy.\"\n    - button \"Read article\" [ref=e7]",
+      "events": [
+        {
+          "type": "article",
+          "article": "Returns"
+        },
+        {
+          "type": "back",
+          "article": "Returns"
+        }
+      ],
+      "verdict": "passed"
+    },
+    {
+      "id": "reordered-articles",
+      "label": "Choose Warranty after articles reorder",
+      "round": 1,
+      "elapsedMs": 1718,
+      "exitCode": 0,
+      "result": {
+        "returnReason": "reported_complete",
+        "actions": [
+          {
+            "stepIndex": 0,
+            "operation": "click",
+            "target": "Read article",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "stepIndex": 0,
+            "operation": "click",
+            "target": "Back to articles",
+            "outcome": "tool_succeeded"
+          }
+        ],
+        "progressAssessment": [
+          {
+            "stepIndex": 0,
+            "intent": "Read the Warranty article, then go back to the article list.",
+            "judgment": "model_reported_complete"
+          }
+        ],
+        "inputRequired": null,
+        "observation": {
+          "snapshot": "- heading \"Help articles\" [level=1, ref=e1]\n- main\n  - article\n    - heading \"Warranty\" [level=2, ref=e2]\n    - paragraph\n      - StaticText \"Learn about our warranty policy.\"\n    - button \"Read article\" [ref=e3]\n  - article\n    - heading \"Shipping\" [level=2, ref=e4]\n    - paragraph\n      - StaticText \"Learn about our shipping policy.\"\n    - button \"Read article\" [ref=e5]\n  - article\n    - heading \"Returns\" [level=2, ref=e6]\n    - paragraph\n      - StaticText \"Learn about our returns policy.\"\n    - button \"Read article\" [ref=e7]",
+          "truncated": false,
+          "fresh": true
+        },
+        "timing": {
+          "totalMs": 1280.164041,
+          "helperMs": 1277.75925,
+          "navigationMs": 0,
+          "observationMs": 36.766751000000056,
+          "decisionMs": 1130.990167,
+          "actionMs": 27.272042000000056,
+          "settleMs": 81.23545800000011
+        },
+        "jev": {
+          "calls": 3,
+          "costUsd": 0.000164556
+        },
+        "resumable": false,
+        "resumeToken": null
+      },
+      "finalSnapshot": "- heading \"Help articles\" [level=1, ref=e1]\n- main\n  - article\n    - heading \"Warranty\" [level=2, ref=e2]\n    - paragraph\n      - StaticText \"Learn about our warranty policy.\"\n    - button \"Read article\" [ref=e3]\n  - article\n    - heading \"Shipping\" [level=2, ref=e4]\n    - paragraph\n      - StaticText \"Learn about our shipping policy.\"\n    - button \"Read article\" [ref=e5]\n  - article\n    - heading \"Returns\" [level=2, ref=e6]\n    - paragraph\n      - StaticText \"Learn about our returns policy.\"\n    - button \"Read article\" [ref=e7]",
+      "events": [
+        {
+          "type": "article",
+          "article": "Warranty"
+        },
+        {
+          "type": "back",
+          "article": "Warranty"
+        }
+      ],
+      "verdict": "passed"
+    },
+    {
+      "id": "support-draft",
+      "label": "Fill two fields without sending",
+      "round": 1,
+      "elapsedMs": 1146,
+      "exitCode": 0,
+      "result": {
+        "returnReason": "reported_complete",
+        "actions": [
+          {
+            "stepIndex": 0,
+            "operation": "fill",
+            "target": "Subject",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "stepIndex": 0,
+            "operation": "fill",
+            "target": "Message",
+            "outcome": "tool_succeeded"
+          }
+        ],
+        "progressAssessment": [
+          {
+            "stepIndex": 0,
+            "intent": "Fill Subject with the supplied subject and Message with the supplied message. Leave the request as a draft; do not send it.",
+            "judgment": "model_reported_complete"
+          }
+        ],
+        "inputRequired": null,
+        "observation": {
+          "snapshot": "- heading \"Contact support\" [level=1, ref=e1]\n- LabelText\n  - StaticText \"Subject\"\n  - textbox \"Subject\" [ref=e3]: Delivery question\n    - StaticText \"Delivery question\"\n- LabelText\n  - StaticText \"Message\"\n  - textbox \"Message\" [ref=e4]: Please check order #42 — \"blue\" & green.\nThank you!\n    - generic\n      - StaticText \"Please check order #42 — \\\"blue\\\" & green.\"\n      - LineBreak \"\\n\"\n      - StaticText \"Thank you!\"\n- button \"Send request\" [ref=e2]",
+          "truncated": false,
+          "fresh": true
+        },
+        "timing": {
+          "totalMs": 725.9987080000001,
+          "helperMs": 723.960125,
+          "navigationMs": 0,
+          "observationMs": 25.359749999999792,
+          "decisionMs": 674.7077089999999,
+          "actionMs": 22.144499999999994,
+          "settleMs": 0
+        },
+        "jev": {
+          "calls": 3,
+          "costUsd": 0.00023893799999999998
+        },
+        "resumable": false,
+        "resumeToken": null
+      },
+      "finalSnapshot": "- heading \"Contact support\" [level=1, ref=e1]\n- LabelText\n  - StaticText \"Subject\"\n  - textbox \"Subject\" [ref=e3]: Delivery question\n    - StaticText \"Delivery question\"\n- LabelText\n  - StaticText \"Message\"\n  - textbox \"Message\" [ref=e4]: Please check order #42 — \"blue\" & green.\nThank you!\n    - generic\n      - StaticText \"Please check order #42 — \\\"blue\\\" & green.\"\n      - LineBreak \"\\n\"\n      - StaticText \"Thank you!\"\n- button \"Send request\" [ref=e2]",
+      "events": [
+        {
+          "type": "input",
+          "field": "subject",
+          "value": ""
+        },
+        {
+          "type": "input",
+          "field": "subject",
+          "value": "Delivery question"
+        },
+        {
+          "type": "input",
+          "field": "message",
+          "value": ""
+        },
+        {
+          "type": "input",
+          "field": "message",
+          "value": "Please check order #42 — \"blue\" & green.\nThank you!"
+        },
+        {
+          "type": "input",
+          "field": "message",
+          "value": "Please check order #42 — \"blue\" & green.\nThank you!"
+        },
+        {
+          "type": "input",
+          "field": "message",
+          "value": "Please check order #42 — \"blue\" & green.\nThank you!"
+        }
+      ],
+      "readbacks": {
+        "subject": "Delivery question",
+        "message": "Please check order #42 — \"blue\" & green.\nThank you!"
+      },
+      "verdict": "passed"
+    },
+    {
+      "id": "preferences",
+      "label": "Open settings, enable email and save",
+      "round": 1,
+      "elapsedMs": 1380,
+      "exitCode": 0,
+      "result": {
+        "returnReason": "reported_complete",
+        "actions": [
+          {
+            "stepIndex": 0,
+            "operation": "click",
+            "target": "Edit notifications",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "stepIndex": 0,
+            "operation": "check",
+            "target": "Email updates",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "stepIndex": 0,
+            "operation": "click",
+            "target": "Save preferences",
+            "outcome": "tool_succeeded"
+          }
+        ],
+        "progressAssessment": [
+          {
+            "stepIndex": 0,
+            "intent": "Open notification settings, enable Email updates, and save preferences.",
+            "judgment": "model_reported_complete"
+          }
+        ],
+        "inputRequired": null,
+        "observation": {
+          "snapshot": "- heading \"Preferences\" [level=1, ref=e1]\n- button \"Edit notifications\" [ref=e2]\n- paragraph\n  - StaticText \"Preferences saved\"",
+          "truncated": false,
+          "fresh": true
+        },
+        "timing": {
+          "totalMs": 939.664417,
+          "helperMs": 937.994541,
+          "navigationMs": 0,
+          "observationMs": 44.8431240000001,
+          "decisionMs": 770.9777899999997,
+          "actionMs": 39.166957000000025,
+          "settleMs": 81.33020800000008
+        },
+        "jev": {
+          "calls": 4,
+          "costUsd": 0.00019996199999999998
+        },
+        "resumable": false,
+        "resumeToken": null
+      },
+      "finalSnapshot": "- heading \"Preferences\" [level=1, ref=e1]\n- button \"Edit notifications\" [ref=e2]\n- paragraph\n  - StaticText \"Preferences saved\"",
+      "events": [
+        {
+          "type": "open-settings"
+        },
+        {
+          "type": "email",
+          "enabled": true
+        },
+        {
+          "type": "save",
+          "email": true
+        }
+      ],
+      "verdict": "passed"
+    },
+    {
+      "id": "search-topic",
+      "label": "Search, open matching result and return",
+      "round": 1,
+      "elapsedMs": 1460,
+      "exitCode": 0,
+      "result": {
+        "returnReason": "reported_complete",
+        "actions": [
+          {
+            "stepIndex": 0,
+            "operation": "fill",
+            "target": "Search topics",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "stepIndex": 0,
+            "operation": "click",
+            "target": "Read topic",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "stepIndex": 0,
+            "operation": "click",
+            "target": "Back to results",
+            "outcome": "tool_succeeded"
+          }
+        ],
+        "progressAssessment": [
+          {
+            "stepIndex": 0,
+            "intent": "Search topics using the supplied query, open Account recovery, then go back to the results.",
+            "judgment": "model_reported_complete"
+          }
+        ],
+        "inputRequired": null,
+        "observation": {
+          "snapshot": "- heading \"Help center search\" [level=1, ref=e1]\n- LabelText\n  - StaticText \"Search topics\"\n  - textbox \"Search topics\" [ref=e2]: account\n    - StaticText \"account\"\n- article\n  - heading \"Account recovery\" [level=2, ref=e3]\n  - button \"Read topic\" [ref=e4]",
+          "truncated": false,
+          "fresh": true
+        },
+        "timing": {
+          "totalMs": 1013.591583,
+          "helperMs": 1011.4366669999999,
+          "navigationMs": 0,
+          "observationMs": 36.243918000000065,
+          "decisionMs": 865.6429589999998,
+          "actionMs": 26.793000000000006,
+          "settleMs": 81.15645799999993
+        },
+        "jev": {
+          "calls": 4,
+          "costUsd": 0.000237468
+        },
+        "resumable": false,
+        "resumeToken": null
+      },
+      "finalSnapshot": "- heading \"Help center search\" [level=1, ref=e1]\n- LabelText\n  - StaticText \"Search topics\"\n  - textbox \"Search topics\" [ref=e2]: account\n    - StaticText \"account\"\n- article\n  - heading \"Account recovery\" [level=2, ref=e3]\n  - button \"Read topic\" [ref=e4]",
+      "events": [
+        {
+          "type": "search",
+          "value": ""
+        },
+        {
+          "type": "search",
+          "value": "account"
+        },
+        {
+          "type": "topic",
+          "name": "Account recovery"
+        },
+        {
+          "type": "close-topic"
+        }
+      ],
+      "readbacks": {
+        "query": "account"
+      },
+      "verdict": "passed"
+    },
+    {
+      "id": "missing-article",
+      "label": "Return control when article is absent",
+      "round": 1,
+      "elapsedMs": 710,
+      "exitCode": 0,
+      "result": {
+        "returnReason": "handoff",
+        "actions": [],
+        "progressAssessment": [],
+        "inputRequired": null,
+        "observation": {
+          "snapshot": "- heading \"Help articles\" [level=1, ref=e1]\n- main\n  - article\n    - heading \"Shipping\" [level=2, ref=e2]\n    - paragraph\n      - StaticText \"Learn about our shipping policy.\"\n    - button \"Read article\" [ref=e3]\n  - article\n    - heading \"Returns\" [level=2, ref=e4]\n    - paragraph\n      - StaticText \"Learn about our returns policy.\"\n    - button \"Read article\" [ref=e5]\n  - article\n    - heading \"Warranty\" [level=2, ref=e6]\n    - paragraph\n      - StaticText \"Learn about our warranty policy.\"\n    - button \"Read article\" [ref=e7]",
+          "truncated": false,
+          "fresh": true
+        },
+        "timing": {
+          "totalMs": 245.971584,
+          "helperMs": 244.04024999999996,
+          "navigationMs": 0,
+          "observationMs": 10.355415999999991,
+          "decisionMs": 232.87766699999997,
+          "actionMs": 0,
+          "settleMs": 0
+        },
+        "jev": {
+          "calls": 1,
+          "costUsd": 0.000051618
+        },
+        "resumable": true,
+        "resumeToken": "[redacted]"
+      },
+      "finalSnapshot": "- heading \"Help articles\" [level=1, ref=e1]\n- main\n  - article\n    - heading \"Shipping\" [level=2, ref=e2]\n    - paragraph\n      - StaticText \"Learn about our shipping policy.\"\n    - button \"Read article\" [ref=e3]\n  - article\n    - heading \"Returns\" [level=2, ref=e4]\n    - paragraph\n      - StaticText \"Learn about our returns policy.\"\n    - button \"Read article\" [ref=e5]\n  - article\n    - heading \"Warranty\" [level=2, ref=e6]\n    - paragraph\n      - StaticText \"Learn about our warranty policy.\"\n    - button \"Read article\" [ref=e7]",
+      "events": [],
+      "verdict": "passed"
+    },
+    {
+      "id": "help-article",
+      "label": "Open Returns article and go back",
+      "round": 2,
+      "elapsedMs": 1167,
+      "exitCode": 0,
+      "result": {
+        "returnReason": "reported_complete",
+        "actions": [
+          {
+            "stepIndex": 0,
+            "operation": "click",
+            "target": "Read article",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "stepIndex": 0,
+            "operation": "click",
+            "target": "Back to articles",
+            "outcome": "tool_succeeded"
+          }
+        ],
+        "progressAssessment": [
+          {
+            "stepIndex": 0,
+            "intent": "Read the Returns article, then go back to the article list.",
+            "judgment": "model_reported_complete"
+          }
+        ],
+        "inputRequired": null,
+        "observation": {
+          "snapshot": "- heading \"Help articles\" [level=1, ref=e1]\n- main\n  - article\n    - heading \"Shipping\" [level=2, ref=e2]\n    - paragraph\n      - StaticText \"Learn about our shipping policy.\"\n    - button \"Read article\" [ref=e3]\n  - article\n    - heading \"Returns\" [level=2, ref=e4]\n    - paragraph\n      - StaticText \"Learn about our returns policy.\"\n    - button \"Read article\" [ref=e5]\n  - article\n    - heading \"Warranty\" [level=2, ref=e6]\n    - paragraph\n      - StaticText \"Learn about our warranty policy.\"\n    - button \"Read article\" [ref=e7]",
+          "truncated": false,
+          "fresh": true
+        },
+        "timing": {
+          "totalMs": 704.0389170000001,
+          "helperMs": 701.9805409999999,
+          "navigationMs": 0,
+          "observationMs": 29.36887400000012,
+          "decisionMs": 570.1244999999999,
+          "actionMs": 19.794832999999926,
+          "settleMs": 81.16487500000005
+        },
+        "jev": {
+          "calls": 3,
+          "costUsd": 0.000164304
+        },
+        "resumable": false,
+        "resumeToken": null
+      },
+      "finalSnapshot": "- heading \"Help articles\" [level=1, ref=e1]\n- main\n  - article\n    - heading \"Shipping\" [level=2, ref=e2]\n    - paragraph\n      - StaticText \"Learn about our shipping policy.\"\n    - button \"Read article\" [ref=e3]\n  - article\n    - heading \"Returns\" [level=2, ref=e4]\n    - paragraph\n      - StaticText \"Learn about our returns policy.\"\n    - button \"Read article\" [ref=e5]\n  - article\n    - heading \"Warranty\" [level=2, ref=e6]\n    - paragraph\n      - StaticText \"Learn about our warranty policy.\"\n    - button \"Read article\" [ref=e7]",
+      "events": [
+        {
+          "type": "article",
+          "article": "Returns"
+        },
+        {
+          "type": "back",
+          "article": "Returns"
+        }
+      ],
+      "verdict": "passed"
+    },
+    {
+      "id": "reordered-articles",
+      "label": "Choose Warranty after articles reorder",
+      "round": 2,
+      "elapsedMs": 1171,
+      "exitCode": 0,
+      "result": {
+        "returnReason": "reported_complete",
+        "actions": [
+          {
+            "stepIndex": 0,
+            "operation": "click",
+            "target": "Read article",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "stepIndex": 0,
+            "operation": "click",
+            "target": "Back to articles",
+            "outcome": "tool_succeeded"
+          }
+        ],
+        "progressAssessment": [
+          {
+            "stepIndex": 0,
+            "intent": "Read the Warranty article, then go back to the article list.",
+            "judgment": "model_reported_complete"
+          }
+        ],
+        "inputRequired": null,
+        "observation": {
+          "snapshot": "- heading \"Help articles\" [level=1, ref=e1]\n- main\n  - article\n    - heading \"Warranty\" [level=2, ref=e2]\n    - paragraph\n      - StaticText \"Learn about our warranty policy.\"\n    - button \"Read article\" [ref=e3]\n  - article\n    - heading \"Shipping\" [level=2, ref=e4]\n    - paragraph\n      - StaticText \"Learn about our shipping policy.\"\n    - button \"Read article\" [ref=e5]\n  - article\n    - heading \"Returns\" [level=2, ref=e6]\n    - paragraph\n      - StaticText \"Learn about our returns policy.\"\n    - button \"Read article\" [ref=e7]",
+          "truncated": false,
+          "fresh": true
+        },
+        "timing": {
+          "totalMs": 739.832459,
+          "helperMs": 735.895708,
+          "navigationMs": 0,
+          "observationMs": 34.764583000000016,
+          "decisionMs": 597.9873750000002,
+          "actionMs": 19.049083999999993,
+          "settleMs": 81.34120799999994
+        },
+        "jev": {
+          "calls": 3,
+          "costUsd": 0.000164556
+        },
+        "resumable": false,
+        "resumeToken": null
+      },
+      "finalSnapshot": "- heading \"Help articles\" [level=1, ref=e1]\n- main\n  - article\n    - heading \"Warranty\" [level=2, ref=e2]\n    - paragraph\n      - StaticText \"Learn about our warranty policy.\"\n    - button \"Read article\" [ref=e3]\n  - article\n    - heading \"Shipping\" [level=2, ref=e4]\n    - paragraph\n      - StaticText \"Learn about our shipping policy.\"\n    - button \"Read article\" [ref=e5]\n  - article\n    - heading \"Returns\" [level=2, ref=e6]\n    - paragraph\n      - StaticText \"Learn about our returns policy.\"\n    - button \"Read article\" [ref=e7]",
+      "events": [
+        {
+          "type": "article",
+          "article": "Warranty"
+        },
+        {
+          "type": "back",
+          "article": "Warranty"
+        }
+      ],
+      "verdict": "passed"
+    },
+    {
+      "id": "support-draft",
+      "label": "Fill two fields without sending",
+      "round": 2,
+      "elapsedMs": 1174,
+      "exitCode": 0,
+      "result": {
+        "returnReason": "reported_complete",
+        "actions": [
+          {
+            "stepIndex": 0,
+            "operation": "fill",
+            "target": "Subject",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "stepIndex": 0,
+            "operation": "fill",
+            "target": "Message",
+            "outcome": "tool_succeeded"
+          }
+        ],
+        "progressAssessment": [
+          {
+            "stepIndex": 0,
+            "intent": "Fill Subject with the supplied subject and Message with the supplied message. Leave the request as a draft; do not send it.",
+            "judgment": "model_reported_complete"
+          }
+        ],
+        "inputRequired": null,
+        "observation": {
+          "snapshot": "- heading \"Contact support\" [level=1, ref=e1]\n- LabelText\n  - StaticText \"Subject\"\n  - textbox \"Subject\" [ref=e3]: Delivery question\n    - StaticText \"Delivery question\"\n- LabelText\n  - StaticText \"Message\"\n  - textbox \"Message\" [ref=e4]: Please check order #42 — \"blue\" & green.\nThank you!\n    - generic\n      - StaticText \"Please check order #42 — \\\"blue\\\" & green.\"\n      - LineBreak \"\\n\"\n      - StaticText \"Thank you!\"\n- button \"Send request\" [ref=e2]",
+          "truncated": false,
+          "fresh": true
+        },
+        "timing": {
+          "totalMs": 741.6498339999999,
+          "helperMs": 739.969166,
+          "navigationMs": 0,
+          "observationMs": 25.253125000000068,
+          "decisionMs": 697.2494580000001,
+          "actionMs": 15.847834000000034,
+          "settleMs": 0
+        },
+        "jev": {
+          "calls": 3,
+          "costUsd": 0.00023893799999999998
+        },
+        "resumable": false,
+        "resumeToken": null
+      },
+      "finalSnapshot": "- heading \"Contact support\" [level=1, ref=e1]\n- LabelText\n  - StaticText \"Subject\"\n  - textbox \"Subject\" [ref=e3]: Delivery question\n    - StaticText \"Delivery question\"\n- LabelText\n  - StaticText \"Message\"\n  - textbox \"Message\" [ref=e4]: Please check order #42 — \"blue\" & green.\nThank you!\n    - generic\n      - StaticText \"Please check order #42 — \\\"blue\\\" & green.\"\n      - LineBreak \"\\n\"\n      - StaticText \"Thank you!\"\n- button \"Send request\" [ref=e2]",
+      "events": [
+        {
+          "type": "input",
+          "field": "subject",
+          "value": ""
+        },
+        {
+          "type": "input",
+          "field": "subject",
+          "value": "Delivery question"
+        },
+        {
+          "type": "input",
+          "field": "message",
+          "value": ""
+        },
+        {
+          "type": "input",
+          "field": "message",
+          "value": "Please check order #42 — \"blue\" & green.\nThank you!"
+        },
+        {
+          "type": "input",
+          "field": "message",
+          "value": "Please check order #42 — \"blue\" & green.\nThank you!"
+        },
+        {
+          "type": "input",
+          "field": "message",
+          "value": "Please check order #42 — \"blue\" & green.\nThank you!"
+        }
+      ],
+      "readbacks": {
+        "subject": "Delivery question",
+        "message": "Please check order #42 — \"blue\" & green.\nThank you!"
+      },
+      "verdict": "passed"
+    },
+    {
+      "id": "preferences",
+      "label": "Open settings, enable email and save",
+      "round": 2,
+      "elapsedMs": 1373,
+      "exitCode": 0,
+      "result": {
+        "returnReason": "reported_complete",
+        "actions": [
+          {
+            "stepIndex": 0,
+            "operation": "click",
+            "target": "Edit notifications",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "stepIndex": 0,
+            "operation": "check",
+            "target": "Email updates",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "stepIndex": 0,
+            "operation": "click",
+            "target": "Save preferences",
+            "outcome": "tool_succeeded"
+          }
+        ],
+        "progressAssessment": [
+          {
+            "stepIndex": 0,
+            "intent": "Open notification settings, enable Email updates, and save preferences.",
+            "judgment": "model_reported_complete"
+          }
+        ],
+        "inputRequired": null,
+        "observation": {
+          "snapshot": "- heading \"Preferences\" [level=1, ref=e1]\n- button \"Edit notifications\" [ref=e2]\n- paragraph\n  - StaticText \"Preferences saved\"",
+          "truncated": false,
+          "fresh": true
+        },
+        "timing": {
+          "totalMs": 951.637541,
+          "helperMs": 949.737709,
+          "navigationMs": 0,
+          "observationMs": 39.84049899999985,
+          "decisionMs": 800.210666,
+          "actionMs": 27.008916999999883,
+          "settleMs": 81.22783299999992
+        },
+        "jev": {
+          "calls": 4,
+          "costUsd": 0.00019996199999999998
+        },
+        "resumable": false,
+        "resumeToken": null
+      },
+      "finalSnapshot": "- heading \"Preferences\" [level=1, ref=e1]\n- button \"Edit notifications\" [ref=e2]\n- paragraph\n  - StaticText \"Preferences saved\"",
+      "events": [
+        {
+          "type": "open-settings"
+        },
+        {
+          "type": "email",
+          "enabled": true
+        },
+        {
+          "type": "save",
+          "email": true
+        }
+      ],
+      "verdict": "passed"
+    },
+    {
+      "id": "search-topic",
+      "label": "Search, open matching result and return",
+      "round": 2,
+      "elapsedMs": 1420,
+      "exitCode": 0,
+      "result": {
+        "returnReason": "reported_complete",
+        "actions": [
+          {
+            "stepIndex": 0,
+            "operation": "fill",
+            "target": "Search topics",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "stepIndex": 0,
+            "operation": "click",
+            "target": "Read topic",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "stepIndex": 0,
+            "operation": "click",
+            "target": "Back to results",
+            "outcome": "tool_succeeded"
+          }
+        ],
+        "progressAssessment": [
+          {
+            "stepIndex": 0,
+            "intent": "Search topics using the supplied query, open Account recovery, then go back to the results.",
+            "judgment": "model_reported_complete"
+          }
+        ],
+        "inputRequired": null,
+        "observation": {
+          "snapshot": "- heading \"Help center search\" [level=1, ref=e1]\n- LabelText\n  - StaticText \"Search topics\"\n  - textbox \"Search topics\" [ref=e2]: account\n    - StaticText \"account\"\n- article\n  - heading \"Account recovery\" [level=2, ref=e3]\n  - button \"Read topic\" [ref=e4]",
+          "truncated": false,
+          "fresh": true
+        },
+        "timing": {
+          "totalMs": 973.675708,
+          "helperMs": 971.894209,
+          "navigationMs": 0,
+          "observationMs": 33.211417999999924,
+          "decisionMs": 834.256249,
+          "actionMs": 21.698540999999977,
+          "settleMs": 81.17162500000018
+        },
+        "jev": {
+          "calls": 4,
+          "costUsd": 0.000237468
+        },
+        "resumable": false,
+        "resumeToken": null
+      },
+      "finalSnapshot": "- heading \"Help center search\" [level=1, ref=e1]\n- LabelText\n  - StaticText \"Search topics\"\n  - textbox \"Search topics\" [ref=e2]: account\n    - StaticText \"account\"\n- article\n  - heading \"Account recovery\" [level=2, ref=e3]\n  - button \"Read topic\" [ref=e4]",
+      "events": [
+        {
+          "type": "search",
+          "value": ""
+        },
+        {
+          "type": "search",
+          "value": "account"
+        },
+        {
+          "type": "topic",
+          "name": "Account recovery"
+        },
+        {
+          "type": "close-topic"
+        }
+      ],
+      "readbacks": {
+        "query": "account"
+      },
+      "verdict": "passed"
+    },
+    {
+      "id": "missing-article",
+      "label": "Return control when article is absent",
+      "round": 2,
+      "elapsedMs": 1714,
+      "exitCode": 0,
+      "result": {
+        "returnReason": "handoff",
+        "actions": [],
+        "progressAssessment": [],
+        "inputRequired": null,
+        "observation": {
+          "snapshot": "- heading \"Help articles\" [level=1, ref=e1]\n- main\n  - article\n    - heading \"Shipping\" [level=2, ref=e2]\n    - paragraph\n      - StaticText \"Learn about our shipping policy.\"\n    - button \"Read article\" [ref=e3]\n  - article\n    - heading \"Returns\" [level=2, ref=e4]\n    - paragraph\n      - StaticText \"Learn about our returns policy.\"\n    - button \"Read article\" [ref=e5]\n  - article\n    - heading \"Warranty\" [level=2, ref=e6]\n    - paragraph\n      - StaticText \"Learn about our warranty policy.\"\n    - button \"Read article\" [ref=e7]",
+          "truncated": false,
+          "fresh": true
+        },
+        "timing": {
+          "totalMs": 239.2555829999999,
+          "helperMs": 233.21674999999982,
+          "navigationMs": 0,
+          "observationMs": 9.16229199999998,
+          "decisionMs": 223.182417,
+          "actionMs": 0,
+          "settleMs": 0
+        },
+        "jev": {
+          "calls": 1,
+          "costUsd": 0.000051618
+        },
+        "resumable": true,
+        "resumeToken": "[redacted]"
+      },
+      "finalSnapshot": "- heading \"Help articles\" [level=1, ref=e1]\n- main\n  - article\n    - heading \"Shipping\" [level=2, ref=e2]\n    - paragraph\n      - StaticText \"Learn about our shipping policy.\"\n    - button \"Read article\" [ref=e3]\n  - article\n    - heading \"Returns\" [level=2, ref=e4]\n    - paragraph\n      - StaticText \"Learn about our returns policy.\"\n    - button \"Read article\" [ref=e5]\n  - article\n    - heading \"Warranty\" [level=2, ref=e6]\n    - paragraph\n      - StaticText \"Learn about our warranty policy.\"\n    - button \"Read article\" [ref=e7]",
+      "events": [],
+      "verdict": "passed"
+    }
+  ],
+  "cleanup": {
+    "browserClosed": true,
+    "serverClosed": true,
+    "temporaryFilesRemoved": true
+  },
+  "browserVersion": "agent-browser 0.33.2",
+  "summary": [
+    {
+      "id": "help-article",
+      "label": "Open Returns article and go back",
+      "passed": 2,
+      "total": 2,
+      "medianMs": 1154,
+      "minMs": 1141,
+      "maxMs": 1167,
+      "meanCostUsd": 0.000164304,
+      "decisions": 6
+    },
+    {
+      "id": "reordered-articles",
+      "label": "Choose Warranty after articles reorder",
+      "passed": 2,
+      "total": 2,
+      "medianMs": 1444.5,
+      "minMs": 1171,
+      "maxMs": 1718,
+      "meanCostUsd": 0.000164556,
+      "decisions": 6
+    },
+    {
+      "id": "support-draft",
+      "label": "Fill two fields without sending",
+      "passed": 2,
+      "total": 2,
+      "medianMs": 1160,
+      "minMs": 1146,
+      "maxMs": 1174,
+      "meanCostUsd": 0.00023893799999999998,
+      "decisions": 6
+    },
+    {
+      "id": "preferences",
+      "label": "Open settings, enable email and save",
+      "passed": 2,
+      "total": 2,
+      "medianMs": 1376.5,
+      "minMs": 1373,
+      "maxMs": 1380,
+      "meanCostUsd": 0.00019996199999999998,
+      "decisions": 8
+    },
+    {
+      "id": "search-topic",
+      "label": "Search, open matching result and return",
+      "passed": 2,
+      "total": 2,
+      "medianMs": 1440,
+      "minMs": 1420,
+      "maxMs": 1460,
+      "meanCostUsd": 0.000237468,
+      "decisions": 8
+    },
+    {
+      "id": "missing-article",
+      "label": "Return control when article is absent",
+      "passed": 2,
+      "total": 2,
+      "medianMs": 1212,
+      "minMs": 710,
+      "maxMs": 1714,
+      "meanCostUsd": 0.000051618,
+      "decisions": 2
+    }
+  ],
+  "finishedAt": "2026-09-25T17:08:26.662Z",
+  "verdict": "passed",
+  "publicationRedaction": "Opaque resume tokens replaced with [redacted] before publication."
+}

@@ -1,0 +1,27 @@
+{
+  "startedAt": "2026-09-25T14:11:53.677Z",
+  "finishedAt": "2026-09-25T14:11:56.011Z",
+  "classification": "setup_failure",
+  "cause": "The temporary validation checkout had no installed @openrouter/sdk dependency. Helper invocations exited before model calls.",
+  "casesStarted": 19,
+  "casesPassed": 0,
+  "costKnown": false,
+  "cleanup": {
+    "workflow": {
+      "browserClosed": true,
+      "serverClosed": true,
+      "temporaryDirectoryRemoved": true
+    },
+    "autocomplete": {
+      "browserClosed": true,
+      "serverClosed": true,
+      "temporaryDirectoryRemoved": true
+    },
+    "scenarios": {
+      "browserClosed": true,
+      "serverClosed": true,
+      "temporaryFilesRemoved": true
+    }
+  },
+  "followUp": "Dependencies were linked from the installed skill and the full gym was rerun; see gym-0.4.0.json."
+}

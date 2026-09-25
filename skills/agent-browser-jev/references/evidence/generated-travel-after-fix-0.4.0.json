@@ -1,0 +1,505 @@
+{
+  "schema": 1,
+  "kind": "generated-travel-isolated-caller",
+  "startedAt": "2026-09-25T15:22:12.726Z",
+  "seed": 1234,
+  "casesRequested": 2,
+  "model": "gpt-5.5",
+  "effort": "low",
+  "timing": "Task delivery to caller POST /done; includes caller reasoning, Jev, browser actions and final caller assessment. Excludes Codex startup and independent verification.",
+  "cost": "Jev amounts are provider-reported. Codex tokens are reported separately; no dollar equivalent is assumed.",
+  "sourceSha256": {
+    "tests/generated-gym.mjs": "8dbd13bb446ff80966b588db496849e9b3265ea528212fb846eec63eb1b29e6b",
+    "tests/fixtures/generated-travel.mjs": "a3ede53a03cde96912ff46fe4ddfcb1f4bbf8e0227d942681e281ca39d27dcae",
+    "SKILL.md": "8422159dd4f9146ba4d1460fa385d6aecd0232a1cd37790ca3a28db5429d59b0",
+    "scripts/run.mjs": "a34f7e5ccfa7639145e32bc2b59bdda816920297ed0a01d41b30e8737dee11e9",
+    "scripts/controls.mjs": "ce4f50c7054d8781e2935508252b1ea5d88975a87648bc2cfac658e35a695d46",
+    "scripts/jev-browser.mjs": "0e549e59204a8f99e885bdc6bcf82bb90343d422798e05615ba78641f7d6c28c",
+    "scripts/agent-browser-jev.mjs": "daa92a47a7752d745ede6d772485b20d86d2ab3ce11f1ba36097972e0b60a4ae"
+  },
+  "trials": [
+    {
+      "index": 0,
+      "seed": 1234,
+      "features": {
+        "dateMode": "native",
+        "airportPicker": "delayed suggestions",
+        "flightDecoys": 3,
+        "travelerBelowFold": true,
+        "conditionalBag": true,
+        "reviewTerms": true
+      },
+      "goal": "On this demo travel site, hold a Business itinerary from Boston Logan to Seattle Tacoma on 2026-11-08. Choose Northstar Air departing at 13:25. The traveler is Morgan Ellis (morgan.ellis@example.test); choose no seat preference and a standard meal. Add one checked bag at 15 kg. Accept the booking terms and finish on the confirmation page. This is a local fake booking; no payment is involved.",
+      "suppliedValues": {
+        "From airport": "Boston Logan",
+        "To airport": "Seattle Tacoma",
+        "Departure date": "2026-11-08",
+        "Cabin": "Business",
+        "Airline": "Northstar Air",
+        "Departure time": "13:25",
+        "Full name": "Morgan Ellis",
+        "Email": "morgan.ellis@example.test",
+        "Seat preference": "No preference",
+        "Meal preference": "Standard",
+        "Bag weight": "15 kg"
+      },
+      "startedAt": "2026-09-25T15:22:12.788Z",
+      "commandCount": 5,
+      "commands": [
+        {
+          "command": "/bin/zsh -lc \"sed -n '1,240p' <skill>SKILL.md\"",
+          "exitCode": 0,
+          "elapsedMs": 0
+        },
+        {
+          "command": "/bin/zsh -lc 'curl -s <fixture>/task'",
+          "exitCode": 0,
+          "elapsedMs": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"node '<skill>scripts/run.mjs' --binary '<agent-browser>' --session '<session>' --url '<fixture>/search' --intent 'On this demo travel site, hold a Business itinerary from Boston Logan to Seattle Tacoma on 2026-11-08. Choose Northstar Air departing at 13:25. The traveler is Morgan Ellis (morgan.ellis@example.test); choose no seat preference and a standard meal. Add one checked bag at 15 kg. Accept the booking terms and finish on the confirmation page. This is a local fake booking; n",
+          "exitCode": 0,
+          "elapsedMs": 6334
+        },
+        {
+          "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json snapshot\"",
+          "exitCode": 0,
+          "elapsedMs": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"curl -s -X POST <fixture>/done -H 'Content-Type: application/json' -d '{\\\"status\\\":\\\"complete\\\",\\\"assessment\\\":\\\"Reached confirmation page showing Itinerary held with reference F-4382.\\\"}'\"",
+          "exitCode": 0,
+          "elapsedMs": 0
+        }
+      ],
+      "codexUsage": {
+        "input_tokens": 101208,
+        "cached_input_tokens": 94080,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1018,
+        "reasoning_output_tokens": 90
+      },
+      "codexExitCode": 0,
+      "agentStatus": "complete",
+      "elapsedMs": 24013,
+      "independent": {
+        "passed": true,
+        "mismatches": [],
+        "held": true,
+        "stageReached": "confirmation",
+        "actual": {
+          "from": "BOS",
+          "to": "SEA",
+          "date": "2026-11-08",
+          "cabin": "Business",
+          "flightId": "F-4382",
+          "name": "Morgan Ellis",
+          "email": "morgan.ellis@example.test",
+          "seat": "No preference",
+          "meal": "Standard",
+          "bag": true,
+          "bagWeight": "15 kg"
+        },
+        "events": [
+          {
+            "type": "search",
+            "body": {
+              "type": "search",
+              "from": "",
+              "to": "",
+              "date": "2026-11-08",
+              "cabin": "Business"
+            }
+          },
+          {
+            "type": "search",
+            "body": {
+              "type": "search",
+              "from": "BOS",
+              "to": "SEA",
+              "date": "2026-11-08",
+              "cabin": "Business"
+            }
+          },
+          {
+            "type": "flight",
+            "body": {
+              "type": "flight",
+              "id": "F-4382"
+            }
+          },
+          {
+            "type": "traveler",
+            "body": {
+              "type": "traveler",
+              "name": "Morgan Ellis",
+              "email": "morgan.ellis@example.test",
+              "meal": "Standard",
+              "seat": "No preference",
+              "bag": true,
+              "bagWeight": "15 kg"
+            }
+          },
+          {
+            "type": "hold",
+            "body": {
+              "type": "hold",
+              "terms": true
+            }
+          }
+        ]
+      },
+      "helper": {
+        "returnReason": "reported_complete",
+        "elapsedMs": 5907.958624999999,
+        "totalMs": 5911.729208,
+        "actions": 18,
+        "actionTrace": [
+          {
+            "op": "fill",
+            "name": "From airport",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "fill",
+            "name": "To airport",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "set_date",
+            "name": "Departure date",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "select",
+            "name": "Cabin",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "click",
+            "name": "Find flights",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "click",
+            "name": "Boston Logan (BOS)",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "click",
+            "name": "Seattle Tacoma (SEA)",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "click",
+            "name": "Find flights",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "click",
+            "name": "Choose this flight",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "fill",
+            "name": "Full name",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "fill",
+            "name": "Email address",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "select",
+            "name": "Meal preference",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "select",
+            "name": "Seat preference",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "check",
+            "name": "Add a checked bag",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "select",
+            "name": "Bag weight",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "click",
+            "name": "Continue to review",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "check",
+            "name": "I accept the demo booking terms",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "click",
+            "name": "Hold itinerary",
+            "outcome": "tool_succeeded"
+          }
+        ],
+        "latestSnapshot": "- banner\n  - StaticText \"Northstar Demo · itinerary holds\"\n- main\n  - heading \"Itinerary held\" [level=1, ref=e1]\n  - paragraph\n    - StaticText \"Your fake itinerary is held. Reference F-4382.\"",
+        "costUsd": 0.0032111100000000005,
+        "decisionCount": 19
+      },
+      "longestWaitStreak": 0,
+      "directBrowserGestures": [],
+      "verdict": "passed",
+      "finishedAt": "2026-09-25T15:22:47.393Z"
+    },
+    {
+      "index": 1,
+      "seed": 1235,
+      "features": {
+        "dateMode": "text",
+        "airportPicker": "delayed suggestions",
+        "flightDecoys": 3,
+        "travelerBelowFold": true,
+        "conditionalBag": true,
+        "reviewTerms": true
+      },
+      "goal": "On this demo travel site, hold a Business itinerary from Boston Logan to Miami International on 2026-11-17. Choose Northstar Air departing at 13:25. The traveler is Morgan Ellis (morgan.ellis@example.test); choose an aisle seat and a vegan meal. Do not add a checked bag. Accept the booking terms and finish on the confirmation page. This is a local fake booking; no payment is involved.",
+      "suppliedValues": {
+        "From airport": "Boston Logan",
+        "To airport": "Miami International",
+        "Departure date": "2026-11-17",
+        "Cabin": "Business",
+        "Airline": "Northstar Air",
+        "Departure time": "13:25",
+        "Full name": "Morgan Ellis",
+        "Email": "morgan.ellis@example.test",
+        "Seat preference": "Aisle",
+        "Meal preference": "Vegan"
+      },
+      "startedAt": "2026-09-25T15:22:47.567Z",
+      "commandCount": 5,
+      "commands": [
+        {
+          "command": "/bin/zsh -lc 'curl -s <fixture>/task'",
+          "exitCode": 0,
+          "elapsedMs": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"sed -n '1,240p' <skill>SKILL.md\"",
+          "exitCode": 0,
+          "elapsedMs": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"node '<skill>scripts/run.mjs' --binary '<agent-browser>' --session '<session>' --url '<fixture>/search' --intent 'On this demo travel site, hold a Business itinerary from Boston Logan to Miami International on 2026-11-17. Choose Northstar Air departing at 13:25. The traveler is Morgan Ellis (morgan.ellis@example.test); choose an aisle seat and a vegan meal. Do not add a checked bag. Accept the booking terms and finish on the confirmation page. This is a local fake booking; no payme",
+          "exitCode": 0,
+          "elapsedMs": 6721
+        },
+        {
+          "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json snapshot\"",
+          "exitCode": 0,
+          "elapsedMs": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"curl -s -X POST <fixture>/done -H 'Content-Type: application/json' --data '{\\\"status\\\":\\\"complete\\\",\\\"assessment\\\":\\\"Fresh browser snapshot is on /confirmation with heading Itinerary held and reference F-4551 after Jev completed the requested hold flow.\\\"}'\"",
+          "exitCode": 0,
+          "elapsedMs": 0
+        }
+      ],
+      "codexUsage": {
+        "input_tokens": 94956,
+        "cached_input_tokens": 77696,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1212,
+        "reasoning_output_tokens": 112
+      },
+      "codexExitCode": 0,
+      "agentStatus": "complete",
+      "elapsedMs": 26944,
+      "independent": {
+        "passed": true,
+        "mismatches": [],
+        "held": true,
+        "stageReached": "confirmation",
+        "actual": {
+          "from": "BOS",
+          "to": "MIA",
+          "date": "2026-11-17",
+          "cabin": "Business",
+          "flightId": "F-4551",
+          "name": "Morgan Ellis",
+          "email": "morgan.ellis@example.test",
+          "seat": "Aisle",
+          "meal": "Vegan",
+          "bag": false,
+          "bagWeight": null
+        },
+        "events": [
+          {
+            "type": "search",
+            "body": {
+              "type": "search",
+              "from": "",
+              "to": "",
+              "date": "2026-11-17",
+              "cabin": "Business"
+            }
+          },
+          {
+            "type": "search",
+            "body": {
+              "type": "search",
+              "from": "BOS",
+              "to": "MIA",
+              "date": "2026-11-17",
+              "cabin": "Business"
+            }
+          },
+          {
+            "type": "flight",
+            "body": {
+              "type": "flight",
+              "id": "F-4551"
+            }
+          },
+          {
+            "type": "traveler",
+            "body": {
+              "type": "traveler",
+              "name": "Morgan Ellis",
+              "email": "morgan.ellis@example.test",
+              "meal": "Vegan",
+              "seat": "Aisle",
+              "bag": false,
+              "bagWeight": null
+            }
+          },
+          {
+            "type": "hold",
+            "body": {
+              "type": "hold",
+              "terms": true
+            }
+          }
+        ]
+      },
+      "helper": {
+        "returnReason": "reported_complete",
+        "elapsedMs": 6255.743458,
+        "totalMs": 6257.636166,
+        "actions": 17,
+        "actionTrace": [
+          {
+            "op": "click",
+            "name": "From airport",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "fill",
+            "name": "From airport",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "fill",
+            "name": "To airport",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "fill",
+            "name": "Departure date",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "select",
+            "name": "Cabin",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "click",
+            "name": "Find flights",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "click",
+            "name": "Boston Logan (BOS)",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "click",
+            "name": "Miami International (MIA)",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "click",
+            "name": "Find flights",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "click",
+            "name": "Choose this flight",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "fill",
+            "name": "Full name",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "fill",
+            "name": "Email address",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "select",
+            "name": "Meal preference",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "select",
+            "name": "Seat preference",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "click",
+            "name": "Continue to review",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "check",
+            "name": "I accept the demo booking terms",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "click",
+            "name": "Hold itinerary",
+            "outcome": "tool_succeeded"
+          }
+        ],
+        "latestSnapshot": "- banner\n  - StaticText \"Northstar Demo · itinerary holds\"\n- main\n  - heading \"Itinerary held\" [level=1, ref=e1]\n  - paragraph\n    - StaticText \"Your fake itinerary is held. Reference F-4551.\"",
+        "costUsd": 0.0030363059999999995,
+        "decisionCount": 18
+      },
+      "longestWaitStreak": 0,
+      "directBrowserGestures": [],
+      "verdict": "passed",
+      "finishedAt": "2026-09-25T15:23:26.165Z"
+    }
+  ],
+  "cleanup": {
+    "browserSessionsClosed": true,
+    "serversClosed": true,
+    "temporaryDirectoriesRemoved": true
+  },
+  "codexVersion": "codex-cli 0.147.0",
+  "browserVersion": "agent-browser 0.33.2",
+  "finishedAt": "2026-09-25T15:23:26.333Z",
+  "summary": {
+    "passed": 2,
+    "total": 2,
+    "medianEndToEndMs": 25478.5,
+    "jevCostUsd": 0.006247416
+  },
+  "verdict": "passed"
+}

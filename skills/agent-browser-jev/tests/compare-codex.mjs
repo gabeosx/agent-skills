@@ -53,15 +53,15 @@ async function lane(round,arm){
         if(index>=ordered.length){send({finished:true});return;}
         const scenario=ordered[index];events=[];
         const trial={round,arm,id:scenario.id,intent:scenario.intent,startedAt:new Date().toISOString()};
-        active={scenario,trial,start:performance.now(),evidencePath:join(cwd,`${scenario.id}.json`)};report.trials.push(trial);await save();
-        send({id:scenario.id,url:`http://127.0.0.1:${server.address().port}${scenario.route}`,intent:scenario.intent,suppliedValues:scenario.values??{},...(arm==='jev'?{evidencePath:active.evidencePath}:{})});return;
+        active={scenario,trial,start:performance.now()};report.trials.push(trial);await save();
+        send({id:scenario.id,url:`http://127.0.0.1:${server.address().port}${scenario.route}`,intent:scenario.intent,suppliedValues:scenario.values??{}});return;
       }
       if(req.url==='/events'&&req.method==='POST'){
         let body='';for await(const chunk of req)body+=chunk;events.push(JSON.parse(body));send({recorded:true});return;
       }
       if(req.url==='/done'&&req.method==='POST'){
         if(!active){send({error:'No active task'});return;}
-        const {trial,scenario,start,evidencePath}=active;trial.elapsedMs=Math.round(performance.now()-start);trial.finishedAt=new Date().toISOString();
+        const {trial,scenario,start}=active;trial.elapsedMs=Math.round(performance.now()-start);trial.finishedAt=new Date().toISOString();
         let body='';for await(const chunk of req)body+=chunk;
         try{
           trial.agentReportedStatus=JSON.parse(body).status;
@@ -85,17 +85,8 @@ async function lane(round,arm){
           assert.doesNotMatch(trial.finalSnapshot,/dialog/);if(scenario.id==='preferences')assert.match(trial.finalSnapshot,/Preferences saved/);
           trial.uiVerdict='passed';
         }catch(error){trial.uiVerdict='failed';trial.failure=String(error.message).replaceAll(binary,'<agent-browser>').replaceAll(session,'<session>').replaceAll(root,'<temporary-directory>');}
-        if(arm==='jev'){
-          try{
-            const evidence=JSON.parse(await readFile(evidencePath,'utf8'));
-            const decisions=evidence.decisions??[];
-            trial.helper={returnReason:evidence.returnReason,actions:evidence.actions?.length,
-              elapsedMs:evidence.elapsedMs??null,totalMs:evidence.totalMs??null,timing:evidence.timing??null,decisions:decisions.map(({op,cost,elapsedMs})=>({op,cost:cost??null,elapsedMs:elapsedMs??null})),
-              costUsd:decisions.length&&decisions.every(d=>Number.isFinite(d.cost))?decisions.reduce((sum,d)=>sum+d.cost,0):null,
-              latestObservation:evidence.latestObservation};
-          }catch{trial.helperEvidenceMissing=true;}
-        }
-        trial.verdict=trial.uiVerdict==='passed'&&trial.statusVerdict==='passed'&&!trial.helperEvidenceMissing?'passed':'failed';
+        if(arm==='jev'&&!trial.helper)trial.helperResultMissing=true;
+        trial.verdict=trial.uiVerdict==='passed'&&trial.statusVerdict==='passed'&&!trial.helperResultMissing?'passed':'failed';
         active=undefined;index++;await save();console.log(JSON.stringify({round,arm,id:trial.id,elapsedMs:trial.elapsedMs,verdict:trial.verdict}));
         send({recorded:true});return; // Do not give the agent fixture answers or a chance to retry an assertion.
       }
@@ -109,7 +100,7 @@ async function lane(round,arm){
   const helperCommand=`node ${shellQuote(join(skill,'scripts/run.mjs'))} --binary ${shellQuote(binary)} --session ${shellQuote(session)}`;
   const method=arm==='direct'
     ? `Complete each task yourself using normal agent-browser CLI commands. Do not invoke Jev or any other model/helper. Use snapshots to choose refs, then click/fill/select/check/uncheck/press/scroll/back/wait/get as appropriate. You may batch known independent commands as you normally would.`
-    : `Complete each task by calling the Jev helper with the supplied intent and exact values: ${helperCommand} --url '<task URL>' --intent '<task intent>' [--value 'name=text' ...] --output '<task evidencePath>'. First read ${shellQuote(join(skill,'SKILL.md'))}; use this version of the skill. Do not write a task file or policy. After handoff or failure, follow the skill's caller-handling instructions. Inspect the page and continue with ordinary browser commands if appropriate; retain time spent handling the exception.`;
+    : `Complete each task by calling the Jev helper with the supplied intent and exact values: ${helperCommand} --url '<task URL>' --intent '<task intent>' [--value 'name=text' ...]. The helper returns its complete result directly on stdout and writes no task or result file. First read ${shellQuote(join(skill,'SKILL.md'))}; use this version of the skill. After handoff or failure, follow the skill's caller-handling instructions. Inspect the page and continue with ordinary browser commands if appropriate; retain time spent handling the exception.`;
   const prompt=`You are completing authorized browser tasks on synthetic local pages. Use only the browser UI as evidence. Do not inspect fixture source, test files, other sessions, reports, repository files (except the specified SKILL.md) or environment secrets. You have no preselected refs or expected action sequences. Do not delegate or call external model APIs.
 
 Browser command: ${browserCommand}
@@ -136,6 +127,12 @@ Workflow:
       if(event.type==='item.started'&&event.item?.type==='command_execution')commandStarts.set(event.item.id,performance.now());
       if(event.type==='item.completed'&&event.item?.type==='command_execution'){
         info.commandCount++;info.commands.push({command:event.item.command.replaceAll(binary,'<agent-browser>').replaceAll(skill,'<installed-skill>').replaceAll(session,'<session>').replaceAll(origin,'<fixture-origin>').replaceAll(root,'<temporary-directory>'),exitCode:event.item.exit_code,elapsedMs:commandStarts.has(event.item.id)?Math.round(performance.now()-commandStarts.get(event.item.id)):null});
+        if(arm==='jev'&&active&&event.item.command.includes('scripts/run.mjs'))try{
+          const result=JSON.parse(event.item.aggregated_output.trim());
+          active.trial.helper={returnReason:result.returnReason,actions:result.actions?.length??0,
+            totalMs:result.timing?.totalMs??null,timing:result.timing??null,decisions:result.jev?.calls??0,
+            costUsd:result.jev?.costUsd??null,observation:result.observation??null};
+        }catch{active.trial.helperOutputInvalid=true}
       }
       if(event.type==='turn.completed')info.usage=event.usage??null;
       if(event.type==='turn.failed')info.failed=true;

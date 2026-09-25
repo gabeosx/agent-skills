@@ -1,0 +1,744 @@
+{
+  "schema": 1,
+  "kind": "generated-travel-isolated-caller",
+  "version": "1.0.0",
+  "startedAt": "2026-09-25T17:31:29.014Z",
+  "seed": 1573558718,
+  "casesRequested": 3,
+  "model": "gpt-5.5",
+  "effort": "low",
+  "timing": "Task delivery to caller POST /done; includes caller reasoning, Jev, browser actions and final caller assessment. Excludes Codex startup and independent verification.",
+  "cost": "Jev amounts are provider-reported. Codex tokens are reported separately; no dollar equivalent is assumed.",
+  "sourceSha256": {
+    "tests/generated-gym.mjs": "7b65e221891b111fb38388a8c40ebf75e3b6f9f435893be1363ddf00537077bf",
+    "tests/fixtures/generated-travel.mjs": "a3ede53a03cde96912ff46fe4ddfcb1f4bbf8e0227d942681e281ca39d27dcae",
+    "SKILL.md": "7c9c55f698aca9ccfe658086fa0e578aaaca9bad01d7c5b2f856093e3ddd1832",
+    "scripts/run.mjs": "cadea26a8bdea9ecc65ed690eec5da0e0890b36c8ec284aafb2e94f5415b9358",
+    "scripts/controls.mjs": "4bc326c2e16494da048abafeeececefc2f2fb928947fe798727e2ae1fd45468f",
+    "scripts/jev-browser.mjs": "8d714c8631cf0a9795a585d67b3dde2b79e082c774f63acd41ad21d3e9ece84f",
+    "scripts/agent-browser-jev.mjs": "c52bd6f6983e66f704ba9b288a6f12aed108a2a5bc9079dbfe641471fb00ac6f"
+  },
+  "trials": [
+    {
+      "index": 0,
+      "seed": 1573558718,
+      "features": {
+        "dateMode": "native",
+        "airportPicker": "delayed suggestions",
+        "flightDecoys": 3,
+        "travelerBelowFold": true,
+        "conditionalBag": true,
+        "reviewTerms": true
+      },
+      "goal": "On this demo travel site, hold a Premium Economy itinerary from Seattle Tacoma to Miami International on 2026-11-24. Choose Blue Finch departing at 13:25. The traveler is Jordan Lee (jordan.lee@example.test); choose a window seat and a vegetarian meal. Do not add a checked bag. Accept the booking terms and finish on the confirmation page. This is a local fake booking; no payment is involved.",
+      "suppliedValues": {
+        "From airport": "Seattle Tacoma",
+        "To airport": "Miami International",
+        "Departure date": "2026-11-24",
+        "Cabin": "Premium Economy",
+        "Airline": "Blue Finch",
+        "Departure time": "13:25",
+        "Full name": "Jordan Lee",
+        "Email": "jordan.lee@example.test",
+        "Seat preference": "Window",
+        "Meal preference": "Vegetarian"
+      },
+      "startedAt": "2026-09-25T17:31:29.087Z",
+      "commandCount": 5,
+      "commands": [
+        {
+          "command": "/bin/zsh -lc 'curl -s <fixture>/task'",
+          "exitCode": 0,
+          "elapsedMs": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"sed -n '1,240p' <skill>SKILL.md\"",
+          "exitCode": 0,
+          "elapsedMs": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"node '<skill>scripts/run.mjs' --binary '<agent-browser>' --session '<session>' --url '<fixture>/search' --intent 'On this demo travel site, hold a Premium Economy itinerary from Seattle Tacoma to Miami International on 2026-11-24. Choose Blue Finch departing at 13:25. The traveler is Jordan Lee (jordan.lee@example.test); choose a window seat and a vegetarian meal. Do not add a checked bag. Accept the booking terms and finish on the confirmation page. This is a local fake booking; n",
+          "exitCode": 0,
+          "elapsedMs": 7149
+        },
+        {
+          "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json snapshot\"",
+          "exitCode": 0,
+          "elapsedMs": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"curl -s -X POST <fixture>/done -H 'Content-Type: application/json' -d '{\\\"status\\\":\\\"complete\\\",\\\"assessment\\\":\\\"Confirmed on the confirmation page: Itinerary held, reference F-5045. Helper trace shows requested route/date/cabin/traveler/preferences were entered, terms accepted, and hold submitted.\\\"}'\"",
+          "exitCode": 0,
+          "elapsedMs": 0
+        }
+      ],
+      "helper": {
+        "returnReason": "reported_complete",
+        "totalMs": 6601.584666000001,
+        "actions": 17,
+        "actionTrace": [
+          {
+            "op": "fill",
+            "name": "From airport",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "fill",
+            "name": "To airport",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "set_date",
+            "name": "Departure date",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "select",
+            "name": "Cabin",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "click",
+            "name": "Find flights",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "click",
+            "name": "Find flights",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "click",
+            "name": "Seattle Tacoma (SEA)",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "click",
+            "name": "Miami International (MIA)",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "click",
+            "name": "Find flights",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "click",
+            "name": "Choose this flight",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "fill",
+            "name": "Full name",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "fill",
+            "name": "Email address",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "select",
+            "name": "Meal preference",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "select",
+            "name": "Seat preference",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "click",
+            "name": "Continue to review",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "check",
+            "name": "I accept the demo booking terms",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "click",
+            "name": "Hold itinerary",
+            "outcome": "tool_succeeded"
+          }
+        ],
+        "latestSnapshot": "- banner\n  - StaticText \"Northstar Demo · itinerary holds\"\n- main\n  - heading \"Itinerary held\" [level=1, ref=e1]\n  - paragraph\n    - StaticText \"Your fake itinerary is held. Reference F-5045.\"",
+        "costUsd": 0.002741172,
+        "decisionCount": 18
+      },
+      "codexUsage": {
+        "input_tokens": 96427,
+        "cached_input_tokens": 75648,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1278,
+        "reasoning_output_tokens": 243
+      },
+      "codexExitCode": 0,
+      "agentStatus": "complete",
+      "elapsedMs": 28828,
+      "independent": {
+        "passed": true,
+        "mismatches": [],
+        "held": true,
+        "stageReached": "confirmation",
+        "actual": {
+          "from": "SEA",
+          "to": "MIA",
+          "date": "2026-11-24",
+          "cabin": "Premium Economy",
+          "flightId": "F-5045",
+          "name": "Jordan Lee",
+          "email": "jordan.lee@example.test",
+          "seat": "Window",
+          "meal": "Vegetarian",
+          "bag": false,
+          "bagWeight": null
+        },
+        "events": [
+          {
+            "type": "search",
+            "body": {
+              "type": "search",
+              "from": "",
+              "to": "",
+              "date": "2026-11-24",
+              "cabin": "Premium Economy"
+            }
+          },
+          {
+            "type": "search",
+            "body": {
+              "type": "search",
+              "from": "",
+              "to": "",
+              "date": "2026-11-24",
+              "cabin": "Premium Economy"
+            }
+          },
+          {
+            "type": "search",
+            "body": {
+              "type": "search",
+              "from": "SEA",
+              "to": "MIA",
+              "date": "2026-11-24",
+              "cabin": "Premium Economy"
+            }
+          },
+          {
+            "type": "flight",
+            "body": {
+              "type": "flight",
+              "id": "F-5045"
+            }
+          },
+          {
+            "type": "traveler",
+            "body": {
+              "type": "traveler",
+              "name": "Jordan Lee",
+              "email": "jordan.lee@example.test",
+              "meal": "Vegetarian",
+              "seat": "Window",
+              "bag": false,
+              "bagWeight": null
+            }
+          },
+          {
+            "type": "hold",
+            "body": {
+              "type": "hold",
+              "terms": true
+            }
+          }
+        ]
+      },
+      "longestWaitStreak": 0,
+      "directBrowserGestures": [],
+      "verdict": "passed",
+      "finishedAt": "2026-09-25T17:32:08.349Z"
+    },
+    {
+      "index": 1,
+      "seed": 1573558719,
+      "features": {
+        "dateMode": "text",
+        "airportPicker": "delayed suggestions",
+        "flightDecoys": 3,
+        "travelerBelowFold": true,
+        "conditionalBag": true,
+        "reviewTerms": true
+      },
+      "goal": "On this demo travel site, hold an Economy itinerary from Seattle Tacoma to Denver International on 2026-11-10. Choose Blue Finch departing at 13:25. The traveler is Jordan Lee (jordan.lee@example.test); choose no seat preference and a standard meal. Do not add a checked bag. Accept the booking terms and finish on the confirmation page. This is a local fake booking; no payment is involved.",
+      "suppliedValues": {
+        "From airport": "Seattle Tacoma",
+        "To airport": "Denver International",
+        "Departure date": "2026-11-10",
+        "Cabin": "Economy",
+        "Airline": "Blue Finch",
+        "Departure time": "13:25",
+        "Full name": "Jordan Lee",
+        "Email": "jordan.lee@example.test",
+        "Seat preference": "No preference",
+        "Meal preference": "Standard"
+      },
+      "startedAt": "2026-09-25T17:32:08.512Z",
+      "commandCount": 5,
+      "commands": [
+        {
+          "command": "/bin/zsh -lc \"sed -n '1,240p' <skill>SKILL.md\"",
+          "exitCode": 0,
+          "elapsedMs": 0
+        },
+        {
+          "command": "/bin/zsh -lc 'curl -s <fixture>/task'",
+          "exitCode": 0,
+          "elapsedMs": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"node '<skill>scripts/run.mjs' --binary '<agent-browser>' --session '<session>' --url '<fixture>/search' --intent 'On this demo travel site, hold an Economy itinerary from Seattle Tacoma to Denver International on 2026-11-10. Choose Blue Finch departing at 13:25. The traveler is Jordan Lee (jordan.lee@example.test); choose no seat preference and a standard meal. Do not add a checked bag. Accept the booking terms and finish on the confirmation page. This is a local fake booking; no p",
+          "exitCode": 0,
+          "elapsedMs": 6043
+        },
+        {
+          "command": "/bin/zsh -lc \"<agent-browser> --session '<session>' --json snapshot\"",
+          "exitCode": 0,
+          "elapsedMs": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"curl -s -X POST <fixture>/done -H 'Content-Type: application/json' --data '{\\\"status\\\":\\\"complete\\\",\\\"assessment\\\":\\\"Confirmation page reached with itinerary held reference F-5153 after submitting the requested SEA to DEN Economy Blue Finch 13:25 hold for Jordan Lee.\\\"}'\"",
+          "exitCode": 0,
+          "elapsedMs": 0
+        }
+      ],
+      "helper": {
+        "returnReason": "reported_complete",
+        "totalMs": 5562.046958,
+        "actions": 17,
+        "actionTrace": [
+          {
+            "op": "click",
+            "name": "From airport",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "fill",
+            "name": "From airport",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "fill",
+            "name": "To airport",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "fill",
+            "name": "Departure date",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "select",
+            "name": "Cabin",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "click",
+            "name": "Find flights",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "click",
+            "name": "Seattle Tacoma (SEA)",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "click",
+            "name": "Denver International (DEN)",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "click",
+            "name": "Find flights",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "click",
+            "name": "Choose this flight",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "fill",
+            "name": "Full name",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "fill",
+            "name": "Email address",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "select",
+            "name": "Meal preference",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "select",
+            "name": "Seat preference",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "click",
+            "name": "Continue to review",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "check",
+            "name": "I accept the demo booking terms",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "click",
+            "name": "Hold itinerary",
+            "outcome": "tool_succeeded"
+          }
+        ],
+        "latestSnapshot": "- banner\n  - StaticText \"Northstar Demo · itinerary holds\"\n- main\n  - heading \"Itinerary held\" [level=1, ref=e1]\n  - paragraph\n    - StaticText \"Your fake itinerary is held. Reference F-5153.\"",
+        "costUsd": 0.002788296,
+        "decisionCount": 18
+      },
+      "codexUsage": {
+        "input_tokens": 96504,
+        "cached_input_tokens": 75648,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1143,
+        "reasoning_output_tokens": 105
+      },
+      "codexExitCode": 0,
+      "agentStatus": "complete",
+      "elapsedMs": 24298,
+      "independent": {
+        "passed": true,
+        "mismatches": [],
+        "held": true,
+        "stageReached": "confirmation",
+        "actual": {
+          "from": "SEA",
+          "to": "DEN",
+          "date": "2026-11-10",
+          "cabin": "Economy",
+          "flightId": "F-5153",
+          "name": "Jordan Lee",
+          "email": "jordan.lee@example.test",
+          "seat": "No preference",
+          "meal": "Standard",
+          "bag": false,
+          "bagWeight": null
+        },
+        "events": [
+          {
+            "type": "search",
+            "body": {
+              "type": "search",
+              "from": "",
+              "to": "",
+              "date": "2026-11-10",
+              "cabin": "Economy"
+            }
+          },
+          {
+            "type": "search",
+            "body": {
+              "type": "search",
+              "from": "SEA",
+              "to": "DEN",
+              "date": "2026-11-10",
+              "cabin": "Economy"
+            }
+          },
+          {
+            "type": "flight",
+            "body": {
+              "type": "flight",
+              "id": "F-5153"
+            }
+          },
+          {
+            "type": "traveler",
+            "body": {
+              "type": "traveler",
+              "name": "Jordan Lee",
+              "email": "jordan.lee@example.test",
+              "meal": "Standard",
+              "seat": "No preference",
+              "bag": false,
+              "bagWeight": null
+            }
+          },
+          {
+            "type": "hold",
+            "body": {
+              "type": "hold",
+              "terms": true
+            }
+          }
+        ]
+      },
+      "longestWaitStreak": 0,
+      "directBrowserGestures": [],
+      "verdict": "passed",
+      "finishedAt": "2026-09-25T17:32:41.853Z"
+    },
+    {
+      "index": 2,
+      "seed": 1573558720,
+      "features": {
+        "dateMode": "native",
+        "airportPicker": "delayed suggestions",
+        "flightDecoys": 3,
+        "travelerBelowFold": true,
+        "conditionalBag": true,
+        "reviewTerms": true
+      },
+      "goal": "On this demo travel site, hold an Economy itinerary from Denver International to Miami International on 2026-11-11. Choose Northstar Air departing at 09:40. The traveler is Avery Chen (avery.chen@example.test); choose a window seat and a vegan meal. Add one checked bag at 15 kg. Accept the booking terms and finish on the confirmation page. This is a local fake booking; no payment is involved.",
+      "suppliedValues": {
+        "From airport": "Denver International",
+        "To airport": "Miami International",
+        "Departure date": "2026-11-11",
+        "Cabin": "Economy",
+        "Airline": "Northstar Air",
+        "Departure time": "09:40",
+        "Full name": "Avery Chen",
+        "Email": "avery.chen@example.test",
+        "Seat preference": "Window",
+        "Meal preference": "Vegan",
+        "Bag weight": "15 kg"
+      },
+      "startedAt": "2026-09-25T17:32:42.021Z",
+      "commandCount": 5,
+      "commands": [
+        {
+          "command": "/bin/zsh -lc \"sed -n '1,240p' <skill>SKILL.md\"",
+          "exitCode": 0,
+          "elapsedMs": 0
+        },
+        {
+          "command": "/bin/zsh -lc 'curl -s <fixture>/task'",
+          "exitCode": 0,
+          "elapsedMs": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"node '<skill>scripts/run.mjs' --binary '<agent-browser>' --session '<session>' --url '<fixture>/search' --intent 'On this demo travel site, hold an Economy itinerary from Denver International to Miami International on 2026-11-11. Choose Northstar Air departing at 09:40. The traveler is Avery Chen (avery.chen@example.test); choose a window seat and a vegan meal. Add one checked bag at 15 kg. Accept the booking terms and finish on the confirmation page. This is a local fake booking; ",
+          "exitCode": 0,
+          "elapsedMs": 6553
+        },
+        {
+          "command": "/bin/zsh -lc \"'<agent-browser>' --session '<session>' --json snapshot\"",
+          "exitCode": 0,
+          "elapsedMs": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"curl -s -X POST <fixture>/done -H 'Content-Type: application/json' -d '{\\\"status\\\":\\\"complete\\\",\\\"assessment\\\":\\\"Confirmation page reached with heading Itinerary held and reference F-4540.\\\"}'\"",
+          "exitCode": 0,
+          "elapsedMs": 0
+        }
+      ],
+      "helper": {
+        "returnReason": "reported_complete",
+        "totalMs": 5911.9734579999995,
+        "actions": 18,
+        "actionTrace": [
+          {
+            "op": "fill",
+            "name": "From airport",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "fill",
+            "name": "To airport",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "set_date",
+            "name": "Departure date",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "select",
+            "name": "Cabin",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "click",
+            "name": "Find flights",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "click",
+            "name": "Denver International (DEN)",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "click",
+            "name": "Miami International (MIA)",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "click",
+            "name": "Find flights",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "click",
+            "name": "Choose this flight",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "fill",
+            "name": "Full name",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "fill",
+            "name": "Email address",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "select",
+            "name": "Meal preference",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "select",
+            "name": "Seat preference",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "check",
+            "name": "Add a checked bag",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "select",
+            "name": "Bag weight",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "click",
+            "name": "Continue to review",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "check",
+            "name": "I accept the demo booking terms",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "click",
+            "name": "Hold itinerary",
+            "outcome": "tool_succeeded"
+          }
+        ],
+        "latestSnapshot": "- banner\n  - StaticText \"Northstar Demo · itinerary holds\"\n- main\n  - heading \"Itinerary held\" [level=1, ref=e1]\n  - paragraph\n    - StaticText \"Your fake itinerary is held. Reference F-4540.\"",
+        "costUsd": 0.0030229499999999995,
+        "decisionCount": 19
+      },
+      "codexUsage": {
+        "input_tokens": 96670,
+        "cached_input_tokens": 88960,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1125,
+        "reasoning_output_tokens": 73
+      },
+      "codexExitCode": 0,
+      "agentStatus": "complete",
+      "elapsedMs": 24487,
+      "independent": {
+        "passed": true,
+        "mismatches": [],
+        "held": true,
+        "stageReached": "confirmation",
+        "actual": {
+          "from": "DEN",
+          "to": "MIA",
+          "date": "2026-11-11",
+          "cabin": "Economy",
+          "flightId": "F-4540",
+          "name": "Avery Chen",
+          "email": "avery.chen@example.test",
+          "seat": "Window",
+          "meal": "Vegan",
+          "bag": true,
+          "bagWeight": "15 kg"
+        },
+        "events": [
+          {
+            "type": "search",
+            "body": {
+              "type": "search",
+              "from": "",
+              "to": "",
+              "date": "2026-11-11",
+              "cabin": "Economy"
+            }
+          },
+          {
+            "type": "search",
+            "body": {
+              "type": "search",
+              "from": "DEN",
+              "to": "MIA",
+              "date": "2026-11-11",
+              "cabin": "Economy"
+            }
+          },
+          {
+            "type": "flight",
+            "body": {
+              "type": "flight",
+              "id": "F-4540"
+            }
+          },
+          {
+            "type": "traveler",
+            "body": {
+              "type": "traveler",
+              "name": "Avery Chen",
+              "email": "avery.chen@example.test",
+              "meal": "Vegan",
+              "seat": "Window",
+              "bag": true,
+              "bagWeight": "15 kg"
+            }
+          },
+          {
+            "type": "hold",
+            "body": {
+              "type": "hold",
+              "terms": true
+            }
+          }
+        ]
+      },
+      "longestWaitStreak": 0,
+      "directBrowserGestures": [],
+      "verdict": "passed",
+      "finishedAt": "2026-09-25T17:33:16.743Z"
+    }
+  ],
+  "cleanup": {
+    "browserSessionsClosed": true,
+    "serversClosed": true,
+    "temporaryDirectoriesRemoved": true
+  },
+  "codexVersion": "codex-cli 0.147.0",
+  "browserVersion": "agent-browser 0.33.2",
+  "finishedAt": "2026-09-25T17:33:16.913Z",
+  "summary": {
+    "passed": 3,
+    "total": 3,
+    "medianEndToEndMs": 24487,
+    "jevCostUsd": 0.008552417999999999
+  },
+  "verdict": "passed"
+}
