@@ -46,6 +46,12 @@ The caller evaluates the observed state against the requested outcome. A fresh, 
 
 Exit codes remain compatible: **0** for model-reported completion, **2** for handoff/limits, **1** for command/setup failure. Correctly stopping for an absent target is still a handoff. Caller recovery after a handoff must be recorded separately.
 
+## Searchable dropdowns
+
+Typing a query into a combobox filters its suggestions; it does not establish the selected contact, account or other record. The helper observes the resulting list and can click the matching option or use ArrowDown/ArrowUp followed by Enter. The caller must check the committed selection, not just the input text. Native `select` is reserved for dropdowns with the native popup marker in the browser snapshot; custom ARIA options remain ordinary observed click targets.
+
+Keyboard primitives are available, but autonomous selection of the correct keyboard-only suggestion is not reliable in the retained tests—even with explicit caller instructions. Use direct agent-browser under caller control for these widgets and verify the committed value. Experimental Tab selection also chose an incorrect record, so Tab is not offered by this helper.
+
 ## Resume
 
 ```sh

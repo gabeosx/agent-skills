@@ -14,14 +14,14 @@ const choose = fn => async r => ({binding:r.binding,choice:Object.entries(r.cand
 const run = (b,decide,extra={}) => act({browser:b,decide,intentOrSteps:'Complete the draft',scope,authorize:()=>true,...extra});
 
 test('native selects offer observed unique unselected labels on their parent; disabled controls are excluded',()=>{
-  const observation={snapshot:'- combobox "Region" [ref=e1]: Select\n  - option "Select" [selected, ref=e2]\n  - option "North" [ref=e3]\n  - option "Disabled" [disabled=true, ref=e4]\n- button "Send" [disabled=true, ref=e5]',
+  const observation={snapshot:'- combobox "Region" [ref=e1]: Select\n  - MenuListPopup\n    - option "Select" [selected, ref=e2]\n    - option "North" [ref=e3]\n    - option "Disabled" [disabled=true, ref=e4]\n- button "Send" [disabled=true, ref=e5]',
     refs:{e1:{role:'combobox',name:'Region'},e2:{role:'option',name:'Select'},e3:{role:'option',name:'North'},e4:{role:'option',name:'Disabled'},e5:{role:'button',name:'Send'}}};
   const actions=discoverActions(observation);
   assert.deepEqual(actions.filter(a=>a.ref),[{op:'select',ref:'@e1',role:'combobox',name:'Region',option:'North'}]);
 });
 
 test('duplicate option labels are not converted into ambiguous native selections',()=>{
-  const actions=discoverActions({snapshot:'- combobox [ref=e1]\n  - option [ref=e2]\n  - option [ref=e3]',
+  const actions=discoverActions({snapshot:'- combobox [ref=e1]\n  - MenuListPopup\n    - option [ref=e2]\n    - option [ref=e3]',
     refs:{e1:{role:'combobox'},e2:{role:'option',name:'Same'},e3:{role:'option',name:'Same'}}});
   assert.equal(actions.filter(a=>a.op==='select').length,0);
 });
@@ -140,4 +140,23 @@ test('superseded observations are never advertised as fresh',async()=>{
   const b=browser([{snapshot:'ready',refs:{}}]);
   const result=await run(b,async r=>{invalidateBrowserObservation(b.sessionId);return {binding:r.binding,choice:'step_complete'};});
   assert.equal(result.returnReason,'superseded_observation');assert.equal(summarize(result,'evidence').observation.fresh,false);
+});
+
+
+test('custom listbox options remain clickable and do not suppress autocomplete typing',()=>{
+  const observation={snapshot:'- combobox "Contact" [expanded=true, ref=e1]\n  - listbox "Matches" [ref=e2]\n    - option "Adobe Inc" [ref=e3]',
+    refs:{e1:{role:'combobox',name:'Contact'},e2:{role:'listbox',name:'Matches'},e3:{role:'option',name:'Adobe Inc'}}};
+  const actions=discoverActions(observation,{contact:'adobe'});
+  assert.equal(actions.some(a=>a.op==='select'),false);
+  assert.equal(actions.some(a=>a.op==='press'&&a.key==='Tab'),false);
+  assert.ok(actions.some(a=>a.op==='click'&&a.ref==='@e3'));
+  assert.ok(actions.some(a=>a.op==='fill'&&a.ref==='@e1'&&a.value==='adobe'));
+  for(const key of ['ArrowDown','ArrowUp','Enter']) assert.ok(actions.some(a=>a.op==='press'&&a.ref==='@e1'&&a.key===key));
+});
+
+test('readonly custom combobox can open and navigate but cannot be filled',()=>{
+  const actions=discoverActions({snapshot:'- combobox "Account" [readonly=true, ref=e1]',refs:{e1:{role:'combobox',name:'Account'}}},{query:'Software'});
+  assert.ok(actions.some(a=>a.op==='click'&&a.ref==='@e1'));
+  assert.ok(actions.some(a=>a.op==='press'&&a.key==='ArrowDown'));
+  assert.equal(actions.some(a=>['fill','request_input'].includes(a.op)),false);
 });

@@ -1,0 +1,12 @@
+{
+  "version": "0.3.1",
+  "verdict": "fixture_error",
+  "reason": "Initial synthetic server rejected the browser favicon request and exited before outcome assertions. No acceptance result is claimed. The server now returns 404 for unknown routes.",
+  "helperReturnReason": "reported_complete",
+  "cleanup": {
+    "browserClosed": true,
+    "serverExited": true,
+    "temporaryDirectoryRemoved": true
+  },
+  "redactions": "Local home, executable, temporary paths and workflow session identifiers normalized; actions, verdicts, timings, usage and source hashes unchanged."
+}

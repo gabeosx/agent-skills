@@ -1,0 +1,1797 @@
+{
+  "version": "0.3.1",
+  "startedAt": "2026-09-25T12:57:46.535Z",
+  "sourceSha256": {
+    "scripts/controls.mjs": "35b3d48f93d8328fcfdba0daad9248f66a394011cfc4604ca526cde50e2aaa8b",
+    "scripts/agent-browser-jev.mjs": "1df07ba7a9db8f9d27b0cc437cc9aa49e487fb1b0a4c308f3ed86b4822096990",
+    "scripts/jev-browser.mjs": "8cac98966637e04d759dc322f45aeeacc2d1a3bd497cde20512a0fea7decb836",
+    "scripts/run.mjs": "17b9f6d9437c94d7b2878fd2bb7d9a04a0acf60151cb67e6cccd905c5bc843a3",
+    "tests/autocomplete-live.mjs": "6e84428863f8f37f10ec586ea2b5557b9f1174da558076c8c5d38cf31058e67f",
+    "tests/fixtures/autocomplete-page.mjs": "4bbcd01467fac0dba0db281f870f7727ef9eeb4b1de1cec450158c743cfe353f"
+  },
+  "cases": [
+    {
+      "mode": "click",
+      "result": {
+        "returnReason": "reported_complete",
+        "actions": [
+          {
+            "stepIndex": 0,
+            "action": {
+              "ref": "@e3",
+              "role": "combobox",
+              "name": "contact ",
+              "op": "fill",
+              "valueId": "contactQuery",
+              "value": "adobe"
+            },
+            "before": {
+              "snapshot": "- heading \"Choose records\" [level=1, ref=e1]\n- paragraph\n  - StaticText \"Type to search, then select a matching suggestion.\"\n- generic\n  - generic\n    - LabelText\n      - StaticText \"contact \"\n      - combobox \"contact \" [expanded=false, ref=e3]\n    - paragraph\n      - StaticText \"No contact selected\"\n  - generic\n    - LabelText\n      - StaticText \"account \"\n      - textbox \"account \" [ref=e4]\n    - paragraph\n      - StaticText \"No account selected\"\n- button \"Confirm selection\" [ref=e2]\n- status",
+              "refs": {
+                "e1": {
+                  "name": "Choose records",
+                  "role": "heading"
+                },
+                "e2": {
+                  "name": "Confirm selection",
+                  "role": "button"
+                },
+                "e3": {
+                  "name": "contact ",
+                  "role": "combobox"
+                },
+                "e4": {
+                  "name": "account ",
+                  "role": "textbox"
+                }
+              }
+            },
+            "outcome": "tool_succeeded",
+            "after": {
+              "snapshot": "- heading \"Choose records\" [level=1, ref=e1]\n- paragraph\n  - StaticText \"Type to search, then select a matching suggestion.\"\n- generic\n  - generic\n    - LabelText\n      - StaticText \"contact \"\n      - combobox \"contact \" [expanded=false, ref=e3]: adobe\n        - StaticText \"adobe\"\n    - paragraph\n      - StaticText \"No contact selected\"\n  - generic\n    - LabelText\n      - StaticText \"account \"\n      - textbox \"account \" [ref=e4]\n    - paragraph\n      - StaticText \"No account selected\"\n- button \"Confirm selection\" [ref=e2]\n- status\n  - StaticText \"Searching contact\u2026\"",
+              "refs": {
+                "e1": {
+                  "name": "Choose records",
+                  "role": "heading"
+                },
+                "e2": {
+                  "name": "Confirm selection",
+                  "role": "button"
+                },
+                "e3": {
+                  "name": "contact ",
+                  "role": "combobox"
+                },
+                "e4": {
+                  "name": "account ",
+                  "role": "textbox"
+                }
+              }
+            }
+          },
+          {
+            "stepIndex": 0,
+            "action": {
+              "ref": "@e4",
+              "role": "textbox",
+              "name": "account ",
+              "op": "fill",
+              "valueId": "accountQuery",
+              "value": "software"
+            },
+            "before": {
+              "snapshot": "- heading \"Choose records\" [level=1, ref=e1]\n- paragraph\n  - StaticText \"Type to search, then select a matching suggestion.\"\n- generic\n  - generic\n    - LabelText\n      - StaticText \"contact \"\n      - combobox \"contact \" [expanded=false, ref=e3]: adobe\n        - StaticText \"adobe\"\n    - paragraph\n      - StaticText \"No contact selected\"\n  - generic\n    - LabelText\n      - StaticText \"account \"\n      - textbox \"account \" [ref=e4]\n    - paragraph\n      - StaticText \"No account selected\"\n- button \"Confirm selection\" [ref=e2]\n- status\n  - StaticText \"Searching contact\u2026\"",
+              "refs": {
+                "e1": {
+                  "name": "Choose records",
+                  "role": "heading"
+                },
+                "e2": {
+                  "name": "Confirm selection",
+                  "role": "button"
+                },
+                "e3": {
+                  "name": "contact ",
+                  "role": "combobox"
+                },
+                "e4": {
+                  "name": "account ",
+                  "role": "textbox"
+                }
+              }
+            },
+            "outcome": "tool_succeeded",
+            "after": {
+              "snapshot": "- heading \"Choose records\" [level=1, ref=e1]\n- paragraph\n  - StaticText \"Type to search, then select a matching suggestion.\"\n- generic\n  - generic\n    - LabelText\n      - StaticText \"contact \"\n      - combobox \"contact \" [expanded=true, ref=e4]: adobe\n        - StaticText \"adobe\"\n    - listbox \"contact matches\" [ref=e3]\n      - option \"Adobe Stock\" [ref=e5]\n      - option \"Adobe Systems\" [ref=e6]\n    - paragraph\n      - StaticText \"No contact selected\"\n  - generic\n    - LabelText\n      - StaticText \"account \"\n      - textbox \"account \" [ref=e7]: software\n        - StaticText \"software\"\n    - paragraph\n      - StaticText \"No account selected\"\n- button \"Confirm selection\" [ref=e2]\n- status\n  - StaticText \"Searching account\u2026\"",
+              "refs": {
+                "e1": {
+                  "name": "Choose records",
+                  "role": "heading"
+                },
+                "e2": {
+                  "name": "Confirm selection",
+                  "role": "button"
+                },
+                "e3": {
+                  "name": "contact matches",
+                  "role": "listbox"
+                },
+                "e4": {
+                  "name": "contact ",
+                  "role": "combobox"
+                },
+                "e5": {
+                  "name": "Adobe Stock",
+                  "role": "option"
+                },
+                "e6": {
+                  "name": "Adobe Systems",
+                  "role": "option"
+                },
+                "e7": {
+                  "name": "account ",
+                  "role": "textbox"
+                }
+              }
+            }
+          },
+          {
+            "stepIndex": 0,
+            "action": {
+              "ref": "@e6",
+              "role": "option",
+              "name": "Adobe Systems",
+              "op": "click"
+            },
+            "before": {
+              "snapshot": "- heading \"Choose records\" [level=1, ref=e1]\n- paragraph\n  - StaticText \"Type to search, then select a matching suggestion.\"\n- generic\n  - generic\n    - LabelText\n      - StaticText \"contact \"\n      - combobox \"contact \" [expanded=true, ref=e4]: adobe\n        - StaticText \"adobe\"\n    - listbox \"contact matches\" [ref=e3]\n      - option \"Adobe Stock\" [ref=e5]\n      - option \"Adobe Systems\" [ref=e6]\n    - paragraph\n      - StaticText \"No contact selected\"\n  - generic\n    - LabelText\n      - StaticText \"account \"\n      - textbox \"account \" [ref=e7]: software\n        - StaticText \"software\"\n    - paragraph\n      - StaticText \"No account selected\"\n- button \"Confirm selection\" [ref=e2]\n- status\n  - StaticText \"Searching account\u2026\"",
+              "refs": {
+                "e1": {
+                  "name": "Choose records",
+                  "role": "heading"
+                },
+                "e2": {
+                  "name": "Confirm selection",
+                  "role": "button"
+                },
+                "e3": {
+                  "name": "contact matches",
+                  "role": "listbox"
+                },
+                "e4": {
+                  "name": "contact ",
+                  "role": "combobox"
+                },
+                "e5": {
+                  "name": "Adobe Stock",
+                  "role": "option"
+                },
+                "e6": {
+                  "name": "Adobe Systems",
+                  "role": "option"
+                },
+                "e7": {
+                  "name": "account ",
+                  "role": "textbox"
+                }
+              }
+            },
+            "outcome": "tool_succeeded",
+            "after": {
+              "snapshot": "- heading \"Choose records\" [level=1, ref=e1]\n- paragraph\n  - StaticText \"Type to search, then select a matching suggestion.\"\n- generic\n  - generic\n    - LabelText\n      - StaticText \"contact \"\n      - combobox \"contact \" [expanded=false, ref=e4]: Adobe Systems\n        - StaticText \"Adobe Systems\"\n    - paragraph\n      - StaticText \"Selected contact: Adobe Systems\"\n  - generic\n    - LabelText\n      - StaticText \"account \"\n      - textbox \"account \" [ref=e5]: software\n        - StaticText \"software\"\n    - listbox \"account matches\" [ref=e3]\n      - option \"Software assets\" [ref=e6]\n      - option \"Software subscriptions\" [ref=e7]\n    - paragraph\n      - StaticText \"No account selected\"\n- button \"Confirm selection\" [ref=e2]\n- status\n  - StaticText \"2 account matches\"",
+              "refs": {
+                "e1": {
+                  "name": "Choose records",
+                  "role": "heading"
+                },
+                "e2": {
+                  "name": "Confirm selection",
+                  "role": "button"
+                },
+                "e3": {
+                  "name": "account matches",
+                  "role": "listbox"
+                },
+                "e4": {
+                  "name": "contact ",
+                  "role": "combobox"
+                },
+                "e5": {
+                  "name": "account ",
+                  "role": "textbox"
+                },
+                "e6": {
+                  "name": "Software assets",
+                  "role": "option"
+                },
+                "e7": {
+                  "name": "Software subscriptions",
+                  "role": "option"
+                }
+              }
+            }
+          },
+          {
+            "stepIndex": 0,
+            "action": {
+              "ref": "@e7",
+              "role": "option",
+              "name": "Software subscriptions",
+              "op": "click"
+            },
+            "before": {
+              "snapshot": "- heading \"Choose records\" [level=1, ref=e1]\n- paragraph\n  - StaticText \"Type to search, then select a matching suggestion.\"\n- generic\n  - generic\n    - LabelText\n      - StaticText \"contact \"\n      - combobox \"contact \" [expanded=false, ref=e4]: Adobe Systems\n        - StaticText \"Adobe Systems\"\n    - paragraph\n      - StaticText \"Selected contact: Adobe Systems\"\n  - generic\n    - LabelText\n      - StaticText \"account \"\n      - textbox \"account \" [ref=e5]: software\n        - StaticText \"software\"\n    - listbox \"account matches\" [ref=e3]\n      - option \"Software assets\" [ref=e6]\n      - option \"Software subscriptions\" [ref=e7]\n    - paragraph\n      - StaticText \"No account selected\"\n- button \"Confirm selection\" [ref=e2]\n- status\n  - StaticText \"2 account matches\"",
+              "refs": {
+                "e1": {
+                  "name": "Choose records",
+                  "role": "heading"
+                },
+                "e2": {
+                  "name": "Confirm selection",
+                  "role": "button"
+                },
+                "e3": {
+                  "name": "account matches",
+                  "role": "listbox"
+                },
+                "e4": {
+                  "name": "contact ",
+                  "role": "combobox"
+                },
+                "e5": {
+                  "name": "account ",
+                  "role": "textbox"
+                },
+                "e6": {
+                  "name": "Software assets",
+                  "role": "option"
+                },
+                "e7": {
+                  "name": "Software subscriptions",
+                  "role": "option"
+                }
+              }
+            },
+            "outcome": "tool_succeeded",
+            "after": {
+              "snapshot": "- heading \"Choose records\" [level=1, ref=e1]\n- paragraph\n  - StaticText \"Type to search, then select a matching suggestion.\"\n- generic\n  - generic\n    - LabelText\n      - StaticText \"contact \"\n      - combobox \"contact \" [expanded=false, ref=e3]: Adobe Systems\n        - StaticText \"Adobe Systems\"\n    - paragraph\n      - StaticText \"Selected contact: Adobe Systems\"\n  - generic\n    - LabelText\n      - StaticText \"account \"\n      - textbox \"account \" [ref=e4]: Software subscriptions\n        - StaticText \"Software subscriptions\"\n    - paragraph\n      - StaticText \"Selected account: Software subscriptions\"\n- button \"Confirm selection\" [ref=e2]\n- status\n  - StaticText \"2 account matches\"",
+              "refs": {
+                "e1": {
+                  "name": "Choose records",
+                  "role": "heading"
+                },
+                "e2": {
+                  "name": "Confirm selection",
+                  "role": "button"
+                },
+                "e3": {
+                  "name": "contact ",
+                  "role": "combobox"
+                },
+                "e4": {
+                  "name": "account ",
+                  "role": "textbox"
+                }
+              }
+            }
+          },
+          {
+            "stepIndex": 0,
+            "action": {
+              "ref": "@e2",
+              "role": "button",
+              "name": "Confirm selection",
+              "op": "click"
+            },
+            "before": {
+              "snapshot": "- heading \"Choose records\" [level=1, ref=e1]\n- paragraph\n  - StaticText \"Type to search, then select a matching suggestion.\"\n- generic\n  - generic\n    - LabelText\n      - StaticText \"contact \"\n      - combobox \"contact \" [expanded=false, ref=e3]: Adobe Systems\n        - StaticText \"Adobe Systems\"\n    - paragraph\n      - StaticText \"Selected contact: Adobe Systems\"\n  - generic\n    - LabelText\n      - StaticText \"account \"\n      - textbox \"account \" [ref=e4]: Software subscriptions\n        - StaticText \"Software subscriptions\"\n    - paragraph\n      - StaticText \"Selected account: Software subscriptions\"\n- button \"Confirm selection\" [ref=e2]\n- status\n  - StaticText \"2 account matches\"",
+              "refs": {
+                "e1": {
+                  "name": "Choose records",
+                  "role": "heading"
+                },
+                "e2": {
+                  "name": "Confirm selection",
+                  "role": "button"
+                },
+                "e3": {
+                  "name": "contact ",
+                  "role": "combobox"
+                },
+                "e4": {
+                  "name": "account ",
+                  "role": "textbox"
+                }
+              }
+            },
+            "outcome": "tool_succeeded",
+            "after": {
+              "snapshot": "- heading \"Selection confirmed\" [level=1, ref=e1]\n- paragraph\n  - StaticText \"contact: Adobe Systems\"\n- paragraph\n  - StaticText \"account: Software subscriptions\"",
+              "refs": {
+                "e1": {
+                  "name": "Selection confirmed",
+                  "role": "heading"
+                }
+              }
+            }
+          }
+        ],
+        "decisions": [
+          {
+            "stepIndex": 0,
+            "choice": "c2",
+            "op": "fill",
+            "confidence": 0.79,
+            "cost": 7.686e-05,
+            "elapsedMs": 323.3763749999998
+          },
+          {
+            "stepIndex": 0,
+            "choice": "c10",
+            "op": "fill",
+            "confidence": 0.34,
+            "cost": 8.7654e-05,
+            "elapsedMs": 219.67725000000019
+          },
+          {
+            "stepIndex": 0,
+            "choice": "c10",
+            "op": "click",
+            "confidence": 0.88,
+            "cost": 9.681e-05,
+            "elapsedMs": 202.51283299999977
+          },
+          {
+            "stepIndex": 0,
+            "choice": "c17",
+            "op": "click",
+            "confidence": 0.98,
+            "cost": 0.000101598,
+            "elapsedMs": 205.59216700000025
+          },
+          {
+            "stepIndex": 0,
+            "choice": "c0",
+            "op": "click",
+            "confidence": 0.97,
+            "cost": 0.000100254,
+            "elapsedMs": 362.8907079999999
+          },
+          {
+            "stepIndex": 0,
+            "choice": "step_complete",
+            "op": "step_complete",
+            "confidence": 1,
+            "cost": 6.3966e-05,
+            "elapsedMs": 173.02250000000004
+          }
+        ],
+        "latestObservation": {
+          "snapshot": "- heading \"Selection confirmed\" [level=1, ref=e1]\n- paragraph\n  - StaticText \"contact: Adobe Systems\"\n- paragraph\n  - StaticText \"account: Software subscriptions\"",
+          "refs": {
+            "e1": {
+              "name": "Selection confirmed",
+              "role": "heading"
+            }
+          }
+        },
+        "totalMs": 5354.7825
+      },
+      "independentSnapshot": "- heading \"Selection confirmed\" [level=1, ref=e1]\n- paragraph\n  - StaticText \"contact: Adobe Systems\"\n- paragraph\n  - StaticText \"account: Software subscriptions\"",
+      "verdict": "passed",
+      "events": [
+        {
+          "type": "confirm",
+          "selected": {
+            "contact": "contact-adobe-systems",
+            "account": "account-software-subscriptions"
+          }
+        }
+      ]
+    },
+    {
+      "mode": "enter",
+      "result": {
+        "returnReason": "reported_complete",
+        "actions": [
+          {
+            "stepIndex": 0,
+            "action": {
+              "ref": "@e3",
+              "role": "combobox",
+              "name": "contact ",
+              "op": "fill",
+              "valueId": "contactQuery",
+              "value": "adobe"
+            },
+            "before": {
+              "snapshot": "- heading \"Choose records\" [level=1, ref=e1]\n- paragraph\n  - StaticText \"Use arrow keys and Enter to choose each suggestion. Suggestions cannot be selected by mouse.\"\n- generic\n  - generic\n    - LabelText\n      - StaticText \"contact \"\n      - combobox \"contact \" [expanded=false, ref=e3]\n    - paragraph\n      - StaticText \"No contact selected\"\n  - generic\n    - LabelText\n      - StaticText \"account \"\n      - textbox \"account \" [ref=e4]\n    - paragraph\n      - StaticText \"No account selected\"\n- button \"Confirm selection\" [ref=e2]\n- status",
+              "refs": {
+                "e1": {
+                  "name": "Choose records",
+                  "role": "heading"
+                },
+                "e2": {
+                  "name": "Confirm selection",
+                  "role": "button"
+                },
+                "e3": {
+                  "name": "contact ",
+                  "role": "combobox"
+                },
+                "e4": {
+                  "name": "account ",
+                  "role": "textbox"
+                }
+              }
+            },
+            "outcome": "tool_succeeded",
+            "after": {
+              "snapshot": "- heading \"Choose records\" [level=1, ref=e1]\n- paragraph\n  - StaticText \"Use arrow keys and Enter to choose each suggestion. Suggestions cannot be selected by mouse.\"\n- generic\n  - generic\n    - LabelText\n      - StaticText \"contact \"\n      - combobox \"contact \" [expanded=false, ref=e3]: adobe\n        - StaticText \"adobe\"\n    - paragraph\n      - StaticText \"No contact selected\"\n  - generic\n    - LabelText\n      - StaticText \"account \"\n      - textbox \"account \" [ref=e4]\n    - paragraph\n      - StaticText \"No account selected\"\n- button \"Confirm selection\" [ref=e2]\n- status\n  - StaticText \"Searching contact\u2026\"",
+              "refs": {
+                "e1": {
+                  "name": "Choose records",
+                  "role": "heading"
+                },
+                "e2": {
+                  "name": "Confirm selection",
+                  "role": "button"
+                },
+                "e3": {
+                  "name": "contact ",
+                  "role": "combobox"
+                },
+                "e4": {
+                  "name": "account ",
+                  "role": "textbox"
+                }
+              }
+            }
+          },
+          {
+            "stepIndex": 0,
+            "action": {
+              "ref": "@e3",
+              "role": "combobox",
+              "name": "contact ",
+              "op": "press",
+              "key": "ArrowDown"
+            },
+            "before": {
+              "snapshot": "- heading \"Choose records\" [level=1, ref=e1]\n- paragraph\n  - StaticText \"Use arrow keys and Enter to choose each suggestion. Suggestions cannot be selected by mouse.\"\n- generic\n  - generic\n    - LabelText\n      - StaticText \"contact \"\n      - combobox \"contact \" [expanded=false, ref=e3]: adobe\n        - StaticText \"adobe\"\n    - paragraph\n      - StaticText \"No contact selected\"\n  - generic\n    - LabelText\n      - StaticText \"account \"\n      - textbox \"account \" [ref=e4]\n    - paragraph\n      - StaticText \"No account selected\"\n- button \"Confirm selection\" [ref=e2]\n- status\n  - StaticText \"Searching contact\u2026\"",
+              "refs": {
+                "e1": {
+                  "name": "Choose records",
+                  "role": "heading"
+                },
+                "e2": {
+                  "name": "Confirm selection",
+                  "role": "button"
+                },
+                "e3": {
+                  "name": "contact ",
+                  "role": "combobox"
+                },
+                "e4": {
+                  "name": "account ",
+                  "role": "textbox"
+                }
+              }
+            },
+            "outcome": "tool_succeeded",
+            "after": {
+              "snapshot": "- heading \"Choose records\" [level=1, ref=e1]\n- paragraph\n  - StaticText \"Use arrow keys and Enter to choose each suggestion. Suggestions cannot be selected by mouse.\"\n- generic\n  - generic\n    - LabelText\n      - StaticText \"contact \"\n      - combobox \"contact \" [expanded=true, ref=e4]: adobe\n        - StaticText \"adobe\"\n    - listbox \"contact matches\" [ref=e3]\n      - option \"Adobe Stock\" [selected, ref=e5]\n      - option \"Adobe Systems\" [ref=e6]\n    - paragraph\n      - StaticText \"No contact selected\"\n  - generic\n    - LabelText\n      - StaticText \"account \"\n      - textbox \"account \" [ref=e7]\n    - paragraph\n      - StaticText \"No account selected\"\n- button \"Confirm selection\" [ref=e2]\n- status\n  - StaticText \"2 contact matches\"",
+              "refs": {
+                "e1": {
+                  "name": "Choose records",
+                  "role": "heading"
+                },
+                "e2": {
+                  "name": "Confirm selection",
+                  "role": "button"
+                },
+                "e3": {
+                  "name": "contact matches",
+                  "role": "listbox"
+                },
+                "e4": {
+                  "name": "contact ",
+                  "role": "combobox"
+                },
+                "e5": {
+                  "name": "Adobe Stock",
+                  "role": "option"
+                },
+                "e6": {
+                  "name": "Adobe Systems",
+                  "role": "option"
+                },
+                "e7": {
+                  "name": "account ",
+                  "role": "textbox"
+                }
+              }
+            }
+          },
+          {
+            "stepIndex": 0,
+            "action": {
+              "ref": "@e4",
+              "role": "combobox",
+              "name": "contact ",
+              "op": "press",
+              "key": "ArrowDown"
+            },
+            "before": {
+              "snapshot": "- heading \"Choose records\" [level=1, ref=e1]\n- paragraph\n  - StaticText \"Use arrow keys and Enter to choose each suggestion. Suggestions cannot be selected by mouse.\"\n- generic\n  - generic\n    - LabelText\n      - StaticText \"contact \"\n      - combobox \"contact \" [expanded=true, ref=e4]: adobe\n        - StaticText \"adobe\"\n    - listbox \"contact matches\" [ref=e3]\n      - option \"Adobe Stock\" [selected, ref=e5]\n      - option \"Adobe Systems\" [ref=e6]\n    - paragraph\n      - StaticText \"No contact selected\"\n  - generic\n    - LabelText\n      - StaticText \"account \"\n      - textbox \"account \" [ref=e7]\n    - paragraph\n      - StaticText \"No account selected\"\n- button \"Confirm selection\" [ref=e2]\n- status\n  - StaticText \"2 contact matches\"",
+              "refs": {
+                "e1": {
+                  "name": "Choose records",
+                  "role": "heading"
+                },
+                "e2": {
+                  "name": "Confirm selection",
+                  "role": "button"
+                },
+                "e3": {
+                  "name": "contact matches",
+                  "role": "listbox"
+                },
+                "e4": {
+                  "name": "contact ",
+                  "role": "combobox"
+                },
+                "e5": {
+                  "name": "Adobe Stock",
+                  "role": "option"
+                },
+                "e6": {
+                  "name": "Adobe Systems",
+                  "role": "option"
+                },
+                "e7": {
+                  "name": "account ",
+                  "role": "textbox"
+                }
+              }
+            },
+            "outcome": "tool_succeeded",
+            "after": {
+              "snapshot": "- heading \"Choose records\" [level=1, ref=e1]\n- paragraph\n  - StaticText \"Use arrow keys and Enter to choose each suggestion. Suggestions cannot be selected by mouse.\"\n- generic\n  - generic\n    - LabelText\n      - StaticText \"contact \"\n      - combobox \"contact \" [expanded=true, ref=e4]: adobe\n        - StaticText \"adobe\"\n    - listbox \"contact matches\" [ref=e3]\n      - option \"Adobe Stock\" [ref=e5]\n      - option \"Adobe Systems\" [selected, ref=e6]\n    - paragraph\n      - StaticText \"No contact selected\"\n  - generic\n    - LabelText\n      - StaticText \"account \"\n      - textbox \"account \" [ref=e7]\n    - paragraph\n      - StaticText \"No account selected\"\n- button \"Confirm selection\" [ref=e2]\n- status\n  - StaticText \"2 contact matches\"",
+              "refs": {
+                "e1": {
+                  "name": "Choose records",
+                  "role": "heading"
+                },
+                "e2": {
+                  "name": "Confirm selection",
+                  "role": "button"
+                },
+                "e3": {
+                  "name": "contact matches",
+                  "role": "listbox"
+                },
+                "e4": {
+                  "name": "contact ",
+                  "role": "combobox"
+                },
+                "e5": {
+                  "name": "Adobe Stock",
+                  "role": "option"
+                },
+                "e6": {
+                  "name": "Adobe Systems",
+                  "role": "option"
+                },
+                "e7": {
+                  "name": "account ",
+                  "role": "textbox"
+                }
+              }
+            }
+          },
+          {
+            "stepIndex": 0,
+            "action": {
+              "ref": "@e4",
+              "role": "combobox",
+              "name": "contact ",
+              "op": "press",
+              "key": "Enter"
+            },
+            "before": {
+              "snapshot": "- heading \"Choose records\" [level=1, ref=e1]\n- paragraph\n  - StaticText \"Use arrow keys and Enter to choose each suggestion. Suggestions cannot be selected by mouse.\"\n- generic\n  - generic\n    - LabelText\n      - StaticText \"contact \"\n      - combobox \"contact \" [expanded=true, ref=e4]: adobe\n        - StaticText \"adobe\"\n    - listbox \"contact matches\" [ref=e3]\n      - option \"Adobe Stock\" [ref=e5]\n      - option \"Adobe Systems\" [selected, ref=e6]\n    - paragraph\n      - StaticText \"No contact selected\"\n  - generic\n    - LabelText\n      - StaticText \"account \"\n      - textbox \"account \" [ref=e7]\n    - paragraph\n      - StaticText \"No account selected\"\n- button \"Confirm selection\" [ref=e2]\n- status\n  - StaticText \"2 contact matches\"",
+              "refs": {
+                "e1": {
+                  "name": "Choose records",
+                  "role": "heading"
+                },
+                "e2": {
+                  "name": "Confirm selection",
+                  "role": "button"
+                },
+                "e3": {
+                  "name": "contact matches",
+                  "role": "listbox"
+                },
+                "e4": {
+                  "name": "contact ",
+                  "role": "combobox"
+                },
+                "e5": {
+                  "name": "Adobe Stock",
+                  "role": "option"
+                },
+                "e6": {
+                  "name": "Adobe Systems",
+                  "role": "option"
+                },
+                "e7": {
+                  "name": "account ",
+                  "role": "textbox"
+                }
+              }
+            },
+            "outcome": "tool_succeeded",
+            "after": {
+              "snapshot": "- heading \"Choose records\" [level=1, ref=e1]\n- paragraph\n  - StaticText \"Use arrow keys and Enter to choose each suggestion. Suggestions cannot be selected by mouse.\"\n- generic\n  - generic\n    - LabelText\n      - StaticText \"contact \"\n      - combobox \"contact \" [expanded=false, ref=e3]: Adobe Systems\n        - StaticText \"Adobe Systems\"\n    - paragraph\n      - StaticText \"Selected contact: Adobe Systems\"\n  - generic\n    - LabelText\n      - StaticText \"account \"\n      - textbox \"account \" [ref=e4]\n    - paragraph\n      - StaticText \"No account selected\"\n- button \"Confirm selection\" [ref=e2]\n- status\n  - StaticText \"2 contact matches\"",
+              "refs": {
+                "e1": {
+                  "name": "Choose records",
+                  "role": "heading"
+                },
+                "e2": {
+                  "name": "Confirm selection",
+                  "role": "button"
+                },
+                "e3": {
+                  "name": "contact ",
+                  "role": "combobox"
+                },
+                "e4": {
+                  "name": "account ",
+                  "role": "textbox"
+                }
+              }
+            }
+          },
+          {
+            "stepIndex": 0,
+            "action": {
+              "ref": "@e4",
+              "role": "textbox",
+              "name": "account ",
+              "op": "fill",
+              "valueId": "accountQuery",
+              "value": "software"
+            },
+            "before": {
+              "snapshot": "- heading \"Choose records\" [level=1, ref=e1]\n- paragraph\n  - StaticText \"Use arrow keys and Enter to choose each suggestion. Suggestions cannot be selected by mouse.\"\n- generic\n  - generic\n    - LabelText\n      - StaticText \"contact \"\n      - combobox \"contact \" [expanded=false, ref=e3]: Adobe Systems\n        - StaticText \"Adobe Systems\"\n    - paragraph\n      - StaticText \"Selected contact: Adobe Systems\"\n  - generic\n    - LabelText\n      - StaticText \"account \"\n      - textbox \"account \" [ref=e4]\n    - paragraph\n      - StaticText \"No account selected\"\n- button \"Confirm selection\" [ref=e2]\n- status\n  - StaticText \"2 contact matches\"",
+              "refs": {
+                "e1": {
+                  "name": "Choose records",
+                  "role": "heading"
+                },
+                "e2": {
+                  "name": "Confirm selection",
+                  "role": "button"
+                },
+                "e3": {
+                  "name": "contact ",
+                  "role": "combobox"
+                },
+                "e4": {
+                  "name": "account ",
+                  "role": "textbox"
+                }
+              }
+            },
+            "outcome": "tool_succeeded",
+            "after": {
+              "snapshot": "- heading \"Choose records\" [level=1, ref=e1]\n- paragraph\n  - StaticText \"Use arrow keys and Enter to choose each suggestion. Suggestions cannot be selected by mouse.\"\n- generic\n  - generic\n    - LabelText\n      - StaticText \"contact \"\n      - combobox \"contact \" [expanded=false, ref=e3]: Adobe Systems\n        - StaticText \"Adobe Systems\"\n    - paragraph\n      - StaticText \"Selected contact: Adobe Systems\"\n  - generic\n    - LabelText\n      - StaticText \"account \"\n      - textbox \"account \" [ref=e4]: software\n        - StaticText \"software\"\n    - paragraph\n      - StaticText \"No account selected\"\n- button \"Confirm selection\" [ref=e2]\n- status\n  - StaticText \"Searching account\u2026\"",
+              "refs": {
+                "e1": {
+                  "name": "Choose records",
+                  "role": "heading"
+                },
+                "e2": {
+                  "name": "Confirm selection",
+                  "role": "button"
+                },
+                "e3": {
+                  "name": "contact ",
+                  "role": "combobox"
+                },
+                "e4": {
+                  "name": "account ",
+                  "role": "textbox"
+                }
+              }
+            }
+          },
+          {
+            "stepIndex": 0,
+            "action": {
+              "ref": "@e4",
+              "role": "textbox",
+              "name": "account ",
+              "op": "press",
+              "key": "ArrowDown"
+            },
+            "before": {
+              "snapshot": "- heading \"Choose records\" [level=1, ref=e1]\n- paragraph\n  - StaticText \"Use arrow keys and Enter to choose each suggestion. Suggestions cannot be selected by mouse.\"\n- generic\n  - generic\n    - LabelText\n      - StaticText \"contact \"\n      - combobox \"contact \" [expanded=false, ref=e3]: Adobe Systems\n        - StaticText \"Adobe Systems\"\n    - paragraph\n      - StaticText \"Selected contact: Adobe Systems\"\n  - generic\n    - LabelText\n      - StaticText \"account \"\n      - textbox \"account \" [ref=e4]: software\n        - StaticText \"software\"\n    - paragraph\n      - StaticText \"No account selected\"\n- button \"Confirm selection\" [ref=e2]\n- status\n  - StaticText \"Searching account\u2026\"",
+              "refs": {
+                "e1": {
+                  "name": "Choose records",
+                  "role": "heading"
+                },
+                "e2": {
+                  "name": "Confirm selection",
+                  "role": "button"
+                },
+                "e3": {
+                  "name": "contact ",
+                  "role": "combobox"
+                },
+                "e4": {
+                  "name": "account ",
+                  "role": "textbox"
+                }
+              }
+            },
+            "outcome": "tool_succeeded",
+            "after": {
+              "snapshot": "- heading \"Choose records\" [level=1, ref=e1]\n- paragraph\n  - StaticText \"Use arrow keys and Enter to choose each suggestion. Suggestions cannot be selected by mouse.\"\n- generic\n  - generic\n    - LabelText\n      - StaticText \"contact \"\n      - combobox \"contact \" [expanded=false, ref=e4]: Adobe Systems\n        - StaticText \"Adobe Systems\"\n    - paragraph\n      - StaticText \"Selected contact: Adobe Systems\"\n  - generic\n    - LabelText\n      - StaticText \"account \"\n      - textbox \"account \" [ref=e5]: software\n        - StaticText \"software\"\n    - listbox \"account matches\" [ref=e3]\n      - option \"Software assets\" [selected, ref=e6]\n      - option \"Software subscriptions\" [ref=e7]\n    - paragraph\n      - StaticText \"No account selected\"\n- button \"Confirm selection\" [ref=e2]\n- status\n  - StaticText \"2 account matches\"",
+              "refs": {
+                "e1": {
+                  "name": "Choose records",
+                  "role": "heading"
+                },
+                "e2": {
+                  "name": "Confirm selection",
+                  "role": "button"
+                },
+                "e3": {
+                  "name": "account matches",
+                  "role": "listbox"
+                },
+                "e4": {
+                  "name": "contact ",
+                  "role": "combobox"
+                },
+                "e5": {
+                  "name": "account ",
+                  "role": "textbox"
+                },
+                "e6": {
+                  "name": "Software assets",
+                  "role": "option"
+                },
+                "e7": {
+                  "name": "Software subscriptions",
+                  "role": "option"
+                }
+              }
+            }
+          },
+          {
+            "stepIndex": 0,
+            "action": {
+              "ref": "@e5",
+              "role": "textbox",
+              "name": "account ",
+              "op": "press",
+              "key": "ArrowDown"
+            },
+            "before": {
+              "snapshot": "- heading \"Choose records\" [level=1, ref=e1]\n- paragraph\n  - StaticText \"Use arrow keys and Enter to choose each suggestion. Suggestions cannot be selected by mouse.\"\n- generic\n  - generic\n    - LabelText\n      - StaticText \"contact \"\n      - combobox \"contact \" [expanded=false, ref=e4]: Adobe Systems\n        - StaticText \"Adobe Systems\"\n    - paragraph\n      - StaticText \"Selected contact: Adobe Systems\"\n  - generic\n    - LabelText\n      - StaticText \"account \"\n      - textbox \"account \" [ref=e5]: software\n        - StaticText \"software\"\n    - listbox \"account matches\" [ref=e3]\n      - option \"Software assets\" [selected, ref=e6]\n      - option \"Software subscriptions\" [ref=e7]\n    - paragraph\n      - StaticText \"No account selected\"\n- button \"Confirm selection\" [ref=e2]\n- status\n  - StaticText \"2 account matches\"",
+              "refs": {
+                "e1": {
+                  "name": "Choose records",
+                  "role": "heading"
+                },
+                "e2": {
+                  "name": "Confirm selection",
+                  "role": "button"
+                },
+                "e3": {
+                  "name": "account matches",
+                  "role": "listbox"
+                },
+                "e4": {
+                  "name": "contact ",
+                  "role": "combobox"
+                },
+                "e5": {
+                  "name": "account ",
+                  "role": "textbox"
+                },
+                "e6": {
+                  "name": "Software assets",
+                  "role": "option"
+                },
+                "e7": {
+                  "name": "Software subscriptions",
+                  "role": "option"
+                }
+              }
+            },
+            "outcome": "tool_succeeded",
+            "after": {
+              "snapshot": "- heading \"Choose records\" [level=1, ref=e1]\n- paragraph\n  - StaticText \"Use arrow keys and Enter to choose each suggestion. Suggestions cannot be selected by mouse.\"\n- generic\n  - generic\n    - LabelText\n      - StaticText \"contact \"\n      - combobox \"contact \" [expanded=false, ref=e4]: Adobe Systems\n        - StaticText \"Adobe Systems\"\n    - paragraph\n      - StaticText \"Selected contact: Adobe Systems\"\n  - generic\n    - LabelText\n      - StaticText \"account \"\n      - textbox \"account \" [ref=e5]: software\n        - StaticText \"software\"\n    - listbox \"account matches\" [ref=e3]\n      - option \"Software assets\" [ref=e6]\n      - option \"Software subscriptions\" [selected, ref=e7]\n    - paragraph\n      - StaticText \"No account selected\"\n- button \"Confirm selection\" [ref=e2]\n- status\n  - StaticText \"2 account matches\"",
+              "refs": {
+                "e1": {
+                  "name": "Choose records",
+                  "role": "heading"
+                },
+                "e2": {
+                  "name": "Confirm selection",
+                  "role": "button"
+                },
+                "e3": {
+                  "name": "account matches",
+                  "role": "listbox"
+                },
+                "e4": {
+                  "name": "contact ",
+                  "role": "combobox"
+                },
+                "e5": {
+                  "name": "account ",
+                  "role": "textbox"
+                },
+                "e6": {
+                  "name": "Software assets",
+                  "role": "option"
+                },
+                "e7": {
+                  "name": "Software subscriptions",
+                  "role": "option"
+                }
+              }
+            }
+          },
+          {
+            "stepIndex": 0,
+            "action": {
+              "ref": "@e5",
+              "role": "textbox",
+              "name": "account ",
+              "op": "press",
+              "key": "Enter"
+            },
+            "before": {
+              "snapshot": "- heading \"Choose records\" [level=1, ref=e1]\n- paragraph\n  - StaticText \"Use arrow keys and Enter to choose each suggestion. Suggestions cannot be selected by mouse.\"\n- generic\n  - generic\n    - LabelText\n      - StaticText \"contact \"\n      - combobox \"contact \" [expanded=false, ref=e4]: Adobe Systems\n        - StaticText \"Adobe Systems\"\n    - paragraph\n      - StaticText \"Selected contact: Adobe Systems\"\n  - generic\n    - LabelText\n      - StaticText \"account \"\n      - textbox \"account \" [ref=e5]: software\n        - StaticText \"software\"\n    - listbox \"account matches\" [ref=e3]\n      - option \"Software assets\" [ref=e6]\n      - option \"Software subscriptions\" [selected, ref=e7]\n    - paragraph\n      - StaticText \"No account selected\"\n- button \"Confirm selection\" [ref=e2]\n- status\n  - StaticText \"2 account matches\"",
+              "refs": {
+                "e1": {
+                  "name": "Choose records",
+                  "role": "heading"
+                },
+                "e2": {
+                  "name": "Confirm selection",
+                  "role": "button"
+                },
+                "e3": {
+                  "name": "account matches",
+                  "role": "listbox"
+                },
+                "e4": {
+                  "name": "contact ",
+                  "role": "combobox"
+                },
+                "e5": {
+                  "name": "account ",
+                  "role": "textbox"
+                },
+                "e6": {
+                  "name": "Software assets",
+                  "role": "option"
+                },
+                "e7": {
+                  "name": "Software subscriptions",
+                  "role": "option"
+                }
+              }
+            },
+            "outcome": "tool_succeeded",
+            "after": {
+              "snapshot": "- heading \"Choose records\" [level=1, ref=e1]\n- paragraph\n  - StaticText \"Use arrow keys and Enter to choose each suggestion. Suggestions cannot be selected by mouse.\"\n- generic\n  - generic\n    - LabelText\n      - StaticText \"contact \"\n      - combobox \"contact \" [expanded=false, ref=e3]: Adobe Systems\n        - StaticText \"Adobe Systems\"\n    - paragraph\n      - StaticText \"Selected contact: Adobe Systems\"\n  - generic\n    - LabelText\n      - StaticText \"account \"\n      - textbox \"account \" [ref=e4]: Software subscriptions\n        - StaticText \"Software subscriptions\"\n    - paragraph\n      - StaticText \"Selected account: Software subscriptions\"\n- button \"Confirm selection\" [ref=e2]\n- status\n  - StaticText \"2 account matches\"",
+              "refs": {
+                "e1": {
+                  "name": "Choose records",
+                  "role": "heading"
+                },
+                "e2": {
+                  "name": "Confirm selection",
+                  "role": "button"
+                },
+                "e3": {
+                  "name": "contact ",
+                  "role": "combobox"
+                },
+                "e4": {
+                  "name": "account ",
+                  "role": "textbox"
+                }
+              }
+            }
+          },
+          {
+            "stepIndex": 0,
+            "action": {
+              "ref": "@e2",
+              "role": "button",
+              "name": "Confirm selection",
+              "op": "click"
+            },
+            "before": {
+              "snapshot": "- heading \"Choose records\" [level=1, ref=e1]\n- paragraph\n  - StaticText \"Use arrow keys and Enter to choose each suggestion. Suggestions cannot be selected by mouse.\"\n- generic\n  - generic\n    - LabelText\n      - StaticText \"contact \"\n      - combobox \"contact \" [expanded=false, ref=e3]: Adobe Systems\n        - StaticText \"Adobe Systems\"\n    - paragraph\n      - StaticText \"Selected contact: Adobe Systems\"\n  - generic\n    - LabelText\n      - StaticText \"account \"\n      - textbox \"account \" [ref=e4]: Software subscriptions\n        - StaticText \"Software subscriptions\"\n    - paragraph\n      - StaticText \"Selected account: Software subscriptions\"\n- button \"Confirm selection\" [ref=e2]\n- status\n  - StaticText \"2 account matches\"",
+              "refs": {
+                "e1": {
+                  "name": "Choose records",
+                  "role": "heading"
+                },
+                "e2": {
+                  "name": "Confirm selection",
+                  "role": "button"
+                },
+                "e3": {
+                  "name": "contact ",
+                  "role": "combobox"
+                },
+                "e4": {
+                  "name": "account ",
+                  "role": "textbox"
+                }
+              }
+            },
+            "outcome": "tool_succeeded",
+            "after": {
+              "snapshot": "- heading \"Selection confirmed\" [level=1, ref=e1]\n- paragraph\n  - StaticText \"contact: Adobe Systems\"\n- paragraph\n  - StaticText \"account: Software subscriptions\"",
+              "refs": {
+                "e1": {
+                  "name": "Selection confirmed",
+                  "role": "heading"
+                }
+              }
+            }
+          }
+        ],
+        "decisions": [
+          {
+            "stepIndex": 0,
+            "choice": "c2",
+            "op": "fill",
+            "confidence": 0.82,
+            "cost": 7.7742e-05,
+            "elapsedMs": 280.445042
+          },
+          {
+            "stepIndex": 0,
+            "choice": "c6",
+            "op": "press",
+            "confidence": 0.32,
+            "cost": 8.883e-05,
+            "elapsedMs": 182.23629099999994
+          },
+          {
+            "stepIndex": 0,
+            "choice": "c6",
+            "op": "press",
+            "confidence": 0.73,
+            "cost": 9.7398e-05,
+            "elapsedMs": 258.6494999999999
+          },
+          {
+            "stepIndex": 0,
+            "choice": "c5",
+            "op": "press",
+            "confidence": 0.74,
+            "cost": 0.00010227,
+            "elapsedMs": 194.76645900000017
+          },
+          {
+            "stepIndex": 0,
+            "choice": "c10",
+            "op": "fill",
+            "confidence": 0.96,
+            "cost": 0.00010101,
+            "elapsedMs": 177.04345799999987
+          },
+          {
+            "stepIndex": 0,
+            "choice": "c13",
+            "op": "press",
+            "confidence": 0.34,
+            "cost": 0.00010332,
+            "elapsedMs": 249.87358300000005
+          },
+          {
+            "stepIndex": 0,
+            "choice": "c13",
+            "op": "press",
+            "confidence": 0.59,
+            "cost": 0.0001113,
+            "elapsedMs": 236.3683329999999
+          },
+          {
+            "stepIndex": 0,
+            "choice": "c12",
+            "op": "press",
+            "confidence": 0.78,
+            "cost": 0.00011613,
+            "elapsedMs": 166.8125
+          },
+          {
+            "stepIndex": 0,
+            "choice": "c0",
+            "op": "click",
+            "confidence": 0.92,
+            "cost": 0.000114912,
+            "elapsedMs": 171.3878749999999
+          },
+          {
+            "stepIndex": 0,
+            "choice": "step_complete",
+            "op": "step_complete",
+            "confidence": 0.99,
+            "cost": 7.8246e-05,
+            "elapsedMs": 218.61620799999992
+          }
+        ],
+        "latestObservation": {
+          "snapshot": "- heading \"Selection confirmed\" [level=1, ref=e1]\n- paragraph\n  - StaticText \"contact: Adobe Systems\"\n- paragraph\n  - StaticText \"account: Software subscriptions\"",
+          "refs": {
+            "e1": {
+              "name": "Selection confirmed",
+              "role": "heading"
+            }
+          }
+        },
+        "totalMs": 2684.231583
+      },
+      "independentSnapshot": "- heading \"Selection confirmed\" [level=1, ref=e1]\n- paragraph\n  - StaticText \"contact: Adobe Systems\"\n- paragraph\n  - StaticText \"account: Software subscriptions\"",
+      "verdict": "passed",
+      "events": [
+        {
+          "type": "confirm",
+          "selected": {
+            "contact": "contact-adobe-systems",
+            "account": "account-software-subscriptions"
+          }
+        }
+      ]
+    },
+    {
+      "mode": "tab",
+      "result": {
+        "returnReason": "reported_complete",
+        "actions": [
+          {
+            "stepIndex": 0,
+            "action": {
+              "ref": "@e3",
+              "role": "combobox",
+              "name": "contact ",
+              "op": "fill",
+              "valueId": "contactQuery",
+              "value": "adobe"
+            },
+            "before": {
+              "snapshot": "- heading \"Choose records\" [level=1, ref=e1]\n- paragraph\n  - StaticText \"Use arrow keys and Tab to choose each suggestion. Suggestions cannot be selected by mouse.\"\n- generic\n  - generic\n    - LabelText\n      - StaticText \"contact \"\n      - combobox \"contact \" [expanded=false, ref=e3]\n    - paragraph\n      - StaticText \"No contact selected\"\n  - generic\n    - LabelText\n      - StaticText \"account \"\n      - textbox \"account \" [ref=e4]\n    - paragraph\n      - StaticText \"No account selected\"\n- button \"Confirm selection\" [ref=e2]\n- status",
+              "refs": {
+                "e1": {
+                  "name": "Choose records",
+                  "role": "heading"
+                },
+                "e2": {
+                  "name": "Confirm selection",
+                  "role": "button"
+                },
+                "e3": {
+                  "name": "contact ",
+                  "role": "combobox"
+                },
+                "e4": {
+                  "name": "account ",
+                  "role": "textbox"
+                }
+              }
+            },
+            "outcome": "tool_succeeded",
+            "after": {
+              "snapshot": "- heading \"Choose records\" [level=1, ref=e1]\n- paragraph\n  - StaticText \"Use arrow keys and Tab to choose each suggestion. Suggestions cannot be selected by mouse.\"\n- generic\n  - generic\n    - LabelText\n      - StaticText \"contact \"\n      - combobox \"contact \" [expanded=false, ref=e3]: adobe\n        - StaticText \"adobe\"\n    - paragraph\n      - StaticText \"No contact selected\"\n  - generic\n    - LabelText\n      - StaticText \"account \"\n      - textbox \"account \" [ref=e4]\n    - paragraph\n      - StaticText \"No account selected\"\n- button \"Confirm selection\" [ref=e2]\n- status\n  - StaticText \"Searching contact\u2026\"",
+              "refs": {
+                "e1": {
+                  "name": "Choose records",
+                  "role": "heading"
+                },
+                "e2": {
+                  "name": "Confirm selection",
+                  "role": "button"
+                },
+                "e3": {
+                  "name": "contact ",
+                  "role": "combobox"
+                },
+                "e4": {
+                  "name": "account ",
+                  "role": "textbox"
+                }
+              }
+            }
+          },
+          {
+            "stepIndex": 0,
+            "action": {
+              "ref": "@e3",
+              "role": "combobox",
+              "name": "contact ",
+              "op": "press",
+              "key": "ArrowDown"
+            },
+            "before": {
+              "snapshot": "- heading \"Choose records\" [level=1, ref=e1]\n- paragraph\n  - StaticText \"Use arrow keys and Tab to choose each suggestion. Suggestions cannot be selected by mouse.\"\n- generic\n  - generic\n    - LabelText\n      - StaticText \"contact \"\n      - combobox \"contact \" [expanded=false, ref=e3]: adobe\n        - StaticText \"adobe\"\n    - paragraph\n      - StaticText \"No contact selected\"\n  - generic\n    - LabelText\n      - StaticText \"account \"\n      - textbox \"account \" [ref=e4]\n    - paragraph\n      - StaticText \"No account selected\"\n- button \"Confirm selection\" [ref=e2]\n- status\n  - StaticText \"Searching contact\u2026\"",
+              "refs": {
+                "e1": {
+                  "name": "Choose records",
+                  "role": "heading"
+                },
+                "e2": {
+                  "name": "Confirm selection",
+                  "role": "button"
+                },
+                "e3": {
+                  "name": "contact ",
+                  "role": "combobox"
+                },
+                "e4": {
+                  "name": "account ",
+                  "role": "textbox"
+                }
+              }
+            },
+            "outcome": "tool_succeeded",
+            "after": {
+              "snapshot": "- heading \"Choose records\" [level=1, ref=e1]\n- paragraph\n  - StaticText \"Use arrow keys and Tab to choose each suggestion. Suggestions cannot be selected by mouse.\"\n- generic\n  - generic\n    - LabelText\n      - StaticText \"contact \"\n      - combobox \"contact \" [expanded=true, ref=e4]: adobe\n        - StaticText \"adobe\"\n    - listbox \"contact matches\" [ref=e3]\n      - option \"Adobe Stock\" [selected, ref=e5]\n      - option \"Adobe Systems\" [ref=e6]\n    - paragraph\n      - StaticText \"No contact selected\"\n  - generic\n    - LabelText\n      - StaticText \"account \"\n      - textbox \"account \" [ref=e7]\n    - paragraph\n      - StaticText \"No account selected\"\n- button \"Confirm selection\" [ref=e2]\n- status\n  - StaticText \"2 contact matches\"",
+              "refs": {
+                "e1": {
+                  "name": "Choose records",
+                  "role": "heading"
+                },
+                "e2": {
+                  "name": "Confirm selection",
+                  "role": "button"
+                },
+                "e3": {
+                  "name": "contact matches",
+                  "role": "listbox"
+                },
+                "e4": {
+                  "name": "contact ",
+                  "role": "combobox"
+                },
+                "e5": {
+                  "name": "Adobe Stock",
+                  "role": "option"
+                },
+                "e6": {
+                  "name": "Adobe Systems",
+                  "role": "option"
+                },
+                "e7": {
+                  "name": "account ",
+                  "role": "textbox"
+                }
+              }
+            }
+          },
+          {
+            "stepIndex": 0,
+            "action": {
+              "ref": "@e4",
+              "role": "combobox",
+              "name": "contact ",
+              "op": "press",
+              "key": "ArrowDown"
+            },
+            "before": {
+              "snapshot": "- heading \"Choose records\" [level=1, ref=e1]\n- paragraph\n  - StaticText \"Use arrow keys and Tab to choose each suggestion. Suggestions cannot be selected by mouse.\"\n- generic\n  - generic\n    - LabelText\n      - StaticText \"contact \"\n      - combobox \"contact \" [expanded=true, ref=e4]: adobe\n        - StaticText \"adobe\"\n    - listbox \"contact matches\" [ref=e3]\n      - option \"Adobe Stock\" [selected, ref=e5]\n      - option \"Adobe Systems\" [ref=e6]\n    - paragraph\n      - StaticText \"No contact selected\"\n  - generic\n    - LabelText\n      - StaticText \"account \"\n      - textbox \"account \" [ref=e7]\n    - paragraph\n      - StaticText \"No account selected\"\n- button \"Confirm selection\" [ref=e2]\n- status\n  - StaticText \"2 contact matches\"",
+              "refs": {
+                "e1": {
+                  "name": "Choose records",
+                  "role": "heading"
+                },
+                "e2": {
+                  "name": "Confirm selection",
+                  "role": "button"
+                },
+                "e3": {
+                  "name": "contact matches",
+                  "role": "listbox"
+                },
+                "e4": {
+                  "name": "contact ",
+                  "role": "combobox"
+                },
+                "e5": {
+                  "name": "Adobe Stock",
+                  "role": "option"
+                },
+                "e6": {
+                  "name": "Adobe Systems",
+                  "role": "option"
+                },
+                "e7": {
+                  "name": "account ",
+                  "role": "textbox"
+                }
+              }
+            },
+            "outcome": "tool_succeeded",
+            "after": {
+              "snapshot": "- heading \"Choose records\" [level=1, ref=e1]\n- paragraph\n  - StaticText \"Use arrow keys and Tab to choose each suggestion. Suggestions cannot be selected by mouse.\"\n- generic\n  - generic\n    - LabelText\n      - StaticText \"contact \"\n      - combobox \"contact \" [expanded=true, ref=e4]: adobe\n        - StaticText \"adobe\"\n    - listbox \"contact matches\" [ref=e3]\n      - option \"Adobe Stock\" [ref=e5]\n      - option \"Adobe Systems\" [selected, ref=e6]\n    - paragraph\n      - StaticText \"No contact selected\"\n  - generic\n    - LabelText\n      - StaticText \"account \"\n      - textbox \"account \" [ref=e7]\n    - paragraph\n      - StaticText \"No account selected\"\n- button \"Confirm selection\" [ref=e2]\n- status\n  - StaticText \"2 contact matches\"",
+              "refs": {
+                "e1": {
+                  "name": "Choose records",
+                  "role": "heading"
+                },
+                "e2": {
+                  "name": "Confirm selection",
+                  "role": "button"
+                },
+                "e3": {
+                  "name": "contact matches",
+                  "role": "listbox"
+                },
+                "e4": {
+                  "name": "contact ",
+                  "role": "combobox"
+                },
+                "e5": {
+                  "name": "Adobe Stock",
+                  "role": "option"
+                },
+                "e6": {
+                  "name": "Adobe Systems",
+                  "role": "option"
+                },
+                "e7": {
+                  "name": "account ",
+                  "role": "textbox"
+                }
+              }
+            }
+          },
+          {
+            "stepIndex": 0,
+            "action": {
+              "ref": "@e7",
+              "role": "textbox",
+              "name": "account ",
+              "op": "fill",
+              "valueId": "accountQuery",
+              "value": "software"
+            },
+            "before": {
+              "snapshot": "- heading \"Choose records\" [level=1, ref=e1]\n- paragraph\n  - StaticText \"Use arrow keys and Tab to choose each suggestion. Suggestions cannot be selected by mouse.\"\n- generic\n  - generic\n    - LabelText\n      - StaticText \"contact \"\n      - combobox \"contact \" [expanded=true, ref=e4]: adobe\n        - StaticText \"adobe\"\n    - listbox \"contact matches\" [ref=e3]\n      - option \"Adobe Stock\" [ref=e5]\n      - option \"Adobe Systems\" [selected, ref=e6]\n    - paragraph\n      - StaticText \"No contact selected\"\n  - generic\n    - LabelText\n      - StaticText \"account \"\n      - textbox \"account \" [ref=e7]\n    - paragraph\n      - StaticText \"No account selected\"\n- button \"Confirm selection\" [ref=e2]\n- status\n  - StaticText \"2 contact matches\"",
+              "refs": {
+                "e1": {
+                  "name": "Choose records",
+                  "role": "heading"
+                },
+                "e2": {
+                  "name": "Confirm selection",
+                  "role": "button"
+                },
+                "e3": {
+                  "name": "contact matches",
+                  "role": "listbox"
+                },
+                "e4": {
+                  "name": "contact ",
+                  "role": "combobox"
+                },
+                "e5": {
+                  "name": "Adobe Stock",
+                  "role": "option"
+                },
+                "e6": {
+                  "name": "Adobe Systems",
+                  "role": "option"
+                },
+                "e7": {
+                  "name": "account ",
+                  "role": "textbox"
+                }
+              }
+            },
+            "outcome": "tool_succeeded",
+            "after": {
+              "snapshot": "- heading \"Choose records\" [level=1, ref=e1]\n- paragraph\n  - StaticText \"Use arrow keys and Tab to choose each suggestion. Suggestions cannot be selected by mouse.\"\n- generic\n  - generic\n    - LabelText\n      - StaticText \"contact \"\n      - combobox \"contact \" [expanded=true, ref=e4]: adobe\n        - StaticText \"adobe\"\n    - listbox \"contact matches\" [ref=e3]\n      - option \"Adobe Stock\" [ref=e5]\n      - option \"Adobe Systems\" [selected, ref=e6]\n    - paragraph\n      - StaticText \"No contact selected\"\n  - generic\n    - LabelText\n      - StaticText \"account \"\n      - textbox \"account \" [ref=e7]: software\n        - StaticText \"software\"\n    - paragraph\n      - StaticText \"No account selected\"\n- button \"Confirm selection\" [ref=e2]\n- status\n  - StaticText \"Searching account\u2026\"",
+              "refs": {
+                "e1": {
+                  "name": "Choose records",
+                  "role": "heading"
+                },
+                "e2": {
+                  "name": "Confirm selection",
+                  "role": "button"
+                },
+                "e3": {
+                  "name": "contact matches",
+                  "role": "listbox"
+                },
+                "e4": {
+                  "name": "contact ",
+                  "role": "combobox"
+                },
+                "e5": {
+                  "name": "Adobe Stock",
+                  "role": "option"
+                },
+                "e6": {
+                  "name": "Adobe Systems",
+                  "role": "option"
+                },
+                "e7": {
+                  "name": "account ",
+                  "role": "textbox"
+                }
+              }
+            }
+          },
+          {
+            "stepIndex": 0,
+            "action": {
+              "ref": "@e4",
+              "role": "combobox",
+              "name": "contact ",
+              "op": "press",
+              "key": "Tab"
+            },
+            "before": {
+              "snapshot": "- heading \"Choose records\" [level=1, ref=e1]\n- paragraph\n  - StaticText \"Use arrow keys and Tab to choose each suggestion. Suggestions cannot be selected by mouse.\"\n- generic\n  - generic\n    - LabelText\n      - StaticText \"contact \"\n      - combobox \"contact \" [expanded=true, ref=e4]: adobe\n        - StaticText \"adobe\"\n    - listbox \"contact matches\" [ref=e3]\n      - option \"Adobe Stock\" [ref=e5]\n      - option \"Adobe Systems\" [selected, ref=e6]\n    - paragraph\n      - StaticText \"No contact selected\"\n  - generic\n    - LabelText\n      - StaticText \"account \"\n      - textbox \"account \" [ref=e7]: software\n        - StaticText \"software\"\n    - paragraph\n      - StaticText \"No account selected\"\n- button \"Confirm selection\" [ref=e2]\n- status\n  - StaticText \"Searching account\u2026\"",
+              "refs": {
+                "e1": {
+                  "name": "Choose records",
+                  "role": "heading"
+                },
+                "e2": {
+                  "name": "Confirm selection",
+                  "role": "button"
+                },
+                "e3": {
+                  "name": "contact matches",
+                  "role": "listbox"
+                },
+                "e4": {
+                  "name": "contact ",
+                  "role": "combobox"
+                },
+                "e5": {
+                  "name": "Adobe Stock",
+                  "role": "option"
+                },
+                "e6": {
+                  "name": "Adobe Systems",
+                  "role": "option"
+                },
+                "e7": {
+                  "name": "account ",
+                  "role": "textbox"
+                }
+              }
+            },
+            "outcome": "tool_succeeded",
+            "after": {
+              "snapshot": "- heading \"Choose records\" [level=1, ref=e1]\n- paragraph\n  - StaticText \"Use arrow keys and Tab to choose each suggestion. Suggestions cannot be selected by mouse.\"\n- generic\n  - generic\n    - LabelText\n      - StaticText \"contact \"\n      - combobox \"contact \" [expanded=false, ref=e4]: Adobe Systems\n        - StaticText \"Adobe Systems\"\n    - paragraph\n      - StaticText \"Selected contact: Adobe Systems\"\n  - generic\n    - LabelText\n      - StaticText \"account \"\n      - textbox \"account \" [ref=e5]: software\n        - StaticText \"software\"\n    - listbox \"account matches\" [ref=e3]\n      - option \"Software assets\" [ref=e6]\n      - option \"Software subscriptions\" [ref=e7]\n    - paragraph\n      - StaticText \"No account selected\"\n- button \"Confirm selection\" [ref=e2]\n- status\n  - StaticText \"2 account matches\"",
+              "refs": {
+                "e1": {
+                  "name": "Choose records",
+                  "role": "heading"
+                },
+                "e2": {
+                  "name": "Confirm selection",
+                  "role": "button"
+                },
+                "e3": {
+                  "name": "account matches",
+                  "role": "listbox"
+                },
+                "e4": {
+                  "name": "contact ",
+                  "role": "combobox"
+                },
+                "e5": {
+                  "name": "account ",
+                  "role": "textbox"
+                },
+                "e6": {
+                  "name": "Software assets",
+                  "role": "option"
+                },
+                "e7": {
+                  "name": "Software subscriptions",
+                  "role": "option"
+                }
+              }
+            }
+          },
+          {
+            "stepIndex": 0,
+            "action": {
+              "ref": "@e5",
+              "role": "textbox",
+              "name": "account ",
+              "op": "press",
+              "key": "ArrowDown"
+            },
+            "before": {
+              "snapshot": "- heading \"Choose records\" [level=1, ref=e1]\n- paragraph\n  - StaticText \"Use arrow keys and Tab to choose each suggestion. Suggestions cannot be selected by mouse.\"\n- generic\n  - generic\n    - LabelText\n      - StaticText \"contact \"\n      - combobox \"contact \" [expanded=false, ref=e4]: Adobe Systems\n        - StaticText \"Adobe Systems\"\n    - paragraph\n      - StaticText \"Selected contact: Adobe Systems\"\n  - generic\n    - LabelText\n      - StaticText \"account \"\n      - textbox \"account \" [ref=e5]: software\n        - StaticText \"software\"\n    - listbox \"account matches\" [ref=e3]\n      - option \"Software assets\" [ref=e6]\n      - option \"Software subscriptions\" [ref=e7]\n    - paragraph\n      - StaticText \"No account selected\"\n- button \"Confirm selection\" [ref=e2]\n- status\n  - StaticText \"2 account matches\"",
+              "refs": {
+                "e1": {
+                  "name": "Choose records",
+                  "role": "heading"
+                },
+                "e2": {
+                  "name": "Confirm selection",
+                  "role": "button"
+                },
+                "e3": {
+                  "name": "account matches",
+                  "role": "listbox"
+                },
+                "e4": {
+                  "name": "contact ",
+                  "role": "combobox"
+                },
+                "e5": {
+                  "name": "account ",
+                  "role": "textbox"
+                },
+                "e6": {
+                  "name": "Software assets",
+                  "role": "option"
+                },
+                "e7": {
+                  "name": "Software subscriptions",
+                  "role": "option"
+                }
+              }
+            },
+            "outcome": "tool_succeeded",
+            "after": {
+              "snapshot": "- heading \"Choose records\" [level=1, ref=e1]\n- paragraph\n  - StaticText \"Use arrow keys and Tab to choose each suggestion. Suggestions cannot be selected by mouse.\"\n- generic\n  - generic\n    - LabelText\n      - StaticText \"contact \"\n      - combobox \"contact \" [expanded=false, ref=e4]: Adobe Systems\n        - StaticText \"Adobe Systems\"\n    - paragraph\n      - StaticText \"Selected contact: Adobe Systems\"\n  - generic\n    - LabelText\n      - StaticText \"account \"\n      - textbox \"account \" [ref=e5]: software\n        - StaticText \"software\"\n    - listbox \"account matches\" [ref=e3]\n      - option \"Software assets\" [selected, ref=e6]\n      - option \"Software subscriptions\" [ref=e7]\n    - paragraph\n      - StaticText \"No account selected\"\n- button \"Confirm selection\" [ref=e2]\n- status\n  - StaticText \"2 account matches\"",
+              "refs": {
+                "e1": {
+                  "name": "Choose records",
+                  "role": "heading"
+                },
+                "e2": {
+                  "name": "Confirm selection",
+                  "role": "button"
+                },
+                "e3": {
+                  "name": "account matches",
+                  "role": "listbox"
+                },
+                "e4": {
+                  "name": "contact ",
+                  "role": "combobox"
+                },
+                "e5": {
+                  "name": "account ",
+                  "role": "textbox"
+                },
+                "e6": {
+                  "name": "Software assets",
+                  "role": "option"
+                },
+                "e7": {
+                  "name": "Software subscriptions",
+                  "role": "option"
+                }
+              }
+            }
+          },
+          {
+            "stepIndex": 0,
+            "action": {
+              "ref": "@e5",
+              "role": "textbox",
+              "name": "account ",
+              "op": "press",
+              "key": "Tab"
+            },
+            "before": {
+              "snapshot": "- heading \"Choose records\" [level=1, ref=e1]\n- paragraph\n  - StaticText \"Use arrow keys and Tab to choose each suggestion. Suggestions cannot be selected by mouse.\"\n- generic\n  - generic\n    - LabelText\n      - StaticText \"contact \"\n      - combobox \"contact \" [expanded=false, ref=e4]: Adobe Systems\n        - StaticText \"Adobe Systems\"\n    - paragraph\n      - StaticText \"Selected contact: Adobe Systems\"\n  - generic\n    - LabelText\n      - StaticText \"account \"\n      - textbox \"account \" [ref=e5]: software\n        - StaticText \"software\"\n    - listbox \"account matches\" [ref=e3]\n      - option \"Software assets\" [selected, ref=e6]\n      - option \"Software subscriptions\" [ref=e7]\n    - paragraph\n      - StaticText \"No account selected\"\n- button \"Confirm selection\" [ref=e2]\n- status\n  - StaticText \"2 account matches\"",
+              "refs": {
+                "e1": {
+                  "name": "Choose records",
+                  "role": "heading"
+                },
+                "e2": {
+                  "name": "Confirm selection",
+                  "role": "button"
+                },
+                "e3": {
+                  "name": "account matches",
+                  "role": "listbox"
+                },
+                "e4": {
+                  "name": "contact ",
+                  "role": "combobox"
+                },
+                "e5": {
+                  "name": "account ",
+                  "role": "textbox"
+                },
+                "e6": {
+                  "name": "Software assets",
+                  "role": "option"
+                },
+                "e7": {
+                  "name": "Software subscriptions",
+                  "role": "option"
+                }
+              }
+            },
+            "outcome": "tool_succeeded",
+            "after": {
+              "snapshot": "- heading \"Choose records\" [level=1, ref=e1]\n- paragraph\n  - StaticText \"Use arrow keys and Tab to choose each suggestion. Suggestions cannot be selected by mouse.\"\n- generic\n  - generic\n    - LabelText\n      - StaticText \"contact \"\n      - combobox \"contact \" [expanded=false, ref=e3]: Adobe Systems\n        - StaticText \"Adobe Systems\"\n    - paragraph\n      - StaticText \"Selected contact: Adobe Systems\"\n  - generic\n    - LabelText\n      - StaticText \"account \"\n      - textbox \"account \" [ref=e4]: Software assets\n        - StaticText \"Software assets\"\n    - paragraph\n      - StaticText \"Selected account: Software assets\"\n- button \"Confirm selection\" [ref=e2]\n- status\n  - StaticText \"2 account matches\"",
+              "refs": {
+                "e1": {
+                  "name": "Choose records",
+                  "role": "heading"
+                },
+                "e2": {
+                  "name": "Confirm selection",
+                  "role": "button"
+                },
+                "e3": {
+                  "name": "contact ",
+                  "role": "combobox"
+                },
+                "e4": {
+                  "name": "account ",
+                  "role": "textbox"
+                }
+              }
+            }
+          },
+          {
+            "stepIndex": 0,
+            "action": {
+              "ref": "@e4",
+              "role": "textbox",
+              "name": "account ",
+              "op": "press",
+              "key": "ArrowDown"
+            },
+            "before": {
+              "snapshot": "- heading \"Choose records\" [level=1, ref=e1]\n- paragraph\n  - StaticText \"Use arrow keys and Tab to choose each suggestion. Suggestions cannot be selected by mouse.\"\n- generic\n  - generic\n    - LabelText\n      - StaticText \"contact \"\n      - combobox \"contact \" [expanded=false, ref=e3]: Adobe Systems\n        - StaticText \"Adobe Systems\"\n    - paragraph\n      - StaticText \"Selected contact: Adobe Systems\"\n  - generic\n    - LabelText\n      - StaticText \"account \"\n      - textbox \"account \" [ref=e4]: Software assets\n        - StaticText \"Software assets\"\n    - paragraph\n      - StaticText \"Selected account: Software assets\"\n- button \"Confirm selection\" [ref=e2]\n- status\n  - StaticText \"2 account matches\"",
+              "refs": {
+                "e1": {
+                  "name": "Choose records",
+                  "role": "heading"
+                },
+                "e2": {
+                  "name": "Confirm selection",
+                  "role": "button"
+                },
+                "e3": {
+                  "name": "contact ",
+                  "role": "combobox"
+                },
+                "e4": {
+                  "name": "account ",
+                  "role": "textbox"
+                }
+              }
+            },
+            "outcome": "tool_succeeded",
+            "after": {
+              "snapshot": "- heading \"Choose records\" [level=1, ref=e1]\n- paragraph\n  - StaticText \"Use arrow keys and Tab to choose each suggestion. Suggestions cannot be selected by mouse.\"\n- generic\n  - generic\n    - LabelText\n      - StaticText \"contact \"\n      - combobox \"contact \" [expanded=false, ref=e4]: Adobe Systems\n        - StaticText \"Adobe Systems\"\n    - paragraph\n      - StaticText \"Selected contact: Adobe Systems\"\n  - generic\n    - LabelText\n      - StaticText \"account \"\n      - textbox \"account \" [ref=e5]: Software assets\n        - StaticText \"Software assets\"\n    - listbox \"account matches\" [ref=e3]\n      - option \"Software assets\" [ref=e6]\n      - option \"Software subscriptions\" [selected, ref=e7]\n    - paragraph\n      - StaticText \"Selected account: Software assets\"\n- button \"Confirm selection\" [ref=e2]\n- status\n  - StaticText \"2 account matches\"",
+              "refs": {
+                "e1": {
+                  "name": "Choose records",
+                  "role": "heading"
+                },
+                "e2": {
+                  "name": "Confirm selection",
+                  "role": "button"
+                },
+                "e3": {
+                  "name": "account matches",
+                  "role": "listbox"
+                },
+                "e4": {
+                  "name": "contact ",
+                  "role": "combobox"
+                },
+                "e5": {
+                  "name": "account ",
+                  "role": "textbox"
+                },
+                "e6": {
+                  "name": "Software assets",
+                  "role": "option"
+                },
+                "e7": {
+                  "name": "Software subscriptions",
+                  "role": "option"
+                }
+              }
+            }
+          },
+          {
+            "stepIndex": 0,
+            "action": {
+              "ref": "@e2",
+              "role": "button",
+              "name": "Confirm selection",
+              "op": "click"
+            },
+            "before": {
+              "snapshot": "- heading \"Choose records\" [level=1, ref=e1]\n- paragraph\n  - StaticText \"Use arrow keys and Tab to choose each suggestion. Suggestions cannot be selected by mouse.\"\n- generic\n  - generic\n    - LabelText\n      - StaticText \"contact \"\n      - combobox \"contact \" [expanded=false, ref=e4]: Adobe Systems\n        - StaticText \"Adobe Systems\"\n    - paragraph\n      - StaticText \"Selected contact: Adobe Systems\"\n  - generic\n    - LabelText\n      - StaticText \"account \"\n      - textbox \"account \" [ref=e5]: Software assets\n        - StaticText \"Software assets\"\n    - listbox \"account matches\" [ref=e3]\n      - option \"Software assets\" [ref=e6]\n      - option \"Software subscriptions\" [selected, ref=e7]\n    - paragraph\n      - StaticText \"Selected account: Software assets\"\n- button \"Confirm selection\" [ref=e2]\n- status\n  - StaticText \"2 account matches\"",
+              "refs": {
+                "e1": {
+                  "name": "Choose records",
+                  "role": "heading"
+                },
+                "e2": {
+                  "name": "Confirm selection",
+                  "role": "button"
+                },
+                "e3": {
+                  "name": "account matches",
+                  "role": "listbox"
+                },
+                "e4": {
+                  "name": "contact ",
+                  "role": "combobox"
+                },
+                "e5": {
+                  "name": "account ",
+                  "role": "textbox"
+                },
+                "e6": {
+                  "name": "Software assets",
+                  "role": "option"
+                },
+                "e7": {
+                  "name": "Software subscriptions",
+                  "role": "option"
+                }
+              }
+            },
+            "outcome": "tool_succeeded",
+            "after": {
+              "snapshot": "- heading \"Selection confirmed\" [level=1, ref=e1]\n- paragraph\n  - StaticText \"contact: Adobe Systems\"\n- paragraph\n  - StaticText \"account: Software assets\"",
+              "refs": {
+                "e1": {
+                  "name": "Selection confirmed",
+                  "role": "heading"
+                }
+              }
+            }
+          }
+        ],
+        "decisions": [
+          {
+            "stepIndex": 0,
+            "choice": "c2",
+            "op": "fill",
+            "confidence": 0.84,
+            "cost": 7.7742e-05,
+            "elapsedMs": 275.62541699999997
+          },
+          {
+            "stepIndex": 0,
+            "choice": "c6",
+            "op": "press",
+            "confidence": 0.26,
+            "cost": 8.883e-05,
+            "elapsedMs": 176.01079200000004
+          },
+          {
+            "stepIndex": 0,
+            "choice": "c6",
+            "op": "press",
+            "confidence": 0.74,
+            "cost": 9.7398e-05,
+            "elapsedMs": 213.26983300000006
+          },
+          {
+            "stepIndex": 0,
+            "choice": "c12",
+            "op": "fill",
+            "confidence": 0.45,
+            "cost": 0.00010227,
+            "elapsedMs": 162.45470899999987
+          },
+          {
+            "stepIndex": 0,
+            "choice": "c8",
+            "op": "press",
+            "confidence": 0.6,
+            "cost": 0.000106134,
+            "elapsedMs": 328.3022920000001
+          },
+          {
+            "stepIndex": 0,
+            "choice": "c13",
+            "op": "press",
+            "confidence": 0.27,
+            "cost": 0.00010962,
+            "elapsedMs": 230.22037499999988
+          },
+          {
+            "stepIndex": 0,
+            "choice": "c15",
+            "op": "press",
+            "confidence": 0.45,
+            "cost": 0.000112896,
+            "elapsedMs": 160.56008300000008
+          },
+          {
+            "stepIndex": 0,
+            "choice": "c13",
+            "op": "press",
+            "confidence": 0.29,
+            "cost": 0.000111762,
+            "elapsedMs": 165.8504170000001
+          },
+          {
+            "stepIndex": 0,
+            "choice": "c0",
+            "op": "click",
+            "confidence": 0.58,
+            "cost": 0.000117852,
+            "elapsedMs": 183.22954200000004
+          },
+          {
+            "stepIndex": 0,
+            "choice": "step_complete",
+            "op": "step_complete",
+            "confidence": 0.55,
+            "cost": 7.9884e-05,
+            "elapsedMs": 165.42225000000008
+          }
+        ],
+        "latestObservation": {
+          "snapshot": "- heading \"Selection confirmed\" [level=1, ref=e1]\n- paragraph\n  - StaticText \"contact: Adobe Systems\"\n- paragraph\n  - StaticText \"account: Software assets\"",
+          "refs": {
+            "e1": {
+              "name": "Selection confirmed",
+              "role": "heading"
+            }
+          }
+        },
+        "totalMs": 2418.5260000000003
+      },
+      "independentSnapshot": "- heading \"Selection confirmed\" [level=1, ref=e1]\n- paragraph\n  - StaticText \"contact: Adobe Systems\"\n- paragraph\n  - StaticText \"account: Software assets\"",
+      "verdict": "failed",
+      "failure": "Expected values to be strictly deep-equal:\n+ actual - expected\n\n  [\n    {\n      selected: {\n+       account: 'account-software-assets',\n-       account: 'account-software-subscriptions',\n        contact: 'contact-adobe-systems'\n      },\n      type: 'confirm'\n    }\n  ]\n",
+      "events": [
+        {
+          "type": "confirm",
+          "selected": {
+            "contact": "contact-adobe-systems",
+            "account": "account-software-assets"
+          }
+        }
+      ]
+    }
+  ],
+  "cleanup": {
+    "browserClosed": true,
+    "serverClosed": true,
+    "temporaryDirectoryRemoved": true
+  },
+  "browserVersion": "agent-browser 0.33.2",
+  "finishedAt": "2026-09-25T12:58:03.513Z",
+  "verdict": "failed",
+  "redactions": "Local home, executable, temporary paths and workflow session identifiers normalized; actions, verdicts, timings, usage and source hashes unchanged."
+}

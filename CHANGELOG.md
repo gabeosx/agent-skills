@@ -17,6 +17,14 @@ All notable skill changes are recorded in this file. Each skill is versioned ind
 - Added canonical agent instructions and a dependency-free release-contract validator requiring every affected skill change to include an independent Semantic Version increment, a matching root changelog entry, relevant validation, and scoped cleanup evidence.
 - Required repository-only changes to be recorded without inventing unrelated skill version bumps, and documented the definition of done and release-tagging workflow.
 
+## agent-browser-jev 0.3.1 - 2026-09-25
+
+### Fixed
+
+- Distinguish custom autocomplete/listbox options from native HTML dropdowns. Keep editable search fields available and click observed suggestions instead of issuing a native select command to an ARIA listbox.
+- Support ArrowUp alongside ArrowDown and Enter for keyboard selection, including readonly custom comboboxes. Require caller evidence of a committed selection rather than treating typed filter text as completion. Direct keyboard-only selection to caller control because Jev chose incorrect suggestions in live tests.
+- Add real-browser autocomplete acceptance that independently checks selected record IDs, including keyboard-only Enter selection. Retain failed keyboard-inference/Tab experiments; Tab is not offered because the model selected an incorrect record.
+
 ## agent-browser-jev 0.3.0 - 2026-09-25
 
 ### Added

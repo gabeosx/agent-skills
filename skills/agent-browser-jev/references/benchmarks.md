@@ -1,5 +1,20 @@
 # Browser workflow benchmarks
 
+## v0.3.1: searchable dropdowns
+
+The custom-listbox fix separates observed ARIA options from native HTML select options. Synthetic contact and account fields keep query text separate from committed record IDs; independent server assertions compare the exact selected IDs. Tests use the existing agent-browser 0.33.2 fork and Chrome 151.0.7922.71, with no real Xero/accounting data or actions.
+
+- [Final autocomplete run](evidence/autocomplete-0.3.1.json): click selection passed; explicit keyboard/Enter selection failed by committing Adobe Stock instead of Adobe Systems. The model reported completion. **1/2 passed**, not a reliable keyboard-selection result.
+- [Initial development run](evidence/autocomplete-development-0.3.1.json): click passed; keyboard/Enter and Tab cases failed when the model tried ineffective clicks and reported completion.
+- [Keyboard-description revision](evidence/autocomplete-inferred-keyboard-0.3.1.json): click passed; automatic keyboard inference still failed. Enter returned premature completion; Tab stopped without progress.
+- [Explicit keyboard instructions](evidence/autocomplete-explicit-keyboard-0.3.1.json): click and Enter passed, but Tab committed Software assets instead of Software subscriptions. The fixture's final display reflects the actual selected labels; assertions check committed IDs independently.
+- [Fixture startup failure](evidence/autocomplete-fixture-startup-0.3.1.json): the initial server did not handle favicon requests. It was corrected; this attempt supplies no acceptance result.
+- [Workflow regression](evidence/workflow-0.3.1.json): 5/5 passed after the native/custom distinction and revised keyboard descriptions, before removing the unsuccessful Tab capability. [Earlier regression](evidence/workflow-development-0.3.1.json) also passed 5/5. Source hashes distinguish these revisions.
+
+Click selection passed all four completed autocomplete runs, but these repeated development runs are not an independent broad reliability benchmark. The keyboard primitives execute; the model's choice of which suggestion to commit remains unreliable. The skill therefore directs the caller to use agent-browser directly for keyboard-only widgets and verify the actual selected value. Tab is not offered. A real Xero reconciliation-screen test is still outstanding. The v0.3.0 speed/cost comparison below has not been rerun or relabeled as v0.3.1.
+
+Reproduce with `npm run test:autocomplete -- --output /absolute/path/to/new-result.json`; the runner preserves failed outcomes and exits nonzero when selected IDs do not match. The package has 50 offline tests, including native dropdowns, custom listboxes, readonly comboboxes and keyboard candidate availability.
+
 ## v0.3.0: sustained browser control
 
 Measured 2026-09-25T12:33:12Z–12:38:00Z. Three fresh isolated native Codex sessions per arm; one complete task per session. Both use GPT-5.5, low reasoning effort, Codex CLI 0.147.0, Node 26.5.0 on macOS ARM, the same agent-browser 0.33.2 fork and Chrome for Testing 151.0.7922.71. The browser fork includes the user's existing credential-provider integration; no authentication or real account is used in this fixture.

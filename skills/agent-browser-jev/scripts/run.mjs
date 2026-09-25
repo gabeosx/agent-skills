@@ -58,7 +58,7 @@ async function main() {
 Resume: --resume /path/to/result.json [--value name=text] [--context "What the caller did while paused"]
 Advanced: --task task.json --policy caller-policy.mjs [--output private/result.json]
 Options: --binary /path/to/agent-browser --max-actions 30 --timeout 120000
-Defaults: observed clicks/fills/selects/checkboxes, scroll, Enter/Escape/ArrowDown, back and waits; 30 actions, 60 decisions, 120 seconds.
+Defaults: observed clicks/fills/selects/checkboxes, scroll, Enter/Escape/ArrowDown/ArrowUp, back and waits; 30 actions, 60 decisions, 120 seconds.
 Returns final observed page, missing input, timings and private evidence. Resume always observes afresh. Output paths must be new.`);
     return;
   }
