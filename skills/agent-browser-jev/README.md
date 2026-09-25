@@ -6,7 +6,7 @@
 
 The caller supplies the goal, permissions and exact input values. Jev interprets labels and surrounding context. Agent-browser performs the gestures. The caller checks the final evidence.
 
-**Version:** 0.1.1. A general-purpose browser helper, with public fixtures, an opt-in real-browser/real-Jev acceptance suite, and recorded evidence. It contains no application-specific selectors, workflows or business logic.
+**Version:** 0.1.2. A general-purpose browser helper, with public fixtures, an opt-in real-browser/real-Jev acceptance suite, and recorded evidence. It contains no application-specific selectors, workflows or business logic.
 
 ## Why it was built
 
@@ -45,8 +45,10 @@ For a global Codex installation:
 
 ```sh
 npx skills add gabeosx/agent-skills --skill agent-browser-jev --agent codex --global --yes
-npm --prefix "${CODEX_HOME:-$HOME/.codex}/skills/agent-browser-jev" ci --ignore-scripts --no-audit --no-fund
+npm --prefix "$HOME/.agents/skills/agent-browser-jev" ci --ignore-scripts --no-audit --no-fund
 ```
+
+The current installer uses `~/.agents/skills/agent-browser-jev` for global Codex installs. If you previously installed a manual copy under `~/.codex/skills`, migrate or remove that stale duplicate after checking for local customizations. Always use the path printed by your installer.
 
 For another supported agent, choose it interactively or change `--agent`. Run `npm ci` in the installed skill directory reported by the installer. The [official skills CLI documentation](https://github.com/vercel-labs/skills#readme) explains agent selection, project/global scope and symlink/copy installation. **Installing skill files does not install their npm dependencies.** Repeat `npm ci` after updating the skill.
 

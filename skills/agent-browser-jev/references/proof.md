@@ -1,6 +1,6 @@
 # Reproducible acceptance evidence
 
-This evidence is for the general-purpose helper in version 0.1.1. All pages and inputs are synthetic, supplied by the bundled fixtures. The published reports contain no private application records or login material.
+This evidence is for the general-purpose helper runtime shipped in versions 0.1.1 and 0.1.2; 0.1.2 corrects installation documentation without changing runtime or fixture sources. All pages and inputs are synthetic, supplied by the bundled fixtures. The published reports contain no private application records or login material.
 
 ## Recorded configuration
 
@@ -28,6 +28,10 @@ This evidence is for the general-purpose helper in version 0.1.1. All pages and 
 A handoff is the required success outcome for the last two scenarios. The other four require model-reported completion **and** independent fixture assertions. Cleanup confirmed that the test browser was closed, the local server stopped, and temporary task/policy files removed.
 
 Timing starts immediately before spawning the CLI and stops when it exits. It includes CLI/model initialization, API calls, snapshots and gestures; it excludes initial browser launch, navigation to each case, and final independent assertions. Costs are provider-reported model charges only. These single samples are acceptance measurements, not a speed comparison or a reliability rate. Model behavior and latency can vary on a rerun.
+
+## Fresh GitHub installation
+
+After merging 0.1.1, the documented `npx skills` command fetched the skill from GitHub into a global install. All six live scenarios passed again through that installed CLI, with all three cleanup checks passing. The [complete installation-check report](evidence/github-install.json) records the same source hashes. This exposed an incorrect dependency-installation path in the README: the current installer uses `~/.agents/skills`, while a previous manual copy under `~/.codex/skills` can remain stale. Version 0.1.2 corrects that instruction and explains migration.
 
 ## Failures retained during development
 
