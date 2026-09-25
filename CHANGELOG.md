@@ -6,8 +6,18 @@ All notable skill changes are recorded in this file. Each skill is versioned ind
 
 ### Repository
 
+- Added Agent Browser Jev to the skill catalog with `npx skills` installation guidance and a detailed human-facing README requested for this skill.
+
 - Added canonical agent instructions and a dependency-free release-contract validator requiring every affected skill change to include an independent Semantic Version increment, a matching root changelog entry, relevant validation, and scoped cleanup evidence.
 - Required repository-only changes to be recorded without inventing unrelated skill version bumps, and documented the definition of done and release-tagging workflow.
+
+## agent-browser-jev 0.1.0 - 2026-09-24
+
+### Added
+
+- Introduced a portable Jev-assisted browser action loop, CLI, pinned dependencies and 22 tests. The helper reuses an existing agent-browser session, accepts caller-owned permissions/privacy and secret loading, and returns model-assessed progress with observed evidence.
+- Documented installation with `npx skills`, API/CLI integration, original design rationale, historical prototype comparisons and the separate live read-only acceptance of the generic helper.
+- Kept business logic, site-specific permissions, credentials and private browser evidence outside the shared package. Initial live acceptance is supervised read-only Xero use; arbitrary-site reliability and consequential writes are not established.
 
 ## apple-container-skill 1.2.0 - 2026-09-20
 
