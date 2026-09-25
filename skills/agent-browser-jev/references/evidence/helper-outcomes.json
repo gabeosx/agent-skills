@@ -1,0 +1,2363 @@
+{
+  "source": "Private CLI evidence files from the paired Codex run; costs omitted",
+  "outcomes": [
+    {
+      "round": 1,
+      "id": "help-article",
+      "returnReason": "reported_complete",
+      "actions": [
+        {
+          "stepIndex": 0,
+          "action": {
+            "ref": "@e5",
+            "role": "button",
+            "name": "Read article",
+            "op": "click"
+          },
+          "before": {
+            "snapshot": "- heading \"Help articles\" [level=1, ref=e1]\n- main\n  - article\n    - heading \"Shipping\" [level=2, ref=e2]\n    - paragraph\n      - StaticText \"Learn about our shipping policy.\"\n    - button \"Read article\" [ref=e3]\n  - article\n    - heading \"Returns\" [level=2, ref=e4]\n    - paragraph\n      - StaticText \"Learn about our returns policy.\"\n    - button \"Read article\" [ref=e5]\n  - article\n    - heading \"Warranty\" [level=2, ref=e6]\n    - paragraph\n      - StaticText \"Learn about our warranty policy.\"\n    - button \"Read article\" [ref=e7]",
+            "refs": {
+              "e1": {
+                "name": "Help articles",
+                "role": "heading"
+              },
+              "e2": {
+                "name": "Shipping",
+                "role": "heading"
+              },
+              "e3": {
+                "name": "Read article",
+                "role": "button"
+              },
+              "e4": {
+                "name": "Returns",
+                "role": "heading"
+              },
+              "e5": {
+                "name": "Read article",
+                "role": "button"
+              },
+              "e6": {
+                "name": "Warranty",
+                "role": "heading"
+              },
+              "e7": {
+                "name": "Read article",
+                "role": "button"
+              }
+            }
+          },
+          "outcome": "tool_succeeded",
+          "after": {
+            "snapshot": "- dialog\n  - heading \"Returns\" [level=2, ref=e8]\n  - paragraph\n    - StaticText \"Help article content.\"\n  - button \"Back to articles\" [ref=e9]",
+            "refs": {
+              "e8": {
+                "name": "Returns",
+                "role": "heading"
+              },
+              "e9": {
+                "name": "Back to articles",
+                "role": "button"
+              }
+            }
+          }
+        },
+        {
+          "stepIndex": 0,
+          "action": {
+            "ref": "@e9",
+            "role": "button",
+            "name": "Back to articles",
+            "op": "click"
+          },
+          "before": {
+            "snapshot": "- dialog\n  - heading \"Returns\" [level=2, ref=e8]\n  - paragraph\n    - StaticText \"Help article content.\"\n  - button \"Back to articles\" [ref=e9]",
+            "refs": {
+              "e8": {
+                "name": "Returns",
+                "role": "heading"
+              },
+              "e9": {
+                "name": "Back to articles",
+                "role": "button"
+              }
+            }
+          },
+          "outcome": "tool_succeeded",
+          "after": {
+            "snapshot": "- heading \"Help articles\" [level=1, ref=e1]\n- main\n  - article\n    - heading \"Shipping\" [level=2, ref=e2]\n    - paragraph\n      - StaticText \"Learn about our shipping policy.\"\n    - button \"Read article\" [ref=e3]\n  - article\n    - heading \"Returns\" [level=2, ref=e4]\n    - paragraph\n      - StaticText \"Learn about our returns policy.\"\n    - button \"Read article\" [ref=e5]\n  - article\n    - heading \"Warranty\" [level=2, ref=e6]\n    - paragraph\n      - StaticText \"Learn about our warranty policy.\"\n    - button \"Read article\" [ref=e7]",
+            "refs": {
+              "e1": {
+                "name": "Help articles",
+                "role": "heading"
+              },
+              "e2": {
+                "name": "Shipping",
+                "role": "heading"
+              },
+              "e3": {
+                "name": "Read article",
+                "role": "button"
+              },
+              "e4": {
+                "name": "Returns",
+                "role": "heading"
+              },
+              "e5": {
+                "name": "Read article",
+                "role": "button"
+              },
+              "e6": {
+                "name": "Warranty",
+                "role": "heading"
+              },
+              "e7": {
+                "name": "Read article",
+                "role": "button"
+              }
+            }
+          }
+        }
+      ],
+      "latestObservation": {
+        "snapshot": "- heading \"Help articles\" [level=1, ref=e1]\n- main\n  - article\n    - heading \"Shipping\" [level=2, ref=e2]\n    - paragraph\n      - StaticText \"Learn about our shipping policy.\"\n    - button \"Read article\" [ref=e3]\n  - article\n    - heading \"Returns\" [level=2, ref=e4]\n    - paragraph\n      - StaticText \"Learn about our returns policy.\"\n    - button \"Read article\" [ref=e5]\n  - article\n    - heading \"Warranty\" [level=2, ref=e6]\n    - paragraph\n      - StaticText \"Learn about our warranty policy.\"\n    - button \"Read article\" [ref=e7]",
+        "refs": {
+          "e1": {
+            "name": "Help articles",
+            "role": "heading"
+          },
+          "e2": {
+            "name": "Shipping",
+            "role": "heading"
+          },
+          "e3": {
+            "name": "Read article",
+            "role": "button"
+          },
+          "e4": {
+            "name": "Returns",
+            "role": "heading"
+          },
+          "e5": {
+            "name": "Read article",
+            "role": "button"
+          },
+          "e6": {
+            "name": "Warranty",
+            "role": "heading"
+          },
+          "e7": {
+            "name": "Read article",
+            "role": "button"
+          }
+        }
+      }
+    },
+    {
+      "round": 1,
+      "id": "missing-article",
+      "returnReason": "handoff",
+      "actions": [],
+      "latestObservation": {
+        "snapshot": "- heading \"Help articles\" [level=1, ref=e34]\n- main\n  - article\n    - heading \"Shipping\" [level=2, ref=e35]\n    - paragraph\n      - StaticText \"Learn about our shipping policy.\"\n    - button \"Read article\" [ref=e36]\n  - article\n    - heading \"Returns\" [level=2, ref=e37]\n    - paragraph\n      - StaticText \"Learn about our returns policy.\"\n    - button \"Read article\" [ref=e38]\n  - article\n    - heading \"Warranty\" [level=2, ref=e39]\n    - paragraph\n      - StaticText \"Learn about our warranty policy.\"\n    - button \"Read article\" [ref=e40]",
+        "refs": {
+          "e34": {
+            "name": "Help articles",
+            "role": "heading"
+          },
+          "e35": {
+            "name": "Shipping",
+            "role": "heading"
+          },
+          "e36": {
+            "name": "Read article",
+            "role": "button"
+          },
+          "e37": {
+            "name": "Returns",
+            "role": "heading"
+          },
+          "e38": {
+            "name": "Read article",
+            "role": "button"
+          },
+          "e39": {
+            "name": "Warranty",
+            "role": "heading"
+          },
+          "e40": {
+            "name": "Read article",
+            "role": "button"
+          }
+        }
+      }
+    },
+    {
+      "round": 1,
+      "id": "preferences",
+      "returnReason": "reported_complete",
+      "actions": [
+        {
+          "stepIndex": 0,
+          "action": {
+            "ref": "@e24",
+            "role": "button",
+            "name": "Edit notifications",
+            "op": "click"
+          },
+          "before": {
+            "snapshot": "- heading \"Preferences\" [level=1, ref=e23]\n- button \"Edit notifications\" [ref=e24]\n- paragraph\n  - StaticText \"No changes saved\"",
+            "refs": {
+              "e23": {
+                "name": "Preferences",
+                "role": "heading"
+              },
+              "e24": {
+                "name": "Edit notifications",
+                "role": "button"
+              }
+            }
+          },
+          "outcome": "tool_succeeded",
+          "after": {
+            "snapshot": "- dialog\n  - heading \"Notifications\" [level=2, ref=e25]\n  - checkbox \"Email updates\" [checked=false, ref=e26]\n  - button \"Save preferences\" [ref=e27]",
+            "refs": {
+              "e25": {
+                "name": "Notifications",
+                "role": "heading"
+              },
+              "e26": {
+                "name": "Email updates",
+                "role": "checkbox"
+              },
+              "e27": {
+                "name": "Save preferences",
+                "role": "button"
+              }
+            }
+          }
+        },
+        {
+          "stepIndex": 0,
+          "action": {
+            "ref": "@e26",
+            "role": "checkbox",
+            "name": "Email updates",
+            "op": "click"
+          },
+          "before": {
+            "snapshot": "- dialog\n  - heading \"Notifications\" [level=2, ref=e25]\n  - checkbox \"Email updates\" [checked=false, ref=e26]\n  - button \"Save preferences\" [ref=e27]",
+            "refs": {
+              "e25": {
+                "name": "Notifications",
+                "role": "heading"
+              },
+              "e26": {
+                "name": "Email updates",
+                "role": "checkbox"
+              },
+              "e27": {
+                "name": "Save preferences",
+                "role": "button"
+              }
+            }
+          },
+          "outcome": "tool_succeeded",
+          "after": {
+            "snapshot": "- dialog\n  - heading \"Notifications\" [level=2, ref=e25]\n  - checkbox \"Email updates\" [checked=true, ref=e26]\n  - button \"Save preferences\" [ref=e27]",
+            "refs": {
+              "e25": {
+                "name": "Notifications",
+                "role": "heading"
+              },
+              "e26": {
+                "name": "Email updates",
+                "role": "checkbox"
+              },
+              "e27": {
+                "name": "Save preferences",
+                "role": "button"
+              }
+            }
+          }
+        },
+        {
+          "stepIndex": 0,
+          "action": {
+            "ref": "@e27",
+            "role": "button",
+            "name": "Save preferences",
+            "op": "click"
+          },
+          "before": {
+            "snapshot": "- dialog\n  - heading \"Notifications\" [level=2, ref=e25]\n  - checkbox \"Email updates\" [checked=true, ref=e26]\n  - button \"Save preferences\" [ref=e27]",
+            "refs": {
+              "e25": {
+                "name": "Notifications",
+                "role": "heading"
+              },
+              "e26": {
+                "name": "Email updates",
+                "role": "checkbox"
+              },
+              "e27": {
+                "name": "Save preferences",
+                "role": "button"
+              }
+            }
+          },
+          "outcome": "tool_succeeded",
+          "after": {
+            "snapshot": "- heading \"Preferences\" [level=1, ref=e23]\n- button \"Edit notifications\" [ref=e24]\n- paragraph\n  - StaticText \"Preferences saved\"",
+            "refs": {
+              "e23": {
+                "name": "Preferences",
+                "role": "heading"
+              },
+              "e24": {
+                "name": "Edit notifications",
+                "role": "button"
+              }
+            }
+          }
+        }
+      ],
+      "latestObservation": {
+        "snapshot": "- heading \"Preferences\" [level=1, ref=e23]\n- button \"Edit notifications\" [ref=e24]\n- paragraph\n  - StaticText \"Preferences saved\"",
+        "refs": {
+          "e23": {
+            "name": "Preferences",
+            "role": "heading"
+          },
+          "e24": {
+            "name": "Edit notifications",
+            "role": "button"
+          }
+        }
+      }
+    },
+    {
+      "round": 1,
+      "id": "reordered-articles",
+      "returnReason": "reported_complete",
+      "actions": [
+        {
+          "stepIndex": 0,
+          "action": {
+            "ref": "@e12",
+            "role": "button",
+            "name": "Read article",
+            "op": "click"
+          },
+          "before": {
+            "snapshot": "- heading \"Help articles\" [level=1, ref=e10]\n- main\n  - article\n    - heading \"Warranty\" [level=2, ref=e11]\n    - paragraph\n      - StaticText \"Learn about our warranty policy.\"\n    - button \"Read article\" [ref=e12]\n  - article\n    - heading \"Shipping\" [level=2, ref=e13]\n    - paragraph\n      - StaticText \"Learn about our shipping policy.\"\n    - button \"Read article\" [ref=e14]\n  - article\n    - heading \"Returns\" [level=2, ref=e15]\n    - paragraph\n      - StaticText \"Learn about our returns policy.\"\n    - button \"Read article\" [ref=e16]",
+            "refs": {
+              "e10": {
+                "name": "Help articles",
+                "role": "heading"
+              },
+              "e11": {
+                "name": "Warranty",
+                "role": "heading"
+              },
+              "e12": {
+                "name": "Read article",
+                "role": "button"
+              },
+              "e13": {
+                "name": "Shipping",
+                "role": "heading"
+              },
+              "e14": {
+                "name": "Read article",
+                "role": "button"
+              },
+              "e15": {
+                "name": "Returns",
+                "role": "heading"
+              },
+              "e16": {
+                "name": "Read article",
+                "role": "button"
+              }
+            }
+          },
+          "outcome": "tool_succeeded",
+          "after": {
+            "snapshot": "- dialog\n  - heading \"Warranty\" [level=2, ref=e17]\n  - paragraph\n    - StaticText \"Help article content.\"\n  - button \"Back to articles\" [ref=e18]",
+            "refs": {
+              "e17": {
+                "name": "Warranty",
+                "role": "heading"
+              },
+              "e18": {
+                "name": "Back to articles",
+                "role": "button"
+              }
+            }
+          }
+        },
+        {
+          "stepIndex": 0,
+          "action": {
+            "ref": "@e18",
+            "role": "button",
+            "name": "Back to articles",
+            "op": "click"
+          },
+          "before": {
+            "snapshot": "- dialog\n  - heading \"Warranty\" [level=2, ref=e17]\n  - paragraph\n    - StaticText \"Help article content.\"\n  - button \"Back to articles\" [ref=e18]",
+            "refs": {
+              "e17": {
+                "name": "Warranty",
+                "role": "heading"
+              },
+              "e18": {
+                "name": "Back to articles",
+                "role": "button"
+              }
+            }
+          },
+          "outcome": "tool_succeeded",
+          "after": {
+            "snapshot": "- heading \"Help articles\" [level=1, ref=e10]\n- main\n  - article\n    - heading \"Warranty\" [level=2, ref=e11]\n    - paragraph\n      - StaticText \"Learn about our warranty policy.\"\n    - button \"Read article\" [ref=e12]\n  - article\n    - heading \"Shipping\" [level=2, ref=e13]\n    - paragraph\n      - StaticText \"Learn about our shipping policy.\"\n    - button \"Read article\" [ref=e14]\n  - article\n    - heading \"Returns\" [level=2, ref=e15]\n    - paragraph\n      - StaticText \"Learn about our returns policy.\"\n    - button \"Read article\" [ref=e16]",
+            "refs": {
+              "e10": {
+                "name": "Help articles",
+                "role": "heading"
+              },
+              "e11": {
+                "name": "Warranty",
+                "role": "heading"
+              },
+              "e12": {
+                "name": "Read article",
+                "role": "button"
+              },
+              "e13": {
+                "name": "Shipping",
+                "role": "heading"
+              },
+              "e14": {
+                "name": "Read article",
+                "role": "button"
+              },
+              "e15": {
+                "name": "Returns",
+                "role": "heading"
+              },
+              "e16": {
+                "name": "Read article",
+                "role": "button"
+              }
+            }
+          }
+        }
+      ],
+      "latestObservation": {
+        "snapshot": "- heading \"Help articles\" [level=1, ref=e10]\n- main\n  - article\n    - heading \"Warranty\" [level=2, ref=e11]\n    - paragraph\n      - StaticText \"Learn about our warranty policy.\"\n    - button \"Read article\" [ref=e12]\n  - article\n    - heading \"Shipping\" [level=2, ref=e13]\n    - paragraph\n      - StaticText \"Learn about our shipping policy.\"\n    - button \"Read article\" [ref=e14]\n  - article\n    - heading \"Returns\" [level=2, ref=e15]\n    - paragraph\n      - StaticText \"Learn about our returns policy.\"\n    - button \"Read article\" [ref=e16]",
+        "refs": {
+          "e10": {
+            "name": "Help articles",
+            "role": "heading"
+          },
+          "e11": {
+            "name": "Warranty",
+            "role": "heading"
+          },
+          "e12": {
+            "name": "Read article",
+            "role": "button"
+          },
+          "e13": {
+            "name": "Shipping",
+            "role": "heading"
+          },
+          "e14": {
+            "name": "Read article",
+            "role": "button"
+          },
+          "e15": {
+            "name": "Returns",
+            "role": "heading"
+          },
+          "e16": {
+            "name": "Read article",
+            "role": "button"
+          }
+        }
+      }
+    },
+    {
+      "round": 1,
+      "id": "search-topic",
+      "returnReason": "reported_complete",
+      "actions": [
+        {
+          "stepIndex": 0,
+          "action": {
+            "ref": "@e29",
+            "role": "textbox",
+            "name": "Search topics",
+            "op": "fill",
+            "valueId": "query",
+            "value": "account"
+          },
+          "before": {
+            "snapshot": "- heading \"Help center search\" [level=1, ref=e28]\n- LabelText\n  - StaticText \"Search topics\"\n  - textbox \"Search topics\" [ref=e29]",
+            "refs": {
+              "e28": {
+                "name": "Help center search",
+                "role": "heading"
+              },
+              "e29": {
+                "name": "Search topics",
+                "role": "textbox"
+              }
+            }
+          },
+          "outcome": "tool_succeeded",
+          "after": {
+            "snapshot": "- heading \"Help center search\" [level=1, ref=e28]\n- LabelText\n  - StaticText \"Search topics\"\n  - textbox \"Search topics\" [ref=e29]: account\n    - StaticText \"account\"\n- article\n  - heading \"Account recovery\" [level=2, ref=e30]\n  - button \"Read topic\" [ref=e31]",
+            "refs": {
+              "e28": {
+                "name": "Help center search",
+                "role": "heading"
+              },
+              "e29": {
+                "name": "Search topics",
+                "role": "textbox"
+              },
+              "e30": {
+                "name": "Account recovery",
+                "role": "heading"
+              },
+              "e31": {
+                "name": "Read topic",
+                "role": "button"
+              }
+            }
+          }
+        },
+        {
+          "stepIndex": 0,
+          "action": {
+            "ref": "@e31",
+            "role": "button",
+            "name": "Read topic",
+            "op": "click"
+          },
+          "before": {
+            "snapshot": "- heading \"Help center search\" [level=1, ref=e28]\n- LabelText\n  - StaticText \"Search topics\"\n  - textbox \"Search topics\" [ref=e29]: account\n    - StaticText \"account\"\n- article\n  - heading \"Account recovery\" [level=2, ref=e30]\n  - button \"Read topic\" [ref=e31]",
+            "refs": {
+              "e28": {
+                "name": "Help center search",
+                "role": "heading"
+              },
+              "e29": {
+                "name": "Search topics",
+                "role": "textbox"
+              },
+              "e30": {
+                "name": "Account recovery",
+                "role": "heading"
+              },
+              "e31": {
+                "name": "Read topic",
+                "role": "button"
+              }
+            }
+          },
+          "outcome": "tool_succeeded",
+          "after": {
+            "snapshot": "- dialog\n  - heading \"Account recovery\" [level=2, ref=e32]\n  - paragraph\n    - StaticText \"Recover your account with your registered email.\"\n  - button \"Back to results\" [ref=e33]",
+            "refs": {
+              "e32": {
+                "name": "Account recovery",
+                "role": "heading"
+              },
+              "e33": {
+                "name": "Back to results",
+                "role": "button"
+              }
+            }
+          }
+        },
+        {
+          "stepIndex": 0,
+          "action": {
+            "ref": "@e33",
+            "role": "button",
+            "name": "Back to results",
+            "op": "click"
+          },
+          "before": {
+            "snapshot": "- dialog\n  - heading \"Account recovery\" [level=2, ref=e32]\n  - paragraph\n    - StaticText \"Recover your account with your registered email.\"\n  - button \"Back to results\" [ref=e33]",
+            "refs": {
+              "e32": {
+                "name": "Account recovery",
+                "role": "heading"
+              },
+              "e33": {
+                "name": "Back to results",
+                "role": "button"
+              }
+            }
+          },
+          "outcome": "tool_succeeded",
+          "after": {
+            "snapshot": "- heading \"Help center search\" [level=1, ref=e28]\n- LabelText\n  - StaticText \"Search topics\"\n  - textbox \"Search topics\" [ref=e29]: account\n    - StaticText \"account\"\n- article\n  - heading \"Account recovery\" [level=2, ref=e30]\n  - button \"Read topic\" [ref=e31]",
+            "refs": {
+              "e28": {
+                "name": "Help center search",
+                "role": "heading"
+              },
+              "e29": {
+                "name": "Search topics",
+                "role": "textbox"
+              },
+              "e30": {
+                "name": "Account recovery",
+                "role": "heading"
+              },
+              "e31": {
+                "name": "Read topic",
+                "role": "button"
+              }
+            }
+          }
+        }
+      ],
+      "latestObservation": {
+        "snapshot": "- heading \"Help center search\" [level=1, ref=e28]\n- LabelText\n  - StaticText \"Search topics\"\n  - textbox \"Search topics\" [ref=e29]: account\n    - StaticText \"account\"\n- article\n  - heading \"Account recovery\" [level=2, ref=e30]\n  - button \"Read topic\" [ref=e31]",
+        "refs": {
+          "e28": {
+            "name": "Help center search",
+            "role": "heading"
+          },
+          "e29": {
+            "name": "Search topics",
+            "role": "textbox"
+          },
+          "e30": {
+            "name": "Account recovery",
+            "role": "heading"
+          },
+          "e31": {
+            "name": "Read topic",
+            "role": "button"
+          }
+        }
+      }
+    },
+    {
+      "round": 1,
+      "id": "support-draft",
+      "returnReason": "reported_complete",
+      "actions": [
+        {
+          "stepIndex": 0,
+          "action": {
+            "ref": "@e21",
+            "role": "textbox",
+            "name": "Subject",
+            "op": "fill",
+            "valueId": "subject",
+            "value": "Delivery question"
+          },
+          "before": {
+            "snapshot": "- heading \"Contact support\" [level=1, ref=e19]\n- LabelText\n  - StaticText \"Subject\"\n  - textbox \"Subject\" [ref=e21]\n- LabelText\n  - StaticText \"Message\"\n  - textbox \"Message\" [ref=e22]\n- button \"Send request\" [ref=e20]",
+            "refs": {
+              "e19": {
+                "name": "Contact support",
+                "role": "heading"
+              },
+              "e20": {
+                "name": "Send request",
+                "role": "button"
+              },
+              "e21": {
+                "name": "Subject",
+                "role": "textbox"
+              },
+              "e22": {
+                "name": "Message",
+                "role": "textbox"
+              }
+            }
+          },
+          "outcome": "tool_succeeded",
+          "after": {
+            "snapshot": "- heading \"Contact support\" [level=1, ref=e19]\n- LabelText\n  - StaticText \"Subject\"\n  - textbox \"Subject\" [ref=e21]: Delivery question\n    - StaticText \"Delivery question\"\n- LabelText\n  - StaticText \"Message\"\n  - textbox \"Message\" [ref=e22]\n- button \"Send request\" [ref=e20]",
+            "refs": {
+              "e19": {
+                "name": "Contact support",
+                "role": "heading"
+              },
+              "e20": {
+                "name": "Send request",
+                "role": "button"
+              },
+              "e21": {
+                "name": "Subject",
+                "role": "textbox"
+              },
+              "e22": {
+                "name": "Message",
+                "role": "textbox"
+              }
+            }
+          }
+        },
+        {
+          "stepIndex": 0,
+          "action": {
+            "ref": "@e22",
+            "role": "textbox",
+            "name": "Message",
+            "op": "fill",
+            "valueId": "message",
+            "value": "Please check order #42 \u2014 \"blue\" & green.\nThank you!"
+          },
+          "before": {
+            "snapshot": "- heading \"Contact support\" [level=1, ref=e19]\n- LabelText\n  - StaticText \"Subject\"\n  - textbox \"Subject\" [ref=e21]: Delivery question\n    - StaticText \"Delivery question\"\n- LabelText\n  - StaticText \"Message\"\n  - textbox \"Message\" [ref=e22]\n- button \"Send request\" [ref=e20]",
+            "refs": {
+              "e19": {
+                "name": "Contact support",
+                "role": "heading"
+              },
+              "e20": {
+                "name": "Send request",
+                "role": "button"
+              },
+              "e21": {
+                "name": "Subject",
+                "role": "textbox"
+              },
+              "e22": {
+                "name": "Message",
+                "role": "textbox"
+              }
+            }
+          },
+          "outcome": "tool_succeeded",
+          "after": {
+            "snapshot": "- heading \"Contact support\" [level=1, ref=e19]\n- LabelText\n  - StaticText \"Subject\"\n  - textbox \"Subject\" [ref=e21]: Delivery question\n    - StaticText \"Delivery question\"\n- LabelText\n  - StaticText \"Message\"\n  - textbox \"Message\" [ref=e22]: Please check order #42 \u2014 \"blue\" & green.\nThank you!\n    - generic\n      - StaticText \"Please check order #42 \u2014 \\\"blue\\\" & green.\"\n      - LineBreak \"\\n\"\n      - StaticText \"Thank you!\"\n- button \"Send request\" [ref=e20]",
+            "refs": {
+              "e19": {
+                "name": "Contact support",
+                "role": "heading"
+              },
+              "e20": {
+                "name": "Send request",
+                "role": "button"
+              },
+              "e21": {
+                "name": "Subject",
+                "role": "textbox"
+              },
+              "e22": {
+                "name": "Message",
+                "role": "textbox"
+              }
+            }
+          }
+        }
+      ],
+      "latestObservation": {
+        "snapshot": "- heading \"Contact support\" [level=1, ref=e19]\n- LabelText\n  - StaticText \"Subject\"\n  - textbox \"Subject\" [ref=e21]: Delivery question\n    - StaticText \"Delivery question\"\n- LabelText\n  - StaticText \"Message\"\n  - textbox \"Message\" [ref=e22]: Please check order #42 \u2014 \"blue\" & green.\nThank you!\n    - generic\n      - StaticText \"Please check order #42 \u2014 \\\"blue\\\" & green.\"\n      - LineBreak \"\\n\"\n      - StaticText \"Thank you!\"\n- button \"Send request\" [ref=e20]",
+        "refs": {
+          "e19": {
+            "name": "Contact support",
+            "role": "heading"
+          },
+          "e20": {
+            "name": "Send request",
+            "role": "button"
+          },
+          "e21": {
+            "name": "Subject",
+            "role": "textbox"
+          },
+          "e22": {
+            "name": "Message",
+            "role": "textbox"
+          }
+        }
+      }
+    },
+    {
+      "round": 2,
+      "id": "help-article",
+      "returnReason": "reported_complete",
+      "actions": [
+        {
+          "stepIndex": 0,
+          "action": {
+            "ref": "@e36",
+            "role": "button",
+            "name": "Read article",
+            "op": "click"
+          },
+          "before": {
+            "snapshot": "- heading \"Help articles\" [level=1, ref=e32]\n- main\n  - article\n    - heading \"Shipping\" [level=2, ref=e33]\n    - paragraph\n      - StaticText \"Learn about our shipping policy.\"\n    - button \"Read article\" [ref=e34]\n  - article\n    - heading \"Returns\" [level=2, ref=e35]\n    - paragraph\n      - StaticText \"Learn about our returns policy.\"\n    - button \"Read article\" [ref=e36]\n  - article\n    - heading \"Warranty\" [level=2, ref=e37]\n    - paragraph\n      - StaticText \"Learn about our warranty policy.\"\n    - button \"Read article\" [ref=e38]",
+            "refs": {
+              "e32": {
+                "name": "Help articles",
+                "role": "heading"
+              },
+              "e33": {
+                "name": "Shipping",
+                "role": "heading"
+              },
+              "e34": {
+                "name": "Read article",
+                "role": "button"
+              },
+              "e35": {
+                "name": "Returns",
+                "role": "heading"
+              },
+              "e36": {
+                "name": "Read article",
+                "role": "button"
+              },
+              "e37": {
+                "name": "Warranty",
+                "role": "heading"
+              },
+              "e38": {
+                "name": "Read article",
+                "role": "button"
+              }
+            }
+          },
+          "outcome": "tool_succeeded",
+          "after": {
+            "snapshot": "- dialog\n  - heading \"Returns\" [level=2, ref=e39]\n  - paragraph\n    - StaticText \"Help article content.\"\n  - button \"Back to articles\" [ref=e40]",
+            "refs": {
+              "e39": {
+                "name": "Returns",
+                "role": "heading"
+              },
+              "e40": {
+                "name": "Back to articles",
+                "role": "button"
+              }
+            }
+          }
+        },
+        {
+          "stepIndex": 0,
+          "action": {
+            "ref": "@e40",
+            "role": "button",
+            "name": "Back to articles",
+            "op": "click"
+          },
+          "before": {
+            "snapshot": "- dialog\n  - heading \"Returns\" [level=2, ref=e39]\n  - paragraph\n    - StaticText \"Help article content.\"\n  - button \"Back to articles\" [ref=e40]",
+            "refs": {
+              "e39": {
+                "name": "Returns",
+                "role": "heading"
+              },
+              "e40": {
+                "name": "Back to articles",
+                "role": "button"
+              }
+            }
+          },
+          "outcome": "tool_succeeded",
+          "after": {
+            "snapshot": "- heading \"Help articles\" [level=1, ref=e32]\n- main\n  - article\n    - heading \"Shipping\" [level=2, ref=e33]\n    - paragraph\n      - StaticText \"Learn about our shipping policy.\"\n    - button \"Read article\" [ref=e34]\n  - article\n    - heading \"Returns\" [level=2, ref=e35]\n    - paragraph\n      - StaticText \"Learn about our returns policy.\"\n    - button \"Read article\" [ref=e36]\n  - article\n    - heading \"Warranty\" [level=2, ref=e37]\n    - paragraph\n      - StaticText \"Learn about our warranty policy.\"\n    - button \"Read article\" [ref=e38]",
+            "refs": {
+              "e32": {
+                "name": "Help articles",
+                "role": "heading"
+              },
+              "e33": {
+                "name": "Shipping",
+                "role": "heading"
+              },
+              "e34": {
+                "name": "Read article",
+                "role": "button"
+              },
+              "e35": {
+                "name": "Returns",
+                "role": "heading"
+              },
+              "e36": {
+                "name": "Read article",
+                "role": "button"
+              },
+              "e37": {
+                "name": "Warranty",
+                "role": "heading"
+              },
+              "e38": {
+                "name": "Read article",
+                "role": "button"
+              }
+            }
+          }
+        }
+      ],
+      "latestObservation": {
+        "snapshot": "- heading \"Help articles\" [level=1, ref=e32]\n- main\n  - article\n    - heading \"Shipping\" [level=2, ref=e33]\n    - paragraph\n      - StaticText \"Learn about our shipping policy.\"\n    - button \"Read article\" [ref=e34]\n  - article\n    - heading \"Returns\" [level=2, ref=e35]\n    - paragraph\n      - StaticText \"Learn about our returns policy.\"\n    - button \"Read article\" [ref=e36]\n  - article\n    - heading \"Warranty\" [level=2, ref=e37]\n    - paragraph\n      - StaticText \"Learn about our warranty policy.\"\n    - button \"Read article\" [ref=e38]",
+        "refs": {
+          "e32": {
+            "name": "Help articles",
+            "role": "heading"
+          },
+          "e33": {
+            "name": "Shipping",
+            "role": "heading"
+          },
+          "e34": {
+            "name": "Read article",
+            "role": "button"
+          },
+          "e35": {
+            "name": "Returns",
+            "role": "heading"
+          },
+          "e36": {
+            "name": "Read article",
+            "role": "button"
+          },
+          "e37": {
+            "name": "Warranty",
+            "role": "heading"
+          },
+          "e38": {
+            "name": "Read article",
+            "role": "button"
+          }
+        }
+      }
+    },
+    {
+      "round": 2,
+      "id": "missing-article",
+      "returnReason": "handoff",
+      "actions": [],
+      "latestObservation": {
+        "snapshot": "- heading \"Help articles\" [level=1, ref=e25]\n- main\n  - article\n    - heading \"Shipping\" [level=2, ref=e26]\n    - paragraph\n      - StaticText \"Learn about our shipping policy.\"\n    - button \"Read article\" [ref=e27]\n  - article\n    - heading \"Returns\" [level=2, ref=e28]\n    - paragraph\n      - StaticText \"Learn about our returns policy.\"\n    - button \"Read article\" [ref=e29]\n  - article\n    - heading \"Warranty\" [level=2, ref=e30]\n    - paragraph\n      - StaticText \"Learn about our warranty policy.\"\n    - button \"Read article\" [ref=e31]",
+        "refs": {
+          "e25": {
+            "name": "Help articles",
+            "role": "heading"
+          },
+          "e26": {
+            "name": "Shipping",
+            "role": "heading"
+          },
+          "e27": {
+            "name": "Read article",
+            "role": "button"
+          },
+          "e28": {
+            "name": "Returns",
+            "role": "heading"
+          },
+          "e29": {
+            "name": "Read article",
+            "role": "button"
+          },
+          "e30": {
+            "name": "Warranty",
+            "role": "heading"
+          },
+          "e31": {
+            "name": "Read article",
+            "role": "button"
+          }
+        }
+      }
+    },
+    {
+      "round": 2,
+      "id": "preferences",
+      "returnReason": "reported_complete",
+      "actions": [
+        {
+          "stepIndex": 0,
+          "action": {
+            "ref": "@e15",
+            "role": "button",
+            "name": "Edit notifications",
+            "op": "click"
+          },
+          "before": {
+            "snapshot": "- heading \"Preferences\" [level=1, ref=e14]\n- button \"Edit notifications\" [ref=e15]\n- paragraph\n  - StaticText \"No changes saved\"",
+            "refs": {
+              "e14": {
+                "name": "Preferences",
+                "role": "heading"
+              },
+              "e15": {
+                "name": "Edit notifications",
+                "role": "button"
+              }
+            }
+          },
+          "outcome": "tool_succeeded",
+          "after": {
+            "snapshot": "- dialog\n  - heading \"Notifications\" [level=2, ref=e16]\n  - checkbox \"Email updates\" [checked=false, ref=e17]\n  - button \"Save preferences\" [ref=e18]",
+            "refs": {
+              "e16": {
+                "name": "Notifications",
+                "role": "heading"
+              },
+              "e17": {
+                "name": "Email updates",
+                "role": "checkbox"
+              },
+              "e18": {
+                "name": "Save preferences",
+                "role": "button"
+              }
+            }
+          }
+        },
+        {
+          "stepIndex": 0,
+          "action": {
+            "ref": "@e17",
+            "role": "checkbox",
+            "name": "Email updates",
+            "op": "click"
+          },
+          "before": {
+            "snapshot": "- dialog\n  - heading \"Notifications\" [level=2, ref=e16]\n  - checkbox \"Email updates\" [checked=false, ref=e17]\n  - button \"Save preferences\" [ref=e18]",
+            "refs": {
+              "e16": {
+                "name": "Notifications",
+                "role": "heading"
+              },
+              "e17": {
+                "name": "Email updates",
+                "role": "checkbox"
+              },
+              "e18": {
+                "name": "Save preferences",
+                "role": "button"
+              }
+            }
+          },
+          "outcome": "tool_succeeded",
+          "after": {
+            "snapshot": "- dialog\n  - heading \"Notifications\" [level=2, ref=e16]\n  - checkbox \"Email updates\" [checked=true, ref=e17]\n  - button \"Save preferences\" [ref=e18]",
+            "refs": {
+              "e16": {
+                "name": "Notifications",
+                "role": "heading"
+              },
+              "e17": {
+                "name": "Email updates",
+                "role": "checkbox"
+              },
+              "e18": {
+                "name": "Save preferences",
+                "role": "button"
+              }
+            }
+          }
+        },
+        {
+          "stepIndex": 0,
+          "action": {
+            "ref": "@e18",
+            "role": "button",
+            "name": "Save preferences",
+            "op": "click"
+          },
+          "before": {
+            "snapshot": "- dialog\n  - heading \"Notifications\" [level=2, ref=e16]\n  - checkbox \"Email updates\" [checked=true, ref=e17]\n  - button \"Save preferences\" [ref=e18]",
+            "refs": {
+              "e16": {
+                "name": "Notifications",
+                "role": "heading"
+              },
+              "e17": {
+                "name": "Email updates",
+                "role": "checkbox"
+              },
+              "e18": {
+                "name": "Save preferences",
+                "role": "button"
+              }
+            }
+          },
+          "outcome": "tool_succeeded",
+          "after": {
+            "snapshot": "- heading \"Preferences\" [level=1, ref=e14]\n- button \"Edit notifications\" [ref=e15]\n- paragraph\n  - StaticText \"Preferences saved\"",
+            "refs": {
+              "e14": {
+                "name": "Preferences",
+                "role": "heading"
+              },
+              "e15": {
+                "name": "Edit notifications",
+                "role": "button"
+              }
+            }
+          }
+        }
+      ],
+      "latestObservation": {
+        "snapshot": "- heading \"Preferences\" [level=1, ref=e14]\n- button \"Edit notifications\" [ref=e15]\n- paragraph\n  - StaticText \"Preferences saved\"",
+        "refs": {
+          "e14": {
+            "name": "Preferences",
+            "role": "heading"
+          },
+          "e15": {
+            "name": "Edit notifications",
+            "role": "button"
+          }
+        }
+      }
+    },
+    {
+      "round": 2,
+      "id": "reordered-articles",
+      "returnReason": "reported_complete",
+      "actions": [
+        {
+          "stepIndex": 0,
+          "action": {
+            "ref": "@e3",
+            "role": "button",
+            "name": "Read article",
+            "op": "click"
+          },
+          "before": {
+            "snapshot": "- heading \"Help articles\" [level=1, ref=e1]\n- main\n  - article\n    - heading \"Warranty\" [level=2, ref=e2]\n    - paragraph\n      - StaticText \"Learn about our warranty policy.\"\n    - button \"Read article\" [ref=e3]\n  - article\n    - heading \"Shipping\" [level=2, ref=e4]\n    - paragraph\n      - StaticText \"Learn about our shipping policy.\"\n    - button \"Read article\" [ref=e5]\n  - article\n    - heading \"Returns\" [level=2, ref=e6]\n    - paragraph\n      - StaticText \"Learn about our returns policy.\"\n    - button \"Read article\" [ref=e7]",
+            "refs": {
+              "e1": {
+                "name": "Help articles",
+                "role": "heading"
+              },
+              "e2": {
+                "name": "Warranty",
+                "role": "heading"
+              },
+              "e3": {
+                "name": "Read article",
+                "role": "button"
+              },
+              "e4": {
+                "name": "Shipping",
+                "role": "heading"
+              },
+              "e5": {
+                "name": "Read article",
+                "role": "button"
+              },
+              "e6": {
+                "name": "Returns",
+                "role": "heading"
+              },
+              "e7": {
+                "name": "Read article",
+                "role": "button"
+              }
+            }
+          },
+          "outcome": "tool_succeeded",
+          "after": {
+            "snapshot": "- dialog\n  - heading \"Warranty\" [level=2, ref=e8]\n  - paragraph\n    - StaticText \"Help article content.\"\n  - button \"Back to articles\" [ref=e9]",
+            "refs": {
+              "e8": {
+                "name": "Warranty",
+                "role": "heading"
+              },
+              "e9": {
+                "name": "Back to articles",
+                "role": "button"
+              }
+            }
+          }
+        },
+        {
+          "stepIndex": 0,
+          "action": {
+            "ref": "@e9",
+            "role": "button",
+            "name": "Back to articles",
+            "op": "click"
+          },
+          "before": {
+            "snapshot": "- dialog\n  - heading \"Warranty\" [level=2, ref=e8]\n  - paragraph\n    - StaticText \"Help article content.\"\n  - button \"Back to articles\" [ref=e9]",
+            "refs": {
+              "e8": {
+                "name": "Warranty",
+                "role": "heading"
+              },
+              "e9": {
+                "name": "Back to articles",
+                "role": "button"
+              }
+            }
+          },
+          "outcome": "tool_succeeded",
+          "after": {
+            "snapshot": "- heading \"Help articles\" [level=1, ref=e1]\n- main\n  - article\n    - heading \"Warranty\" [level=2, ref=e2]\n    - paragraph\n      - StaticText \"Learn about our warranty policy.\"\n    - button \"Read article\" [ref=e3]\n  - article\n    - heading \"Shipping\" [level=2, ref=e4]\n    - paragraph\n      - StaticText \"Learn about our shipping policy.\"\n    - button \"Read article\" [ref=e5]\n  - article\n    - heading \"Returns\" [level=2, ref=e6]\n    - paragraph\n      - StaticText \"Learn about our returns policy.\"\n    - button \"Read article\" [ref=e7]",
+            "refs": {
+              "e1": {
+                "name": "Help articles",
+                "role": "heading"
+              },
+              "e2": {
+                "name": "Warranty",
+                "role": "heading"
+              },
+              "e3": {
+                "name": "Read article",
+                "role": "button"
+              },
+              "e4": {
+                "name": "Shipping",
+                "role": "heading"
+              },
+              "e5": {
+                "name": "Read article",
+                "role": "button"
+              },
+              "e6": {
+                "name": "Returns",
+                "role": "heading"
+              },
+              "e7": {
+                "name": "Read article",
+                "role": "button"
+              }
+            }
+          }
+        }
+      ],
+      "latestObservation": {
+        "snapshot": "- heading \"Help articles\" [level=1, ref=e1]\n- main\n  - article\n    - heading \"Warranty\" [level=2, ref=e2]\n    - paragraph\n      - StaticText \"Learn about our warranty policy.\"\n    - button \"Read article\" [ref=e3]\n  - article\n    - heading \"Shipping\" [level=2, ref=e4]\n    - paragraph\n      - StaticText \"Learn about our shipping policy.\"\n    - button \"Read article\" [ref=e5]\n  - article\n    - heading \"Returns\" [level=2, ref=e6]\n    - paragraph\n      - StaticText \"Learn about our returns policy.\"\n    - button \"Read article\" [ref=e7]",
+        "refs": {
+          "e1": {
+            "name": "Help articles",
+            "role": "heading"
+          },
+          "e2": {
+            "name": "Warranty",
+            "role": "heading"
+          },
+          "e3": {
+            "name": "Read article",
+            "role": "button"
+          },
+          "e4": {
+            "name": "Shipping",
+            "role": "heading"
+          },
+          "e5": {
+            "name": "Read article",
+            "role": "button"
+          },
+          "e6": {
+            "name": "Returns",
+            "role": "heading"
+          },
+          "e7": {
+            "name": "Read article",
+            "role": "button"
+          }
+        }
+      }
+    },
+    {
+      "round": 2,
+      "id": "search-topic",
+      "returnReason": "reported_complete",
+      "actions": [
+        {
+          "stepIndex": 0,
+          "action": {
+            "ref": "@e20",
+            "role": "textbox",
+            "name": "Search topics",
+            "op": "fill",
+            "valueId": "query",
+            "value": "account"
+          },
+          "before": {
+            "snapshot": "- heading \"Help center search\" [level=1, ref=e19]\n- LabelText\n  - StaticText \"Search topics\"\n  - textbox \"Search topics\" [ref=e20]",
+            "refs": {
+              "e19": {
+                "name": "Help center search",
+                "role": "heading"
+              },
+              "e20": {
+                "name": "Search topics",
+                "role": "textbox"
+              }
+            }
+          },
+          "outcome": "tool_succeeded",
+          "after": {
+            "snapshot": "- heading \"Help center search\" [level=1, ref=e19]\n- LabelText\n  - StaticText \"Search topics\"\n  - textbox \"Search topics\" [ref=e20]: account\n    - StaticText \"account\"\n- article\n  - heading \"Account recovery\" [level=2, ref=e21]\n  - button \"Read topic\" [ref=e22]",
+            "refs": {
+              "e19": {
+                "name": "Help center search",
+                "role": "heading"
+              },
+              "e20": {
+                "name": "Search topics",
+                "role": "textbox"
+              },
+              "e21": {
+                "name": "Account recovery",
+                "role": "heading"
+              },
+              "e22": {
+                "name": "Read topic",
+                "role": "button"
+              }
+            }
+          }
+        },
+        {
+          "stepIndex": 0,
+          "action": {
+            "ref": "@e22",
+            "role": "button",
+            "name": "Read topic",
+            "op": "click"
+          },
+          "before": {
+            "snapshot": "- heading \"Help center search\" [level=1, ref=e19]\n- LabelText\n  - StaticText \"Search topics\"\n  - textbox \"Search topics\" [ref=e20]: account\n    - StaticText \"account\"\n- article\n  - heading \"Account recovery\" [level=2, ref=e21]\n  - button \"Read topic\" [ref=e22]",
+            "refs": {
+              "e19": {
+                "name": "Help center search",
+                "role": "heading"
+              },
+              "e20": {
+                "name": "Search topics",
+                "role": "textbox"
+              },
+              "e21": {
+                "name": "Account recovery",
+                "role": "heading"
+              },
+              "e22": {
+                "name": "Read topic",
+                "role": "button"
+              }
+            }
+          },
+          "outcome": "tool_succeeded",
+          "after": {
+            "snapshot": "- dialog\n  - heading \"Account recovery\" [level=2, ref=e23]\n  - paragraph\n    - StaticText \"Recover your account with your registered email.\"\n  - button \"Back to results\" [ref=e24]",
+            "refs": {
+              "e23": {
+                "name": "Account recovery",
+                "role": "heading"
+              },
+              "e24": {
+                "name": "Back to results",
+                "role": "button"
+              }
+            }
+          }
+        },
+        {
+          "stepIndex": 0,
+          "action": {
+            "ref": "@e24",
+            "role": "button",
+            "name": "Back to results",
+            "op": "click"
+          },
+          "before": {
+            "snapshot": "- dialog\n  - heading \"Account recovery\" [level=2, ref=e23]\n  - paragraph\n    - StaticText \"Recover your account with your registered email.\"\n  - button \"Back to results\" [ref=e24]",
+            "refs": {
+              "e23": {
+                "name": "Account recovery",
+                "role": "heading"
+              },
+              "e24": {
+                "name": "Back to results",
+                "role": "button"
+              }
+            }
+          },
+          "outcome": "tool_succeeded",
+          "after": {
+            "snapshot": "- heading \"Help center search\" [level=1, ref=e19]\n- LabelText\n  - StaticText \"Search topics\"\n  - textbox \"Search topics\" [ref=e20]: account\n    - StaticText \"account\"\n- article\n  - heading \"Account recovery\" [level=2, ref=e21]\n  - button \"Read topic\" [ref=e22]",
+            "refs": {
+              "e19": {
+                "name": "Help center search",
+                "role": "heading"
+              },
+              "e20": {
+                "name": "Search topics",
+                "role": "textbox"
+              },
+              "e21": {
+                "name": "Account recovery",
+                "role": "heading"
+              },
+              "e22": {
+                "name": "Read topic",
+                "role": "button"
+              }
+            }
+          }
+        }
+      ],
+      "latestObservation": {
+        "snapshot": "- heading \"Help center search\" [level=1, ref=e19]\n- LabelText\n  - StaticText \"Search topics\"\n  - textbox \"Search topics\" [ref=e20]: account\n    - StaticText \"account\"\n- article\n  - heading \"Account recovery\" [level=2, ref=e21]\n  - button \"Read topic\" [ref=e22]",
+        "refs": {
+          "e19": {
+            "name": "Help center search",
+            "role": "heading"
+          },
+          "e20": {
+            "name": "Search topics",
+            "role": "textbox"
+          },
+          "e21": {
+            "name": "Account recovery",
+            "role": "heading"
+          },
+          "e22": {
+            "name": "Read topic",
+            "role": "button"
+          }
+        }
+      }
+    },
+    {
+      "round": 2,
+      "id": "support-draft",
+      "returnReason": "reported_complete",
+      "actions": [
+        {
+          "stepIndex": 0,
+          "action": {
+            "ref": "@e12",
+            "role": "textbox",
+            "name": "Subject",
+            "op": "fill",
+            "valueId": "subject",
+            "value": "Delivery question"
+          },
+          "before": {
+            "snapshot": "- heading \"Contact support\" [level=1, ref=e10]\n- LabelText\n  - StaticText \"Subject\"\n  - textbox \"Subject\" [ref=e12]\n- LabelText\n  - StaticText \"Message\"\n  - textbox \"Message\" [ref=e13]\n- button \"Send request\" [ref=e11]",
+            "refs": {
+              "e10": {
+                "name": "Contact support",
+                "role": "heading"
+              },
+              "e11": {
+                "name": "Send request",
+                "role": "button"
+              },
+              "e12": {
+                "name": "Subject",
+                "role": "textbox"
+              },
+              "e13": {
+                "name": "Message",
+                "role": "textbox"
+              }
+            }
+          },
+          "outcome": "tool_succeeded",
+          "after": {
+            "snapshot": "- heading \"Contact support\" [level=1, ref=e10]\n- LabelText\n  - StaticText \"Subject\"\n  - textbox \"Subject\" [ref=e12]: Delivery question\n    - StaticText \"Delivery question\"\n- LabelText\n  - StaticText \"Message\"\n  - textbox \"Message\" [ref=e13]\n- button \"Send request\" [ref=e11]",
+            "refs": {
+              "e10": {
+                "name": "Contact support",
+                "role": "heading"
+              },
+              "e11": {
+                "name": "Send request",
+                "role": "button"
+              },
+              "e12": {
+                "name": "Subject",
+                "role": "textbox"
+              },
+              "e13": {
+                "name": "Message",
+                "role": "textbox"
+              }
+            }
+          }
+        },
+        {
+          "stepIndex": 0,
+          "action": {
+            "ref": "@e13",
+            "role": "textbox",
+            "name": "Message",
+            "op": "fill",
+            "valueId": "message",
+            "value": "Please check order #42 \u2014 \"blue\" & green.\nThank you!"
+          },
+          "before": {
+            "snapshot": "- heading \"Contact support\" [level=1, ref=e10]\n- LabelText\n  - StaticText \"Subject\"\n  - textbox \"Subject\" [ref=e12]: Delivery question\n    - StaticText \"Delivery question\"\n- LabelText\n  - StaticText \"Message\"\n  - textbox \"Message\" [ref=e13]\n- button \"Send request\" [ref=e11]",
+            "refs": {
+              "e10": {
+                "name": "Contact support",
+                "role": "heading"
+              },
+              "e11": {
+                "name": "Send request",
+                "role": "button"
+              },
+              "e12": {
+                "name": "Subject",
+                "role": "textbox"
+              },
+              "e13": {
+                "name": "Message",
+                "role": "textbox"
+              }
+            }
+          },
+          "outcome": "tool_succeeded",
+          "after": {
+            "snapshot": "- heading \"Contact support\" [level=1, ref=e10]\n- LabelText\n  - StaticText \"Subject\"\n  - textbox \"Subject\" [ref=e12]: Delivery question\n    - StaticText \"Delivery question\"\n- LabelText\n  - StaticText \"Message\"\n  - textbox \"Message\" [ref=e13]: Please check order #42 \u2014 \"blue\" & green.\nThank you!\n    - generic\n      - StaticText \"Please check order #42 \u2014 \\\"blue\\\" & green.\"\n      - LineBreak \"\\n\"\n      - StaticText \"Thank you!\"\n- button \"Send request\" [ref=e11]",
+            "refs": {
+              "e10": {
+                "name": "Contact support",
+                "role": "heading"
+              },
+              "e11": {
+                "name": "Send request",
+                "role": "button"
+              },
+              "e12": {
+                "name": "Subject",
+                "role": "textbox"
+              },
+              "e13": {
+                "name": "Message",
+                "role": "textbox"
+              }
+            }
+          }
+        }
+      ],
+      "latestObservation": {
+        "snapshot": "- heading \"Contact support\" [level=1, ref=e10]\n- LabelText\n  - StaticText \"Subject\"\n  - textbox \"Subject\" [ref=e12]: Delivery question\n    - StaticText \"Delivery question\"\n- LabelText\n  - StaticText \"Message\"\n  - textbox \"Message\" [ref=e13]: Please check order #42 \u2014 \"blue\" & green.\nThank you!\n    - generic\n      - StaticText \"Please check order #42 \u2014 \\\"blue\\\" & green.\"\n      - LineBreak \"\\n\"\n      - StaticText \"Thank you!\"\n- button \"Send request\" [ref=e11]",
+        "refs": {
+          "e10": {
+            "name": "Contact support",
+            "role": "heading"
+          },
+          "e11": {
+            "name": "Send request",
+            "role": "button"
+          },
+          "e12": {
+            "name": "Subject",
+            "role": "textbox"
+          },
+          "e13": {
+            "name": "Message",
+            "role": "textbox"
+          }
+        }
+      }
+    },
+    {
+      "round": 3,
+      "id": "help-article",
+      "returnReason": "reported_complete",
+      "actions": [
+        {
+          "stepIndex": 0,
+          "action": {
+            "ref": "@e27",
+            "role": "button",
+            "name": "Read article",
+            "op": "click"
+          },
+          "before": {
+            "snapshot": "- heading \"Help articles\" [level=1, ref=e23]\n- main\n  - article\n    - heading \"Shipping\" [level=2, ref=e24]\n    - paragraph\n      - StaticText \"Learn about our shipping policy.\"\n    - button \"Read article\" [ref=e25]\n  - article\n    - heading \"Returns\" [level=2, ref=e26]\n    - paragraph\n      - StaticText \"Learn about our returns policy.\"\n    - button \"Read article\" [ref=e27]\n  - article\n    - heading \"Warranty\" [level=2, ref=e28]\n    - paragraph\n      - StaticText \"Learn about our warranty policy.\"\n    - button \"Read article\" [ref=e29]",
+            "refs": {
+              "e23": {
+                "name": "Help articles",
+                "role": "heading"
+              },
+              "e24": {
+                "name": "Shipping",
+                "role": "heading"
+              },
+              "e25": {
+                "name": "Read article",
+                "role": "button"
+              },
+              "e26": {
+                "name": "Returns",
+                "role": "heading"
+              },
+              "e27": {
+                "name": "Read article",
+                "role": "button"
+              },
+              "e28": {
+                "name": "Warranty",
+                "role": "heading"
+              },
+              "e29": {
+                "name": "Read article",
+                "role": "button"
+              }
+            }
+          },
+          "outcome": "tool_succeeded",
+          "after": {
+            "snapshot": "- dialog\n  - heading \"Returns\" [level=2, ref=e30]\n  - paragraph\n    - StaticText \"Help article content.\"\n  - button \"Back to articles\" [ref=e31]",
+            "refs": {
+              "e30": {
+                "name": "Returns",
+                "role": "heading"
+              },
+              "e31": {
+                "name": "Back to articles",
+                "role": "button"
+              }
+            }
+          }
+        },
+        {
+          "stepIndex": 0,
+          "action": {
+            "ref": "@e31",
+            "role": "button",
+            "name": "Back to articles",
+            "op": "click"
+          },
+          "before": {
+            "snapshot": "- dialog\n  - heading \"Returns\" [level=2, ref=e30]\n  - paragraph\n    - StaticText \"Help article content.\"\n  - button \"Back to articles\" [ref=e31]",
+            "refs": {
+              "e30": {
+                "name": "Returns",
+                "role": "heading"
+              },
+              "e31": {
+                "name": "Back to articles",
+                "role": "button"
+              }
+            }
+          },
+          "outcome": "tool_succeeded",
+          "after": {
+            "snapshot": "- heading \"Help articles\" [level=1, ref=e23]\n- main\n  - article\n    - heading \"Shipping\" [level=2, ref=e24]\n    - paragraph\n      - StaticText \"Learn about our shipping policy.\"\n    - button \"Read article\" [ref=e25]\n  - article\n    - heading \"Returns\" [level=2, ref=e26]\n    - paragraph\n      - StaticText \"Learn about our returns policy.\"\n    - button \"Read article\" [ref=e27]\n  - article\n    - heading \"Warranty\" [level=2, ref=e28]\n    - paragraph\n      - StaticText \"Learn about our warranty policy.\"\n    - button \"Read article\" [ref=e29]",
+            "refs": {
+              "e23": {
+                "name": "Help articles",
+                "role": "heading"
+              },
+              "e24": {
+                "name": "Shipping",
+                "role": "heading"
+              },
+              "e25": {
+                "name": "Read article",
+                "role": "button"
+              },
+              "e26": {
+                "name": "Returns",
+                "role": "heading"
+              },
+              "e27": {
+                "name": "Read article",
+                "role": "button"
+              },
+              "e28": {
+                "name": "Warranty",
+                "role": "heading"
+              },
+              "e29": {
+                "name": "Read article",
+                "role": "button"
+              }
+            }
+          }
+        }
+      ],
+      "latestObservation": {
+        "snapshot": "- heading \"Help articles\" [level=1, ref=e23]\n- main\n  - article\n    - heading \"Shipping\" [level=2, ref=e24]\n    - paragraph\n      - StaticText \"Learn about our shipping policy.\"\n    - button \"Read article\" [ref=e25]\n  - article\n    - heading \"Returns\" [level=2, ref=e26]\n    - paragraph\n      - StaticText \"Learn about our returns policy.\"\n    - button \"Read article\" [ref=e27]\n  - article\n    - heading \"Warranty\" [level=2, ref=e28]\n    - paragraph\n      - StaticText \"Learn about our warranty policy.\"\n    - button \"Read article\" [ref=e29]",
+        "refs": {
+          "e23": {
+            "name": "Help articles",
+            "role": "heading"
+          },
+          "e24": {
+            "name": "Shipping",
+            "role": "heading"
+          },
+          "e25": {
+            "name": "Read article",
+            "role": "button"
+          },
+          "e26": {
+            "name": "Returns",
+            "role": "heading"
+          },
+          "e27": {
+            "name": "Read article",
+            "role": "button"
+          },
+          "e28": {
+            "name": "Warranty",
+            "role": "heading"
+          },
+          "e29": {
+            "name": "Read article",
+            "role": "button"
+          }
+        }
+      }
+    },
+    {
+      "round": 3,
+      "id": "missing-article",
+      "returnReason": "handoff",
+      "actions": [],
+      "latestObservation": {
+        "snapshot": "- heading \"Help articles\" [level=1, ref=e16]\n- main\n  - article\n    - heading \"Shipping\" [level=2, ref=e17]\n    - paragraph\n      - StaticText \"Learn about our shipping policy.\"\n    - button \"Read article\" [ref=e18]\n  - article\n    - heading \"Returns\" [level=2, ref=e19]\n    - paragraph\n      - StaticText \"Learn about our returns policy.\"\n    - button \"Read article\" [ref=e20]\n  - article\n    - heading \"Warranty\" [level=2, ref=e21]\n    - paragraph\n      - StaticText \"Learn about our warranty policy.\"\n    - button \"Read article\" [ref=e22]",
+        "refs": {
+          "e16": {
+            "name": "Help articles",
+            "role": "heading"
+          },
+          "e17": {
+            "name": "Shipping",
+            "role": "heading"
+          },
+          "e18": {
+            "name": "Read article",
+            "role": "button"
+          },
+          "e19": {
+            "name": "Returns",
+            "role": "heading"
+          },
+          "e20": {
+            "name": "Read article",
+            "role": "button"
+          },
+          "e21": {
+            "name": "Warranty",
+            "role": "heading"
+          },
+          "e22": {
+            "name": "Read article",
+            "role": "button"
+          }
+        }
+      }
+    },
+    {
+      "round": 3,
+      "id": "preferences",
+      "returnReason": "reported_complete",
+      "actions": [
+        {
+          "stepIndex": 0,
+          "action": {
+            "ref": "@e6",
+            "role": "button",
+            "name": "Edit notifications",
+            "op": "click"
+          },
+          "before": {
+            "snapshot": "- heading \"Preferences\" [level=1, ref=e5]\n- button \"Edit notifications\" [ref=e6]\n- paragraph\n  - StaticText \"No changes saved\"",
+            "refs": {
+              "e5": {
+                "name": "Preferences",
+                "role": "heading"
+              },
+              "e6": {
+                "name": "Edit notifications",
+                "role": "button"
+              }
+            }
+          },
+          "outcome": "tool_succeeded",
+          "after": {
+            "snapshot": "- dialog\n  - heading \"Notifications\" [level=2, ref=e7]\n  - checkbox \"Email updates\" [checked=false, ref=e8]\n  - button \"Save preferences\" [ref=e9]",
+            "refs": {
+              "e7": {
+                "name": "Notifications",
+                "role": "heading"
+              },
+              "e8": {
+                "name": "Email updates",
+                "role": "checkbox"
+              },
+              "e9": {
+                "name": "Save preferences",
+                "role": "button"
+              }
+            }
+          }
+        },
+        {
+          "stepIndex": 0,
+          "action": {
+            "ref": "@e8",
+            "role": "checkbox",
+            "name": "Email updates",
+            "op": "click"
+          },
+          "before": {
+            "snapshot": "- dialog\n  - heading \"Notifications\" [level=2, ref=e7]\n  - checkbox \"Email updates\" [checked=false, ref=e8]\n  - button \"Save preferences\" [ref=e9]",
+            "refs": {
+              "e7": {
+                "name": "Notifications",
+                "role": "heading"
+              },
+              "e8": {
+                "name": "Email updates",
+                "role": "checkbox"
+              },
+              "e9": {
+                "name": "Save preferences",
+                "role": "button"
+              }
+            }
+          },
+          "outcome": "tool_succeeded",
+          "after": {
+            "snapshot": "- dialog\n  - heading \"Notifications\" [level=2, ref=e7]\n  - checkbox \"Email updates\" [checked=true, ref=e8]\n  - button \"Save preferences\" [ref=e9]",
+            "refs": {
+              "e7": {
+                "name": "Notifications",
+                "role": "heading"
+              },
+              "e8": {
+                "name": "Email updates",
+                "role": "checkbox"
+              },
+              "e9": {
+                "name": "Save preferences",
+                "role": "button"
+              }
+            }
+          }
+        },
+        {
+          "stepIndex": 0,
+          "action": {
+            "ref": "@e9",
+            "role": "button",
+            "name": "Save preferences",
+            "op": "click"
+          },
+          "before": {
+            "snapshot": "- dialog\n  - heading \"Notifications\" [level=2, ref=e7]\n  - checkbox \"Email updates\" [checked=true, ref=e8]\n  - button \"Save preferences\" [ref=e9]",
+            "refs": {
+              "e7": {
+                "name": "Notifications",
+                "role": "heading"
+              },
+              "e8": {
+                "name": "Email updates",
+                "role": "checkbox"
+              },
+              "e9": {
+                "name": "Save preferences",
+                "role": "button"
+              }
+            }
+          },
+          "outcome": "tool_succeeded",
+          "after": {
+            "snapshot": "- heading \"Preferences\" [level=1, ref=e5]\n- button \"Edit notifications\" [ref=e6]\n- paragraph\n  - StaticText \"Preferences saved\"",
+            "refs": {
+              "e5": {
+                "name": "Preferences",
+                "role": "heading"
+              },
+              "e6": {
+                "name": "Edit notifications",
+                "role": "button"
+              }
+            }
+          }
+        }
+      ],
+      "latestObservation": {
+        "snapshot": "- heading \"Preferences\" [level=1, ref=e5]\n- button \"Edit notifications\" [ref=e6]\n- paragraph\n  - StaticText \"Preferences saved\"",
+        "refs": {
+          "e5": {
+            "name": "Preferences",
+            "role": "heading"
+          },
+          "e6": {
+            "name": "Edit notifications",
+            "role": "button"
+          }
+        }
+      }
+    },
+    {
+      "round": 3,
+      "id": "reordered-articles",
+      "returnReason": "reported_complete",
+      "actions": [
+        {
+          "stepIndex": 0,
+          "action": {
+            "ref": "@e34",
+            "role": "button",
+            "name": "Read article",
+            "op": "click"
+          },
+          "before": {
+            "snapshot": "- heading \"Help articles\" [level=1, ref=e32]\n- main\n  - article\n    - heading \"Warranty\" [level=2, ref=e33]\n    - paragraph\n      - StaticText \"Learn about our warranty policy.\"\n    - button \"Read article\" [ref=e34]\n  - article\n    - heading \"Shipping\" [level=2, ref=e35]\n    - paragraph\n      - StaticText \"Learn about our shipping policy.\"\n    - button \"Read article\" [ref=e36]\n  - article\n    - heading \"Returns\" [level=2, ref=e37]\n    - paragraph\n      - StaticText \"Learn about our returns policy.\"\n    - button \"Read article\" [ref=e38]",
+            "refs": {
+              "e32": {
+                "name": "Help articles",
+                "role": "heading"
+              },
+              "e33": {
+                "name": "Warranty",
+                "role": "heading"
+              },
+              "e34": {
+                "name": "Read article",
+                "role": "button"
+              },
+              "e35": {
+                "name": "Shipping",
+                "role": "heading"
+              },
+              "e36": {
+                "name": "Read article",
+                "role": "button"
+              },
+              "e37": {
+                "name": "Returns",
+                "role": "heading"
+              },
+              "e38": {
+                "name": "Read article",
+                "role": "button"
+              }
+            }
+          },
+          "outcome": "tool_succeeded",
+          "after": {
+            "snapshot": "- dialog\n  - heading \"Warranty\" [level=2, ref=e39]\n  - paragraph\n    - StaticText \"Help article content.\"\n  - button \"Back to articles\" [ref=e40]",
+            "refs": {
+              "e39": {
+                "name": "Warranty",
+                "role": "heading"
+              },
+              "e40": {
+                "name": "Back to articles",
+                "role": "button"
+              }
+            }
+          }
+        },
+        {
+          "stepIndex": 0,
+          "action": {
+            "ref": "@e40",
+            "role": "button",
+            "name": "Back to articles",
+            "op": "click"
+          },
+          "before": {
+            "snapshot": "- dialog\n  - heading \"Warranty\" [level=2, ref=e39]\n  - paragraph\n    - StaticText \"Help article content.\"\n  - button \"Back to articles\" [ref=e40]",
+            "refs": {
+              "e39": {
+                "name": "Warranty",
+                "role": "heading"
+              },
+              "e40": {
+                "name": "Back to articles",
+                "role": "button"
+              }
+            }
+          },
+          "outcome": "tool_succeeded",
+          "after": {
+            "snapshot": "- heading \"Help articles\" [level=1, ref=e32]\n- main\n  - article\n    - heading \"Warranty\" [level=2, ref=e33]\n    - paragraph\n      - StaticText \"Learn about our warranty policy.\"\n    - button \"Read article\" [ref=e34]\n  - article\n    - heading \"Shipping\" [level=2, ref=e35]\n    - paragraph\n      - StaticText \"Learn about our shipping policy.\"\n    - button \"Read article\" [ref=e36]\n  - article\n    - heading \"Returns\" [level=2, ref=e37]\n    - paragraph\n      - StaticText \"Learn about our returns policy.\"\n    - button \"Read article\" [ref=e38]",
+            "refs": {
+              "e32": {
+                "name": "Help articles",
+                "role": "heading"
+              },
+              "e33": {
+                "name": "Warranty",
+                "role": "heading"
+              },
+              "e34": {
+                "name": "Read article",
+                "role": "button"
+              },
+              "e35": {
+                "name": "Shipping",
+                "role": "heading"
+              },
+              "e36": {
+                "name": "Read article",
+                "role": "button"
+              },
+              "e37": {
+                "name": "Returns",
+                "role": "heading"
+              },
+              "e38": {
+                "name": "Read article",
+                "role": "button"
+              }
+            }
+          }
+        }
+      ],
+      "latestObservation": {
+        "snapshot": "- heading \"Help articles\" [level=1, ref=e32]\n- main\n  - article\n    - heading \"Warranty\" [level=2, ref=e33]\n    - paragraph\n      - StaticText \"Learn about our warranty policy.\"\n    - button \"Read article\" [ref=e34]\n  - article\n    - heading \"Shipping\" [level=2, ref=e35]\n    - paragraph\n      - StaticText \"Learn about our shipping policy.\"\n    - button \"Read article\" [ref=e36]\n  - article\n    - heading \"Returns\" [level=2, ref=e37]\n    - paragraph\n      - StaticText \"Learn about our returns policy.\"\n    - button \"Read article\" [ref=e38]",
+        "refs": {
+          "e32": {
+            "name": "Help articles",
+            "role": "heading"
+          },
+          "e33": {
+            "name": "Warranty",
+            "role": "heading"
+          },
+          "e34": {
+            "name": "Read article",
+            "role": "button"
+          },
+          "e35": {
+            "name": "Shipping",
+            "role": "heading"
+          },
+          "e36": {
+            "name": "Read article",
+            "role": "button"
+          },
+          "e37": {
+            "name": "Returns",
+            "role": "heading"
+          },
+          "e38": {
+            "name": "Read article",
+            "role": "button"
+          }
+        }
+      }
+    },
+    {
+      "round": 3,
+      "id": "search-topic",
+      "returnReason": "reported_complete",
+      "actions": [
+        {
+          "stepIndex": 0,
+          "action": {
+            "ref": "@e11",
+            "role": "textbox",
+            "name": "Search topics",
+            "op": "fill",
+            "valueId": "query",
+            "value": "account"
+          },
+          "before": {
+            "snapshot": "- heading \"Help center search\" [level=1, ref=e10]\n- LabelText\n  - StaticText \"Search topics\"\n  - textbox \"Search topics\" [ref=e11]",
+            "refs": {
+              "e10": {
+                "name": "Help center search",
+                "role": "heading"
+              },
+              "e11": {
+                "name": "Search topics",
+                "role": "textbox"
+              }
+            }
+          },
+          "outcome": "tool_succeeded",
+          "after": {
+            "snapshot": "- heading \"Help center search\" [level=1, ref=e10]\n- LabelText\n  - StaticText \"Search topics\"\n  - textbox \"Search topics\" [ref=e11]: account\n    - StaticText \"account\"\n- article\n  - heading \"Account recovery\" [level=2, ref=e12]\n  - button \"Read topic\" [ref=e13]",
+            "refs": {
+              "e10": {
+                "name": "Help center search",
+                "role": "heading"
+              },
+              "e11": {
+                "name": "Search topics",
+                "role": "textbox"
+              },
+              "e12": {
+                "name": "Account recovery",
+                "role": "heading"
+              },
+              "e13": {
+                "name": "Read topic",
+                "role": "button"
+              }
+            }
+          }
+        },
+        {
+          "stepIndex": 0,
+          "action": {
+            "ref": "@e13",
+            "role": "button",
+            "name": "Read topic",
+            "op": "click"
+          },
+          "before": {
+            "snapshot": "- heading \"Help center search\" [level=1, ref=e10]\n- LabelText\n  - StaticText \"Search topics\"\n  - textbox \"Search topics\" [ref=e11]: account\n    - StaticText \"account\"\n- article\n  - heading \"Account recovery\" [level=2, ref=e12]\n  - button \"Read topic\" [ref=e13]",
+            "refs": {
+              "e10": {
+                "name": "Help center search",
+                "role": "heading"
+              },
+              "e11": {
+                "name": "Search topics",
+                "role": "textbox"
+              },
+              "e12": {
+                "name": "Account recovery",
+                "role": "heading"
+              },
+              "e13": {
+                "name": "Read topic",
+                "role": "button"
+              }
+            }
+          },
+          "outcome": "tool_succeeded",
+          "after": {
+            "snapshot": "- dialog\n  - heading \"Account recovery\" [level=2, ref=e14]\n  - paragraph\n    - StaticText \"Recover your account with your registered email.\"\n  - button \"Back to results\" [ref=e15]",
+            "refs": {
+              "e14": {
+                "name": "Account recovery",
+                "role": "heading"
+              },
+              "e15": {
+                "name": "Back to results",
+                "role": "button"
+              }
+            }
+          }
+        },
+        {
+          "stepIndex": 0,
+          "action": {
+            "ref": "@e15",
+            "role": "button",
+            "name": "Back to results",
+            "op": "click"
+          },
+          "before": {
+            "snapshot": "- dialog\n  - heading \"Account recovery\" [level=2, ref=e14]\n  - paragraph\n    - StaticText \"Recover your account with your registered email.\"\n  - button \"Back to results\" [ref=e15]",
+            "refs": {
+              "e14": {
+                "name": "Account recovery",
+                "role": "heading"
+              },
+              "e15": {
+                "name": "Back to results",
+                "role": "button"
+              }
+            }
+          },
+          "outcome": "tool_succeeded",
+          "after": {
+            "snapshot": "- heading \"Help center search\" [level=1, ref=e10]\n- LabelText\n  - StaticText \"Search topics\"\n  - textbox \"Search topics\" [ref=e11]: account\n    - StaticText \"account\"\n- article\n  - heading \"Account recovery\" [level=2, ref=e12]\n  - button \"Read topic\" [ref=e13]",
+            "refs": {
+              "e10": {
+                "name": "Help center search",
+                "role": "heading"
+              },
+              "e11": {
+                "name": "Search topics",
+                "role": "textbox"
+              },
+              "e12": {
+                "name": "Account recovery",
+                "role": "heading"
+              },
+              "e13": {
+                "name": "Read topic",
+                "role": "button"
+              }
+            }
+          }
+        }
+      ],
+      "latestObservation": {
+        "snapshot": "- heading \"Help center search\" [level=1, ref=e10]\n- LabelText\n  - StaticText \"Search topics\"\n  - textbox \"Search topics\" [ref=e11]: account\n    - StaticText \"account\"\n- article\n  - heading \"Account recovery\" [level=2, ref=e12]\n  - button \"Read topic\" [ref=e13]",
+        "refs": {
+          "e10": {
+            "name": "Help center search",
+            "role": "heading"
+          },
+          "e11": {
+            "name": "Search topics",
+            "role": "textbox"
+          },
+          "e12": {
+            "name": "Account recovery",
+            "role": "heading"
+          },
+          "e13": {
+            "name": "Read topic",
+            "role": "button"
+          }
+        }
+      }
+    },
+    {
+      "round": 3,
+      "id": "support-draft",
+      "returnReason": "reported_complete",
+      "actions": [
+        {
+          "stepIndex": 0,
+          "action": {
+            "ref": "@e3",
+            "role": "textbox",
+            "name": "Subject",
+            "op": "fill",
+            "valueId": "subject",
+            "value": "Delivery question"
+          },
+          "before": {
+            "snapshot": "- heading \"Contact support\" [level=1, ref=e1]\n- LabelText\n  - StaticText \"Subject\"\n  - textbox \"Subject\" [ref=e3]\n- LabelText\n  - StaticText \"Message\"\n  - textbox \"Message\" [ref=e4]\n- button \"Send request\" [ref=e2]",
+            "refs": {
+              "e1": {
+                "name": "Contact support",
+                "role": "heading"
+              },
+              "e2": {
+                "name": "Send request",
+                "role": "button"
+              },
+              "e3": {
+                "name": "Subject",
+                "role": "textbox"
+              },
+              "e4": {
+                "name": "Message",
+                "role": "textbox"
+              }
+            }
+          },
+          "outcome": "tool_succeeded",
+          "after": {
+            "snapshot": "- heading \"Contact support\" [level=1, ref=e1]\n- LabelText\n  - StaticText \"Subject\"\n  - textbox \"Subject\" [ref=e3]: Delivery question\n    - StaticText \"Delivery question\"\n- LabelText\n  - StaticText \"Message\"\n  - textbox \"Message\" [ref=e4]\n- button \"Send request\" [ref=e2]",
+            "refs": {
+              "e1": {
+                "name": "Contact support",
+                "role": "heading"
+              },
+              "e2": {
+                "name": "Send request",
+                "role": "button"
+              },
+              "e3": {
+                "name": "Subject",
+                "role": "textbox"
+              },
+              "e4": {
+                "name": "Message",
+                "role": "textbox"
+              }
+            }
+          }
+        },
+        {
+          "stepIndex": 0,
+          "action": {
+            "ref": "@e4",
+            "role": "textbox",
+            "name": "Message",
+            "op": "fill",
+            "valueId": "message",
+            "value": "Please check order #42 \u2014 \"blue\" & green.\nThank you!"
+          },
+          "before": {
+            "snapshot": "- heading \"Contact support\" [level=1, ref=e1]\n- LabelText\n  - StaticText \"Subject\"\n  - textbox \"Subject\" [ref=e3]: Delivery question\n    - StaticText \"Delivery question\"\n- LabelText\n  - StaticText \"Message\"\n  - textbox \"Message\" [ref=e4]\n- button \"Send request\" [ref=e2]",
+            "refs": {
+              "e1": {
+                "name": "Contact support",
+                "role": "heading"
+              },
+              "e2": {
+                "name": "Send request",
+                "role": "button"
+              },
+              "e3": {
+                "name": "Subject",
+                "role": "textbox"
+              },
+              "e4": {
+                "name": "Message",
+                "role": "textbox"
+              }
+            }
+          },
+          "outcome": "tool_succeeded",
+          "after": {
+            "snapshot": "- heading \"Contact support\" [level=1, ref=e1]\n- LabelText\n  - StaticText \"Subject\"\n  - textbox \"Subject\" [ref=e3]: Delivery question\n    - StaticText \"Delivery question\"\n- LabelText\n  - StaticText \"Message\"\n  - textbox \"Message\" [ref=e4]: Please check order #42 \u2014 \"blue\" & green.\nThank you!\n    - generic\n      - StaticText \"Please check order #42 \u2014 \\\"blue\\\" & green.\"\n      - LineBreak \"\\n\"\n      - StaticText \"Thank you!\"\n- button \"Send request\" [ref=e2]",
+            "refs": {
+              "e1": {
+                "name": "Contact support",
+                "role": "heading"
+              },
+              "e2": {
+                "name": "Send request",
+                "role": "button"
+              },
+              "e3": {
+                "name": "Subject",
+                "role": "textbox"
+              },
+              "e4": {
+                "name": "Message",
+                "role": "textbox"
+              }
+            }
+          }
+        }
+      ],
+      "latestObservation": {
+        "snapshot": "- heading \"Contact support\" [level=1, ref=e1]\n- LabelText\n  - StaticText \"Subject\"\n  - textbox \"Subject\" [ref=e3]: Delivery question\n    - StaticText \"Delivery question\"\n- LabelText\n  - StaticText \"Message\"\n  - textbox \"Message\" [ref=e4]: Please check order #42 \u2014 \"blue\" & green.\nThank you!\n    - generic\n      - StaticText \"Please check order #42 \u2014 \\\"blue\\\" & green.\"\n      - LineBreak \"\\n\"\n      - StaticText \"Thank you!\"\n- button \"Send request\" [ref=e2]",
+        "refs": {
+          "e1": {
+            "name": "Contact support",
+            "role": "heading"
+          },
+          "e2": {
+            "name": "Send request",
+            "role": "button"
+          },
+          "e3": {
+            "name": "Subject",
+            "role": "textbox"
+          },
+          "e4": {
+            "name": "Message",
+            "role": "textbox"
+          }
+        }
+      }
+    }
+  ],
+  "cleanup": {
+    "helperEvidenceDirectoriesRemoved": 18
+  }
+}
