@@ -6,7 +6,7 @@ A collection of specialized skills following the open standard for agent capabil
 
 ### 🌐 [Agent Browser Jev](./skills/agent-browser-jev)
 Ground short natural-language browser tasks with Jev, execute through an existing agent-browser session, and return observed progress to the calling agent.
-- **Key Features:** Bundled JavaScript helper and CLI, contextual control selection, caller-owned permissions/privacy, bounded execution, and model-assessed progress. The [skill README](./skills/agent-browser-jev/README.md) includes setup, examples, benchmark methodology and validation limits.
+- **Key Features:** One-time API-key setup, plain-language browser commands, permissive defaults, optional custom policies, and fresh timing/cost benchmarks. The [skill README](./skills/agent-browser-jev/README.md) includes setup, examples, benchmark methodology and validation limits.
 
 ### 🍎 [Apple Container Skill](./skills/apple-container-skill)
 Interact with the Apple Container CLI to manage containers, images, volumes, networks, and system services on macOS.
@@ -55,7 +55,7 @@ Install a selected skill using the [skills CLI](https://github.com/vercel-labs/s
 npx skills add gabeosx/agent-skills --skill agent-browser-jev
 ```
 
-For this skill's executable helper, follow its [dependency and credential setup](./skills/agent-browser-jev/README.md#installation-with-npx-skills) after installing the skill files.
+For this skill's executable helper, follow its [dependency and credential setup](./skills/agent-browser-jev/README.md#install-and-set-up) after installing the skill files.
 
 ```bash
 # Example: Symlink a skill to your agent's skills location

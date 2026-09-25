@@ -1,37 +1,38 @@
 ---
 name: agent-browser-jev
-description: Use Jev to ground bounded natural-language browser actions against current agent-browser controls, execute them in an existing session, and return observed progress. Use for short UI tasks where interpreting labels or repeated controls would otherwise require per-click agent decisions.
+description: Use Jev to perform short browser tasks through agent-browser, including contextual clicks, forms, dialogs and searches. Give the helper an intent instead of making each UI decision yourself; it returns observations and completion or handoff.
 metadata:
-  version: "0.1.2"
+  version: "0.2.0"
 ---
 
 # Agent Browser Jev
 
-Use the bundled helper for a bounded browser intent or short set of caller intents. The caller owns the task, permissions, literal values and final acceptance; Jev interprets the current accessibility snapshot and chooses an offered action, wait, completion or handoff. The existing agent-browser executes it.
+Use Jev for a short browser task when interpreting the page would otherwise require repeated caller decisions. The helper observes the page, offers its actual controls to Jev, executes the selected action through agent-browser, and returns evidence. Prefer a direct browser command when the current control is already known.
 
-Prefer a direct agent-browser command when the current reference is already known. This skill adds value when interpreting the UI saves repeated caller decisions. It does not choose business treatment or replace a site's API/connector policy.
+## Setup
 
-## Use
+Resolve script paths relative to this skill directory. Run `node scripts/setup.mjs` once to install dependencies and configure the OpenRouter key. Setup reuses agent-browser from PATH or installs a local copy if absent. Preserve the user's chosen fork: pass `--binary /path/to/agent-browser` when needed. For subsequent direct browser commands, resolve its path with `configuredBrowser()` from `scripts/config.mjs`; do not print the raw configuration file, which may contain the key.
 
-1. Continue in the user's selected agent-browser session and binary/fork. Follow existing project policy, tenant/account binding and exclusive-session arrangements. For setup or direct commands, load that binary's `skills get core` guidance. Authentication stays with its existing credential provider, including Bitwarden when configured.
-2. Supply a clear bounded intent, any exact non-secret text values, and the caller's actual authorization policy. Reuse existing project policy code. Permissions describe allowed effects; they do not prescribe the correct row or next action. If authority cannot be established, leave that action unavailable. A generic `click` verb does not establish authority.
-3. Use the API or CLI in [references/usage.md](references/usage.md). Reuse the bundled implementation instead of writing a screen-specific runner. A short multi-action intent is supported; no permanent button sequence or row parser is needed.
-4. Inspect returned actions and the latest observation. `reported_complete` records Jev's judgment, not verified task or business success. On handoff or a budget/error return, continue in the same caller with a fresh observation. An uncertain gesture may already have happened: inspect before retrying it.
+If no saved key or `OPENROUTER_API_KEY` exists, setup prompts in the terminal without echoing the key. Direct the user to that prompt; never ask them to paste a secret into chat. A saved key is stored outside the project with owner-only file permissions. Environment credentials take precedence. See the [README](README.md) for installation and key links.
 
-Keep the session exclusive for the bounded task. The in-process lock cannot coordinate other processes or human browser activity. If the owner changes the session outside the helper, invalidate its observation as described in the API reference. Reference binding reduces stale-decision errors; it does not make a gesture atomic with observation.
+## Run
 
-## Dependencies and privacy
+1. Use agent-browser to open the website and authenticate with the existing credential provider. Continue in the user's chosen session; preserve project-specific account binding and permissions.
+2. Invoke the bundled helper with the authorized intent, existing session and exact non-secret fill values:
 
-- Node.js 20.3+ and the existing `agent-browser` executable. Configure its path and session; the skill does not install or replace a browser, fork or credential plugin.
-- Install the pinned JavaScript dependency once in this skill directory: `npm ci --ignore-scripts --no-audit --no-fund`.
-- Use the caller's secret provider or an inherited `OPENROUTER_API_KEY`. Keep keys out of task files, skill files, command arguments and logs. Projects supply their own secret provider; no originating repository or credential mapping is required.
-- Supply a privacy filter before sending visible accessibility data to Jev. Reuse the project's sensitive-data redactions. Do not send credential-entry screens, passwords or OTPs; authenticate through the existing provider first. Intents and supplied values also reach the model, so keep secrets out of them.
-- Store evidence privately. The CLI creates a new mode-600 evidence file and prints a summary; API callers own storage.
+   ```sh
+   node /path/to/skill/scripts/run.mjs --session current-session \
+     --intent "Fill Subject with the supplied subject; leave the form as a draft" \
+     --value 'subject=Delivery question'
+   ```
 
-## Supported boundary
+   Use `--binary` for a selected fork. No task file or custom policy is required. The default offers every supported observed click/fill and passes visible page text to Jev. This does not add authority beyond the user's task. Reuse any existing project permissions/redaction via `--policy`; see [references/usage.md](references/usage.md). Do not build a new policy module or screen parser for an ordinary task just to call the helper.
+3. Review the summary and evidence path. `reported_complete` is Jev's assessment, so confirm the final outcome as appropriate to the task. On handoff or limits, continue in the same caller. An uncertain action may already have happened: observe before repeating it.
 
-The helper offers clicks on ordinary semantic controls, fills using caller-supplied values, and a short wait. Unsupported actions return for caller continuation. It has no navigation planner, autocomplete engine, upload helper or business-outcome verifier. Use ordinary authorized agent-browser operations when those are needed.
+Keep credentials and OTPs with the browser's authentication provider, outside model input. Keep the browser session exclusive during a call. Other processes or human activity can change a page between observation and gesture; the in-process lock cannot prevent that.
 
-The bundled live suite uses general-purpose catalog, text-editor and delayed-preview fixtures. It exercises repeated/reordered controls, literal filling, asynchronous rendering, missing targets and withheld permissions through the actual CLI, browser and Jev API. See [references/proof.md](references/proof.md) for evidence and reproduction. These finite checks do not establish arbitrary-site reliability or authority for consequential actions; business-specific readback stays with the caller.
+The defaults are 8 actions, 16 decisions and 60 seconds. Clicks, literal fills and brief waits are supported. Use ordinary agent-browser operations for navigation, login, uploads and downloads. The JavaScript API and custom policy remain available for application integrations.
 
-Run `npm test` here after changing the helper. Tests cover binding, budgets, permissions, literal preservation, error handling and the portable command interface. No live browser or API key is needed for these tests.
+## Validation
+
+Run `npm test` for offline regressions. `npm run benchmark -- --output /absolute/path/to/new-report.json` runs fresh local fixtures with the real browser and Jev, makes billable model calls, and records every trial including failures. See [references/benchmarks.md](references/benchmarks.md) for measurements and reproduction.

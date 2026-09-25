@@ -59,7 +59,7 @@ export const loadApiKey = () => 'test-only-no-network';`);
   } finally { rmSync(root, { recursive: true, force: true }); }
 });
 
-test('missing caller policy fails before loading credentials or using browser', async () => {
+test('incomplete custom policy fails before loading credentials or using browser', async () => {
   let accessed = false;
   await assert.rejects(runTask({}, { loadApiKey: () => { accessed = true; } }), /authorize and sanitize/);
   assert.equal(accessed, false);

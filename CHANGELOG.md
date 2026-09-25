@@ -6,12 +6,26 @@ All notable skill changes are recorded in this file. Each skill is versioned ind
 
 ### Repository
 
+- Updated the Agent Browser Jev catalog entry and setup link for its simplified installation and fresh benchmarks.
+
 - Added CI for Agent Browser Jev's offline regression suite on Node 20.3.0 and 24, including symlink installation behavior and the repository release contract.
 
 - Added Agent Browser Jev to the skill catalog with `npx skills` installation guidance and a detailed human-facing README requested for this skill.
 
 - Added canonical agent instructions and a dependency-free release-contract validator requiring every affected skill change to include an independent Semantic Version increment, a matching root changelog entry, relevant validation, and scoped cleanup evidence.
 - Required repository-only changes to be recorded without inventing unrelated skill version bumps, and documented the definition of done and release-tagging workflow.
+
+## agent-browser-jev 0.2.0 - 2026-09-25
+
+### Added
+
+- Added one-time setup with a hidden OpenRouter key prompt, private saved configuration, dependency installation and automatic local agent-browser installation when absent. Existing browser forks and environment/secret-provider credentials remain supported.
+- Added a plain-language `--intent` command with named exact values, default session/browser settings and automatic evidence storage. Task files and custom policies are now optional; the default offers all observed supported controls and passes visible page content to Jev. The low-level API retains its original authorization contract.
+- Added fresh repeated benchmarks on new generic help-center, support-form, preferences and search fixtures through the installed default CLI, using upstream agent-browser. Each trial retains independent checks, timings, charges and failures.
+
+### Changed
+
+- Rewrote the README around installation, API-key setup, everyday use and concrete measured value. Moved integration detail to the API reference and replaced earlier evidence pages with the fresh benchmark; historical reports remain in Git history.
 
 ## agent-browser-jev 0.1.2 - 2026-09-24
 

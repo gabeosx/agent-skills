@@ -1,9 +1,10 @@
 import { execFile } from 'node:child_process';
 import { promisify } from 'node:util';
 import { OpenRouter } from '@openrouter/sdk';
+import { configuredApiKey } from './config.mjs';
 
 export const JEV_MODEL = 'typesafe/jev-1.13';
-export function createJevClient(apiKey = process.env.OPENROUTER_API_KEY) {
+export function createJevClient(apiKey = configuredApiKey()) {
   if (typeof apiKey !== 'string' || !apiKey.trim()) throw new Error('Configure an OpenRouter API key through the caller secret provider or environment');
   return new OpenRouter({ apiKey, appTitle: 'Agent Browser Jev',
     retryConfig: { strategy: 'none' }, timeoutMs: 15_000 });
