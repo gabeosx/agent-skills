@@ -19,6 +19,12 @@ All notable skill changes are recorded in this file. Each skill is versioned ind
 - Added canonical agent instructions and a dependency-free release-contract validator requiring every affected skill change to include an independent Semantic Version increment, a matching root changelog entry, relevant validation, and scoped cleanup evidence.
 - Required repository-only changes to be recorded without inventing unrelated skill version bumps, and documented the definition of done and release-tagging workflow.
 
+## agent-browser-jev 1.0.1 - 2026-09-25
+
+### Changed
+
+- Tightened the README around the product's actual value: when to delegate a multi-step browser task, when to use agent-browser directly, and what the current release evidence shows. Moved benchmark caveats and comparison framing out of the overview so the README reads like product documentation rather than a methodology disclaimer.
+
 ## agent-browser-jev 1.0.0 - 2026-09-25
 
 ### Added

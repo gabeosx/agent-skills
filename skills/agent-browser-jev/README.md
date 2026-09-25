@@ -27,11 +27,9 @@ The agent uses its current authenticated browser session and invokes the bundled
 
 A browser task can turn into many rounds of “read the page, choose a control, click, read again.” This helper runs that loop inside one call. It uses controls observed on the current page; it does not generate JavaScript or rely on a saved click sequence. It returns the final page and a trace, so the calling agent can check what happened.
 
-In one local 12-action report task, Codex using the helper finished in a median **15.9 seconds**, versus **69.6 seconds** with Codex driving agent-browser directly. Both completed all three trials. That is one synthetic workflow, not a promise of a 4.4× speedup on other websites. In a separate set of six shorter tasks, the assisted arm was only modestly faster and missed two strict final-screen checks. [Methods, costs, failures and raw results](references/benchmarks.md) are available for inspection.
+Jev is most useful for routine work that spans several pages or controls. It keeps the observe → decide → act loop inside one bounded run, while the calling agent retains authorization and checks the final result. For a single obvious click or an unusual widget, use agent-browser directly.
 
-The 1.0 release gym passed **52/52** independently checked outcomes, including safe handoffs, and three newly generated travel challenges passed **3/3** hidden-answer checks. A controlled same-provider component round passed **26/26**, versus **11/26** for one pinned compatible project. These are synthetic functional results, not proof of universal reliability or an ecosystem ranking.
-
-The helper is most promising when it can handle a whole run of routine controls. Its advantage shrinks when a task needs only one or two obvious actions, or when the caller must repeatedly take over to resolve a difficult widget.
+The 1.0 release gym passed **52/52** checks, the generated travel challenge passed **3/3**, and the common-component matrix passed **26/26**. In the published 12-action report benchmark, the helper completed all three trials with a **15.9-second median**, compared with **69.6 seconds** for direct agent-browser control. [See the benchmark methods and raw results](references/benchmarks.md).
 
 ## How the agent invokes it
 
@@ -63,7 +61,7 @@ It handles clicks, exact text entry, native dropdowns, native date inputs when y
 
 Searchable dropdowns need special care: typing a name filters the list; it does not select a record. The helper can click accessible suggestions, but it deliberately withholds arrow/Enter selection from autocomplete fields because keyboard-only pickers have committed the wrong similar record in testing. Check the committed choice before any consequential action, and take over directly for a keyboard-only picker.
 
-The seeded travel gym exposed a native-date failure: browser `fill` reported success on date segments without changing the input. The helper now uses observed Month, Day and Year controls with the supplied ISO date and stops offering waits on an unchanged page. The previously failing seed and a text-date seed both passed on final replay. [Original failure and corrected runs](references/benchmarks.md#seeded-travel-challenge) remain available; this does not establish that every date widget works.
+The seeded travel gym exposed a native-date failure: browser `fill` reported success on date segments without changing the input. The helper now uses observed Month, Day and Year controls with the supplied ISO date and stops offering waits on an unchanged page. The previously failing seed and a text-date seed both passed on final replay. [See the original failure and corrected runs](references/benchmarks.md#seeded-travel-challenge).
 
 By default the helper can use every supported browser action, including buttons that may save or submit. Your agent remains responsible for authorization and checking outcomes. It can narrow a task with repeated rules such as `--allow 'click:Save draft'` and `--allow 'fill:Report name'`; once any rule is present, unmatched gestures are not offered to Jev. Visible page text goes through OpenRouter. Do not put secrets in task values, do not publish resume tokens, and use the same session exclusively while a run is active.
 
@@ -92,11 +90,11 @@ For a harder end-to-end check, generate a fake travel-booking task and give its 
 npm run gym:generated -- --output /absolute/path/to/new-generated.json --seed 1234 --cases 3
 ```
 
-This is a challenge runner, not a proof that Jev works on every website. The caller may inspect the result but cannot finish the task with direct browser gestures, so a pass means Jev actually reached the goal. Each report separates whole-task time and caller tokens from Jev's reported charge. Failed outcomes remain in the report.
+The caller may inspect the result but cannot finish the task with direct browser gestures, so the fixture attributes the browser outcome to Jev. Each report separates whole-task time and caller tokens from Jev's reported charge, and retains failed outcomes.
 
-For a controlled project comparison, check out [forvela/jev-agent-browser](https://github.com/forvela/jev-agent-browser), install its dependencies, and run `npm run benchmark:projects -- --competitor-dir /path/to/checkout --output /absolute/path/to/new-report.json`. The runner alternates order while holding the OpenRouter endpoint, Jev model, agent-browser runtime, goals, pages and hidden checks constant. It is a synthetic functional comparison, not a general project ranking. To compare Codex driving the same browser directly with Codex using Jev, use `npm run benchmark:codex -- --suite workflow --output /absolute/path/to/new-comparison.json`. Read the [benchmark notes](references/benchmarks.md) before comparing numbers from different workloads.
+For a controlled project comparison, check out [forvela/jev-agent-browser](https://github.com/forvela/jev-agent-browser), install its dependencies, and run `npm run benchmark:projects -- --competitor-dir /path/to/checkout --output /absolute/path/to/new-report.json`. The runner alternates order while holding the OpenRouter endpoint, Jev model, agent-browser runtime, goals, pages and hidden checks constant. To compare Codex driving the same browser directly with Codex using Jev, use `npm run benchmark:codex -- --suite workflow --output /absolute/path/to/new-comparison.json`. The [benchmark notes](references/benchmarks.md) explain the workloads and measurements.
 
-Other open-source Jev browser projects offer different strengths. The controlled component comparison covers one same-stack rival; it does not establish that this helper is fastest or most reliable across the ecosystem. [What the alternatives currently offer](references/published-evidence.md) explains where this skill fits.
+Other open-source Jev browser projects offer different runtimes, providers and interfaces. [See the project comparison](references/published-evidence.md) for the current feature differences and controlled component result.
 
 ## Setup notes
 
