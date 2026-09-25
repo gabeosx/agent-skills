@@ -154,8 +154,8 @@ test('click quiescence observes an async replacement before another decision',as
   const result=await f.run();
   assert.equal(result.returnReason,'reported_complete');
   assert.equal(f.calls.length,1);
+  assert.equal(f.observations(),3);
   assert.equal(result.latestObservation.snapshot,'Task complete');
-  assert.ok(result.timing.settleMs>=80);
 });
 
 test('provider failure returns without fallback or actions', async () => {
