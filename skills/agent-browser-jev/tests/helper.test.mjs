@@ -22,12 +22,12 @@ function fixture({ decide, authorize = () => true, execute, observe, ...options 
   return { browser, calls, run, observations: () => observations };
 }
 
-test('generic loop executes a grounded action, observes once, and labels completion as model judgment', async () => {
+test('generic loop executes a grounded action, settles it, and labels completion as model judgment', async () => {
   const f = fixture();
   const result = await f.run({ budget: { maxActions: 1 } });
   assert.equal(result.returnReason, 'reported_complete');
   assert.equal(f.calls.length, 1);
-  assert.equal(f.observations(), 2);
+  assert.equal(f.observations(), 3);
   assert.equal(result.latestObservation.snapshot, 'Aperture is open');
   assert.equal(result.progressAssessment[0].judgment, 'model_reported_complete');
 });
@@ -140,7 +140,22 @@ test('failed action is explicitly uncertain and never replayed', async () => {
   assert.equal(result.returnReason, 'action_outcome_unknown');
   assert.equal(result.actions[0].outcome, 'unknown');
   assert.equal(f.calls.length, 1);
+  assert.equal(result.observationFresh,true);
+  assert.equal(result.latestObservation.snapshot,'Aperture is open');
   assert.ok(!JSON.stringify(result).includes('sensitive internal detail'));
+});
+
+test('click quiescence observes an async replacement before another decision',async()=>{
+  let state='closed',reads=0;
+  const f=fixture({observe:()=>{
+    if(state==='clicked'&&++reads>=2)state='complete';
+    return state==='complete'?{snapshot:'Task complete',refs:{}}:{snapshot:state==='clicked'?'Selected button': 'Initial',refs:{e9:{role:'button',name:'Reveal'}}};
+  },execute:async()=>{state='clicked'},decide:async r=>({binding:r.binding,choice:r.observation.snapshot==='Task complete'?'step_complete':'c0'})});
+  const result=await f.run();
+  assert.equal(result.returnReason,'reported_complete');
+  assert.equal(f.calls.length,1);
+  assert.equal(f.observations(),3);
+  assert.equal(result.latestObservation.snapshot,'Task complete');
 });
 
 test('provider failure returns without fallback or actions', async () => {

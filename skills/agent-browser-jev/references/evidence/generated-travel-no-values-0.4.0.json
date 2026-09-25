@@ -1,0 +1,364 @@
+{
+  "schema": 1,
+  "kind": "generated-travel-isolated-caller",
+  "startedAt": "2026-09-25T14:34:59.009Z",
+  "seed": 1234,
+  "casesRequested": 1,
+  "model": "gpt-5.5",
+  "effort": "low",
+  "timing": "Task delivery to caller POST /done; includes caller reasoning, Jev, browser actions and final caller assessment. Excludes Codex startup and independent verification.",
+  "cost": "Jev amounts are provider-reported. Codex tokens are reported separately; no dollar equivalent is assumed.",
+  "sourceSha256": {
+    "tests/generated-gym.mjs": "9a2781ba767163c5a5c8a7e19c1cc2919779c91e7e482ddd52a589022078bfb5",
+    "tests/fixtures/generated-travel.mjs": "3b192d0822ecc3be3767fde89454d79e86cafd75da2d3ffedc71f80bb0e09d9a",
+    "SKILL.md": "e9b70a9c431ebd52bd92fa35d77df715b781102ce462b7ebd701d93df5dda7fa",
+    "scripts/run.mjs": "a34f7e5ccfa7639145e32bc2b59bdda816920297ed0a01d41b30e8737dee11e9"
+  },
+  "trials": [
+    {
+      "index": 0,
+      "seed": 1234,
+      "goal": "On this demo travel site, hold a Business itinerary from Boston Logan to Seattle Tacoma on 2026-11-08. Choose Northstar Air departing at 13:25. The traveler is Morgan Ellis (morgan.ellis@example.test); choose a no preference seat and standard meal. Add one checked bag at 15 kg. Accept the booking terms and finish on the confirmation page. This is a local fake booking; no payment is involved.",
+      "startedAt": "2026-09-25T14:34:59.069Z",
+      "commandCount": 4,
+      "commands": [
+        {
+          "command": "/bin/zsh -lc \"sed -n '1,220p' <skill>SKILL.md\"",
+          "exitCode": 0,
+          "elapsedMs": 0
+        },
+        {
+          "command": "/bin/zsh -lc 'curl -s <fixture>/task'",
+          "exitCode": 0,
+          "elapsedMs": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"node '<skill>scripts/run.mjs' --binary '<agent-browser>' --session '<session>' --url '<fixture>/search' --intent 'On this demo travel site, hold a Business itinerary from Boston Logan to Seattle Tacoma on 2026-11-08. Choose Northstar Air departing at 13:25. The traveler is Morgan Ellis (morgan.ellis@example.test); choose a no preference seat and standard meal. Add one checked bag at 15 kg. Accept the booking terms and finish on the confirmation page. This is a local fake booking; n",
+          "exitCode": 2,
+          "elapsedMs": 30526
+        },
+        {
+          "command": "/bin/zsh -lc \"curl -s -X POST <fixture>/done -H 'Content-Type: application/json' --data '{\\\"status\\\":\\\"handoff\\\",\\\"assessment\\\":\\\"Jev hit the action budget after 60 actions and ended back on the Search flights form; the confirmation page and requested itinerary hold were not established.\\\"}'\"",
+          "exitCode": 0,
+          "elapsedMs": 0
+        }
+      ],
+      "codexUsage": {
+        "input_tokens": 100236,
+        "cached_input_tokens": 86912,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 971,
+        "reasoning_output_tokens": 70
+      },
+      "codexExitCode": 0,
+      "agentStatus": "handoff",
+      "elapsedMs": 46487,
+      "independent": {
+        "passed": false,
+        "mismatches": [
+          "from",
+          "to",
+          "date",
+          "cabin",
+          "flightId",
+          "name",
+          "email",
+          "seat",
+          "meal",
+          "bag",
+          "bagWeight"
+        ],
+        "held": false,
+        "actual": {
+          "flightId": null
+        },
+        "events": []
+      },
+      "helper": {
+        "returnReason": "action_budget",
+        "elapsedMs": 30073.148625,
+        "totalMs": 30075.887667,
+        "actions": 60,
+        "actionTrace": [
+          {
+            "op": "click",
+            "name": "From airport",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "press",
+            "name": "From airport",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "press",
+            "name": "From airport",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "click",
+            "name": "To airport",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "press",
+            "name": "To airport",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "press",
+            "name": "To airport",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "select",
+            "name": "Cabin",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "click",
+            "name": "Show date picker Show date picker",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "click",
+            "name": "Show next month",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "wait",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "wait",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "wait",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "wait",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "wait",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "wait",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "wait",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "wait",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "wait",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "wait",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "wait",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "wait",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "wait",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "wait",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "wait",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "wait",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "wait",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "wait",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "wait",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "wait",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "wait",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "wait",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "wait",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "wait",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "click",
+            "name": "From airport",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "press",
+            "name": "From airport",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "press",
+            "name": "From airport",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "click",
+            "name": "To airport",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "press",
+            "name": "To airport",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "press",
+            "name": "To airport",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "click",
+            "name": "Show date picker Show date picker",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "click",
+            "name": "Show next month",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "wait",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "wait",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "wait",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "wait",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "wait",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "wait",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "wait",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "wait",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "wait",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "wait",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "wait",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "wait",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "wait",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "wait",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "wait",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "wait",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "wait",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "wait",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "wait",
+            "outcome": "tool_succeeded"
+          }
+        ],
+        "costUsd": 0.011230337999999992,
+        "decisionCount": 61
+      },
+      "directBrowserGestures": [],
+      "verdict": "failed",
+      "finishedAt": "2026-09-25T14:35:55.725Z"
+    }
+  ],
+  "cleanup": {
+    "browserSessionsClosed": true,
+    "serversClosed": true,
+    "temporaryDirectoriesRemoved": true
+  },
+  "codexVersion": "codex-cli 0.147.0",
+  "browserVersion": "agent-browser 0.33.2",
+  "finishedAt": "2026-09-25T14:35:55.903Z",
+  "summary": {
+    "passed": 0,
+    "total": 1,
+    "medianEndToEndMs": 46487,
+    "jevCostUsd": 0.011230337999999992
+  },
+  "verdict": "failed"
+}

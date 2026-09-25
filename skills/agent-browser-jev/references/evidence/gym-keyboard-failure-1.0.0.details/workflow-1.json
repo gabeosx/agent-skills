@@ -1,0 +1,647 @@
+{
+  "schema": 1,
+  "version": "1.0.0",
+  "startedAt": "2026-09-25T17:07:20.286Z",
+  "sourceSha256": {
+    "scripts/controls.mjs": "d13cad00bb63bb7df202fc095a8a19e0326192bd20ab9273488b91bf6f8336f2",
+    "scripts/jev-browser.mjs": "8d714c8631cf0a9795a585d67b3dde2b79e082c774f63acd41ad21d3e9ece84f",
+    "scripts/agent-browser-jev.mjs": "4e4df07a022d48af9feb326417596ee0c3f0c6584fa6d4e3fbf781a09e0bc3de",
+    "scripts/run.mjs": "75ed45bd730e5e982a0cc8fc63dccaa79b88200aa7cfe16f05b2ba8a4c402a5a",
+    "tests/workflow-live.mjs": "afd566f71e5f104a79be6179127e0247337379528dbd83b2da9d2c0e132e2ff0",
+    "tests/fixtures/workflow-pages.mjs": "365ca1ea0e7f8d2610b192127971662ec5a25eb2f5ae730ae9e9157dad7d7961"
+  },
+  "cases": [
+    {
+      "id": "continuous-report-12-actions",
+      "runs": [
+        {
+          "returnReason": "reported_complete",
+          "actions": [
+            {
+              "stepIndex": 0,
+              "operation": "click",
+              "target": "Create report",
+              "outcome": "tool_succeeded"
+            },
+            {
+              "stepIndex": 0,
+              "operation": "fill",
+              "target": "Report name",
+              "outcome": "tool_succeeded"
+            },
+            {
+              "stepIndex": 0,
+              "operation": "select",
+              "target": "Project",
+              "outcome": "tool_succeeded"
+            },
+            {
+              "stepIndex": 0,
+              "operation": "click",
+              "target": "Next",
+              "outcome": "tool_succeeded"
+            },
+            {
+              "stepIndex": 0,
+              "operation": "select",
+              "target": "Region",
+              "outcome": "tool_succeeded"
+            },
+            {
+              "stepIndex": 0,
+              "operation": "uncheck",
+              "target": "Include archived records",
+              "outcome": "tool_succeeded"
+            },
+            {
+              "stepIndex": 0,
+              "operation": "click",
+              "target": "Next",
+              "outcome": "tool_succeeded"
+            },
+            {
+              "stepIndex": 0,
+              "operation": "check",
+              "target": "Email updates",
+              "outcome": "tool_succeeded"
+            },
+            {
+              "stepIndex": 0,
+              "operation": "select",
+              "target": "Frequency",
+              "outcome": "tool_succeeded"
+            },
+            {
+              "stepIndex": 0,
+              "operation": "click",
+              "target": "Review draft",
+              "outcome": "tool_succeeded"
+            },
+            {
+              "stepIndex": 0,
+              "operation": "click",
+              "target": "Save draft",
+              "outcome": "tool_succeeded"
+            },
+            {
+              "stepIndex": 0,
+              "operation": "click",
+              "target": "Back to reports",
+              "outcome": "tool_succeeded"
+            }
+          ],
+          "progressAssessment": [
+            {
+              "stepIndex": 0,
+              "intent": "Create and save a report draft using the supplied report name. Choose project Atlas, North region, exclude archived records, enable email updates and use Weekly delivery. Finish on the report list with the saved draft visible. Do not publish.",
+              "judgment": "model_reported_complete"
+            }
+          ],
+          "inputRequired": null,
+          "observation": {
+            "snapshot": "- main\n  - heading \"Reports\" [level=1, ref=e1]\n  - button \"Create report\" [ref=e2]\n  - article\n    - heading \"Saved draft\" [level=2, ref=e3]\n    - StaticText \"{\\n  \\\"name\\\": \\\"Weekly operations — review only\\\",\\n  \\\"project\\\": \\\"atlas\\\",\\n  \\\"region\\\": \\\"north\\\",\\n  \\\"archived\\\": false,\\n  \\\"email\\\": true,\\n  \\\"frequency\\\": \\\"weekly\\\"\\n}\"",
+            "truncated": false,
+            "fresh": true
+          },
+          "timing": {
+            "totalMs": 5368.062167,
+            "helperMs": 3752.4160829999996,
+            "navigationMs": 1613.2500420000001,
+            "observationMs": 251.41516699999966,
+            "decisionMs": 2432.3988329999997,
+            "actionMs": 170.355583999999,
+            "settleMs": 893.054791
+          },
+          "jev": {
+            "calls": 13,
+            "costUsd": 0.001012494
+          },
+          "resumable": false,
+          "resumeToken": null
+        }
+      ],
+      "independentSnapshot": "- main\n  - heading \"Reports\" [level=1, ref=e1]\n  - button \"Create report\" [ref=e2]\n  - article\n    - heading \"Saved draft\" [level=2, ref=e3]\n    - StaticText \"{\\n  \\\"name\\\": \\\"Weekly operations — review only\\\",\\n  \\\"project\\\": \\\"atlas\\\",\\n  \\\"region\\\": \\\"north\\\",\\n  \\\"archived\\\": false,\\n  \\\"email\\\": true,\\n  \\\"frequency\\\": \\\"weekly\\\"\\n}\"",
+      "verdict": "passed",
+      "events": [
+        {
+          "type": "start"
+        },
+        {
+          "type": "details",
+          "name": "Weekly operations — review only",
+          "project": "atlas"
+        },
+        {
+          "type": "coverage",
+          "region": "north",
+          "archived": false
+        },
+        {
+          "type": "delivery",
+          "email": true,
+          "frequency": "weekly"
+        },
+        {
+          "type": "save",
+          "data": {
+            "name": "Weekly operations — review only",
+            "project": "atlas",
+            "region": "north",
+            "archived": false,
+            "email": true,
+            "frequency": "weekly"
+          }
+        },
+        {
+          "type": "return"
+        }
+      ]
+    },
+    {
+      "id": "input-request-and-resume",
+      "runs": [
+        {
+          "returnReason": "input_required",
+          "actions": [
+            {
+              "stepIndex": 0,
+              "operation": "click",
+              "target": "Create report",
+              "outcome": "tool_succeeded"
+            }
+          ],
+          "progressAssessment": [],
+          "inputRequired": {
+            "name": "Report name",
+            "role": "textbox",
+            "key": "Report name",
+            "instruction": "Supply the exact non-secret field value, then resume. The target will be observed again."
+          },
+          "observation": {
+            "snapshot": "- main\n  - heading \"Report details\" [level=1, ref=e1]\n  - LabelText\n    - StaticText \"Report name \"\n    - textbox \"Report name\" [ref=e3]\n  - LabelText\n    - StaticText \"Project \"\n    - combobox \"Project\" [expanded=false, ref=e4]: Choose project\n      - MenuListPopup\n        - option \"Choose project\" [selected, ref=e5]\n        - option \"Boreal\" [ref=e6]\n        - option \"Atlas\" [ref=e7]\n        - option \"Cedar\" [ref=e8]\n  - button \"Next\" [ref=e2]",
+            "truncated": false,
+            "fresh": true
+          },
+          "timing": {
+            "totalMs": 696.4337910000002,
+            "helperMs": 675.0867499999999,
+            "navigationMs": 19.445832999999993,
+            "observationMs": 32.267125999999905,
+            "decisionMs": 466.3747910000001,
+            "actionMs": 12.537208000000078,
+            "settleMs": 162.5146249999999
+          },
+          "jev": {
+            "calls": 2,
+            "costUsd": 0.00011298
+          },
+          "resumable": true,
+          "resumeToken": "[redacted]"
+        },
+        {
+          "returnReason": "reported_complete",
+          "actions": [
+            {
+              "stepIndex": 0,
+              "operation": "fill",
+              "target": "Report name",
+              "outcome": "tool_succeeded"
+            },
+            {
+              "stepIndex": 0,
+              "operation": "select",
+              "target": "Project",
+              "outcome": "tool_succeeded"
+            },
+            {
+              "stepIndex": 0,
+              "operation": "click",
+              "target": "Next",
+              "outcome": "tool_succeeded"
+            },
+            {
+              "stepIndex": 0,
+              "operation": "select",
+              "target": "Region",
+              "outcome": "tool_succeeded"
+            },
+            {
+              "stepIndex": 0,
+              "operation": "uncheck",
+              "target": "Include archived records",
+              "outcome": "tool_succeeded"
+            },
+            {
+              "stepIndex": 0,
+              "operation": "click",
+              "target": "Next",
+              "outcome": "tool_succeeded"
+            },
+            {
+              "stepIndex": 0,
+              "operation": "check",
+              "target": "Email updates",
+              "outcome": "tool_succeeded"
+            },
+            {
+              "stepIndex": 0,
+              "operation": "select",
+              "target": "Frequency",
+              "outcome": "tool_succeeded"
+            },
+            {
+              "stepIndex": 0,
+              "operation": "click",
+              "target": "Review draft",
+              "outcome": "tool_succeeded"
+            },
+            {
+              "stepIndex": 0,
+              "operation": "click",
+              "target": "Save draft",
+              "outcome": "tool_succeeded"
+            },
+            {
+              "stepIndex": 0,
+              "operation": "click",
+              "target": "Back to reports",
+              "outcome": "tool_succeeded"
+            }
+          ],
+          "progressAssessment": [
+            {
+              "stepIndex": 0,
+              "intent": "Create and save a report draft using the supplied report name. Choose project Atlas, North region, exclude archived records, enable email updates and use Weekly delivery. Finish on the report list with the saved draft visible. Do not publish.",
+              "judgment": "model_reported_complete"
+            }
+          ],
+          "inputRequired": null,
+          "observation": {
+            "snapshot": "- main\n  - heading \"Reports\" [level=1, ref=e1]\n  - button \"Create report\" [ref=e2]\n  - article\n    - heading \"Saved draft\" [level=2, ref=e3]\n    - StaticText \"{\\n  \\\"name\\\": \\\"Weekly operations — review only\\\",\\n  \\\"project\\\": \\\"atlas\\\",\\n  \\\"region\\\": \\\"north\\\",\\n  \\\"archived\\\": false,\\n  \\\"email\\\": true,\\n  \\\"frequency\\\": \\\"weekly\\\"\\n}\"",
+            "truncated": false,
+            "fresh": true
+          },
+          "timing": {
+            "totalMs": 3769.2244590000005,
+            "helperMs": 3767.295417,
+            "navigationMs": 0,
+            "observationMs": 189.80854500000112,
+            "decisionMs": 2797.757584000001,
+            "actionMs": 126.47899800000027,
+            "settleMs": 649.0737910000005
+          },
+          "jev": {
+            "calls": 12,
+            "costUsd": 0.0009644880000000001
+          },
+          "resumable": false,
+          "resumeToken": null
+        }
+      ],
+      "independentSnapshot": "- main\n  - heading \"Reports\" [level=1, ref=e1]\n  - button \"Create report\" [ref=e2]\n  - article\n    - heading \"Saved draft\" [level=2, ref=e3]\n    - StaticText \"{\\n  \\\"name\\\": \\\"Weekly operations — review only\\\",\\n  \\\"project\\\": \\\"atlas\\\",\\n  \\\"region\\\": \\\"north\\\",\\n  \\\"archived\\\": false,\\n  \\\"email\\\": true,\\n  \\\"frequency\\\": \\\"weekly\\\"\\n}\"",
+      "verdict": "passed",
+      "events": [
+        {
+          "type": "start"
+        },
+        {
+          "type": "details",
+          "name": "Weekly operations — review only",
+          "project": "atlas"
+        },
+        {
+          "type": "coverage",
+          "region": "north",
+          "archived": false
+        },
+        {
+          "type": "delivery",
+          "email": true,
+          "frequency": "weekly"
+        },
+        {
+          "type": "save",
+          "data": {
+            "name": "Weekly operations — review only",
+            "project": "atlas",
+            "region": "north",
+            "archived": false,
+            "email": true,
+            "frequency": "weekly"
+          }
+        },
+        {
+          "type": "return"
+        }
+      ]
+    },
+    {
+      "id": "budget-pause-and-resume",
+      "runs": [
+        {
+          "returnReason": "action_budget",
+          "actions": [
+            {
+              "stepIndex": 0,
+              "operation": "click",
+              "target": "Create report",
+              "outcome": "tool_succeeded"
+            },
+            {
+              "stepIndex": 0,
+              "operation": "fill",
+              "target": "Report name",
+              "outcome": "tool_succeeded"
+            },
+            {
+              "stepIndex": 0,
+              "operation": "select",
+              "target": "Project",
+              "outcome": "tool_succeeded"
+            },
+            {
+              "stepIndex": 0,
+              "operation": "click",
+              "target": "Next",
+              "outcome": "tool_succeeded"
+            },
+            {
+              "stepIndex": 0,
+              "operation": "select",
+              "target": "Region",
+              "outcome": "tool_succeeded"
+            }
+          ],
+          "progressAssessment": [],
+          "inputRequired": null,
+          "observation": {
+            "snapshot": "- main\n  - heading \"Coverage\" [level=1, ref=e1]\n  - LabelText\n    - StaticText \"Region \"\n    - combobox \"Region\" [expanded=false, ref=e4]: North\n      - MenuListPopup\n        - option \"Choose region\" [ref=e5]\n        - option \"South\" [ref=e6]\n        - option \"North\" [selected, ref=e7]\n        - option \"West\" [ref=e8]\n  - checkbox \"Include archived records\" [checked=true, ref=e2]\n  - button \"Next\" [ref=e3]",
+            "truncated": false,
+            "fresh": true
+          },
+          "timing": {
+            "totalMs": 1467.127917,
+            "helperMs": 1446.0187500000002,
+            "navigationMs": 19.087499999999977,
+            "observationMs": 53.63941699999992,
+            "decisionMs": 1187.823581,
+            "actionMs": 39.67437600000005,
+            "settleMs": 162.2696249999999
+          },
+          "jev": {
+            "calls": 6,
+            "costUsd": 0.000429156
+          },
+          "resumable": true,
+          "resumeToken": "[redacted]"
+        },
+        {
+          "returnReason": "reported_complete",
+          "actions": [
+            {
+              "stepIndex": 0,
+              "operation": "uncheck",
+              "target": "Include archived records",
+              "outcome": "tool_succeeded"
+            },
+            {
+              "stepIndex": 0,
+              "operation": "click",
+              "target": "Next",
+              "outcome": "tool_succeeded"
+            },
+            {
+              "stepIndex": 0,
+              "operation": "check",
+              "target": "Email updates",
+              "outcome": "tool_succeeded"
+            },
+            {
+              "stepIndex": 0,
+              "operation": "select",
+              "target": "Frequency",
+              "outcome": "tool_succeeded"
+            },
+            {
+              "stepIndex": 0,
+              "operation": "click",
+              "target": "Review draft",
+              "outcome": "tool_succeeded"
+            },
+            {
+              "stepIndex": 0,
+              "operation": "click",
+              "target": "Save draft",
+              "outcome": "tool_succeeded"
+            },
+            {
+              "stepIndex": 0,
+              "operation": "click",
+              "target": "Back to reports",
+              "outcome": "tool_succeeded"
+            }
+          ],
+          "progressAssessment": [
+            {
+              "stepIndex": 0,
+              "intent": "Create and save a report draft using the supplied report name. Choose project Atlas, North region, exclude archived records, enable email updates and use Weekly delivery. Finish on the report list with the saved draft visible. Do not publish.",
+              "judgment": "model_reported_complete"
+            }
+          ],
+          "inputRequired": null,
+          "observation": {
+            "snapshot": "- main\n  - heading \"Reports\" [level=1, ref=e1]\n  - button \"Create report\" [ref=e2]\n  - article\n    - heading \"Saved draft\" [level=2, ref=e3]\n    - StaticText \"{\\n  \\\"name\\\": \\\"Weekly operations — review only\\\",\\n  \\\"project\\\": \\\"atlas\\\",\\n  \\\"region\\\": \\\"north\\\",\\n  \\\"archived\\\": false,\\n  \\\"email\\\": true,\\n  \\\"frequency\\\": \\\"weekly\\\"\\n}\"",
+            "truncated": false,
+            "fresh": true
+          },
+          "timing": {
+            "totalMs": 2447.159958,
+            "helperMs": 2444.934166,
+            "navigationMs": 0,
+            "observationMs": 171.9698760000009,
+            "decisionMs": 1532.1816680000002,
+            "actionMs": 87.03816900000015,
+            "settleMs": 650.0762059999997
+          },
+          "jev": {
+            "calls": 8,
+            "costUsd": 0.000653688
+          },
+          "resumable": false,
+          "resumeToken": null
+        }
+      ],
+      "independentSnapshot": "- main\n  - heading \"Reports\" [level=1, ref=e1]\n  - button \"Create report\" [ref=e2]\n  - article\n    - heading \"Saved draft\" [level=2, ref=e3]\n    - StaticText \"{\\n  \\\"name\\\": \\\"Weekly operations — review only\\\",\\n  \\\"project\\\": \\\"atlas\\\",\\n  \\\"region\\\": \\\"north\\\",\\n  \\\"archived\\\": false,\\n  \\\"email\\\": true,\\n  \\\"frequency\\\": \\\"weekly\\\"\\n}\"",
+      "verdict": "passed",
+      "events": [
+        {
+          "type": "start"
+        },
+        {
+          "type": "details",
+          "name": "Weekly operations — review only",
+          "project": "atlas"
+        },
+        {
+          "type": "coverage",
+          "region": "north",
+          "archived": false
+        },
+        {
+          "type": "delivery",
+          "email": true,
+          "frequency": "weekly"
+        },
+        {
+          "type": "save",
+          "data": {
+            "name": "Weekly operations — review only",
+            "project": "atlas",
+            "region": "north",
+            "archived": false,
+            "email": true,
+            "frequency": "weekly"
+          }
+        },
+        {
+          "type": "return"
+        }
+      ]
+    },
+    {
+      "id": "keyboard-search-and-back",
+      "runs": [
+        {
+          "returnReason": "reported_complete",
+          "actions": [
+            {
+              "stepIndex": 0,
+              "operation": "fill",
+              "target": "Search guides",
+              "outcome": "tool_succeeded"
+            },
+            {
+              "stepIndex": 0,
+              "operation": "press",
+              "target": "Search guides",
+              "outcome": "tool_succeeded"
+            },
+            {
+              "stepIndex": 0,
+              "operation": "click",
+              "target": "Recovery guide",
+              "outcome": "tool_succeeded"
+            },
+            {
+              "stepIndex": 0,
+              "operation": "back",
+              "target": null,
+              "outcome": "tool_succeeded"
+            }
+          ],
+          "progressAssessment": [
+            {
+              "stepIndex": 0,
+              "intent": "Search guides for the supplied query, open the Recovery guide, then use browser back to return to Guides.",
+              "judgment": "model_reported_complete"
+            }
+          ],
+          "inputRequired": null,
+          "observation": {
+            "snapshot": "- heading \"Guides\" [level=1, ref=e1]\n- form\n  - LabelText\n    - StaticText \"Search guides \"\n    - textbox \"Search guides\" [ref=e3]: recovery\n      - StaticText \"recovery\"\n- link \"Recovery guide\" [ref=e2]",
+            "truncated": false,
+            "fresh": true
+          },
+          "timing": {
+            "totalMs": 1757.0452500000001,
+            "helperMs": 1732.312875,
+            "navigationMs": 21.152917000000002,
+            "observationMs": 63.28087500000021,
+            "decisionMs": 1087.821833,
+            "actionMs": 579.1096250000002,
+            "settleMs": 0
+          },
+          "jev": {
+            "calls": 5,
+            "costUsd": 0.000302946
+          },
+          "resumable": false,
+          "resumeToken": null
+        }
+      ],
+      "independentSnapshot": "- heading \"Guides\" [level=1, ref=e1]\n- form\n  - LabelText\n    - StaticText \"Search guides \"\n    - textbox \"Search guides\" [ref=e3]: recovery\n      - StaticText \"recovery\"\n- link \"Recovery guide\" [ref=e2]",
+      "verdict": "passed",
+      "events": [
+        {
+          "type": "search",
+          "query": "recovery"
+        }
+      ]
+    },
+    {
+      "id": "scroll-to-reveal-control",
+      "runs": [
+        {
+          "returnReason": "reported_complete",
+          "actions": [
+            {
+              "stepIndex": 0,
+              "operation": "scroll",
+              "target": null,
+              "outcome": "tool_succeeded"
+            },
+            {
+              "stepIndex": 0,
+              "operation": "click",
+              "target": "Continue",
+              "outcome": "tool_succeeded"
+            }
+          ],
+          "progressAssessment": [
+            {
+              "stepIndex": 0,
+              "intent": "Scroll down to load the Continue button, activate it, and stop when Updates complete is visible.",
+              "judgment": "model_reported_complete"
+            }
+          ],
+          "inputRequired": null,
+          "observation": {
+            "snapshot": "- heading \"Updates complete\" [level=1, ref=e1]",
+            "truncated": false,
+            "fresh": true
+          },
+          "timing": {
+            "totalMs": 742.1882500000002,
+            "helperMs": 722.041917,
+            "navigationMs": 18.48312500000003,
+            "observationMs": 33.13912400000004,
+            "decisionMs": 579.249583,
+            "actionMs": 27.492707999999993,
+            "settleMs": 80.45733399999995
+          },
+          "jev": {
+            "calls": 3,
+            "costUsd": 0.00013839
+          },
+          "resumable": false,
+          "resumeToken": null
+        }
+      ],
+      "verdict": "passed",
+      "events": [
+        {
+          "type": "continue"
+        }
+      ]
+    }
+  ],
+  "cleanup": {
+    "browserClosed": true,
+    "serverClosed": true,
+    "temporaryDirectoryRemoved": true
+  },
+  "browserVersion": "agent-browser 0.33.2",
+  "finishedAt": "2026-09-25T17:07:40.049Z",
+  "verdict": "passed",
+  "publicationRedaction": "Opaque resume tokens replaced with [redacted] before publication."
+}

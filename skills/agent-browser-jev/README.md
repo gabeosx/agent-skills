@@ -1,146 +1,107 @@
 # Agent Browser Jev
 
-**Give your agent the goal. Let Jev handle the browser steps.**
+A small browser helper for agents that already use [agent-browser](https://github.com/vercel-labs/agent-browser). Give it a goal such as “set up this report and leave it as a draft.” Jev chooses the next control on each page, and agent-browser performs the action. Your agent supplies the goal and any exact text, then checks the result.
 
-Open a report, choose filters, fill fields, save a draft and return to the list—all through one helper call. Jev reads each new screen and chooses the next control. Your main agent handles the task and checks the returned result, without taking a turn for every click.
+This is useful when a task takes several browser steps. For a button or field your agent can already identify, a direct agent-browser command is simpler.
 
-Built on [agent-browser](https://github.com/vercel-labs/agent-browser). Keep your browser sessions, login setup and credential providers. No website-specific scripts, new browser engine or second planning agent.
+## Install
 
-**Fresh benchmark: 4.4× faster, with 78% lower estimated model cost** on a 12-action report workflow. Both approaches passed all three trials. Actual Codex + agent-browser versus actual Codex + this skill. [Results and limits](#measured-performance).
-
-## Install and set up
-
-You need **Node.js 24+**, npm, and an **OpenRouter API key with credit**. The helper also supports Node 20.3+ when reusing a compatible existing agent-browser binary.
+You need Node.js 24 or newer, npm, and an [OpenRouter API key](https://openrouter.ai/settings/keys) with credit. If you already have a compatible agent-browser installation, the helper itself also runs on Node.js 20.3 or newer.
 
 ```sh
 npx skills add gabeosx/agent-skills --skill agent-browser-jev --global
 node "$HOME/.agents/skills/agent-browser-jev/scripts/setup.mjs"
 ```
 
-Choose your agent when prompted. For a non-interactive Codex install, add `--agent codex --yes` to the first command. Use the path printed by the installer if it differs.
+Choose your agent when the installer asks. For unattended Codex installation, add `--agent codex --yes` to the first command. If the installer prints a different skill path, use that path for setup.
 
-Setup installs dependencies, finds agent-browser or installs a local copy with Chrome, and asks for your API key in a **hidden terminal prompt**. [Create a key](https://openrouter.ai/settings/keys) · [Add credit](https://openrouter.ai/settings/credits). An OpenAI or Anthropic key will not work here.
+Setup installs the helper's dependencies and finds agent-browser, or installs a local copy if needed. It asks for your OpenRouter key in a hidden terminal prompt. If `OPENROUTER_API_KEY` is already set, setup uses it without saving another copy. Otherwise it stores the key in an owner-readable configuration file. Do not paste a key into a chat or command argument.
 
-Then ask your agent:
+Once setup finishes, ask your agent something like:
 
-> Use agent-browser-jev to configure the report with these settings, save it as a draft, and return to the report list. Do not publish it.
+> Use agent-browser-jev to set up a weekly report for Project Atlas. Save a draft, return to the report list, and check that the draft is there. Do not publish it.
 
-**That's the normal workflow.** Your agent reads the skill and invokes the helper. You don't need to write a task file or a policy module.
-
-<details>
-<summary>Existing browser forks, credentials, project installs and updates</summary>
-
-- Keep a fork or credential provider: run setup with `--binary /absolute/path/to/agent-browser`, or set `AGENT_BROWSER_BINARY`. This does not replace its authentication configuration.
-- Already supply `OPENROUTER_API_KEY` through an environment or secret manager? Setup uses it without prompting or saving it. Otherwise the key is saved in `~/.config/agent-browser-jev/config.json` with owner-only permissions. `XDG_CONFIG_HOME` changes that location. Never put keys in chat.
-- Change a saved key: rerun setup with `--change-key`. For non-interactive secret-provider input, use `--key-stdin`.
-- Project install: omit `--global`; run `node .agents/skills/agent-browser-jev/scripts/setup.mjs`.
-- After updating the skill, rerun setup to refresh dependencies. Restart the agent session if the new skill is not discovered.
-- The skill uses the Node runtime and agent-browser; it does not install a separate Playwright or Puppeteer stack.
-
-</details>
+The agent uses its current authenticated browser session and invokes the bundled helper directly. There are no task, policy, result or evidence files to manage.
 
 ## Why use it?
 
-The expensive part of agent-driven browsing is often the repeated conversation around simple UI work: inspect, decide, invoke a tool, inspect again. This skill keeps that loop inside a small controller.
+A browser task can turn into many rounds of “read the page, choose a control, click, read again.” This helper runs that loop inside one call. It uses controls observed on the current page; it does not generate JavaScript or rely on a saved click sequence. It returns the final page and a trace, so the calling agent can check what happened.
 
-- **Delegate the whole browser subtask.** Jev follows a goal across screens, without a parent-model turn per action.
-- **Keep the browser you already use.** Existing agent-browser sessions, forks and authentication continue to work.
-- **Use live controls.** Targets come from the current accessibility snapshot, including context that distinguishes repeated labels. Searchable dropdowns require selecting a suggestion after typing. The helper can click observed options; keyboard-only selection currently needs direct caller control and verification. There are no hard-coded site selectors or click sequences.
-- **Receive useful evidence immediately.** The response includes the final page, freshness/truncation flags, missing input, elapsed times and reported Jev charges. Your agent can evaluate the result without reading another file.
-- **Resume instead of restarting.** Missing a field value or reaching a limit returns a continuation. Supply the value or let the caller help, then continue with fresh controls and retained progress.
+In one local 12-action report task, Codex using the helper finished in a median **15.9 seconds**, versus **69.6 seconds** with Codex driving agent-browser directly. Both completed all three trials. That is one synthetic workflow, not a promise of a 4.4× speedup on other websites. In a separate set of six shorter tasks, the assisted arm was only modestly faster and missed two strict final-screen checks. [Methods, costs, failures and raw results](references/benchmarks.md) are available for inspection.
 
-A direct agent-browser command remains useful when you already know the control. This skill helps when reaching the goal would otherwise require repeated model decisions.
+The 1.0 release gym passed **52/52** independently checked outcomes, including safe handoffs, and three newly generated travel challenges passed **3/3** hidden-answer checks. A controlled same-provider component round passed **26/26**, versus **11/26** for one pinned compatible project. These are synthetic functional results, not proof of universal reliability or an ecosystem ranking.
 
-## Measured performance
+The helper is most promising when it can handle a whole run of routine controls. Its advantage shrinks when a task needs only one or two obvious actions, or when the caller must repeatedly take over to resolve a difficult widget.
 
-Measured with **v0.3.0 on 2026-09-25**, using actual **Codex GPT-5.5 with low reasoning effort** in both arms. The task creates a report draft across several screens: text entry, three dropdowns, two checkbox settings, review, save and return to the list. Twelve browser actions; no supplied selectors or expected action sequence.
+## How the agent invokes it
 
-| Three trials per approach | Codex + agent-browser | Codex + Jev |
-| --- | ---: | ---: |
-| Median complete-task time | 69.6 s | **15.9 s** |
-| Independently verified outcomes | 3/3 | **3/3** |
-| Median caller shell commands, including benchmark reporting | 22 | **4** |
-| Estimated model cost, all three trials | $1.606 | **$0.346** |
-
-That's **77% less elapsed time (4.4× faster)** and **78% lower estimated model cost** in this sample. Jev's own reported charges totaled **$0.00263** across the three assisted tasks; the cost column also includes the calling GPT model.
-
-Timing includes navigation, Codex/model orchestration, browser actions and caller acceptance. Cost uses standard API-equivalent GPT rates with cached input counted correctly; it is **not a Codex subscription bill**. Both arms used the same agent-browser 0.33.2 fork and Chrome 151. Separate live acceptance checks cover the upstream version used by setup.
-
-This is one synthetic workflow with three trials per approach, not an arbitrary-site reliability claim. All runs and failures are retained. [Raw comparison](references/evidence/codex-workflow-0.3.0.json) · [Metrics and cost assumptions](references/evidence/workflow-metrics-0.3.0.json) · [Full methodology, development failures and prior short-task results](references/benchmarks.md).
-
-The v0.3.1 autocomplete checks found a remaining limitation: Jev can issue keyboard actions but sometimes commits the wrong suggestion and reports completion. Use direct agent-browser for keyboard-only dropdowns, and verify selected values before consequential actions. [Autocomplete results and retained failures](references/benchmarks.md#v031-searchable-dropdowns).
-
-## Command-line examples
-
-Usually, let your agent invoke the skill. These commands are useful for integrations and reproducible tasks.
-
-### One goal, one invocation
+You normally ask your agent to use the skill; this command is the internal contract the skill follows:
 
 ```sh
 node "$HOME/.agents/skills/agent-browser-jev/scripts/run.mjs" \
   --session reports \
   --url https://example.com/reports \
-  --intent "Create the requested report, save a draft and return to the list. Do not publish." \
+  --intent "Create a weekly report draft named Weekly operations and return to the list. Do not publish." \
   --value 'name=Weekly operations'
 ```
 
-Omit `--url` to continue on the session's current page. Authenticate with agent-browser first when needed. Credentials and OTPs stay with its authentication provider.
+Omit `--url` to continue from the current page in that session. Supply every known text value with `--value`; Jev chooses a field but cannot invent or rewrite your text. Login, passwords and one-time codes stay with your existing browser setup.
 
-### Supply exact text
-
-```sh
-node "$HOME/.agents/skills/agent-browser-jev/scripts/run.mjs" \
-  --session support \
-  --intent "Fill Subject and Message with the supplied values. Leave the form as a draft." \
-  --value 'subject=Delivery question' \
-  --value 'message=Please check order #42.'
-```
-
-Jev chooses where to put those literal values; it cannot rewrite them. Compose text in the calling agent and supply it here.
-
-### Continue after missing input or a limit
-
-The first call prints its private evidence path. Resume using that path:
+A run returns one JSON object directly on stdout. It can report `reported_complete`, `input_required`, or a handoff such as `action_budget`. Completion is Jev's assessment; your agent still checks the returned page. If it needs to continue, the result contains an encrypted, short-lived `resumeToken`:
 
 ```sh
 node "$HOME/.agents/skills/agent-browser-jev/scripts/run.mjs" \
-  --resume /path/to/result.json \
-  --value 'Report name=Weekly operations'
+  --resume-token "$RESUME_TOKEN" \
+  --value 'name=Weekly operations'
 ```
 
-After caller intervention, add context such as `--context "Dismissed the welcome notice"`. Resume retains the original browser, policy, goal, completed intents and recent actions. It observes the page again; it does not replay saved element references or reopen the starting URL.
+Resuming observes the page again and never replays old element references. The token holds the continuation state, so no result file or resident server is needed. [The agent invocation contract](references/usage.md) covers the returned fields and least-privilege action limits.
 
-## Supported controls
+## What it can and cannot do
 
-| Inside the Jev loop | Keep with the caller / agent-browser |
-| --- | --- |
-| Clicks, exact text fills, native dropdown selections | Login, passwords and OTPs |
-| Explicit checkbox check/uncheck | Text composition and missing user facts |
-| Page scrolling, Enter, Escape, ArrowDown/Up | Uploads, downloads and tab management |
-| Back navigation, brief waits | Visual-only widgets and unsupported interactions |
-| Missing-input requests and resumable handoffs | Business decisions, permissions and final acceptance |
+It handles clicks, exact text entry, native dropdowns, native date inputs when you supply an ISO date such as `2026-11-08`, checkboxes, exact-path file uploads, contextual hover, page scrolling, back navigation, short waits, ordinary text/search submission with Enter, and Escape. It can pause for a missing value and resume. An upload is offered only for a grounded file control and a caller-supplied absolute path; do not supply a file the user did not authorize. Downloads, tab management, keyboard-only pickers, visual-only widgets and authentication remain with the caller and agent-browser.
 
-Defaults allow **30 actions, 60 decisions and 120 seconds** per invocation. Change them with `--max-actions 50 --timeout 180000`. The default policy permits supported controls; it is not read-only. Existing user and project authorization still apply. Integrations can reuse a privacy/permission policy via `--policy` without changing the loop.
+Searchable dropdowns need special care: typing a name filters the list; it does not select a record. The helper can click accessible suggestions, but it deliberately withholds arrow/Enter selection from autocomplete fields because keyboard-only pickers have committed the wrong similar record in testing. Check the committed choice before any consequential action, and take over directly for a keyboard-only picker.
 
-## Understanding the result
+The seeded travel gym exposed a native-date failure: browser `fill` reported success on date segments without changing the input. The helper now uses observed Month, Day and Year controls with the supplied ISO date and stops offering waits on an unchanged page. The previously failing seed and a text-date seed both passed on final replay. [Original failure and corrected runs](references/benchmarks.md#seeded-travel-challenge) remain available; this does not establish that every date widget works.
 
-`reported_complete` means Jev believes the goal is satisfied. The caller checks the returned page against the requested outcome. It is not independently verified business success.
+By default the helper can use every supported browser action, including buttons that may save or submit. Your agent remains responsible for authorization and checking outcomes. It can narrow a task with repeated rules such as `--allow 'click:Save draft'` and `--allow 'fill:Report name'`; once any rule is present, unmatched gestures are not offered to Jev. Visible page text goes through OpenRouter. Do not put secrets in task values, do not publish resume tokens, and use the same session exclusively while a run is active.
 
-`input_required` identifies missing exact text. A `handoff`, limit or error means completion was not established. Later caller recovery is a separate outcome. If a browser action has an uncertain result, inspect the current page before retrying it.
+## Measure it yourself
 
-A returned observation marked fresh was captured after the helper's last action; it cannot guarantee the page stayed unchanged after the call. Truncated or stale evidence, external activity, and tasks needing authoritative readback call for an additional check. Don't reopen a dialog merely to verify information already visible in the result.
-
-Visible page text is sent to Jev through OpenRouter. Evidence and continuation files can contain page content and supplied values; they are created with owner-only permissions. The caller keeps the browser session exclusive. Arbitrary websites, complex widgets, frames, human interference and long-running reliability are not universally covered by the published tests. Oversized observations or action menus return a limit rather than silently discarding controls.
-
-[CLI, API, policies and result fields](references/usage.md) · [Benchmarks and reproduction](references/benchmarks.md) · [Source and design research](references/published-evidence.md)
-
-## Development
+The local gym runs real Jev and agent-browser against disposable pages with independent checks. It reports outcomes, helper time, action count and Jev's reported charge for multi-screen work, autocomplete, negative targets and other awkward controls. Its component matrix adds 26 common patterns selected from WAI-ARIA APG and current Base UI, Radix, MUI and shadcn catalogs:
 
 ```sh
-npm ci
-npm test
-npm run test:workflow -- --output /absolute/path/to/new-report.json
-npm run benchmark:codex -- --suite workflow --output /absolute/path/to/new-comparison.json
+cd "$HOME/.agents/skills/agent-browser-jev"
+npm run gym -- --output /absolute/path/to/new-gym.json --rounds 2
 ```
 
-The last two commands use real Jev/browser calls. The comparison also invokes your Codex CLI account. Reports preserve failures and include cleanup status; use a new output path for each run.
+Run only the component matrix, or a comma-separated subset, while iterating:
+
+```sh
+npm run gym:components -- --output /absolute/path/to/new-components.json
+npm run gym:components -- --output /absolute/path/to/new-subset.json \
+  --cases command-palette,tree-view,file-upload,hover-card
+```
+
+The matrix covers accordions, tabs, menus and submenus, dialogs, switches, custom and multi-selects, pagination, sortable tables, trees, command palettes, popovers, steppers, drawers, carousels, delayed feedback, numeric inputs, file upload, hover cards and selection controls. The absent-target case must hand back without an unintended action. A positive case passes only when server-side state and the final accessibility snapshot agree; see the [coverage and source inventories](references/component-gym.md).
+
+For a harder end-to-end check, generate a fake travel-booking task and give its goal, exact field values and starting page to an isolated Codex caller. Jev must navigate airport suggestions, near-matching flights, a long traveler form, conditional baggage and review. The fixture checks the saved selections and completed hold against a hidden answer key. Supply a seed to replay a failure; omit it to generate a new one:
+
+```sh
+npm run gym:generated -- --output /absolute/path/to/new-generated.json --seed 1234 --cases 3
+```
+
+This is a challenge runner, not a proof that Jev works on every website. The caller may inspect the result but cannot finish the task with direct browser gestures, so a pass means Jev actually reached the goal. Each report separates whole-task time and caller tokens from Jev's reported charge. Failed outcomes remain in the report.
+
+For a controlled project comparison, check out [forvela/jev-agent-browser](https://github.com/forvela/jev-agent-browser), install its dependencies, and run `npm run benchmark:projects -- --competitor-dir /path/to/checkout --output /absolute/path/to/new-report.json`. The runner alternates order while holding the OpenRouter endpoint, Jev model, agent-browser runtime, goals, pages and hidden checks constant. It is a synthetic functional comparison, not a general project ranking. To compare Codex driving the same browser directly with Codex using Jev, use `npm run benchmark:codex -- --suite workflow --output /absolute/path/to/new-comparison.json`. Read the [benchmark notes](references/benchmarks.md) before comparing numbers from different workloads.
+
+Other open-source Jev browser projects offer different strengths. The controlled component comparison covers one same-stack rival; it does not establish that this helper is fastest or most reliable across the ecosystem. [What the alternatives currently offer](references/published-evidence.md) explains where this skill fits.
+
+## Setup notes
+
+- To choose an existing agent-browser executable, run setup with `--binary /absolute/path/to/agent-browser` or set `AGENT_BROWSER_BINARY`. Its sessions and authentication remain yours.
+- To change a saved key, rerun setup with `--change-key`. A secret manager can provide `OPENROUTER_API_KEY` or pipe the key to `--key-stdin`.
+- For a project-only install, omit `--global` and run setup from the installed project skill path.
+- After updating the skill, rerun setup to refresh dependencies. Restart the agent session if it has not discovered the update.
+- `npm test` runs the offline regressions. The gym and comparison commands make live model calls and need a working browser.

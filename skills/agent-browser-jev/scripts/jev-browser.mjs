@@ -119,7 +119,9 @@ export async function act({ browser, decide, intentOrSteps, suppliedValues = {},
         if (authorize(action, observation) === true) candidates[`c${Object.keys(candidates).length}`] = action;
       }
       if (Object.keys(candidates).length > 252) return finish('candidate_limit');
-      candidates.wait = { op: 'wait', ms: 300 };
+      const unchangedWaitStreak = result.actions.slice().reverse().findIndex(a=>a.action.op !== 'wait' || a.before.snapshot !== a.after?.snapshot);
+      const waitsOnStablePage = unchangedWaitStreak < 0 ? result.actions.length : unchangedWaitStreak;
+      if (waitsOnStablePage < 5) candidates.wait = { op: 'wait', ms: 300 };
       candidates.step_complete = { op: 'step_complete' };
       candidates.handoff = { op: 'handoff' };
       freeze(candidates);
@@ -158,7 +160,9 @@ export async function act({ browser, decide, intentOrSteps, suppliedValues = {},
         await timed('actionMs', () => browser.execute(action, abort.signal));
         entry.outcome = 'tool_succeeded';
       } catch {
-        // A timed-out gesture may have happened. Never replay it automatically.
+        // A timed-out gesture may have happened. Read back once for the caller,
+        // but never replay the gesture or allow another gesture in this run.
+        try { entry.after = await observe(); } catch { result.observationFresh = false; }
         return finish('action_outcome_unknown');
       }
       const afterRevision = ++session.revision;
@@ -171,10 +175,20 @@ export async function act({ browser, decide, intentOrSteps, suppliedValues = {},
         await timed('settleMs', () => new Promise(resolve => setTimeout(resolve, 80)));
         entry.after = await observe();
       }
+      // An async click handler can first expose focus/selection state and only
+      // then navigate or replace the view. If the clicked ref still exists,
+      // take one short quiescence read so Jev does not repeat a stale gesture.
+      const actedRef = action.ref?.slice(1);
+      if (['click','hover'].includes(action.op) && actedRef && entry.after.refs?.[actedRef]) {
+        result.observationFresh = false;
+        await timed('settleMs', () => new Promise(resolve => setTimeout(resolve, 80)));
+        entry.after = await observe();
+      }
       result.latestObservation = entry.after;
       if (session.revision !== afterRevision) return finish('superseded_observation');
+      if (action.op === 'set_date' && entry.after.snapshot === entry.before.snapshot) return finish('no_progress');
       const recent = result.actions.slice(-3);
-      if (recent.length === 3 && ['click','fill','select','check','uncheck'].includes(action.op) && recent.every(a =>
+      if (recent.length === 3 && ['click','hover','upload','fill','select','check','uncheck'].includes(action.op) && recent.every(a =>
           a.action.op === action.op && a.action.name === action.name && a.action.value === action.value &&
           a.action.option === action.option && a.action.key === action.key && a.action.direction === action.direction &&
           a.before.snapshot === a.after?.snapshot)) return finish('no_progress');

@@ -1,4 +1,4 @@
-// Fresh repeated measurements of the public default CLI, with independent assertions.
+// Fresh repeated measurements of the direct agent helper, with independent assertions.
 import { createServer } from 'node:http';
 import { execFile } from 'node:child_process';
 import { promisify, parseArgs } from 'node:util';
@@ -41,7 +41,7 @@ const scenarios = [
 ];
 const report={schema:1,startedAt:new Date().toISOString(),version:JSON.parse(await readFile(join(skill,'package.json'),'utf8')).version,
   model:'typesafe/jev-1.13',sdk:'1.3.2',node:process.version,platform:`${process.platform}-${process.arch}`,rounds,
-  mode:'Default permissive CLI; no task file, custom policy, browser mocks or provider mocks',sourceSha256:{},trials:[],cleanup:{}};
+  mode:'Direct agent invocation; no task, policy or result files; no browser or provider mocks',sourceSha256:{},trials:[],cleanup:{}};
 for(const path of ['scripts/run.mjs','scripts/config.mjs','scripts/setup.mjs','scripts/jev-browser.mjs','scripts/agent-browser-jev.mjs','tests/benchmark.mjs','tests/fixtures/benchmark-pages.mjs']){
   report.sourceSha256[path]=createHash('sha256').update(await readFile(join(skill,path))).digest('hex');
 }
@@ -58,19 +58,18 @@ try{
     const trial={id:scenario.id,label:scenario.label,round};report.trials.push(trial);
     try{
       await browser(['open',origin+scenario.route]);events=[];
-      const resultPath=join(temporary,`${round}-${scenario.id}.json`);
-      const args=[join(skill,'scripts/run.mjs'),'--binary',binary,'--session',session,'--intent',scenario.intent,'--output',resultPath];
+      const args=[join(skill,'scripts/run.mjs'),'--binary',binary,'--session',session,'--intent',scenario.intent];
       for(const [name,value]of Object.entries(scenario.values??{}))args.push('--value',`${name}=${value}`);
       let command,code=0;const start=performance.now();
       try{command=await execute(process.execPath,args,{cwd:temporary,timeout:75_000,maxBuffer:2e6});}
       catch(error){command=error;code=error.code;}
       trial.elapsedMs=Math.round(performance.now()-start);trial.exitCode=code;
-      assert.ok(command.stdout?.trim(),'CLI must emit a result');
-      trial.result=JSON.parse(await readFile(resultPath,'utf8'));
+      assert.ok(command.stdout?.trim(),'Helper must emit a result');
+      const result=JSON.parse(command.stdout);trial.result={...result,resumeToken:result.resumeToken?'[redacted]':null};
       trial.finalSnapshot=(await browser(['snapshot'])).snapshot;
       trial.events=structuredClone(events);
       assert.equal(trial.result.returnReason,scenario.reason??'reported_complete');
-      assert.equal(code,scenario.reason?2:0);
+      assert.equal(code,0);
       if(scenario.expected)assert.deepEqual(trial.events,scenario.expected);
       if(scenario.id==='support-draft'){
         trial.readbacks={subject:(await browser(['get','value','#subject'])).value,message:(await browser(['get','value','#message'])).value};
@@ -98,11 +97,11 @@ finally{
   const median=values=>{const a=values.toSorted((a,b)=>a-b);return a.length%2?a[(a.length-1)/2]:(a[a.length/2-1]+a[a.length/2])/2;};
   report.summary=scenarios.map(s=>{
     const trials=report.trials.filter(t=>t.id===s.id), times=trials.filter(t=>Number.isFinite(t.elapsedMs)).map(t=>t.elapsedMs);
-    const costs=trials.map(t=>{const ds=t.result?.decisions;return ds?.length&&ds.every(d=>Number.isFinite(d.cost))?ds.reduce((sum,d)=>sum+d.cost,0):null;});
+    const costs=trials.map(t=>t.result?.jev?.costUsd??null);
     return {id:s.id,label:s.label,passed:trials.filter(t=>t.verdict==='passed').length,total:trials.length,
       medianMs:times.length?median(times):null,minMs:times.length?Math.min(...times):null,maxMs:times.length?Math.max(...times):null,
       meanCostUsd:costs.length&&costs.every(c=>c!==null)?costs.reduce((a,b)=>a+b,0)/costs.length:null,
-      decisions:trials.reduce((sum,t)=>sum+(t.result?.decisions.length??0),0)};
+      decisions:trials.reduce((sum,t)=>sum+(t.result?.jev?.calls??0),0)};
   });
   report.finishedAt=new Date().toISOString();
   report.verdict=report.trials.length===rounds*scenarios.length&&report.trials.every(t=>t.verdict==='passed')&&report.cleanup.browserClosed?'passed':'failed';

@@ -1,208 +1,154 @@
-# Browser workflow benchmarks
+# What we measured
 
-## v0.3.1: searchable dropdowns
+The published numbers answer three different questions. The **gym** measures this helper's own work on disposable pages. The **same-stack comparison** runs this helper and one compatible open-source rival on identical component tasks. The **Codex comparisons** measure complete agent tasks, including the calling model's time and tool use. None predicts performance on every website or establishes a universal ranking.
 
-The custom-listbox fix separates observed ARIA options from native HTML select options. Synthetic contact and account fields keep query text separate from committed record IDs; independent server assertions compare the exact selected IDs. Tests use the existing agent-browser 0.33.2 fork and Chrome 151.0.7922.71, with no real Xero/accounting data or actions.
+## Published browser gym
 
-- [Final autocomplete run](evidence/autocomplete-0.3.1.json): click selection passed; explicit keyboard/Enter selection failed by committing Adobe Stock instead of Adobe Systems. The model reported completion. **1/2 passed**, not a reliable keyboard-selection result.
-- [Initial development run](evidence/autocomplete-development-0.3.1.json): click passed; keyboard/Enter and Tab cases failed when the model tried ineffective clicks and reported completion.
-- [Keyboard-description revision](evidence/autocomplete-inferred-keyboard-0.3.1.json): click passed; automatic keyboard inference still failed. Enter returned premature completion; Tab stopped without progress.
-- [Explicit keyboard instructions](evidence/autocomplete-explicit-keyboard-0.3.1.json): click and Enter passed, but Tab committed Software assets instead of Software subscriptions. The fixture's final display reflects the actual selected labels; assertions check committed IDs independently.
-- [Fixture startup failure](evidence/autocomplete-fixture-startup-0.3.1.json): the initial server did not handle favicon requests. It was corrected; this attempt supplies no acceptance result.
-- [Workflow regression](evidence/workflow-0.3.1.json): 5/5 passed after the native/custom distinction and revised keyboard descriptions, before removing the unsuccessful Tab capability. [Earlier regression](evidence/workflow-development-0.3.1.json) also passed 5/5. Source hashes distinguish these revisions.
+Run September 25, 2026, with the 1.0.0 skill, Node 26.5.0, agent-browser 0.33.2 and Chrome for Testing 151. The gym invoked the direct agent interface, including encrypted-token resume, with real Jev calls and real browser actions on local pages. Assertions inspected page events, saved form data, selected record IDs and final screens independently of Jev's completion claim.
 
-Click selection passed all four completed autocomplete runs, but these repeated development runs are not an independent broad reliability benchmark. The keyboard primitives execute; the model's choice of which suggestion to commit remains unreliable. The skill therefore directs the caller to use agent-browser directly for keyboard-only widgets and verify the actual selected value. Tab is not offered. A real Xero reconciliation-screen test is still outstanding. The v0.3.0 speed/cost comparison below has not been rerun or relabeled as v0.3.1.
+| Case | Independent result | Helper time | Reported Jev charge |
+| --- | ---: | ---: | ---: |
+| 12-action report draft | 2/2 | 4.53 s | $0.000980 |
+| Missing input, then token resume | 2/2 | 4.50 s across calls | $0.001038 |
+| Action limit, then token resume | 2/2 | 3.92 s across calls | $0.001049 |
+| Keyboard search and back | 2/2 | 1.62 s | $0.000275 |
+| Scroll to reveal a control | 2/2 | 0.81 s | $0.000135 |
+| Clickable autocomplete | 2/2 | 2.47 s | $0.000494 |
+| Keyboard-only picker safely handed off | 2/2 | 3.64 s | $0.000786 |
+| Six short scenarios, twice each | 12/12 | 0.24–0.99 s median by scenario | $0.001972 total |
 
-Reproduce with `npm run test:autocomplete -- --output /absolute/path/to/new-result.json`; the runner preserves failed outcomes and exits nonzero when selected IDs do not match. The package has 50 offline tests, including native dropdowns, custom listboxes, readonly comboboxes and keyboard candidate availability.
+All **52/52** checks passed in this run; the combined provider-reported Jev charge was **$0.016679**. The twelve short-scenario trials cover a missing target, reordered articles, a form left unsent, preferences, search and navigation. Each non-component case ran twice; the component cases ran once. For the keyboard-only picker, a pass means the helper stopped without committing either similar record; it does not mean Jev completed that widget. Two observations per repeated case are still too few for a reliability estimate. The charge column shows the mean per run except where labeled total.
 
-## v0.3.0: sustained browser control
+“Helper time” is measured inside the helper invocation and excludes Node startup, the calling agent, opening the fixture before some cases, and the independent assertion. The gym also records each suite's wall time, including its setup and checks. It does not estimate a GPT bill or compare against manual browser control. [Run summary with source hashes and every outcome](evidence/gym-1.0.0.json).
 
-Measured 2026-09-25T12:33:12Z–12:38:00Z. Three fresh isolated native Codex sessions per arm; one complete task per session. Both use GPT-5.5, low reasoning effort, Codex CLI 0.147.0, Node 26.5.0 on macOS ARM, the same agent-browser 0.33.2 fork and Chrome for Testing 151.0.7922.71. The browser fork includes the user's existing credential-provider integration; no authentication or real account is used in this fixture.
-
-The generic report workspace requires a name, project and region selections, excluding archived records, enabling email, selecting weekly frequency, reviewing and saving a draft, then returning to the report list. The Jev helper executes 12 actions. A Publish button is present but not authorized. Neither agent gets source code, expected refs, a control sequence, verification assertions or the other agent's results.
-
-| Trial | Direct Codex | Codex + Jev | Independent result |
-| --- | ---: | ---: | --- |
-| 1 | 62.877 s | 13.642 s | Both passed |
-| 2 | 69.643 s | 15.941 s | Both passed |
-| 3 | 76.372 s | 19.766 s | Both passed |
-| Median | **69.643 s** | **15.941 s** | **3/3 each** |
-
-Median elapsed time was 77.1% lower (4.37× faster). Summed task times were 208.892 and 49.349 seconds. Direct callers issued 19/24/22 shell commands, assisted callers 5/4/4; these include harness task retrieval/reporting and skill loading, so they are not browser-action counts or a direct count of model turns. Every assisted run used one helper invocation.
-
-The helper itself, including starting navigation but excluding process startup/caller orchestration, took a median 4.502 seconds. It issued 13 Jev decisions per workflow (12 actions and completion). The third run retained a slower browser action; no outlier was discarded.
-
-### Boundaries and fairness
-
-Each round runs direct and assisted arms concurrently in separate browser sessions on the same host. Timing starts at task delivery and ends at the caller's completion/handoff assessment. It includes initial page navigation, all caller/model/tool orchestration, browser work, model calls and caller acceptance. It excludes initial Codex process startup and the harness's independent outcome assertion.
-
-Direct Codex uses ordinary agent-browser and may batch commands naturally. Assisted Codex reads the matching skill, passes the same goal, URL and exact value to the packaged CLI, and may recover directly if it hands off. Both get a 30-gesture task budget. Both can evaluate their latest post-action observation instead of being forced to issue a redundant inspection. The helper's `reported_complete` flag alone is insufficient.
-
-Independent checks require exactly one saved payload with the requested fields, no Publish event, and a final report list displaying the saved draft. All failures and recovery time remain in the report. The source hashes identify the measured files. This is a capability-focused synthetic workflow with only three trials per arm; it does not establish arbitrary-site reliability, long-horizon planning quality, or a universal speedup.
-
-The first pair overlapped a separate capability acceptance run on another owned browser session. The later pairs did not. That local workload, live provider latency and browser scheduling are not controlled hardware measurements. The paired arms share the same host conditions.
-
-### Model usage and estimated cost
-
-| All three sessions per arm | Direct | Assisted caller |
-| --- | ---: | ---: |
-| GPT input tokens (including cached) | 1,848,003 | 312,457 |
-| GPT cached input tokens (subset) | 1,751,296 | 283,648 |
-| GPT output tokens (including reasoning) | 8,221 | 1,928 |
-| GPT API-equivalent estimate | $1.605813 | $0.343709 |
-| Reported Jev charge | $0 | $0.002633652 |
-| Combined estimate | **$1.605813** | **$0.346342652** |
-
-Combined estimated model cost was 78.4% lower. This uses [standard GPT-5.5 API rates](https://developers.openai.com/api/docs/models/gpt-5.5), checked 2026-09-25: $5 uncached input, $0.50 cached input and $30 output per million. Formula: `((input - cached) * 5 + cached * 0.50 + output * 30) / 1e6`. Cached tokens are already part of input; reasoning tokens are already part of output. Do not add them twice.
-
-These are API-equivalent estimates, not Codex subscription bills or invoices. They include session instruction/skill context and all recorded caller usage, but not development/acceptance runs. No long-context, priority or regional adjustments are applied; aggregate CLI usage does not expose every request's context length. Jev charges are the provider-reported amounts, kept separate from GPT tokens. Browser infrastructure is excluded from both estimates.
-
-### Reproduction and evidence
+Reproduce with a new output path; the adjacent `.details` directory retains full local fixture evidence:
 
 ```sh
-npm ci
+npm run gym -- --output /absolute/path/to/new-gym.json --rounds 2
+```
+
+Use `--suites workflow,autocomplete,scenarios,components` to select suites and `--binary /path/to/agent-browser` to use a particular installation. The gym keeps failures, unknown charges and cleanup status. Its pages and records are synthetic. It runs only this helper; a fair open-source comparison needs adapters and equal starting states for the other projects.
+
+The first 1.0 release candidate run passed 50/52: both keyboard-only picker trials committed the first similar record instead of the requested second record. The helper now withholds autocomplete arrow/Enter selection and returns control when accessible clicks cannot commit the choice. The failed run is [retained with its wrong record IDs and traces](evidence/gym-keyboard-failure-1.0.0.json); a focused [post-fix replay](evidence/autocomplete-safe-handoff-1.0.0.json) and both final gym rounds established the safe boundary.
+
+## Common component matrix
+
+The component gym translates the interaction inventories in WAI-ARIA APG, Base UI, Radix Primitives, MUI and shadcn/ui into 26 original local fixtures. It covers disclosure, navigation, menus, overlays, selection, data display, workflow, feedback, input and safe absent-target handling. Third-party component code is not copied and public demo sites are not loaded. [Coverage and source inventories](component-gym.md) document the selection.
+
+The final September 25, 2026 run used real Jev calls, agent-browser 0.33.2 and Chrome for Testing 151. Positive cases passed only when a server-side completion record contained the exact expected structured state and the final accessibility snapshot established completion. The absent-target case passed only when the helper returned `handoff` without recording a completion. File upload used a temporary synthetic PDF and hover used an observed hint plus a grounded control.
+
+| Family | Independent result |
+| --- | ---: |
+| Disclosure | 1/1 |
+| Navigation | 4/4 |
+| Menus | 2/2 |
+| Overlays | 6/6 |
+| Selection | 6/6 |
+| Data | 2/2 |
+| Workflow | 1/1 |
+| Feedback | 1/1 |
+| Input | 2/2 |
+| Safe absent-target boundary | 1/1 |
+
+All **26/26** cases passed in the 1.0 gym. Total provider-reported Jev charges were **$0.005191**. Individual helper invocations ranged from 0.27 seconds for a handoff to 3.83 seconds for the tree view in this run. These are one-trial functional checks, not a reliability estimate. [Final report with source hashes, traces, exact outcomes and cleanup](evidence/gym-1.0.0.details/components-1.json).
+
+The retained development run passed 25/26 and exposed a fixture collision between an element ID and the browser's built-in `window.open`; it is excluded from the passing count. An earlier command-palette run also exposed a real helper weakness: an asynchronous click completed after the first changed snapshot, so Jev saw a stale selected option and clicked it again. The helper now takes a bounded quiescence observation when a clicked ref remains present, and it reads back once after an uncertain action without replaying it. A later comparison showed that the old hover boundary could be completed safely and that uploads were a material missing action. The helper now offers contextual hover and exact caller-path upload; both final cases passed. [Early development report](evidence/component-matrix-development-0.4.0.json) · [pre-upload matrix](evidence/component-matrix-pre-upload-0.4.0.json).
+
+Reproduce the matrix alone with a new path:
+
+```sh
+npm run gym:components -- --output /absolute/path/to/new-components.json
+```
+
+## Controlled same-stack project comparison
+
+The new cross-project runner compares this skill with [forvela/jev-agent-browser](https://github.com/forvela/jev-agent-browser) because both can use the same OpenRouter Decisions endpoint and agent-browser executable. The recorded run pinned the competitor to commit `b4d4e0284a4b0336f12831ef6fe64ba5d29b1efb` (package 0.1.7), used `typesafe/jev-1.13`, agent-browser 0.33.2 and the same 26 starting pages, goals, action limit and hidden outcome checks. Run order alternated by case. Navigation was inside both measured invocations.
+
+| One full 26-case round | This skill | forvela/jev-agent-browser |
+| --- | ---: | ---: |
+| Independently verified outcomes | 26/26 | 11/26 |
+| Median invocation time, all outcomes | 1.55 s | 1.04 s |
+| Median invocation time, passed outcomes | 1.55 s | 1.94 s |
+| Provider-reported charge | $0.005192 | unavailable from its public result |
+
+The rival passed accordion, alert-dialog, toggle-button, pagination, sortable-table, drawer, carousel, delayed feedback, breadcrumb, missing-target and hover-card cases. Its 15 misses clustered around roles excluded from its current click target space (`tab`, menu roles, `radio`, `option`, `treeitem`, checkbox and spinbutton), exact-value binding, and file upload. Several misses stopped safely; multi-select, radio-switch and tri-state runs sometimes submitted the wrong structured state, which the hidden verifier rejected.
+
+The recorded 1.0 full round again produced **26/26 versus 11/26**. During pre-release work, the 15 differential cases also ran **two additional rounds**: this skill passed **30/30** and the comparison arm passed **0/30**, giving three observations per differential case across those earlier runs. That consistency supports a coverage advantage on this matrix; it is still not a broad reliability rate or proof of overall ecosystem leadership. [1.0 full round](evidence/cross-project-components-1.0.0.json) · [two-round differential replay](evidence/cross-project-components-repeats-0.4.0.json) · [pre-improvement development run](evidence/cross-project-components-development-0.4.0.json).
+
+Reproduce with a fresh checkout and output path:
+
+```sh
+git clone https://github.com/forvela/jev-agent-browser /tmp/forvela-jev-agent-browser
+npm --prefix /tmp/forvela-jev-agent-browser install --ignore-scripts
+npm run benchmark:projects -- \
+  --competitor-dir /tmp/forvela-jev-agent-browser \
+  --output /absolute/path/to/new-cross-project.json
+```
+
+The direct-TypeSafe projects reviewed alongside it could not be run with the available OpenRouter credential without changing their provider contract. They were recorded as research inputs, not benchmark losses. The runner currently supports the one same-stack adapter and refuses an unexpected package name.
+
+## Seeded travel challenge
+
+`npm run gym:generated -- --output /absolute/path/to/new-generated.json --seed 1234 --cases 3` creates a fresh, fake multi-page booking per seed. The caller sees a natural-language goal, exact values and starting URL, reads this skill, then gives Jev the whole goal. It can inspect the final page but cannot take over browser gestures. Airport fields require selecting delayed suggestions; results include flights with a wrong time, airline or cabin; the traveler form has required values below the fold and conditional checked baggage; review requires accepting demo terms. Seeds vary the date control between native and validated text input. No payment or real booking occurs.
+
+The server retains the answer key and checks the actual selected airport codes, flight ID, traveler values and final hold. The isolated caller is instructed not to inspect fixture code or reports. The report records the seed, source hashes, caller command counts and GPT tokens, Jev's reported cost, elapsed whole-task time, mismatches and cleanup. A seed makes a failure replayable; using new seeds tests variation rather than repeating a hand-tuned page. These generated challenges supplement the fixed gym. They are not a head-to-head against another product or a statistical reliability claim.
+
+The 1.0 release run generated three previously untested consecutive seeds at runtime. All **3/3** reached the independently verified fake hold without caller browser gestures:
+
+| Seed and date control | Independent outcome | Whole task | Helper work | Jev charge |
+| --- | --- | ---: | ---: | ---: |
+| 1573558718 · native | Held correct itinerary | 28.8 s | 17 actions · 6.6 s | $0.002741 |
+| 1573558719 · text | Held correct itinerary | 24.3 s | 17 actions · 5.6 s | $0.002788 |
+| 1573558720 · native | Held correct itinerary | 24.5 s | 18 actions · 5.9 s | $0.003023 |
+
+The median whole-task time was **24.5 seconds** and combined provider-reported Jev charges were **$0.008552**. All three challenges included delayed airport suggestions, three flight decoys, below-fold traveler inputs, conditional baggage and a review checkbox. [Full 1.0 report with seeds, hidden-verifier outcomes, caller tokens, traces and cleanup](evidence/generated-travel-1.0.0.json).
+
+Initial strict trials on September 25, 2026 used Codex GPT-5.5 low effort as the caller, Jev through OpenRouter and agent-browser 0.33.2. The caller supplied all exact values and was limited to a final readback after Jev's single invocation.
+
+| Seed and challenge | Independent outcome | Whole task | Jev charge |
+| --- | --- | ---: | ---: |
+| 1234 · native date, checked bag | Failed at search; 46 waits in 60 actions | 47.5 s | $0.018699 |
+| 1235 · text date, no bag | Held correct itinerary | 30.6 s | $0.005053 |
+| 1241 · text date, checked bag | Held correct itinerary | 35.2 s | $0.003541 |
+
+This is **2/3** independently correct outcomes over three selected seeds, not a reliability rate. The native-date case never submitted the search form. The successful cases passed through airport suggestions, a decoy-filled results page, traveler details and review without caller browser gestures. The 1241 result was replayed on the final harness source. The earlier corrected pair and final replay are preserved with source hashes, actions, tokens, costs and failed assertions: [paired seeds](evidence/generated-travel-pair-0.4.0.json) · [final replay](evidence/generated-travel-final-0.4.0.json). Earlier [caller-recovery](evidence/generated-travel-development-0.4.0.json), [missing-values](evidence/generated-travel-no-values-0.4.0.json) and [sandbox setup](evidence/generated-travel-setup-0.4.0.json) attempts are retained but excluded from that count.
+
+The original native-date failure led to a browser-control fix. Agent-browser's `fill` command reported success on Chromium's virtual date spinbuttons without changing the input. A direct UI test confirmed that clicking the observed Month, Day and Year refs and pressing the exact supplied date digits sets the value. The helper now offers that as one bounded date action. It also stops offering `wait` after five unchanged waits, leaving other observed controls or handoff available.
+
+On the final corrected source, both replayed seeds passed without caller browser gestures: native-date seed 1234 took **24.0 s**, **18 actions** and **$0.003211** in reported Jev charges; text-date seed 1235 took **26.9 s**, **17 actions** and **$0.003036**. Both reached the independently checked fake hold. [Final paired replay](evidence/generated-travel-after-fix-0.4.0.json) includes hashes of the controller and browser adapter, actions, caller tokens and scoped cleanup. An [intermediate failed attempt](evidence/generated-travel-datefix-development-0.4.0.json) showed that fixing date entry alone still left the uncommitted airport selections; it is retained separately. Two passing replays establish this fix on these seeds, not a general reliability rate.
+
+## Complete Codex task: a multi-screen report
+
+A previous comparison used 0.3.0 of this skill. Three fresh Codex GPT-5.5 low-effort sessions per arm each created one report draft. Both arms used the same agent-browser and Chrome build. The task included text entry, project and region dropdowns, two checkboxes, frequency, review, save and return to the list. A Publish action was visible but out of scope. The callers did not see fixture code, expected references or the verifier.
+
+| Three paired trials | Codex + agent-browser | Codex + Jev |
+| --- | ---: | ---: |
+| Median complete-task time | 69.6 s | 15.9 s |
+| Independently verified outcomes | 3/3 | 3/3 |
+| Estimated model cost across three trials | $1.606 | $0.346 |
+
+The 4.4× timing difference is for **this one 12-action workflow**. Timing began at task delivery and ended at caller assessment. It includes navigation, model/tool orchestration and browser actions, but excludes Codex process startup and the harness's final assertion. The cost figures are API-equivalent estimates based on recorded GPT input, cached input and output tokens, plus Jev's reported $0.002634. They are not Codex subscription charges or invoices. The three pairs ran concurrently on one host; the first overlapped a separate acceptance run. [Full trial data](evidence/codex-workflow-0.3.0.json) · [Cost arithmetic and assumptions](evidence/workflow-metrics-0.3.0.json).
+
+## Complete Codex task: six shorter jobs
+
+The earlier 0.2.1 comparison ran six help-center, form, settings and search tasks in three paired rounds. Both arms used actual isolated Codex sessions and the same browser. Direct Codex passed **18/18** strict checks; Codex with Jev passed **16/18**. The assisted median was **17.9 s** versus **20.0 s** direct. Its estimated combined model cost was 15.5% lower. In two preferences trials, the setting was saved, but the caller reopened the settings dialog during verification, failing the required final-screen check. All failures were retained.
+
+This result matters alongside the report-workflow win: when the helper saves only a few model turns, caller startup and verification can dominate the task. [Trial data](evidence/codex-comparison-0.2.1.json) · [Derived costs](evidence/comparison-metrics-0.2.1.json). The original 0.2.0 run and development attempts remain in the [evidence directory](evidence/).
+
+## Searchable dropdowns remain a challenge
+
+The autocomplete tests use similar-looking contacts and accounts. The site stores selected record IDs separately from typed query text, and the checker compares those IDs. Earlier runs committed wrong keyboard choices, including both keyboard-only cases in the first 1.0 release-candidate gym. The helper now clicks accessible matching options but withholds arrow/Enter selection from autocomplete fields. In the final 1.0 gym, clickable selection passed twice and the keyboard-only picker safely handed off twice without committing a record. [Final 1.0 run](evidence/gym-1.0.0.json) · [Retained 1.0 failure](evidence/gym-keyboard-failure-1.0.0.json) · [Historical development attempts](evidence/autocomplete-development-0.3.1.json).
+
+Use direct agent-browser control and verify the committed record when a widget requires keyboard-only selection. A displayed query is not proof that a record was selected. The helper's `reported_complete` is never the independent outcome check.
+
+## Reproduce the Codex comparison
+
+The gym needs an OpenRouter key and agent-browser. The full comparison also needs a signed-in Codex CLI account. These commands make live model calls; choose a new output path each time.
+
+```sh
 npm run benchmark:codex -- --suite workflow --rounds 3 \
-  --binary /path/to/agent-browser --output /absolute/path/to/new-comparison.json
-npm run test:workflow -- --binary /path/to/agent-browser \
-  --output /absolute/path/to/new-acceptance.json
+  --output /absolute/path/to/new-comparison.json
+npm run test:autocomplete -- --output /absolute/path/to/new-autocomplete.json
 ```
 
-Supply the configured OpenRouter key without printing it and a signed-in Codex CLI. To reproduce this Chrome build, set `AGENT_BROWSER_EXECUTABLE_PATH` to Chrome for Testing 151.0.7922.71. As recorded in v0.2.1, the local Chrome 154 build stalled during earlier diagnostics; no global browser configuration was changed for these tests.
-
-- [Final native-Codex comparison](evidence/codex-workflow-0.3.0.json): every task, prompt, command log, usage, independent outcome and source hash.
-- [Derived metrics](evidence/workflow-metrics-0.3.0.json): arithmetic and pricing assumptions.
-- [Final capability acceptance](evidence/workflow-0.3.0.json): sustained execution, missing-input resume, budget resume, keyboard search/back and scrolling; 5/5 passed on the existing 0.33.2 fork.
-- [Upstream compatibility acceptance](evidence/workflow-upstream-0.3.0.json): the same five cases passed on agent-browser 0.38.1, the version installed by setup, with Chrome 151.0.7922.71. This verifies browser compatibility, not a separate Codex speed comparison.
-- [Existing browser regression suite](evidence/regression-0.3.0.json): 6/6 passed on the final runtime, covering duplicate labels, reordered controls, literal text, delayed rendering and appropriate handoffs.
-- [Initial development acceptance](evidence/workflow-development-0.3.0.json): 3/5 passed. Immediate post-action snapshots sometimes preceded asynchronous rendering, causing a repeated old control or premature completion. These failures are retained.
-- [Transition correction acceptance](evidence/workflow-transition-fix-0.3.0.json): 5/5 passed after bounded observation polling when an action initially leaves the same snapshot.
-- [Development comparison](evidence/codex-workflow-development-0.3.0.json): 3/3 per arm, 64.941 versus 14.103 seconds median. It predates the reviewed navigation-lock/freshness/path fixes and is not substituted for the final results.
-
-An independent offline forward review found and reproduced three defects: starting navigation before the session lock, superseded evidence marked fresh, and a relative executable path failing when resuming from another directory. All were corrected, then the reviewer reran its fixtures: 4/4 passed. The package also has 48 offline regression tests. Session, server and temporary-directory cleanup is recorded in each live report.
-
-## Historical short-task comparisons
-
-The following evidence is preserved with its original versions and methodology. It measures different tasks and is not directly comparable to the sustained-workflow figures above.
-
-
-The original 0.2.0 measurements below remain unchanged. A follow-up with corrected handoff instructions is recorded separately; changed benchmark setup is not treated as a speed optimization of the runtime.
-
-This comparison measures the two actual ways to do browser work:
-
-- **Direct:** Codex reads agent-browser snapshots, chooses controls, and issues normal agent-browser commands.
-- **Jev:** Codex opens the page, calls the Jev helper with the task, and checks the resulting page. Codex can continue directly if Jev hands back control.
-
-Both arms use actual Codex CLI sessions with **GPT-5.5, low reasoning effort**, the same browser executable, the same tasks and the same independent outcome checks. This is not a GPT API adapter inside the Jev action loop. The original run did not capture token usage or compare cost.
-
-## Original 0.2.0 results
-
-- Run: 2026-09-25T03:44:00.601Z to 2026-09-25T03:50:10.031Z.
-- Codex: codex-cli 0.147.0; model `gpt-5.5`; reasoning `low`.
-- Browser: agent-browser 0.38.1; Node v26.5.0; darwin-arm64.
-
-| Task | Codex + agent-browser | Codex + Jev | Checks passed: direct / Jev |
-| --- | ---: | ---: | ---: |
-| Open Returns article and go back | 17.6 s | 12.3 s | 3/3 / 3/3 |
-| Choose Warranty after articles reorder | 16.9 s | 12.2 s | 3/3 / 3/3 |
-| Fill two fields without sending | 21.5 s | 20.6 s | 3/3 / 3/3 |
-| Open settings, enable email and save | 18.4 s | 14.3 s | 3/3 / 3/3 |
-| Search, open matching result and return | 24.1 s | 14.4 s | 3/3 / 3/3 |
-| Return when the requested article is absent | 7.9 s | 15.0 s | 2/3 / 0/3 |
-
-The overall median across 18 trials per arm was 17.985 seconds direct and 14.3385 seconds with Jev, a 20.3% reduction in elapsed time in this sample. All timing samples, including status mismatches, are included. Summed per-task times were 337.591 seconds direct and 278.463 seconds with Jev; these sums are not the concurrent experiment's wall-clock duration.
-
-Strict checks passed in **17/18 direct** and **15/18 Jev-assisted** trials. All 30 multi-action trials passed. Each of the six missing-article trials correctly left the page untouched, but Codex reported `complete` instead of the harness's expected `handoff` once in the direct arm and three times in the Jev arm. These are caller-status protocol mismatches, not wrong browser clicks. The original failed verdicts remain in the report. The task wording permits returning when the article is absent, so these status labels must be interpreted with that protocol distinction in mind; they do not establish a general model error rate.
-
-[Full comparison report](evidence/codex-comparison.json) contains every trial, source hashes, prompts, sanitized command logs, independent UI evidence and cleanup. The recorded source hashes identify the 0.2.0 files used in that run; later fixes have different hashes. Direct-arm logs contain no helper calls; the Jev arm called the helper once for each of its 18 tasks.
-
-[Supplemental helper outcomes](evidence/helper-outcomes.json) were collected from those actual CLI evidence files during final audit. They confirm all three missing-article calls returned `handoff` with zero actions. The caller changed the status label afterward. No cost fields or model reasoning are published. The 18 owned temporary helper-evidence directories were removed after collecting this evidence.
-
-This supports using Jev to shorten these bounded multi-action tasks, while retaining caller verification. It does not support claiming equal end-to-end reliability or that Jev is always faster.
-
-## Method
-
-The six tasks use new synthetic help-center, support-form, preferences and search pages. Three paired rounds give 18 tasks per arm. Each round starts two fresh Codex sessions, one per arm. They run concurrently in separate browser sessions on the same host; task order rotates between rounds. Within a round, each Codex session handles six tasks. Neither session sees fixture source, expected refs, action sequences, other sessions or prior reports. Codex could load its installed skills as usual: the existing global helper guide was version 0.1.2, while the explicit command in the benchmark prompt selected the 0.2.0 runtime under test and its permissive CLI. That instruction context is a limitation when generalizing to fresh installations. Home-directory paths in command logs are redacted.
-
-Timing begins when the harness delivers the next task to Codex and ends when Codex submits its assessment. It includes opening the page, Codex reasoning and tool orchestration, browser interaction, Jev calls where used, and Codex's final snapshot/value checks. Initial Codex process startup and the harness's independent verification are excluded. There is no subtraction of the caller's overhead from the Jev arm.
-
-The direct arm uses ordinary `open`, `snapshot`, `click`, `fill`, `get` and `wait` commands, with batching when Codex chooses. It has no Jev dependency and does not call a separate GPT API. The Jev arm uses the installed production CLI with its default permissive policy and exact supplied values. Both agents receive a maximum of eight gestures per task and the same task authorization. The shared workflow requires a fresh final snapshot and field readbacks where relevant.
-
-Every trial is retained, including failures and exception-handling time. No trial is automatically retried. Independent checks inspect browser-generated events, final snapshots and form values; Codex's completion claim is insufficient by itself. The absent-article case additionally checks whether the caller reported a handoff. A status-label mismatch is recorded separately from incorrect browser actions in the discussion below.
-
-Six local tasks and three repeats per task are a small sample. These measurements do not establish a universal speedup or reliability rate across websites. Concurrent runs can share host/provider load. Model behavior, context growth, network latency and tool batching can affect timing.
-
-## Reproduce
-
-Install the skill and run setup as described in the [README](../README.md). The comparison also needs a signed-in Codex CLI with access to the chosen model. The recorded run uses Codex CLI 0.147.0 and upstream agent-browser 0.38.1 on macOS. Run from the installed skill directory:
-
-```sh
-npm run benchmark:codex -- --rounds 3 --output /absolute/path/to/new-comparison.json
-```
-
-Optional overrides: `--model gpt-5.5`, `--effort low`, `--binary /path/to/agent-browser`, and `--codex /path/to/codex`. The runner starts isolated Codex sessions with user configuration disabled, using the account's existing authentication. It gives them access to local synthetic pages and passes the configured OpenRouter key in the environment for the Jev arm. It does not place credentials in prompts or command arguments.
-
-The current runner records exact prompts, sanitized command logs, every task outcome, wall-clock timing, versions, source hashes and cleanup. It also captures each Codex session's final usage object and each helper's result, decision charges and elapsed times. Usage covers the whole six-task session, including initial context and skill loading; it is not a per-task token allocation. Missing usage or charges remain unknown, never zero. Model reasoning is omitted. The test closes its own browser sessions and servers and removes its Codex working directories. The runner provides explicit evidence paths under its temporary directories and retains selected metrics before removing those files.
-
-`npm test` runs 31 offline regressions, including setup, hidden key entry, credential precedence, automatic browser installation, permissive CLI invocation, explicit policy handling and bounded execution. `npm run benchmark -- --output /absolute/path/to/new-report.json` remains available as a helper-only live acceptance run; it is not the Codex comparison and its timer excludes caller orchestration.
-
-
-## Handoff correction in 0.2.1
-
-The caller instructions now distinguish a correct stop from accomplishing the requested browser outcome. The original helper result is preserved; completion after recovery must be supported by subsequent evidence.
-
-Three fresh GPT-5.5 low-effort callers received the revised skill and the actual recorded missing-article results. All three returned `handoff` and described the absent article without claiming a click. [Prompts, answers and usage](evidence/handoff-caller-0.2.1.json). This is a focused caller-interpretation test, not a new browser timing comparison. Reproduce it with:
-
-```sh
-npm run test:caller -- --output /absolute/path/to/new-caller-report.json
-```
-
-The attempted full browser replays initially stalled with Chrome for Testing 154.0.8037.57. Concurrent, preflighted and serial configurations were tried; both upstream agent-browser 0.38.1 and a separate fork probe encountered stalled commands. The standalone helper run also stalled. [All three comparison attempts](evidence/browser-replay-attempts-0.2.1.json) and the [standalone attempt](evidence/helper-replay-chrome154.json) are retained. These incomplete diagnostics do not establish model speed or reliability rates. Forced cleanup targeted only the test sessions/processes.
-
-An existing Chrome for Testing 151.0.7922.71 build passed a five-command open/snapshot/navigation probe. The follow-up comparison selects that executable through `AGENT_BROWSER_EXECUTABLE_PATH`, records its version, and otherwise retains agent-browser. No global browser configuration or shared browser cache was changed. This local build-dependent observation is not a diagnosis of every Chrome 154 installation.
-
-
-## Fresh complete replay: 0.2.1
-
-Run 2026-09-25T04:52:04.894Z–04:59:30.170Z. Same six tasks, three paired rounds, actual GPT-5.5 low-effort Codex CLI 0.147.0 sessions, agent-browser 0.38.1, and explicitly selected Chrome for Testing 151.0.7922.71. Both arms ran concurrently as before, with task order rotated. The helper arm read the matching 0.2.1 skill before task delivery. No browser preflight is included in this final configuration. The original Chrome build was not recorded in 0.2.0, so differences between releases are not attributed solely to the instruction fix.
-
-| Task | Codex + agent-browser | Codex + Jev | Strict checks: direct / Jev |
-| --- | ---: | ---: | ---: |
-| Open Returns article and go back | 20.3 s | 18.4 s | 3/3 / 3/3 |
-| Choose Warranty after articles reorder | 19.6 s | 15.4 s | 3/3 / 3/3 |
-| Fill two fields without sending | 24.2 s | 21.5 s | 3/3 / 3/3 |
-| Open settings, enable email and save | 19.7 s | 21.5 s | 3/3 / 1/3 |
-| Search, open matching result and return | 21.6 s | 18.3 s | 3/3 / 3/3 |
-| Return when the requested article is absent | 8.4 s | 17.6 s | 3/3 / 3/3 |
-
-All six missing-target trials reported handoff and left the page untouched. Strict pass counts were 18/18 direct and 16/18 Jev-assisted. The two failures are the preferences task in rounds 2 and 3: helper evidence records the three intended actions and the saved-preferences screen, then caller command logs and page events show an additional open-settings click during verification. Email remained enabled, but the final dialog and event trace violate the existing strict checks. We retain those failures; satisfying the saved setting and satisfying every final-screen assertion are separate conclusions.
-
-The median of all trial times is 19.999s direct and 17.900s assisted (10.5% less). Summed task times are 354.316s and 333.505s (5.9% less). Both include failed strict checks. Helper-loop median is 0.880s; its total is 15.124s, or 4.5% of assisted task time. The remainder includes browser navigation, Node startup, caller reasoning/tool orchestration, fixture reporting and final readbacks. It is not an isolated measurement of GPT inference latency.
-
-[Raw trials, caller commands, helper outcomes and usage](evidence/codex-comparison-0.2.1.json). [Derived totals and estimate assumptions](evidence/comparison-metrics-0.2.1.json). All seven source hashes in this complete replay match the shipped sources. The report's overall verdict remains failed because of the two strict UI checks. All six browser sessions, servers, and temporary evidence directories closed successfully.
-
-### Tokens and API-equivalent cost
-
-| Category, total across three six-task sessions | Direct | With Jev |
-| --- | ---: | ---: |
-| GPT input tokens, including cached | 2,242,734 | 2,015,440 |
-| GPT cached input, subset of input | 2,128,640 | 1,930,112 |
-| GPT uncached input | 114,094 | 85,328 |
-| GPT output, including reasoning | 14,574 | 11,882 |
-| GPT reasoning output, subset of output | 483 | 562 |
-| GPT cache-write tokens reported | 0 | 0 |
-| GPT API-equivalent estimate | $2.072010 | $1.748156 |
-| Jev reported charges | $0 | $0.002027466 |
-| Combined model-cost estimate | $2.072010 | $1.750183466 |
-
-The combined estimate is 15.5% lower in this sample. GPT input fell 10.1%, uncached input 25.2%, and output 18.5%. Counts cover the entire sessions, including instructions and skill loading; they are not per-task counts. The interrupted development runs and separate caller regression are excluded from both comparison arms, not treated as free.
-
-Using [OpenAI's GPT-5.5 rates](https://developers.openai.com/api/docs/models/gpt-5.5), checked 2026-09-25, the formula is `(uncached_input × 5 + cached_input × 0.50 + output × 30) / 1,000,000`, plus reported Jev charges. This is a standard API-equivalent estimate; it does not estimate subscription limits, credits or the user's actual invoice. It assumes ordinary short-context pricing, without priority, regional or long-context premiums. The CLI session totals do not expose each request's context length. [Usage accounting](https://developers.openai.com/api/docs/guides/agents-api/observability) includes cached tokens in input and reasoning tokens in output; neither is added twice.
-
-To choose an existing Chrome executable explicitly for reproduction:
-
-```sh
-AGENT_BROWSER_EXECUTABLE_PATH=/absolute/path/to/chrome \
-  npm run benchmark:codex -- --rounds 3 --output /absolute/path/to/new-comparison.json
-```
-
-The executable's `--version` is recorded when that override is present. A matching CLI version alone does not establish a matching browser-engine build.
+The comparison runner records task prompts, source hashes, browser commands, model usage, Jev charges, independent UI outcomes and cleanup. Browser version, model settings and measurement boundaries appear in each report. If a browser build stalls or a provider fails, retain that attempt as a failure or incomplete run; do not fold it into a successful median. A browser-only gym result, a whole-Codex result and another project's demo should not be compared as if their clocks were the same.

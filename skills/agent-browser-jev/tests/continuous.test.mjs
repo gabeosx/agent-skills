@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {randomUUID} from 'node:crypto';
 import {act, discoverActions} from '../scripts/jev-browser.mjs';
-import {summarize, resumedTask} from '../scripts/run.mjs';
+import {summarize, sealResume, openResume} from '../scripts/run.mjs';
 
 const scope='Authorized synthetic task';
 function browser(sequence) {
@@ -30,6 +30,16 @@ test('checkbox choices set the opposite observed state instead of blindly toggli
   const actions=discoverActions({snapshot:'- checkbox "On" [checked=true, ref=e1]\n- checkbox "Off" [checked=false, ref=e2]',
     refs:{e1:{role:'checkbox',name:'On'},e2:{role:'checkbox',name:'Off'}}});
   assert.deepEqual(actions.filter(a=>a.ref).map(a=>a.op),['uncheck','check']);
+});
+
+test('observed native date segments offer one exact ISO-date action',()=>{
+  const observation={snapshot:'- Date "Departure date"\n  - generic\n    - spinbutton "Month Month" [ref=e1]: 0\n    - spinbutton "Day Day" [ref=e2]: 0\n    - spinbutton "Year Year" [ref=e3]: 0\n  - button "Show date picker" [ref=e4]\n- textbox "Name" [ref=e5]',
+    refs:{e1:{role:'spinbutton',name:'Month Month'},e2:{role:'spinbutton',name:'Day Day'},e3:{role:'spinbutton',name:'Year Year'},e4:{role:'button',name:'Show date picker'},e5:{role:'textbox',name:'Name'}}};
+  const actions=discoverActions(observation,{date:'2026-11-08',name:'Jordan Lee'});
+  assert.deepEqual(actions.filter(a=>a.op==='set_date'),[{op:'set_date',role:'date',name:'Departure date',refs:{month:'@e1',day:'@e2',year:'@e3'},valueId:'date',value:'2026-11-08'}]);
+  assert.equal(actions.some(a=>['fill','request_input','press'].includes(a.op)&&['@e1','@e2','@e3'].includes(a.ref)),false);
+  assert.ok(actions.some(a=>a.op==='fill'&&a.ref==='@e5'&&a.value==='Jordan Lee'));
+  assert.equal(discoverActions(observation,{date:'2026-02-30'}).some(a=>a.op==='set_date'),false);
 });
 
 test('missing input pauses without typing, then resumes with new refs and retained progress',async()=>{
@@ -67,28 +77,31 @@ test('continuation cannot silently switch task, scope or session',async()=>{
   }
 });
 
-test('resumed task preserves browser, policy and exact literals; ignores stored starting URL',()=>{
-  const previous={invocation:{browser:{binary:'/fork',sessionId:'same'},policyPath:'/caller-policy.mjs',url:'https://example.com',context:'Earlier'},
-    continuation:{intentOrSteps:['Finish'],scope,suppliedValues:{subject:'Exact original'}}};
-  const task=resumedTask(previous,{message:'New literal'},'Caller dismissed a popup');
-  assert.equal(task.url,undefined); assert.equal(task.policyPath,'/caller-policy.mjs');
-  assert.equal(task.browser.binary,'/fork'); assert.equal(task.suppliedValues.subject,'Exact original');
-  assert.match(task.context,/dismissed/);
+test('resume token preserves task state without exposing exact literals',()=>{
+  const state={invocation:{browser:{binary:'/fork',sessionId:'same'},intentOrSteps:'Finish',context:'Earlier'},
+    continuation:{schema:1,sessionId:'same',intentOrSteps:['Finish'],scope,suppliedValues:{subject:'Exact original'},stepIndex:0,history:[],progressAssessment:[]}};
+  const token=sealResume(state,'test-key',1000);
+  assert.ok(!token.includes('Exact original'));
+  const opened=openResume(token,'test-key',1001);
+  assert.equal(opened.invocation.browser.binary,'/fork');
+  assert.equal(opened.continuation.suppliedValues.subject,'Exact original');
 });
 
-test('summary returns final evidence and marks truncation, without echoing continuation values',()=>{
+test('summary returns final observation and marks truncation without writing evidence',()=>{
   const summary=summarize({returnReason:'input_required',actions:[],decisions:[{cost:0.1}],
-    latestObservation:{snapshot:'x'.repeat(17000)},observationFresh:true,continuation:{suppliedValues:{hidden:'NOT_FOR_SUMMARY'}}},'/private/evidence');
+    latestObservation:{snapshot:'x'.repeat(17000)},observationFresh:true,continuation:{suppliedValues:{hidden:'NOT_FOR_SUMMARY'}}},'opaque-token');
   assert.equal(summary.observation.snapshot.length,16000);assert.equal(summary.observation.truncated,true);
   assert.equal(summary.resumable,true);assert.equal(summary.jev.costUsd,0.1);
+  assert.equal(summary.resumeToken,'opaque-token');
   assert.ok(!JSON.stringify(summary).includes('NOT_FOR_SUMMARY'));
 });
 
-test('an uncertain gesture leaves returned observation explicitly stale',async()=>{
+test('an uncertain gesture is read back once without being replayed',async()=>{
   const b=browser([{snapshot:'- button "Save" [ref=e1]',refs:{e1:{role:'button',name:'Save'}}}]);
   b.execute=async()=>{throw Error('unknown effect');};
   const result=await run(b,choose(a=>a.op==='click'));
-  assert.equal(result.returnReason,'action_outcome_unknown');assert.equal(summarize(result,'file').observation.fresh,false);
+  assert.equal(result.returnReason,'action_outcome_unknown');assert.equal(summarize(result,'token').observation.fresh,true);
+  assert.equal(b.calls.length,0);
 });
 
 test('a post-action observation failure never presents the pre-action page as fresh',async()=>{
@@ -102,6 +115,23 @@ test('three identical actions with no observed effect stop before a fourth',asyn
   const b=browser([{snapshot:'stable',refs:{e1:{role:'button',name:'Open'}}}]);
   const result=await run(b,choose(a=>a.op==='click'));
   assert.equal(result.returnReason,'no_progress');assert.equal(b.calls.length,3);
+});
+
+test('an unchanged native date action stops without repeated entry',async()=>{
+  const observation={snapshot:'- Date "Departure date"\n  - spinbutton "Month Month" [ref=e1]\n  - spinbutton "Day Day" [ref=e2]\n  - spinbutton "Year Year" [ref=e3]',refs:{e1:{role:'spinbutton',name:'Month Month'},e2:{role:'spinbutton',name:'Day Day'},e3:{role:'spinbutton',name:'Year Year'}}};
+  const b=browser([observation]);
+  const result=await run(b,choose(a=>a.op==='set_date'),{suppliedValues:{date:'2026-11-08'}});
+  assert.equal(result.returnReason,'no_progress');assert.equal(b.calls.length,1);
+});
+
+test('five unchanged waits remove wait and leave other controls available',async()=>{
+  const b=browser([{snapshot:'- button "Retry" [ref=e1]',refs:{e1:{role:'button',name:'Retry'}}}]);
+  const result=await run(b,async r=>{
+    if (r.candidates.wait) return {binding:r.binding,choice:'wait'};
+    assert.ok(Object.values(r.candidates).some(a=>a.op==='click'&&a.name==='Retry'));
+    return {binding:r.binding,choice:'handoff'};
+  },{budget:{maxActions:30}});
+  assert.equal(result.returnReason,'handoff');assert.equal(b.calls.length,5);
 });
 
 test('candidate overflow hands back without asking the provider or dropping controls',async()=>{
@@ -139,7 +169,7 @@ test('superseded observations are never advertised as fresh',async()=>{
   const {invalidateBrowserObservation}=await import('../scripts/jev-browser.mjs');
   const b=browser([{snapshot:'ready',refs:{}}]);
   const result=await run(b,async r=>{invalidateBrowserObservation(b.sessionId);return {binding:r.binding,choice:'step_complete'};});
-  assert.equal(result.returnReason,'superseded_observation');assert.equal(summarize(result,'evidence').observation.fresh,false);
+  assert.equal(result.returnReason,'superseded_observation');assert.equal(summarize(result,'token').observation.fresh,false);
 });
 
 
@@ -151,12 +181,41 @@ test('custom listbox options remain clickable and do not suppress autocomplete t
   assert.equal(actions.some(a=>a.op==='press'&&a.key==='Tab'),false);
   assert.ok(actions.some(a=>a.op==='click'&&a.ref==='@e3'));
   assert.ok(actions.some(a=>a.op==='fill'&&a.ref==='@e1'&&a.value==='adobe'));
-  for(const key of ['ArrowDown','ArrowUp','Enter']) assert.ok(actions.some(a=>a.op==='press'&&a.ref==='@e1'&&a.key===key));
+  assert.equal(actions.some(a=>a.op==='press'&&a.ref==='@e1'),false);
 });
 
-test('readonly custom combobox can open and navigate but cannot be filled',()=>{
+test('menu checkbox and radio items are offered as grounded clicks',()=>{
+  const actions=discoverActions({snapshot:'- menuitemcheckbox "Show grid" [checked=false, ref=e1]\n- menuitemradio "Compact" [checked=true, ref=e2]',refs:{e1:{role:'menuitemcheckbox',name:'Show grid'},e2:{role:'menuitemradio',name:'Compact'}}});
+  assert.deepEqual(actions.filter(a=>a.op==='click').map(a=>a.ref),['@e1','@e2']);
+});
+
+test('file controls offer only caller-supplied absolute paths and never open a chooser',()=>{
+  const observation={snapshot:'- button "Contract file" [ref=e1]: No file chosen\n- button "Submit" [ref=e2]',refs:{e1:{role:'button',name:'Contract file'},e2:{role:'button',name:'Submit'}}};
+  const actions=discoverActions(observation,{contract:'/private/tmp/contract.pdf',note:'not-a-path'});
+  assert.deepEqual(actions.filter(a=>a.ref==='@e1'),[{ref:'@e1',role:'button',name:'Contract file',op:'upload',valueId:'contract',path:'/private/tmp/contract.pdf'}]);
+  assert.ok(actions.some(a=>a.ref==='@e2'&&a.op==='click'));
+});
+
+test('hover is offered only when the observed page says the interaction requires it',()=>{
+  const refs={e1:{role:'button',name:'Account'}};
+  assert.ok(discoverActions({snapshot:'- button "Account" [ref=e1]\n- paragraph "Hover to reveal links"',refs}).some(a=>a.op==='hover'&&a.ref==='@e1'));
+  assert.equal(discoverActions({snapshot:'- button "Account" [ref=e1]',refs}).some(a=>a.op==='hover'),false);
+});
+
+test('readonly custom combobox can open but cannot be filled or keyboard-selected',()=>{
   const actions=discoverActions({snapshot:'- combobox "Account" [readonly=true, ref=e1]',refs:{e1:{role:'combobox',name:'Account'}}},{query:'Software'});
   assert.ok(actions.some(a=>a.op==='click'&&a.ref==='@e1'));
-  assert.ok(actions.some(a=>a.op==='press'&&a.key==='ArrowDown'));
-  assert.equal(actions.some(a=>['fill','request_input'].includes(a.op)),false);
+  assert.equal(actions.some(a=>['fill','request_input','press'].includes(a.op)&&a.ref==='@e1'),false);
+});
+
+test('ordinary text inputs retain Enter without autocomplete arrow navigation',()=>{
+  const actions=discoverActions({snapshot:'- textbox "Search guides" [ref=e1]',refs:{e1:{role:'textbox',name:'Search guides'}}},{query:'recovery'});
+  assert.ok(actions.some(a=>a.op==='press'&&a.ref==='@e1'&&a.key==='Enter'));
+  assert.equal(actions.some(a=>a.op==='press'&&['ArrowDown','ArrowUp'].includes(a.key)),false);
+});
+
+test('an open custom listbox suppresses Enter on autocomplete text inputs',()=>{
+  const observation={snapshot:'- textbox "Account" [ref=e1]\n- listbox "Matches" [ref=e2]\n  - option "Software assets" [ref=e3]',
+    refs:{e1:{role:'textbox',name:'Account'},e2:{role:'listbox',name:'Matches'},e3:{role:'option',name:'Software assets'}}};
+  assert.equal(discoverActions(observation,{query:'software'}).some(a=>a.op==='press'&&a.ref==='@e1'),false);
 });

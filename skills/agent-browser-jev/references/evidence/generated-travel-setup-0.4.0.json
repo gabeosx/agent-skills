@@ -1,0 +1,43 @@
+{
+  "schema": 1,
+  "kind": "generated-travel-isolated-caller",
+  "startedAt": "2026-09-25T14:31:00.191Z",
+  "seed": 1234,
+  "casesRequested": 1,
+  "model": "gpt-5.5",
+  "effort": "low",
+  "timing": "Task delivery to caller POST /done; includes caller reasoning, Jev, browser actions and final caller assessment. Excludes Codex startup and independent verification.",
+  "cost": "Jev amounts are provider-reported. Codex tokens are reported separately; no dollar equivalent is assumed.",
+  "sourceSha256": {
+    "tests/generated-gym.mjs": "283169954a0426907a9f65d22702d7d29904a92341dccae80d7b7027afb6b731",
+    "tests/fixtures/generated-travel.mjs": "3b192d0822ecc3be3767fde89454d79e86cafd75da2d3ffedc71f80bb0e09d9a",
+    "SKILL.md": "e9b70a9c431ebd52bd92fa35d77df715b781102ce462b7ebd701d93df5dda7fa",
+    "scripts/run.mjs": "a34f7e5ccfa7639145e32bc2b59bdda816920297ed0a01d41b30e8737dee11e9"
+  },
+  "trials": [
+    {
+      "index": 0,
+      "seed": 1234,
+      "goal": "On this demo travel site, hold a Business itinerary from Boston Logan to Seattle Tacoma on 2026-11-08. Choose Northstar Air departing at 13:25. The traveler is Morgan Ellis (morgan.ellis@example.test); choose a no preference seat and standard meal. Add one checked bag at 15 kg. Accept the booking terms and finish on the confirmation page. This is a local fake booking; no payment is involved.",
+      "startedAt": "2026-09-25T14:31:00.326Z",
+      "commandCount": 0,
+      "commands": []
+    }
+  ],
+  "cleanup": {
+    "browserSessionsClosed": true,
+    "serversClosed": true,
+    "temporaryDirectoriesRemoved": true
+  },
+  "codexVersion": "codex-cli 0.147.0",
+  "browserVersion": "agent-browser 0.33.2",
+  "failure": "listen EPERM: operation not permitted 127.0.0.1",
+  "finishedAt": "2026-09-25T14:31:00.334Z",
+  "summary": {
+    "passed": 0,
+    "total": 1,
+    "medianEndToEndMs": null,
+    "jevCostUsd": null
+  },
+  "verdict": "failed"
+}

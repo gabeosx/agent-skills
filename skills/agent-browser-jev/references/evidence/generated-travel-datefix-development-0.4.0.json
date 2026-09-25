@@ -1,0 +1,204 @@
+{
+  "schema": 1,
+  "kind": "generated-travel-isolated-caller",
+  "startedAt": "2026-09-25T15:17:36.426Z",
+  "seed": 1234,
+  "casesRequested": 1,
+  "model": "gpt-5.5",
+  "effort": "low",
+  "timing": "Task delivery to caller POST /done; includes caller reasoning, Jev, browser actions and final caller assessment. Excludes Codex startup and independent verification.",
+  "cost": "Jev amounts are provider-reported. Codex tokens are reported separately; no dollar equivalent is assumed.",
+  "sourceSha256": {
+    "tests/generated-gym.mjs": "671a0e03d00c54ec41e04ba79c2de5bb1c67e6450508c3f29de4933e23d7a7c6",
+    "tests/fixtures/generated-travel.mjs": "a3ede53a03cde96912ff46fe4ddfcb1f4bbf8e0227d942681e281ca39d27dcae",
+    "SKILL.md": "e9b70a9c431ebd52bd92fa35d77df715b781102ce462b7ebd701d93df5dda7fa",
+    "scripts/run.mjs": "a34f7e5ccfa7639145e32bc2b59bdda816920297ed0a01d41b30e8737dee11e9"
+  },
+  "trials": [
+    {
+      "index": 0,
+      "seed": 1234,
+      "features": {
+        "dateMode": "native",
+        "airportPicker": "delayed suggestions",
+        "flightDecoys": 3,
+        "travelerBelowFold": true,
+        "conditionalBag": true,
+        "reviewTerms": true
+      },
+      "goal": "On this demo travel site, hold a Business itinerary from Boston Logan to Seattle Tacoma on 2026-11-08. Choose Northstar Air departing at 13:25. The traveler is Morgan Ellis (morgan.ellis@example.test); choose no seat preference and a standard meal. Add one checked bag at 15 kg. Accept the booking terms and finish on the confirmation page. This is a local fake booking; no payment is involved.",
+      "suppliedValues": {
+        "From airport": "Boston Logan",
+        "To airport": "Seattle Tacoma",
+        "Departure date": "2026-11-08",
+        "Cabin": "Business",
+        "Airline": "Northstar Air",
+        "Departure time": "13:25",
+        "Full name": "Morgan Ellis",
+        "Email": "morgan.ellis@example.test",
+        "Seat preference": "No preference",
+        "Meal preference": "Standard",
+        "Bag weight": "15 kg"
+      },
+      "startedAt": "2026-09-25T15:17:36.533Z",
+      "commandCount": 5,
+      "commands": [
+        {
+          "command": "/bin/zsh -lc \"sed -n '1,240p' <skill>SKILL.md\"",
+          "exitCode": 0,
+          "elapsedMs": 0
+        },
+        {
+          "command": "/bin/zsh -lc 'curl -s <fixture>/task'",
+          "exitCode": 0,
+          "elapsedMs": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"node '<skill>scripts/run.mjs' --binary '<agent-browser>' --session '<session>' --url '<fixture>/search' --intent 'On this demo travel site, hold a Business itinerary from Boston Logan to Seattle Tacoma on 2026-11-08. Choose Northstar Air departing at 13:25. The traveler is Morgan Ellis (morgan.ellis@example.test); choose no seat preference and a standard meal. Add one checked bag at 15 kg. Accept the booking terms and finish on the confirmation page. This is a local fake booking; n",
+          "exitCode": 2,
+          "elapsedMs": 7290
+        },
+        {
+          "command": "/bin/zsh -lc \"<agent-browser> --session '<session>' --json snapshot\"",
+          "exitCode": 0,
+          "elapsedMs": 0
+        },
+        {
+          "command": "/bin/zsh -lc \"curl -s -X POST <fixture>/done -H 'Content-Type: application/json' -d '{\\\"status\\\":\\\"handoff\\\",\\\"assessment\\\":\\\"Jev stopped with no_progress on the search page. The page still shows the search form and alert: Select both airports, date and cabin. Confirmation page was not reached.\\\"}'\"",
+          "exitCode": 0,
+          "elapsedMs": 0
+        }
+      ],
+      "codexUsage": {
+        "input_tokens": 103067,
+        "cached_input_tokens": 95104,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1034,
+        "reasoning_output_tokens": 104
+      },
+      "codexExitCode": 0,
+      "agentStatus": "handoff",
+      "elapsedMs": 25375,
+      "independent": {
+        "passed": false,
+        "mismatches": [
+          "from",
+          "to",
+          "date",
+          "cabin",
+          "flightId",
+          "name",
+          "email",
+          "seat",
+          "meal",
+          "bag",
+          "bagWeight"
+        ],
+        "held": false,
+        "stageReached": "search",
+        "actual": {
+          "flightId": null
+        },
+        "events": [
+          {
+            "type": "search",
+            "body": {
+              "type": "search",
+              "from": "",
+              "to": "",
+              "date": "2026-11-08",
+              "cabin": "Business"
+            }
+          }
+        ]
+      },
+      "helper": {
+        "returnReason": "no_progress",
+        "elapsedMs": 6746.497958,
+        "totalMs": 6748.541708000001,
+        "actions": 13,
+        "actionTrace": [
+          {
+            "op": "fill",
+            "name": "From airport",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "fill",
+            "name": "To airport",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "set_date",
+            "name": "Departure date",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "select",
+            "name": "Cabin",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "click",
+            "name": "Find flights",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "wait",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "wait",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "wait",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "wait",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "wait",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "wait",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "wait",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "op": "wait",
+            "outcome": "tool_succeeded"
+          }
+        ],
+        "costUsd": 0.002332848,
+        "decisionCount": 13
+      },
+      "longestWaitStreak": 8,
+      "directBrowserGestures": [],
+      "verdict": "failed",
+      "failureCategory": "repeated_waits",
+      "finishedAt": "2026-09-25T15:18:11.775Z"
+    }
+  ],
+  "cleanup": {
+    "browserSessionsClosed": true,
+    "serversClosed": true,
+    "temporaryDirectoriesRemoved": true
+  },
+  "codexVersion": "codex-cli 0.147.0",
+  "browserVersion": "agent-browser 0.33.2",
+  "finishedAt": "2026-09-25T15:18:11.954Z",
+  "summary": {
+    "passed": 0,
+    "total": 1,
+    "medianEndToEndMs": 25375,
+    "jevCostUsd": 0.002332848
+  },
+  "verdict": "failed"
+}

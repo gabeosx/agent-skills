@@ -1,0 +1,186 @@
+{
+  "version": "1.0.0",
+  "startedAt": "2026-09-25T17:26:05.200Z",
+  "sourceSha256": {
+    "scripts/controls.mjs": "4bc326c2e16494da048abafeeececefc2f2fb928947fe798727e2ae1fd45468f",
+    "scripts/agent-browser-jev.mjs": "c52bd6f6983e66f704ba9b288a6f12aed108a2a5bc9079dbfe641471fb00ac6f",
+    "scripts/jev-browser.mjs": "8d714c8631cf0a9795a585d67b3dde2b79e082c774f63acd41ad21d3e9ece84f",
+    "scripts/run.mjs": "cadea26a8bdea9ecc65ed690eec5da0e0890b36c8ec284aafb2e94f5415b9358",
+    "tests/autocomplete-live.mjs": "264363d6c6670cef736baed9a2e8d700e443c21ac21fb509d6d7f0d509e64c3b",
+    "tests/fixtures/autocomplete-page.mjs": "4bbcd01467fac0dba0db281f870f7727ef9eeb4b1de1cec450158c743cfe353f"
+  },
+  "cases": [
+    {
+      "mode": "click",
+      "result": {
+        "returnReason": "reported_complete",
+        "actions": [
+          {
+            "stepIndex": 0,
+            "operation": "fill",
+            "target": "contact",
+            "detail": null,
+            "outcome": "tool_succeeded"
+          },
+          {
+            "stepIndex": 0,
+            "operation": "fill",
+            "target": "account",
+            "detail": null,
+            "outcome": "tool_succeeded"
+          },
+          {
+            "stepIndex": 0,
+            "operation": "click",
+            "target": "Adobe Systems",
+            "detail": null,
+            "outcome": "tool_succeeded"
+          },
+          {
+            "stepIndex": 0,
+            "operation": "click",
+            "target": "Software subscriptions",
+            "detail": null,
+            "outcome": "tool_succeeded"
+          },
+          {
+            "stepIndex": 0,
+            "operation": "click",
+            "target": "Confirm selection",
+            "detail": null,
+            "outcome": "tool_succeeded"
+          }
+        ],
+        "progressAssessment": [
+          {
+            "stepIndex": 0,
+            "intent": "Select Adobe Systems as the contact and Software subscriptions as the account, using the supplied search queries. Finish on the Selection confirmed screen.",
+            "judgment": "model_reported_complete"
+          }
+        ],
+        "inputRequired": null,
+        "observation": {
+          "snapshot": "- heading \"Selection confirmed\" [level=1, ref=e1]\n- paragraph\n  - StaticText \"contact: Adobe Systems\"\n- paragraph\n  - StaticText \"account: Software subscriptions\"",
+          "truncated": false,
+          "fresh": true
+        },
+        "timing": {
+          "totalMs": 2113.001875,
+          "helperMs": 1566.8167490000003,
+          "navigationMs": 543.951084,
+          "observationMs": 76.38887699999964,
+          "decisionMs": 1245.853208,
+          "actionMs": 77.21995899999979,
+          "settleMs": 164.5102919999997
+        },
+        "jev": {
+          "calls": 6,
+          "costUsd": 0.00044679600000000006
+        },
+        "resumable": false,
+        "resumeToken": null
+      },
+      "independentSnapshot": "- heading \"Selection confirmed\" [level=1, ref=e1]\n- paragraph\n  - StaticText \"contact: Adobe Systems\"\n- paragraph\n  - StaticText \"account: Software subscriptions\"",
+      "verdict": "passed",
+      "events": [
+        {
+          "type": "confirm",
+          "selected": {
+            "contact": "contact-adobe-systems",
+            "account": "account-software-subscriptions"
+          }
+        }
+      ]
+    },
+    {
+      "mode": "enter",
+      "result": {
+        "returnReason": "handoff",
+        "actions": [
+          {
+            "stepIndex": 0,
+            "operation": "fill",
+            "target": "contact",
+            "detail": null,
+            "outcome": "tool_succeeded"
+          },
+          {
+            "stepIndex": 0,
+            "operation": "click",
+            "target": "contact",
+            "detail": null,
+            "outcome": "tool_succeeded"
+          },
+          {
+            "stepIndex": 0,
+            "operation": "click",
+            "target": "Adobe Systems",
+            "detail": null,
+            "outcome": "tool_succeeded"
+          },
+          {
+            "stepIndex": 0,
+            "operation": "fill",
+            "target": "account",
+            "detail": null,
+            "outcome": "tool_succeeded"
+          },
+          {
+            "stepIndex": 0,
+            "operation": "wait",
+            "target": null,
+            "detail": null,
+            "outcome": "tool_succeeded"
+          },
+          {
+            "stepIndex": 0,
+            "operation": "click",
+            "target": "Software subscriptions",
+            "detail": null,
+            "outcome": "tool_succeeded"
+          },
+          {
+            "stepIndex": 0,
+            "operation": "click",
+            "target": "Confirm selection",
+            "detail": null,
+            "outcome": "tool_succeeded"
+          }
+        ],
+        "progressAssessment": [],
+        "inputRequired": null,
+        "observation": {
+          "snapshot": "- heading \"Choose records\" [level=1, ref=e1]\n- paragraph\n  - StaticText \"Use arrow keys and Enter to choose each suggestion. Suggestions cannot be selected by mouse.\"\n- generic\n  - generic\n    - LabelText\n      - StaticText \"contact \"\n      - combobox \"contact\" [expanded=true, ref=e5]: adobe\n        - StaticText \"adobe\"\n    - listbox \"contact matches\" [ref=e3]\n      - option \"Adobe Stock\" [ref=e6]\n      - option \"Adobe Systems\" [ref=e7]\n    - paragraph\n      - StaticText \"No contact selected\"\n  - generic\n    - LabelText\n      - StaticText \"account \"\n      - textbox \"account\" [ref=e8]: software\n        - StaticText \"software\"\n    - listbox \"account matches\" [ref=e4]\n      - option \"Software assets\" [ref=e9]\n      - option \"Software subscriptions\" [ref=e10]\n    - paragraph\n      - StaticText \"No account selected\"\n- button \"Confirm selection\" [ref=e2]\n- status\n  - StaticText \"Select both records; typed text alone is not a selection.\"",
+          "truncated": false,
+          "fresh": true
+        },
+        "timing": {
+          "totalMs": 3155.5709589999997,
+          "helperMs": 3136.334084,
+          "navigationMs": 16.969875000000002,
+          "observationMs": 163.09312499999982,
+          "decisionMs": 1777.2170419999998,
+          "actionMs": 373.05225099999996,
+          "settleMs": 819.3554600000007
+        },
+        "jev": {
+          "calls": 8,
+          "costUsd": 0.0006800220000000001
+        },
+        "resumable": true,
+        "resumeToken": "[redacted]"
+      },
+      "independentSnapshot": "- heading \"Choose records\" [level=1, ref=e1]\n- paragraph\n  - StaticText \"Use arrow keys and Enter to choose each suggestion. Suggestions cannot be selected by mouse.\"\n- generic\n  - generic\n    - LabelText\n      - StaticText \"contact \"\n      - combobox \"contact\" [expanded=true, ref=e5]: adobe\n        - StaticText \"adobe\"\n    - listbox \"contact matches\" [ref=e3]\n      - option \"Adobe Stock\" [ref=e6]\n      - option \"Adobe Systems\" [ref=e7]\n    - paragraph\n      - StaticText \"No contact selected\"\n  - generic\n    - LabelText\n      - StaticText \"account \"\n      - textbox \"account\" [ref=e8]: software\n        - StaticText \"software\"\n    - listbox \"account matches\" [ref=e4]\n      - option \"Software assets\" [ref=e9]\n      - option \"Software subscriptions\" [ref=e10]\n    - paragraph\n      - StaticText \"No account selected\"\n- button \"Confirm selection\" [ref=e2]\n- status\n  - StaticText \"Select both records; typed text alone is not a selection.\"",
+      "verdict": "passed",
+      "events": []
+    }
+  ],
+  "cleanup": {
+    "browserClosed": true,
+    "serverClosed": true,
+    "temporaryDirectoryRemoved": true
+  },
+  "browserVersion": "agent-browser 0.33.2",
+  "finishedAt": "2026-09-25T17:26:11.548Z",
+  "verdict": "passed"
+}

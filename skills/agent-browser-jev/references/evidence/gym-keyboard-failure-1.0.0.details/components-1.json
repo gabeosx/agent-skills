@@ -1,0 +1,2024 @@
+{
+  "schema": 1,
+  "kind": "component-matrix",
+  "version": "1.0.0",
+  "startedAt": "2026-09-25T17:08:26.828Z",
+  "model": "typesafe/jev-1.13",
+  "sdk": "1.3.2",
+  "node": "v26.5.0",
+  "platform": "darwin-arm64",
+  "selectedCases": [
+    "accordion",
+    "tabs",
+    "dropdown-menu",
+    "nested-menu",
+    "dialog-form",
+    "alert-dialog",
+    "radio-switch",
+    "toggle-group",
+    "custom-select",
+    "multi-select",
+    "pagination",
+    "sortable-table",
+    "tree-view",
+    "command-palette",
+    "popover-filters",
+    "stepper",
+    "drawer",
+    "carousel",
+    "delayed-toast",
+    "spinbutton",
+    "tri-state-checkbox",
+    "rating",
+    "breadcrumb",
+    "missing-target",
+    "file-upload",
+    "hover-card"
+  ],
+  "sourceBasis": [
+    {
+      "name": "WAI-ARIA APG patterns",
+      "url": "https://www.w3.org/WAI/ARIA/apg/patterns/"
+    },
+    {
+      "name": "Base UI components",
+      "url": "https://base-ui.com/react/components"
+    },
+    {
+      "name": "Radix Primitives",
+      "url": "https://www.radix-ui.com/primitives"
+    },
+    {
+      "name": "MUI component inventory",
+      "url": "https://mui.com/material-ui/all-components/"
+    },
+    {
+      "name": "shadcn/ui component inventory",
+      "url": "https://ui.shadcn.com/docs/components"
+    }
+  ],
+  "measurement": "Elapsed time covers one helper invocation. Verdicts come from server-side events and the final browser snapshot, not Jev completion claims.",
+  "sourceSha256": {
+    "tests/component-live.mjs": "6607aec706f6b70298ff3d31075d87bf1a3ed77b7afe85d433cbc6bb684a1008",
+    "tests/fixtures/component-pages.mjs": "f90bc02daab51c67c03097420022ae8f8cf79cf23d0fbf992af6c7145b9bac04",
+    "scripts/run.mjs": "75ed45bd730e5e982a0cc8fc63dccaa79b88200aa7cfe16f05b2ba8a4c402a5a",
+    "scripts/controls.mjs": "d13cad00bb63bb7df202fc095a8a19e0326192bd20ab9273488b91bf6f8336f2",
+    "scripts/jev-browser.mjs": "8d714c8631cf0a9795a585d67b3dde2b79e082c774f63acd41ad21d3e9ece84f",
+    "scripts/agent-browser-jev.mjs": "4e4df07a022d48af9feb326417596ee0c3f0c6584fa6d4e3fbf781a09e0bc3de"
+  },
+  "cases": [
+    {
+      "id": "accordion",
+      "family": "disclosure",
+      "intent": "Expand Returns policy, mark that section reviewed, and finish on the completion screen.",
+      "expected": {
+        "panel": "Returns policy"
+      },
+      "startedAt": "2026-09-25T17:08:26.849Z",
+      "elapsedMs": 1530,
+      "exitCode": 0,
+      "result": {
+        "returnReason": "reported_complete",
+        "actions": [
+          {
+            "stepIndex": 0,
+            "operation": "click",
+            "target": "Returns policy",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "stepIndex": 0,
+            "operation": "click",
+            "target": "Mark reviewed",
+            "outcome": "tool_succeeded"
+          }
+        ],
+        "progressAssessment": [
+          {
+            "stepIndex": 0,
+            "intent": "Expand Returns policy, mark that section reviewed, and finish on the completion screen.",
+            "judgment": "model_reported_complete"
+          }
+        ],
+        "inputRequired": null,
+        "observation": {
+          "snapshot": "- main\n  - heading \"Component task complete\" [level=1, ref=e1]\n  - paragraph\n    - StaticText \"The local fixture recorded the requested state.\"",
+          "truncated": false,
+          "fresh": true
+        },
+        "timing": {
+          "totalMs": 808.7518329999999,
+          "helperMs": 805.6404580000001,
+          "navigationMs": 0,
+          "observationMs": 41.114541000000145,
+          "decisionMs": 578.5526249999999,
+          "actionMs": 22.02495799999997,
+          "settleMs": 162.531791
+        },
+        "jev": {
+          "calls": 3,
+          "costUsd": 0.000156198
+        },
+        "resumable": false,
+        "resumeToken": null
+      },
+      "finalSnapshot": "- main\n  - heading \"Component task complete\" [level=1, ref=e1]\n  - paragraph\n    - StaticText \"The local fixture recorded the requested state.\"",
+      "events": [
+        {
+          "type": "complete",
+          "caseId": "accordion",
+          "value": {
+            "panel": "Returns policy"
+          }
+        }
+      ],
+      "verdict": "passed",
+      "finishedAt": "2026-09-25T17:08:29.302Z"
+    },
+    {
+      "id": "tabs",
+      "family": "navigation",
+      "intent": "Open the Billing tab and download the September invoice on this fake page.",
+      "expected": {
+        "tab": "Billing",
+        "invoice": "September"
+      },
+      "startedAt": "2026-09-25T17:08:29.303Z",
+      "elapsedMs": 1449,
+      "exitCode": 0,
+      "result": {
+        "returnReason": "reported_complete",
+        "actions": [
+          {
+            "stepIndex": 0,
+            "operation": "click",
+            "target": "Billing",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "stepIndex": 0,
+            "operation": "click",
+            "target": "Download September invoice",
+            "outcome": "tool_succeeded"
+          }
+        ],
+        "progressAssessment": [
+          {
+            "stepIndex": 0,
+            "intent": "Open the Billing tab and download the September invoice on this fake page.",
+            "judgment": "model_reported_complete"
+          }
+        ],
+        "inputRequired": null,
+        "observation": {
+          "snapshot": "- main\n  - heading \"Component task complete\" [level=1, ref=e1]\n  - paragraph\n    - StaticText \"The local fixture recorded the requested state.\"",
+          "truncated": false,
+          "fresh": true
+        },
+        "timing": {
+          "totalMs": 939.874542,
+          "helperMs": 938.1375,
+          "navigationMs": 0,
+          "observationMs": 41.37279100000018,
+          "decisionMs": 715.4328749999997,
+          "actionMs": 17.558624000000123,
+          "settleMs": 162.40933399999994
+        },
+        "jev": {
+          "calls": 3,
+          "costUsd": 0.000156198
+        },
+        "resumable": false,
+        "resumeToken": null
+      },
+      "finalSnapshot": "- main\n  - heading \"Component task complete\" [level=1, ref=e1]\n  - paragraph\n    - StaticText \"The local fixture recorded the requested state.\"",
+      "events": [
+        {
+          "type": "complete",
+          "caseId": "tabs",
+          "value": {
+            "tab": "Billing",
+            "invoice": "September"
+          }
+        }
+      ],
+      "verdict": "passed",
+      "finishedAt": "2026-09-25T17:08:30.777Z"
+    },
+    {
+      "id": "dropdown-menu",
+      "family": "menu",
+      "intent": "Open the Actions menu and duplicate the draft.",
+      "expected": {
+        "action": "Duplicate draft"
+      },
+      "startedAt": "2026-09-25T17:08:30.778Z",
+      "elapsedMs": 1250,
+      "exitCode": 0,
+      "result": {
+        "returnReason": "reported_complete",
+        "actions": [
+          {
+            "stepIndex": 0,
+            "operation": "click",
+            "target": "Actions",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "stepIndex": 0,
+            "operation": "click",
+            "target": "Duplicate draft",
+            "outcome": "tool_succeeded"
+          }
+        ],
+        "progressAssessment": [
+          {
+            "stepIndex": 0,
+            "intent": "Open the Actions menu and duplicate the draft.",
+            "judgment": "model_reported_complete"
+          }
+        ],
+        "inputRequired": null,
+        "observation": {
+          "snapshot": "- main\n  - heading \"Component task complete\" [level=1, ref=e1]\n  - paragraph\n    - StaticText \"The local fixture recorded the requested state.\"",
+          "truncated": false,
+          "fresh": true
+        },
+        "timing": {
+          "totalMs": 765.1754169999999,
+          "helperMs": 763.452542,
+          "navigationMs": 0,
+          "observationMs": 33.629459,
+          "decisionMs": 632.6268749999999,
+          "actionMs": 14.520457999999962,
+          "settleMs": 81.33924999999999
+        },
+        "jev": {
+          "calls": 3,
+          "costUsd": 0.000147588
+        },
+        "resumable": false,
+        "resumeToken": null
+      },
+      "finalSnapshot": "- main\n  - heading \"Component task complete\" [level=1, ref=e1]\n  - paragraph\n    - StaticText \"The local fixture recorded the requested state.\"",
+      "events": [
+        {
+          "type": "complete",
+          "caseId": "dropdown-menu",
+          "value": {
+            "action": "Duplicate draft"
+          }
+        }
+      ],
+      "verdict": "passed",
+      "finishedAt": "2026-09-25T17:08:32.054Z"
+    },
+    {
+      "id": "nested-menu",
+      "family": "menu",
+      "intent": "Use the Actions menu, then the Share submenu, to copy a private link.",
+      "expected": {
+        "share": "Copy private link"
+      },
+      "startedAt": "2026-09-25T17:08:32.055Z",
+      "elapsedMs": 1530,
+      "exitCode": 0,
+      "result": {
+        "returnReason": "reported_complete",
+        "actions": [
+          {
+            "stepIndex": 0,
+            "operation": "click",
+            "target": "Actions",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "stepIndex": 0,
+            "operation": "click",
+            "target": "Share",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "stepIndex": 0,
+            "operation": "click",
+            "target": "Copy private link",
+            "outcome": "tool_succeeded"
+          }
+        ],
+        "progressAssessment": [
+          {
+            "stepIndex": 0,
+            "intent": "Use the Actions menu, then the Share submenu, to copy a private link.",
+            "judgment": "model_reported_complete"
+          }
+        ],
+        "inputRequired": null,
+        "observation": {
+          "snapshot": "- main\n  - heading \"Component task complete\" [level=1, ref=e1]\n  - paragraph\n    - StaticText \"The local fixture recorded the requested state.\"",
+          "truncated": false,
+          "fresh": true
+        },
+        "timing": {
+          "totalMs": 1086.265375,
+          "helperMs": 1084.3829580000001,
+          "navigationMs": 0,
+          "observationMs": 53.73758400000003,
+          "decisionMs": 754.0219579999999,
+          "actionMs": 31.876457999999957,
+          "settleMs": 243.0536659999999
+        },
+        "jev": {
+          "calls": 4,
+          "costUsd": 0.00020999999999999998
+        },
+        "resumable": false,
+        "resumeToken": null
+      },
+      "finalSnapshot": "- main\n  - heading \"Component task complete\" [level=1, ref=e1]\n  - paragraph\n    - StaticText \"The local fixture recorded the requested state.\"",
+      "events": [
+        {
+          "type": "complete",
+          "caseId": "nested-menu",
+          "value": {
+            "share": "Copy private link"
+          }
+        }
+      ],
+      "verdict": "passed",
+      "finishedAt": "2026-09-25T17:08:33.607Z"
+    },
+    {
+      "id": "dialog-form",
+      "family": "overlay",
+      "intent": "Open Invite member, enter the supplied email, choose Viewer access, and add the member.",
+      "expected": {
+        "email": "viewer@example.test",
+        "access": "viewer"
+      },
+      "startedAt": "2026-09-25T17:08:33.608Z",
+      "elapsedMs": 1735,
+      "exitCode": 0,
+      "result": {
+        "returnReason": "reported_complete",
+        "actions": [
+          {
+            "stepIndex": 0,
+            "operation": "click",
+            "target": "Invite member",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "stepIndex": 0,
+            "operation": "fill",
+            "target": "Email",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "stepIndex": 0,
+            "operation": "select",
+            "target": "Access",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "stepIndex": 0,
+            "operation": "click",
+            "target": "Add member",
+            "outcome": "tool_succeeded"
+          }
+        ],
+        "progressAssessment": [
+          {
+            "stepIndex": 0,
+            "intent": "Open Invite member, enter the supplied email, choose Viewer access, and add the member.",
+            "judgment": "model_reported_complete"
+          }
+        ],
+        "inputRequired": null,
+        "observation": {
+          "snapshot": "- main\n  - heading \"Component task complete\" [level=1, ref=e1]\n  - paragraph\n    - StaticText \"The local fixture recorded the requested state.\"",
+          "truncated": false,
+          "fresh": true
+        },
+        "timing": {
+          "totalMs": 1227.108792,
+          "helperMs": 1224.9810830000001,
+          "navigationMs": 0,
+          "observationMs": 55.93829099999982,
+          "decisionMs": 1039.5323750000002,
+          "actionMs": 45.70875000000001,
+          "settleMs": 81.41333299999997
+        },
+        "jev": {
+          "calls": 5,
+          "costUsd": 0.000330414
+        },
+        "resumable": false,
+        "resumeToken": null
+      },
+      "finalSnapshot": "- main\n  - heading \"Component task complete\" [level=1, ref=e1]\n  - paragraph\n    - StaticText \"The local fixture recorded the requested state.\"",
+      "events": [
+        {
+          "type": "complete",
+          "caseId": "dialog-form",
+          "value": {
+            "email": "viewer@example.test",
+            "access": "viewer"
+          }
+        }
+      ],
+      "verdict": "passed",
+      "finishedAt": "2026-09-25T17:08:35.369Z"
+    },
+    {
+      "id": "alert-dialog",
+      "family": "overlay",
+      "intent": "Open Delete project, then cancel the deletion and keep the project.",
+      "expected": {
+        "decision": "cancel"
+      },
+      "startedAt": "2026-09-25T17:08:35.370Z",
+      "elapsedMs": 1845,
+      "exitCode": 0,
+      "result": {
+        "returnReason": "reported_complete",
+        "actions": [
+          {
+            "stepIndex": 0,
+            "operation": "click",
+            "target": "Delete project",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "stepIndex": 0,
+            "operation": "click",
+            "target": "Cancel",
+            "outcome": "tool_succeeded"
+          }
+        ],
+        "progressAssessment": [
+          {
+            "stepIndex": 0,
+            "intent": "Open Delete project, then cancel the deletion and keep the project.",
+            "judgment": "model_reported_complete"
+          }
+        ],
+        "inputRequired": null,
+        "observation": {
+          "snapshot": "- main\n  - heading \"Project kept\" [level=1, ref=e1]\n  - paragraph\n    - StaticText \"The local fixture recorded the requested state.\"",
+          "truncated": false,
+          "fresh": true
+        },
+        "timing": {
+          "totalMs": 1417.8101660000002,
+          "helperMs": 1415.313625,
+          "navigationMs": 0,
+          "observationMs": 36.56795800000003,
+          "decisionMs": 1199.0402090000002,
+          "actionMs": 15.675499999999943,
+          "settleMs": 162.55508299999997
+        },
+        "jev": {
+          "calls": 3,
+          "costUsd": 0.00014805
+        },
+        "resumable": false,
+        "resumeToken": null
+      },
+      "finalSnapshot": "- main\n  - heading \"Project kept\" [level=1, ref=e1]\n  - paragraph\n    - StaticText \"The local fixture recorded the requested state.\"",
+      "events": [
+        {
+          "type": "complete",
+          "caseId": "alert-dialog",
+          "value": {
+            "decision": "cancel"
+          }
+        }
+      ],
+      "verdict": "passed",
+      "finishedAt": "2026-09-25T17:08:37.238Z"
+    },
+    {
+      "id": "radio-switch",
+      "family": "selection",
+      "intent": "Choose the Pro plan, enable annual billing, and save the billing settings.",
+      "expected": {
+        "plan": "pro",
+        "annual": true
+      },
+      "startedAt": "2026-09-25T17:08:37.239Z",
+      "elapsedMs": 1445,
+      "exitCode": 0,
+      "result": {
+        "returnReason": "reported_complete",
+        "actions": [
+          {
+            "stepIndex": 0,
+            "operation": "click",
+            "target": "Pro",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "stepIndex": 0,
+            "operation": "click",
+            "target": "Annual billing",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "stepIndex": 0,
+            "operation": "click",
+            "target": "Save billing settings",
+            "outcome": "tool_succeeded"
+          }
+        ],
+        "progressAssessment": [
+          {
+            "stepIndex": 0,
+            "intent": "Choose the Pro plan, enable annual billing, and save the billing settings.",
+            "judgment": "model_reported_complete"
+          }
+        ],
+        "inputRequired": null,
+        "observation": {
+          "snapshot": "- main\n  - heading \"Component task complete\" [level=1, ref=e1]\n  - paragraph\n    - StaticText \"The local fixture recorded the requested state.\"",
+          "truncated": false,
+          "fresh": true
+        },
+        "timing": {
+          "totalMs": 1010.632208,
+          "helperMs": 1008.575125,
+          "navigationMs": 0,
+          "observationMs": 47.35162500000018,
+          "decisionMs": 770.3267500000001,
+          "actionMs": 26.76845800000001,
+          "settleMs": 162.44504300000006
+        },
+        "jev": {
+          "calls": 4,
+          "costUsd": 0.00022877400000000003
+        },
+        "resumable": false,
+        "resumeToken": null
+      },
+      "finalSnapshot": "- main\n  - heading \"Component task complete\" [level=1, ref=e1]\n  - paragraph\n    - StaticText \"The local fixture recorded the requested state.\"",
+      "events": [
+        {
+          "type": "complete",
+          "caseId": "radio-switch",
+          "value": {
+            "plan": "pro",
+            "annual": true
+          }
+        }
+      ],
+      "verdict": "passed",
+      "finishedAt": "2026-09-25T17:08:38.707Z"
+    },
+    {
+      "id": "toggle-group",
+      "family": "selection",
+      "intent": "Choose Center alignment and Compact density, then apply the view settings.",
+      "expected": {
+        "alignment": "center",
+        "density": "compact"
+      },
+      "startedAt": "2026-09-25T17:08:38.708Z",
+      "elapsedMs": 1958,
+      "exitCode": 0,
+      "result": {
+        "returnReason": "reported_complete",
+        "actions": [
+          {
+            "stepIndex": 0,
+            "operation": "click",
+            "target": "Center",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "stepIndex": 0,
+            "operation": "click",
+            "target": "Compact",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "stepIndex": 0,
+            "operation": "click",
+            "target": "Apply view settings",
+            "outcome": "tool_succeeded"
+          }
+        ],
+        "progressAssessment": [
+          {
+            "stepIndex": 0,
+            "intent": "Choose Center alignment and Compact density, then apply the view settings.",
+            "judgment": "model_reported_complete"
+          }
+        ],
+        "inputRequired": null,
+        "observation": {
+          "snapshot": "- main\n  - heading \"Component task complete\" [level=1, ref=e1]\n  - paragraph\n    - StaticText \"The local fixture recorded the requested state.\"",
+          "truncated": false,
+          "fresh": true
+        },
+        "timing": {
+          "totalMs": 1513.729875,
+          "helperMs": 1511.554042,
+          "navigationMs": 0,
+          "observationMs": 110.5938769999999,
+          "decisionMs": 722.7349989999998,
+          "actionMs": 27.041999999999916,
+          "settleMs": 649.2322490000001
+        },
+        "jev": {
+          "calls": 4,
+          "costUsd": 0.00023704799999999998
+        },
+        "resumable": false,
+        "resumeToken": null
+      },
+      "finalSnapshot": "- main\n  - heading \"Component task complete\" [level=1, ref=e1]\n  - paragraph\n    - StaticText \"The local fixture recorded the requested state.\"",
+      "events": [
+        {
+          "type": "complete",
+          "caseId": "toggle-group",
+          "value": {
+            "alignment": "center",
+            "density": "compact"
+          }
+        }
+      ],
+      "verdict": "passed",
+      "finishedAt": "2026-09-25T17:08:40.694Z"
+    },
+    {
+      "id": "custom-select",
+      "family": "selection",
+      "intent": "Choose West warehouse from the custom warehouse selector and save.",
+      "expected": {
+        "warehouse": "west"
+      },
+      "startedAt": "2026-09-25T17:08:40.695Z",
+      "elapsedMs": 1551,
+      "exitCode": 0,
+      "result": {
+        "returnReason": "reported_complete",
+        "actions": [
+          {
+            "stepIndex": 0,
+            "operation": "click",
+            "target": "Warehouse",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "stepIndex": 0,
+            "operation": "click",
+            "target": "West warehouse",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "stepIndex": 0,
+            "operation": "click",
+            "target": "Save warehouse",
+            "outcome": "tool_succeeded"
+          }
+        ],
+        "progressAssessment": [
+          {
+            "stepIndex": 0,
+            "intent": "Choose West warehouse from the custom warehouse selector and save.",
+            "judgment": "model_reported_complete"
+          }
+        ],
+        "inputRequired": null,
+        "observation": {
+          "snapshot": "- main\n  - heading \"Component task complete\" [level=1, ref=e1]\n  - paragraph\n    - StaticText \"The local fixture recorded the requested state.\"",
+          "truncated": false,
+          "fresh": true
+        },
+        "timing": {
+          "totalMs": 1097.1309580000002,
+          "helperMs": 1095.3409580000002,
+          "navigationMs": 0,
+          "observationMs": 48.42666699999984,
+          "decisionMs": 857.0132509999999,
+          "actionMs": 25.854000000000156,
+          "settleMs": 162.38808299999994
+        },
+        "jev": {
+          "calls": 4,
+          "costUsd": 0.000241164
+        },
+        "resumable": false,
+        "resumeToken": null
+      },
+      "finalSnapshot": "- main\n  - heading \"Component task complete\" [level=1, ref=e1]\n  - paragraph\n    - StaticText \"The local fixture recorded the requested state.\"",
+      "events": [
+        {
+          "type": "complete",
+          "caseId": "custom-select",
+          "value": {
+            "warehouse": "west"
+          }
+        }
+      ],
+      "verdict": "passed",
+      "finishedAt": "2026-09-25T17:08:42.273Z"
+    },
+    {
+      "id": "multi-select",
+      "family": "selection",
+      "intent": "Select Analytics and Security in the multi-select list, then apply the teams.",
+      "expected": {
+        "teams": [
+          "analytics",
+          "security"
+        ]
+      },
+      "startedAt": "2026-09-25T17:08:42.273Z",
+      "elapsedMs": 1670,
+      "exitCode": 0,
+      "result": {
+        "returnReason": "reported_complete",
+        "actions": [
+          {
+            "stepIndex": 0,
+            "operation": "click",
+            "target": "Analytics",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "stepIndex": 0,
+            "operation": "click",
+            "target": "Security",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "stepIndex": 0,
+            "operation": "click",
+            "target": "Apply teams",
+            "outcome": "tool_succeeded"
+          }
+        ],
+        "progressAssessment": [
+          {
+            "stepIndex": 0,
+            "intent": "Select Analytics and Security in the multi-select list, then apply the teams.",
+            "judgment": "model_reported_complete"
+          }
+        ],
+        "inputRequired": null,
+        "observation": {
+          "snapshot": "- main\n  - heading \"Component task complete\" [level=1, ref=e1]\n  - paragraph\n    - StaticText \"The local fixture recorded the requested state.\"",
+          "truncated": false,
+          "fresh": true
+        },
+        "timing": {
+          "totalMs": 1193.6307920000002,
+          "helperMs": 1191.173,
+          "navigationMs": 0,
+          "observationMs": 53.864293999999745,
+          "decisionMs": 867.694791,
+          "actionMs": 24.36283400000002,
+          "settleMs": 243.55329100000017
+        },
+        "jev": {
+          "calls": 4,
+          "costUsd": 0.00021680399999999997
+        },
+        "resumable": false,
+        "resumeToken": null
+      },
+      "finalSnapshot": "- main\n  - heading \"Component task complete\" [level=1, ref=e1]\n  - paragraph\n    - StaticText \"The local fixture recorded the requested state.\"",
+      "events": [
+        {
+          "type": "complete",
+          "caseId": "multi-select",
+          "value": {
+            "teams": [
+              "analytics",
+              "security"
+            ]
+          }
+        }
+      ],
+      "verdict": "passed",
+      "finishedAt": "2026-09-25T17:08:43.966Z"
+    },
+    {
+      "id": "pagination",
+      "family": "navigation",
+      "intent": "Go to page 3 and open Invoice 27.",
+      "expected": {
+        "page": 3,
+        "invoice": "27"
+      },
+      "startedAt": "2026-09-25T17:08:43.967Z",
+      "elapsedMs": 1329,
+      "exitCode": 0,
+      "result": {
+        "returnReason": "reported_complete",
+        "actions": [
+          {
+            "stepIndex": 0,
+            "operation": "click",
+            "target": "3",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "stepIndex": 0,
+            "operation": "click",
+            "target": "Open Invoice 27",
+            "outcome": "tool_succeeded"
+          }
+        ],
+        "progressAssessment": [
+          {
+            "stepIndex": 0,
+            "intent": "Go to page 3 and open Invoice 27.",
+            "judgment": "model_reported_complete"
+          }
+        ],
+        "inputRequired": null,
+        "observation": {
+          "snapshot": "- main\n  - heading \"Component task complete\" [level=1, ref=e1]\n  - paragraph\n    - StaticText \"The local fixture recorded the requested state.\"",
+          "truncated": false,
+          "fresh": true
+        },
+        "timing": {
+          "totalMs": 844.3441670000001,
+          "helperMs": 842.621666,
+          "navigationMs": 0,
+          "observationMs": 46.16112699999968,
+          "decisionMs": 606.3812499999999,
+          "actionMs": 26.257458000000042,
+          "settleMs": 161.994417
+        },
+        "jev": {
+          "calls": 3,
+          "costUsd": 0.000163674
+        },
+        "resumable": false,
+        "resumeToken": null
+      },
+      "finalSnapshot": "- main\n  - heading \"Component task complete\" [level=1, ref=e1]\n  - paragraph\n    - StaticText \"The local fixture recorded the requested state.\"",
+      "events": [
+        {
+          "type": "complete",
+          "caseId": "pagination",
+          "value": {
+            "page": 3,
+            "invoice": "27"
+          }
+        }
+      ],
+      "verdict": "passed",
+      "finishedAt": "2026-09-25T17:08:45.319Z"
+    },
+    {
+      "id": "sortable-table",
+      "family": "data",
+      "intent": "Sort the project table by name ascending, then open Orion.",
+      "expected": {
+        "sort": "name-ascending",
+        "project": "Orion"
+      },
+      "startedAt": "2026-09-25T17:08:45.319Z",
+      "elapsedMs": 1243,
+      "exitCode": 0,
+      "result": {
+        "returnReason": "reported_complete",
+        "actions": [
+          {
+            "stepIndex": 0,
+            "operation": "click",
+            "target": "Sort by name",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "stepIndex": 0,
+            "operation": "click",
+            "target": "Open Orion",
+            "outcome": "tool_succeeded"
+          }
+        ],
+        "progressAssessment": [
+          {
+            "stepIndex": 0,
+            "intent": "Sort the project table by name ascending, then open Orion.",
+            "judgment": "model_reported_complete"
+          }
+        ],
+        "inputRequired": null,
+        "observation": {
+          "snapshot": "- main\n  - heading \"Component task complete\" [level=1, ref=e1]\n  - paragraph\n    - StaticText \"The local fixture recorded the requested state.\"",
+          "truncated": false,
+          "fresh": true
+        },
+        "timing": {
+          "totalMs": 775.963625,
+          "helperMs": 774.215167,
+          "navigationMs": 0,
+          "observationMs": 31.744542000000138,
+          "decisionMs": 635.3369569999999,
+          "actionMs": 24.662333000000103,
+          "settleMs": 81.16999999999996
+        },
+        "jev": {
+          "calls": 3,
+          "costUsd": 0.000187068
+        },
+        "resumable": false,
+        "resumeToken": null
+      },
+      "finalSnapshot": "- main\n  - heading \"Component task complete\" [level=1, ref=e1]\n  - paragraph\n    - StaticText \"The local fixture recorded the requested state.\"",
+      "events": [
+        {
+          "type": "complete",
+          "caseId": "sortable-table",
+          "value": {
+            "sort": "name-ascending",
+            "project": "Orion"
+          }
+        }
+      ],
+      "verdict": "passed",
+      "finishedAt": "2026-09-25T17:08:46.583Z"
+    },
+    {
+      "id": "tree-view",
+      "family": "data",
+      "intent": "Expand Finance, select Q4 forecast, and open that report.",
+      "expected": {
+        "branch": "Finance",
+        "report": "Q4 forecast"
+      },
+      "startedAt": "2026-09-25T17:08:46.584Z",
+      "elapsedMs": 3990,
+      "exitCode": 0,
+      "result": {
+        "returnReason": "reported_complete",
+        "actions": [
+          {
+            "stepIndex": 0,
+            "operation": "click",
+            "target": "Finance",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "stepIndex": 0,
+            "operation": "click",
+            "target": "Q4 forecast",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "stepIndex": 0,
+            "operation": "click",
+            "target": "Open selected report",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "stepIndex": 0,
+            "operation": "wait",
+            "target": null,
+            "outcome": "tool_succeeded"
+          },
+          {
+            "stepIndex": 0,
+            "operation": "wait",
+            "target": null,
+            "outcome": "tool_succeeded"
+          },
+          {
+            "stepIndex": 0,
+            "operation": "wait",
+            "target": null,
+            "outcome": "tool_succeeded"
+          },
+          {
+            "stepIndex": 0,
+            "operation": "wait",
+            "target": null,
+            "outcome": "tool_succeeded"
+          },
+          {
+            "stepIndex": 0,
+            "operation": "wait",
+            "target": null,
+            "outcome": "tool_succeeded"
+          }
+        ],
+        "progressAssessment": [
+          {
+            "stepIndex": 0,
+            "intent": "Expand Finance, select Q4 forecast, and open that report.",
+            "judgment": "model_reported_complete"
+          }
+        ],
+        "inputRequired": null,
+        "observation": {
+          "snapshot": "- main\n  - heading \"Component task complete\" [level=1, ref=e1]\n  - paragraph\n    - StaticText \"The local fixture recorded the requested state.\"",
+          "truncated": false,
+          "fresh": true
+        },
+        "timing": {
+          "totalMs": 3554.872125,
+          "helperMs": 3552.2850420000004,
+          "navigationMs": 0,
+          "observationMs": 112.53328999999945,
+          "decisionMs": 1688.7596669999996,
+          "actionMs": 1585.4336649999993,
+          "settleMs": 162.42470900000012
+        },
+        "jev": {
+          "calls": 9,
+          "costUsd": 0.000511644
+        },
+        "resumable": false,
+        "resumeToken": null
+      },
+      "finalSnapshot": "- main\n  - heading \"Component task complete\" [level=1, ref=e1]\n  - paragraph\n    - StaticText \"The local fixture recorded the requested state.\"",
+      "events": [
+        {
+          "type": "complete",
+          "caseId": "tree-view",
+          "value": {
+            "branch": "Finance",
+            "report": "Q4 forecast"
+          }
+        }
+      ],
+      "verdict": "passed",
+      "finishedAt": "2026-09-25T17:08:50.597Z"
+    },
+    {
+      "id": "command-palette",
+      "family": "overlay",
+      "intent": "Open the command palette, search using the supplied query, and run Create report.",
+      "expected": {
+        "command": "Create report"
+      },
+      "startedAt": "2026-09-25T17:08:50.598Z",
+      "elapsedMs": 1733,
+      "exitCode": 0,
+      "result": {
+        "returnReason": "reported_complete",
+        "actions": [
+          {
+            "stepIndex": 0,
+            "operation": "click",
+            "target": "Open command palette",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "stepIndex": 0,
+            "operation": "fill",
+            "target": "Search commands",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "stepIndex": 0,
+            "operation": "press",
+            "target": "Search commands",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "stepIndex": 0,
+            "operation": "click",
+            "target": "Create report",
+            "outcome": "tool_succeeded"
+          }
+        ],
+        "progressAssessment": [
+          {
+            "stepIndex": 0,
+            "intent": "Open the command palette, search using the supplied query, and run Create report.",
+            "judgment": "model_reported_complete"
+          }
+        ],
+        "inputRequired": null,
+        "observation": {
+          "snapshot": "- main\n  - heading \"Component task complete\" [level=1, ref=e1]\n  - paragraph\n    - StaticText \"The local fixture recorded the requested state.\"",
+          "truncated": false,
+          "fresh": true
+        },
+        "timing": {
+          "totalMs": 1287.072375,
+          "helperMs": 1284.933958,
+          "navigationMs": 0,
+          "observationMs": 68.056666,
+          "decisionMs": 928.0464589999998,
+          "actionMs": 43.2521680000001,
+          "settleMs": 243.73025000000018
+        },
+        "jev": {
+          "calls": 5,
+          "costUsd": 0.00029967
+        },
+        "resumable": false,
+        "resumeToken": null
+      },
+      "finalSnapshot": "- main\n  - heading \"Component task complete\" [level=1, ref=e1]\n  - paragraph\n    - StaticText \"The local fixture recorded the requested state.\"",
+      "events": [
+        {
+          "type": "complete",
+          "caseId": "command-palette",
+          "value": {
+            "command": "Create report"
+          }
+        }
+      ],
+      "verdict": "passed",
+      "finishedAt": "2026-09-25T17:08:52.355Z"
+    },
+    {
+      "id": "popover-filters",
+      "family": "overlay",
+      "intent": "Open Filters, enable Overdue only, and apply the filters.",
+      "expected": {
+        "overdue": true,
+        "unassigned": false
+      },
+      "startedAt": "2026-09-25T17:08:52.355Z",
+      "elapsedMs": 1406,
+      "exitCode": 0,
+      "result": {
+        "returnReason": "reported_complete",
+        "actions": [
+          {
+            "stepIndex": 0,
+            "operation": "click",
+            "target": "Filters",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "stepIndex": 0,
+            "operation": "check",
+            "target": "Overdue",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "stepIndex": 0,
+            "operation": "click",
+            "target": "Apply filters",
+            "outcome": "tool_succeeded"
+          }
+        ],
+        "progressAssessment": [
+          {
+            "stepIndex": 0,
+            "intent": "Open Filters, enable Overdue only, and apply the filters.",
+            "judgment": "model_reported_complete"
+          }
+        ],
+        "inputRequired": null,
+        "observation": {
+          "snapshot": "- main\n  - heading \"Component task complete\" [level=1, ref=e1]\n  - paragraph\n    - StaticText \"The local fixture recorded the requested state.\"",
+          "truncated": false,
+          "fresh": true
+        },
+        "timing": {
+          "totalMs": 987.8985419999999,
+          "helperMs": 985.974125,
+          "navigationMs": 0,
+          "observationMs": 51.14021000000014,
+          "decisionMs": 736.713209,
+          "actionMs": 34.01520800000003,
+          "settleMs": 162.4772079999999
+        },
+        "jev": {
+          "calls": 4,
+          "costUsd": 0.00021008399999999998
+        },
+        "resumable": false,
+        "resumeToken": null
+      },
+      "finalSnapshot": "- main\n  - heading \"Component task complete\" [level=1, ref=e1]\n  - paragraph\n    - StaticText \"The local fixture recorded the requested state.\"",
+      "events": [
+        {
+          "type": "complete",
+          "caseId": "popover-filters",
+          "value": {
+            "overdue": true,
+            "unassigned": false
+          }
+        }
+      ],
+      "verdict": "passed",
+      "finishedAt": "2026-09-25T17:08:53.783Z"
+    },
+    {
+      "id": "stepper",
+      "family": "workflow",
+      "intent": "Create a private project named with the supplied project name and finish the stepper.",
+      "expected": {
+        "name": "Northstar review",
+        "access": "private"
+      },
+      "startedAt": "2026-09-25T17:08:53.784Z",
+      "elapsedMs": 1881,
+      "exitCode": 0,
+      "result": {
+        "returnReason": "reported_complete",
+        "actions": [
+          {
+            "stepIndex": 0,
+            "operation": "click",
+            "target": "Begin",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "stepIndex": 0,
+            "operation": "fill",
+            "target": "Project name",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "stepIndex": 0,
+            "operation": "select",
+            "target": "Access",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "stepIndex": 0,
+            "operation": "click",
+            "target": "Review",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "stepIndex": 0,
+            "operation": "click",
+            "target": "Create project",
+            "outcome": "tool_succeeded"
+          }
+        ],
+        "progressAssessment": [
+          {
+            "stepIndex": 0,
+            "intent": "Create a private project named with the supplied project name and finish the stepper.",
+            "judgment": "model_reported_complete"
+          }
+        ],
+        "inputRequired": null,
+        "observation": {
+          "snapshot": "- main\n  - heading \"Component task complete\" [level=1, ref=e1]\n  - paragraph\n    - StaticText \"The local fixture recorded the requested state.\"",
+          "truncated": false,
+          "fresh": true
+        },
+        "timing": {
+          "totalMs": 1425.2551250000001,
+          "helperMs": 1423.162667,
+          "navigationMs": 0,
+          "observationMs": 69.99520700000011,
+          "decisionMs": 1134.4135000000003,
+          "actionMs": 53.94716699999981,
+          "settleMs": 162.18716800000004
+        },
+        "jev": {
+          "calls": 6,
+          "costUsd": 0.000388038
+        },
+        "resumable": false,
+        "resumeToken": null
+      },
+      "finalSnapshot": "- main\n  - heading \"Component task complete\" [level=1, ref=e1]\n  - paragraph\n    - StaticText \"The local fixture recorded the requested state.\"",
+      "events": [
+        {
+          "type": "complete",
+          "caseId": "stepper",
+          "value": {
+            "name": "Northstar review",
+            "access": "private"
+          }
+        }
+      ],
+      "verdict": "passed",
+      "finishedAt": "2026-09-25T17:08:55.693Z"
+    },
+    {
+      "id": "drawer",
+      "family": "overlay",
+      "intent": "Open the account drawer and go to API keys.",
+      "expected": {
+        "destination": "API keys"
+      },
+      "startedAt": "2026-09-25T17:08:55.694Z",
+      "elapsedMs": 1166,
+      "exitCode": 0,
+      "result": {
+        "returnReason": "reported_complete",
+        "actions": [
+          {
+            "stepIndex": 0,
+            "operation": "click",
+            "target": "Open account drawer",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "stepIndex": 0,
+            "operation": "click",
+            "target": "API keys",
+            "outcome": "tool_succeeded"
+          }
+        ],
+        "progressAssessment": [
+          {
+            "stepIndex": 0,
+            "intent": "Open the account drawer and go to API keys.",
+            "judgment": "model_reported_complete"
+          }
+        ],
+        "inputRequired": null,
+        "observation": {
+          "snapshot": "- main\n  - heading \"Component task complete\" [level=1, ref=e1]\n  - paragraph\n    - StaticText \"The local fixture recorded the requested state.\"",
+          "truncated": false,
+          "fresh": true
+        },
+        "timing": {
+          "totalMs": 702.7163330000001,
+          "helperMs": 700.870708,
+          "navigationMs": 0,
+          "observationMs": 38.23349899999994,
+          "decisionMs": 554.7266670000001,
+          "actionMs": 25.061250000000086,
+          "settleMs": 81.32787499999995
+        },
+        "jev": {
+          "calls": 3,
+          "costUsd": 0.000148638
+        },
+        "resumable": false,
+        "resumeToken": null
+      },
+      "finalSnapshot": "- main\n  - heading \"Component task complete\" [level=1, ref=e1]\n  - paragraph\n    - StaticText \"The local fixture recorded the requested state.\"",
+      "events": [
+        {
+          "type": "complete",
+          "caseId": "drawer",
+          "value": {
+            "destination": "API keys"
+          }
+        }
+      ],
+      "verdict": "passed",
+      "finishedAt": "2026-09-25T17:08:56.884Z"
+    },
+    {
+      "id": "carousel",
+      "family": "navigation",
+      "intent": "Move through the carousel until Alpine lodge is visible, then choose that stay.",
+      "expected": {
+        "stay": "Alpine lodge"
+      },
+      "startedAt": "2026-09-25T17:08:56.885Z",
+      "elapsedMs": 1571,
+      "exitCode": 0,
+      "result": {
+        "returnReason": "reported_complete",
+        "actions": [
+          {
+            "stepIndex": 0,
+            "operation": "click",
+            "target": "Next slide",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "stepIndex": 0,
+            "operation": "click",
+            "target": "Next slide",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "stepIndex": 0,
+            "operation": "click",
+            "target": "Choose this stay",
+            "outcome": "tool_succeeded"
+          }
+        ],
+        "progressAssessment": [
+          {
+            "stepIndex": 0,
+            "intent": "Move through the carousel until Alpine lodge is visible, then choose that stay.",
+            "judgment": "model_reported_complete"
+          }
+        ],
+        "inputRequired": null,
+        "observation": {
+          "snapshot": "- main\n  - heading \"Component task complete\" [level=1, ref=e1]\n  - paragraph\n    - StaticText \"The local fixture recorded the requested state.\"",
+          "truncated": false,
+          "fresh": true
+        },
+        "timing": {
+          "totalMs": 1126.057,
+          "helperMs": 1124.230291,
+          "navigationMs": 0,
+          "observationMs": 55.48333299999996,
+          "decisionMs": 797.3969580000003,
+          "actionMs": 25.903500000000008,
+          "settleMs": 243.7857509999999
+        },
+        "jev": {
+          "calls": 4,
+          "costUsd": 0.00021319200000000001
+        },
+        "resumable": false,
+        "resumeToken": null
+      },
+      "finalSnapshot": "- main\n  - heading \"Component task complete\" [level=1, ref=e1]\n  - paragraph\n    - StaticText \"The local fixture recorded the requested state.\"",
+      "events": [
+        {
+          "type": "complete",
+          "caseId": "carousel",
+          "value": {
+            "stay": "Alpine lodge"
+          }
+        }
+      ],
+      "verdict": "passed",
+      "finishedAt": "2026-09-25T17:08:58.478Z"
+    },
+    {
+      "id": "delayed-toast",
+      "family": "feedback",
+      "intent": "Run the fake sync and wait until the page confirms Sync complete.",
+      "expected": {
+        "status": "Sync complete"
+      },
+      "startedAt": "2026-09-25T17:08:58.479Z",
+      "elapsedMs": 1912,
+      "exitCode": 0,
+      "result": {
+        "returnReason": "reported_complete",
+        "actions": [
+          {
+            "stepIndex": 0,
+            "operation": "click",
+            "target": "Run sync",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "stepIndex": 0,
+            "operation": "wait",
+            "target": null,
+            "outcome": "tool_succeeded"
+          },
+          {
+            "stepIndex": 0,
+            "operation": "wait",
+            "target": null,
+            "outcome": "tool_succeeded"
+          }
+        ],
+        "progressAssessment": [
+          {
+            "stepIndex": 0,
+            "intent": "Run the fake sync and wait until the page confirms Sync complete.",
+            "judgment": "model_reported_complete"
+          }
+        ],
+        "inputRequired": null,
+        "observation": {
+          "snapshot": "- main\n  - heading \"Data sync\" [level=1, ref=e1]\n  - button \"Run sync\" [disabled, ref=e2]\n  - status\n    - StaticText \"Sync complete\"",
+          "truncated": false,
+          "fresh": true
+        },
+        "timing": {
+          "totalMs": 1486.654708,
+          "helperMs": 1484.042583,
+          "navigationMs": 0,
+          "observationMs": 42.712833999999816,
+          "decisionMs": 732.3551660000002,
+          "actionMs": 626.2842499999999,
+          "settleMs": 81.17441700000006
+        },
+        "jev": {
+          "calls": 4,
+          "costUsd": 0.000191898
+        },
+        "resumable": false,
+        "resumeToken": null
+      },
+      "finalSnapshot": "- main\n  - heading \"Data sync\" [level=1, ref=e1]\n  - button \"Run sync\" [disabled, ref=e2]\n  - status\n    - StaticText \"Sync complete\"",
+      "events": [
+        {
+          "type": "started",
+          "caseId": "delayed-toast"
+        },
+        {
+          "type": "complete",
+          "caseId": "delayed-toast",
+          "value": {
+            "status": "Sync complete"
+          }
+        }
+      ],
+      "verdict": "passed",
+      "finishedAt": "2026-09-25T17:09:00.413Z"
+    },
+    {
+      "id": "spinbutton",
+      "family": "input",
+      "intent": "Set Seats to the supplied count and save capacity.",
+      "expected": {
+        "seats": 12
+      },
+      "startedAt": "2026-09-25T17:09:00.413Z",
+      "elapsedMs": 1183,
+      "exitCode": 0,
+      "result": {
+        "returnReason": "reported_complete",
+        "actions": [
+          {
+            "stepIndex": 0,
+            "operation": "fill",
+            "target": "Seats",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "stepIndex": 0,
+            "operation": "click",
+            "target": "Save capacity",
+            "outcome": "tool_succeeded"
+          }
+        ],
+        "progressAssessment": [
+          {
+            "stepIndex": 0,
+            "intent": "Set Seats to the supplied count and save capacity.",
+            "judgment": "model_reported_complete"
+          }
+        ],
+        "inputRequired": null,
+        "observation": {
+          "snapshot": "- main\n  - heading \"Component task complete\" [level=1, ref=e1]\n  - paragraph\n    - StaticText \"The local fixture recorded the requested state.\"",
+          "truncated": false,
+          "fresh": true
+        },
+        "timing": {
+          "totalMs": 726.7742920000001,
+          "helperMs": 724.995375,
+          "navigationMs": 0,
+          "observationMs": 35.11062499999997,
+          "decisionMs": 588.974291,
+          "actionMs": 18.288542000000007,
+          "settleMs": 81.26816599999995
+        },
+        "jev": {
+          "calls": 3,
+          "costUsd": 0.000170352
+        },
+        "resumable": false,
+        "resumeToken": null
+      },
+      "finalSnapshot": "- main\n  - heading \"Component task complete\" [level=1, ref=e1]\n  - paragraph\n    - StaticText \"The local fixture recorded the requested state.\"",
+      "events": [
+        {
+          "type": "complete",
+          "caseId": "spinbutton",
+          "value": {
+            "seats": 12
+          }
+        }
+      ],
+      "verdict": "passed",
+      "finishedAt": "2026-09-25T17:09:01.622Z"
+    },
+    {
+      "id": "tri-state-checkbox",
+      "family": "selection",
+      "intent": "Select all notification channels using the parent checkbox, then save.",
+      "expected": {
+        "email": true,
+        "sms": true,
+        "push": true
+      },
+      "startedAt": "2026-09-25T17:09:01.625Z",
+      "elapsedMs": 1572,
+      "exitCode": 0,
+      "result": {
+        "returnReason": "reported_complete",
+        "actions": [
+          {
+            "stepIndex": 0,
+            "operation": "check",
+            "target": "All channels",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "stepIndex": 0,
+            "operation": "click",
+            "target": "Save channels",
+            "outcome": "tool_succeeded"
+          }
+        ],
+        "progressAssessment": [
+          {
+            "stepIndex": 0,
+            "intent": "Select all notification channels using the parent checkbox, then save.",
+            "judgment": "model_reported_complete"
+          }
+        ],
+        "inputRequired": null,
+        "observation": {
+          "snapshot": "- main\n  - heading \"Component task complete\" [level=1, ref=e1]\n  - paragraph\n    - StaticText \"The local fixture recorded the requested state.\"",
+          "truncated": false,
+          "fresh": true
+        },
+        "timing": {
+          "totalMs": 1124.6442499999998,
+          "helperMs": 1122.094333,
+          "navigationMs": 0,
+          "observationMs": 30.729832000000215,
+          "decisionMs": 987.8410409999999,
+          "actionMs": 20.885457999999858,
+          "settleMs": 81.14829199999986
+        },
+        "jev": {
+          "calls": 3,
+          "costUsd": 0.000160566
+        },
+        "resumable": false,
+        "resumeToken": null
+      },
+      "finalSnapshot": "- main\n  - heading \"Component task complete\" [level=1, ref=e1]\n  - paragraph\n    - StaticText \"The local fixture recorded the requested state.\"",
+      "events": [
+        {
+          "type": "complete",
+          "caseId": "tri-state-checkbox",
+          "value": {
+            "email": true,
+            "sms": true,
+            "push": true
+          }
+        }
+      ],
+      "verdict": "passed",
+      "finishedAt": "2026-09-25T17:09:03.225Z"
+    },
+    {
+      "id": "rating",
+      "family": "selection",
+      "intent": "Choose a 4 star rating and submit the review.",
+      "expected": {
+        "rating": 4
+      },
+      "startedAt": "2026-09-25T17:09:03.226Z",
+      "elapsedMs": 1245,
+      "exitCode": 0,
+      "result": {
+        "returnReason": "reported_complete",
+        "actions": [
+          {
+            "stepIndex": 0,
+            "operation": "click",
+            "target": "4 stars",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "stepIndex": 0,
+            "operation": "click",
+            "target": "Submit review",
+            "outcome": "tool_succeeded"
+          }
+        ],
+        "progressAssessment": [
+          {
+            "stepIndex": 0,
+            "intent": "Choose a 4 star rating and submit the review.",
+            "judgment": "model_reported_complete"
+          }
+        ],
+        "inputRequired": null,
+        "observation": {
+          "snapshot": "- main\n  - heading \"Component task complete\" [level=1, ref=e1]\n  - paragraph\n    - StaticText \"The local fixture recorded the requested state.\"",
+          "truncated": false,
+          "fresh": true
+        },
+        "timing": {
+          "totalMs": 811.4559999999999,
+          "helperMs": 809.796791,
+          "navigationMs": 0,
+          "observationMs": 39.78241700000012,
+          "decisionMs": 582.9078340000001,
+          "actionMs": 23.330500999999913,
+          "settleMs": 162.44991700000003
+        },
+        "jev": {
+          "calls": 3,
+          "costUsd": 0.000167076
+        },
+        "resumable": false,
+        "resumeToken": null
+      },
+      "finalSnapshot": "- main\n  - heading \"Component task complete\" [level=1, ref=e1]\n  - paragraph\n    - StaticText \"The local fixture recorded the requested state.\"",
+      "events": [
+        {
+          "type": "complete",
+          "caseId": "rating",
+          "value": {
+            "rating": 4
+          }
+        }
+      ],
+      "verdict": "passed",
+      "finishedAt": "2026-09-25T17:09:04.496Z"
+    },
+    {
+      "id": "breadcrumb",
+      "family": "navigation",
+      "intent": "Use the breadcrumb trail to open Workspace, then open Notifications.",
+      "expected": {
+        "destination": "Notifications"
+      },
+      "startedAt": "2026-09-25T17:09:04.497Z",
+      "elapsedMs": 1281,
+      "exitCode": 0,
+      "result": {
+        "returnReason": "reported_complete",
+        "actions": [
+          {
+            "stepIndex": 0,
+            "operation": "click",
+            "target": "Workspace",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "stepIndex": 0,
+            "operation": "click",
+            "target": "Notifications",
+            "outcome": "tool_succeeded"
+          }
+        ],
+        "progressAssessment": [
+          {
+            "stepIndex": 0,
+            "intent": "Use the breadcrumb trail to open Workspace, then open Notifications.",
+            "judgment": "model_reported_complete"
+          }
+        ],
+        "inputRequired": null,
+        "observation": {
+          "snapshot": "- main\n  - heading \"Component task complete\" [level=1, ref=e1]\n  - paragraph\n    - StaticText \"The local fixture recorded the requested state.\"",
+          "truncated": false,
+          "fresh": true
+        },
+        "timing": {
+          "totalMs": 869.6853329999999,
+          "helperMs": 867.986042,
+          "navigationMs": 0,
+          "observationMs": 38.23591600000009,
+          "decisionMs": 713.1717090000002,
+          "actionMs": 33.957292000000166,
+          "settleMs": 81.30408399999999
+        },
+        "jev": {
+          "calls": 3,
+          "costUsd": 0.000159936
+        },
+        "resumable": false,
+        "resumeToken": null
+      },
+      "finalSnapshot": "- main\n  - heading \"Component task complete\" [level=1, ref=e1]\n  - paragraph\n    - StaticText \"The local fixture recorded the requested state.\"",
+      "events": [
+        {
+          "type": "complete",
+          "caseId": "breadcrumb",
+          "value": {
+            "destination": "Notifications"
+          }
+        }
+      ],
+      "verdict": "passed",
+      "finishedAt": "2026-09-25T17:09:05.798Z"
+    },
+    {
+      "id": "missing-target",
+      "family": "boundary",
+      "intent": "Open the Billing settings panel. If that target is absent, return control without changing anything.",
+      "expected": null,
+      "startedAt": "2026-09-25T17:09:05.798Z",
+      "elapsedMs": 685,
+      "exitCode": 0,
+      "result": {
+        "returnReason": "handoff",
+        "actions": [],
+        "progressAssessment": [],
+        "inputRequired": null,
+        "observation": {
+          "snapshot": "- main\n  - heading \"Settings\" [level=1, ref=e1]\n  - paragraph\n    - StaticText \"Profile and security settings are available.\"\n  - button \"Open profile settings\" [ref=e2]\n  - button \"Open security settings\" [ref=e3]",
+          "truncated": false,
+          "fresh": true
+        },
+        "timing": {
+          "totalMs": 251.83333400000004,
+          "helperMs": 249.93366599999996,
+          "navigationMs": 0,
+          "observationMs": 9.212625000000003,
+          "decisionMs": 239.926625,
+          "actionMs": 0,
+          "settleMs": 0
+        },
+        "jev": {
+          "calls": 1,
+          "costUsd": 0.000046116
+        },
+        "resumable": true,
+        "resumeToken": "[redacted]"
+      },
+      "finalSnapshot": "- main\n  - heading \"Settings\" [level=1, ref=e1]\n  - paragraph\n    - StaticText \"Profile and security settings are available.\"\n  - button \"Open profile settings\" [ref=e2]\n  - button \"Open security settings\" [ref=e3]",
+      "events": [],
+      "verdict": "passed",
+      "finishedAt": "2026-09-25T17:09:06.507Z"
+    },
+    {
+      "id": "file-upload",
+      "family": "input",
+      "intent": "Upload the supplied contract file and submit it.",
+      "expected": {
+        "uploaded": true
+      },
+      "startedAt": "2026-09-25T17:09:06.508Z",
+      "elapsedMs": 1147,
+      "exitCode": 0,
+      "result": {
+        "returnReason": "reported_complete",
+        "actions": [
+          {
+            "stepIndex": 0,
+            "operation": "upload",
+            "target": "Contract file",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "stepIndex": 0,
+            "operation": "click",
+            "target": "Submit contract",
+            "outcome": "tool_succeeded"
+          }
+        ],
+        "progressAssessment": [
+          {
+            "stepIndex": 0,
+            "intent": "Upload the supplied contract file and submit it.",
+            "judgment": "model_reported_complete"
+          }
+        ],
+        "inputRequired": null,
+        "observation": {
+          "snapshot": "- main\n  - heading \"Component task complete\" [level=1, ref=e1]\n  - paragraph\n    - StaticText \"The local fixture recorded the requested state.\"",
+          "truncated": false,
+          "fresh": true
+        },
+        "timing": {
+          "totalMs": 634.104875,
+          "helperMs": 632.229875,
+          "navigationMs": 0,
+          "observationMs": 27.31087400000007,
+          "decisionMs": 564.163959,
+          "actionMs": 39.325417000000016,
+          "settleMs": 0
+        },
+        "jev": {
+          "calls": 3,
+          "costUsd": 0.000162288
+        },
+        "resumable": false,
+        "resumeToken": null
+      },
+      "finalSnapshot": "- main\n  - heading \"Component task complete\" [level=1, ref=e1]\n  - paragraph\n    - StaticText \"The local fixture recorded the requested state.\"",
+      "events": [
+        {
+          "type": "complete",
+          "caseId": "file-upload",
+          "value": {
+            "uploaded": true
+          }
+        }
+      ],
+      "verdict": "passed",
+      "finishedAt": "2026-09-25T17:09:07.680Z"
+    },
+    {
+      "id": "hover-card",
+      "family": "overlay",
+      "intent": "Open the keyboard shortcuts link that is available only in the Account hover card.",
+      "expected": {
+        "destination": "Keyboard shortcuts"
+      },
+      "startedAt": "2026-09-25T17:09:07.680Z",
+      "elapsedMs": 1231,
+      "exitCode": 0,
+      "result": {
+        "returnReason": "reported_complete",
+        "actions": [
+          {
+            "stepIndex": 0,
+            "operation": "hover",
+            "target": "Account",
+            "outcome": "tool_succeeded"
+          },
+          {
+            "stepIndex": 0,
+            "operation": "click",
+            "target": "Keyboard shortcuts",
+            "outcome": "tool_succeeded"
+          }
+        ],
+        "progressAssessment": [
+          {
+            "stepIndex": 0,
+            "intent": "Open the keyboard shortcuts link that is available only in the Account hover card.",
+            "judgment": "model_reported_complete"
+          }
+        ],
+        "inputRequired": null,
+        "observation": {
+          "snapshot": "- main\n  - heading \"Component task complete\" [level=1, ref=e1]\n  - paragraph\n    - StaticText \"The local fixture recorded the requested state.\"",
+          "truncated": false,
+          "fresh": true
+        },
+        "timing": {
+          "totalMs": 801.4872919999999,
+          "helperMs": 799.84325,
+          "navigationMs": 0,
+          "observationMs": 34.64433299999985,
+          "decisionMs": 657.8625830000001,
+          "actionMs": 24.69350099999997,
+          "settleMs": 81.23712499999999
+        },
+        "jev": {
+          "calls": 3,
+          "costUsd": 0.000151116
+        },
+        "resumable": false,
+        "resumeToken": null
+      },
+      "finalSnapshot": "- main\n  - heading \"Component task complete\" [level=1, ref=e1]\n  - paragraph\n    - StaticText \"The local fixture recorded the requested state.\"",
+      "events": [
+        {
+          "type": "complete",
+          "caseId": "hover-card",
+          "value": {
+            "destination": "Keyboard shortcuts"
+          }
+        }
+      ],
+      "verdict": "passed",
+      "finishedAt": "2026-09-25T17:09:08.931Z"
+    }
+  ],
+  "cleanup": {
+    "browserClosed": true,
+    "serverClosed": true,
+    "temporaryFilesRemoved": true
+  },
+  "browserVersion": "agent-browser 0.33.2",
+  "summary": {
+    "passed": 26,
+    "total": 26,
+    "byFamily": {
+      "disclosure": {
+        "passed": 1,
+        "total": 1
+      },
+      "navigation": {
+        "passed": 4,
+        "total": 4
+      },
+      "menu": {
+        "passed": 2,
+        "total": 2
+      },
+      "overlay": {
+        "passed": 6,
+        "total": 6
+      },
+      "selection": {
+        "passed": 6,
+        "total": 6
+      },
+      "data": {
+        "passed": 2,
+        "total": 2
+      },
+      "workflow": {
+        "passed": 1,
+        "total": 1
+      },
+      "feedback": {
+        "passed": 1,
+        "total": 1
+      },
+      "input": {
+        "passed": 2,
+        "total": 2
+      },
+      "boundary": {
+        "passed": 1,
+        "total": 1
+      }
+    },
+    "jevCostUsd": 0.005403594000000001
+  },
+  "finishedAt": "2026-09-25T17:09:09.039Z",
+  "verdict": "passed",
+  "publicationRedaction": "Opaque resume tokens replaced with [redacted] before publication."
+}
