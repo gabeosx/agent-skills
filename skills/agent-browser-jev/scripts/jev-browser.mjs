@@ -1,5 +1,5 @@
 import { randomUUID } from 'node:crypto';
-import { discoverActions } from './controls.mjs';
+import { discoverActions, requestedTableValue } from './controls.mjs';
 export { discoverActions } from './controls.mjs';
 
 // In-process serialization complements (and does not replace) the caller's lease.
@@ -33,7 +33,7 @@ function assertBudget(budget) {
  * reported_complete is a model judgment, never verified business success.
  */
 export async function act({ browser, decide, intentOrSteps, suppliedValues = {},
-  scope, authorize = () => false, budget = {}, continuation, context = '', initialUrl }) {
+  scope, authorize = () => false, budget = {}, continuation, context = '', initialUrl, onEvent }) {
   const steps = structuredClone(Array.isArray(intentOrSteps) ? intentOrSteps : [intentOrSteps]);
   if (!steps.length || steps.some(s => typeof s !== 'string' || !s.trim()) ||
       typeof scope !== 'string' || !scope.trim() || !browser?.sessionId || typeof decide !== 'function') {
@@ -62,17 +62,28 @@ export async function act({ browser, decide, intentOrSteps, suppliedValues = {},
     observationFresh: false, inputRequired: null, navigationMs:0,
     timing: { observationMs:0, decisionMs:0, actionMs:0, settleMs:0 } };
   const priorHistory = structuredClone(continuation?.history ?? []);
+  let priorTableValue = null, conflictingTableValue = false;
   let step = continuation?.stepIndex ?? 0;
   let pending;
   const started = performance.now();
+  // Evaluation callers can retain a trajectory. Normal invocations provide no
+  // sink, so page text and caller values never acquire a new persistence path.
+  const emit = event => {
+    if (typeof onEvent !== 'function') return;
+    try { onEvent(structuredClone(event)); } catch { /* diagnostics cannot change a browser task */ }
+  };
   const history = () => [...priorHistory, ...result.actions.map(a => ({ stepIndex:a.stepIndex, action:a.action, outcome:a.outcome }))].slice(-30);
-  const finish = reason => ({ ...result,
-    observationFresh:reason === 'superseded_observation' ? false : result.observationFresh,
-    returnReason:reason, elapsedMs:performance.now()-started,
-    continuation: reason === 'reported_complete' ? null : {
+  const finish = reason => {
+    emit({ type:'finish', reason, stepIndex:step, observationFresh:result.observationFresh,
+      actionCount:result.actions.length, decisionCount:result.decisions.length });
+    return { ...result,
+      observationFresh:reason === 'superseded_observation' ? false : result.observationFresh,
+      returnReason:reason, elapsedMs:performance.now()-started,
+      continuation: reason === 'reported_complete' ? null : {
       schema:1, sessionId:browser.sessionId, intentOrSteps:steps, scope, stepIndex:step,
       suppliedValues:values, history:history(), progressAssessment:result.progressAssessment,
-    } });
+      } };
+  };
   async function timed(kind, operation) {
     const start = performance.now();
     try { return await bounded(operation); }
@@ -111,9 +122,26 @@ export async function act({ browser, decide, intentOrSteps, suppliedValues = {},
       if (session.revision !== revision) return finish('superseded_observation');
       if (typeof observation.snapshot !== 'string') return finish('invalid_observation');
       if (JSON.stringify(observation).length > limits.maxObservationChars) return finish('observation_too_large');
+      const observedTableValue=requestedTableValue(observation,steps[step]);
+      if (observedTableValue && !conflictingTableValue) {
+        if (priorTableValue && priorTableValue.value!==observedTableValue.value) {
+          priorTableValue=null;conflictingTableValue=true;
+        } else priorTableValue={...observedTableValue,source:'observed_table_prior'};
+      }
       const binding = `${browser.sessionId}:${revision}:${randomUUID()}`;
       const candidates = {};
-      for (const action of discoverActions(observation, values)) {
+      const performed = [...priorHistory, ...result.actions].filter(entry=>entry.stepIndex===step && entry.outcome==='tool_succeeded');
+      for (const action of discoverActions(observation, values, steps[step],
+        conflictingTableValue?null:priorTableValue)) {
+        // Exact-text tree targets can toggle between expanded and collapsed
+        // without changing their label. One successful click is enough for
+        // this explicit target; do not let the model toggle it repeatedly.
+        if (action.purpose === 'observed_tree_text' && performed.some(entry =>
+          entry.action?.purpose === 'observed_tree_text' && entry.action.text === action.text)) continue;
+        // Once the exact requested icon was clicked, reopening its submenu
+        // cannot improve that selection and may undo or repeat the action.
+        if (['matching_menu_icon','reveal_icon_submenu'].includes(action.purpose) && performed.some(entry=>
+          entry.action?.purpose === 'matching_menu_icon')) continue;
         freeze(action);
         // Async/truthy policy results must never silently authorize an action.
         if (authorize(action, observation) === true) candidates[`c${Object.keys(candidates).length}`] = action;
@@ -125,6 +153,8 @@ export async function act({ browser, decide, intentOrSteps, suppliedValues = {},
       candidates.step_complete = { op: 'step_complete' };
       candidates.handoff = { op: 'handoff' };
       freeze(candidates);
+      emit({ type:'frontier', stepIndex:step, observation,
+        candidates, actionCount:result.actions.length });
       const request = freeze({ binding, sessionId: browser.sessionId, intent: steps[step],
         stepIndex: step, scope, context, observation, candidates, suppliedValues: values,
         previousObservation: result.actions.at(-1)?.before.snapshot,
@@ -138,6 +168,8 @@ export async function act({ browser, decide, intentOrSteps, suppliedValues = {},
       const action = candidates[decision.choice];
       result.decisions.push({ stepIndex: step, choice: decision.choice, op: action.op,
         confidence: decision.confidence, cost: decision.cost, elapsedMs });
+      emit({ type:'decision', stepIndex:step, choice:decision.choice, action,
+        confidence:decision.confidence, cost:decision.cost, elapsedMs });
       if (action.op === 'request_input') {
         result.inputRequired = { name:action.name, role:action.role,
           key:action.name || 'value', instruction:'Supply the exact non-secret field value, then resume. The target will be observed again.' };
@@ -146,7 +178,10 @@ export async function act({ browser, decide, intentOrSteps, suppliedValues = {},
       if (action.op === 'handoff') return finish('handoff');
       if (action.op === 'step_complete') {
         result.progressAssessment.push({ stepIndex: step, intent: steps[step], judgment: 'model_reported_complete' });
-        if (++step === steps.length) return finish('reported_complete');
+        step++;
+        priorTableValue=null;
+        conflictingTableValue=false;
+        if (step === steps.length) return finish('reported_complete');
         pending = { revision, observation };
         continue;
       }
@@ -163,10 +198,28 @@ export async function act({ browser, decide, intentOrSteps, suppliedValues = {},
         // A timed-out gesture may have happened. Read back once for the caller,
         // but never replay the gesture or allow another gesture in this run.
         try { entry.after = await observe(); } catch { result.observationFresh = false; }
+        emit({ type:'action', stepIndex:step, action, before:observation,
+          after:entry.after ?? null, outcome:entry.outcome });
         return finish('action_outcome_unknown');
       }
       const afterRevision = ++session.revision;
       entry.after = await observe();
+      // Some menu libraries delay opening a submenu after hover. Give this
+      // specifically grounded parent hover one bounded settle before deciding.
+      if (action.op === 'hover' && action.purpose === 'reveal_icon_submenu') {
+        result.observationFresh = false;
+        await timed('settleMs', () => new Promise(resolve => setTimeout(resolve, 450)));
+        entry.after = await observe();
+      }
+      // A prefix fill can update the textbox immediately while an autocomplete
+      // menu appears only after its debounce. Observe that later UI before Jev
+      // decides it needs a missing value; ordinary text fills stay fast.
+      if (action.op === 'fill' && ['textbox','searchbox'].includes(action.role) &&
+          /\b(?:autocomplete|suggestions?|starts? with)\b/i.test(steps[step])) {
+        result.observationFresh = false;
+        await timed('settleMs', () => new Promise(resolve => setTimeout(resolve, 450)));
+        entry.after = await observe();
+      }
       // Native click success can precede an asynchronous render. Only poll when
       // the immediate observation is unchanged; do not ask the model to decide
       // again against a screen whose transition may still be in flight.
@@ -185,6 +238,8 @@ export async function act({ browser, decide, intentOrSteps, suppliedValues = {},
         entry.after = await observe();
       }
       result.latestObservation = entry.after;
+      emit({ type:'action', stepIndex:step, action, before:observation,
+        after:entry.after, outcome:entry.outcome });
       if (session.revision !== afterRevision) return finish('superseded_observation');
       if (action.op === 'set_date' && entry.after.snapshot === entry.before.snapshot) return finish('no_progress');
       const recent = result.actions.slice(-3);

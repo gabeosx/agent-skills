@@ -24,6 +24,10 @@ Before editing:
 
 Do not read every skill in full. Select only the skills relevant to the task.
 
+## Benchmark Integration And Improvement
+
+When introducing a benchmark tool or running a benchmark-driven improvement campaign for any skill, read and follow [`skills/benchmark-improvement-loop/SKILL.md`](../skills/benchmark-improvement-loop/SKILL.md) as well as the affected skill. Keep first-attempt, retry-trained and untouched held-out results distinct; independently verify outcomes and preserve failures. A new benchmark or an existing campaign's prior budget does not itself authorize paid runs, unattended work, or additional external services. This routing does not change the release and validation contract below.
+
 ## Mandatory Versioning And Changelog Contract
 
 Every change that affects a skill must update all of the following in the same working change or pull request:

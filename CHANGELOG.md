@@ -6,6 +6,12 @@ All notable skill changes are recorded in this file. Each skill is versioned ind
 
 ### Repository
 
+- Updated the Agent Browser Jev catalog entry for its WebArena-Verified lane and persistent campaign dashboard.
+
+- Routed new benchmark integrations and benchmark-driven improvement campaigns through the reusable Benchmark Improvement Loop skill while preserving each affected skill's own release and validation requirements.
+
+- Updated the skill catalog to point to the expanded component matrix, paired improvement study and optional Docker-contained BrowserGym lane.
+
 - Updated the skill catalog description and setup link to match the simpler Agent Browser Jev README.
 
 - Updated the Agent Browser Jev catalog entry for continuous control, resumable tasks and direct final-page evidence.
@@ -18,6 +24,77 @@ All notable skill changes are recorded in this file. Each skill is versioned ind
 
 - Added canonical agent instructions and a dependency-free release-contract validator requiring every affected skill change to include an independent Semantic Version increment, a matching root changelog entry, relevant validation, and scoped cleanup evidence.
 - Required repository-only changes to be recorded without inventing unrelated skill version bumps, and documented the definition of done and release-tagging workflow.
+
+## benchmark-improvement-loop 1.0.0 - 2026-09-28
+
+### Added
+
+- Added a reusable benchmark campaign workflow for agent skills: qualify independent evaluators, freeze comparable baselines and first-attempt task sets, separate practice retries from untouched holdout evidence, and audit source changes, failures, charges and scoped cleanup.
+- Documented the minimum manifest, trial, change and dashboard evidence needed to distinguish genuine transfer from benchmark-specific tuning without prescribing a particular benchmark runner or host service.
+
+## agent-browser-jev 1.2.0 - 2026-09-28
+
+### Added
+
+- Added BrowserGym's official WebArena-Verified adapter and WebArena-Verified 1.2.3 to the contained benchmark image, with a pinned, scoped Reddit environment lifecycle and a four-task browser-control development cohort.
+- Added negative and positive evaluator controls that prove same-page control, reject unsupported completion claims, and require full official reward before paid trials.
+- Added a persistent read-only localhost dashboard service that aggregates readiness records and campaigns, survives the invoking shell, and exposes health through an exact PID plus `/status.json` check.
+
+### Changed
+
+- Capture mutation request payloads while Playwright still owns the live response, replace incomplete duplicate redirect events, and pass the merged trace to the unchanged WebArena-Verified evaluator.
+- Retry an oversized full-page accessibility tree as a compact, interactive, depth-bounded observation; if that compact tree loses every actionable ref, fall back to a marked, bounded first window of the richer observed tree and its matching refs.
+- Withhold completion for state-changing goals until a matching observed mutation control succeeds, while preserving exact text literals stated in supported benchmark goals.
+- Preserve named-forum and sort context for Upvote and Subscribe workflows, require the completion mutation to match the requested verb, ignore nested subscriber-count controls, and open a hottest post through its exact first-article comments link when its title may lead directly to media.
+- Allow a single Jev decision up to 30 seconds after campaign traces showed otherwise-correct Save and Post flows terminating at the prior 15-second provider boundary; retries and provider fallbacks remain disabled.
+- Separate frozen first attempts, repaired development outcomes, and untouched holdout outcomes in campaign status and dashboard views; show stage, iteration, task cohorts, change impact, elapsed time, spend, and recent audit activity without serving raw traces.
+- Allow campaigns to predeclare holdout cases, withhold them until development converges, and enforce a single scored attempt; reserve unseen WebArena-Verified task 603 from a different intent-template family for this lane.
+- Prefer the newest real campaign over superseded readiness, promote a genuinely newer preparation record for the next campaign, and freeze elapsed time and limit state at the final audit event after completion.
+- Upgraded the BrowserGym image to Python 3.12 and the `0.14.3-wav1` image contract while preserving MiniWoB and original integration regression lanes.
+- Keep retrieval tasks outside Jev's browser-control contract and label the inspected public WebArena-Verified cohort as development evidence rather than claiming an untouched holdout.
+
+### Validation
+
+- A fresh focused WebArena-Verified campaign finished in three skill-change iterations at $0.045970848 measured spend: the candidate repaired the development view from 1/4 to 3/4 passes versus a 2/4 baseline, while task 595 exhausted its three retries and the separately reserved task 603 holdout scored 0/1 for both arms. The dashboard retains the failures and reports the terminal state as `complete_with_gaps`; this small scoped run is development evidence, not a general benchmark score.
+
+## agent-browser-jev 1.1.0 - 2026-09-27
+
+### Added
+
+- Added a paired component study that runs baseline and candidate helpers against identical disposable tasks, alternating execution order and retaining exact verifier conditions, source hashes, provider charges, timing, and synthetic step traces. Existing reports can also be compared offline.
+- Expanded the component matrix with native-date and similar-record selection tasks, plus seeded control-order, delayed-result, and hostile-page variations. A forbidden decoy action is an explicit verification failure.
+- Added opt-in evaluation events for observations, candidate actions, decisions, action readbacks, and completion reasons. Ordinary browser-task output and file behavior are unchanged.
+- Added an optional Docker-contained BrowserGym MiniWoB study with seeded external benchmark tasks, independent reward verification, paired baseline/candidate scoring, and a no-key same-page smoke check. The container holds Python, Playwright, MiniWoB and agent-browser; normal skill use has no new host dependency.
+- Added opt-in headed BrowserGym viewing through a temporary localhost noVNC page with one-run VNC password and configurable observation pause. Headless remains the default, and the viewer closes with its scoped container.
+- The BrowserGym adapter now passes literal text and autocomplete search prefixes from benchmark goals through the skill's supplied-values channel, leaving final option selection to Jev; reward still independently decides success.
+- Extended that adapter to pass exact search-engine queries and agreement names stated in new MiniWoB goals, preserving the helper's rule against inventing field values.
+- Added a checkpointed MiniWoB campaign over 21 task IDs with private source snapshots, hash-chained trial/change records, configurable time/spend budgets, a skill-change-gated three-retry ceiling, and a temporary read-only localhost dashboard. No additional host package, database or resident service is installed.
+- Added a separately labeled BrowserGym-core integration suite with three original, seeded multi-page tasks and independent reward checks, using the same Docker-contained paired study, campaign audit and dashboard. It does not claim scores on public non-MiniWoB benchmarks or require their external service stacks.
+
+### Changed
+
+- Component reports now use schema 2 with named conditions and failure classifications. Paired studies exit nonzero for regressions or incomplete cleanup. The original component lane still installs no BrowserGym or Python.
+- Preserve native-select option ancestry when agent-browser repeats an option at the snapshot root, preventing a hidden option from being offered as an unsafe click target.
+- Classify BrowserGym reward failures and input handoffs separately from container failures, so paired reports identify the real failure mode.
+- Offer grounded clicks for accessibility nodes explicitly marked clickable even when the site exposes them only as generic or list items, using adjacent observed text as the candidate name; this addresses MiniWoB link, tab-panel and tree cases without clicking arbitrary containers.
+- Clarify to Jev that an ordinal search result is not the same-numbered pagination link, and that visible clickable tree branches should be explored before repeated page scrolling.
+- Allow an explicitly requested text-field value to be copied from a uniquely matching, observed two-cell table row; ambiguous or absent rows still request caller input instead of inventing a value.
+- Carry a uniquely requested table value across page navigation within the same requested step when the source row and column were observed; clear it at the next step or on conflicting evidence, and never infer unseen values.
+- Keep incomplete Docker trials blocked until container cleanup is confirmed and unknown charges are conservatively reserved from the configured key's cumulative OpenRouter usage; show measured versus reserved spend in the dashboard without erasing the failed audit event.
+- Require the audit event for a new candidate fingerprint to name each task authorized for retry, so an unrelated later code change cannot silently unlock a failed case.
+- Offer a grounded hover on intermediate items in an explicitly requested nested menu path, and warn Jev that clicking a parent may select the wrong item before the leaf is reached.
+- Audit local component-regression reports and their measured model charges alongside BrowserGym pairs, keeping the campaign's spend accounting inclusive of those validations.
+- When the caller explicitly asks to scroll to a textarea's bottom, offer an element-scoped scroll only for one uniquely observed long, disabled textbox; use its browser reference and check the unlocked form state afterward.
+- When an exact named menu item is absent from an open menu, allow a grounded hover to explore a plausible submenu while withholding clicks on nonmatching items.
+- Recover visible labels for a small observed listbox whose options have empty accessibility names by reading text through each option's browser reference; choose by the recovered label, not position.
+- Activate the same observed button by keyboard only when agent-browser explicitly refuses its pointer click as covered before dispatch; other uncertain clicks still stop without replay.
+- For an explicitly named file-tree target, distinguish observed collapsed branches from leaves and allow a unique, visible child with no browser ref to be clicked by exact text. Do not re-offer that exact target after one successful click, which prevents a folder from being toggled open and closed repeatedly. This avoids guessing from unseen tree contents or repeatedly scrolling past available branches.
+- Offer one-step keyboard adjustment for an explicitly requested numeric slider only when its observed handle and adjacent readout establish the current value; re-observe after each step rather than guessing the range or making a large blind drag.
+- Resolve icon-named menu items from the exact visual icon class on observed menu-item refs, with a bounded hover for observed submenu parents. Raw page HTML stays inside the browser adapter; nonmatching menu items remain unavailable as clicks, and the submenu is not reopened after a successful exact-icon click.
+- Take one bounded post-fill read for prefix/suggestion goals so a debounced autocomplete menu can become observable before requesting missing input.
+- Try an exact caller-supplied autocomplete prefix in the sole empty text field before offering a missing-full-value handoff; the prefix still cannot be submitted as the final choice.
+- Keep an autocomplete form's visible Submit step pending after choosing a matching suggestion, instead of treating the selected textbox value as proof of submission.
+- Ground an explicitly requested ordinal checkbox in the current accessibility order and withhold the other unnamed checkboxes; if the requested checkbox is already checked, do not toggle it off.
 
 ## agent-browser-jev 1.0.2 - 2026-09-25
 

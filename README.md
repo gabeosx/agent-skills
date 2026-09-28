@@ -6,7 +6,10 @@ A collection of specialized skills following the open standard for agent capabil
 
 ### 🌐 [Agent Browser Jev](./skills/agent-browser-jev)
 Let Jev handle the browser steps of a multi-screen task in an existing agent-browser session. The calling agent supplies text and checks the result.
-- **Start here:** The [skill README](./skills/agent-browser-jev/README.md) covers installation, API-key setup, use, measured results and limits. Local gyms include seeded workflows, a 26-case common-component matrix and a controlled same-provider comparison runner.
+- **Start here:** The [skill README](./skills/agent-browser-jev/README.md) covers installation, API-key setup, use, measured results and limits. Evaluation includes local seeded workflows, a 28-case component matrix, paired BrowserGym MiniWoB and WebArena-Verified studies, a separate original BrowserGym-core integration suite, a persistent campaign dashboard, and a same-provider comparison runner.
+
+### 🧪 [Benchmark Improvement Loop](./skills/benchmark-improvement-loop)
+Introduce a benchmark and run an auditable test–verify–improve campaign for an agent skill. It separates first-attempt results, targeted retries, and untouched holdouts; requires independent outcome checks, scoped infrastructure, spend accounting, and evidence-backed changes. The repository's agent instructions route benchmark work through this skill.
 
 ### 🍎 [Apple Container Skill](./skills/apple-container-skill)
 Interact with the Apple Container CLI to manage containers, images, volumes, networks, and system services on macOS.

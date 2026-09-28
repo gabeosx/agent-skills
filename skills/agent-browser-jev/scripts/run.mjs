@@ -15,7 +15,7 @@ const TOKEN_TTL_MS = 30 * 60 * 1000;
 const TOKEN_LIMIT = 64_000;
 const TOKEN_PLAINTEXT_LIMIT = 1_000_000;
 
-const sanitize = ({ snapshot, refs }) => ({ snapshot, refs });
+const sanitize = ({ snapshot, refs, limited }) => ({ snapshot, refs, ...(limited?{limited:true}:{}) });
 
 function permits(action, rules) {
   if (!rules?.length || action.op === 'open') return true;
@@ -23,7 +23,7 @@ function permits(action, rules) {
   return rules.some(rule => rule.operation === operation && (!rule.name || rule.name === action.name));
 }
 
-export async function runTask(task, { apiKey = configuredApiKey() } = {}) {
+export async function runTask(task, { apiKey = configuredApiKey(), onEvent } = {}) {
   const started = performance.now();
   const browser = agentBrowser({
     binary: task.browser?.binary || configuredBrowser(),
@@ -41,6 +41,7 @@ export async function runTask(task, { apiKey = configuredApiKey() } = {}) {
     continuation: task.continuation,
     context: task.context,
     initialUrl: task.url,
+    onEvent,
   });
   return { ...result, totalMs: performance.now() - started };
 }
