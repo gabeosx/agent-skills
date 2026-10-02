@@ -41,6 +41,7 @@ All notable skill changes are recorded in this file. Each skill is versioned ind
 
 - Publish a comprehensive retrospective research document covering the early gyms and Codex comparisons, general refactor failures, grounded controller and value-binding studies, discovery and ranking experiments, public MiniWoB/WebArena results, independent caller recovery, costs, benchmark-integrity corrections and final NO-GO pilots.
 - Add an evidence register, public artifact fingerprints and curated summaries of the final bounded screen, external reference pilot and hybrid/mechanical pattern pilot. Preserve failed and incomplete trials, private-source provenance, scope gaps and the untouched 48-task confirmation cohort.
+- Repair two offline mock-browser launcher filenames for Node 20.3 compatibility. Record their original and published hashes without changing runtime code or historical scored outcomes.
 
 ### Compatibility and limitations
 

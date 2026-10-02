@@ -12,6 +12,7 @@ The [machine-readable index](research-evidence.json) records SHA-256 fingerprint
 - The retained working source includes substantial research performed after committed base `136b9a3`. Runtime package version 1.3.0 is historical; archive contract 2.0.0 governs the retirement. Candidate v10/v17/v20 labels are local to each campaign.
 - The September 27 integration suite is authored BrowserGym-core evidence. Historical WebArena reset-contaminated results are invalid; later isolation qualification does not retroactively validate them.
 - The final archive-preparation folder records this documentation and discovery validation only and is excluded from the experimental campaign count. No new model calls or scored browser tasks were made.
+- Publication CI exposed two extensionless mock-browser executables that Node 20.3 interpreted as CommonJS. The two offline tests now name those executables `browser.mjs`; runtime code and scored trial outcomes remain unchanged. The index records the original and published test hashes under `publicationAdjustments`, and the failed CI log remains in the private archive-preparation record.
 
 ## Campaign inventory
 

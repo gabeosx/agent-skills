@@ -1607,7 +1607,7 @@
     },
     {
       "path": "tests/cross-view-identity.test.mjs",
-      "sha256": "b09b6c9e4f02ac648da4bbf50cf23d518518d205186f5561a2f94197cf5d0c35"
+      "sha256": "9283a6d4d1ec0893fe3ed11874d71ee48042d773f02d5053ab67804e178fb4a2"
     },
     {
       "path": "tests/date-value.test.mjs",
@@ -1831,7 +1831,7 @@
     },
     {
       "path": "tests/numeric-value.test.mjs",
-      "sha256": "c9fac6191a32838d082e4505c78d222dc491081d5cfd7275b4488ddf4b356296"
+      "sha256": "9e0816e71d224768e6cc6a2d1db85bc4438ac9a07e1061578b168050ebeec657"
     },
     {
       "path": "tests/object-context-live.mjs",
@@ -1980,6 +1980,20 @@
     {
       "path": "tests/workflow-live.mjs",
       "sha256": "ec7eb6ce39d8b84bb09e2aa6fe98f461cfbc27d982fe95f668c6996d5be1dade"
+    }
+  ],
+  "publicationAdjustments": [
+    {
+      "path": "tests/cross-view-identity.test.mjs",
+      "originalSha256": "b09b6c9e4f02ac648da4bbf50cf23d518518d205186f5561a2f94197cf5d0c35",
+      "publishedSha256": "9283a6d4d1ec0893fe3ed11874d71ee48042d773f02d5053ab67804e178fb4a2",
+      "reason": "Name the generated offline mock-browser executable browser.mjs so Node 20.3 treats its imports as ES modules; no runtime or scored-outcome change."
+    },
+    {
+      "path": "tests/numeric-value.test.mjs",
+      "originalSha256": "c9fac6191a32838d082e4505c78d222dc491081d5cfd7275b4488ddf4b356296",
+      "publishedSha256": "9e0816e71d224768e6cc6a2d1db85bc4438ac9a07e1061578b168050ebeec657",
+      "reason": "Name the generated offline mock-browser executable browser.mjs so Node 20.3 treats its imports as ES modules; no runtime or scored-outcome change."
     }
   ]
 }

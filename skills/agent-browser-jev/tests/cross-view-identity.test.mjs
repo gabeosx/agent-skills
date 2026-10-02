@@ -76,7 +76,7 @@ test('observed row identity cell metadata survives structural capture windows wi
 test('native identity drift or newly sensitive type blocks before numeric reads and fill',async()=>{
  const r=request(witness()),a=action(r);
  for(const mode of ['same','changed','sensitive']){
-  const dir=await mkdtemp(join(tmpdir(),'jev-witness-')),binary=join(dir,'browser'),log=join(dir,'calls');
+  const dir=await mkdtemp(join(tmpdir(),'jev-witness-')),binary=join(dir,'browser.mjs'),log=join(dir,'calls');
   try{
    await writeFile(binary,`#!/usr/bin/env node\nimport {appendFileSync} from 'node:fs';const a=process.argv.slice(process.argv.indexOf('--json')+1);appendFileSync(${JSON.stringify(log)},JSON.stringify(a)+'\\n');let value=null;if(a[0]==='get'&&a[1]==='attr'&&a[3]==='type')value=a[2]==='@e1'&&${JSON.stringify(mode)}==='sensitive'?'password':'text';if(a[0]==='get'&&a[1]==='value')value=a[2]==='@e1'?${JSON.stringify(mode==='changed'?'Q5':'Q4')}:'15.00';process.stdout.write(JSON.stringify({success:true,data:{value}}));\n`);await chmod(binary,0o700);
    const browser=agentBrowser({binary,sessionId:'witness-'+mode,sanitize:x=>x});
