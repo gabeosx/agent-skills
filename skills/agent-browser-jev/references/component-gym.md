@@ -1,3 +1,5 @@
+> **Historical research evidence.** Agent Browser Jev was archived on October 2, 2026. Results and decisions below belong to their original snapshots; the [final research report](../RESEARCH.md) records the later NO-GO decisions. Installation and automatic campaigns are discontinued.
+
 # Component gym
 
 The component gym is a deterministic local browser suite for the interaction patterns agents meet across modern web applications. It uses original, dependency-free fixtures rather than loading third-party demos, so runs remain offline except for Jev decisions and are not coupled to a framework release or public website uptime.
@@ -15,20 +17,22 @@ These sources choose what to test; their implementation code is not copied or sh
 
 ## Coverage
 
-`npm run gym:components -- --output /absolute/path/to/new-report.json` runs 26 cases with real Jev decisions, a real agent-browser session, server-side event verification and final accessibility snapshots.
+`npm run gym:components -- --output /absolute/path/to/new-report.json` runs 28 cases with real Jev decisions, a real agent-browser session, server-side event verification and final accessibility snapshots.
 
 | Family | Covered patterns |
 | --- | --- |
 | Disclosure | Accordion expansion and a nested action |
 | Menus | Dropdown menu and nested submenu |
 | Overlays | Form dialog, alert dialog, command palette, popover, drawer and hover card |
-| Selection | Radio group, switch, toggle group, custom select, multi-select listbox, tri-state checkbox and rating |
+| Selection | Radio group, switch, toggle group, custom select, similar-record autocomplete, multi-select listbox, tri-state checkbox and rating |
 | Navigation | Tabs, pagination, carousel and breadcrumb traversal |
 | Data | Sortable table and tree view |
-| Input/workflow | Spinbutton, exact-path file upload and a multi-step form with exact caller values |
+| Input/workflow | Spinbutton, native date, exact-path file upload and a multi-step form with exact caller values |
 | Feedback | Delayed status/toast completion |
 | Boundaries | An absent target must hand back without side effects |
 
 Each positive case emits exactly one server-side completion record containing its final structured state. A model completion flag alone cannot pass. The absent-target case passes only when Jev hands back and the server records no completion. Upload uses a temporary synthetic PDF that is deleted with the runner's private directory.
 
-Use `--cases accordion,tabs` to run a subset. The aggregate `npm run gym` includes this suite once per report; other repeatable suites still honor `--rounds`.
+The latest component report reviewed on 2026-09-28 contains **27/27 positive tasks completed by Jev without caller rescue and one correct absent-target handoff**. Its 28/28 total is a check pass rate, not 28 autonomous task completions. This report uses the snapshot preceding two final handoff-evidence corrections. See the [capability and takeover scorecard](capability-status.md) for exact snapshot attribution, per-family counts, known failures in other suites and caller-only interactions. Supported fixture coverage does not establish a general website takeover rate.
+
+Use `--cases accordion,tabs` to run a subset. `--variant reordered|slow|injection` and `--seed` apply a deterministic variation to the same goal and hidden verifier. `--diagnostics` captures the full synthetic decision frontier and action readback. The [paired study](study-gym.md) runs those variations against two helper versions and classifies failures. The aggregate `npm run gym` includes the base suite once per report; other repeatable suites still honor `--rounds`.

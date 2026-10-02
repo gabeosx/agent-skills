@@ -1,6 +1,6 @@
 {
   "name": "agent-browser-jev",
-  "version": "1.0.2",
+  "version": "1.3.0",
   "private": true,
   "license": "MIT",
   "type": "module",
@@ -15,11 +15,19 @@
     "benchmark:projects": "node tests/cross-project-live.mjs",
     "gym": "node tests/gym.mjs",
     "gym:components": "node tests/component-live.mjs",
+    "gym:study": "node tests/study.mjs",
+    "gym:browsergym": "node tests/browsergym-study.mjs",
+    "gym:campaign": "node tests/browsergym-campaign.mjs",
+    "gym:dashboard": "node tests/browsergym-dashboard.mjs",
+    "gym:dashboard:service": "node tests/browsergym-dashboard-service.mjs",
+    "gym:webarena:env": "node tests/webarena-verified-env.mjs",
     "gym:generated": "node tests/generated-gym.mjs",
     "benchmark:codex": "node tests/compare-codex.mjs",
     "test:caller": "node tests/handoff-caller.mjs",
     "test:workflow": "node tests/workflow-live.mjs",
-    "test:autocomplete": "node tests/autocomplete-live.mjs"
+    "test:autocomplete": "node tests/autocomplete-live.mjs",
+    "gym:execution": "node tests/execution-contract-live.mjs",
+    "gym:caller-workflow": "node tests/caller-workflow-study.mjs"
   },
   "dependencies": {
     "@openrouter/sdk": "1.3.2"

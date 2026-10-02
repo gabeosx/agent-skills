@@ -4,6 +4,8 @@
 from __future__ import annotations
 
 import argparse
+import datetime
+import json
 import re
 import subprocess
 import sys
@@ -45,6 +47,58 @@ def parse_skill(text: str, label: str) -> tuple[str, tuple[int, int, int], str]:
     version_text = version_match.group(1)
     version = tuple(int(part) for part in version_text.split("."))
     return name_match.group(1), version, version_text
+
+
+def parse_archive(text: str, label: str) -> tuple[str, tuple[int, int, int], str]:
+    """Read retirement metadata without creating a discoverable skill entrypoint."""
+    try:
+        data = json.loads(text)
+    except json.JSONDecodeError as error:
+        raise ValueError(f"{label}: invalid archive JSON") from error
+    if not isinstance(data, dict) or data.get("status") != "archived":
+        raise ValueError(f"{label}: archive status must be archived")
+    name = data.get("name")
+    if not isinstance(name, str) or not re.fullmatch(r"[a-z0-9]+(?:-[a-z0-9]+)*", name):
+        raise ValueError(f"{label}: invalid archived skill name")
+    metadata = data.get("metadata")
+    version_text = metadata.get("version") if isinstance(metadata, dict) else None
+    if not isinstance(version_text, str) or not SEMVER_RE.fullmatch(version_text):
+        raise ValueError(f"{label}: metadata.version must be a stable SemVer string")
+    try:
+        archived_on = data["archivedOn"]
+        if not isinstance(archived_on, str) or not re.fullmatch(r"\d{4}-\d{2}-\d{2}", archived_on):
+            raise ValueError("Invalid date")
+        datetime.date.fromisoformat(archived_on)
+    except (KeyError, TypeError, ValueError) as error:
+        raise ValueError(f"{label}: archivedOn must be an ISO calendar date") from error
+    for field in ("historicalInstructions", "researchReport", "evidenceRegister"):
+        value = data.get(field)
+        if (
+            not isinstance(value, str)
+            or not value
+            or Path(value).is_absolute()
+            or ".." in Path(value).parts
+            or Path(value).name == "SKILL.md"
+        ):
+            raise ValueError(f"{label}: {field} must reference a retained archive file")
+    return name, tuple(int(part) for part in version_text.split(".")), version_text
+
+
+def validate_archive_files(root: Path, directory: str, data: dict) -> None:
+    archive_root = root / "skills" / directory
+    if data["name"] != directory:
+        raise ValueError(f"{directory}: archive name must match its directory")
+    for field in ("historicalInstructions", "researchReport", "evidenceRegister"):
+        path = archive_root / data[field]
+        if not path.is_file() or not path.resolve().is_relative_to(archive_root.resolve()):
+            raise ValueError(f"{directory}: missing or escaping archive resource {data[field]}")
+    instructions = (archive_root / data["historicalInstructions"]).read_text(encoding="utf-8")
+    if instructions.startswith("---") or "archived" not in instructions[:600].lower():
+        raise ValueError(f"{directory}: historical instructions need a leading archive notice")
+    public_files = git(root, "ls-files", "--cached", "--others", "--exclude-standard", "--", f"skills/{directory}")
+    for file in public_files.stdout.splitlines():
+        if Path(file).name == "SKILL.md" and (root / file).is_file():
+            raise ValueError(f"{directory}: archived skill retains a public SKILL.md at {file}")
 
 
 def changed_paths(root: Path, base_ref: str) -> set[str]:
@@ -97,24 +151,32 @@ def main() -> int:
     for directory in affected_skills:
         skill_path = Path("skills") / directory / "SKILL.md"
         absolute_skill_path = root / skill_path
-        if not absolute_skill_path.is_file():
-            errors.append(f"{directory}: changed skill has no SKILL.md")
-            continue
+        archive_path = Path("skills") / directory / "ARCHIVE.json"
+        absolute_archive_path = root / archive_path
+        archived = absolute_archive_path.is_file()
 
         try:
-            name, version, version_text = parse_skill(
-                absolute_skill_path.read_text(encoding="utf-8"), str(skill_path)
-            )
-        except ValueError as error:
+            if archived:
+                archive_text = absolute_archive_path.read_text(encoding="utf-8")
+                name, version, version_text = parse_archive(archive_text, str(archive_path))
+                validate_archive_files(root, directory, json.loads(archive_text))
+            elif absolute_skill_path.is_file():
+                name, version, version_text = parse_skill(
+                    absolute_skill_path.read_text(encoding="utf-8"), str(skill_path)
+                )
+            else:
+                raise ValueError(f"{directory}: changed skill has no SKILL.md or valid ARCHIVE.json")
+        except (ValueError, OSError) as error:
             errors.append(str(error))
             continue
 
-        old_text = text_at_ref(root, args.base_ref, str(skill_path))
+        old_archive = text_at_ref(root, args.base_ref, str(archive_path))
+        old_text = old_archive if old_archive is not None else text_at_ref(root, args.base_ref, str(skill_path))
         if old_text is not None:
             try:
-                _, old_version, old_version_text = parse_skill(
-                    old_text, f"{args.base_ref}:{skill_path}"
-                )
+                parse_old = parse_archive if old_archive is not None else parse_skill
+                old_path = archive_path if old_archive is not None else skill_path
+                _, old_version, old_version_text = parse_old(old_text, f"{args.base_ref}:{old_path}")
             except ValueError:
                 old_version = None
                 old_version_text = "unversioned"
@@ -123,6 +185,8 @@ def main() -> int:
                     f"{name}: version {version_text} must be greater than "
                     f"{old_version_text} from {args.base_ref}"
                 )
+            if archived and old_archive is None and old_version is not None and version[0] <= old_version[0]:
+                errors.append(f"{name}: distribution retirement requires a major version increment")
 
         release_heading = re.compile(
             rf"^## {re.escape(name)} {re.escape(version_text)} - \d{{4}}-\d{{2}}-\d{{2}}$",

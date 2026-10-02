@@ -1,11 +1,11 @@
-name: Agent Browser Jev
+name: Agent Browser Jev research archive
 
 on:
   pull_request:
-    paths: ['skills/agent-browser-jev/**', '.github/workflows/agent-browser-jev.yml', 'CHANGELOG.md']
+    paths: ['skills/agent-browser-jev/**', '.agents/scripts/**', '.github/workflows/agent-browser-jev.yml', 'CHANGELOG.md']
   push:
     branches: [main]
-    paths: ['skills/agent-browser-jev/**', '.github/workflows/agent-browser-jev.yml', 'CHANGELOG.md']
+    paths: ['skills/agent-browser-jev/**', '.agents/scripts/**', '.github/workflows/agent-browser-jev.yml', 'CHANGELOG.md']
 
 permissions:
   contents: read
@@ -29,6 +29,7 @@ jobs:
         working-directory: skills/agent-browser-jev
       - run: npm test
         working-directory: skills/agent-browser-jev
+      - run: python3 .agents/scripts/test_archive_contract.py
       - run: python3 .agents/scripts/validate_release_contract.py --base-ref "$BASE_REF"
         env:
           BASE_REF: ${{ github.event.pull_request.base.sha || github.event.before }}

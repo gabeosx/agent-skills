@@ -1,3 +1,5 @@
+> **Historical research evidence.** Agent Browser Jev was archived on October 2, 2026. Results and decisions below belong to their original snapshots; the [final research report](../RESEARCH.md) records the later NO-GO decisions. Installation and automatic campaigns are discontinued.
+
 # What we measured
 
 The published numbers answer three different questions. The **gym** measures this helper's own work on disposable pages. The **same-stack comparison** runs this helper and one compatible open-source rival on identical component tasks. The **Codex comparisons** measure complete agent tasks, including the calling model's time and tool use. None predicts performance on every website or establishes a universal ranking.
