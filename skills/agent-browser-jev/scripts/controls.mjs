@@ -1,9 +1,26 @@
 // Parse agent-browser's accessibility serialization, not a site's DOM or business rules.
 // The indentation belongs to the snapshot format; refs are always supplied by the browser.
+import {iconReferences} from './icon-evidence.mjs';
+import {appendAction} from './text-edit.mjs';
+
+function observedRow(line) {
+  // Parse browser metadata only. Words such as "clickable" or "[ref=e1]"
+  // inside an accessible name or a field value are ordinary page text.
+  const match=line.match(/^(\s*)- ([A-Za-z][A-Za-z0-9_-]*)(?:\s+("(?:\\.|[^"\\])*"))?\s+((?:\[[^\]\r\n]*\]|(?:clickable|focusable)\b)(?:\s+(?:\[[^\]\r\n]*\]|(?:clickable|focusable)\b))*)/);
+  if(!match)return null;
+  const metadata=match[4],ref=metadata.match(/\bref=(e\d+)\b/)?.[1];
+  if(!ref)return null;
+  let name='';
+  if(match[3])try{name=JSON.parse(match[3]);}catch{/* Invalid serialized names do not supply labels. */}
+  return {indent:match[1].length,role:match[2],ref,metadata,
+    name,
+    clickable:/\bclickable\b/.test(metadata.replace(/\[[^\]]*\]/g,''))};
+}
+
 export function controlState(observation) {
   const states = new Map(), stack = [];
   for (const line of (observation.snapshot ?? '').split('\n')) {
-    const match = line.match(/^(\s*)- .*?\[.*?\bref=(e\d+)\b/);
+    const row = observedRow(line);
     const indent = line.match(/^\s*/)[0].length;
     if (!line.trimStart().startsWith('- ')) continue;
     while (stack.length && stack.at(-1).indent >= indent) stack.pop();
@@ -11,25 +28,34 @@ export function controlState(observation) {
     // listbox/combobox alone does not establish a native HTML select.
     if (/^- MenuListPopup(?:\s|$)/.test(line.trimStart())) {
       const owner = [...stack].reverse().find(s => s.role === 'combobox');
-      if (owner) stack.push({indent, id:owner.id, role:'native-options'});
+      if (owner) {
+        if(states.has(owner.id))states.get(owner.id).nativeSelect=true;
+        stack.push({indent, id:owner.id, role:'native-options'});
+      }
     }
-    if (!match) continue;
-    const id = match[2], control = observation.refs?.[id];
-    if (!control) continue;
+    if (!row) continue;
+    const id = row.ref, control = observation.refs?.[id];
+    if (!control || control.role !== row.role) continue;
+    // A compound combobox can expose a display textbox or a separate editable
+    // child. The wrapper is a picker trigger, not another text destination.
+    if(['textbox','searchbox'].includes(control.role)){
+      const owner=[...stack].reverse().find(s=>s.role==='combobox');
+      if(owner&&states.has(owner.id))states.get(owner.id).hasTextChild=true;
+    }
     const parent = [...stack].reverse().find(s => s.role === 'native-options');
-    const flags = [...line.matchAll(/\[([^\]]*)\]/g)].map(m => m[1]).join(',');
+    const flags = [...row.metadata.matchAll(/\[([^\]]*)\]/g)].map(m => m[1]).join(',');
     const state = { disabled: /\bdisabled(?:=true)?(?:,|$)/.test(flags),
       checked: /\bchecked(?:=true)?(?:,|$)/.test(flags),
       selected: /\bselected(?:=true)?(?:,|$)/.test(flags),
-      readonly: /\breadonly(?:=true)?(?:,|$)/.test(flags),
-      clickable: /\bclickable\b/.test(line),
+      readonly: control.readonly===true || /\breadonly(?:=true)?(?:,|$)/.test(flags),
+      clickable: row.clickable,
       file: control.role === 'button' && /:\s*(?:No file chosen|\d+ files? selected)\s*$/i.test(line),
       ...(control.role === 'option' && parent ? { selectRef: parent.id } : {}) };
     // Some snapshots repeat native options at the root after their popup tree.
     // Keep the structural parent from the first occurrence so they remain
     // native select choices rather than becoming misleading click targets.
     if (!states.get(id)?.selectRef) states.set(id, state);
-    stack.push({ indent, id, role: control.role });
+    stack.push({ indent, id, role:control.role==='listbox'&&control.multiple===true?'native-options':control.role });
   }
   return states;
 }
@@ -39,16 +65,27 @@ const inputRoles = new Set(['textbox','searchbox','combobox','spinbutton']);
 const validIsoDate = value => typeof value === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(value) &&
   !Number.isNaN(Date.parse(`${value}T00:00:00Z`)) && new Date(`${value}T00:00:00Z`).toISOString().slice(0,10) === value;
 
-function clickableLabels(snapshot) {
-  const labels=new Map(),stack=[];
+function clickableLabels(snapshot,refs) {
+  const labels=new Map(),pieces=new Map(),stack=[];
   for(const line of (snapshot??'').split('\n')){
+    if(!line.trimStart().startsWith('- '))continue;
     const indent=line.match(/^\s*/)[0].length;
     while(stack.length&&stack.at(-1).indent>=indent)stack.pop();
-    const text=line.trimStart().match(/^- StaticText "([^"]+)"/);
-    if(text&&stack.length&&!labels.has(stack.at(-1).ref))labels.set(stack.at(-1).ref,text[1]);
-    const match=line.trimStart().match(/^- (?:generic|listitem) \[[^\]]*\bref=(e\d+)\b[^\]]*\] clickable\b/);
-    if(match)stack.push({indent,ref:match[1]});
+    const row=observedRow(line),valid=row&&refs?.[row.ref]?.role===row.role;
+    if(valid&&row.clickable&&row.name)labels.set(row.ref,row.name.slice(0,240));
+    const text=line.trimStart().match(/^- StaticText ("(?:\\.|[^"\\])*")(?=\s|$)/);
+    // A separately referenced child control owns its own text. Unreferenced
+    // layout wrappers do not prevent collecting the clickable node's label.
+    const owner=[...stack].reverse().find(node=>node.ref);
+    if(text&&owner?.clickable&&(!valid||row.role==='StaticText'&&!row.clickable)){
+      try{
+        const parts=pieces.get(owner.ref)??[];
+        if(parts.length<16){parts.push(JSON.parse(text[1]));pieces.set(owner.ref,parts);}
+      }catch{/* Invalid serialized text is not a label. */}
+    }
+    stack.push({indent,...(valid?{ref:row.ref,clickable:row.clickable}:{})});
   }
+  for(const [ref,parts] of pieces)if(!labels.has(ref))labels.set(ref,parts.join(' ').replace(/\s+/g,' ').trim().slice(0,240));
   return labels;
 }
 
@@ -106,113 +143,120 @@ export function requestedTableValue(observation, intent) {
   return matches.length === 1 ? { label, value:matches[0] } : null;
 }
 
-function requestedTextareaScroll(observation, intent) {
-  if (typeof intent !== 'string' || !/\bscroll\s+to\s+the\s+bottom\s+of\s+(?:the|a)\s+textarea\b/i.test(intent)) return null;
-  const matches = [];
+// These affordances depend on observed widget structure, never task templates.
+function observedTextareaScroll(observation) {
+  const matches = [], states = controlState(observation);
   for (const line of (observation.snapshot ?? '').split('\n')) {
-    const match = line.trimStart().match(/^- textbox \[disabled, ref=(e\d+)\]:\s*(.{300,})$/);
-    if (match && observation.refs?.[match[1]]?.role === 'textbox') matches.push(match[1]);
+    const match = line.trimStart().match(/^- textbox(?: "[^"\r\n]*")? \[[^\]]*\bref=(e\d+)\b[^\]]*\]:\s*(.{300,})$/);
+    const state = match && states.get(match[1]);
+    if (match && observation.refs?.[match[1]]?.role === 'textbox' &&
+        (state?.disabled || state?.readonly)) matches.push(match[1]);
   }
   return matches.length === 1 ? `@${matches[0]}` : null;
 }
 
-function requestedTreeTarget(observation, intent) {
-  const name = typeof intent === 'string' ? intent.match(/\b(?:folder|file) named "([^"\r\n]{1,80})"/i)?.[1] : null;
-  if (!name || !/(?:^|\n)\s*- list(?:\s|$)/.test(observation.snapshot ?? '')) return null;
-  const lines = (observation.snapshot ?? '').split('\n');
-  const exactText = lines.filter(line => line.trimStart() === `- StaticText ${JSON.stringify(name)}`);
-  if (exactText.length !== 1) return { name, textVisible: false };
-  const textIndex = lines.indexOf(exactText[0]);
-  const textIndent = lines[textIndex].match(/^\s*/)[0].length;
-  for (let index = textIndex - 1; index >= 0; index--) {
-    const indent = lines[index].match(/^\s*/)[0].length;
-    if (indent >= textIndent) continue;
-    const parent = lines[index].trimStart();
-    if (/^- listitem \[level=\d+[^\]]*\]/.test(parent))
-      return { name, textVisible: true, unreferenced: !/\bref=e\d+\b/.test(parent) };
-    break;
+function unreferencedTextItems(observation) {
+  // A truncated tree cannot establish uniqueness for a global exact-text click.
+  if (observation.limited) return [];
+  const lines = (observation.snapshot ?? '').split('\n'), items = [];
+  const counts = new Map(), stack = [];
+  for (const line of lines) {
+    const text = line.trimStart().match(/^- StaticText "([^"\r\n]{1,80})"$/)?.[1];
+    if (text) counts.set(text, (counts.get(text) ?? 0) + 1);
   }
-  return { name, textVisible: false };
+  for (const line of lines) {
+    const indent = line.match(/^\s*/)[0].length, content = line.trimStart();
+    while (stack.length && stack.at(-1).indent >= indent) stack.pop();
+    const text = content.match(/^- StaticText "([^"\r\n]{1,80})"$/)?.[1];
+    const tree=stack.at(-1)?.unreferencedItem;
+    const graphic=stack.some(parent=>parent.graphicRoot)&&!stack.some(parent=>parent.referenced);
+    if (text && counts.get(text) === 1 && (tree||graphic) &&
+        !Object.values(observation.refs ?? {}).some(control=>control.name===text))
+      items.push({op:'click',role:tree?'listitem':'text',name:text,text,
+        purpose:tree?'observed_tree_text':'observed_graphic_text'});
+    stack.push({indent, unreferencedItem:/^- listitem \[level=\d+[^\]]*\]/.test(content) && !/\bref=e\d+\b/.test(content),
+      graphicRoot:/^- SvgRoot(?:\s|$)/.test(content),referenced:/\bref=e\d+\b/.test(content)});
+  }
+  return items;
 }
 
-function requestedSliderStep(observation, intent) {
-  const targetText = typeof intent === 'string' ? intent.match(/\bSelect (-?\d{1,3}) with the slider\b/i)?.[1] : null;
-  if (targetText === null || targetText === undefined) return null;
-  const target = Number(targetText), lines = (observation.snapshot ?? '').split('\n'), matches = [];
+function observedSliderSteps(observation) {
+  const lines = (observation.snapshot ?? '').split('\n'), actions = [];
   for (let index = 0; index < lines.length - 1; index++) {
     const line = lines[index], match = line.trimStart().match(/^- generic \[ref=(e\d+)\] focusable \[tabindex\]/);
-    if (!match || observation.refs?.[match[1]]?.sliderHandle !== true) continue;
-    const indent = line.match(/^\s*/)[0].length;
-    const next = lines[index + 1], nextIndent = next.match(/^\s*/)[0].length;
-    const readout = next.trimStart().match(/^- StaticText "(-?\d{1,3})"$/);
-    if (nextIndent !== indent || !readout) continue;
-    matches.push({ ref:`@${match[1]}`, current:Number(readout[1]) });
+    if (!match || observation.refs?.[match[1]]?.sliderHandle !== true ||
+        observation.refs[match[1]].disabled === true) continue;
+    const next = lines[index + 1];
+    if (next.match(/^\s*/)[0].length !== line.match(/^\s*/)[0].length) continue;
+    const readout = next.trimStart().match(/^- StaticText "(-?\d{1,9}(?:\.\d{1,6})?)"$/);
+    if (!readout) continue;
+    for (const key of ['ArrowLeft','ArrowRight']) actions.push({op:'press',ref:`@${match[1]}`,
+      role:'generic',name:'slider',key,currentValue:Number(readout[1]),purpose:'adjust_slider'});
   }
-  if (matches.length !== 1 || Math.abs(target - matches[0].current) > 40 || target === matches[0].current) return null;
-  return { op:'press', ref:matches[0].ref, role:'generic', name:'slider',
-    key:target < matches[0].current ? 'ArrowLeft' : 'ArrowRight',
-    currentValue:matches[0].current, targetValue:target, purpose:'adjust_slider' };
-}
-
-function requestedOrdinalCheckbox(observation, intent) {
-  const match = typeof intent === 'string' ? intent.match(/\bclick the (\d{1,2})(st|nd|rd|th) checkbox\b/i) : null;
-  if (!match) return null;
-  const refs = [...(observation.snapshot ?? '').matchAll(/^\s*- checkbox(?: "[^"]*")? \[[^\]\n]*\bref=(e\d+)\b[^\]\n]*\]/gm)]
-    .map(found=>found[1]).filter(ref=>observation.refs?.[ref]?.role==='checkbox');
-  const ordinal = Number(match[1]);
-  return {ref:ordinal>0 && refs.length<=20 && new Set(refs).size===refs.length ? refs[ordinal-1] : null,
-    name:`${match[1]}${match[2]} checkbox`};
+  return actions;
 }
 
 export function discoverActions(observation, suppliedValues = {}, intent = '', priorTableValue = null) {
   const actions = [], states = controlState(observation), selects = new Set();
-  const labels=clickableLabels(observation.snapshot);
+  const clickableImages=new Set(iconReferences(observation.snapshot,observation.refs));
+  const labels=clickableLabels(observation.snapshot,observation.refs);
   const tableValue=requestedTableValue(observation,intent) ?? priorTableValue;
-  const requestedPrefix=typeof intent==='string' ? intent.match(/\bstarts? with\s+"([^"]{1,80})"/i)?.[1] : null;
-  const prefixValue=requestedPrefix && Object.values(suppliedValues).includes(requestedPrefix) ? requestedPrefix : null;
-  const editableTextRefs=Object.entries(observation.refs ?? {}).filter(([ref,control])=>
-    ['textbox','searchbox'].includes(control.role) && !control.disabled && !states.get(ref)?.disabled);
-  const prefixFieldRef=prefixValue && editableTextRefs.length===1 ? editableTextRefs[0][0] : null;
-  const textareaScrollRef=requestedTextareaScroll(observation,intent);
-  const sliderStep=requestedSliderStep(observation,intent);
-  if (sliderStep) actions.push(sliderStep);
-  const ordinalCheckbox=requestedOrdinalCheckbox(observation,intent);
-  const treeTarget=requestedTreeTarget(observation,intent);
-  if (treeTarget?.textVisible && treeTarget.unreferenced)
-    actions.push({op:'click',role:'listitem',name:treeTarget.name,text:treeTarget.name,purpose:'observed_tree_text'});
+  const textareaScrollRef=observedTextareaScroll(observation);
+  actions.push(...observedSliderSteps(observation), ...unreferencedTextItems(observation));
   if (textareaScrollRef) actions.push({op:'scroll',ref:textareaScrollRef,role:'textbox',
-    direction:'down',amount:2000,purpose:'textarea_end'});
-  const menuPath=typeof intent==='string'&&/\bselect\s+[^\n]+>[^\n]+/i.test(intent)
-    ?intent.match(/\bselect\s+([^\n]+)/i)[1].split('>').map(part=>part.trim()) : [];
-  const intermediateMenuNames=new Set(menuPath.slice(0,-1));
-  const requestedMenuLabel=typeof intent==='string' ? intent.match(/\bitem labeled "([^"]{1,80})"/i)?.[1] : null;
-  const requestedMenuIcon=typeof intent==='string' ? intent.match(/\bitem with the "(ui-icon-[a-z0-9-]{1,60})" icon\b/i)?.[1] : null;
-  const menuVisible=Object.values(observation.refs ?? {}).some(control=>control.role==='menu');
-  const menuTargetVisible=requestedMenuLabel && Object.values(observation.refs ?? {}).some(control=>
-    control.role==='menuitem' && control.name===requestedMenuLabel);
-  const exploreMenu=Boolean(menuVisible && requestedMenuLabel && !menuTargetVisible);
-  const iconTargetVisible=requestedMenuIcon && Object.values(observation.refs ?? {}).some(control=>
-    control.role==='menuitem' && control.menuIcon===requestedMenuIcon);
-  const exploreIconMenu=Boolean(menuVisible && requestedMenuIcon && !iconTargetVisible);
+    direction:'down',amount:1_000_000,purpose:'textarea_end'});
   const hoverRelevant = /\bhover\b/i.test(observation.snapshot ?? '');
   const dates = Object.entries(suppliedValues).filter(([,value])=>validIsoDate(value));
-  const groups = dates.length ? nativeDateGroups(observation) : [];
+  const groups = nativeDateGroups(observation);
   const dateParts = new Set(groups.flatMap(group=>Object.values(group.refs).map(ref=>ref.slice(1))));
   for (const group of groups) for (const [valueId,value] of dates) {
     actions.push({op:'set_date',role:'date',name:group.name,refs:group.refs,valueId,value});
   }
-  for (const state of states.values()) if (state.selectRef) selects.add(state.selectRef);
+  for (const [ref,state] of states) {
+    if (state.selectRef) selects.add(state.selectRef);
+    if (state.nativeSelect) selects.add(ref);
+  }
   const customOptionsPresent = Object.entries(observation.refs ?? {}).some(([ref,control]) =>
     control.role === 'option' && !states.get(ref)?.selectRef);
-  for (const [ref, control] of Object.entries(observation.refs ?? {})) {
+  // Accessibility refs are opaque identifiers; JSON key order can be lexical.
+  // Preserve the observed page sequence so paging does not separate an early
+  // form from its controls just because e100 sorts before e20. Unlisted refs
+  // remain available after observed refs, without inventing their position.
+  const positions = new Map();
+  for (const match of (observation.snapshot ?? '').matchAll(/\bref=(e\d+)\b/g))
+    if (!positions.has(match[1])) positions.set(match[1], positions.size);
+  const orderedControls = Object.entries(observation.refs ?? {}).sort(([a], [b]) =>
+    (positions.get(a) ?? Infinity) - (positions.get(b) ?? Infinity));
+  for (const [ref, control] of orderedControls) {
     const state = states.get(ref) ?? {};
     if (!/^e\d+$/.test(ref) || control.disabled === true || state.disabled) continue;
     // Chromium exposes native date input segments as spinbuttons. Generic fill
     // reports success on those virtual nodes without changing the input value.
     if (dateParts.has(ref)) continue;
-    const base = { ref:`@${ref}`, role:control.role, name:control.name || labels.get(ref) || '' };
+    const base = { ref:`@${ref}`, role:control.role, name:control.name || labels.get(ref) || '',
+      ...(control.role==='link'&&control.destination?{destination:control.destination}:{}),
+      ...(control.role==='image'&&control.iconEvidence?{observedIcon:control.iconEvidence}:{}),
+      ...(control.role==='textbox'&&control.textHints?{observedTextHints:control.textHints}:{}) };
+    if(control.role==='spinbutton'&&!state.readonly){
+      const line=(observation.snapshot??'').split('\n').find(line=>
+        new RegExp(`^\\s*- spinbutton(?:\\s+"(?:\\\\.|[^"\\\\])*")?\\s+\\[[^\\]]*\\bref=${ref}\\b`).test(line));
+      const value=line?.match(/\]:\s*(-?\d{1,9}(?:\.\d{1,6})?)\s*$/)?.[1];
+      if(value!==undefined)for(const key of ['ArrowUp','ArrowDown'])
+        actions.push({...base,op:'press',key,currentValue:Number(value),purpose:'adjust_numeric'});
+    }
     if (state.selectRef) {
       const parent = observation.refs[state.selectRef], parentState = states.get(state.selectRef) ?? {};
+      if(parent.multiple===true){
+        const options=Object.entries(observation.refs).filter(([id,c])=>c.role==='option'&&states.get(id)?.selectRef===state.selectRef);
+        const names=options.map(([,c])=>c.name);
+        if(!observation.limited&&!parentState.disabled&&names.every(Boolean)&&new Set(names).size===names.length){
+          const selected=options.filter(([id])=>states.get(id)?.selected).map(([,c])=>c.name);
+          const next=state.selected?selected.filter(name=>name!==control.name):[...selected,control.name];
+          if(next.length)actions.push({op:'select',ref:`@${state.selectRef}`,role:parent.role,name:parent.name??'',
+            options:next,changedOption:control.name,selection:state.selected?'remove':'add',currentSelection:selected});
+        }
+        continue;
+      }
       // Duplicate labels cannot safely identify a native option by label.
       const duplicates = Object.entries(observation.refs).filter(([id,c]) => states.get(id)?.selectRef === state.selectRef && c.name === control.name);
       if (!state.selected && !parentState.disabled && duplicates.length === 1 && control.name) {
@@ -228,39 +272,33 @@ export function discoverActions(observation, suppliedValues = {}, intent = '', p
       continue;
     }
     if (clickRoles.has(control.role) || (control.role === 'combobox' && !selects.has(ref)) ||
-        (state.clickable && ['generic','listitem'].includes(control.role))) {
-      const treeBranch = treeTarget && control.role === 'listitem';
-      if ((!treeBranch || (treeTarget.textVisible ? base.name === treeTarget.name : control.expandable === true)) &&
-          (control.role!=='menuitem' || ((!requestedMenuLabel || base.name===requestedMenuLabel) &&
-            (!requestedMenuIcon || control.menuIcon===requestedMenuIcon))))
-        actions.push({ ...base, op:'click',
-          ...(treeBranch && !treeTarget.textVisible ? {purpose:'expand_tree_branch'} : {}),
-          ...(control.role==='menuitem' && requestedMenuIcon ? {purpose:'matching_menu_icon'} : {}) });
-      if (hoverRelevant || (control.role==='menuitem'&&intermediateMenuNames.has(base.name)) ||
-          (control.role==='menuitem'&&exploreMenu) ||
-          (control.role==='menuitem'&&exploreIconMenu&&control.menuParent===true))
+        (state.clickable && !inputRoles.has(control.role) && !['checkbox','LabelText'].includes(control.role))||clickableImages.has(ref)) {
+      actions.push({ ...base, op:'click',
+        ...(control.expandable === true ? {purpose:'expand_tree_branch'} : {}),
+        ...(control.menuIcon ? {icon:control.menuIcon} : {}),
+        ...(control.menuParent === true ? {hasSubmenu:true} : {}) });
+      if (hoverRelevant || control.role === 'menuitem')
         actions.push({ ...base, op:'hover',
-          ...(intermediateMenuNames.has(base.name)?{purpose:'reveal_submenu'}:
-            exploreMenu&&control.role==='menuitem'?{purpose:'explore_submenu'}:
-            exploreIconMenu&&control.role==='menuitem'&&control.menuParent===true?{purpose:'reveal_icon_submenu'}:{}) });
+          ...(control.role === 'menuitem' ? {purpose:'reveal_submenu'} : {}),
+          ...(control.menuParent === true ? {hasSubmenu:true} : {}) });
     }
-    if (control.role === 'checkbox' && (!ordinalCheckbox || ref===ordinalCheckbox.ref) &&
-        !(ordinalCheckbox && state.checked))
-      actions.push({ ...base, name:ordinalCheckbox?.name ?? base.name,
-        op:state.checked ? 'uncheck' : 'check',
-        ...(ordinalCheckbox ? {purpose:'ordinal_checkbox'} : {}) });
-    if (inputRoles.has(control.role) && !selects.has(ref) && !state.readonly) {
+    if (control.role === 'checkbox')
+      actions.push({ ...base, op:state.checked ? 'uncheck' : 'check' });
+    // Readonly prevents typing, not interaction. A current readonly text field
+    // may reveal a picker when clicked; its effect remains for Jev to inspect.
+    if(control.role==='textbox'&&state.readonly)
+      actions.push({...base,op:'click',purpose:'inspect_readonly_field'});
+    if (inputRoles.has(control.role) && !selects.has(ref) && !state.readonly && !state.hasTextChild) {
       for (const [valueId,value] of Object.entries(suppliedValues)) {
         if (typeof value !== 'string') throw new TypeError('Supplied values must be strings');
-        actions.push({ ...base, op:'fill', valueId, value,
-          ...(ref===prefixFieldRef && value===prefixValue ? {purpose:'autocomplete_prefix'} : {}) });
+        actions.push({ ...base, op:'fill', valueId, value });
+        const append=appendAction(base,control,valueId,value);
+        if(append)actions.push(append);
       }
       if (tableValue && ['textbox','searchbox'].includes(control.role))
         actions.push({ ...base, op:'fill', valueId:`observed table: ${tableValue.label}`,
           value:tableValue.value, source:tableValue.source??'observed_table' });
-      const currentLine=(observation.snapshot ?? '').split('\n').find(line=>line.includes(`ref=${ref}]`));
-      const fieldEmpty=!currentLine?.match(/\]:\s*(\S.*)$/);
-      if (!(ref===prefixFieldRef && fieldEmpty)) actions.push({ ...base, op:'request_input' });
+      actions.push({ ...base, op:'request_input' });
     }
     // Autocomplete arrow navigation can commit a visually similar but wrong
     // record. Click grounded options; leave keyboard-only pickers to the caller.

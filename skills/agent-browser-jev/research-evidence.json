@@ -1,0 +1,1985 @@
+{
+  "schema": 1,
+  "reportDate": "2026-10-02",
+  "status": "archived",
+  "committedBase": "136b9a3",
+  "sourceProvenance": "Includes preserved pre-existing uncommitted research; scores belong to frozen campaign sources, not one aggregated implementation.",
+  "availability": "Only public artifact paths are public; private provenance hashes do not make raw .runs evidence available.",
+  "campaigns": [
+    {
+      "campaign": "action-check-20260928",
+      "publicReference": "references/archive-trials/action-check-20260928.md",
+      "description": "Historical checkpoint; later decisions and source attribution are retained in the linked summary.",
+      "privateTopLevelProvenance": [
+        {
+          "privatePath": ".runs/action-check-20260928/summary.md",
+          "sha256": "bbbd30a870021052e6d8d27261aec100700c269d69ac1bbfb31913764b40c055"
+        }
+      ]
+    },
+    {
+      "campaign": "action-review-ablation-20260929",
+      "publicReference": "references/archive-trials/action-review-ablation-20260929.md",
+      "description": "Historical checkpoint; later decisions and source attribution are retained in the linked summary.",
+      "privateTopLevelProvenance": [
+        {
+          "privatePath": ".runs/action-review-ablation-20260929/probe-summary.json",
+          "sha256": "8af68c93ca47e83d524130f1edeec72f6a4a8207d1d96299b25816b709817e92"
+        },
+        {
+          "privatePath": ".runs/action-review-ablation-20260929/summary.md",
+          "sha256": "e0a1ab25fd80c000b849222a5749fbdf0dc9b0bfc4d66f324b2c868217f3c6a5"
+        }
+      ]
+    },
+    {
+      "campaign": "ambiguous-caller-20260930",
+      "publicReference": "references/archive-trials/ambiguous-caller-20260930.md",
+      "description": "Historical checkpoint; later decisions and source attribution are retained in the linked summary.",
+      "privateTopLevelProvenance": [
+        {
+          "privatePath": ".runs/ambiguous-caller-20260930/summary.md",
+          "sha256": "31e796f5a8c395a659ffd8f5cbb8aa3f380e5957bbd48fb309a0e67f15824c39"
+        }
+      ]
+    },
+    {
+      "campaign": "bounded-go-nogo-20261001",
+      "publicReference": "references/archive-trials/bounded-go-nogo.md",
+      "description": "Integrated controller screen: NO-GO; four complete pairs, incomplete six-pair screen.",
+      "privateTopLevelProvenance": [
+        {
+          "privatePath": ".runs/bounded-go-nogo-20261001/final-checkpoint.json",
+          "sha256": "b85256a4da354bdd0419427c0c838fd4aa309dd5f5b9d7c227431adf6771078e"
+        },
+        {
+          "privatePath": ".runs/bounded-go-nogo-20261001/positive-batch-1-summary.json",
+          "sha256": "abaf752a5ac48d16f12990a4d7a7a5f225080e9955e7652af484ce5a9b564b46"
+        },
+        {
+          "privatePath": ".runs/bounded-go-nogo-20261001/positive-batch-2-summary.json",
+          "sha256": "38142f121b97c38706407f3aa9816b8c74eb61b7fd6359e760c7095badffff7d"
+        },
+        {
+          "privatePath": ".runs/bounded-go-nogo-20261001/report.md",
+          "sha256": "c3bb665eee90ff006c5714a8598a6af93276f7011089f513719fc5396398ef03"
+        },
+        {
+          "privatePath": ".runs/bounded-go-nogo-20261001/screen-protocol-draft.json",
+          "sha256": "6c7ae7b1cb0d410d6cdc08477c28e84f600d70bcfdf597d559d21cd41330daaf"
+        },
+        {
+          "privatePath": ".runs/bounded-go-nogo-20261001/screen-protocol.json",
+          "sha256": "3567f2c7bc7a79fb620e3586ddb13f9122f08e87ebc7e2b25d58d735f19ef511"
+        }
+      ]
+    },
+    {
+      "campaign": "broad-rc-20261001",
+      "publicReference": "references/broad-rc-study.md",
+      "description": "Broad development and component experiments; 48 confirmation tasks untouched; candidate scope regression.",
+      "privateTopLevelProvenance": [
+        {
+          "privatePath": ".runs/broad-rc-20261001/broad-rc-target-query-proposed-update.md",
+          "sha256": "472cd1d611567b4325da804002869f3f252db5e06d1faf286954be68d455d92b"
+        },
+        {
+          "privatePath": ".runs/broad-rc-20261001/completion-ledger-recovery-protocol.json",
+          "sha256": "e4c238ec30f6e90f0da682eb49d17369b28645814063b3a8234b4d963d278e68"
+        },
+        {
+          "privatePath": ".runs/broad-rc-20261001/development-706-qualification-diagnostic-protocol.json",
+          "sha256": "ef3410b5005da5cc4565eebd0f57c3e152f3bc87ea20e1e7263af77f043e2d49"
+        },
+        {
+          "privatePath": ".runs/broad-rc-20261001/development-reddit-combined-v1-protocol.json",
+          "sha256": "bd8478d61087f2d1872303c09c6e9d77699329b700f082f07115cb5aec123ac3"
+        },
+        {
+          "privatePath": ".runs/broad-rc-20261001/effective-protocol.json",
+          "sha256": "fa5726c1cbf711b2dc6372c5f8042e3b984fe6afc84d41d91ab5d938accefddc"
+        },
+        {
+          "privatePath": ".runs/broad-rc-20261001/numeric-docs-parent-proposals.md",
+          "sha256": "d8aac27e4a281566564a2e3f87350ee2894edc8246c0ffb4feb527e55c7efce2"
+        },
+        {
+          "privatePath": ".runs/broad-rc-20261001/parent-menu-summary.json",
+          "sha256": "5b3b9a973417d74dfd931adf09bbd2166c75ec37572aefa2f336a24d225c964d"
+        },
+        {
+          "privatePath": ".runs/broad-rc-20261001/protocol-amendment-01.json",
+          "sha256": "2682535f119510c4d8c6ef9101237de5fc3e23b5d885119d70ced2670de3fad4"
+        },
+        {
+          "privatePath": ".runs/broad-rc-20261001/protocol-amendment-02.json",
+          "sha256": "5ab2a6ac92575b42a7b5f3da5a0afcd9d88461a4d909b5a5fcfa2ddf470ef60a"
+        },
+        {
+          "privatePath": ".runs/broad-rc-20261001/protocol.json",
+          "sha256": "6eb2e257840bb225b9a49bb226322d9216ec59ead33151ccbe66888504c9470e"
+        },
+        {
+          "privatePath": ".runs/broad-rc-20261001/protocol.sha256",
+          "sha256": "79a17992c365bac5ed2f3d8c06dc43550cbc4242c84b15c07247fdc67fff3c1e"
+        },
+        {
+          "privatePath": ".runs/broad-rc-20261001/schedule-protocol-negative.json",
+          "sha256": "ea8e0566f7e2ee37a261575917de28fb9b8bbba2ae10a17aa1243ccd3cfe3293"
+        },
+        {
+          "privatePath": ".runs/broad-rc-20261001/shared-scope-probes-v2-summary.json",
+          "sha256": "c54e592a4f902aa8ccc0a00abb1d8f69cf677d782aa12318e6df4034e4a6bad4"
+        },
+        {
+          "privatePath": ".runs/broad-rc-20261001/value-selector-summary.json",
+          "sha256": "3e6a32ff8ab463813414ef0cca1418926d86f025ce4cbb370757f50182c16a2c"
+        }
+      ]
+    },
+    {
+      "campaign": "caller-workflow-20260929",
+      "publicReference": "references/archive-trials/caller-workflow-20260929.md",
+      "description": "Historical checkpoint; later decisions and source attribution are retained in the linked summary.",
+      "privateTopLevelProvenance": [
+        {
+          "privatePath": ".runs/caller-workflow-20260929/agent-browser-core.md",
+          "sha256": "9c02e42ab9bb80b78a28c7f2eba422b6f4f7aa34b37c5fba9473208ab1ec718b"
+        },
+        {
+          "privatePath": ".runs/caller-workflow-20260929/summary.md",
+          "sha256": "14a510a26944306364add5f03b04d10b35853a20bc16675b9166bd18ecf7f698"
+        }
+      ]
+    },
+    {
+      "campaign": "combobox-affordance-20260929",
+      "publicReference": "references/archive-trials/combobox-affordance-20260929.md",
+      "description": "Historical checkpoint; later decisions and source attribution are retained in the linked summary.",
+      "privateTopLevelProvenance": [
+        {
+          "privatePath": ".runs/combobox-affordance-20260929/summary.md",
+          "sha256": "dcd6d21bbd319671055332ba72647b50b462863fe92eaafe32099b1d0befc4dd"
+        }
+      ]
+    },
+    {
+      "campaign": "evidence-hypotheses-20260929",
+      "publicReference": "references/archive-trials/evidence-hypotheses-20260929.md",
+      "description": "Historical checkpoint; later decisions and source attribution are retained in the linked summary.",
+      "privateTopLevelProvenance": [
+        {
+          "privatePath": ".runs/evidence-hypotheses-20260929/summary.md",
+          "sha256": "3ce4f299a7b870e2bf01bdea8dd6dbbac44ec4c1cd70864656d567e9456aef33"
+        }
+      ]
+    },
+    {
+      "campaign": "execution-contract-20260929",
+      "publicReference": "references/archive-trials/execution-contract-20260929.md",
+      "description": "Historical checkpoint; later decisions and source attribution are retained in the linked summary.",
+      "privateTopLevelProvenance": [
+        {
+          "privatePath": ".runs/execution-contract-20260929/summary.md",
+          "sha256": "387d72de362d6cd33c818a14f30c9db1a245c0313cb267c7d841057dc76301f8"
+        }
+      ]
+    },
+    {
+      "campaign": "finalization-20260930",
+      "publicReference": "references/field-binding-study.md",
+      "description": "Destination classifier rejected; reserved regressions and independent picker recovery.",
+      "privateTopLevelProvenance": [
+        {
+          "privatePath": ".runs/finalization-20260930/accounting-final.json",
+          "sha256": "8e57526a976d7d95b8fe94bdc47a403cca3566f1830521cf51d8345a66a9757e"
+        }
+      ]
+    },
+    {
+      "campaign": "github-project-research-20260929",
+      "publicReference": "references/published-evidence.md",
+      "description": "Pinned project and official primitive research; not a new benchmark score.",
+      "privateTopLevelProvenance": [
+        {
+          "privatePath": ".runs/github-project-research-20260929/review.md",
+          "sha256": "37b5493bd935bdc5994fea023f447773f3d02e83f4a80da67f47372343c78823"
+        }
+      ]
+    },
+    {
+      "campaign": "goal-discovery-20260929",
+      "publicReference": "references/archive-trials/goal-discovery-20260929.md",
+      "description": "Historical checkpoint; later decisions and source attribution are retained in the linked summary.",
+      "privateTopLevelProvenance": [
+        {
+          "privatePath": ".runs/goal-discovery-20260929/summary.md",
+          "sha256": "fa917494a430819a5a887b74d2c7fa2460a788fcbb08ed0da61d02b7c31c4ace"
+        }
+      ]
+    },
+    {
+      "campaign": "handoff-history-20260929",
+      "publicReference": "references/archive-trials/handoff-history-20260929.md",
+      "description": "Historical checkpoint; later decisions and source attribution are retained in the linked summary.",
+      "privateTopLevelProvenance": [
+        {
+          "privatePath": ".runs/handoff-history-20260929/summary.md",
+          "sha256": "d5c020a38680f0b02326585c2073ed95a3bc9f4677b11c8ec5329a5163bd5555"
+        }
+      ]
+    },
+    {
+      "campaign": "handoff-improvement-20260928",
+      "publicReference": "references/archive-trials/handoff-improvement-20260928.md",
+      "description": "Historical checkpoint; later decisions and source attribution are retained in the linked summary.",
+      "privateTopLevelProvenance": [
+        {
+          "privatePath": ".runs/handoff-improvement-20260928/summary.json",
+          "sha256": "a5e0aec26f7e01a26087552e0ffde8567e966480dc0e89020ca37fc5d100ef31"
+        },
+        {
+          "privatePath": ".runs/handoff-improvement-20260928/summary.md",
+          "sha256": "2405ab77cf30c3aaf4f04b9b3514c1202a8dc3be8e89fc0e282fbe936fa1122a"
+        }
+      ]
+    },
+    {
+      "campaign": "implementation-review-20260930",
+      "publicReference": "references/implementation-approaches.md",
+      "description": "Cross-version architecture review; not an independently scored actor cohort.",
+      "privateTopLevelProvenance": []
+    },
+    {
+      "campaign": "integration-20260927-8h",
+      "publicReference": "references/study-gym.md",
+      "description": "Original BrowserGym-core integration tasks; authored regression evidence, not public benchmark scores.",
+      "privateTopLevelProvenance": []
+    },
+    {
+      "campaign": "integration-20260927-heldout",
+      "publicReference": "references/study-gym.md",
+      "description": "Original BrowserGym-core integration tasks; authored regression evidence, not public benchmark scores.",
+      "privateTopLevelProvenance": []
+    },
+    {
+      "campaign": "integration-20260927-seeded-final",
+      "publicReference": "references/study-gym.md",
+      "description": "Original BrowserGym-core integration tasks; authored regression evidence, not public benchmark scores.",
+      "privateTopLevelProvenance": []
+    },
+    {
+      "campaign": "miniwob-20260927-8h",
+      "publicReference": "references/study-gym.md",
+      "description": "Early practiced-family MiniWoB campaign/checkpoint; retries and frozen results are separate.",
+      "privateTopLevelProvenance": []
+    },
+    {
+      "campaign": "miniwob-20260927-final-rerun",
+      "publicReference": "references/study-gym.md",
+      "description": "Early practiced-family MiniWoB campaign/checkpoint; retries and frozen results are separate.",
+      "privateTopLevelProvenance": []
+    },
+    {
+      "campaign": "miniwob-20260927-final-targeted",
+      "publicReference": "references/study-gym.md",
+      "description": "Early practiced-family MiniWoB campaign/checkpoint; retries and frozen results are separate.",
+      "privateTopLevelProvenance": []
+    },
+    {
+      "campaign": "miniwob-20260927-final-v2",
+      "publicReference": "references/study-gym.md",
+      "description": "Early practiced-family MiniWoB campaign/checkpoint; retries and frozen results are separate.",
+      "privateTopLevelProvenance": []
+    },
+    {
+      "campaign": "miniwob-20260927-focused-fix",
+      "publicReference": "references/study-gym.md",
+      "description": "Early practiced-family MiniWoB campaign/checkpoint; retries and frozen results are separate.",
+      "privateTopLevelProvenance": []
+    },
+    {
+      "campaign": "miniwob-20260927-post-integration",
+      "publicReference": "references/study-gym.md",
+      "description": "Early practiced-family MiniWoB campaign/checkpoint; retries and frozen results are separate.",
+      "privateTopLevelProvenance": []
+    },
+    {
+      "campaign": "miniwob-general-improvement-20260928",
+      "publicReference": "references/archive-trials/miniwob-general-improvement.md",
+      "description": "Historical checkpoint; later decisions and source attribution are retained in the linked summary.",
+      "privateTopLevelProvenance": [
+        {
+          "privatePath": ".runs/miniwob-general-improvement-20260928/evaluation-summary.json",
+          "sha256": "a7018ac386c6c5ce2a95765a2c61cfb40cd4bccd7d7f8ab7cf5c2ff1de12196c"
+        },
+        {
+          "privatePath": ".runs/miniwob-general-improvement-20260928/evaluation-summary.md",
+          "sha256": "80d9186399e3edd4aedeead1c78ae440595b4a2c9e468b35387fc955724b00c9"
+        },
+        {
+          "privatePath": ".runs/miniwob-general-improvement-20260928/extension-summary-before-second-extension.json",
+          "sha256": "4e1d3071a6b9fc58d561af2fcbbb63274d973aa1228026881ffd290e94e781f9"
+        },
+        {
+          "privatePath": ".runs/miniwob-general-improvement-20260928/extension-summary-before-second-extension.md",
+          "sha256": "3afe114c3b2ac03916cb83cb990a24dbd90819bb95179d725f36c6c41c853155"
+        },
+        {
+          "privatePath": ".runs/miniwob-general-improvement-20260928/extension-summary.json",
+          "sha256": "bca4900cea419981da941bd4841ddc4e2fc16bcfa5dcf3a5d4491e5b76f1a03f"
+        },
+        {
+          "privatePath": ".runs/miniwob-general-improvement-20260928/extension-summary.md",
+          "sha256": "a5905505a9dcba79ec03eb0a97a94f172044a0eef5fe5e3b9095504d4d1cf00c"
+        }
+      ]
+    },
+    {
+      "campaign": "miniwob-refactor-20260928",
+      "publicReference": "references/archive-trials/miniwob-refactor.md",
+      "description": "Historical checkpoint; later decisions and source attribution are retained in the linked summary.",
+      "privateTopLevelProvenance": [
+        {
+          "privatePath": ".runs/miniwob-refactor-20260928/evaluation-summary.json",
+          "sha256": "3fdda0747ebb77ecd5b73cc1da1fac62dc34ae27129e3666b4bb639c873d65ed"
+        },
+        {
+          "privatePath": ".runs/miniwob-refactor-20260928/evaluation-summary.md",
+          "sha256": "bdde7a030abd5dcec5bf0500a3ae34f97685e12b33d14b69d245a39cc8556fe2"
+        }
+      ]
+    },
+    {
+      "campaign": "object-context-20260929",
+      "publicReference": "references/archive-trials/object-context-20260929.md",
+      "description": "Historical checkpoint; later decisions and source attribution are retained in the linked summary.",
+      "privateTopLevelProvenance": [
+        {
+          "privatePath": ".runs/object-context-20260929/interim-local-summary.json",
+          "sha256": "a0333fe13b004de560ef81a6554846ad4f6fd362592f0c637eec6ac1d357928a"
+        },
+        {
+          "privatePath": ".runs/object-context-20260929/structural-diagnostic-summary.json",
+          "sha256": "5d9876d9f2745a9eb2f9ccb9b74fa9d7343ce214e4ad66b23dcedd92d32547e8"
+        },
+        {
+          "privatePath": ".runs/object-context-20260929/summary.md",
+          "sha256": "adbd97f276885c8dd3f980856eede3bb33d18327f5213ef0b7e04ad110531b96"
+        }
+      ]
+    },
+    {
+      "campaign": "pattern-trials-20261001",
+      "publicReference": "references/archive-trials/pattern-trials.md",
+      "description": "Hybrid owner/mechanical guard pilot: NO-GO; limited treatment exposure.",
+      "privateTopLevelProvenance": [
+        {
+          "privatePath": ".runs/pattern-trials-20261001/accounting-final.json",
+          "sha256": "dc20aae09296760827ecd4403a5f29e836be845cba09275bb07ca7126e000a25"
+        },
+        {
+          "privatePath": ".runs/pattern-trials-20261001/final-checkpoint.json",
+          "sha256": "22b031cd3945f2681902ac117e73f82ba56b6d971933f954db87ca057fa7beea"
+        },
+        {
+          "privatePath": ".runs/pattern-trials-20261001/protocol.json",
+          "sha256": "65d5fbc414b425dfda5abed53338c5133e66bb0900eeb8adce93b54598fdfb07"
+        },
+        {
+          "privatePath": ".runs/pattern-trials-20261001/report.md",
+          "sha256": "63665156f886a14d045d660e2bfc142b3e5867890cb9dd837a555d0f4ffb8bbe"
+        }
+      ]
+    },
+    {
+      "campaign": "pattern-trials-proposal-20261001",
+      "publicReference": "RESEARCH.md#9-final-bounded-and-architecture-pilots-no-go",
+      "description": "Architecture proposal only; this directory establishes no scored outcome.",
+      "privateTopLevelProvenance": []
+    },
+    {
+      "campaign": "picker-commit-20260929",
+      "publicReference": "references/picker-commit-study.md",
+      "description": "Custom and detached picker development, regressions and held-back discovery variant.",
+      "privateTopLevelProvenance": []
+    },
+    {
+      "campaign": "policy-boundaries-20260930",
+      "publicReference": "references/archive-trials/policy-boundaries-20260930.md",
+      "description": "Historical checkpoint; later decisions and source attribution are retained in the linked summary.",
+      "privateTopLevelProvenance": [
+        {
+          "privatePath": ".runs/policy-boundaries-20260930/summary.md",
+          "sha256": "3cac50140997a18e8f7de6c1e950967a89ea7d6873dbb04dc5bc5d4eb07a144e"
+        }
+      ]
+    },
+    {
+      "campaign": "public-transfer-20260930",
+      "publicReference": "references/public-transfer-study.md",
+      "description": "Shopping Admin transfer, caller derivation, numeric binding and rejected timing candidate.",
+      "privateTopLevelProvenance": [
+        {
+          "privatePath": ".runs/public-transfer-20260930/accounting-final.json",
+          "sha256": "df195e60d08400479cd1f82b8262a7993fd56c95e6900a1fee45ad8bf24bcc16"
+        }
+      ]
+    },
+    {
+      "campaign": "rc-improvement-20260930",
+      "publicReference": "references/rc-improvement-study.md",
+      "description": "Multiple frozen RC revisions; final v17 narrow 0/9 to 3/9 standalone gain.",
+      "privateTopLevelProvenance": [
+        {
+          "privatePath": ".runs/rc-improvement-20260930/WORKING-NOTES.md",
+          "sha256": "ba68495615d7548edbb8d9393a9f9844b4b83da7701f53b3c32478c484a5c123"
+        },
+        {
+          "privatePath": ".runs/rc-improvement-20260930/accounting-final-v17.json",
+          "sha256": "93b06e7f1d81ca0d66260ceaa6ee839eac5adb44d1d5a877e5f26f3787c84dd9"
+        },
+        {
+          "privatePath": ".runs/rc-improvement-20260930/development-v10-summary.json",
+          "sha256": "1d61d05e662b4be050b5064953901b1b17199ba25eed2b954e028471eeddddb8"
+        },
+        {
+          "privatePath": ".runs/rc-improvement-20260930/development-v11-summary.json",
+          "sha256": "53a610ff87ae73d211dafb145ea5830adc7996d76a47cc685488f382933f1573"
+        },
+        {
+          "privatePath": ".runs/rc-improvement-20260930/development-v12-summary.json",
+          "sha256": "92252c70124f30c404abf6daea80d5067c492fd9025cf302cf0a5cd857e981df"
+        },
+        {
+          "privatePath": ".runs/rc-improvement-20260930/development-v14a-summary.json",
+          "sha256": "42bf84d2704f8f7922d8ea6b32cd57fa88c6c63546921257ea28eecea7546892"
+        },
+        {
+          "privatePath": ".runs/rc-improvement-20260930/development-v15-summary.json",
+          "sha256": "3e0d98541ba21e9ad4b76d8f36eaa573ac45693f94f30987b1b3c5adcd28d73b"
+        },
+        {
+          "privatePath": ".runs/rc-improvement-20260930/development-v7-summary.json",
+          "sha256": "6f061d085f0e6bdf68e19e00be035ce96c9b523eaf7b857410c817c5061ad465"
+        },
+        {
+          "privatePath": ".runs/rc-improvement-20260930/development-v8a-summary.json",
+          "sha256": "bfd835a2cc0ad0ff5c4b4cdf2a390cb135e2486283b9b91169a3cbf6275b0f51"
+        },
+        {
+          "privatePath": ".runs/rc-improvement-20260930/development-v9a-summary.json",
+          "sha256": "70b339297fbc4600272c9c6ff1762f576810709b186e08d1075e8c550fa8fe04"
+        },
+        {
+          "privatePath": ".runs/rc-improvement-20260930/matrix-v17-summary.json",
+          "sha256": "35e457dc0f93017f844ef34ed779515df4a45e7762fde610defa344d0fcc156f"
+        },
+        {
+          "privatePath": ".runs/rc-improvement-20260930/matrix-v3-summary.json",
+          "sha256": "c956e7ae638a5f9d106f4841b8bd82dc333fe4d6b227291a530889c9dab5d238"
+        },
+        {
+          "privatePath": ".runs/rc-improvement-20260930/matrix-v5-summary.json",
+          "sha256": "a052eab9ff7b094eeffbed76f164758886ec05759c06e6b8169c473ba6d78427"
+        },
+        {
+          "privatePath": ".runs/rc-improvement-20260930/matrix-v6-summary.json",
+          "sha256": "aeecff2a0983ad025ecb9bf6796bd90c51fe6939c2271874e26d9992ea66ab5b"
+        },
+        {
+          "privatePath": ".runs/rc-improvement-20260930/matrix-v9a-summary.json",
+          "sha256": "05f64d7348c9f29a2ec5ac3bcbf31ac60d1422adb415299ee3ef2ee149784880"
+        }
+      ]
+    },
+    {
+      "campaign": "reference-usability-20261001",
+      "publicReference": "references/archive-trials/reference-usability.md",
+      "description": "Pinned external controller: NO-GO; one negative start, no positive cases.",
+      "privateTopLevelProvenance": [
+        {
+          "privatePath": ".runs/reference-usability-20261001/accounting-final.json",
+          "sha256": "e28c13b886a2e1dc5fa857d3c77af2cdbd93546472ea2f047a4652e5ce744609"
+        },
+        {
+          "privatePath": ".runs/reference-usability-20261001/final-checkpoint.json",
+          "sha256": "2bb91c47748fc5aeedf31dc528f5493985c0637a284eada4a728f3275b8463b8"
+        },
+        {
+          "privatePath": ".runs/reference-usability-20261001/protocol.json",
+          "sha256": "50101d087dcd300d57de950ed1c234468f803a91f3b0634854ac479baf37a2a0"
+        },
+        {
+          "privatePath": ".runs/reference-usability-20261001/report.md",
+          "sha256": "3b8e79f1a2fb56d49376fba0abee1f4d1aeb22c2a65e176eaa9bfffea4d7fd70"
+        }
+      ]
+    },
+    {
+      "campaign": "release-evaluation-20260930",
+      "publicReference": "references/archive-trials/release-evaluation-20260930.md",
+      "description": "Historical checkpoint; later decisions and source attribution are retained in the linked summary.",
+      "privateTopLevelProvenance": [
+        {
+          "privatePath": ".runs/release-evaluation-20260930/accounting-final.json",
+          "sha256": "6af9f43c179f363adb6ee5096eda1d504a15d598ce8f99444f984125a40b288b"
+        },
+        {
+          "privatePath": ".runs/release-evaluation-20260930/miniwob-family-summary.json",
+          "sha256": "3c0390a503717b6da1274d2ecfbce2391387a6891adcb7e2c54bedad86910b63"
+        },
+        {
+          "privatePath": ".runs/release-evaluation-20260930/summary-in-progress.md",
+          "sha256": "82cbfbe6cd96eee3bb22e7f378e09b8204399d26e1769be477244b68b2bb0d50"
+        },
+        {
+          "privatePath": ".runs/release-evaluation-20260930/summary.md",
+          "sha256": "7e96bc95c7ddb9c8f9aef57c65a2a229e35b853a70ea25ee99551b136ce9518e"
+        }
+      ]
+    },
+    {
+      "campaign": "requirement-interpreter-20260928",
+      "publicReference": "references/archive-trials/requirement-interpreter-20260928.md",
+      "description": "Historical checkpoint; later decisions and source attribution are retained in the linked summary.",
+      "privateTopLevelProvenance": [
+        {
+          "privatePath": ".runs/requirement-interpreter-20260928/effect-summary.json",
+          "sha256": "b1d89407eab5bc77bc73ed1025e3ab9dce81d308513583abe6eb46d556377098"
+        },
+        {
+          "privatePath": ".runs/requirement-interpreter-20260928/preceding-capability-status.md",
+          "sha256": "75e9082c7fb168e6ef774cb52cc0d516ae06ed7b4dcdfe59c369606481e6ef40"
+        },
+        {
+          "privatePath": ".runs/requirement-interpreter-20260928/summary.json",
+          "sha256": "874b8a4ae935ab1ac942da96a755524759ce79b6098529fb486c48bfc2e7c26c"
+        },
+        {
+          "privatePath": ".runs/requirement-interpreter-20260928/summary.md",
+          "sha256": "8e7945ae424b08aefe8ad70f58a62aa34256e64d53615b22be57ab16923a1b5e"
+        }
+      ]
+    },
+    {
+      "campaign": "skill-guidance-20260929",
+      "publicReference": "references/capability-status.md",
+      "description": "Operating-instruction checkpoint; not a new actor result.",
+      "privateTopLevelProvenance": [
+        {
+          "privatePath": ".runs/skill-guidance-20260929/SKILL.before.md",
+          "sha256": "b7f7bd071ad6bc6cfc21b9a1f324b18af0ecb76fb35c17cd63d2fedb8eb71c38"
+        }
+      ]
+    },
+    {
+      "campaign": "target-scope-improvement-20260928",
+      "publicReference": "references/archive-trials/target-scope-improvement-20260928.md",
+      "description": "Historical checkpoint; later decisions and source attribution are retained in the linked summary.",
+      "privateTopLevelProvenance": [
+        {
+          "privatePath": ".runs/target-scope-improvement-20260928/classifier-review.md",
+          "sha256": "70c5d5d34494eb5da8c5ac8d92ffa5f9ea240d6dd137a6253a77f1330858cf0d"
+        },
+        {
+          "privatePath": ".runs/target-scope-improvement-20260928/effect-summary.json",
+          "sha256": "d9568015576991c68edd5eb472554a544269fa888d1622d3f00574a196ddb20b"
+        },
+        {
+          "privatePath": ".runs/target-scope-improvement-20260928/summary.json",
+          "sha256": "3cbb26a01b2c689e37a126fd9e869f5a9fde70b956b2bd39646490111b435ad1"
+        },
+        {
+          "privatePath": ".runs/target-scope-improvement-20260928/summary.md",
+          "sha256": "afe55c203d9a09c4165561c1c189450f11d055aaca0023d15ca7d81daae576f8"
+        }
+      ]
+    },
+    {
+      "campaign": "value-binding-20260929",
+      "publicReference": "references/archive-trials/value-binding-20260929.md",
+      "description": "Historical checkpoint; later decisions and source attribution are retained in the linked summary.",
+      "privateTopLevelProvenance": [
+        {
+          "privatePath": ".runs/value-binding-20260929/summary.md",
+          "sha256": "b810895c8f219a9cf9ad31d4adf2e9f115d44be4bbd1dc9360cd7596fd65f236"
+        }
+      ]
+    },
+    {
+      "campaign": "webarena-caller-20260929",
+      "publicReference": "references/archive-trials/webarena-caller-20260929.md",
+      "description": "Historical checkpoint; later decisions and source attribution are retained in the linked summary.",
+      "privateTopLevelProvenance": [
+        {
+          "privatePath": ".runs/webarena-caller-20260929/summary-qualified-checkpoint.md",
+          "sha256": "56b61a5d69b45dc75240fe370a1a61612e9d667e8bc905c99bbd5a55db035ecf"
+        },
+        {
+          "privatePath": ".runs/webarena-caller-20260929/summary.md",
+          "sha256": "fa839e1bfb4d33902b9f40c250b0f6406a7bd6f01573d88e03d286a7bfe89399"
+        }
+      ]
+    },
+    {
+      "campaign": "webarena-cost-20260929",
+      "publicReference": "references/archive-trials/webarena-cost-20260929.md",
+      "description": "Historical checkpoint; later decisions and source attribution are retained in the linked summary.",
+      "privateTopLevelProvenance": [
+        {
+          "privatePath": ".runs/webarena-cost-20260929/summary.md",
+          "sha256": "9daf185d7b53ae615ba7b6cfdb1365b223033bc2bb76ad61529d750c771f5174"
+        }
+      ]
+    },
+    {
+      "campaign": "webarena-isolation-20260928",
+      "publicReference": "references/archive-trials/webarena-isolation-20260928.md",
+      "description": "Historical checkpoint; later decisions and source attribution are retained in the linked summary.",
+      "privateTopLevelProvenance": [
+        {
+          "privatePath": ".runs/webarena-isolation-20260928/summary.json",
+          "sha256": "e5adda6954f6a79939d6efa75954042e074ae9763c69a4d57dca2447806e4424"
+        },
+        {
+          "privatePath": ".runs/webarena-isolation-20260928/summary.md",
+          "sha256": "aebcc428ed8e639c4f761ae80a58d673bcb7d2d567b252cf9c71f8e9707be9b6"
+        }
+      ]
+    },
+    {
+      "campaign": "webarena-verified-20260928",
+      "publicReference": "references/study-gym.md",
+      "description": "Historical WebArena development; unqualified/reset-contaminated comparisons are invalid.",
+      "privateTopLevelProvenance": []
+    },
+    {
+      "campaign": "webarena-verified-20260928-4h10",
+      "publicReference": "references/study-gym.md",
+      "description": "Historical WebArena development; unqualified/reset-contaminated comparisons are invalid.",
+      "privateTopLevelProvenance": []
+    },
+    {
+      "campaign": "webarena-verified-continuation-20260928",
+      "publicReference": "references/study-gym.md",
+      "description": "Historical WebArena development; unqualified/reset-contaminated comparisons are invalid.",
+      "privateTopLevelProvenance": []
+    },
+    {
+      "campaign": "webarena-verified-focused-20260928",
+      "publicReference": "references/study-gym.md",
+      "description": "Historical WebArena development; unqualified/reset-contaminated comparisons are invalid.",
+      "privateTopLevelProvenance": []
+    }
+  ],
+  "curatedSummaryProvenance": [
+    {
+      "publicPath": "references/archive-trials/bounded-go-nogo.md",
+      "privateSource": ".runs/bounded-go-nogo-20261001/report.md",
+      "privateSourceSha256": "c3bb665eee90ff006c5714a8598a6af93276f7011089f513719fc5396398ef03"
+    },
+    {
+      "publicPath": "references/archive-trials/reference-usability.md",
+      "privateSource": ".runs/reference-usability-20261001/report.md",
+      "privateSourceSha256": "3b8e79f1a2fb56d49376fba0abee1f4d1aeb22c2a65e176eaa9bfffea4d7fd70"
+    },
+    {
+      "publicPath": "references/archive-trials/pattern-trials.md",
+      "privateSource": ".runs/pattern-trials-20261001/report.md",
+      "privateSourceSha256": "63665156f886a14d045d660e2bfc142b3e5867890cb9dd837a555d0f4ffb8bbe"
+    },
+    {
+      "publicPath": "references/archive-trials/miniwob-refactor.md",
+      "privateSource": ".runs/miniwob-refactor-20260928/evaluation-summary.md",
+      "privateSourceSha256": "bdde7a030abd5dcec5bf0500a3ae34f97685e12b33d14b69d245a39cc8556fe2"
+    },
+    {
+      "publicPath": "references/archive-trials/miniwob-general-improvement.md",
+      "privateSource": ".runs/miniwob-general-improvement-20260928/evaluation-summary.md",
+      "privateSourceSha256": "80d9186399e3edd4aedeead1c78ae440595b4a2c9e468b35387fc955724b00c9"
+    },
+    {
+      "publicPath": "references/archive-trials/historical-run-review.md",
+      "privateSource": ".runs/historical-run-review-20260928.md",
+      "privateSourceSha256": "bd65468adf3928d35e32f88a001e70a545949e557a6e5670f27d03c49df494d2"
+    },
+    {
+      "publicPath": "references/archive-trials/action-check-20260928.md",
+      "privateSource": ".runs/action-check-20260928/summary.md",
+      "privateSourceSha256": "bbbd30a870021052e6d8d27261aec100700c269d69ac1bbfb31913764b40c055"
+    },
+    {
+      "publicPath": "references/archive-trials/action-review-ablation-20260929.md",
+      "privateSource": ".runs/action-review-ablation-20260929/summary.md",
+      "privateSourceSha256": "e0a1ab25fd80c000b849222a5749fbdf0dc9b0bfc4d66f324b2c868217f3c6a5"
+    },
+    {
+      "publicPath": "references/archive-trials/ambiguous-caller-20260930.md",
+      "privateSource": ".runs/ambiguous-caller-20260930/summary.md",
+      "privateSourceSha256": "31e796f5a8c395a659ffd8f5cbb8aa3f380e5957bbd48fb309a0e67f15824c39"
+    },
+    {
+      "publicPath": "references/archive-trials/caller-workflow-20260929.md",
+      "privateSource": ".runs/caller-workflow-20260929/summary.md",
+      "privateSourceSha256": "14a510a26944306364add5f03b04d10b35853a20bc16675b9166bd18ecf7f698"
+    },
+    {
+      "publicPath": "references/archive-trials/combobox-affordance-20260929.md",
+      "privateSource": ".runs/combobox-affordance-20260929/summary.md",
+      "privateSourceSha256": "dcd6d21bbd319671055332ba72647b50b462863fe92eaafe32099b1d0befc4dd"
+    },
+    {
+      "publicPath": "references/archive-trials/evidence-hypotheses-20260929.md",
+      "privateSource": ".runs/evidence-hypotheses-20260929/summary.md",
+      "privateSourceSha256": "3ce4f299a7b870e2bf01bdea8dd6dbbac44ec4c1cd70864656d567e9456aef33"
+    },
+    {
+      "publicPath": "references/archive-trials/execution-contract-20260929.md",
+      "privateSource": ".runs/execution-contract-20260929/summary.md",
+      "privateSourceSha256": "387d72de362d6cd33c818a14f30c9db1a245c0313cb267c7d841057dc76301f8"
+    },
+    {
+      "publicPath": "references/archive-trials/goal-discovery-20260929.md",
+      "privateSource": ".runs/goal-discovery-20260929/summary.md",
+      "privateSourceSha256": "fa917494a430819a5a887b74d2c7fa2460a788fcbb08ed0da61d02b7c31c4ace"
+    },
+    {
+      "publicPath": "references/archive-trials/handoff-history-20260929.md",
+      "privateSource": ".runs/handoff-history-20260929/summary.md",
+      "privateSourceSha256": "d5c020a38680f0b02326585c2073ed95a3bc9f4677b11c8ec5329a5163bd5555"
+    },
+    {
+      "publicPath": "references/archive-trials/handoff-improvement-20260928.md",
+      "privateSource": ".runs/handoff-improvement-20260928/summary.md",
+      "privateSourceSha256": "2405ab77cf30c3aaf4f04b9b3514c1202a8dc3be8e89fc0e282fbe936fa1122a"
+    },
+    {
+      "publicPath": "references/archive-trials/object-context-20260929.md",
+      "privateSource": ".runs/object-context-20260929/summary.md",
+      "privateSourceSha256": "adbd97f276885c8dd3f980856eede3bb33d18327f5213ef0b7e04ad110531b96"
+    },
+    {
+      "publicPath": "references/archive-trials/policy-boundaries-20260930.md",
+      "privateSource": ".runs/policy-boundaries-20260930/summary.md",
+      "privateSourceSha256": "3cac50140997a18e8f7de6c1e950967a89ea7d6873dbb04dc5bc5d4eb07a144e"
+    },
+    {
+      "publicPath": "references/archive-trials/release-evaluation-20260930.md",
+      "privateSource": ".runs/release-evaluation-20260930/summary.md",
+      "privateSourceSha256": "7e96bc95c7ddb9c8f9aef57c65a2a229e35b853a70ea25ee99551b136ce9518e"
+    },
+    {
+      "publicPath": "references/archive-trials/requirement-interpreter-20260928.md",
+      "privateSource": ".runs/requirement-interpreter-20260928/summary.md",
+      "privateSourceSha256": "8e7945ae424b08aefe8ad70f58a62aa34256e64d53615b22be57ab16923a1b5e"
+    },
+    {
+      "publicPath": "references/archive-trials/target-scope-improvement-20260928.md",
+      "privateSource": ".runs/target-scope-improvement-20260928/summary.md",
+      "privateSourceSha256": "afe55c203d9a09c4165561c1c189450f11d055aaca0023d15ca7d81daae576f8"
+    },
+    {
+      "publicPath": "references/archive-trials/value-binding-20260929.md",
+      "privateSource": ".runs/value-binding-20260929/summary.md",
+      "privateSourceSha256": "b810895c8f219a9cf9ad31d4adf2e9f115d44be4bbd1dc9360cd7596fd65f236"
+    },
+    {
+      "publicPath": "references/archive-trials/webarena-caller-20260929.md",
+      "privateSource": ".runs/webarena-caller-20260929/summary.md",
+      "privateSourceSha256": "fa839e1bfb4d33902b9f40c250b0f6406a7bd6f01573d88e03d286a7bfe89399"
+    },
+    {
+      "publicPath": "references/archive-trials/webarena-cost-20260929.md",
+      "privateSource": ".runs/webarena-cost-20260929/summary.md",
+      "privateSourceSha256": "9daf185d7b53ae615ba7b6cfdb1365b223033bc2bb76ad61529d750c771f5174"
+    },
+    {
+      "publicPath": "references/archive-trials/webarena-isolation-20260928.md",
+      "privateSource": ".runs/webarena-isolation-20260928/summary.md",
+      "privateSourceSha256": "aebcc428ed8e639c4f761ae80a58d673bcb7d2d567b252cf9c71f8e9707be9b6"
+    }
+  ],
+  "publicSyntheticEvidence": [
+    {
+      "path": "references/evidence/autocomplete-0.3.1.json",
+      "sha256": "7767fddafe529103481afe7c26a82d3f1bd791f143c3e7e48f8ba3fe286ee73a"
+    },
+    {
+      "path": "references/evidence/autocomplete-development-0.3.1.json",
+      "sha256": "5edb9fc137a8ae6ff606bf1eee991fbc0b215f22cf2800bbce5a066601276d79"
+    },
+    {
+      "path": "references/evidence/autocomplete-explicit-keyboard-0.3.1.json",
+      "sha256": "025562bc4fca35125fd4c5b0d8e346c303e069da83a6b54106ee4b617875d392"
+    },
+    {
+      "path": "references/evidence/autocomplete-fixture-startup-0.3.1.json",
+      "sha256": "e2f4e459423f4ac2fc92e0308c579cddf280df6870aec69f0d568a238ebf60ee"
+    },
+    {
+      "path": "references/evidence/autocomplete-inferred-keyboard-0.3.1.json",
+      "sha256": "631433008ca17f34ff6d5831c27a29e855ed9b49235b6b35c410c5ae15e54ee7"
+    },
+    {
+      "path": "references/evidence/autocomplete-safe-handoff-1.0.0.json",
+      "sha256": "a7a6dd36d04647391f016d04d5882b3fe464e19459e11566b4633d8782fcb2e6"
+    },
+    {
+      "path": "references/evidence/browser-replay-attempts-0.2.1.json",
+      "sha256": "7fe1da567f4e698708c73cf26c102843df5206ce206f0ddf3bc4c64e50f181e8"
+    },
+    {
+      "path": "references/evidence/codex-comparison-0.2.1.json",
+      "sha256": "92ddf10a434bfb0b9d61372f41c982bdcba64b5800a2abde0626d0736090ab73"
+    },
+    {
+      "path": "references/evidence/codex-comparison.json",
+      "sha256": "56d67f94e2b84d21fc8747d8dc04a25fab615007572eea24a26c3bd0a4361a0c"
+    },
+    {
+      "path": "references/evidence/codex-workflow-0.3.0.json",
+      "sha256": "54a716c342eb3756d2164375d2d13cab0581e566ded64866a39e622ec12260f9"
+    },
+    {
+      "path": "references/evidence/codex-workflow-development-0.3.0.json",
+      "sha256": "c31860bf3c7f76f4974282e25e238153112c249b797fb421a7bcb9e7f613da08"
+    },
+    {
+      "path": "references/evidence/comparison-metrics-0.2.1.json",
+      "sha256": "a26eddc444ac16cde602aa6864f8a5366af8c0ca7ede0f4d70c69a4cc6cab894"
+    },
+    {
+      "path": "references/evidence/component-matrix-0.4.0.json",
+      "sha256": "d9f4aa8edae5ec3aae0e44947ebb8935d108001aeb815f9b7de551e40bc1ed1b"
+    },
+    {
+      "path": "references/evidence/component-matrix-development-0.4.0.json",
+      "sha256": "c3525a0e173772f45d99f5c20fb0c66c79a99990151916573172083d6f43dbdd"
+    },
+    {
+      "path": "references/evidence/component-matrix-pre-upload-0.4.0.json",
+      "sha256": "036b43e03b8aa4528298667348f72fece4c8b663dff844e96c8f0ecdb7b12710"
+    },
+    {
+      "path": "references/evidence/cross-project-components-0.4.0.json",
+      "sha256": "1d3ca345867b84f4c18c0d4112951990a5540adf22eddf68c92cf0dae688a2ea"
+    },
+    {
+      "path": "references/evidence/cross-project-components-1.0.0.json",
+      "sha256": "539d1aeafc9715d614121c4fa753c6de97bc5f01e788745210f2a77b8d10a611"
+    },
+    {
+      "path": "references/evidence/cross-project-components-development-0.4.0.json",
+      "sha256": "48270e55c544cba4da144428792056e401acb30cd380070b7994c1c449874721"
+    },
+    {
+      "path": "references/evidence/cross-project-components-repeats-0.4.0.json",
+      "sha256": "4d6db45f54fc589ec7fd0ffd0644d25721e6955045c32b16cf4d97f75c311666"
+    },
+    {
+      "path": "references/evidence/generated-travel-1.0.0.json",
+      "sha256": "a169d12a5252776ee05e526519d2ab759ec40573f1a57fa6a69e3a1b58fddb30"
+    },
+    {
+      "path": "references/evidence/generated-travel-after-fix-0.4.0.json",
+      "sha256": "ad4a11bef3fa1ab4d996108568859101b8d2dd62333a3eaa2a990c4239c60a78"
+    },
+    {
+      "path": "references/evidence/generated-travel-datefix-development-0.4.0.json",
+      "sha256": "4f6a342fb0c35bc23e046934147929b8880bb520c549e64672f3e758deb4d4e0"
+    },
+    {
+      "path": "references/evidence/generated-travel-development-0.4.0.json",
+      "sha256": "6f6d9ccfe0ea88a9084771db05ddfcdd2efcd823f779b643fe3c9860393c939b"
+    },
+    {
+      "path": "references/evidence/generated-travel-final-0.4.0.json",
+      "sha256": "eeef47e27be6829bf77534029c231c46561a08c6f357a9f53ece273d37d03a8f"
+    },
+    {
+      "path": "references/evidence/generated-travel-no-values-0.4.0.json",
+      "sha256": "6f953954a603311f51eabd888e26854850e160f36e5e61b8223591aa46a1251a"
+    },
+    {
+      "path": "references/evidence/generated-travel-pair-0.4.0.json",
+      "sha256": "3a0b6939d46a6df38168f7cd5bcbb529190c9c5137d04c272ee01c823a40c95f"
+    },
+    {
+      "path": "references/evidence/generated-travel-setup-0.4.0.json",
+      "sha256": "950edbe02497f29c5a87635d49f8abe1ce2c70b91916ab8ac0bb85b37ce940d9"
+    },
+    {
+      "path": "references/evidence/gym-0.4.0.details/autocomplete-1.json",
+      "sha256": "fa843f37f7587d7a5551fb1eb198ea78b145e151b74e5dc061f2988a627416b1"
+    },
+    {
+      "path": "references/evidence/gym-0.4.0.details/autocomplete-2.json",
+      "sha256": "6badcd18a16b43de83ee37685f2b111a8fd297d7ea5003edda2ea6a159152ac4"
+    },
+    {
+      "path": "references/evidence/gym-0.4.0.details/components-1.json",
+      "sha256": "33ec321bb89bbf8abf9fc14490088d346fe53e75b5def45ad2b8a17f674b0bda"
+    },
+    {
+      "path": "references/evidence/gym-0.4.0.details/scenarios-1.json",
+      "sha256": "cf148067592a621969de49718224ea1abc356e23e6c8a7dc6657967b4fe73db3"
+    },
+    {
+      "path": "references/evidence/gym-0.4.0.details/workflow-1.json",
+      "sha256": "4e12eed0e783401cc849a9f4c935398d9b5bf03473d9670025ef97dc23626366"
+    },
+    {
+      "path": "references/evidence/gym-0.4.0.details/workflow-2.json",
+      "sha256": "c14a4aeb13c216e01fd7b83b8d3be3cc5c3ef0519f35df74b84cf3f8b04fe63f"
+    },
+    {
+      "path": "references/evidence/gym-0.4.0.json",
+      "sha256": "ddfc91f78dfc7513c46cb688be1c3aa512a2d6ccbd27006d105971858b495636"
+    },
+    {
+      "path": "references/evidence/gym-1.0.0.details/autocomplete-1.json",
+      "sha256": "af79effcc6feecbb17bfbb64df3e4e00bdfdce0c9412754ffa8d39597e025b43"
+    },
+    {
+      "path": "references/evidence/gym-1.0.0.details/autocomplete-2.json",
+      "sha256": "084e4d14a67ec0c67895d15fa0191a2bdf4054a6248225db2720df6626f46921"
+    },
+    {
+      "path": "references/evidence/gym-1.0.0.details/components-1.json",
+      "sha256": "e09286e50faa59051ffcd10b6ca3fc7e082c04e6b1edb42e14d9380c96f5d65d"
+    },
+    {
+      "path": "references/evidence/gym-1.0.0.details/scenarios-1.json",
+      "sha256": "127f7421469d5b9a55b574129e6d441b12844512ec3f7f9efc410b4a9e1990aa"
+    },
+    {
+      "path": "references/evidence/gym-1.0.0.details/workflow-1.json",
+      "sha256": "dd82268a28a6c50332fd1be2c96ae05d9c8d521520f52f57b3e7403d6ddf6adc"
+    },
+    {
+      "path": "references/evidence/gym-1.0.0.details/workflow-2.json",
+      "sha256": "89ea211327aee3e086a9b6da63875c9d3d7c41fa776407f88cbc5f1f686a0447"
+    },
+    {
+      "path": "references/evidence/gym-1.0.0.json",
+      "sha256": "38eae550172d82f6a555b3cd5475a3d2a72f09b3f84eba026d2fd40434223151"
+    },
+    {
+      "path": "references/evidence/gym-keyboard-failure-1.0.0.details/autocomplete-1.json",
+      "sha256": "ec2f44b32d01493c13ad15656764d81af984a4d23b942b9a154b08b7f9b6ceca"
+    },
+    {
+      "path": "references/evidence/gym-keyboard-failure-1.0.0.details/autocomplete-2.json",
+      "sha256": "bf1ec5232347ab877a532e38414fdac63a7e3855509a193adef4b469aa4fddcc"
+    },
+    {
+      "path": "references/evidence/gym-keyboard-failure-1.0.0.details/components-1.json",
+      "sha256": "d74d074dff6ae0f3722bc6fa42d16e3a2101bee151788eba77cf9e9b01539f73"
+    },
+    {
+      "path": "references/evidence/gym-keyboard-failure-1.0.0.details/scenarios-1.json",
+      "sha256": "f4a14d45a4c4298287d82bdd82772c0ad628aa436263eef0e067f6844d0bd17d"
+    },
+    {
+      "path": "references/evidence/gym-keyboard-failure-1.0.0.details/workflow-1.json",
+      "sha256": "cb16e08bcfbe5ea66b4b91962d7974751b9bc70a5d92adb4b70b55615704037b"
+    },
+    {
+      "path": "references/evidence/gym-keyboard-failure-1.0.0.details/workflow-2.json",
+      "sha256": "4ac248b42800479890aef825011ba22118d1ab6e0fe3ba2bf8daf07bd70dd5fb"
+    },
+    {
+      "path": "references/evidence/gym-keyboard-failure-1.0.0.json",
+      "sha256": "eac436fa5da002efb96d8c23515465133117973e0882e447005d9ff8540f3d64"
+    },
+    {
+      "path": "references/evidence/gym-pre-upload-0.4.0.json",
+      "sha256": "d8bfab01b3d4b5364657cae136cec028281ccc72e755461a2853a38d1aeaa0cb"
+    },
+    {
+      "path": "references/evidence/gym-setup-attempt-0.4.0.json",
+      "sha256": "1a7d7085b976cc5a0f354c10e06cc2870ba4f32c3467d5ab1a349b7e5e8a71c8"
+    },
+    {
+      "path": "references/evidence/handoff-caller-0.2.1.json",
+      "sha256": "5dae0fda2fb7e72beb2f5221e2b386be8c0fe7400447d32e11c92bce61107abd"
+    },
+    {
+      "path": "references/evidence/helper-outcomes.json",
+      "sha256": "df992e46ac09e4b50a5f9eed33c75bbbc10ac0580c7b57bf96cafc16c182082d"
+    },
+    {
+      "path": "references/evidence/helper-replay-chrome154.json",
+      "sha256": "cf2334ee73c9c44bef2523b4287f1e0bcf0a677d58c28b1b94edebf68b24276a"
+    },
+    {
+      "path": "references/evidence/regression-0.3.0.json",
+      "sha256": "d420013b0f50ea9399982b3a9fcb0f29f31b499ae07304ee70b2873f81989f3d"
+    },
+    {
+      "path": "references/evidence/workflow-0.3.0.json",
+      "sha256": "46e851bbf026ab6f79a0bc63f4d9ea8b8b47320303fb1821e6ddc53af93edd6a"
+    },
+    {
+      "path": "references/evidence/workflow-0.3.1.json",
+      "sha256": "b31e848c6c39157a3faf4475352641f496e48d427d78deff92b13eb7ff018443"
+    },
+    {
+      "path": "references/evidence/workflow-development-0.3.0.json",
+      "sha256": "260d1250270f72b8d8cbfcf4dec4f4b3fca764957bb7f5d17a25bc38912f2d14"
+    },
+    {
+      "path": "references/evidence/workflow-development-0.3.1.json",
+      "sha256": "428ccbc2ed64c3c98a9bbec5c76dd29f7ef6eb3fa4ca9aee96459d11c030fc2a"
+    },
+    {
+      "path": "references/evidence/workflow-metrics-0.3.0.json",
+      "sha256": "8e7a50ab9ebbc1490d4bd72948bf5ef884b74d2faceb28fb485f6940bf565098"
+    },
+    {
+      "path": "references/evidence/workflow-transition-fix-0.3.0.json",
+      "sha256": "b30f58008f601d6c5e1f2c4b5e874fac1553b15fab1c0e33f217f3a7708667d9"
+    },
+    {
+      "path": "references/evidence/workflow-upstream-0.3.0.json",
+      "sha256": "3c9bf4266d1850814c3e26eb43cbcc46fca09e84726cc16c095ed0086be3df7e"
+    }
+  ],
+  "historicalNarratives": [
+    {
+      "path": "references/architecture-review.md",
+      "sha256": "0d04c0051947897575588ac4411cc0f29a2adb6096dcd6e317f168f2eb07e6fc"
+    },
+    {
+      "path": "references/archive-trials/action-check-20260928.md",
+      "sha256": "0a382cc5f569c7b4d981df8b2f772cfb818a60dcb2a9064268b1fb45fc03b893"
+    },
+    {
+      "path": "references/archive-trials/action-review-ablation-20260929.md",
+      "sha256": "255b7b4c7ec8bd4bb5a4881b605003b2a1a79a6c6eba3eaac490b97b12a5b139"
+    },
+    {
+      "path": "references/archive-trials/ambiguous-caller-20260930.md",
+      "sha256": "8a653dc965cef46a809fa48475fcfd1b156e73f06496aa888dce10cce3837c37"
+    },
+    {
+      "path": "references/archive-trials/bounded-go-nogo.md",
+      "sha256": "983b4014806ef28c5533a493c7f261076eeb85190565e5989647832aceea8674"
+    },
+    {
+      "path": "references/archive-trials/caller-workflow-20260929.md",
+      "sha256": "980660f9b7b6f2fa681819efd704e69cbda58132429c452198c5e7d5fef788fb"
+    },
+    {
+      "path": "references/archive-trials/combobox-affordance-20260929.md",
+      "sha256": "e7e91deebb2d88b9a08a0324e83bb7ffc87af03bd1c1b4f3e9b7951570c33ce9"
+    },
+    {
+      "path": "references/archive-trials/evidence-hypotheses-20260929.md",
+      "sha256": "5cfe811f91cef8519f76ba26fb4be315cb56e19450f2a7733c0712c8ee04adba"
+    },
+    {
+      "path": "references/archive-trials/execution-contract-20260929.md",
+      "sha256": "7a2ecc8f76c26b6d99a75306a951ddb5167202551459ee774454fef7c6cc6e70"
+    },
+    {
+      "path": "references/archive-trials/goal-discovery-20260929.md",
+      "sha256": "999316eb874fcc34851d29c7543031b738adccac9a503ac20f62e8d86f7f05d7"
+    },
+    {
+      "path": "references/archive-trials/handoff-history-20260929.md",
+      "sha256": "2a73bac5a5bc64130224187a130bf16270f07442d60c1fbbac7da6329047ffe4"
+    },
+    {
+      "path": "references/archive-trials/handoff-improvement-20260928.md",
+      "sha256": "bd453e60f05a7051417c2b1af014b16008bf27aa3899cecd3f2f179515e347bd"
+    },
+    {
+      "path": "references/archive-trials/historical-run-review.md",
+      "sha256": "bf75bdc695d6b3b3f3cb9348366be240206e59d7c531ef7e08462762688075aa"
+    },
+    {
+      "path": "references/archive-trials/miniwob-general-improvement.md",
+      "sha256": "f99c3fcc0da94a42b4de8632cebf3072a1ba1e89973b634ed82567041e32e1ae"
+    },
+    {
+      "path": "references/archive-trials/miniwob-refactor.md",
+      "sha256": "9b9befb20d4361af8941e7c4c694cb6b48ea1e4c928e899107cf045d9b2a7cad"
+    },
+    {
+      "path": "references/archive-trials/object-context-20260929.md",
+      "sha256": "d1d1830f959ec53264fe60ec2307a0353da2fc88718a5d87494ca785ff5b1226"
+    },
+    {
+      "path": "references/archive-trials/pattern-trials.md",
+      "sha256": "56e45da07cf4933b16b5ef64d998f9770e6d54a4cc0248c98f11e7050b529a44"
+    },
+    {
+      "path": "references/archive-trials/policy-boundaries-20260930.md",
+      "sha256": "0a26ea3c5cea571d27068b593d9c9821ebc4958920938aefb4ed2d578406e020"
+    },
+    {
+      "path": "references/archive-trials/reference-usability.md",
+      "sha256": "bac8df806370f089e5bc3c22995b1dc5832a6fe0b4a1d72b7175dd290f3ca54f"
+    },
+    {
+      "path": "references/archive-trials/release-evaluation-20260930.md",
+      "sha256": "cda748aec29eb4bc018b1712b1e33ed3629b0cea81207da4f860bd63e247e3f1"
+    },
+    {
+      "path": "references/archive-trials/requirement-interpreter-20260928.md",
+      "sha256": "16cac68126328a17ed0917f907147a7a571621cc501c1e6204aa358aab796db7"
+    },
+    {
+      "path": "references/archive-trials/target-scope-improvement-20260928.md",
+      "sha256": "197b4c9511a8427f7ca79815c8111243c3d1ff5356f77c7938a3299b87febf5c"
+    },
+    {
+      "path": "references/archive-trials/value-binding-20260929.md",
+      "sha256": "299e629a87e38938a29bc04f934bfe4ec0a3898aebfd53540a7fa0f192714600"
+    },
+    {
+      "path": "references/archive-trials/webarena-caller-20260929.md",
+      "sha256": "ffdd5661de87495ff7434448ea4d567e9ad411e2c8bdc53be3bd71011fc21fe6"
+    },
+    {
+      "path": "references/archive-trials/webarena-cost-20260929.md",
+      "sha256": "9939d454e4098554d1e46833a79598882ec5f28ec3a6ae8dd3004d437190d888"
+    },
+    {
+      "path": "references/archive-trials/webarena-isolation-20260928.md",
+      "sha256": "19a2add6930df75e02d185c37061214f59e2bbdeae61754ed5b23375ef859a49"
+    },
+    {
+      "path": "references/benchmarks.md",
+      "sha256": "8dedf7bbef58586ae7a8714f99abd627117750f2c0828e5de311555a086235f1"
+    },
+    {
+      "path": "references/broad-rc-study.md",
+      "sha256": "2087a763c3732f822c02b4429b3bfcfb85f269f697ea6e5f40d9131d2d19e5e2"
+    },
+    {
+      "path": "references/browsergym-campaign.md",
+      "sha256": "ad4ca677629f9c3b407f1b1c619a37080171609fb102de60ff4e35f7da1cc0bb"
+    },
+    {
+      "path": "references/browsergym-study.md",
+      "sha256": "9b1d27035645a25ec6ff82aa5b62bd4f1d65309db883d2b27627b781d8228a88"
+    },
+    {
+      "path": "references/caller-guide.md",
+      "sha256": "3f78d44b22b793a96c7f3960238859ce231c482af8972cbbe41963f07018d5b2"
+    },
+    {
+      "path": "references/caller-workflow-study.md",
+      "sha256": "c6b2340a8f1f3b11c09c01f65b14f60ba929c1abbab09b8b80c20d9a4c6a6d8f"
+    },
+    {
+      "path": "references/capability-status.md",
+      "sha256": "0369854d28421824b86fa5c08d44c890634bae869608282d1413f155e2a8fec8"
+    },
+    {
+      "path": "references/component-gym.md",
+      "sha256": "e896343f93b036ecd1dbed0146d40d373413ddae763af76c08866793c32a75fb"
+    },
+    {
+      "path": "references/control-affordance-study.md",
+      "sha256": "9c9a3a7c24328cde26a164becb3f36721b1509fc374d51425e59a015f6726ce2"
+    },
+    {
+      "path": "references/evidence-hypotheses.md",
+      "sha256": "d93b81f7dcbecd06e7f74678581c81c33ee7d8bd1a4b27e99b4e702db98bb353"
+    },
+    {
+      "path": "references/execution-contract-experiments.md",
+      "sha256": "a8a8c24f5b4948fd44adde77fae3486885d2e94457d11f3f5f575c231292e723"
+    },
+    {
+      "path": "references/field-binding-study.md",
+      "sha256": "b8001d3919344d50782a0156b8c9f7b7ad97844fae6b769278bc1d228c236222"
+    },
+    {
+      "path": "references/goal-discovery-experiments.md",
+      "sha256": "d9477438a5faedcf022b3b9648bcb7b3ce257588c003b6beca4f196a3be524b1"
+    },
+    {
+      "path": "references/handoff-history-study.md",
+      "sha256": "c7d6609996b26ab0ea1e7db865b19e089ffc6e28f5df3682666ecb2f29800e94"
+    },
+    {
+      "path": "references/helper-behavior.md",
+      "sha256": "0a2c5e7c609853812e1c0dce3c267ce2e3c90a6575e1bc9fb9c4051beaa1c779"
+    },
+    {
+      "path": "references/implementation-approaches.md",
+      "sha256": "8181d4bacb9ea89fadc9b4f397baf6716969ec55064264e0e534e8e89cdce3b8"
+    },
+    {
+      "path": "references/picker-commit-study.md",
+      "sha256": "496c5359743950aa7e276c75607467ab2bde53829d05ef653cac5a96e26c0d0a"
+    },
+    {
+      "path": "references/policy-boundary-experiments.md",
+      "sha256": "3c86719c0198a4cc05fc7c6bbf56ebf0a01696c41399d7c949ed3c1d3fa1e363"
+    },
+    {
+      "path": "references/public-transfer-study.md",
+      "sha256": "83bdb0f4a0e6619126753c624b9cd21c383f2b8de0b4bb5dfdd9b84a10eec9c8"
+    },
+    {
+      "path": "references/published-evidence.md",
+      "sha256": "4bdaf4653500d9d23355d43b0b33defed3d5a5c5cb29cda0c20ceaff3df2c15c"
+    },
+    {
+      "path": "references/rc-improvement-study.md",
+      "sha256": "df0382b3cfa810aff4e0c1265dd958889fa5179750f58d3e0582a552ef90689c"
+    },
+    {
+      "path": "references/release-evaluation.md",
+      "sha256": "095a7f19c31a75e054d0b79cb81db10ca81683ed36d4c0cb4df193ea40f83305"
+    },
+    {
+      "path": "references/study-gym.md",
+      "sha256": "48ccb0c7970960abd99cf19fa675fb74ff3cc0fa745230a4232f0bd428f53ca2"
+    },
+    {
+      "path": "references/usage.md",
+      "sha256": "bf8d9e3533f1ab7db8a430f378f1534ab9cb1bf40276a67ed87caa1b68ff943f"
+    },
+    {
+      "path": "references/validation.md",
+      "sha256": "f0039a04b375e7799eff68f370cd64607f85427d947700c3b01cf21b0100b1cb"
+    },
+    {
+      "path": "references/webarena-caller-study.md",
+      "sha256": "a0178f0f36b7bfbf3278f6420ff5323d0e595e96633015a1dc0c08dcdfb82ca4"
+    }
+  ],
+  "preservedResearchSource": [
+    {
+      "path": "scripts/action-check.mjs",
+      "sha256": "28f844d20770bd2a8a1e872c28ec9c67cffc31a86facb02e5a402d0cc8ebdcb7"
+    },
+    {
+      "path": "scripts/agent-browser-jev.mjs",
+      "sha256": "3f0b6ec1e4d02dd2cc1f58a24b10bcf95a1efc10c3e4712438680c76e3317090"
+    },
+    {
+      "path": "scripts/capture-index.mjs",
+      "sha256": "dbd3166646ea561c76852821a7305ab74daecf9084b12f253932e2c746d720ec"
+    },
+    {
+      "path": "scripts/capture-set.mjs",
+      "sha256": "82268b266ed37ebe0370ede01d8070d04b81099ee7e25e3aaf70a7e8bc79cad2"
+    },
+    {
+      "path": "scripts/condition-review.mjs",
+      "sha256": "a74f653e978fbce0d5e6aa03c88a2a67ba3643522558647d9069e46e26c2be4d"
+    },
+    {
+      "path": "scripts/config.mjs",
+      "sha256": "ed3b9120c31cf4e69d1f33f2b2f55949249cfc9d83355ee3e713518152b5f387"
+    },
+    {
+      "path": "scripts/continuation-check.mjs",
+      "sha256": "b6b5e66814a876fc85ed4fa3d24378033df7180e6181ae8140002fb9459700ed"
+    },
+    {
+      "path": "scripts/controls.mjs",
+      "sha256": "d47c350f441f806aceda1bfe337a2e0c8700f43720722c63848a6f4585fbabdd"
+    },
+    {
+      "path": "scripts/cross-view-identity.mjs",
+      "sha256": "205c9dc2b65a5ba515ce4fd3df5e3a0491a4bbd1899d5990029bc986c1d726bd"
+    },
+    {
+      "path": "scripts/date-value.mjs",
+      "sha256": "5ac4c14267a85112c568c648c69c830a936e40f9669eed9eb6cabde6afce6978"
+    },
+    {
+      "path": "scripts/decision-policy.mjs",
+      "sha256": "85601491f1b8b33a88e5927960dfbcae9f63325d19a2ee832d5547e5e038451d"
+    },
+    {
+      "path": "scripts/execution-contract.mjs",
+      "sha256": "8b1eb3ec9b1e7fdbaca1ec36110bc5d6a39f15e85ec4a006246bdd1cf0cafe1c"
+    },
+    {
+      "path": "scripts/execution-routing.mjs",
+      "sha256": "debf1c258d4cb9a30cad0537a29869093e0a040e8d65886a76223ef748c2030d"
+    },
+    {
+      "path": "scripts/goal-facts.mjs",
+      "sha256": "1b66ec139cb641f23348da6bd4fb220b08ff20d7d436ec88a1762cf1637c368f"
+    },
+    {
+      "path": "scripts/goal-literals.mjs",
+      "sha256": "d1e0a263083069ccdde5e85dceb6b63408607580cbfbfb7111ed2441e16c8b66"
+    },
+    {
+      "path": "scripts/goal-query.mjs",
+      "sha256": "5da06320f76190baff8523740f54e700b1c4fd0a9e6f2f17af2b4952dcae154d"
+    },
+    {
+      "path": "scripts/handoff-history.mjs",
+      "sha256": "d0409e9c16683a9c7c6d7af9a2313fa96c90ab0ac2949cddffa797a45f8b5b1b"
+    },
+    {
+      "path": "scripts/icon-evidence.mjs",
+      "sha256": "e80dabf5e11099a70f5983a2a41bf31b6801ac447846a8467f4033096d8081c4"
+    },
+    {
+      "path": "scripts/jev-browser.mjs",
+      "sha256": "f7b3c59fc7ea926890470bb291fa5339c3f8e4acebd5874224843e8847402cb9"
+    },
+    {
+      "path": "scripts/navigation-context.mjs",
+      "sha256": "e347df262e66502f748ffd194debc08020528ad8545b0e1358520ec76f38b8f4"
+    },
+    {
+      "path": "scripts/numeric-ledger.mjs",
+      "sha256": "287cc4ca7fa088d5dafe4d01861f8647fc0256bbf19418f55cd164d5805e29b4"
+    },
+    {
+      "path": "scripts/numeric-value.mjs",
+      "sha256": "5b67137ad7ec5027a6889fbed46a54bd5a437c976cfb7c2fd7aca60496973c9a"
+    },
+    {
+      "path": "scripts/object-context.mjs",
+      "sha256": "b660dca02590b84e630c5c39a7385c5b478da6f744a73ee2e72ce7309f794ff7"
+    },
+    {
+      "path": "scripts/observation-settle.mjs",
+      "sha256": "f8808fc7aef38a72b74c732545725f3dd031729aa6ff443205cadbe0762b8ad7"
+    },
+    {
+      "path": "scripts/observation-windows.mjs",
+      "sha256": "43f918af68ef4f22594105023a596c77eb64ed2f06f66ec26038d9a0fc90e585"
+    },
+    {
+      "path": "scripts/picker-binding.mjs",
+      "sha256": "383f39fdc00f428caaca5c0be74a059e8a62ea4fa8c9850815e0e93ec3fa8de9"
+    },
+    {
+      "path": "scripts/progress.mjs",
+      "sha256": "c22c322c32d088a6162227c40f3e45287dbe374e796824ddbc26a478e07c0187"
+    },
+    {
+      "path": "scripts/review-evidence.mjs",
+      "sha256": "aa593aee4f913e7ac4dd3c9fb9a906288215ec305e192a5ca8b4568fd1df556a"
+    },
+    {
+      "path": "scripts/run.mjs",
+      "sha256": "4cd54c95abd2c38510fe0e9d7d96c03e488b6e8fda366497845f202c102733de"
+    },
+    {
+      "path": "scripts/scope-discovery.mjs",
+      "sha256": "07ac0edd8177c7755677847bf9fba1f1c3ff8eea02f633328ba27aeaf59e0f2d"
+    },
+    {
+      "path": "scripts/setup.mjs",
+      "sha256": "fa45d4b297ed251a8a00c535492358e8ce49c7e9b361a4c088a1bdd7aff4078e"
+    },
+    {
+      "path": "scripts/source-context.mjs",
+      "sha256": "37dffd358971efd0e748fc4a29e04b70617843ed7359c78ae0cceafe9ebc1bd8"
+    },
+    {
+      "path": "scripts/text-edit.mjs",
+      "sha256": "3de154f0dcaace3c5a14eccd00be1244424aed024f5a9f9ce87abc10bdd60397"
+    },
+    {
+      "path": "scripts/value-binding.mjs",
+      "sha256": "00f60eb88e06395ca8945832e57de7341d51963e9286e2155c9eb85141201a19"
+    },
+    {
+      "path": "tests/action-check.test.mjs",
+      "sha256": "d6830ac26ae91dd879f2bd293c6e46be2d44c94fb304ccc0729c4133b45f3c44"
+    },
+    {
+      "path": "tests/action-review-fixtures.mjs",
+      "sha256": "6a81c16d953fbfdb54df47c52894aeb6e83c36c6682b0678c7a815c7926a81f7"
+    },
+    {
+      "path": "tests/assignment-live.mjs",
+      "sha256": "896598b052c21b60313a4281ad4c4e11c096dfbaa0740bfa3479561e53788f0b"
+    },
+    {
+      "path": "tests/autocomplete-live.mjs",
+      "sha256": "264363d6c6670cef736baed9a2e8d700e443c21ac21fb509d6d7f0d509e64c3b"
+    },
+    {
+      "path": "tests/benchmark-acceptance.mjs",
+      "sha256": "18cc3724629c9bb2907c169ae581e7570b320f13f7715ebebeffc45854dc08f4"
+    },
+    {
+      "path": "tests/benchmark-acceptance.test.mjs",
+      "sha256": "42baf8249895d0eb693fdc550ab2760465ee57749c96d59e01ebfc345e9a9322"
+    },
+    {
+      "path": "tests/benchmark.mjs",
+      "sha256": "579f9a7db6d6c3803e0e6c08868146e4097a8959d279b129b36f1b90d7560bbc"
+    },
+    {
+      "path": "tests/browsergym/Dockerfile",
+      "sha256": "4f0e9bdf8bfc79e1e0eab28a765b0ac335c8c7797bb7494669999087410d0c98"
+    },
+    {
+      "path": "tests/browsergym/episode.py",
+      "sha256": "2cf2cfc186b393b6303cca9e698cf741d0272bd9aae04dc74de16dc0b8ba2b84"
+    },
+    {
+      "path": "tests/browsergym/integration_tasks.py",
+      "sha256": "aa76029a6b4a468b3cad4b6846887e80e1ef85fa33cb26f51d05d235e37ab202"
+    },
+    {
+      "path": "tests/browsergym/integration_test.py",
+      "sha256": "cbc83804603973c32e365b9d3a2a6f02caf49062b2502d8f3a0f62bcee056c08"
+    },
+    {
+      "path": "tests/browsergym/receipts.py",
+      "sha256": "814484bcb4d253b399eda117b7bdfe9b3fda1c9748e9487e3e1a53c9b4dc32d0"
+    },
+    {
+      "path": "tests/browsergym/run-helper.mjs",
+      "sha256": "7decdf6f562e0d3ab60b53d68ff72382c1a8a379f197be751ecbae0e494cdad9"
+    },
+    {
+      "path": "tests/browsergym/task-values.mjs",
+      "sha256": "3fac0aa48f4e04a1f8e0d2a6d6ff657959cd023e1e7db376141f8a7d819fe479"
+    },
+    {
+      "path": "tests/browsergym-campaign-lib.mjs",
+      "sha256": "aeb68d9f822789bc6b7efe0ffd8c99c0035703301eff4524dfca244c6839d22a"
+    },
+    {
+      "path": "tests/browsergym-campaign.mjs",
+      "sha256": "3d6c203a1f98d5e10ca482c351c793d7f12d5cfff07b47e224d79a1cc158dc78"
+    },
+    {
+      "path": "tests/browsergym-campaign.test.mjs",
+      "sha256": "9711b679b9fb327ffdf3153cd07d0ab3b8dfab5484a04483654bf535663eb9ac"
+    },
+    {
+      "path": "tests/browsergym-dashboard-evidence.mjs",
+      "sha256": "78d78c649cf6b8d31688ffdeac5cface32ab28dd1486450d171461f6c3ecc869"
+    },
+    {
+      "path": "tests/browsergym-dashboard-evidence.test.mjs",
+      "sha256": "c0bede1da7b9a7a8d7eb1aef140dc810a51c3affe6600300926a5c24dc77f71a"
+    },
+    {
+      "path": "tests/browsergym-dashboard-service.mjs",
+      "sha256": "61ac855e39243b34e39ae333d27fdbe78d96ae04e8606a2a1e5265fe0814238c"
+    },
+    {
+      "path": "tests/browsergym-dashboard.mjs",
+      "sha256": "6bd236e962ccf71e1ef373d3195fcfc4d19dc28cc14f2fb8d1e59b1e2ebb396f"
+    },
+    {
+      "path": "tests/browsergym-receipts.mjs",
+      "sha256": "b1344b680a2b875e7617f6c6aeb611a02e4b3d0ab58aa68bc6fa1fd9a77fa872"
+    },
+    {
+      "path": "tests/browsergym-receipts.test.mjs",
+      "sha256": "7d0de848d09e9fd3e1dc2923a501efaaaeb19694660f4546482dda810db01951"
+    },
+    {
+      "path": "tests/browsergym-scope-audit.mjs",
+      "sha256": "0e20ca0bf75742b9f1716d79ad8d032b462d01547d95a5ac1ab3609fe194a67f"
+    },
+    {
+      "path": "tests/browsergym-scope-audit.test.mjs",
+      "sha256": "e855356eb4079396a4a03cc87f951ee483e73043a25c0bbde5131b92e7fd3b3f"
+    },
+    {
+      "path": "tests/browsergym-study-lib.mjs",
+      "sha256": "54599026fba8e05685c7ce30e7814bc14786c1ee715da59403ca41794c7b2e92"
+    },
+    {
+      "path": "tests/browsergym-study.mjs",
+      "sha256": "ae05b8880736c094eb82bdedaa452d4dc6a5e92f84deafaedb05dcc3fe6101ac"
+    },
+    {
+      "path": "tests/browsergym-study.test.mjs",
+      "sha256": "557e3f96c2df9b90c82e182a09e904844df509d53dd00f5fca899a2c4ad0bdf7"
+    },
+    {
+      "path": "tests/caller-ui-browser.mjs",
+      "sha256": "cebebe6dcf7422ca01c20a96b54e61ec04f4ecfd474914560af0dab0926566c3"
+    },
+    {
+      "path": "tests/caller-ui-browser.test.mjs",
+      "sha256": "f938128aeb6ccb5ae0fa4f21fc04b388f417534c049f8b3161ea2fe84ad8947a"
+    },
+    {
+      "path": "tests/caller-workflow-agent.mjs",
+      "sha256": "6af347fc6a7994fdff20b70017d435941a444e90b5328edb6b43e8c287359cb8"
+    },
+    {
+      "path": "tests/caller-workflow-agent.test.mjs",
+      "sha256": "7271628bdaa61ebc9f9e0e9c13f35d7ebf1f1508030966488ba5be3a1a4051cd"
+    },
+    {
+      "path": "tests/caller-workflow-evidence.mjs",
+      "sha256": "66ee4e84281c17fd8c480699da715096758c9ec30b1c76918a5eae8ebfaacac2"
+    },
+    {
+      "path": "tests/caller-workflow-evidence.test.mjs",
+      "sha256": "386523b0dd53829380d670757752a6d342692cc9cdc509ef6e3165efac521de1"
+    },
+    {
+      "path": "tests/caller-workflow-fixtures.test.mjs",
+      "sha256": "95e282aa5656441e8421b5fb7ae5b205a5b30284815dca9d4fcdd19f80c6ccd8"
+    },
+    {
+      "path": "tests/caller-workflow-study.mjs",
+      "sha256": "457a7480b047d1702da89ba1004f177384393527d7b3d2a6519935aba49cebc6"
+    },
+    {
+      "path": "tests/capture-index.test.mjs",
+      "sha256": "d96064f20c16eabd97d8f953ad1331fe8b2402041ae3616a4cdcb5d4a7b936fa"
+    },
+    {
+      "path": "tests/capture-set.test.mjs",
+      "sha256": "bd895d35ca82174629696cef90995ce76ee351a4f9b16dbadfaa6b219c004470"
+    },
+    {
+      "path": "tests/combobox-live.mjs",
+      "sha256": "797497d6232ced0d2dfb53f7ee68e58bd9c444d78ba3ba37fdfdcb815477d8e9"
+    },
+    {
+      "path": "tests/combobox.test.mjs",
+      "sha256": "0d4dbe292788062e0a8f9213937d7b9ce7faaa1ab8bf0e65f87f40f6ca5b40bc"
+    },
+    {
+      "path": "tests/command.test.mjs",
+      "sha256": "f425c10f79dc601056fa496b1d8781f0247207a4f73ed86332bf9747baf14ceb"
+    },
+    {
+      "path": "tests/compare-codex.mjs",
+      "sha256": "d88e63a985a6b9d6a326993a574f6ee93b8eb6920ac7702da8cbb3d77c7b6740"
+    },
+    {
+      "path": "tests/completion-review.test.mjs",
+      "sha256": "48bf280baa5177326047cbf4c59644c50632d787a86095632a938838f11d72ed"
+    },
+    {
+      "path": "tests/component-live.mjs",
+      "sha256": "f645232436084bd64ec9456201a8da1047f0a9af6ec87a5c9a727198b33e6b50"
+    },
+    {
+      "path": "tests/component-pages.test.mjs",
+      "sha256": "c75127aa0672f36d65865dcc0369474a5de9ebb3d1304ca930d1a0d35c4a5ef2"
+    },
+    {
+      "path": "tests/condition-guard.test.mjs",
+      "sha256": "b7cb3fd6cb2f0d337f7b270686339104e5b9096e0eb60bf70e869b58cf0561c6"
+    },
+    {
+      "path": "tests/condition-review.test.mjs",
+      "sha256": "89b1b8e6f6adf3779fbe11c62c17b6d327bc64f4d7ed02ecfdd4812bb284ad09"
+    },
+    {
+      "path": "tests/continuation-check.test.mjs",
+      "sha256": "cc231bf48185a3c00e5663fe59f1fd3eb61d9a551a2092db1b1d01d86bdec228"
+    },
+    {
+      "path": "tests/continuous.test.mjs",
+      "sha256": "3be1e89cc4e52a2a24d1ee9518f1fe3650e20fbee9f391ebf86fd9935a9ed99e"
+    },
+    {
+      "path": "tests/cross-project-lib.mjs",
+      "sha256": "a95fea65ae8345d49358547f546e27ea2c426ef0e8b54ede0ceceaccf9a8b31b"
+    },
+    {
+      "path": "tests/cross-project-live.mjs",
+      "sha256": "dfd4b49d91255c32777f01e245c9e6e60b57891a6590475af39fa913b6f051e8"
+    },
+    {
+      "path": "tests/cross-project.test.mjs",
+      "sha256": "4bea8b78bf81848ccd8e8ac28560c20c5f6b42fd1ee97643d4ae1a8fd6d1b5bd"
+    },
+    {
+      "path": "tests/cross-view-identity-review.test.mjs",
+      "sha256": "f47c66a1be0cd34a1751b1f172fb479207d386103ea3a44c57ae8a9e94480c46"
+    },
+    {
+      "path": "tests/cross-view-identity.test.mjs",
+      "sha256": "b09b6c9e4f02ac648da4bbf50cf23d518518d205186f5561a2f94197cf5d0c35"
+    },
+    {
+      "path": "tests/date-value.test.mjs",
+      "sha256": "06e70f268f2591d81e588d63094eb6ae5a7eaa1e9465636351338b96b643cb63"
+    },
+    {
+      "path": "tests/decision-policy.test.mjs",
+      "sha256": "cd9a5e40ea3eee3c98784b97609be3cba7a43d121c9cdf1855f2784d7d07fc0a"
+    },
+    {
+      "path": "tests/detached-choice-controller.test.mjs",
+      "sha256": "62e3d050fdc1e39b81bfe8142b3cb735ad244d98643a9710bf47fef47c253c25"
+    },
+    {
+      "path": "tests/detached-picker.test.mjs",
+      "sha256": "3abcf839d0b1104e82f2c5e92f3c2942e836be78ee55fec71acf099167d8c626"
+    },
+    {
+      "path": "tests/discovery-phase.test.mjs",
+      "sha256": "26155b03901b7f514e139ba2cd4a56d65ebbb3e1d42e32a2b55ff1af06bd5b6c"
+    },
+    {
+      "path": "tests/eager-binding.test.mjs",
+      "sha256": "f5ea426a4e382f4860bdec6e29d02b7f945cd0f2472dbadbb12d8e9f68f3a0ce"
+    },
+    {
+      "path": "tests/execution-contract-live.mjs",
+      "sha256": "47ce879f0d12d727afafd9a68feb1f37cbcafd469019cdc39997b1d439cf04de"
+    },
+    {
+      "path": "tests/execution-contract-pages.test.mjs",
+      "sha256": "4a2c0d088038be769e71494fa936e0d72213bfc11834f60b4ebb583033a83781"
+    },
+    {
+      "path": "tests/execution-contract.test.mjs",
+      "sha256": "2d4c941299fabd270d596b2899e3839552c5001ce82b0a2cd02e480f606a7c03"
+    },
+    {
+      "path": "tests/execution-routing.test.mjs",
+      "sha256": "7d6223b2e32e828be90aca479bc2eac528096065c37969eb2dac2af160a28f68"
+    },
+    {
+      "path": "tests/explicit-clickable.test.mjs",
+      "sha256": "f09f46bcd0c670041815470ae7d4789ee47927d1f21d138417f48031b3f8b785"
+    },
+    {
+      "path": "tests/external-caller-control.mjs",
+      "sha256": "019b22baf5d82d1fb36d5fe0a6e7514dd56a6566d0d5d56df49c6550f72e01aa"
+    },
+    {
+      "path": "tests/external-caller-control.test.mjs",
+      "sha256": "842d903b61cff47a1edd7ee288be6ea4ec87c64b9ff61b04ba7a15eb9cdfa07f"
+    },
+    {
+      "path": "tests/external-caller.mjs",
+      "sha256": "47e2f6ecdfb757291c276827f8f15ae8c74e76e27514e6a30f821644df1dac54"
+    },
+    {
+      "path": "tests/external-caller.test.mjs",
+      "sha256": "a5a341feb4d98250f4e20bdaf766ddbf8356a6d052b7f715b0eec955e67f7094"
+    },
+    {
+      "path": "tests/field-binding-live.mjs",
+      "sha256": "b1ad092b6d65a9b76875dac1a43aac0cf8702c9d366b4a8afbcb9baf05d0b60a"
+    },
+    {
+      "path": "tests/field-binding-pages.test.mjs",
+      "sha256": "c738a0601ee43b8e3eeb3895a271f3bed9019fa7dfeb6287501c00a11cb69118"
+    },
+    {
+      "path": "tests/fixtures/autocomplete-page.mjs",
+      "sha256": "4bbcd01467fac0dba0db281f870f7727ef9eeb4b1de1cec450158c743cfe353f"
+    },
+    {
+      "path": "tests/fixtures/benchmark-pages.mjs",
+      "sha256": "d2330e6acb4dc758e644ffe609ddc885768145baee8162d11e1c425007e6617f"
+    },
+    {
+      "path": "tests/fixtures/caller-workflow-pages.mjs",
+      "sha256": "432fe3e6773a709a9a93e03603e2304d91f7f754fa5b560abc38626d478c7dd5"
+    },
+    {
+      "path": "tests/fixtures/combobox-pages.mjs",
+      "sha256": "857ec045d0f67bace5727d49312e67945441b049c1643a73c1d4dbbdb719915b"
+    },
+    {
+      "path": "tests/fixtures/component-pages.mjs",
+      "sha256": "1e268d72fae6fba023865ab46abe023acb43a525d50a1f57cfea6c6c3dc1829a"
+    },
+    {
+      "path": "tests/fixtures/detached-picker-pages.mjs",
+      "sha256": "e1292b35ea2deeaba7fedd90f844f6c728f058668e0b3554d067210ed01f4ceb"
+    },
+    {
+      "path": "tests/fixtures/discovery-phase-pages.mjs",
+      "sha256": "80607ad3ac1ab37c459226ae02072b87aa4f27810bcbd632d05296d9f7170dad"
+    },
+    {
+      "path": "tests/fixtures/execution-contract-pages.mjs",
+      "sha256": "0e95f09dac7b54cc69546037f64bbfc309adb575582295698a20a321442ebd24"
+    },
+    {
+      "path": "tests/fixtures/field-binding-pages.mjs",
+      "sha256": "6510b1dafff54161f50cccf3b8fb168337e15a42eb43701d089696316e238fcd"
+    },
+    {
+      "path": "tests/fixtures/generated-travel.mjs",
+      "sha256": "a3ede53a03cde96912ff46fe4ddfcb1f4bbf8e0227d942681e281ca39d27dcae"
+    },
+    {
+      "path": "tests/fixtures/pages.mjs",
+      "sha256": "f5a7aac9990cb29dde259788b5baa16c2c237f0be8fa0e066d0418d08eaf7177"
+    },
+    {
+      "path": "tests/fixtures/picker-commit-pages.mjs",
+      "sha256": "948d970219a7891fd0b444eda70894cc9d1393a3723ffe7fcc94b00a668454d1"
+    },
+    {
+      "path": "tests/fixtures/picker-workflow-pages.mjs",
+      "sha256": "990f006275d4ca39b8ceb1052be7d2bbe0feaad519021b3390d6e375dd4d6e69"
+    },
+    {
+      "path": "tests/fixtures/readonly-display-pages.mjs",
+      "sha256": "e59f4191b746cf9f9233c38026afd489bf456574da9700f5dcd211cfff49e0ab"
+    },
+    {
+      "path": "tests/fixtures/workflow-pages.mjs",
+      "sha256": "365ca1ea0e7f8d2610b192127971662ec5a25eb2f5ae730ae9e9157dad7d7961"
+    },
+    {
+      "path": "tests/generated-gym.mjs",
+      "sha256": "7b65e221891b111fb38388a8c40ebf75e3b6f9f435893be1363ddf00537077bf"
+    },
+    {
+      "path": "tests/generated-travel.test.mjs",
+      "sha256": "14ad77ad322c86bf6edef4cc02c777d687fa619b7b950204911d301518a2d758"
+    },
+    {
+      "path": "tests/goal-facts.test.mjs",
+      "sha256": "52bcd9e83cecec9efcbc3350b2f7d424166dd6b5c288bac8e37ab876b0325cb6"
+    },
+    {
+      "path": "tests/goal-literals.test.mjs",
+      "sha256": "3fa4e91070531e2411c8966379df1cc02db7e0b8913e14401355d228cafbcc60"
+    },
+    {
+      "path": "tests/goal-query-live.mjs",
+      "sha256": "652f797931887cb1f16447707456aac445919cc529bd9e9d6ecb0d54c38f208c"
+    },
+    {
+      "path": "tests/goal-query.test.mjs",
+      "sha256": "5c63faac662d07ff605a8f39167572046e87f122d23969eecc64d6db90764ff5"
+    },
+    {
+      "path": "tests/graphic-live.mjs",
+      "sha256": "e83ed07b8513e97bc3c031bd5f34d34183c401689a4eae3ba654485d7406f72a"
+    },
+    {
+      "path": "tests/graphic-text.test.mjs",
+      "sha256": "9bc3480d9ac2f831abe7f28bbe21bd810439a9d9993c2f72603e276ea60e65bc"
+    },
+    {
+      "path": "tests/gym.mjs",
+      "sha256": "0d59ed37a760eb82295ca66ce96aa9280b3231c9c4e39cd1a414fd643a63ea38"
+    },
+    {
+      "path": "tests/handoff-caller.mjs",
+      "sha256": "1396762ed28f7704b5d4f3bf2ebd4a48e0c72c67f6009ed798376270b37f0e17"
+    },
+    {
+      "path": "tests/handoff-evidence.test.mjs",
+      "sha256": "1a8b6ad2c15b3eb0d65b7cc5050f4145529bf73a8d1db419f5cde8bb4d55a528"
+    },
+    {
+      "path": "tests/handoff-history.test.mjs",
+      "sha256": "7320d6a5a9ed8545768b3f6a094d2b7df8e068afafadd0f4113183fa87728271"
+    },
+    {
+      "path": "tests/handoff-live.mjs",
+      "sha256": "869b21b6d7a42502fee1667c86d11381b4100fae9c0d5c3a33fa4c26d6e6f667"
+    },
+    {
+      "path": "tests/helper.test.mjs",
+      "sha256": "2e3bb333df216b0163d87260aa579403952409e0b7daccf51b5fb67b29d531c9"
+    },
+    {
+      "path": "tests/icon-evidence.test.mjs",
+      "sha256": "976e375736045ed6de5051a0a3a4e0652206fb088a7b671bbf3c0d18601184a0"
+    },
+    {
+      "path": "tests/icon-live.mjs",
+      "sha256": "51d3babd8b911a8710a59a3b50e130b12a91b29ab11bd30fe4b09781a8936f0d"
+    },
+    {
+      "path": "tests/live.mjs",
+      "sha256": "100352ec6bff29e073d471bd26ad1159dfca500c5a361c47e933ca8f96c7bd1a"
+    },
+    {
+      "path": "tests/navigation-context.test.mjs",
+      "sha256": "8ed5a6f8675b9e42d531fc330eaf052aeebf4219d0b49615afcbd7f46dccb542"
+    },
+    {
+      "path": "tests/numeric-control-live.mjs",
+      "sha256": "9b005c2ce51987ec3fe2357aab47364aa471c1cc40d79d262268009a3f111f69"
+    },
+    {
+      "path": "tests/numeric-ledger-review.test.mjs",
+      "sha256": "de8793b2178463eee3718efd8ec7c6427e0680973f7e1f35a3462cde7ec33cc9"
+    },
+    {
+      "path": "tests/numeric-ledger.test.mjs",
+      "sha256": "680537424314f09dbd1afd462046d59dc1d45292f2a8d7473a5396276a1ed754"
+    },
+    {
+      "path": "tests/numeric-resolution-review.test.mjs",
+      "sha256": "e936921cbe869cc46a43b97c862da0b745b18c93bbce53d5f3ca5cd080b7b345"
+    },
+    {
+      "path": "tests/numeric-resolution.test.mjs",
+      "sha256": "fba8264cb3237a1666b291a9f337810f11eb6289f99b814859b3180d364874db"
+    },
+    {
+      "path": "tests/numeric-value.test.mjs",
+      "sha256": "c9fac6191a32838d082e4505c78d222dc491081d5cfd7275b4488ddf4b356296"
+    },
+    {
+      "path": "tests/object-context-live.mjs",
+      "sha256": "a68118695ace3a5c6c36569485466e1b3615738917e01106d6c674f9d75777c0"
+    },
+    {
+      "path": "tests/object-context.test.mjs",
+      "sha256": "9da6ce3008c09da624dab6136c9594acbe6ea29f7242425a5cbee405479d3311"
+    },
+    {
+      "path": "tests/observation-settle.test.mjs",
+      "sha256": "9f867a35d63810b231fd18f32f07a3cc1dd8727eed29c68aa3530b28609932d6"
+    },
+    {
+      "path": "tests/observation-windows.test.mjs",
+      "sha256": "a6e2e63ff9b9f1b034552c8f871ff1d676ec5e20efa19caa2293cf2a8bf8999a"
+    },
+    {
+      "path": "tests/picker-binding.test.mjs",
+      "sha256": "d77552c6b5d675a9ccdf9786eec48990e7f521ad3cdcf537d7633aad43e406b8"
+    },
+    {
+      "path": "tests/picker-commit-live.mjs",
+      "sha256": "73557201412629bcd83249cf9b1f457423abd848ddc42b4821bacea9b507f68b"
+    },
+    {
+      "path": "tests/picker-workflow.test.mjs",
+      "sha256": "12fe7c36b29082012c000b29aeaa3bb2b62c834e82b7b00d7ee289d99b6d3095"
+    },
+    {
+      "path": "tests/progress-live.mjs",
+      "sha256": "78d1904fae9f7ebb80bbc223e9eeb03c364eac9817afdb9c544ed35621d58706"
+    },
+    {
+      "path": "tests/progress.test.mjs",
+      "sha256": "bbbfb9770c8488116983ef2f51b8236b0410c4e51b0a804c79943ae3ca63e1af"
+    },
+    {
+      "path": "tests/readonly-display.test.mjs",
+      "sha256": "e3131b0b50818887aa2d27dee72c2a968373e4f95c98c4446a8ca91b35ed420e"
+    },
+    {
+      "path": "tests/relative-numeric-live.mjs",
+      "sha256": "6db29618d6f77f5f27f0531261e5ea55e7c46984c0685514b48b26585a5de974"
+    },
+    {
+      "path": "tests/requirements-live.mjs",
+      "sha256": "9b4c60a063909cf99a573e24f172ecc8589b1d9c699c66197f8a93da2856aa3d"
+    },
+    {
+      "path": "tests/review-evidence.test.mjs",
+      "sha256": "1c8e65b7e8a34f1b645f343e54e8aac0e2856573982ee62d9d303ba5487f8404"
+    },
+    {
+      "path": "tests/scope-discovery.test.mjs",
+      "sha256": "ef41585b017a6c63cca92942a8322c5da6e70eb4deadda23a344ae908b1d69e5"
+    },
+    {
+      "path": "tests/scope-live.mjs",
+      "sha256": "3f9563702142f99c52aa7237b32056c084b8f1c6e33ede41b2dd8ec1a7b63b08"
+    },
+    {
+      "path": "tests/selection-phase-live.mjs",
+      "sha256": "7595ffe5b636b186aac17c44953346c98986e1c9f240056d66352fe323dbd513"
+    },
+    {
+      "path": "tests/setup.test.mjs",
+      "sha256": "de91a3531c65ca9b2b424fd1ec6a705c6f789bc80d85bfd05d20f48b6a08e704"
+    },
+    {
+      "path": "tests/source-context.test.mjs",
+      "sha256": "b6b1c70dab2214b6e71ac7a57d675f4face516d2f5615041e9d366513e94037e"
+    },
+    {
+      "path": "tests/spinbutton.test.mjs",
+      "sha256": "aaeeacd8c9dceddc4ac9ebc83eef070edd049e195f7f152af3fca7d44c9495ba"
+    },
+    {
+      "path": "tests/study-lib.mjs",
+      "sha256": "edbcf4fbba71efdc0bde404ddec41d1b4afe0154c738a11aad9c23d4a82f8735"
+    },
+    {
+      "path": "tests/study.mjs",
+      "sha256": "2b132b7fc625032f90face0f47b54bcad7b95a822fdf13a33af79d0b8e1509d0"
+    },
+    {
+      "path": "tests/study.test.mjs",
+      "sha256": "d4e37a2163a60c7bc83f968b973c0801f588e12af73af4804d154958e27a673b"
+    },
+    {
+      "path": "tests/target-conditioned-numeric.test.mjs",
+      "sha256": "e17ce4f71dbbf26c1743aa6aed9719d1d54306a9ea615a52bc79618753cad975"
+    },
+    {
+      "path": "tests/target-field-review.test.mjs",
+      "sha256": "54a1b4c2f8a9e1142597d4b7a99b4459d6e4c612194f0c0656e948acd23932ba"
+    },
+    {
+      "path": "tests/target-set-live.mjs",
+      "sha256": "367f8a585e596592d5ecd568e52c3440448a9301e80399f3c8b74ecf2f965985"
+    },
+    {
+      "path": "tests/text-edit-live.mjs",
+      "sha256": "ca0b20e2dd081ba539890b42146a17b2d3f74f9baa8d00edce478a7f28055116"
+    },
+    {
+      "path": "tests/text-edit.test.mjs",
+      "sha256": "cfa60b347c96a5756f6252f61818b85f98bdbe617b5ff15e5d8514a61bd1a860"
+    },
+    {
+      "path": "tests/value-binding-fixtures.mjs",
+      "sha256": "ae1a391016dc2fe1f309b1e15747925dd04b772151adf1a5749600151ec85a2e"
+    },
+    {
+      "path": "tests/value-binding-live.mjs",
+      "sha256": "b40fa2add783f561bf7eeac6ba3abf872d70953b1afc3877f71ab078f91b8083"
+    },
+    {
+      "path": "tests/value-binding.test.mjs",
+      "sha256": "efe35ccdb9d9aa27a1e53ab2d327c6155fd9d5260a7b7a459846032db427b27d"
+    },
+    {
+      "path": "tests/webarena-caller-agent.mjs",
+      "sha256": "baf9cd91236e3aec740d77fc60a4e26224965409be9041889264ca02a977384c"
+    },
+    {
+      "path": "tests/webarena-caller-agent.test.mjs",
+      "sha256": "385d5ff4af6ea5819d128b8e18720ee2470332d69cb7541d5bb1dc3972a28b5e"
+    },
+    {
+      "path": "tests/webarena-caller-study.mjs",
+      "sha256": "7962efea2aa5d44c15cba283eef4c8b3bf839fcd1bf43c67e513bb48767b583a"
+    },
+    {
+      "path": "tests/webarena-isolation.mjs",
+      "sha256": "f73bce2c06ea83b0e99cc7ffe9c4b5efb942810dabcfa05f0477253d22699d3e"
+    },
+    {
+      "path": "tests/webarena-isolation.test.mjs",
+      "sha256": "e4de1d88e8a1afda2eb391c58139d93114b555ba83736d36438a1f96f503afbd"
+    },
+    {
+      "path": "tests/webarena-verified-env.mjs",
+      "sha256": "5adb516a4e2a4aed3bd973eff5852fce1889e8601dea46a285cb6bb41d973a62"
+    },
+    {
+      "path": "tests/workflow-live.mjs",
+      "sha256": "ec7eb6ce39d8b84bb09e2aa6fe98f461cfbc27d982fe95f668c6996d5be1dade"
+    }
+  ]
+}

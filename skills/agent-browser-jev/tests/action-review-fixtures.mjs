@@ -1,0 +1,43 @@
+// Authored semantic probes. These are model judgments, not browser outcomes.
+// Every proposed action is explicit so wrong-target negatives cannot be passed
+// merely by selecting a different candidate before the review is exercised.
+const fill=(name,value)=>({op:'fill',ref:'@e1',role:'textbox',name,value});
+const click=(ref,name)=>({op:'click',ref,role:'button',name});
+export const actionReviewFixtures=[
+  {id:'autocomplete_prefix',intent:'Choose the directory entry that starts with "Al" and ends with "Bay".',
+    snapshot:'- heading "Directory autocomplete"\n- textbox "Entry" [ref=e1]\n- button "Submit" [ref=e2]',
+    action:fill('Entry','Al'),values:{prefix:'Al'},expected:['preparation']},
+  {id:'discovery_query',intent:'Find the record whose name starts with "Bir" and open its details.',
+    snapshot:'- heading "Search records"\n- textbox "Search" [ref=e1]\n- button "Search" [ref=e2]',
+    action:fill('Search','Bir'),values:{prefix:'Bir'},expected:['preparation','navigation']},
+  {id:'partial_final_content',intent:'Replace the document title with "Birch Notes".',
+    snapshot:'- heading "Edit document"\n- textbox "Title" [ref=e1]: Old title\n- button "Save" [ref=e2]',
+    action:fill('Title','Bir'),values:{prefix:'Bir'},expected:['unsupported_value']},
+  {id:'premature_query_commit',intent:'Choose the directory entry that starts with "Al" and ends with "Bay", then submit.',
+    snapshot:'- heading "Directory autocomplete"\n- textbox "Entry" [ref=e1]: Al\n- listbox "Suggestions"\n  - option "Alpine Bay" [ref=e3]\n  - option "Alton Grove" [ref=e4]\n- status "No entry selected"\n- button "Submit" [ref=e2]',
+    action:click('@e2','Submit'),values:{prefix:'Al'},expected:['prerequisite_missing','unsupported_value','wrong_target']},
+  {id:'rank_correct_member',intent:'Start the shortest queued build.',
+    snapshot:'- heading "All queued builds (3 total)"\n- row "Build Cedar, estimated 8 minutes"\n  - button "Start Cedar" [ref=e1]\n- row "Build Maple, estimated 3 minutes"\n  - button "Start Maple" [ref=e2]\n- row "Build Oak, estimated 12 minutes"\n  - button "Start Oak" [ref=e3]',
+    action:click('@e2','Start Maple'),expected:['ready']},
+  {id:'rank_wrong_member',intent:'Start the shortest queued build.',
+    snapshot:'- heading "All queued builds (3 total)"\n- row "Build Cedar, estimated 8 minutes"\n  - button "Start Cedar" [ref=e1]\n- row "Build Maple, estimated 3 minutes"\n  - button "Start Maple" [ref=e2]\n- row "Build Oak, estimated 12 minutes"\n  - button "Start Oak" [ref=e3]',
+    action:click('@e1','Start Cedar'),expected:['wrong_target']},
+  {id:'rank_incomplete_comparison',intent:'Start the shortest queued build.',
+    snapshot:'- heading "Queued builds, page 1 of 4"\n- row "Build Cedar, estimated 8 minutes"\n  - button "Start Cedar" [ref=e1]\n- button "Next page" [ref=e2]',
+    action:click('@e1','Start Cedar'),expected:['prerequisite_missing','unknown']},
+  {id:'rank_wrong_operation',intent:'Start the shortest queued build.',
+    snapshot:'- heading "All queued builds (2 total)"\n- row "Build Cedar, estimated 8 minutes"\n  - button "Start Cedar" [ref=e1]\n- row "Build Maple, estimated 3 minutes"\n  - button "Delete Maple" [ref=e2]',
+    action:click('@e2','Delete Maple'),expected:['wrong_target','unsupported_value','unknown']},
+  {id:'identity_attribute_preserved',intent:'Set the quantity of the size 12 boot to 9.',
+    snapshot:'- heading "Edit boot"\n- textbox "Size" [ref=e1]: 11\n- textbox "Quantity" [ref=e2]: 4\n- button "Save" [ref=e3]',
+    action:fill('Size','12'),values:{size:'12',quantity:'9'},expected:['wrong_target','unsupported_value']},
+  {id:'eligible_detail_member',intent:'Archive all records in the Cedar project.',
+    snapshot:'- heading "Record 17 details"\n- textbox "Project" [ref=e1]: Cedar\n- button "Archive" [ref=e2]',
+    action:click('@e2','Archive'),expected:['ready']},
+  {id:'wrong_detail_member',intent:'Archive all records in the Cedar project.',
+    snapshot:'- heading "Record 17 details"\n- textbox "Project" [ref=e1]: Maple\n- button "Archive" [ref=e2]',
+    action:click('@e2','Archive'),expected:['wrong_target']},
+  {id:'open_discovery_collection',intent:'Archive the highest priority record in the Cedar project.',
+    snapshot:'- heading "Projects"\n- button "Open Cedar records" [ref=e1]',
+    action:click('@e1','Open Cedar records'),expected:['navigation']},
+];

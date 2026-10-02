@@ -1,3 +1,6 @@
+import {browserGymAssistanceCost} from './browsergym-study-lib.mjs';
+import { applyScopeAudit } from './browsergym-scope-audit.mjs';
+
 export const campaignCases = Object.freeze([
   'click-button','choose-list','click-checkboxes','enter-text','click-tab',
   'click-button-sequence','click-checkboxes-large','click-collapsible','click-dialog',
@@ -14,6 +17,13 @@ export const webarenaVerifiedCampaignCases = Object.freeze([
 
 export const trialKey = (id,seed) => `${id}/${seed}`;
 
+export function chargeNeedsReconciliation(trial, events) {
+  // A complete browser report may still contain a failed, unmetered request.
+  // Outcome scoring and provider accounting are independent.
+  return trial?.type === 'trial' && trial.costUsd === null &&
+    !events.some(event => event.type === 'charge_reconciled' && event.runId === trial.runId);
+}
+
 function trialsFor(events,id,seed) {
   return events.filter(event=>event.type==='trial'&&event.id===id&&event.seed===seed);
 }
@@ -29,12 +39,12 @@ function cohortFor(manifest,id,seed) {
   return manifest.evidenceRole==='holdout'?'holdout':'development';
 }
 
-function scoreView(tasks,select,which='latest') {
+function scoreView(tasks,select,which='latest',fingerprint=null) {
   const selected=tasks.filter(select);
   let candidatePassed=0,baselinePassed=0,scored=0;
   for(const task of selected){
     const trial=which==='first'?task.firstTrial:task.latestTrial;
-    if(!trial)continue;
+    if(!trial || trial.verdict==='incomplete' || (fingerprint && trial.candidateFingerprint!==fingerprint))continue;
     scored++;
     if(trial.candidatePassed)candidatePassed++;
     if(trial.baselinePassed)baselinePassed++;
@@ -77,6 +87,15 @@ export function campaignSummary(manifest,events,now=Date.now()) {
       latestReport:last?.report??null};
   }));
   const trials=events.filter(event=>event.type==='trial');
+  const invalidTrials=manifest.suite==='webarena-verified'?
+    trials.filter(event=>event.isolationVerified!==true&&event.verdict!=='incomplete'):[];
+  const incompleteTrials=trials.filter(event=>event.verdict==='incomplete');
+  const incompleteComparisons={count:incompleteTrials.length,
+    reason:incompleteTrials.length?'One or more arms or cleanup checks are incomplete; these reports are unscored, not evidence of state contamination.':null,
+    reports:incompleteTrials.map(event=>({report:event.report,sha256:event.reportSha256??null,startedArms:event.delegation?.length??null}))};
+  const invalidComparisons={count:invalidTrials.length,
+    reason:invalidTrials.length?'Missing verified backend restoration between arms; raw rewards are diagnostic only.':null,
+    reports:invalidTrials.map(event=>({report:event.report,sha256:event.reportSha256??null}))};
   const validations=events.filter(event=>event.type==='validation');
   const reportedCostUsd=[...trials,...validations]
     .reduce((total,event)=>total+(event.costUsd??0),0);
@@ -96,12 +115,58 @@ export function campaignSummary(manifest,events,now=Date.now()) {
     unmetered?'unmetered_charge':
     costUsd>=manifest.maxCostUsd-manifest.costReserveUsd-1e-9?'spend_limit':null;
   const impacts=changeImpacts(events),changes=events.filter(event=>event.type==='change');
+  const initialFingerprint=trials[0]?.candidateFingerprint??changes[0]?.toFingerprint??null;
+  const currentFingerprint=changes.at(-1)?.toFingerprint??trials.at(-1)?.candidateFingerprint??null;
+  const delegation=Object.fromEntries(['baseline','candidate'].map(arm=>{
+    const rows=trials.filter(event=>event.candidateFingerprint===currentFingerprint&&
+      (manifest.suite!=='webarena-verified'||event.isolationVerified===true))
+      .flatMap(event=>{
+        const recorded=(event.delegation??[]).filter(item=>item.arm===arm);
+        return applyScopeAudit(recorded.length?recorded:[{arm,officialReward:null,returnReason:null,
+          callerInterventions:null,actionScope:'unassessed'}],event.reportSha256,events);
+      });
+    return [arm,{attempted:rows.length,officialFullReward:rows.filter(item=>item.officialReward===1).length,
+      rewardAndReportedComplete:rows.filter(item=>item.officialReward===1&&item.returnReason==='reported_complete').length,
+      returnedAfterFullReward:rows.filter(item=>item.officialReward===1&&item.returnReason&&item.returnReason!=='reported_complete').length,
+      completionWithoutFullReward:rows.filter(item=>Number.isFinite(item.officialReward)&&item.officialReward<1&&item.returnReason==='reported_complete').length,
+      nonCompleteReturns:rows.filter(item=>item.returnReason&&item.returnReason!=='reported_complete').length,
+      unknownReturns:rows.filter(item=>!item.returnReason).length,
+      returnReasons:Object.fromEntries([...new Set(rows.map(item=>item.returnReason??'unknown'))]
+        .map(reason=>[reason,rows.filter(item=>(item.returnReason??'unknown')===reason).length])),
+      callerAssisted:rows.filter(item=>item.callerInterventions>0).length,
+      callerUnknown:rows.filter(item=>item.callerInterventions==null).length,
+      verifiedAssistedGoals:rows.filter(item=>item.goalVerified===true&&item.callerInterventions>0).length,
+      fullyCorrectAssistedGoals:rows.filter(item=>item.goalVerified===true&&item.actionScope==='passed'&&item.callerInterventions>0).length,
+      verifiedAutonomousGoals:rows.filter(item=>item.goalVerified===true&&item.callerInterventions===0).length,
+      verifiedReportedCompletion:rows.filter(item=>item.goalVerified===true&&item.callerInterventions===0&&item.returnReason==='reported_complete').length,
+      returnedAfterGoal:rows.filter(item=>item.goalVerified===true&&item.returnReason&&item.returnReason!=='reported_complete').length,
+      returnedBeforeGoal:rows.filter(item=>item.goalVerified===false&&item.returnReason&&item.returnReason!=='reported_complete').length,
+      goalUnassessed:rows.filter(item=>item.goalVerified==null).length,
+      fullyCorrect:rows.filter(item=>item.goalVerified===true&&item.actionScope==='passed'&&item.callerInterventions===0).length,
+      falseCompletion:rows.filter(item=>item.goalVerified===false&&item.returnReason==='reported_complete').length,
+      scopeFailed:rows.filter(item=>item.actionScope==='failed').length,
+      scopeUnassessed:rows.filter(item=>item.actionScope!=='passed'&&item.actionScope!=='failed').length}];
+  }));
+  const development=task=>task.cohort==='development';
+  const developmentFingerprints=[...new Set(tasks.filter(development)
+    .map(task=>task.latestTrial?.candidateFingerprint).filter(Boolean))];
   const views={
-    frozenFirstAttempt:scoreView(tasks,()=>true,'first'),
-    repairedDevelopment:scoreView(tasks,task=>task.cohort==='development'),
+    // Holdouts run after feedback and must not enter the frozen baseline row.
+    frozenFirstAttempt:scoreView(tasks,development,'first',initialFingerprint),
+    // Historical progress only: these outcomes may come from different versions.
+    repairedDevelopment:scoreView(tasks,development),
+    currentDevelopment:scoreView(tasks,development,'latest',currentFingerprint),
     untouchedHoldout:scoreView(tasks,task=>task.cohort==='holdout','first'),
   };
-  const stage=active?'running':tasksComplete?
+  if(invalidTrials.length)for(const view of Object.values(views)){
+    view.invalid=true;view.diagnosticRaw={candidatePassed:view.candidatePassed,baselinePassed:view.baselinePassed,scored:view.scored};
+    view.candidatePassed=null;view.baselinePassed=null;view.scored=0;
+  }
+  const currentDevelopment={fingerprint:currentFingerprint,
+    complete:views.currentDevelopment.scored===views.currentDevelopment.total,
+    untested:tasks.filter(task=>development(task)&&(!currentFingerprint||
+      task.latestTrial?.candidateFingerprint!==currentFingerprint||task.latestTrial?.verdict==='incomplete')).map(task=>task.key)};
+  const stage=invalidTrials.length?'invalid_comparison':active?'running':tasksComplete?
     (counts.exhausted||counts.deferred?'complete_with_gaps':'complete'):
     limit??(counts.pending?'first_attempt':'awaiting_improvement');
   return {kind:'browsergym-campaign-status',startedAt:manifest.startedAt,
@@ -111,7 +176,8 @@ export function campaignSummary(manifest,events,now=Date.now()) {
     costReserveUsd:manifest.costReserveUsd,limit,counts,totalTasks:tasks.length,
     totalTrials:trials.length,retries:trials.filter(event=>event.attempt>1).length,
     totalValidations:validations.length,
-    iteration:Math.max(0,changes.length-1),stage,views,changeImpacts:impacts,
+    iteration:Math.max(0,changes.length-1),stage,views,invalidComparisons,incompleteComparisons,delegation,changeImpacts:impacts,
+    initialFingerprint,currentDevelopment,developmentFingerprints,
     latestChange:(()=>{const change=events.filter(event=>event.type==='change').at(-1);
       return change?{at:change.at,note:change.note,changedFiles:change.changedFiles,
         targets:change.targets,toFingerprint:change.toFingerprint}:null})(),
@@ -120,6 +186,7 @@ export function campaignSummary(manifest,events,now=Date.now()) {
 
 export function nextCampaignTrial(manifest,events,candidateFingerprint,now=Date.now(),targets=[]) {
   const summary=campaignSummary(manifest,events,now);
+  if(summary.stage==='invalid_comparison')return {state:'invalid_comparison',summary};
   if(summary.stage==='complete'||summary.stage==='complete_with_gaps')return {state:'complete',summary};
   if(summary.limit)return {state:summary.limit,summary};
   for(const task of summary.tasks){
@@ -150,12 +217,17 @@ export function nextCampaignTrial(manifest,events,candidateFingerprint,now=Date.
 }
 
 export function trialCharge(report) {
+  if(report.modelDispatch?.started===false&&
+      (report.cases===undefined||(Array.isArray(report.cases)&&report.cases.length===0)))return 0;
   if(!Array.isArray(report.cases)||report.cases.length!==2)return null;
   let total=0;
   for(const trial of report.cases){
     const charge=trial.result?.jev?.costUsd;
     if(Number.isFinite(charge)&&charge>=0)total+=charge;
     else if(trial.result?.jev?.calls!==0)return null;
+    const assistanceCost=browserGymAssistanceCost(trial.result);
+    if(assistanceCost===null)return null;
+    total+=assistanceCost;
   }
   return total;
 }

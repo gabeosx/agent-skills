@@ -1,0 +1,13 @@
+{
+  "name": "agent-browser-jev",
+  "status": "archived",
+  "archivedOn": "2026-10-02",
+  "metadata": {
+    "version": "2.0.0"
+  },
+  "preservedRuntimeVersion": "1.3.0",
+  "historicalInstructions": "SKILL.archived.md",
+  "researchReport": "RESEARCH.md",
+  "evidenceRegister": "EVIDENCE.md",
+  "reason": "Final standalone and architecture pilots were NO-GO; broad confirmation was never completed. Preserve research and discontinue skill discovery."
+}

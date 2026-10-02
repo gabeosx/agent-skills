@@ -5,6 +5,23 @@ import {act, discoverActions} from '../scripts/jev-browser.mjs';
 import {summarize, sealResume, openResume} from '../scripts/run.mjs';
 
 const scope='Authorized synthetic task';
+test('a failed decision after a charged action keeps both attempts and an unknown total',async()=>{
+  let calls=0;
+  const b=browser([{snapshot:'- button "Open" [ref=e1]',refs:{e1:{role:'button',name:'Open'}}}]);
+  const result=await act({browser:b,scope,authorize:()=>true,intentOrSteps:'Open and inspect',
+    decide:async request=>{
+      if(calls++===0)return {binding:request.binding,choice:'c0',cost:0.1};
+      const error=new Error('private provider body');error.statusCode=503;throw error;
+    }});
+  const summary=summarize(result,null);
+  assert.equal(summary.returnReason,'helper_error');
+  assert.deepEqual(summary.jev,{calls:2,costUsd:null});
+  assert.deepEqual(summary.failure,{kind:'decision_failed',httpStatus:503});
+  assert.equal(b.calls.length,1);
+  assert.equal(result.decisions[0].cost,0.1);
+  assert.ok(!JSON.stringify(summary).includes('private provider body'));
+});
+
 function browser(sequence) {
   let index=0; const calls=[];
   return {sessionId:randomUUID(), calls, observe:async()=>structuredClone(sequence[Math.min(index,sequence.length-1)]),
@@ -44,114 +61,78 @@ test('explicitly clickable generic links and tree list items use their observed 
   ]);
 });
 
-test('named tree exploration opens only observed collapsed branches and clicks a unique unreferenced target',()=>{
-  const goal='Navigate through the file tree. Find and click on the folder or file named "Keli".';
-  const root={snapshot:'- list\n  - listitem [level=1, ref=e1] clickable [cursor:pointer]\n    - StaticText "Bernardine"\n  - listitem [level=1, ref=e2] clickable [cursor:pointer]\n    - StaticText "Deneen"',
-    refs:{e1:{role:'listitem',name:'',expandable:true},e2:{role:'listitem',name:'',expandable:true}}};
-  assert.deepEqual(discoverActions(root,{},goal).filter(a=>a.op==='click').map(a=>[a.name,a.purpose]),
-    [['Bernardine','expand_tree_branch'],['Deneen','expand_tree_branch']]);
-  const expanded={snapshot:`${root.snapshot}\n    - list\n      - listitem [level=2]\n        - StaticText "Keli"\n      - listitem [level=2]\n        - StaticText "Kenda"`,
-    refs:{e1:{role:'listitem',name:'',expandable:false},e2:{role:'listitem',name:'',expandable:true}}};
-  assert.deepEqual(discoverActions(expanded,{},goal).filter(a=>a.op==='click'),
-    [{op:'click',role:'listitem',name:'Keli',text:'Keli',purpose:'observed_tree_text'}]);
-  const duplicate={...expanded,snapshot:`${expanded.snapshot}\n      - listitem [level=2]\n        - StaticText "Keli"`};
-  assert.equal(discoverActions(duplicate,{},goal).some(a=>a.purpose==='observed_tree_text'),false);
-  assert.equal(discoverActions(root,{},'Find and click Keli').some(a=>a.purpose==='expand_tree_branch'),false);
+test('tree affordances survive paraphrases and duplicate leaf text is never offered',()=>{
+  const observation={snapshot:'- list\n  - listitem [level=1, ref=e1] clickable [cursor:pointer]\n    - StaticText "Projects"\n    - list\n      - listitem [level=2]\n        - StaticText "Invoices"\n      - listitem [level=2]\n        - StaticText "Archive"',
+    refs:{e1:{role:'listitem',name:'',expandable:true}}};
+  const goals=['Find the file named "Invoices".','Open Invoices under Projects.','Browse the folder tree'];
+  const expected=discoverActions(observation,{},goals[0]);
+  for(const goal of goals)assert.deepEqual(discoverActions(observation,{},goal),expected);
+  assert.deepEqual(expected.filter(a=>a.purpose==='observed_tree_text').map(a=>a.text),['Invoices','Archive']);
+  assert.ok(expected.some(a=>a.purpose==='expand_tree_branch'&&a.ref==='@e1'));
+  const duplicate={...observation,snapshot:observation.snapshot+'\n      - listitem [level=2]\n        - StaticText "Invoices"'};
+  assert.equal(discoverActions(duplicate).some(a=>a.text==='Invoices'),false);
+  assert.equal(discoverActions({snapshot:'- StaticText "Invoices"',refs:{}}).some(a=>a.text),false);
 });
 
-test('an exact unreferenced tree target is not clicked twice when its folder toggles',async()=>{
-  const goal='Find and click on the folder or file named "Keli".';
-  const initial='- list\n  - listitem [level=1]\n    - StaticText "Keli"';
-  const after='- list\n  - listitem [level=1]\n    - StaticText "Keli"\n    - list';
-  const b=browser([{snapshot:initial,refs:{}},{snapshot:after,refs:{}}]);
-  const result=await act({browser:b,scope,authorize:()=>true,intentOrSteps:goal,
-    decide:async request=>({binding:request.binding,
-      choice:Object.entries(request.candidates).find(([,action])=>action.purpose==='observed_tree_text')?.[0]??'step_complete'})});
+test('tree history does not hide an identically named control on a later page',async()=>{
+  const tree='- list\n  - listitem [level=1]\n    - StaticText "Invoices"';
+  const b=browser([{snapshot:'- heading "First account"\n'+tree,refs:{}},
+    {snapshot:'- heading "Second account"\n'+tree,refs:{}},{snapshot:'Done',refs:{}}]);
+  const result=await act({browser:b,scope,authorize:()=>true,intentOrSteps:'Inspect Invoices for both accounts',
+    decide:async r=>({binding:r.binding,
+      choice:Object.entries(r.candidates).find(([,a])=>a.text==='Invoices')?.[0]??'step_complete'})});
   assert.equal(result.returnReason,'reported_complete');
-  assert.deepEqual(b.calls.map(action=>action.purpose),['observed_tree_text']);
+  assert.equal(b.calls.length,2);
 });
 
-test('a named slider target offers only one observed keyboard step toward its adjacent readout',()=>{
-  const goal='Select -2 with the slider, click the 1st checkbox, then hit Submit.';
-  const observation={snapshot:'- generic\n  - generic\n    - generic [ref=e5] focusable [tabindex]\n    - StaticText "10"\n  - checkbox [checked=false, ref=e1]',
-    refs:{e5:{role:'generic',name:'',sliderHandle:true},e1:{role:'checkbox',name:''}}};
-  const step=discoverActions(observation,{},goal).find(a=>a.purpose==='adjust_slider');
-  assert.deepEqual(step,{op:'press',ref:'@e5',role:'generic',name:'slider',key:'ArrowLeft',
-    currentValue:10,targetValue:-2,purpose:'adjust_slider'});
-  assert.equal(discoverActions({...observation,snapshot:observation.snapshot.replace('"10"','"-2"')},{},goal)
-    .some(a=>a.purpose==='adjust_slider'),false);
-  assert.equal(discoverActions({...observation,refs:{...observation.refs,e5:{role:'generic',name:''}}},{},goal)
-    .some(a=>a.purpose==='adjust_slider'),false);
-  assert.equal(discoverActions(observation,{},'Move the slider').some(a=>a.purpose==='adjust_slider'),false);
+test('exact tree text clicks require an untruncated observation without conflicting referenced names',()=>{
+  const observation={snapshot:'- list\n  - listitem [level=1]\n    - StaticText "Invoices"',refs:{}};
+  assert.equal(discoverActions({...observation,limited:true}).some(a=>a.text),false);
+  assert.equal(discoverActions({...observation,refs:{e1:{role:'button',name:'Invoices'}}}).some(a=>a.text),false);
 });
 
-test('an ordinal checkbox goal grounds exactly the requested observed checkbox',()=>{
-  const observation={snapshot:'- generic\n  - checkbox [checked=false, ref=e1]\n  - checkbox [checked=false, ref=e2]\n  - checkbox [checked=false, ref=e3]\n  - button "Submit" [ref=e4]',
-    refs:{e1:{role:'checkbox',name:''},e2:{role:'checkbox',name:''},e3:{role:'checkbox',name:''},
-      e4:{role:'button',name:'Submit'}}};
-  const goal='Select -1 with the slider, click the 2nd checkbox, then hit Submit.';
-  assert.deepEqual(discoverActions(observation,{},goal).filter(a=>['check','uncheck'].includes(a.op)),[
-    {ref:'@e2',role:'checkbox',name:'2nd checkbox',op:'check',purpose:'ordinal_checkbox'}]);
-  const selected={...observation,snapshot:observation.snapshot.replace('checked=false, ref=e2','checked=true, ref=e2')};
-  assert.equal(discoverActions(selected,{},goal).some(a=>a.purpose==='ordinal_checkbox'),false);
-  assert.equal(discoverActions(observation,{},'click the 4th checkbox').some(a=>a.purpose==='ordinal_checkbox'),false);
+test('slider choices expose observed mechanics without solving an intent template',()=>{
+  const observation={snapshot:'- generic\n  - generic [ref=e5] focusable [tabindex]\n  - StaticText "10"',
+    refs:{e5:{role:'generic',name:'',sliderHandle:true}}};
+  const goals=['Select -2 with the slider','Set the slider to negative two','Adjust the level'];
+  for(const goal of goals){
+    const steps=discoverActions(observation,{},goal).filter(a=>a.purpose==='adjust_slider');
+    assert.deepEqual(steps.map(a=>a.key),['ArrowLeft','ArrowRight']);
+    assert.ok(steps.every(a=>a.currentValue===10&&!('targetValue' in a)));
+  }
+  assert.equal(discoverActions({...observation,refs:{e5:{role:'generic',name:''}}}).some(a=>a.purpose==='adjust_slider'),false);
 });
 
-test('a hierarchical menu goal offers hover for intermediate items only',()=>{
-  const observation={snapshot:'- menu\n  - menuitem "Sherrie" [ref=e1]\n  - menuitem "Maddalena" [ref=e2]',
-    refs:{e1:{role:'menuitem',name:'Sherrie'},e2:{role:'menuitem',name:'Maddalena'}}};
-  const actions=discoverActions(observation,{},'Select Sherrie>De>Maddalena');
-  assert.deepEqual(actions.filter(a=>a.op==='hover'),[
-    {op:'hover',ref:'@e1',role:'menuitem',name:'Sherrie',purpose:'reveal_submenu'}]);
-  assert.equal(discoverActions(observation,{},'Select Maddalena').some(a=>a.op==='hover'),false);
+test('slider steps stop when repeated readbacks show no progress',async()=>{
+  const observation={snapshot:'- generic [ref=e5] focusable [tabindex]\n- StaticText "10"',
+    refs:{e5:{role:'generic',name:'',sliderHandle:true}}};
+  const b=browser([observation]);
+  const result=await run(b,choose(a=>a.purpose==='adjust_slider'&&a.key==='ArrowRight'));
+  assert.equal(result.returnReason,'no_progress');
+  assert.equal(b.calls.length,3);
 });
 
-test('an absent exact menu label permits safe hover exploration, then only the matching leaf click',()=>{
-  const goal='Click the "Menu" button, and then find and click on the item labeled "Prev".';
-  const refs={e1:{role:'menu',name:''},e2:{role:'menuitem',name:'Save'},
-    e3:{role:'menuitem',name:'Playback'}};
-  const open={snapshot:'- menu [ref=e1]\n  - menuitem "Save" [ref=e2]\n  - menuitem "Playback" [ref=e3]',refs};
-  const first=discoverActions(open,{},goal);
-  assert.deepEqual(first.filter(a=>a.purpose==='explore_submenu').map(a=>a.name),['Save','Playback']);
-  assert.equal(first.some(a=>a.op==='click'&&a.role==='menuitem'),false);
-  const revealed={snapshot:`${open.snapshot}\n    - menuitem "Prev" [ref=e4]`,
-    refs:{...refs,e4:{role:'menuitem',name:'Prev'}}};
-  const second=discoverActions(revealed,{},goal);
-  assert.deepEqual(second.filter(a=>a.op==='click'&&a.role==='menuitem').map(a=>a.name),['Prev']);
-  assert.equal(second.some(a=>a.purpose==='explore_submenu'),false);
-  assert.equal(discoverActions(open,{},'Click the item with the ui-icon-seek-end icon.').some(a=>a.purpose==='explore_submenu'),false);
+test('ordinal wording does not remove other checkbox controls or change accessible names',()=>{
+  const observation={snapshot:'- checkbox [checked=false, ref=e1]\n- checkbox [checked=true, ref=e2]',
+    refs:{e1:{role:'checkbox',name:''},e2:{role:'checkbox',name:''}}};
+  const goals=['Click the 2nd checkbox','Clear the second checkbox','Check the first, then clear the second'];
+  for(const goal of goals)assert.deepEqual(discoverActions(observation,{},goal).filter(a=>a.role==='checkbox'),[
+    {ref:'@e1',role:'checkbox',name:'',op:'check'},
+    {ref:'@e2',role:'checkbox',name:'',op:'uncheck'}]);
 });
 
-test('an icon-named menu goal reveals observed parents and clicks only the matching visible icon',()=>{
-  const goal='Click the "Menu" button, and then find and click on the item with the "ui-icon-seek-end" icon.';
-  const open={snapshot:'- menu [ref=e1]\n  - menuitem "Save" [ref=e2]\n  - menuitem "Playback" [ref=e3]',
+test('observed menu labels, icons and submenu affordances remain available across tasks',()=>{
+  const observation={snapshot:'- menu [ref=e1]\n  - menuitem "Save" [ref=e2]\n  - menuitem "Playback" [ref=e3]',
     refs:{e1:{role:'menu',name:''},e2:{role:'menuitem',name:'Save',menuIcon:'ui-icon-disk'},
-      e3:{role:'menuitem',name:'Playback',menuIcon:'ui-icon-caret-1-e',menuParent:true}}};
-  const first=discoverActions(open,{},goal);
-  assert.deepEqual(first.filter(a=>a.op==='hover').map(a=>[a.name,a.purpose]),[['Playback','reveal_icon_submenu']]);
-  assert.equal(first.some(a=>a.op==='click'&&a.role==='menuitem'),false);
-  const visible={...open,snapshot:`${open.snapshot}\n    - menu\n      - menuitem "Next" [ref=e4]`,
-    refs:{...open.refs,e4:{role:'menuitem',name:'Next',menuIcon:'ui-icon-seek-end'}}};
-  assert.deepEqual(discoverActions(visible,{},goal).filter(a=>a.op==='click'&&a.role==='menuitem'),
-    [{op:'click',ref:'@e4',role:'menuitem',name:'Next',purpose:'matching_menu_icon'}]);
-  assert.equal(discoverActions({...visible,refs:{...visible.refs,e4:{role:'menuitem',name:'Next'}}},{},goal)
-    .some(a=>a.op==='click'&&a.name==='Next'),false);
-});
-
-test('a successful exact icon click does not reopen the submenu',async()=>{
-  const goal='Click the item with the "ui-icon-seek-end" icon.';
-  const before={snapshot:'- menu [ref=e1]\n  - menuitem "Playback" [ref=e2]\n    - menu\n      - menuitem "Next" [ref=e3]',
-    refs:{e1:{role:'menu',name:''},e2:{role:'menuitem',name:'Playback',menuParent:true},
-      e3:{role:'menuitem',name:'Next',menuIcon:'ui-icon-seek-end'}}};
-  const after={snapshot:'- menu [ref=e1]\n  - menuitem "Playback" [ref=e2]',
-    refs:{e1:{role:'menu',name:''},e2:{role:'menuitem',name:'Playback',menuParent:true}}};
-  const b=browser([before,after]);
-  const result=await act({browser:b,scope,authorize:()=>true,intentOrSteps:goal,
-    decide:async request=>({binding:request.binding,
-      choice:Object.entries(request.candidates).find(([,action])=>
-        ['matching_menu_icon','reveal_icon_submenu'].includes(action.purpose))?.[0]??'step_complete'})});
-  assert.equal(result.returnReason,'reported_complete');
-  assert.deepEqual(b.calls.map(action=>action.purpose),['matching_menu_icon']);
+      e3:{role:'menuitem',name:'Playback',menuParent:true}}};
+  const goals=['Select Playback>Next','Click the item labeled "Next"','Find the disk icon','Save the document'];
+  const expected=discoverActions(observation,{},goals[0]);
+  for(const goal of goals)assert.deepEqual(discoverActions(observation,{},goal),expected);
+  assert.deepEqual(expected.filter(a=>a.op==='hover').map(a=>a.name),['Save','Playback']);
+  assert.deepEqual(expected.filter(a=>a.op==='hover').map(a=>a.hasSubmenu),[undefined,true]);
+  assert.deepEqual(expected.filter(a=>a.op==='click'),[
+    {ref:'@e2',role:'menuitem',name:'Save',op:'click',icon:'ui-icon-disk'},
+    {ref:'@e3',role:'menuitem',name:'Playback',op:'click',hasSubmenu:true}]);
 });
 
 test('an explicit table lookup offers the unique observed cell, never a guessed value',()=>{
@@ -207,14 +188,14 @@ test('observed table values are scoped to one requested step',async()=>{
   assert.equal(result.returnReason,'handoff');
 });
 
-test('explicit textarea-bottom intent offers only the unique observed long disabled textbox for element scroll',()=>{
+test('long textarea scrolling is grounded in one observed control across goal wording',()=>{
   const body='Agreement text. '.repeat(25);
   const observation={snapshot:`- textbox [disabled, ref=e1]: ${body}\n- textbox "Name" [disabled, ref=e2]`,
     refs:{e1:{role:'textbox',name:''},e2:{role:'textbox',name:'Name'}}};
   const goal='Scroll to the bottom of the textarea, enter the name "Truman" then press "Cancel"';
   assert.deepEqual(discoverActions(observation,{},goal).filter(a=>a.purpose==='textarea_end'),
-    [{op:'scroll',ref:'@e1',role:'textbox',direction:'down',amount:2000,purpose:'textarea_end'}]);
-  assert.equal(discoverActions(observation,{},'Enter the name "Truman"').some(a=>a.purpose==='textarea_end'),false);
+    [{op:'scroll',ref:'@e1',role:'textbox',direction:'down',amount:1_000_000,purpose:'textarea_end'}]);
+  assert.deepEqual(discoverActions(observation,{},'Read the agreement to its end'),discoverActions(observation,{},goal));
   const ambiguous={...observation,snapshot:`${observation.snapshot}\n- textbox [disabled, ref=e3]: ${body}`,
     refs:{...observation.refs,e3:{role:'textbox',name:''}}};
   assert.equal(discoverActions(ambiguous,{},goal).some(a=>a.purpose==='textarea_end'),false);
@@ -224,6 +205,15 @@ test('checkbox choices set the opposite observed state instead of blindly toggli
   const actions=discoverActions({snapshot:'- checkbox "On" [checked=true, ref=e1]\n- checkbox "Off" [checked=false, ref=e2]',
     refs:{e1:{role:'checkbox',name:'On'},e2:{role:'checkbox',name:'Off'}}});
   assert.deepEqual(actions.filter(a=>a.ref).map(a=>a.op),['uncheck','check']);
+});
+
+test('named readonly long text remains scrollable but editable text is not treated as a reading area',()=>{
+  const body='Read this long passage. '.repeat(20);
+  const observation={snapshot:`- textbox "Reading passage" [readonly, ref=e1]: ${body}`,
+    refs:{e1:{role:'textbox',name:'Reading passage'}}};
+  assert.equal(discoverActions(observation).find(a=>a.purpose==='textarea_end')?.ref,'@e1');
+  const editable={...observation,snapshot:observation.snapshot.replace('readonly, ','')};
+  assert.equal(discoverActions(editable).some(a=>a.purpose==='textarea_end'),false);
 });
 
 test('observed native date segments offer one exact ISO-date action',()=>{
@@ -328,11 +318,51 @@ test('five unchanged waits remove wait and leave other controls available',async
   assert.equal(result.returnReason,'handoff');assert.equal(b.calls.length,5);
 });
 
-test('candidate overflow hands back without asking the provider or dropping controls',async()=>{
-  const refs=Object.fromEntries(Array.from({length:260},(_,i)=>['e'+i,{role:'button',name:'Item '+i}]));
+test('large action sets can reach late controls without dispatching a paging gesture',async()=>{
+  const refs=Object.fromEntries(Array.from({length:460},(_,i)=>['e'+i,{role:'button',name:'Item '+i}]));
+  const b=browser([{snapshot:'large catalog',refs},{snapshot:'Selected item 459',refs:{}}]);
+  const windows=[];
+  const result=await run(b,async r=>{
+    windows.push(r.candidateWindow);
+    assert.ok(Object.keys(r.candidates).length<=205);
+    const target=Object.entries(r.candidates).find(([,a])=>a.name==='Item 459');
+    return {binding:r.binding,choice:r.history.length?'step_complete':target?.[0]??'next_controls'};
+  });
+  assert.equal(result.returnReason,'reported_complete');
+  assert.deepEqual(windows.map(w=>w.page),[1,2,3,1]);
+  assert.equal(b.calls.length,1);
+  assert.equal(b.calls[0].ref,'@e459');
+});
+
+test('candidate paging preserves authorization, observation binding and decision limits',async()=>{
+  const refs=Object.fromEntries(Array.from({length:450},(_,i)=>['e'+i,{role:'button',name:'Item '+i}]));
   const b=browser([{snapshot:'large catalog',refs}]);
-  const result=await run(b,()=>assert.fail('provider must not be called'));
-  assert.equal(result.returnReason,'candidate_limit');assert.equal(b.calls.length,0);
+  const visited=[];
+  const result=await run(b,async r=>{
+    assert.ok(Object.values(r.candidates).every(a=>a.ref!=='@e240'));
+    const previews=Object.values(r.candidates).filter(a=>a.op==='candidate_page');
+    assert.ok(previews.every(a=>!a.controlNames.includes('Item 240')));
+    assert.ok(previews.every(a=>a.controlNames.length<=40));
+    visited.push(r.candidateWindow.page);
+    return {binding:r.binding,choice:r.candidates.previous_controls?'previous_controls':'next_controls'};
+  },{authorize:a=>a.ref!=='@e240',budget:{maxDecisions:4}});
+  assert.equal(result.returnReason,'decision_budget');
+  assert.deepEqual(visited,[1,2,1,2]);
+  assert.equal(b.calls.length,0);
+});
+
+test('verbose candidate names are size-paged without losing late authorized controls',async()=>{
+  const refs=Object.fromEntries(Array.from({length:90},(_,i)=>['e'+i,{role:'button',name:`Item ${i} ${'description '.repeat(35)}`}])) ;
+  const b=browser([{snapshot:'catalog',refs},{snapshot:'Done',refs:{}}]);let pages=0;
+  const result=await run(b,async r=>{
+    if(r.history.length)return {binding:r.binding,choice:'step_complete'};
+    pages++;const controls=Object.entries(r.candidates).filter(([,a])=>a.ref);
+    assert.ok(JSON.stringify(Object.fromEntries(controls)).length<=12000);
+    for(const a of Object.values(r.candidates).filter(a=>a.op==='candidate_page'))assert.ok(a.controlNames.every(name=>name.length<=160));
+    return {binding:r.binding,choice:controls.find(([,a])=>a.ref==='@e89')?.[0]??'next_controls'};
+  });
+  assert.equal(result.returnReason,'reported_complete');assert.ok(pages>1);
+  assert.equal(b.calls.length,1);assert.equal(b.calls[0].ref,'@e89');
 });
 
 test('an unchanged immediate snapshot is polled before the next decision, without repeating the gesture',async()=>{
@@ -414,7 +444,7 @@ test('an open custom listbox suppresses Enter on autocomplete text inputs',()=>{
   assert.equal(discoverActions(observation,{query:'software'}).some(a=>a.op==='press'&&a.ref==='@e1'),false);
 });
 
-test('a prefix fill observes debounced autocomplete choices before asking for input',async()=>{
+test('text entry observes debounced options without an autocomplete intent template',async()=>{
   const empty={snapshot:'- textbox "Tags" [ref=e1]',refs:{e1:{role:'textbox',name:'Tags'}}};
   const filled={snapshot:'- textbox "Tags" [ref=e1]: Norw',refs:empty.refs};
   const suggested={snapshot:'- textbox "Tags" [ref=e1]: Norw\n- listitem [ref=e2] clickable\n  - StaticText "Norway"',
@@ -426,23 +456,53 @@ test('a prefix fill observes debounced autocomplete choices before asking for in
     execute:async action=>{calls.push(action);if(action.op==='click')selected=true;}};
   const result=await run(b,choose((a,r)=>r.history.length===0?a.op==='fill'&&a.value==='Norw':
     r.history.length===1?a.op==='click'&&a.name==='Norway':a.op==='step_complete'),
-  {intentOrSteps:'Enter an item that starts with "Norw" and ends with "rway".',suppliedValues:{prefix:'Norw'}});
+  {intentOrSteps:'Choose Norway from available tags using the supplied query.',suppliedValues:{prefix:'Norw'}});
   assert.equal(result.returnReason,'reported_complete');
   assert.deepEqual(calls.map(a=>a.op),['fill','click']);
   assert.equal(calls[1].name,'Norway');
   assert.ok(reads>=3);
 });
 
-test('a supplied autocomplete prefix is tried before requesting an unknown full value',()=>{
-  const goal='Enter an item that starts with "Cro" and ends with "tia".';
-  const empty={snapshot:'- textbox "Tags" [ref=e1]',refs:{e1:{role:'textbox',name:'Tags'}}};
-  const first=discoverActions(empty,{query:'Cro'},goal);
-  assert.ok(first.some(a=>a.op==='fill'&&a.value==='Cro'&&a.purpose==='autocomplete_prefix'));
-  assert.equal(first.some(a=>a.op==='request_input'),false);
-  const filled={...empty,snapshot:'- textbox "Tags" [ref=e1]: Cro'};
-  assert.ok(discoverActions(filled,{query:'Cro'},goal).some(a=>a.op==='request_input'));
-  assert.ok(discoverActions(empty,{},goal).some(a=>a.op==='request_input'));
-  const ambiguous={snapshot:'- textbox "Tags" [ref=e1]\n- textbox "Other" [ref=e2]',
-    refs:{...empty.refs,e2:{role:'textbox',name:'Other'}}};
-  assert.ok(discoverActions(ambiguous,{query:'Cro'},goal).some(a=>a.op==='request_input'));
+test('supplied query choices and missing-input handoff remain available across paraphrases',()=>{
+  const observation={snapshot:'- textbox "Tags" [ref=e1]',refs:{e1:{role:'textbox',name:'Tags'}}};
+  const goals=['Enter an item that starts with "Cro" and ends with "tia".',
+    'Choose Croatia using the supplied query.','Look up the requested tag.'];
+  const expected=discoverActions(observation,{query:'Cro'},goals[0]);
+  for(const goal of goals)assert.deepEqual(discoverActions(observation,{query:'Cro'},goal),expected);
+  assert.deepEqual(expected.filter(a=>a.op==='fill').map(a=>a.value),['Cro']);
+  assert.ok(expected.some(a=>a.op==='request_input'));
+  assert.equal(discoverActions(observation,{},goals[0]).some(a=>a.op==='fill'),false);
+});
+
+test('native multiple selections preserve observed selections without parsing the goal',()=>{
+  const observation={snapshot:'- listbox "Regions" [ref=e1]\n  - option "North" [selected, ref=e2]\n  - option "South" [ref=e3]\n  - option "West" [ref=e4]',refs:{e1:{role:'listbox',name:'Regions',multiple:true},e2:{role:'option',name:'North'},e3:{role:'option',name:'South'},e4:{role:'option',name:'West'}}};
+  const actions=discoverActions(observation,{},'Add South while preserving North');
+  assert.ok(actions.some(a=>a.op==='select'&&a.selection==='add'&&a.changedOption==='South'&&JSON.stringify(a.options)==='["North","South"]'));
+  assert.equal(actions.some(a=>a.op==='click'&&['@e2','@e3','@e4'].includes(a.ref)),false);
+  const duplicated=structuredClone(observation);duplicated.refs.e4.name='South';
+  assert.equal(discoverActions(duplicated).some(a=>a.op==='select'),false);
+  assert.equal(discoverActions({...observation,limited:true}).some(a=>a.op==='select'),false);
+});
+
+test('ineffective scrolling is withheld while alternative observed routes remain available',async()=>{
+  const observation={snapshot:'- button "Next page" [ref=e1]',refs:{e1:{role:'button',name:'Next page'}}};
+  const b=browser([observation]);let decisions=0;
+  const result=await run(b,async request=>{
+    const entries=Object.entries(request.candidates);
+    if(decisions<4){const direction=['down','up','down','up'][decisions++];return {binding:request.binding,choice:entries.find(([,a])=>a.op==='scroll'&&a.direction===direction)[0]};}
+    assert.equal(entries.some(([,a])=>a.op==='scroll'),false);
+    assert.ok(entries.some(([,a])=>a.op==='click'&&a.name==='Next page'));
+    return {binding:request.binding,choice:'handoff'};
+  });
+  assert.equal(result.actions.length,4);assert.equal(result.returnReason,'handoff');
+});
+
+
+test('opaque reference key order cannot page an early form behind later controls',async()=>{
+  const refs={e100:{role:'button',name:'Later'},e20:{role:'textbox',name:'Note'},e2:{role:'button',name:'Save'}};
+  const observation={snapshot:'- textbox "Note" [ref=e20]\n- button "Save" [ref=e2]\n- button "Later" [ref=e100]',refs};
+  const actions=discoverActions(observation,{note:'Ready'}).filter(a=>['fill','click'].includes(a.op));
+  assert.deepEqual(actions.map(a=>a.ref),['@e20','@e2','@e100']);
+  const repeated={...observation,snapshot:observation.snapshot+'\n- textbox "Note" [ref=e20]'};
+  assert.deepEqual(discoverActions(repeated,{note:'Ready'}).filter(a=>['fill','click'].includes(a.op)).map(a=>a.ref),['@e20','@e2','@e100']);
 });

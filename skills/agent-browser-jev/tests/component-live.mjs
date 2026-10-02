@@ -3,7 +3,7 @@
 import { createServer } from 'node:http';
 import { execFile } from 'node:child_process';
 import { promisify, parseArgs } from 'node:util';
-import { readFile, writeFile, mkdir, mkdtemp, rm } from 'node:fs/promises';
+import { readFile, readdir, writeFile, mkdir, mkdtemp, rm } from 'node:fs/promises';
 import { resolve, join, dirname } from 'node:path';
 import { tmpdir } from 'node:os';
 import { fileURLToPath, pathToFileURL } from 'node:url';
@@ -14,12 +14,13 @@ import { assertSeed, assertVariant, classifyComponentTrial, componentConditions 
 import { configuredApiKey, configuredBrowser } from '../scripts/config.mjs';
 
 const execute=promisify(execFile);
-const {values}=parseArgs({options:{output:{type:'string'},binary:{type:'string'},cases:{type:'string'},variant:{type:'string',default:'base'},seed:{type:'string',default:'1'},'helper-dir':{type:'string'},diagnostics:{type:'boolean'},help:{type:'boolean'}}});
-if(values.help){console.log('node tests/component-live.mjs --output /absolute/path/to/new-report.json [--cases accordion,tabs] [--variant base|reordered|slow|injection] [--seed 1] [--diagnostics] [--helper-dir /path/to/skill] [--binary /path/to/agent-browser]');process.exit(0)}
+const {values}=parseArgs({options:{output:{type:'string'},binary:{type:'string'},cases:{type:'string'},variant:{type:'string',default:'base'},seed:{type:'string',default:'1'},'helper-dir':{type:'string'},diagnostics:{type:'boolean'},'max-usd':{type:'string'},deadline:{type:'string'},help:{type:'boolean'}}});
+if(values.help){console.log('node tests/component-live.mjs --output /absolute/path/to/new-report.json [--cases accordion,tabs] [--variant base|reordered|slow|injection] [--seed 1] [--diagnostics] [--max-usd 0.20] [--deadline ISO_UTC] [--helper-dir /path/to/skill] [--binary /path/to/agent-browser]');process.exit(0)}
 const variant=assertVariant(values.variant);
 const seed=assertSeed(Number(values.seed));
 const selectedIds=values.cases?.split(',').map(x=>x.trim()).filter(Boolean)??componentCases.map(x=>x.id);
 if(!values.output||!selectedIds.length||new Set(selectedIds).size!==selectedIds.length||selectedIds.some(id=>!componentCases.some(x=>x.id===id)))throw new Error('Use a new --output and optional comma-separated component case IDs');
+if(values['max-usd']!==undefined&&!(Number(values['max-usd'])>0)||values.deadline!==undefined&&!(Date.parse(values.deadline)>Date.now()))throw new Error('Invalid or expired validation allowance');
 configuredApiKey();
 const skill=fileURLToPath(new URL('..',import.meta.url)),helperDir=resolve(values['helper-dir']||skill),binary=values.binary||configuredBrowser(),output=resolve(values.output);
 const helper=values.diagnostics ? await import(pathToFileURL(join(helperDir,'scripts/run.mjs')).href) : null;
@@ -35,7 +36,7 @@ const server=createServer(async(req,res)=>{
   }
   res.writeHead(200,{'content-type':'text/html; charset=utf-8','cache-control':'no-store'});res.end(componentPage(req.url,variant,seed));
 });
-const hash=async path=>createHash('sha256').update(await readFile(join(skill,path))).digest('hex');
+const hash=async path=>createHash('sha256').update(await readFile(join(path.startsWith('scripts/')?helperDir:skill,path))).digest('hex');
 const report={schema:2,kind:'component-matrix',version:JSON.parse(await readFile(join(helperDir,'package.json'),'utf8')).version,startedAt:new Date().toISOString(),model:'typesafe/jev-1.13',sdk:'1.3.2',node:process.version,platform:`${process.platform}-${process.arch}`,
   variant,seed,diagnostics:Boolean(values.diagnostics),selectedCases:selectedIds,sourceBasis:[
     {name:'WAI-ARIA APG patterns',url:'https://www.w3.org/WAI/ARIA/apg/patterns/'},
@@ -45,7 +46,7 @@ const report={schema:2,kind:'component-matrix',version:JSON.parse(await readFile
     {name:'shadcn/ui component inventory',url:'https://ui.shadcn.com/docs/components'},
   ],
   measurement:'Elapsed time covers one helper invocation. Verdicts come from server-side events and the final browser snapshot, not Jev completion claims.',sourceSha256:{},cases:[],cleanup:{}};
-for(const path of ['tests/component-live.mjs','tests/fixtures/component-pages.mjs','scripts/run.mjs','scripts/controls.mjs','scripts/jev-browser.mjs','scripts/agent-browser-jev.mjs'])report.sourceSha256[path]=await hash(path);
+for(const path of ['tests/component-live.mjs','tests/fixtures/component-pages.mjs',...(await readdir(join(helperDir,'scripts'))).filter(name=>name.endsWith('.mjs')).sort().map(name=>`scripts/${name}`)])report.sourceSha256[path]=await hash(path);
 const save=()=>writeFile(output,JSON.stringify(report,null,2)+'\n');
 const browser=async args=>{const {stdout}=await execute(binary,['--session',session,'--json',...args],{timeout:30_000,maxBuffer:2e6});const response=JSON.parse(stdout);if(!response.success)throw new Error('Browser operation failed');return response.data};
 try{
@@ -53,7 +54,9 @@ try{
   const origin=`http://127.0.0.1:${server.address().port}`;
   report.browserVersion=(await execute(binary,['--version'])).stdout.trim();await save();
   for(const definition of componentCases.filter(x=>selectedIds.includes(x.id))){
-    const trial={id:definition.id,family:definition.family,intent:definition.intent,expected:definition.expected,startedAt:new Date().toISOString()};report.cases.push(trial);
+    const measured=report.cases.reduce((sum,t)=>sum+(t.result?.jev?.costUsd??0),0);
+    if(values.deadline&&Date.now()+150000>=Date.parse(values.deadline)||values['max-usd']&&measured+.05>Number(values['max-usd']))throw new Error('Validation allowance exhausted before next case');
+    const trial={id:definition.id,family:definition.family,intent:definition.intent,expected:definition.expected,startedAt:new Date().toISOString()};report.cases.push(trial);await save();
     try{
       events=[];await browser(['open',`${origin}/components/${encodeURIComponent(definition.id)}`]);
       const suppliedValues=Object.fromEntries(Object.entries(definition.values??{}).map(([name,value])=>[name,value==='__COMPONENT_FIXTURE_PDF__'?fixturePdf:value]));
@@ -75,6 +78,8 @@ try{
         trial.result={...result,resumeToken:result.resumeToken?'[redacted]':null};
       }
       trial.elapsedMs=Math.round(performance.now()-started);trial.exitCode=exitCode;
+      // Preserve paid work before an independent browser readback can fail.
+      trial.events=structuredClone(events);await save();
       trial.finalSnapshot=(await browser(['snapshot'])).snapshot;trial.events=structuredClone(events);
       trial.verification=componentConditions({definition,events:trial.events,finalSnapshot:trial.finalSnapshot,
         result:trial.result,exitCode});
@@ -85,6 +90,8 @@ try{
       finalSnapshot:trial.finalSnapshot??'',result:trial.result,exitCode:trial.exitCode??null});
     trial.variant=variant;trial.seed=seed;trial.failureClass=classifyComponentTrial(trial);
     trial.finishedAt=new Date().toISOString();await save();console.log(JSON.stringify({id:trial.id,family:trial.family,verdict:trial.verdict,returnReason:trial.result?.returnReason,elapsedMs:trial.elapsedMs}));
+    if(trial.result?.jev?.calls && !Number.isFinite(trial.result.jev.costUsd))
+      throw new Error('Unmetered model calls; stop validation and reconcile charges before continuing');
   }
 }catch(error){report.failure=String(error.message);process.exitCode=1}
 finally{

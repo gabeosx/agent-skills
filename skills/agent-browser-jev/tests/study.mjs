@@ -3,7 +3,7 @@
 // checkout; --baseline-dir and --candidate-dir choose only the helper code.
 import { execFile } from 'node:child_process';
 import { createHash } from 'node:crypto';
-import { mkdir, readFile, writeFile } from 'node:fs/promises';
+import { mkdir, readFile, readdir, writeFile } from 'node:fs/promises';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { parseArgs, promisify } from 'node:util';
@@ -39,7 +39,7 @@ await writeFile(output,'{}\n',{flag:'wx',mode:0o600});
 if(!reportMode)await mkdir(runsDir,{mode:0o700});
 
 async function manifest(dir){
-  const paths=['scripts/run.mjs','scripts/jev-browser.mjs','scripts/controls.mjs','scripts/agent-browser-jev.mjs','package-lock.json'];
+  const paths=['package.json','package-lock.json',...(await readdir(join(dir,'scripts'))).filter(name=>name.endsWith('.mjs')).sort().map(name=>`scripts/${name}`)];
   const sourceSha256={};
   for(const path of paths)sourceSha256[path]=createHash('sha256').update(await readFile(join(dir,path))).digest('hex');
   const pkg=JSON.parse(await readFile(join(dir,'package.json'),'utf8'));

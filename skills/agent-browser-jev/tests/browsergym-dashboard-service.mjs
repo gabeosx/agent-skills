@@ -42,8 +42,10 @@ function ownsDashboard(state){
 
 async function probe(url){
   try{
-    const response=await fetch(`${url}status.json`,{signal:AbortSignal.timeout(1000)});
-    return response.ok;
+    const response=await fetch(`${url}health.json`,{signal:AbortSignal.timeout(1000)});
+    if(!response.ok)return false;
+    const health=await response.json();
+    return health.kind==='browsergym-dashboard-health'&&health.ready===true;
   }catch{return false}
 }
 
@@ -71,8 +73,11 @@ if(action==='stop'){
 }
 
 const existing=await readState();
-if(existing&&ownsDashboard(existing)&&await probe(existing.url)){
-  console.log(JSON.stringify({state:'already_running',...existing,statePath,logPath}));process.exit(0);
+if(existing&&ownsDashboard(existing)){
+  if(await probe(existing.url)){
+    console.log(JSON.stringify({state:'already_running',...existing,statePath,logPath}));process.exit(0);
+  }
+  throw new Error('The recorded dashboard process is running but unhealthy; stop it before restarting.');
 }
 if(existing)await unlink(statePath).catch(()=>{});
 const log=openSync(logPath,'a',0o600);
@@ -89,6 +94,13 @@ for(let attempt=0;attempt<50;attempt++){
   }
   if(!alive(child.pid))break;
   await new Promise(resolveWait=>setTimeout(resolveWait,100));
+}
+// A failed readiness probe must not leave an untracked server behind.
+if(ownsDashboard(state)){
+  process.kill(child.pid,'SIGTERM');
+  for(let attempt=0;attempt<30&&alive(child.pid);attempt++)
+    await new Promise(resolveWait=>setTimeout(resolveWait,100));
+  if(alive(child.pid))throw new Error(`Dashboard failed startup and PID ${child.pid} did not stop; state retained at ${statePath}`);
 }
 await unlink(statePath).catch(()=>{});
 throw new Error(`Dashboard failed to start; inspect ${logPath}`);

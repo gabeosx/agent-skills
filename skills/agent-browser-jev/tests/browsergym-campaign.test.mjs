@@ -7,7 +7,7 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { promisify } from 'node:util';
-import { campaignSummary, nextCampaignTrial, trialCharge } from './browsergym-campaign-lib.mjs';
+import { campaignSummary, nextCampaignTrial, trialCharge, chargeNeedsReconciliation } from './browsergym-campaign-lib.mjs';
 
 const startedAt=new Date(Date.now()-1000).toISOString();
 const execute=promisify(execFile);
@@ -88,6 +88,17 @@ test('recorded local validation charges count toward the same campaign budget',(
   assert.equal(nextCampaignTrial({...manifest,maxCostUsd:0.7},events,'v1').state,'spend_limit');
 });
 
+test('a scored report with an unknown provider charge can be reconciled without changing its reward',()=>{
+  const failed={...trial('choose-list',1,'v1',false,null),runId:'provider-error',verdict:'regressed'};
+  assert.equal(chargeNeedsReconciliation(failed,[failed]),true);
+  assert.equal(nextCampaignTrial(manifest,[failed],'v1').state,'unmetered_charge');
+  const events=[failed,{type:'charge_reconciled',runId:failed.runId,reservedUsd:0.5}];
+  assert.equal(chargeNeedsReconciliation(failed,events),false);
+  assert.equal(chargeNeedsReconciliation({...failed,costUsd:0},[]),false);
+  assert.equal(campaignSummary(manifest,events).views.frozenFirstAttempt.candidatePassed,0);
+  assert.equal(campaignSummary(manifest,events).reservedCostUsd,0.5);
+});
+
 test('campaign summary separates frozen first attempts, repaired development, and holdout',()=>{
   const split={...manifest,taskSets:{development:['choose-list/11'],holdout:['click-button/11']}};
   const events=[trial('choose-list',1,'v1',false),trial('click-button',1,'v1',true),
@@ -96,11 +107,33 @@ test('campaign summary separates frozen first attempts, repaired development, an
     {...trial('choose-list',2,'v2',true),sequence:4}];
   events[0].sequence=1;events[1].sequence=2;
   const summary=campaignSummary(split,events);
-  assert.deepEqual(summary.views.frozenFirstAttempt,{candidatePassed:1,baselinePassed:0,scored:2,total:2});
+  assert.deepEqual(summary.views.frozenFirstAttempt,{candidatePassed:0,baselinePassed:0,scored:1,total:1});
   assert.deepEqual(summary.views.repairedDevelopment,{candidatePassed:1,baselinePassed:0,scored:1,total:1});
   assert.deepEqual(summary.views.untouchedHoldout,{candidatePassed:1,baselinePassed:0,scored:1,total:1});
   assert.equal(summary.iteration,0); // This fixture has no initial snapshot event.
   assert.equal(summary.changeImpacts.length,0);
+});
+
+test('accumulated passes never count as coverage of a newer untested candidate',()=>{
+  const events=[trial('choose-list',1,'v1',true),trial('click-button',1,'v1',false),
+    {type:'change',toFingerprint:'v2',targets:['click-button/11']},
+    trial('click-button',2,'v2',true)];
+  const summary=campaignSummary(manifest,events);
+  assert.equal(summary.views.repairedDevelopment.candidatePassed,2);
+  assert.deepEqual(summary.views.currentDevelopment,{candidatePassed:1,baselinePassed:0,scored:1,total:2});
+  assert.deepEqual(summary.currentDevelopment,{fingerprint:'v2',complete:false,untested:['choose-list/11']});
+  assert.deepEqual(summary.developmentFingerprints,['v1','v2']);
+  events.push({type:'change',toFingerprint:'v3',targets:[]});
+  const untested=campaignSummary(manifest,events);
+  assert.equal(untested.views.currentDevelopment.scored,0);
+  assert.equal(untested.currentDevelopment.untested.length,2);
+});
+
+test('first attempts after a code change are not part of the frozen candidate score',()=>{
+  const events=[trial('choose-list',1,'v1',true),{type:'change',toFingerprint:'v2'},
+    trial('click-button',1,'v2',true)];
+  assert.deepEqual(campaignSummary(manifest,events).views.frozenFirstAttempt,
+    {candidatePassed:1,baselinePassed:0,scored:1,total:2});
 });
 
 test('holdout waits for development convergence and receives only one attempt',()=>{
@@ -124,6 +157,14 @@ test('campaign charge requires measured model usage from both arms',()=>{
     {result:{jev:{calls:0,costUsd:null}}}]}),0.1);
   assert.equal(trialCharge({cases:[{result:{jev:{calls:1,costUsd:null}}},
     {result:{jev:{calls:1,costUsd:0.1}}}]}),null);
+});
+
+test('only explicit no-dispatch evidence allows an empty failed trial to cost zero',()=>{
+  assert.equal(trialCharge({modelDispatch:{started:false}}),0);
+  assert.equal(trialCharge({modelDispatch:{started:false},cases:[]}),0);
+  assert.equal(trialCharge({modelDispatch:{started:true},cases:[]}),null);
+  assert.equal(trialCharge({cases:[]}),null);
+  assert.equal(trialCharge({modelDispatch:{started:false},cases:[{result:{jev:{calls:1,costUsd:null}}}]}),null);
 });
 
 test('campaign initialization freezes explicit development and holdout task sets',async()=>{
@@ -217,9 +258,79 @@ test('dashboard service persists and promotes a real campaign over stale readine
     }));
     const updated=await (await fetch(`${result.url}status.json`)).json();
     assert.equal(updated.current,'next-ready');
+    const nested=join(root,'evaluation-bundle','campaign');
+    await mkdir(join(nested,'events'),{recursive:true});
+    await writeFile(join(nested,'manifest.json'),JSON.stringify({...manifest,
+      benchmark:'Nested campaign',startedAt:new Date(Date.now()+3000).toISOString()}));
+    const discovered=await (await fetch(`${result.url}status.json`)).json();
+    assert.equal(discovered.current,'evaluation-bundle/campaign');
+    const nestedUrl=`${result.url}campaign/evaluation-bundle%2Fcampaign/`;
+    assert.equal((await (await fetch(`${nestedUrl}status.json`)).json()).counts.pending,2);
+    await writeFile(join(nested,'events','000001.json'),JSON.stringify({
+      ...trial('choose-list',1,'v1',true),sequence:1,at:new Date().toISOString()}));
+    assert.equal((await (await fetch(`${nestedUrl}status.json`)).json()).counts.passed,1);
+    assert.match(await (await fetch(nestedUrl)).text(),/Current candidate development/);
+    const latest=join(root,'completed-review');await mkdir(latest);
+    await writeFile(join(latest,'readiness.json'),JSON.stringify({createdAt:new Date(Date.now()+4000).toISOString(),
+      benchmark:'Completed review with preserved gaps',stage:'complete_with_gaps',checks:[],blockers:['Transfer incomplete'],resultSummary:'Verified 1/2 authored goals; <script> is literal evidence.'}));
+    assert.equal((await (await fetch(`${result.url}status.json`)).json()).current,'completed-review');
+    assert.match(await (await fetch(result.url)).text(),/Latest evidence:/);
+    const reviewHtml=await (await fetch(`${result.url}campaign/completed-review/`)).text();
+    assert.match(reviewHtml,/Scored results and limits/);assert.match(reviewHtml,/Verified 1\/2 authored goals; &lt;script&gt;/);
+    assert.doesNotMatch(reviewHtml,/This preparation record is not a benchmark score/);
   }finally{
     if(started)await execute(process.execPath,[servicePath,'stop','--campaign-root',root,
       '--port',String(port)]).catch(()=>{});
     await rm(root,{recursive:true,force:true});
   }
+});
+
+test('legacy WebArena comparisons are visibly invalid without erasing charges or raw rewards',()=>{
+  const wav={...manifest,suite:'webarena-verified'};
+  const events=[trial('choose-list',1,'v1',true),trial('click-button',1,'v1',true)];
+  const result=campaignSummary(wav,events);
+  assert.equal(result.stage,'invalid_comparison');
+  assert.equal(result.invalidComparisons.count,2);
+  assert.equal(result.costUsd,0.02);
+  assert.equal(result.views.frozenFirstAttempt.scored,0);
+  assert.equal(result.views.frozenFirstAttempt.candidatePassed,null);
+  assert.equal(result.views.frozenFirstAttempt.diagnosticRaw.candidatePassed,2);
+  assert.equal(nextCampaignTrial(wav,events,'v1').state,'invalid_comparison');
+  for(const event of events)event.isolationVerified=true;
+  assert.equal(campaignSummary(wav,events).stage,'complete');
+});
+
+test('missing historical delegation records remain unknown over all started arms',()=>{
+  const summary=campaignSummary(manifest,[trial('choose-list',1,'v1',true)]);
+  assert.equal(summary.delegation.candidate.attempted,1);
+  assert.equal(summary.delegation.candidate.unknownReturns,1);
+  assert.equal(summary.delegation.candidate.callerUnknown,1);
+  assert.equal(summary.delegation.candidate.scopeUnassessed,1);
+  assert.equal(summary.delegation.candidate.fullyCorrect,0);
+});
+
+test('an incomplete WebArena arm remains unscored without invalidating a separately isolated completed pair',()=>{
+  const wav={...manifest,suite:'webarena-verified'};
+  const events=[{...trial('choose-list',1,'v1',true),isolationVerified:true},
+    {...trial('click-button',1,'v1',false,null),verdict:'incomplete',isolationVerified:false,
+      runId:'interrupted',delegation:[{arm:'candidate',officialReward:0.5,returnReason:'helper_error'}]}];
+  const result=campaignSummary(wav,events);
+  assert.equal(result.invalidComparisons.count,0);
+  assert.equal(result.incompleteComparisons.count,1);
+  assert.equal(result.incompleteComparisons.reports[0].startedArms,1);
+  assert.equal(result.views.frozenFirstAttempt.scored,1);
+  assert.equal(result.views.frozenFirstAttempt.candidatePassed,1);
+  assert.equal(result.views.frozenFirstAttempt.total,2);
+  assert.equal(result.limit,'unmetered_charge');
+  assert.equal(result.currentDevelopment.complete,false);
+  assert.ok(result.currentDevelopment.untested.includes('click-button/11'));
+});
+
+test('campaign charges include separately measured planner work and stop on unknown assistance cost',()=>{
+ const plain={result:{jev:{calls:2,costUsd:.1}}};
+ const assisted=costUsd=>({result:{jev:{calls:4,costUsd:.2},assistance:{calls:1,costUsd}}});
+ assert.ok(Math.abs(trialCharge({cases:[plain,assisted(.03)]})-.33)<1e-12);
+ assert.equal(trialCharge({cases:[plain,assisted(null)]}),null);
+ assert.equal(trialCharge({cases:[plain,assisted(-1)]}),null);
+ assert.ok(Math.abs(trialCharge({cases:[plain,{result:{jev:{calls:2,costUsd:.2},assistance:{calls:0,costUsd:null}}}]})-.3)<1e-12);
 });

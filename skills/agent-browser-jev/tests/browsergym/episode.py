@@ -27,6 +27,7 @@ from browsergym.miniwob import ALL_MINIWOB_TASKS
 from browsergym.webarena_verified.task import WebArenaVerifiedTask
 from webarena_verified.types.tracing import NetworkTrace
 from integration_tasks import CASES as INTEGRATION_CASES, IntegrationHandler, IntegrationTask
+from receipts import save_episode, stop_reason
 
 
 TASKS = {task.get_task_id().removeprefix("miniwob."): task for task in ALL_MINIWOB_TASKS}
@@ -34,8 +35,12 @@ ALLOWED = {"click-button", "choose-list", "click-checkboxes", "enter-text", "use
            "click-tab", "click-menu", "form-sequence", "click-button-sequence",
            "click-checkboxes-large", "click-collapsible", "click-dialog", "click-link",
            "click-menu-2", "click-option", "click-scroll-list", "click-tab-2",
-           "navigate-tree", "read-table", "search-engine", "sign-agreement"}
-WEBARENA_VERIFIED_ALLOWED = {"399", "404", "595", "650", "603"}
+           "navigate-tree", "read-table", "search-engine", "sign-agreement",
+           "ascending-numbers", "find-greatest", "number-checkboxes", "social-media-some",
+           "email-inbox-delete", "use-spinner",
+           "bisect-angle", "book-flight", "choose-date", "circle-center", "copy-paste", "daily-calendar", "find-word", "login-user", "order-food", "phone-book", "scroll-text", "use-slider"}
+WEBARENA_VERIFIED_ALLOWED = {"399", "404", "595", "596", "600", "603", "605", "650",
+                           "400", "407", "597", "598", "604", "606", "614", "624", "641", "651", "402", "408", "599", "607", "615", "625", "642", "652", "403", "409", "608", "643", "401", "410", "609", "644", "406", "610", "645", "580", "630", "635", "714", "719", "725", "731", "581", "631", "636", "715", "720", "727", "732", "582", "632", "637", "716", "721", "728", "733", "583", "633", "638", "717", "722", "729", "734", "584", "634", "639", "718", "724", "730", "735", "405", "601", "611", "616", "620", "626", "646", "602", "612", "617", "621", "627", "640", "647", "613", "618", "622", "628", "648", "619", "623", "629", "649"}
 MINIWOB_ROOT = Path("/opt/miniwob/miniwob/html")
 BRIDGE = Path(__file__).with_name("run-helper.mjs")
 
@@ -96,6 +101,11 @@ def chrome_endpoint(executable, directory, headed=False):
             raise RuntimeError("Chromium exited before opening CDP")
         time.sleep(0.1)
     process.terminate()
+    try:
+        process.wait(timeout=5)
+    except subprocess.TimeoutExpired:
+        process.kill()
+        process.wait(timeout=5)
     raise RuntimeError("Chromium did not open CDP in 20 seconds")
 
 
@@ -187,34 +197,15 @@ def prepare_helper(source, destination):
                    cwd=destination, text=True, capture_output=True, timeout=180, check=True)
 
 
-def reset_webarena_verified(reset_url):
-    for _ in range(180):
-        try:
-            with urllib.request.urlopen(f"{reset_url}/status", timeout=5) as response:
-                if response.status == 200 and json.load(response).get("success") is True:
-                    break
-        except Exception:
-            pass
-        time.sleep(1)
-    else:
-        raise RuntimeError("WebArena-Verified environment control did not become ready")
-    request = urllib.request.Request(f"{reset_url}/init", method="POST")
-    try:
-        with urllib.request.urlopen(request, timeout=30) as response:
-            if response.status // 100 != 2:
-                raise RuntimeError(f"WebArena-Verified reset returned HTTP {response.status}")
-    except RemoteDisconnected:
-        # env-ctrl restarts itself during init and can close an accepted request.
-        pass
-    for _ in range(180):
-        try:
-            with urllib.request.urlopen(f"{reset_url}/status", timeout=5) as response:
-                if response.status == 200 and json.load(response).get("success") is True:
-                    return
-        except Exception:
-            pass
-        time.sleep(1)
-    raise RuntimeError("WebArena-Verified environment did not become ready after reset")
+def webarena_clean_start():
+    # Only the host can replace the backend. A child runs exactly one episode.
+    evidence = json.loads(os.environ.get("JEV_WEBARENA_CLEAN_START", "null"))
+    if (not isinstance(evidence, dict) or evidence.get("protocol") != "fresh-container-v1"
+            or evidence.get("passed") is not True or not evidence.get("containerId")
+            or not evidence.get("readbackSha256")
+            or evidence.get("readbackSha256") != evidence.get("referenceSha256")):
+        raise RuntimeError("Missing verified fresh backend; no model call is permitted")
+    return evidence
 
 
 def webarena_response(task, completed):
@@ -261,9 +252,8 @@ def response_to_har(response):
             "redirectURL": response_headers.get("location", ""),
             "content": {
                 "mimeType": content_type,
-                # The selected mutation tasks assert the request and status, not
-                # the response body. Reading a body from a response callback can
-                # deadlock Playwright, so keep this core trace deliberately small.
+                # Filled after the browser action finishes. Reading a body from
+                # inside Playwright's synchronous response callback can deadlock.
                 "text": "",
             },
         },
@@ -275,6 +265,7 @@ def run_case(task_name, seed, arm, helper_dir, *, suite="miniwob", base_url=None
     session = f"jev-bgym-{os.getpid()}-{arm}-{task_name}-{seed}"
     trial = {"id": task_name, "seed": seed, "variant": suite, "round": 1,
              "arm": arm, "benchmarkId": f"browsergym/{suite}.{task_name}"}
+    save_episode(session, "started", trial)
     started = time.monotonic()
     with tempfile.TemporaryDirectory(prefix="jev-bgym-chrome-") as chrome_dir:
         with sync_playwright() as playwright:
@@ -307,8 +298,11 @@ def run_case(task_name, seed, arm, helper_dir, *, suite="miniwob", base_url=None
                     def capture_response(response):
                         try:
                             # Playwright releases navigation request payloads after
-                            # redirects. Materialize the form body at response time.
-                            captured_trace.append(response_to_har(response))
+                            # redirects. Materialize request data at response time,
+                            # but defer response.body() until the browser action has
+                            # completed so the synchronous callback cannot deadlock.
+                            if response.request.method != "GET":
+                                captured_trace.append((response_to_har(response), response))
                         except Exception:
                             pass
                     context.on("response", capture_response)
@@ -332,7 +326,14 @@ def run_case(task_name, seed, arm, helper_dir, *, suite="miniwob", base_url=None
                         target = re.search(r'"([^\"]+)"', goal)
                         if not target:
                             raise RuntimeError("Smoke task did not provide a quoted button name")
-                        browser_command(session, port, "find", "role", "button", "click", "--name", target.group(1))
+                        # Name-based find is case-insensitive in this transport;
+                        # MiniWoB can expose both "next" and "Next". Bind the
+                        # exact current accessible name for the scripted control.
+                        matches = [ref for ref, control in trial["initialSnapshot"].get("refs", {}).items()
+                                   if control.get("role") == "button" and control.get("name") == target.group(1)]
+                        if len(matches) != 1:
+                            raise RuntimeError("Smoke target did not have one exact observed button")
+                        browser_command(session, port, "click", f"@{matches[0]}")
                         page.wait_for_function("() => WOB_DONE_GLOBAL", timeout=5000)
                     elif task_name == "399":
                         browser_command(session, port, "find", "role", "button", "click",
@@ -379,10 +380,13 @@ def run_case(task_name, seed, arm, helper_dir, *, suite="miniwob", base_url=None
                 else:
                     invocation = {"helperDir": str(helper_dir), "session": session,
                                   "taskName": task_name, "goal": goal}
-                    result = command(["node", str(BRIDGE)], timeout=190,
+                    trial["modelDispatch"] = {"started": True}
+                    save_episode(session, "invoking_helper", trial)
+                    result = command(["node", str(BRIDGE)], timeout=225,
                                      input_text=json.dumps(invocation))
                     response = json.loads(result.stdout)
                     trial.update(response)
+                    save_episode(session, "helper_returned", trial)
                 messages = ([{"role": "assistant", "message": webarena_response(
                     task, smoke or trial.get("result", {}).get("returnReason") == "reported_complete") }]
                     if suite == "webarena-verified" else [])
@@ -391,7 +395,25 @@ def run_case(task_name, seed, arm, helper_dir, *, suite="miniwob", base_url=None
                     evaluate_task = task.evaluator.evaluator.evaluate_task
                     def capture_evaluation(*, context):
                         if captured_trace:
-                            supplemental = NetworkTrace.from_content(captured_trace)
+                            completed_trace = []
+                            for entry, response in captured_trace:
+                                try:
+                                    body = response.body()
+                                    if len(body) <= 1_000_000:
+                                        entry["response"]["content"]["text"] = body.decode(
+                                            "utf-8", errors="replace")
+                                except Exception:
+                                    pass
+                                completed_trace.append(entry)
+                            supplemental = NetworkTrace.from_content(completed_trace)
+                            # Private audit evidence for transient extra effects. Never
+                            # pass request data, evaluator state or DB IDs to an actor.
+                            trial["mutationRequests"] = [{
+                                "method": entry["request"]["method"],
+                                "url": entry["request"]["url"],
+                                "postData": entry["request"].get("postData"),
+                                "status": entry["response"]["status"],
+                            } for entry in completed_trace]
                             supplemental_keys = {
                                 (event.http_method, event.url)
                                 for event in supplemental.events
@@ -439,7 +461,18 @@ def run_case(task_name, seed, arm, helper_dir, *, suite="miniwob", base_url=None
                                     "positiveControlPassed": reward == 1 if positive_control else None}
                                    if smoke else {"gymReward": reward == 1,
                                                   "gymDone": bool(done)})}
-                trial["failureClass"] = "passed" if passed else "gym_reward_zero"
+                trial["failureClass"] = "passed" if passed else ("gym_reward_partial" if 0 < reward < 1 else "gym_reward_zero")
+                evaluator_error = (evaluator_details.get("status") == "error"
+                    or bool(evaluator_details.get("error"))
+                    or any(item.get("status") == "error" or item.get("error_msg")
+                           for item in evaluator_details.get("evaluators", [])))
+                if evaluator_error:
+                    # Retain the official numeric reward but never treat an
+                    # evaluator crash as evidence of actor success or failure.
+                    trial["failureClass"] = "infrastructure"
+                    trial["error"] = "Official evaluator error; comparison invalid"
+                    trial["verification"]["passed"] = False
+                    trial["verification"]["conditions"]["evaluatorHealthy"] = False
             except Exception as error:
                 trial["error"] = str(error)
                 trial["verification"] = {"passed": False,
@@ -447,10 +480,14 @@ def run_case(task_name, seed, arm, helper_dir, *, suite="miniwob", base_url=None
                 trial["failureClass"] = "infrastructure"
             finally:
                 trial["elapsedMs"] = round((time.monotonic() - started) * 1000)
-                if task:
-                    task.teardown()
-                if browser:
-                    browser.close()
+                save_episode(session, "evaluated", trial)
+                cleanup_errors = []
+                for resource in [task, browser]:
+                    if resource:
+                        try:
+                            resource.teardown() if resource is task else resource.close()
+                        except Exception as error:
+                            cleanup_errors.append(str(error))
                 try:
                     browser_command(session, port, "close")
                 except Exception:
@@ -461,6 +498,10 @@ def run_case(task_name, seed, arm, helper_dir, *, suite="miniwob", base_url=None
                 except subprocess.TimeoutExpired:
                     chrome.kill()
                     chrome.wait(timeout=5)
+                if cleanup_errors:
+                    trial["cleanupErrors"] = cleanup_errors
+                    trial["failureClass"] = "infrastructure"
+                save_episode(session, "complete", trial)
     return trial
 
 
@@ -477,6 +518,7 @@ def main():
     parser.add_argument("--watch-delay-ms", type=int, default=0)
     parser.add_argument("--webarena-site")
     parser.add_argument("--webarena-reset-url")
+    parser.add_argument("--arm", choices=("baseline", "candidate"))
     args = parser.parse_args()
     cases = args.cases.split(",")
     seeds = [int(value) for value in args.seeds.split(",")]
@@ -497,6 +539,8 @@ def main():
         raise ValueError("Seeds must be unsigned 32-bit integers")
     if not 0 <= args.watch_delay_ms <= 60000:
         raise ValueError("Watch delay must be between 0 and 60000 milliseconds")
+    if args.arm and args.smoke:
+        raise ValueError("Smoke controls do not dispatch a model arm")
     if not args.smoke and not os.environ.get("OPENROUTER_API_KEY"):
         raise ValueError("OPENROUTER_API_KEY is required for a live study")
     server = None
@@ -516,11 +560,14 @@ def main():
               "webarenaVerifiedVersion": package_version("webarena-verified") if args.suite == "webarena-verified" else None,
               "cases": [], "smoke": args.smoke, "headed": args.headed}
     report["positiveControl"] = args.positive_control
+    clean_start = None
+    if args.suite == "webarena-verified":
+        if len(cases) != 1 or len(seeds) != 1 or (not args.smoke and not args.arm):
+            raise ValueError("The host must isolate each WebArena arm in its own invocation")
+        clean_start = webarena_clean_start()
     try:
         with viewer_session() if args.headed else nullcontext():
             if args.smoke:
-                if args.suite == "webarena-verified":
-                    reset_webarena_verified(args.webarena_reset_url)
                 report["cases"].append(run_case(cases[0], seeds[0], "smoke", None,
                                                 suite=args.suite, base_url=base_url,
                                                 smoke=True, positive_control=args.positive_control,
@@ -530,23 +577,32 @@ def main():
                 with tempfile.TemporaryDirectory(prefix="jev-bgym-helpers-") as work:
                     helpers = {}
                     for arm, path in (("baseline", args.baseline_dir), ("candidate", args.candidate_dir)):
+                        if args.arm and arm != args.arm:
+                            continue
                         helpers[arm] = Path(work) / arm
                         prepare_helper(path, helpers[arm])
                     for seed in seeds:
                         for index, task_name in enumerate(cases):
                             order = ("baseline", "candidate") if (seed + index) % 2 else ("candidate", "baseline")
-                            for arm in order:
-                                if args.suite == "webarena-verified":
-                                    reset_webarena_verified(args.webarena_reset_url)
-                                report["cases"].append(run_case(task_name, seed, arm, helpers[arm],
+                            for arm in ([args.arm] if args.arm else order):
+                                trial = run_case(task_name, seed, arm, helpers[arm],
                                                                  suite=args.suite, base_url=base_url,
                                                                  headed=args.headed,
-                                                                 watch_delay_ms=args.watch_delay_ms))
+                                                                 watch_delay_ms=args.watch_delay_ms)
+                                report["cases"].append(trial)
+                                reason = stop_reason(trial)
+                                if reason:
+                                    raise RuntimeError(reason)
+    except Exception as error:
+        report["error"] = str(error)
     finally:
         if server:
             server.shutdown()
             server.server_close()
             server_thread.join(timeout=5)
+    if clean_start:
+        for trial in report["cases"]:
+            trial["cleanStart"] = clean_start
     print(json.dumps(report))
 
 

@@ -1,95 +1,49 @@
 # Agent Skills Repository Policy
 
-This file is the canonical instruction source for work in this repository. The root `AGENTS.md` is only a compatibility shim.
+This is the canonical repository policy; root `AGENTS.md` is a compatibility shim. Follow applicable user instructions, then this policy and the affected skill's `SKILL.md`. Nested instructions may specialize a workflow without overriding this policy's release or integrity requirements.
 
-## Instruction Priority
+## Scope and authorization
 
-Apply instructions in this order:
+Inspect `git status` before editing and preserve pre-existing work. Read the affected skill's entrypoint and the resources needed for the change. Use `README.md` for repository interfaces and distribution, and the relevant `CHANGELOG.md` entries for release history; a small edit does not require reading every document.
 
-1. Root `AGENTS.md` compatibility shim.
-2. This canonical `.agents/AGENTS.md` policy.
-3. The selected `skills/<skill-name>/SKILL.md` for a matching workflow.
-4. A more specific nested `AGENTS.md`, if present.
-5. Normal repository inspection and reasoning.
+Requests to implement or fix authorize in-scope local edits, disposable local validation, and repairs required to finish that work. Continue through the requested outcome without repeated approval pauses. Paid experiments, external services and unattended execution require authorization that covers them; use authorization already given in the session. An explicitly uncapped campaign does not need an invented spend, duration or retry ceiling. Historical campaign limits remain historical when the user supersedes them. Ask only when missing facts or additional authority materially block the next action.
 
-## First Moves
+For a new benchmark adapter or benchmark-driven improvement campaign, use [Benchmark Improvement Loop](../skills/benchmark-improvement-loop/SKILL.md) alongside the affected skill. Keep development, retry and confirmation evidence distinct, independently verify effects, and preserve failed attempts. The skill provides the experiment contract; it does not grant new permissions.
 
-Before editing:
+## Versioning and changelog
 
-1. Inspect `git status` and preserve unrelated or pre-existing work.
-2. Read `README.md`, `CHANGELOG.md`, and the affected skill's complete `SKILL.md`.
-3. Inspect the affected skill's resources and current `metadata.version`.
-4. Determine which skills and repository-level interfaces the requested change affects.
-5. Choose the required version increment before implementation so the behavioral contract is explicit.
+Each skill is versioned independently. A skill change includes its files, quoted `metadata.version` in `SKILL.md`, a matching root `CHANGELOG.md` heading, and relevant validation in the same working change. This includes repository-level changes that alter that skill's triggering, behavior, distribution, validation or guarantees. Do not mark a skill change complete while this bookkeeping is missing.
 
-Do not read every skill in full. Select only the skills relevant to the task.
+Choose the increment from the resulting contract:
 
-## Benchmark Integration And Improvement
+- **Major:** incompatible triggering, required inputs, guarantees, outputs, security expectations or resource paths.
+- **Minor:** backward-compatible capabilities, workflows, environments or material guidance improvements.
+- **Patch:** backward-compatible fixes, clarifications or validation/resource corrections.
 
-When introducing a benchmark tool or running a benchmark-driven improvement campaign for any skill, read and follow [`skills/benchmark-improvement-loop/SKILL.md`](../skills/benchmark-improvement-loop/SKILL.md) as well as the affected skill. Keep first-attempt, retry-trained and untouched held-out results distinct; independently verify outcomes and preserve failures. A new benchmark or an existing campaign's prior budget does not itself authorize paid runs, unattended work, or additional external services. This routing does not change the release and validation contract below.
+Keep one intentional increment per prepared release. Additional edits to the same uncommitted release share its version; bookkeeping does not recursively require another bump. A version-only correction needs an explanatory changelog entry. Do not bump unrelated skills.
 
-## Mandatory Versioning And Changelog Contract
+Maintain one root `CHANGELOG.md`. Use `## <skill-name> <version> - YYYY-MM-DD` matching `metadata.version`, including prepared releases. Describe user-visible impact, compatibility and limitations. Record repository-only changes under `## Unreleased` / `### Repository` without inventing a skill bump. Preserve historical entries; document factual corrections under `Unreleased`. If repository releases gain their own version, document its canonical source in `README.md` before using it.
 
-Every change that affects a skill must update all of the following in the same working change or pull request:
+For an explicitly requested retirement, remove the affected public `SKILL.md` rather than hiding an installable entrypoint. Preserve historical instructions under a different filename with an archive notice before any historical frontmatter. Record the skill name, `status: archived`, retirement date, major archive-contract `metadata.version`, historical instructions, research report and evidence register in `ARCHIVE.json` at its existing directory. That manifest replaces the removed entrypoint as the canonical version source; preserved runtime package versions remain historical. Update the root catalog and changelog, validate the manifest and verify discovery against a public-files-only export, including full-depth discovery. Do not publish private `.runs` evidence or recreate a public `SKILL.md` merely to satisfy validation. Structural validation may use an isolated temporary copy of the preserved historical frontmatter; remove the temporary copy afterward.
 
-1. The affected skill's files.
-2. The quoted `metadata.version` in that skill's `SKILL.md` frontmatter.
-3. The root `CHANGELOG.md` with a user-visible summary under a heading matching that skill's name and new version.
-4. Relevant validation or tests.
+## Instruction and skill design
 
-Do not finish, hand off, or describe a skill change as complete if its version and changelog entry are missing. Apply the contract to changes anywhere inside `skills/<skill-name>/`, and to repository-level changes that alter that skill's triggering, behavior, distribution, validation, or documented guarantees.
+Keep triggers precise and entrypoints focused on essential decisions, constraints and links. Put conditional mechanics and evidence in references, preferably one level deep. Do not add per-skill READMEs, changelogs, journals or product-specific `agents/openai.yaml` unless the user requests them or the repository explicitly adopts them. Preserve supported workflows and resource compatibility.
 
-Each skill is versioned independently. Increment only affected skills; do not bump unrelated skills for convenience.
+The [Astra skill and prompt guidance](https://developers.openai.com/blog/rethinking-skills-and-prompts-for-gpt-6-astra) informs engineering-agent instructions: avoid redundant prerequisites and give the agent room to finish authorized work. The [latest-model guide](https://developers.openai.com/api/docs/guides/latest-model#prompting-best-practices) recommends testing prompt simplifications on representative workloads. These are not evidence that Jev can replace its runtime safeguards or acquire Astra's capabilities. Evaluate changes to Jev's observations, prompts and controller on Jev itself; preserve mechanisms that enforce authorization, exact values, effect scope and benchmark isolation. Verify time-sensitive compatibility facts against current official sources.
 
-Use Semantic Versioning:
+## Validation and completion
 
-- **Major:** Incompatible changes to triggering, required inputs, behavior guarantees, outputs, security expectations, or resource paths consumers may rely on.
-- **Minor:** Backward-compatible capabilities, workflows, supported environments, or material guidance improvements.
-- **Patch:** Backward-compatible fixes, clarifications, validation improvements, or resource corrections without a material new capability.
+Complete checks proportional to the changed behavior, reusing results for an unchanged fingerprint. Rerun affected checks after new changes or failures; avoid repeating an already-passing full suite without a reason.
 
-The release bookkeeping required by this policy does not recursively require another version increment. A version-only correction still requires an explanatory changelog entry.
+- For each changed skill, run the skill-creator structural validator and check changed links/resource paths.
+- Run relevant fixtures, tests or forward evaluations. Benchmark claims additionally require the campaign's frozen comparison and independent outcome audit; unit tests alone cannot establish improvement.
+- Run `python3 .agents/scripts/validate_release_contract.py` (use the appropriate `--base-ref` for CI or committed comparisons), resolve failures, and confirm the intentional versions and changelog coverage.
+- Run `git diff --check` and inspect the final diff for unrelated changes.
+- Remove only validation-owned temporary files, containers, images, networks and volumes when no active run needs them. Preserve audit evidence and source snapshots; never use destructive global cleanup.
 
-## Repository-Only Changes
+Report validation, unexercised areas, limitations, scoped cleanup and final versions. Continue justified implementation and evaluation until the requested acceptance conditions are met, or identify a concrete blocker; do not replace those conditions with an easier score.
 
-Every repository change must be represented in `CHANGELOG.md`, including changes limited to repository policy, automation, CI, indexes, or contribution documentation. Record these under `## Unreleased` with a `### Repository` subsection unless they are being included in a named repository release.
+## Commits and publication
 
-Do not invent a skill version bump for a repository-only change that does not alter a skill artifact or contract. If repository releases later receive their own version, document that canonical version source in `README.md` before using it.
-
-## Changelog Rules
-
-- Maintain one root `CHANGELOG.md`; do not add per-skill changelogs.
-- Write entries for users and maintainers: describe behavioral impact, migration needs, security implications, and compatibility changes rather than listing filenames.
-- Record each prepared skill version under `## <skill-name> <version> - YYYY-MM-DD`; the heading must match `metadata.version` exactly even before the commit is tagged.
-- Keep repository-only work under `## Unreleased` in a `### Repository` subsection.
-- Multiple edits made while preparing the same uncommitted skill release belong in the same version entry and do not require repeated increments.
-- Never rewrite or delete historical release entries except to correct a factual error, and explain such corrections under `Unreleased`.
-
-## Skill Editing Rules
-
-- Keep `SKILL.md` focused on decisions and procedures another agent must follow.
-- Use progressive references for detailed material and keep links one level deep where practical.
-- Do not add a per-skill `README.md`, `CHANGELOG.md`, or process journal.
-- Preserve compatibility by default. Do not silently remove supported workflows or perform a major migration.
-- Use official current sources for time-sensitive facts, and record important compatibility assumptions in the skill or its references.
-- Do not add product-specific `agents/openai.yaml` unless the repository adopts that convention explicitly.
-
-## Definition Of Done
-
-Before reporting completion:
-
-1. Run the skill-creator structural validator for every changed skill.
-2. Validate changed links and resource paths.
-3. Run relevant skill-specific fixtures, tests, or forward-evaluations in proportion to risk.
-4. Run `python3 .agents/scripts/validate_release_contract.py` and resolve every failure. In CI or when validating committed work, pass the appropriate comparison ref with `--base-ref`.
-5. Confirm every changed skill has exactly one intentional SemVer increment and a matching versioned changelog heading.
-6. Confirm every repository-only change is represented under `Unreleased`.
-7. Run `git diff --check` and inspect the final diff for unrelated changes.
-8. Clean up temporary files and only the containers, images, networks, or volumes created by validation. Never use destructive global cleanup as a test teardown shortcut.
-9. Report validation performed, anything not exercised, cleanup evidence, and the final version changes.
-
-## Commits, Tags, And Releases
-
-- Do not commit, push, publish, or create a release unless the user requests it.
-- Never tag an uncommitted working tree.
-- Tag a committed skill release as `<skill-name>/v<version>`, for example `devcontainer-helper/v1.1.0`.
-- Create a GitHub Release only from the matching committed changelog entry.
+Commit, push, tag or publish only when requested. Never tag an uncommitted tree. Tag a committed skill release as `<skill-name>/v<version>` and create its GitHub Release from the matching committed changelog entry.

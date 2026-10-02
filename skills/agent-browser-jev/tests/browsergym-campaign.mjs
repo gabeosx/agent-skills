@@ -6,10 +6,11 @@ import { copyFile, mkdir, open, readFile, readdir, realpath, rename, stat, unlin
 import { join, relative, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { parseArgs } from 'node:util';
-import { browserGymCases, integrationCases, webarenaVerifiedSupportedCases } from './browsergym-study-lib.mjs';
-import { campaignCases, integrationCampaignCases, webarenaVerifiedCampaignCases, campaignSummary, nextCampaignTrial, trialCharge, trialKey } from './browsergym-campaign-lib.mjs';
+import { browserGymCases, integrationCases, webarenaVerifiedSupportedCases, verifiedCleanStart } from './browsergym-study-lib.mjs';
+import { campaignCases, integrationCampaignCases, webarenaVerifiedCampaignCases, campaignSummary, nextCampaignTrial, trialCharge, trialKey, chargeNeedsReconciliation } from './browsergym-campaign-lib.mjs';
 import { assertSeed } from './study-lib.mjs';
 import { configuredApiKey } from '../scripts/config.mjs';
+import { validateScopeAudit } from './browsergym-scope-audit.mjs';
 
 const skill=fileURLToPath(new URL('..',import.meta.url));
 const {values}=parseArgs({options:{
@@ -19,12 +20,12 @@ const {values}=parseArgs({options:{
   'holdout-cases':{type:'string'},
   once:{type:'boolean'},'init-only':{type:'boolean'},status:{type:'boolean'},
   defer:{type:'string'},reason:{type:'string'},retry:{type:'string'},
-  'reconcile-run':{type:'string'},'record-validation':{type:'string'},
+  'reconcile-run':{type:'string'},'record-validation':{type:'string'},'record-scope-audit':{type:'string'},
   'change-note':{type:'string'},help:{type:'boolean'},
   'webarena-environment':{type:'string'},
 }});
 if(values.help){
-  console.log('Initialize: node tests/browsergym-campaign.mjs --run-dir /absolute/private/path --baseline-dir /path/to/skill --max-hours 8 --max-usd 10 [--suite miniwob|integration|webarena-verified] [--cases id,id] [--holdout-cases id,id] [--seeds 11,12] [--webarena-environment /path/environment.json] [--max-retries 3] [--init-only]\nRun/resume: node tests/browsergym-campaign.mjs --run-dir /same/path [--once] [--retry case/seed,case/seed] [--change-note "What changed and why"]\nInspect: --status. Mark unsupported: --defer case/seed --reason "why". Reconcile incomplete: --reconcile-run runId --reason "inspection result". Audit a local component report: --record-validation /path/inside/run-dir.json --reason "what it checked". Reports and source snapshots stay in the run directory.');
+  console.log('Initialize: node tests/browsergym-campaign.mjs --run-dir /absolute/private/path --baseline-dir /path/to/skill --max-hours 8 --max-usd 10 [--suite miniwob|integration|webarena-verified] [--cases id,id] [--holdout-cases id,id] [--seeds 11,12] [--webarena-environment /path/environment.json] [--max-retries 3] [--init-only]\nRun/resume: node tests/browsergym-campaign.mjs --run-dir /same/path [--once] [--retry case/seed,case/seed] [--change-note "What changed and why"]\nInspect: --status. Mark unsupported: --defer case/seed --reason "why". Reconcile incomplete: --reconcile-run runId --reason "inspection result". Supplemental effect review: --record-scope-audit /path/inside/run/scope-audit.json. Audit a local component report: --record-validation /path/inside/run-dir.json --reason "what it checked". Reports and source snapshots stay in the run directory.');
   process.exit(0);
 }
 if(!values['run-dir'])throw new Error('Provide --run-dir');
@@ -54,7 +55,9 @@ function fingerprints(files){
   const runtime=Object.fromEntries(Object.entries(files).filter(([path])=>
     path.startsWith('scripts/')||['package.json','package-lock.json',
       'tests/browsergym/task-values.mjs','tests/browsergym/run-helper.mjs',
-      'tests/browsergym/episode.py','tests/browsergym/integration_tasks.py'].includes(path)));
+      'tests/browsergym/episode.py','tests/browsergym/integration_tasks.py',
+      'tests/browsergym-study.mjs','tests/browsergym-study-lib.mjs','tests/webarena-isolation.mjs',
+      'tests/webarena-verified-env.mjs'].includes(path)));
   return {source:all,runtime:sha(JSON.stringify(runtime)),files};
 }
 
@@ -219,6 +222,14 @@ async function runPair(manifest,events,next,candidate){
     baselineFingerprint:manifest.baselineFingerprint,baselinePassed:pair?.baseline??false,
     candidatePassed:pair?.candidate??false,baselineFailure:pair?.baselineFailure??null,
     candidateFailure:pair?.candidateFailure??null,verdict:raw.verdict,
+    isolationVerified:manifest.suite==='webarena-verified'?
+      raw.cases?.length===2&&raw.cases.every(verifiedCleanStart)&&
+      new Set(raw.cases.map(item=>item.cleanStart.containerId)).size===2&&
+      raw.cleanup?.backendRestored?.passed===true:null,
+    delegation:raw.cases?.map(item=>({arm:item.arm,officialReward:item.reward??null,
+      returnReason:item.result?.returnReason??null,actionScope:item.actionScope?.verdict??'unassessed',
+      callerInterventions:item.actor?.callerInterventions??null,
+      ...(item.actor?.assistance?{assistance:item.actor.assistance}:{})})),
     costUsd:charge,cleanup:raw.cleanup,exitCode,timedOut});
   console.log(JSON.stringify({type:'trial',id:event.id,seed:event.seed,attempt:event.attempt,
     baselinePassed:event.baselinePassed,candidatePassed:event.candidatePassed,
@@ -230,7 +241,7 @@ async function runPair(manifest,events,next,candidate){
 const exists=async path=>stat(path).then(()=>true,()=>false);
 let manifest=await exists(manifestPath)?JSON.parse(await readFile(manifestPath,'utf8')):null;
 if(!manifest){
-  if(values.status||values.defer||values['reconcile-run']||values['record-validation'])
+  if(values.status||values.defer||values['reconcile-run']||values['record-validation']||values['record-scope-audit'])
     throw new Error('Campaign does not exist');
   manifest=await initialize();
 }else if(['baseline-dir','suite','cases','holdout-cases','seeds','max-hours','max-usd','max-retries','candidate-dir','webarena-environment']
@@ -239,14 +250,37 @@ if(manifest.kind!=='browsergym-campaign'||manifest.schema!==1)throw new Error('I
 let events=await readEvents();
 if(values['init-only']){console.log(JSON.stringify({state:'initialized',runDir,
   summary:{...campaignSummary(manifest,events),tasks:undefined}}));process.exit(0)}
-if(values.status){console.log(JSON.stringify(campaignSummary(manifest,events),null,2));process.exit(0)}
+if(values.status){
+  // Large campaign reports must drain to a pipe before exiting.
+  await new Promise((resolveWrite,rejectWrite)=>process.stdout.write(
+    JSON.stringify(campaignSummary(manifest,events),null,2)+'\n',
+    error=>error?rejectWrite(error):resolveWrite()));
+  process.exit(0);
+}
 const retryTargets=values.retry?parseList(values.retry,'retry targets'):[];
 if(retryTargets.some(key=>!manifest.cases.some(id=>manifest.seeds.some(seed=>key===trialKey(id,seed)))))
   throw new Error('Retry target must be a configured case/seed');
 const unlock=await lock();
 try{
   events=await readEvents();
-  if(values['record-validation']){
+  if(values['record-scope-audit']){
+    if(values.retry||values.defer||values['reconcile-run']||values['record-validation'])
+      throw new Error('Record a scope audit without running another campaign operation');
+    const path=await realpath(resolve(values['record-scope-audit'])),root=await realpath(runDir);
+    if(!path.startsWith(`${root}${sep}`))throw new Error('Scope audit must be inside the run directory');
+    const bytes=await readFile(path),report=JSON.parse(bytes),entries=validateScopeAudit(report,events);
+    for(const hash of new Set(entries.map(item=>item.reportSha256))){
+      const event=events.find(item=>item.type==='trial'&&item.reportSha256===hash);
+      const source=await realpath(resolve(runDir,event.report));
+      if(!source.startsWith(`${root}${sep}`)||sha(await readFile(source))!==hash)
+        throw new Error('Audited report no longer matches its recorded hash');
+    }
+    if(events.some(event=>event.type==='scope_audit'&&event.auditSha256===sha(bytes)))
+      throw new Error('Scope audit already recorded');
+    await appendEvent(events,{type:'scope_audit',audit:relative(runDir,path),auditSha256:sha(bytes),
+      method:report.method,entries});
+    console.log(JSON.stringify({state:'scope_audit_recorded',entries:entries.length}));
+  }else if(values['record-validation']){
     if(values.retry||values.defer||values['reconcile-run']||!values.reason?.trim())
       throw new Error('Use --record-validation report.json --reason "what it checked" alone');
     const path=await realpath(resolve(values['record-validation']));
@@ -270,9 +304,8 @@ try{
       throw new Error('Use --reconcile-run runId --reason "inspection result" alone');
     const runId=values['reconcile-run'];
     const failed=events.find(event=>event.type==='trial'&&event.runId===runId);
-    if(!failed||failed.verdict!=='incomplete'||failed.costUsd!==null||
-      events.some(event=>event.type==='charge_reconciled'&&event.runId===runId))
-      throw new Error('Run must be an unreconciled incomplete trial');
+    if(!chargeNeedsReconciliation(failed,events))
+      throw new Error('Run must have an unreconciled unknown charge');
     if(!failed.cleanup?.containerRemoved)throw new Error('Inspect container cleanup before reconciliation');
     const response=await fetch('https://openrouter.ai/api/v1/key',{
       headers:{Authorization:`Bearer ${configuredApiKey()}`},signal:AbortSignal.timeout(15_000)});

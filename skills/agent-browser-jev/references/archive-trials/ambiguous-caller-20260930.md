@@ -1,0 +1,21 @@
+> **Archived trial summary.** This report describes its historical checkpoint, not a supported release or instruction to continue. Local/private links have been replaced with provenance labels. The [final research report](../../RESEARCH.md) records later decisions.
+
+# Ambiguous-goal real-caller campaign, September30
+
+The frozen nine-trial WebArena follow-up is complete. Direct caller, Jev alone and caller-with-Jev reached 2/3,0/3,3/3 independently verified saved goals with reviewed scope. Full official reward was2/3,0/3,2/3; complete reports3/3,0/3,2/3. All three delegated goals needed real caller recovery. These are practiced cases, not unseen families, and the primary source precedes the display repair.
+
+Direct author voting falsely completed7/8 votes (raw8/9). Assisted author voting completed8/8. Assisted ranked edit reached the goal but returned after next-request spend reservation; raw0.5 is confirmed effect-pass/response-fail, not a guessed route issue. Caller decisions54→51, gestures37→31, model cost$0.810555→$1.429907. Independent persisted-state and manual command reviews retain exact differences; invalid imported role-flag normalization has an explicit source-backed exception, with the original strict audit preserved.
+
+The retained general fix reads exact visible readonly textbox display separately when its native value is empty. It does not infer semantics or add a classifier. Two authored picker positives pass both arms; an already-selected control falls15→8 Jev calls and4→2 gestures. Same-value reselection is overhead, not a claimed scope improvement; the original stricter raw fixture flag remains preserved.
+
+On the two predeclared reserved authored positives, candidate1 reaches1/2 versus baseline0/2. Forum discovery succeeds; both versions save the ranked edit on the wrong-topic bus record. Both pass the separate missing-authority negative. These are new authored instances of practiced workflows, with no official reward. The saved-edit confirmation uses a fixed comparison record, limiting post-save completion interpretation but not the independently established earlier wrong target/mutation.
+
+Candidate2 split membership from rank in qualified-target review. Its third/final ranked-case attempt withheld the wrong mutation but returned unfinished. It failed the predeclared goal-plus-scope promotion criterion and is not default. No further helper attempts on that authored case, or public623/721/735, were scheduled. Adding another broad reviewer is not the next proposed remedy; consistent filtered target binding remains the unresolved mechanism.
+
+Retained candidate1 passes27 positive component goals and complete reports plus one expected negative, and411 offline tests. Both skill structures,108 local links, release contract and whitespace pass. Public runtime hashes match frozen candidate1 exactly. Pending versions1.3.0/1.1.0 remain unchanged. No commit, publication or global installation.
+
+Additional measured spend$2.305189784 exactly matches provider delta; cumulative measured$13.082432262, conservative accounted$30.931007312/$40 with prior reserves intact. Remaining renewed allowance$9.064810216. Renewal deadline September30 11:42AM ET. No unknown new charge. Initial source-equality runner error blocked before a model call and is preserved; its comparison was repaired without changing a task.
+
+Final pristine backend readback passed. Exact campaign backend/container network removed. All authored trial servers and browser sessions closed. Persistent dashboard retained and shows scored results plus known limits; it no longer says scoring awaits authorization.
+
+Key receipts: report.json; persisted-goal-audit-v1.json and persisted-goal-audit.json; manual-scope-audit.json; readonly-display-reproduction.json and readonly-display-reproduction-v2.json; display-source-manifest.json; display-first-pairs.json; display-scope-interpretation.json; transfer-freeze.json; transfer-qualification.json; transfer-pairs.json; membership-plan.json; membership-source-manifest.json; membership-third-attempt-v2.json; membership-decision.json; components-candidate-display-1.json; spend-final.json; validation-final.json; cleanup-final.json; dashboard-final.json. Immutable reports and all failures retained.

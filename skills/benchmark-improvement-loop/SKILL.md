@@ -1,35 +1,46 @@
 ---
 name: benchmark-improvement-loop
-description: Design and run auditable test–verify–improve campaigns for agent skills when introducing a benchmark, diagnosing benchmark failures, or evaluating whether a skill change generalizes. Keep practice retries separate from held-out evidence.
+description: Integrate a benchmark or run an auditable improvement campaign for an agent skill, separating development retries from frozen confirmation.
 metadata:
-  version: "1.0.0"
+  version: "1.1.0"
 ---
 
 # Benchmark Improvement Loop
 
-Use this skill for a new benchmark adapter or an extended improvement campaign. The goal is to learn from independently verified failures without turning a practiced score into a claim of general reliability. Ordinary unit-test additions do not need a campaign.
+Improve independently verified outcomes without presenting practiced tasks as generalization. Use this for benchmark adapters, failure-driven campaigns and transfer evaluations; ordinary unit-test edits do not require a campaign.
 
-## Establish the experiment
+## Define the experiment
 
-1. Inspect the target skill, repository policy, existing tests, current worktree and prior reports. Preserve user changes. Determine whether the request authorizes design only, implementation, paid execution, or unattended execution; do not infer a spend or duration allowance. A new campaign needs explicit time and spend limits before paid or unattended runs.
-2. Check the benchmark's current official setup, license, evaluator, task state/reset behavior, credentials, and resource needs. Prefer an independently authored task set and an outcome verifier separate from the agent's completion claim. Label self-authored fixtures and LLM-judged results separately. Do not call a task independent merely because it has a different seed if its family, answers, or adapter rules were used during development.
-3. Freeze a baseline skill snapshot, agent/model configuration, browser and benchmark versions, evaluator, image digests, task selection rules, action limits, and score definition. Predeclare a development set and an untouched holdout, ideally with different task families as well as seeds. Record exclusions before seeing outcomes. A public or previously inspected task is not a clean holdout.
+Use the target skill, repository policy and existing evidence to establish the current baseline and requested outcome. Apply the user's existing authorization for paid execution, unattended work and infrastructure. Record any limits actually imposed, including an explicit no-cap authorization; do not invent a mandatory ceiling or request approval again for covered iterations. A credential or past campaign alone does not authorize new paid work. Keep operational per-trial limits separate from campaign permission.
 
-## Build the smallest contained adapter
+Before opening new evaluation outcomes, freeze source/model/harness versions, task selection and exclusions, development and confirmation membership, comparable execution limits, and meaningful acceptance criteria. Cover multiple families and sites where feasible. Prefer independent tasks and an outcome verifier separate from the agent's completion claim. Previously inspected tasks and same-family seeds are not untouched-family evidence. Predeclare expected negatives and forced-recovery fixtures separately from positive tasks.
 
-Keep the benchmark's sites, browser, evaluator and auxiliary services in scoped containers where practical. Do not install host databases, display servers or benchmark services by default. Pin dependencies, check platform and disk needs, use named resources, bind any viewer or dashboard to localhost, and define exact cleanup before the first run. A headed viewer is observational only during scored trials.
+Measure verified autonomous completion, false completion, wrong effects and caller dependence alongside official scores, cost and latency. For delegated agents, extra caller reasoning or gestures cannot count as standalone improvement. A small favorable sample alone does not establish reliability.
 
-The adapter may convey only the task's legitimate goal, starting page and caller-supplied values. It must not leak hidden answers, reward state, task IDs as action hints, or evaluator internals to the agent. Verify with a no-model smoke test that the agent and evaluator operate on the same state and that reset produces a clean next task. Keep any fallback model, human takeover, or LLM judge outside the primary score unless the experiment explicitly studies it.
+## Qualify and run
 
-Reuse an existing campaign runner when it meets these conditions; otherwise implement the minimal equivalent. Read [campaign evidence contract](references/campaign-evidence.md) when building or operating a runner, audit, dashboard, or unattended campaign. For this repository's BrowserGym MiniWoB and original integration lanes, the existing [campaign runbook](../agent-browser-jev/references/browsergym-campaign.md) is an implementation example, not a universal task list.
+Read the [campaign evidence contract](references/campaign-evidence.md) when building or operating a runner, audit or unattended campaign. It specifies qualification, durable records, isolation and score definitions. Reuse an existing qualified runner when suitable; the [BrowserGym campaign runbook](../agent-browser-jev/references/browsergym-campaign.md) is a repository example, not a universal task list.
 
-## Run, diagnose, improve
+- Verify the benchmark's official setup, license, dependencies, evaluator and state/reset contract. Prefer scoped containers for sites and services, pin versions, bind viewers to localhost and identify owned resources for cleanup. A headed viewer is observational during scored trials.
+- Keep hidden answers, task-ID action hints, evaluator routes and reward internals out of runtime and actor input. Convey only legitimate goals, starting pages and supplied values.
+- Qualify actor/evaluator state agreement and persisted-state restoration with no-model controls on the actual runner path before scoring. Clean browsers or successful reset responses alone are insufficient. Authored positive controls must also prove rendered target reachability across claimed pages.
+- Run frozen baseline and candidate on equivalent clean states, pairing and alternating order where feasible. Persist every started trial, result, action trace and charge before independent readbacks. Preserve failures, interruptions and exclusions.
+- Independently audit the requested target, complete scope and wrong/extra effects, including shared configuration. Retain official reward unchanged; full reward can coexist with a scope failure, and an incomplete return can follow a verified goal.
 
-- Run the frozen first-attempt matrix before changing the candidate. Pair baseline and candidate on identical task states when feasible and alternate order. Record each trial immediately with authoritative reward or state checks, actions, failure class, elapsed time, model charges and cleanup result. A model's `reported_complete`, correct refusal or safe handoff is not a task pass unless the external verifier says so.
-- Separate infrastructure/evaluator failure, unsupported control, missing authorized input, unsafe action and genuine agent error. Preserve every failed and interrupted report. Stop on uncertain cleanup or unmeasured paid calls until they are inspected and conservatively accounted for.
-- For a justified fix, identify the first divergent observation/action, make the narrowest general change, add a local regression, and record source hashes plus a reason. Retry only named task/seed pairs after a relevant change, within the user's retry allowance; propose at most three retries after the initial attempt when no cap is given, and confirm the cap before unattended retrying. Never silently resample a failure, turn a defer into a pass, or use an unrelated edit to unlock a retry.
-- Check the failing task, nearby component regressions and the older suite. Then freeze the candidate again and score the untouched holdout once. If holdout feedback drives another change, that set becomes development data; reserve a new holdout before making another generalization claim. Compare first attempts, repaired attempts, holdout results and regressions separately.
+Stop the affected lane on failed isolation or evaluator qualification, preserve raw evidence and charges, and append an invalidation scoped to the affected comparisons. Requalify the repaired harness before scoring again. A missing counterpart makes a pair incomplete; it does not invalidate other clean pairs. Resolve unsafe cleanup or unknown paid-dispatch accounting before further dependent runs; conservative reservations may support continuation as described in the evidence contract.
 
-## Report and finish
+## Diagnose and improve
 
-Report task and seed counts, baseline/candidate first-attempt scores, targeted retries, held-out results, verifier type, fixes, regressions, time and measured/reserved spend. State where evidence supports only benchmark-specific tuning. Do not infer statistical reliability from a small or curated set. Keep private traces and credentials out of published summaries. Remove only campaign-owned containers, images, volumes, networks and temporary viewers when no other run needs them; preserve audit reports and source snapshots. Follow the target repository's versioning, changelog, validation and release rules. Do not commit, publish or schedule ongoing work without authorization.
+Investigate the first divergent observation or action. Distinguish infrastructure defects, missing authorization/input, unsupported operations and agent errors. Make a general change justified by evidence; a broader controller or observation redesign is appropriate when narrow patches do not address the cause. Add a meaningful regression and retain failed candidates and source fingerprints.
+
+Retries must have an explicit experimental purpose: testing a relevant change, recovering under a predeclared infrastructure policy, or measuring repeated-run variability. Record every attempt and preserve the first-attempt score. Respect user-imposed limits; with sustained uncapped authorization, choose justified follow-up experiments without an arbitrary retry cap or another approval pause. Never silently resample failures or treat unchanged retries as new transfer evidence.
+
+Run affected regressions, then freeze the candidate and evaluate the reserved confirmation set without feedback-driven edits. If confirmation outcomes inform a change, that set becomes development data; reserve fresh confirmation before making a new generalization claim. Continue justified improvement paths when acceptance is not met rather than reducing the standard after seeing results.
+
+## Maintain instructions and report
+
+Update the target skill's operating instructions when behavior changes or evaluation establishes a limitation. Keep essential delegation boundaries and recovery routing in `SKILL.md`, conditional mechanics in references, and experimental claims tied to their source snapshots. Distinguish an unavailable operation from an inconsistent decision or independently reproduced application defect. Guidance and implementation must agree before candidate acceptance.
+
+Report the frozen baseline comparison, development retries and confirmation results separately, with denominators, paired wins/regressions, family/site coverage, verifier methods, assistance, wrong effects, false completions, time and measured/reserved spend. Use the [score definitions](references/campaign-evidence.md#scoreboard-and-interpretation); unknown caller cost or effort remains unknown. State limitations and whether evidence supports only instance repair or broader transfer. A safe stop is not itself a completed task.
+
+Keep private traces and credentials out of public summaries. Remove only campaign-owned resources no active run needs, retaining audit evidence and snapshots. Follow repository release bookkeeping and validation. Commit, publish or schedule future work only within user authorization.

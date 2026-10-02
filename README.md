@@ -4,10 +4,6 @@ A collection of specialized skills following the open standard for agent capabil
 
 ## Included Skills
 
-### 🌐 [Agent Browser Jev](./skills/agent-browser-jev)
-Let Jev handle the browser steps of a multi-screen task in an existing agent-browser session. The calling agent supplies text and checks the result.
-- **Start here:** The [skill README](./skills/agent-browser-jev/README.md) covers installation, API-key setup, use, measured results and limits. Evaluation includes local seeded workflows, a 28-case component matrix, paired BrowserGym MiniWoB and WebArena-Verified studies, a separate original BrowserGym-core integration suite, a persistent campaign dashboard, and a same-provider comparison runner.
-
 ### 🧪 [Benchmark Improvement Loop](./skills/benchmark-improvement-loop)
 Introduce a benchmark and run an auditable test–verify–improve campaign for an agent skill. It separates first-attempt results, targeted retries, and untouched holdouts; requires independent outcome checks, scoped infrastructure, spend accounting, and evidence-backed changes. The repository's agent instructions route benchmark work through this skill.
 
@@ -31,9 +27,17 @@ Unified expert for Project Management (Scrum/Agile) and GitHub Flow enforcement.
 Read-only access to [MacWhisper](https://goodsnooze.gumroad.com/l/macwhisper) transcription sessions from its local SQLite database. Zero configuration for a standard MacWhisper install.
 - **Key Features:** List unprocessed recordings, fetch diarized transcripts with hallucination filtering, keyword search, processed-session state tracking, and UTC time windows for calendar enrichment.
 
+## Archived Research
+
+### [Agent Browser Jev](./skills/agent-browser-jev/RESEARCH.md)
+
+Archived October 2, 2026. The comprehensive research report preserves the browser-delegation trials, public benchmark studies, caller comparisons, failed architectures, costs and final NO-GO decisions. The [evidence register](./skills/agent-browser-jev/EVIDENCE.md) identifies public artifacts and private-source limits. Its source remains for research, but `SKILL.md` and installation guidance have been removed. Jev is no longer offered as an installable skill in this repository tree; historical versions and existing copies remain available independently.
+
 ## Versioning and Releases
 
 Each skill is versioned independently according to [Semantic Versioning 2.0.0](https://semver.org/). The canonical machine-readable version is the quoted `metadata.version` value in that skill's `SKILL.md` frontmatter. A repository-wide [CHANGELOG.md](./CHANGELOG.md), maintained in the style of [Keep a Changelog](https://keepachangelog.com/en/2.0.0/), is the canonical human-readable release history.
+
+An intentionally retired skill removes `SKILL.md` and records its name, archived status, incompatible retirement version and retained research paths in `ARCHIVE.json`. Its `metadata.version` becomes the canonical archive-contract version. Preserved executable package versions describe historical source and remain unchanged. The release validator checks the archive manifest and rejects public `SKILL.md` files inside an archived directory.
 
 - **Major:** An incompatible change to triggering, required inputs, behavioral guarantees, outputs, or resource layout.
 - **Minor:** A backward-compatible capability, workflow, or material guidance improvement.
@@ -55,10 +59,10 @@ These skills are designed to be dropped into your agent's skills directory.
 Install a selected skill using the [skills CLI](https://github.com/vercel-labs/skills):
 
 ```bash
-npx skills add gabeosx/agent-skills --skill agent-browser-jev
+npx skills add gabeosx/agent-skills --skill apple-container-skill
 ```
 
-For this skill's executable helper, follow its [dependency and credential setup](./skills/agent-browser-jev/README.md#install-and-set-up) after installing the skill files.
+Consult the selected active skill's instructions for any dependencies. Archived research directories are excluded from the installable catalog.
 
 ```bash
 # Example: Symlink a skill to your agent's skills location
