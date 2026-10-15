@@ -6,6 +6,8 @@ All notable skill changes are recorded in this file. Each skill is versioned ind
 
 ### Repository
 
+- Corrected the root catalog entry for Apple Container Skill to cite release-aware guidance through Apple Container 1.5.0, matching the merged apple-container-skill 1.3.0 update.
+
 - Recognize explicitly retired skills through validated archive manifests, preserve their historical source versions, and verify that no public installer entrypoint remains. Move Agent Browser Jev out of the active catalog and replace the repository's installation example with an active skill.
 
 - Consolidate engineering instructions around existing authorization, proportional validation and concise skill routing. Apply the official Astra instruction guidance to the engineering agent while requiring Jev's runtime changes to earn their own evidence.

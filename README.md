@@ -9,7 +9,7 @@ Introduce a benchmark and run an auditable test–verify–improve campaign for 
 
 ### 🍎 [Apple Container Skill](./skills/apple-container-skill)
 Interact with the Apple Container CLI to manage containers, images, volumes, networks, and system services on macOS.
-- **Key Features:** Release-aware security guidance through Apple Container 1.4.1, system lifecycle and diagnostics, current Container Machine selection, build SSH forwarding, safe isolation paths, scoped filesystem cleanup, and experimental local Kubernetes.
+- **Key Features:** Release-aware security guidance through Apple Container 1.5.0, system lifecycle and diagnostics, current Container Machine selection, build SSH forwarding, safe isolation paths, scoped filesystem cleanup, and experimental local Kubernetes.
 
 ### 🛠️ [DevContainer Helper](./skills/devcontainer-helper)
 Design, audit, troubleshoot, and optimize Dev Container and GitHub Codespaces environments.
