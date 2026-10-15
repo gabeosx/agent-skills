@@ -2,7 +2,7 @@
 name: apple-container-skill
 description: Use Apple's `container` CLI on Apple silicon macOS for Linux containers, OCI image builds, registries, volumes, networks, port forwarding, host access, persistent `container machine` Linux environments, and experimental local Kubernetes clusters. Use this skill whenever the user asks to replace Docker Desktop with Apple Container, run Linux commands on macOS, build/run/inspect Apple containers, debug Apple Container service/network/build failures, use Container Machines, or use `container k8s`.
 metadata:
-  version: "1.2.0"
+  version: "1.3.0"
 ---
 
 # Apple Container Skill
@@ -23,7 +23,7 @@ container system version
 ```
 
 - Require Apple silicon (`arm64`) and macOS 26+ for supported workflows. Apple does not support older macOS releases; do not present macOS 15 workarounds as supported operation.
-- Record the CLI and service versions, compare them with the current signed release, and make sure they match before real work. As of September 2026, 1.4.1 is the security baseline for untrusted images, image archives, registries, or container identifiers; 1.3.1 and 1.4.1 fixed path traversal, host-file access, credential handling, and related OCI defects. Upgrade before inventing workarounds for defects already fixed upstream.
+- Record the CLI and service versions, compare them with the current signed release, and make sure they match before real work. As of October 2026, 1.5.0 is the security baseline for untrusted images, image archives, registries, container identifiers, or experimental Kubernetes use; 1.3.1 and 1.4.1 fixed path traversal, host-file access, credential handling, and related OCI defects, and 1.5.0 sanitizes guest-supplied kubeconfig values before merging them into the host kubeconfig. Upgrade before inventing workarounds for defects already fixed upstream.
 - If the CLI is missing, prefer Apple's signed installer from the GitHub releases page. Homebrew can work, but if `container system start` fails with missing plugins after a Homebrew install, upgrade/reinstall the formula.
 - Start services with `container system start` when status shows they are stopped. First start may prompt to install the recommended Linux kernel.
 - Treat installed `container <command> --help` as the authoritative command surface. Release summaries and even generated command references can lag the shipped parser; do not infer Docker subcommands or flags.
@@ -43,7 +43,7 @@ bash skills/apple-container-skill/scripts/diagnose.sh
 
 - Use `container run` for disposable app containers, one-shot Linux commands, project dev shells, image smoke tests, and services whose state should live in bind mounts or named volumes.
 - Use `container machine` for a long-lived Linux workspace: repeated distro testing, system services, VS Code Remote SSH, a persistent root filesystem, or "edit on macOS, build inside Linux" loops.
-- Use experimental `container k8s` only for a disposable local single-node Kubernetes cluster. Do not present it as a production or multi-node Kubernetes runtime, and warn that it writes or updates kubeconfig entries.
+- Use experimental `container k8s` only for a disposable local single-node Kubernetes cluster. Do not present it as a production or multi-node Kubernetes runtime, and warn that create writes or updates kubeconfig entries while delete removes that cluster's entry. There is no `container k8s start` in 1.5.0: restart a stopped cluster by deleting and recreating it, and do not script a start command copied from older examples.
 - Do not describe machines as merely "persistent containers." A machine is a convenience wrapper around a container, a separate persistent root disk, and host integration. It maps the host user, forwards SSH agent support, and mounts the macOS home at `/Users/<user>` while the Linux user's `$HOME` is `/home/<user>`.
 - Current Container Machine images need `/sbin/init`. Apple Container 1.3 relaxed machine path restrictions and current Apple guidance uses `alpine:latest` directly; on current releases, try a requested image that contains `/sbin/init` before deriving a custom image. Build an OpenRC- or systemd-capable image when init is absent or the workflow needs managed system services.
 - For scripted machine commands, prefer an option terminator: `container machine run -n dev -- whoami` or `container machine run -n dev -- /bin/sh -c 'whoami; pwd; echo "$HOME"'`. Avoid `-i` in heredoc/non-interactive scripts because it can consume the rest of the script from stdin.
@@ -101,7 +101,7 @@ container machine stop dev
 - `container system property get`, `set`, and `clear` were removed in 1.0. Use `~/.config/container/config.toml` for defaults and `container system property list` only to inspect effective config.
 - Apple's signed installer places the CLI at `/usr/local/bin/container`; check that path directly when a fresh shell cannot find `container`.
 - Apple Container 1.3 removed the registry `--scheme auto` value. Current releases accept only `https` (the default) or an explicit `http`; use HTTP only for a deliberately trusted local registry.
-- Apple Container 1.3.1 and 1.4.1 include security fixes for crafted identifiers, image layers/layouts, registry authentication, and host-file access. Do not use an older runtime for untrusted OCI inputs merely because its basic smoke test passes.
+- Apple Container 1.3.1 and 1.4.1 include security fixes for crafted identifiers, image layers/layouts, registry authentication, and host-file access. Apple Container 1.5.0 additionally sanitizes kubeconfig values received from a Kubernetes guest before merging them into the host kubeconfig. Do not use an older runtime for untrusted OCI inputs or experimental Kubernetes merely because its basic smoke test passes.
 - `container build` may leave the BuildKit builder running. If a validation task must leave no runtime processes, inspect `container builder status`, then use `container builder stop` and `container builder delete`.
 - Apple Container 1.2.1 added `container build --ssh default`; use it for private build dependencies instead of copying SSH keys into the build context or image.
 - Host-to-container traffic should usually use `-p/--publish`; if it fails, check that the app listens on `0.0.0.0` inside the container.
@@ -109,10 +109,12 @@ container machine stop dev
 - Apple Container 1.1 also fixed relative local paths for `container cp`; on older versions, use absolute paths or upgrade rather than debugging a correct relative path.
 - Apple Container 1.2 prevents an untrusted image's bare `ENV` entry from implicitly copying a same-named host variable. Still make inheritance explicit: use `-e NAME` only when host passthrough is intended, and prefer `KEY=value`, an env file, or a secret mechanism for reproducible runs.
 - Use repeatable `--kernel-arg key=value` only for a kernel/security/debug requirement and verify the effective command line with `cat /proc/cmdline`. Do not use it for application settings or casually replace security defaults such as `lsm=landlock`.
-- The 1.4.1 release does not expose `container run --stop-signal`. Put `STOPSIGNAL` in the image for a reusable default or use `container stop -s SIGNAL` for an operator-selected signal.
+- Through 1.5.0, verified against the installed `container run --help`, there is no `container run --stop-signal`. Put `STOPSIGNAL` in the image for a reusable default or use `container stop -s SIGNAL` for an operator-selected signal.
 - `--masked-path` and `--read-only-path` are experimental additive isolation controls on `run` and `create`. Verify them with the installed help, prefer adding paths, and never clear the runtime defaults with `NONE` without explicit approval.
 - `container clean <running-container...>` reclaims unused filesystem space from each container root filesystem and its named volume mounts. It is scoped, requires running containers, and is not a substitute for global prune commands.
-- `container system status` gained additional host, client, path, and resource fields in 1.4.1. Consume structured output by field name and tolerate additive fields rather than depending on the old shape.
+- `container system status` gained additional host, client, path, and resource fields in 1.4.1; that shape is retained in 1.5.0. Consume structured output by field name and tolerate additive fields rather than depending on the old shape.
+- On 1.5.0+, a command argument runs even when the image `ENTRYPOINT` is empty (verified locally with an `ENTRYPOINT []` image). If an older runtime appears to ignore the command for such an image, upgrade instead of wrapping the image or rewriting its entrypoint.
+- Apple Container 1.5.0 fixed container egress loss after localhost DNS changes and build-context files being dropped beneath a symlinked ancestor. Treat either symptom on an older runtime as an upgrade signal, not as a reason to redesign networking or copy files out of the symlink tree.
 - Treat named volumes as single-attachment unless the workflow has proven otherwise; do not assume the same named volume can be attached concurrently to multiple running containers.
 - Container-to-host traffic does not use Docker's magic host alias. Configure a localhost DNS domain:
 

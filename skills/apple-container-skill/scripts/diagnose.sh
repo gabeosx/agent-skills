@@ -73,6 +73,16 @@ if container k8s --help >/dev/null 2>&1; then
 else
   echo "experimental container k8s: unavailable"
 fi
+if container k8s --help 2>&1 | grep -qE '^[[:space:]]+start[[:space:]]'; then
+  echo "container k8s start: available (pre-1.5.0 surface)"
+else
+  echo "container k8s start: unavailable; restart a cluster with delete + create (1.5.0+)"
+fi
+if container k8s create --help 2>&1 | grep -q -- '--cni'; then
+  echo "container k8s create --cni: available"
+else
+  echo "container k8s create --cni: unavailable (added in 1.5.0)"
+fi
 
 section "System Status"
 run container system status
@@ -116,7 +126,7 @@ cat <<'EOF'
 Interpretation hints:
 - If container is missing, install it before continuing.
 - Compare CLI and service versions. Upgrade before working around defects already
-  fixed in the current Apple Container release. Use 1.4.1+ for untrusted OCI input.
+  fixed in the current Apple Container release. Use 1.5.0+ for untrusted OCI input or experimental Kubernetes.
 - If images pull but container DNS or ping fails, check VPN, endpoint security,
   firewall, or vmnet route conflicts before changing application code.
 - If host-side container DNS is flaky, test directly with:
