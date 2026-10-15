@@ -493,6 +493,21 @@ All notable skill changes are recorded in this file. Each skill is versioned ind
 - Documented installation with `npx skills`, API/CLI integration, original design rationale, historical prototype comparisons and the separate live read-only acceptance of the generic helper.
 - Kept business logic, site-specific permissions, credentials and private browser evidence outside the shared package. Initial live acceptance is supervised read-only Xero use; arbitrary-site reliability and consequential writes are not established.
 
+## apple-container-skill 1.3.0 - 2026-10-15
+
+### Added
+
+- Added Apple Container 1.5.0 routing for the kubeconfig sanitization fix (GHSA-44v5-vx46-ghv6), the new `container k8s create --cni` option, and the 1.5.0 fixes for egress loss after localhost DNS changes, build-context files dropped under a symlinked ancestor, and commands not running when the image entrypoint is empty. The diagnostic script now probes the k8s start removal and `--cni` surface.
+
+### Changed
+
+- Raised the security baseline to Apple Container 1.5.0 for untrusted OCI inputs and experimental Kubernetes, and re-verified the `run --stop-signal` absence and `container system status` shape against the installed 1.5.0 help.
+- Updated experimental Kubernetes guidance for 1.5.0: there is no `container k8s start`, a stopped cluster is restarted by deleting and recreating it, and delete removes the cluster's kubeconfig entry. Updated unknown-command guidance for the clearer 1.5.0 error instead of the older plugin fall-through.
+
+### Validation
+
+- Installed the signed Apple Container 1.5.0 package on macOS 27.0.1 arm64 and confirmed CLI and service at 1.5.0. Live checks passed for the Alpine smoke test with DNS, an `ENTRYPOINT []` build-and-run, port publishing verified inside the container before the host mapping, a stock `alpine:latest` Container Machine, and a k8s create/list/load-image/delete cycle with a Ready node. All containers, the test machine and cluster, pulled and built test images, and builder state created for validation were removed; only the installed 1.5.0 runtime remains.
+
 ## apple-container-skill 1.2.0 - 2026-09-20
 
 ### Added

@@ -26,7 +26,7 @@ Use this file when the user asks "how should I do X with Apple Container?" Prefe
    container system version
    ```
 
-   Compare the CLI and running service versions with the current signed release. Upgrade before working around defects fixed upstream. Version 1.3 removed registry `--scheme auto` and relaxed machine path restrictions. Versions 1.3.1 and 1.4.1 fixed path traversal, host-file access, registry credential handling, crafted image/layout, and unchecked-identifier defects. As of September 2026, use 1.4.1 or newer for untrusted OCI inputs.
+   Compare the CLI and running service versions with the current signed release. Upgrade before working around defects fixed upstream. Version 1.3 removed registry `--scheme auto` and relaxed machine path restrictions. Versions 1.3.1 and 1.4.1 fixed path traversal, host-file access, registry credential handling, crafted image/layout, and unchecked-identifier defects. Version 1.5.0 sanitizes guest-supplied kubeconfig values and fixes egress loss after localhost DNS changes, dropped build-context files under a symlinked ancestor, and commands not running when the image entrypoint is empty. As of October 2026, use 1.5.0 or newer for untrusted OCI inputs or experimental Kubernetes.
 
 4. Upgrade:
    ```bash
@@ -119,7 +119,7 @@ container delete app
 
 If the port mapping fails, first check that the application listens on `0.0.0.0` inside the container, not only `127.0.0.1`.
 
-For shutdown behavior, put `STOPSIGNAL` in the Dockerfile when every deployment of the image needs the same signal. For a one-off operator choice, use `container stop -s SIGNAL app`. Do not suggest `container run --stop-signal`; the released 1.4.1 CLI does not expose that option.
+For shutdown behavior, put `STOPSIGNAL` in the Dockerfile when every deployment of the image needs the same signal. For a one-off operator choice, use `container stop -s SIGNAL app`. Do not suggest `container run --stop-signal`; through 1.5.0 the CLI does not expose that option.
 
 Add experimental path isolation only when the installed help exposes it:
 
@@ -307,7 +307,7 @@ kubectl --context local get nodes
 container k8s delete --name local
 ```
 
-Check `container k8s --help` on the installed version before scripting exact flags. Do not present this as production or multi-node Kubernetes. There is no `container compose`; translate a simple trusted stack into explicit lifecycle commands or keep a Compose-capable runtime.
+Prefer this over hand-rolling a cluster only when the user actually needs Kubernetes APIs locally; for a single app, plain `container run` is simpler and easier to clean up. Pass `--cni <path>` on create only when the user provides a custom CNI manifest. There is no `container k8s start` in 1.5.0, so restart a stopped cluster by deleting and recreating it; delete also removes the cluster's kubeconfig entry (verified on 1.5.0, where create wrote `~/.kube/config`, `kubectl get nodes` reported Ready, and `load-image` imported a local image). On 1.4.1 or older, do not use this workflow with untrusted node images because guest kubeconfig values were not sanitized before merging. Check `container k8s --help` on the installed version before scripting exact flags. Do not present this as production or multi-node Kubernetes. There is no `container compose`; translate a simple trusted stack into explicit lifecycle commands or keep a Compose-capable runtime.
 
 ## Custom Kernel Arguments
 

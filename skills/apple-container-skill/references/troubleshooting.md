@@ -46,7 +46,11 @@ Compare both `container --version` and `container system version` with the curre
 | Experimental `container k8s` plugin is absent from the signed package | 1.2.2 | Upgrade the complete installation; do not copy a plugin by hand. |
 | Registry `--scheme auto` is rejected | Changed in 1.3 | Use the HTTPS default or explicit HTTP only for a trusted local registry. |
 | Machine path setup fails under 1.2-era masked/read-only defaults | 1.3 | Upgrade before maintaining a custom path workaround. |
-| Crafted IDs, image layers/layouts, registry auth, or host paths can cross trust boundaries | 1.3.1 and 1.4.1 | Stop processing untrusted OCI input and upgrade to 1.4.1 or newer. |
+| Crafted IDs, image layers/layouts, registry auth, or host paths can cross trust boundaries | 1.3.1 and 1.4.1 | Stop processing untrusted OCI input and upgrade to 1.5.0 or newer. |
+| Guest-supplied kubeconfig values merged into host kubeconfig without sanitizing | 1.5.0 | Upgrade before using `container k8s` with an untrusted node image; review existing kubeconfig entries. |
+| Containers lose egress after a localhost DNS domain change | 1.5.0 | Upgrade instead of recreating networks or packet-filter rules as a permanent fix. |
+| Build context silently drops files beneath a symlinked ancestor | 1.5.0 | Upgrade instead of copying the tree out of the symlink path. |
+| Command argument ignored when the image `ENTRYPOINT` is empty | 1.5.0 | Upgrade; verified fixed locally with an `ENTRYPOINT []` image. |
 
 Do not turn a release-fixed defect into permanent project configuration.
 
@@ -69,7 +73,7 @@ Use Apple silicon (`arm64`). Treat macOS 26+ as supported. Older macOS releases 
 
 ## A Valid Command Reports A Plugin Or Service Error
 
-Apple Container command groups are singular: `image`, `network`, `volume`, `machine`, `registry`, and `builder`. A plural typo such as `container images` can fall through to plugin discovery and report a misleading plugin or service problem. Compare the command with `container --help` before restarting services.
+Apple Container command groups are singular: `image`, `network`, `volume`, `machine`, `registry`, and `builder`. On 1.5.0 with services running, a plural typo such as `container images` fails fast as `Error: unknown command 'images'` and lists the plugin search paths (verified locally), so fix the spelling instead of restarting services. On older releases the same typo could fall through to plugin discovery and report a misleading plugin or service problem; compare the command with `container --help` before restarting services there.
 
 ## Homebrew Plugin Failure
 
@@ -325,12 +329,23 @@ Fixes:
 
 ## Stop Signal Option Is Rejected
 
-The released 1.4.1 CLI does not expose `container run --stop-signal`. Use one of the supported control points:
+Through 1.5.0 the CLI does not expose `container run --stop-signal` (verified in the installed help). Use one of the supported control points:
 
 - Put `STOPSIGNAL SIG...` in the Dockerfile for an image-wide default.
 - Use `container stop -s SIGNAL <name>` for a one-off operator choice.
 
 Confirm the installed CLI surface with `container help run` instead of copying flags from a release summary.
+
+## Kubernetes Cluster Will Not Restart
+
+Apple Container 1.5.0 removed `container k8s start`; running it fails with `Unexpected argument 'start'`. Do not look for a replacement start flag. Delete the cluster and create it again:
+
+```bash
+container k8s delete --name <cluster>
+container k8s create --name <cluster>
+```
+
+Delete also removes the cluster's kubeconfig entry, so recreation is the clean restart path for this disposable single-node workflow (verified on 1.5.0).
 
 ## Registry Scheme Option Is Rejected
 

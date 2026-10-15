@@ -66,7 +66,7 @@ Important `run/create` options:
 - `--kernel PATH`, repeatable `--kernel-arg key=value` for justified kernel-level requirements
 - `--scheme`, `--progress`, `--max-concurrent-downloads`
 
-The released 1.4.1 CLI has no `run --stop-signal`. Use Dockerfile `STOPSIGNAL` for the image default or `container stop -s SIGNAL` for a one-off signal. Passing `NONE` to `--masked-path` or `--read-only-path` clears that class of default restrictions; do not do that without explicit approval.
+Through 1.5.0, verified in the installed help, there is no `run --stop-signal`. Use Dockerfile `STOPSIGNAL` for the image default or `container stop -s SIGNAL` for a one-off signal. Passing `NONE` to `--masked-path` or `--read-only-path` clears that class of default restrictions; do not do that without explicit approval.
 
 ## Build And Images
 
@@ -170,15 +170,14 @@ In scripts, prefer `container machine run -n dev -- <command>` or `container mac
 
 ## Experimental Local Kubernetes
 
-`container k8s` creates a disposable single-node cluster and writes a kubeconfig entry. Confirm exact flags with the installed 1.4.1+ help before scripting because this command group is experimental.
+`container k8s` creates a disposable single-node cluster and writes a kubeconfig entry; delete removes that cluster's kubeconfig entry (both verified on 1.5.0). Confirm exact flags with the installed 1.5.0+ help before scripting because this command group is experimental. There is no `container k8s start`: restart a stopped cluster by deleting and recreating it. Use `--cni <path>` only when the user supplies a custom CNI manifest; otherwise keep the default networking.
 
 ```bash
 container k8s create --name local
-container k8s start local
 container k8s list|ls
 container k8s load-image --name local local/app:dev
 container k8s write-config --name local
 container k8s delete|rm --name local
 ```
 
-Command groups are singular (`image`, `network`, `volume`, `machine`, `registry`, `builder`). A plural typo can fall through to plugin discovery and produce a misleading service or plugin error. There is no `container compose` command.
+Command groups are singular (`image`, `network`, `volume`, `machine`, `registry`, `builder`), with short aliases (`i`, `n`, `v`, `m`, `r`, `s`). On 1.5.0 with services running, an unknown name fails fast with `Error: unknown command '<name>'` plus the plugin search paths (verified locally); treat that as a spelling error first, not a service outage. On older releases the same typo could surface as a misleading plugin or service error. There is no `container compose` command.
