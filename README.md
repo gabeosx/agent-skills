@@ -2,6 +2,8 @@
 
 Reusable instructions for agents working on writing, development environments, design, and transcripts. Each skill has its own version and follows the [Agent Skills specification](https://agentskills.io/specification).
 
+Each active skill directory has a README for installation and usage, plus `SKILL.md` for the agent's instructions.
+
 ## Install a skill
 
 From the project where you want to use it, run:
@@ -76,7 +78,7 @@ To prepare a release:
 
 1. Update the skill's version and matching changelog entry together.
 2. Run `python3 .agents/scripts/validate_release_contract.py`, the skill-creator structural validator, and the checks relevant to that skill. Repository contributors should read [.agents/AGENTS.md](.agents/AGENTS.md) for the full requirements.
-3. Commit or merge the validated change, then tag that commit as `<skill-name>/v<version>`, for example `natural-writing/v1.0.0`.
-4. If creating a GitHub Release, use the matching committed changelog entry.
+3. Commit or merge the validated change, then tag that commit as `<skill-name>/v<version>`, for example `natural-writing/v1.0.1`.
+4. Create a GitHub Release from that tag using the matching committed changelog entry. Pushing commits alone does not create a GitHub Release.
 
 Tag only committed changes. A retired skill removes `SKILL.md` and records its name, archived status, retirement version, and research paths in `ARCHIVE.json`. That manifest's `metadata.version` becomes the archive-contract version; retained executable package versions stay historical. The release validator checks the manifest and rejects public `SKILL.md` entrypoints inside archived directories.

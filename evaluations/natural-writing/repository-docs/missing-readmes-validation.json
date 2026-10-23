@@ -1,0 +1,43 @@
+{
+  "validated_at": "2026-10-23T23:39:31.804882+00:00",
+  "base_commit": "3d30d91696f725b07d2607bb443fd54ad8d90bce",
+  "active_skills_with_readmes": 7,
+  "changed_skills": {
+    "natural-writing": {
+      "version": "1.0.1",
+      "instructions_unchanged_except_version": true,
+      "readme_sha256": "d19b4ee0568ebc30ee5d26a322e605909fb7a2082aa5eee0e30e57c0af4f1b50",
+      "structural_validation": "passed"
+    },
+    "benchmark-improvement-loop": {
+      "version": "1.1.1",
+      "instructions_unchanged_except_version": true,
+      "readme_sha256": "486c967819af437d547fa3e7950c652b780881ce397a474574b4c1a9b16496ef",
+      "structural_validation": "passed"
+    },
+    "devcontainer-helper": {
+      "version": "1.1.1",
+      "instructions_unchanged_except_version": true,
+      "readme_sha256": "a0f7301f87f11f8f8827e3104350b2dc7001b4add14679fabae83946f6b44ceb",
+      "structural_validation": "passed"
+    },
+    "ux-designer": {
+      "version": "1.0.1",
+      "instructions_unchanged_except_version": true,
+      "readme_sha256": "18d09408c60d729ea6101d0499b4ae16c3b2d9b5cd4f5f9a06177b679eaf5c7b",
+      "structural_validation": "passed"
+    },
+    "github-scrum-flow": {
+      "version": "1.0.1",
+      "instructions_unchanged_except_version": true,
+      "readme_sha256": "2fd798406a305f3b173232ecac8b95b9076226d48d28d5b8b1794183fccffcf3",
+      "structural_validation": "passed"
+    }
+  },
+  "source_coverage": "Independent review passed after correcting GitHub Scrum pnpm requirement and clarifying UX success metric. See missing-readmes-review.md.",
+  "resource_links": "36 selected local links resolve; public installation URLs reuse previously tested commands.",
+  "release_contract": "passed",
+  "whitespace": "passed",
+  "behavioral_tests": "Not repeated: only version metadata and human README resources change. Prior frozen studies remain historical.",
+  "runtime_tests": "Not repeated for the other four skills; no runtime or workflow rules changed."
+}

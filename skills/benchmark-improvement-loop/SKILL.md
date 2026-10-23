@@ -2,7 +2,7 @@
 name: benchmark-improvement-loop
 description: Integrate a benchmark or run an auditable improvement campaign for an agent skill, separating development retries from frozen confirmation.
 metadata:
-  version: "1.1.0"
+  version: "1.1.1"
 ---
 
 # Benchmark Improvement Loop

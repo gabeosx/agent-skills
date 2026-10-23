@@ -10,7 +10,7 @@ description: >
   Complements subject and document-format skills. Do not use for code-only work,
   verbatim transcription, or judging whether a person used AI.
 metadata:
-  version: "1.0.0"
+  version: "1.0.1"
 ---
 
 # Natural writing

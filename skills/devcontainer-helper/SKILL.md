@@ -2,7 +2,7 @@
 name: devcontainer-helper
 description: Design, create, audit, update, troubleshoot, or optimize Dev Container and GitHub Codespaces environments, including devcontainer.json, Dockerfiles, Compose sidecars, Features, lockfiles, prebuilds, runtime compatibility, and related CI. Use when an agent must choose a development-container architecture, not merely recall configuration syntax.
 metadata:
-  version: "1.1.0"
+  version: "1.1.1"
 ---
 
 # DevContainer Helper

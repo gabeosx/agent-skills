@@ -6,6 +6,8 @@ All notable skill changes are recorded in this file. Each skill is versioned ind
 
 ### Repository
 
+- Complete the skill-directory landing pages: all seven active skills now have human-facing READMEs. Keep directory links and emoji headings in the root catalog. Publish Natural Writing with a skill-specific tag and GitHub Release.
+
 - Restore emoji headings and skill-directory links in the root README catalog, preserving the updated descriptions and installation guidance.
 
 - Verify Natural Writing 1.0.0 installation from published GitHub commit `ac8173c` with skills CLI 1.7.4 into a disposable Codex project. All installed files match the published source; remote discovery finds seven active skills and excludes archived Jev. Preserve both installation runs, the corrected ignored-metadata comparison, and the unsupported `--list --json` attempt under `evaluations/natural-writing/repository-docs/`.
@@ -39,6 +41,56 @@ All notable skill changes are recorded in this file. Each skill is versioned ind
 
 - Added canonical agent instructions and a dependency-free release-contract validator requiring every affected skill change to include an independent Semantic Version increment, a matching root changelog entry, relevant validation, and scoped cleanup evidence.
 - Required repository-only changes to be recorded without inventing unrelated skill version bumps, and documented the definition of done and release-tagging workflow.
+
+## natural-writing 1.0.1 - 2026-10-23
+
+### Added
+
+- Add the human-facing README with installation, example requests, editing scope, source-fidelity boundaries, procedural-writing coverage, and links to the retained research and comparisons. Writing instructions and reference content are unchanged from 1.0.0.
+
+### Validation
+
+- Validate skill structure and README resource links; compare the documentation against the instructions and retained evidence. Prior behavioral results remain tied to their frozen 1.0.0 snapshots: the final procedural comparison passes 30/30 assertions in every arm, with no measured incremental benefit. No new behavioral improvement is claimed.
+
+## benchmark-improvement-loop 1.1.1 - 2026-10-23
+
+### Added
+
+- Add the human-facing README with installation, example requests, requirements, workflow boundaries, and links to the existing instructions and resources. Agent instructions and runtime behavior are unchanged.
+
+### Validation
+
+- Validate skill structure, README resource links, source coverage, whitespace, and the repository release contract. This documentation patch does not repeat runtime or behavioral qualification.
+
+## devcontainer-helper 1.1.1 - 2026-10-23
+
+### Added
+
+- Add the human-facing README with installation, example requests, requirements, workflow boundaries, and links to the existing instructions and resources. Agent instructions and runtime behavior are unchanged.
+
+### Validation
+
+- Validate skill structure, README resource links, source coverage, whitespace, and the repository release contract. This documentation patch does not repeat runtime or behavioral qualification.
+
+## ux-designer 1.0.1 - 2026-10-23
+
+### Added
+
+- Add the human-facing README with installation, example requests, requirements, workflow boundaries, and links to the existing instructions and resources. Agent instructions and runtime behavior are unchanged.
+
+### Validation
+
+- Validate skill structure, README resource links, source coverage, whitespace, and the repository release contract. This documentation patch does not repeat runtime or behavioral qualification.
+
+## github-scrum-flow 1.0.1 - 2026-10-23
+
+### Added
+
+- Add the human-facing README with installation, example requests, requirements, workflow boundaries, and links to the existing instructions and resources. Agent instructions and runtime behavior are unchanged.
+
+### Validation
+
+- Validate skill structure, README resource links, source coverage, whitespace, and the repository release contract. This documentation patch does not repeat runtime or behavioral qualification.
 
 ## natural-writing 1.0.0 - 2026-10-23
 

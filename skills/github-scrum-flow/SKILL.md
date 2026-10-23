@@ -2,7 +2,7 @@
 name: github-scrum-flow
 description: Unified expert for Project Management (Scrum/Agile) and GitHub Flow enforcement. Use this skill for track orchestration, backlog hygiene, GitHub Issue synchronization, branch management, and enforcing git best practices.
 metadata:
-  version: "1.0.0"
+  version: "1.0.1"
 ---
 
 # GitHub Scrum Flow
