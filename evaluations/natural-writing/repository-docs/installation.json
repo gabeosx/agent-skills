@@ -1,0 +1,40 @@
+{
+  "verified_at": "2026-10-23T23:28:15.363894+00:00",
+  "repository": "https://github.com/gabeosx/agent-skills",
+  "published_source_commit": "ac8173cb8d650436f4ca48789e3d4aeacabd6116",
+  "skill_version": "1.0.0",
+  "cli_version": "1.7.4",
+  "node_version": "26.12.1",
+  "command": "npx skills add gabeosx/agent-skills --skill natural-writing -a codex -y",
+  "scope": "Disposable project; no global or existing project installation changed.",
+  "first_install_exit_code": 0,
+  "verification_install_exit_code": 0,
+  "readback_source": "gabeosx/agent-skills",
+  "tracked_installed_files_match_source": true,
+  "file_count": 13,
+  "file_sha256": {
+    "SKILL.md": "81ff4aafb5772f3849cc55b64e10b8c4a1fc7004cf8e9fcc7cb07055dff160d2",
+    "evals/editorial-boundaries.json": "9771e29a410b507a75e186e01664a157f2bff8d26c79def09c1aa1473b2150a5",
+    "evals/editorial-rubric.md": "71860f035b7fdd293f410d6d88d3c2dbd62ae95dff8856a50eb8321f5fd40a5c",
+    "evals/editorial-trigger-evals.json": "5a81fd18dce448122b2f240f770b23b3d57e5904ee438b314f5cea89fa80173d",
+    "evals/evals.json": "a044384da8518f19606de11a4575300e68f3e618c75ff291b4a990eaeb560af4",
+    "evals/procedural-rubric.md": "7621286e3c46dd1a879fe01b1c3d386157aa8212a61fa77c8e6cb1fc7874ea02",
+    "evals/procedural-writing.json": "ad158676a8b873080e0c64a0edbce323d1a3b9c9d83966a0441184abb7291f3a",
+    "evals/rubric.md": "0ea959e7051c1be8a18d9b2f6335f72ef4435c692cb1d2c3ab50acb53aeb19b2",
+    "evals/trigger-evals.json": "c4925610fdbd32e5df9d54b814cedf97f0aa9af7b14490d3cf30ed4aafb87b36",
+    "references/editorial-judgment.md": "15dba9484cdfb8a8fb1fa70e71ff89a0ca6ef872d88b37f3cfc6c93582536e41",
+    "references/pattern-catalog.md": "743e15e888b90bdc1b8a34909c600b23b397a808489b56764c766b3b0f0b541c",
+    "references/procedural-writing.md": "35f7ef31687f0067442a6bff17981f5caf063ce7a1b8e6d906c47c7c21d2d313",
+    "references/research-notes.md": "00a5523c1635fca55b1ad9ce6fbd45b5b0e97b75cbbe6cbb6e0bf55d202486d0"
+  },
+  "remote_full_depth_discovery": {
+    "active_skill_count": 7,
+    "natural-writing": true,
+    "agent-browser-jev": false
+  },
+  "retained_errors": [
+    "Unsupported --list --json combination: corrected discovery options passed.",
+    "First working-copy hash comparison included ignored .DS_Store; cleanup ran before verification completed. Corrected tracked-file comparison passed on a repeated disposable install."
+  ],
+  "cleanup": "Completed after successful tracked-file readback: removed only named disposable install project and task npm cache. Prior named export/archive-validation/Python-cache/helper paths already removed. All audit records retained."
+}

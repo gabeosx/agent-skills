@@ -6,6 +6,8 @@ All notable skill changes are recorded in this file. Each skill is versioned ind
 
 ### Repository
 
+- Verify Natural Writing 1.0.0 installation from published GitHub commit `ac8173c` with skills CLI 1.7.4 into a disposable Codex project. All installed files match the published source; remote discovery finds seven active skills and excludes archived Jev. Preserve both installation runs, the corrected ignored-metadata comparison, and the unsupported `--list --json` attempt under `evaluations/natural-writing/repository-docs/`.
+
 - Preserve the retained unified-diff evidence verbatim, with a whitespace-check exception scoped to that artifact's required context-line spaces.
 - Rewrite the public README catalog and installation path with Natural Writing, and review the Apple Container, MacWhisper, and archived Jev READMEs for reader needs and procedural coverage. Preserve historical studies, raw evaluations, and existing release records. Validate the published skill with the skills CLI.
 

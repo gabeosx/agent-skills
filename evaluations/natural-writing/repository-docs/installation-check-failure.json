@@ -1,0 +1,7 @@
+{
+  "first_installation": "Succeeded with CLI exit0; installed listing and remote discovery retained in installation-readbacks.json.",
+  "file_comparison": "Incomplete: compared all working-copy files, including ignored .DS_Store, against published installation. Missing ignored metadata caused assertion failure.",
+  "cleanup_order": "Task-owned disposable project was removed despite comparison failure; first installed tree cannot be re-read. No live or user installation affected.",
+  "repair": "Compare Git-tracked source files only and repeat a disposable installation to qualify the file comparison. Preserve the successful first install, incomplete first verification and second run separately.",
+  "skill_fingerprint": "Unchanged; this is a verification-harness repair, not a skill-output retry."
+}

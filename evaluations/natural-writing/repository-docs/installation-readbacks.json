@@ -1,0 +1,23 @@
+{
+  "installed": {
+    "chunk_id": "ad0c74",
+    "wall_time_seconds": 0.190965083,
+    "exit_code": 0,
+    "original_token_count": 71,
+    "output": "[\n  {\n    \"name\": \"natural-writing\",\n    \"path\": \"/private/tmp/natural-writing-github-install/.agents/skills/natural-writing\",\n    \"scope\": \"project\",\n    \"agents\": [\n      \"Codex\"\n    ],\n    \"source\": \"gabeosx/agent-skills\",\n    \"sourceUrl\": null,\n    \"sourceType\": \"github\"\n  }\n]\n"
+  },
+  "unsupported_list_json": {
+    "chunk_id": "bdb5a5",
+    "wall_time_seconds": 0.238376917,
+    "exit_code": 1,
+    "original_token_count": 37,
+    "output": "The --json flag cannot be combined with --list.\n[\n  {\n    \"status\": \"failed\",\n    \"error\": \"The --json flag cannot be combined with --list.\"\n  }\n]\n"
+  },
+  "discovery": {
+    "chunk_id": "26e968",
+    "wall_time_seconds": 0.845585709,
+    "exit_code": 0,
+    "original_token_count": 773,
+    "output": "\n│\n●   codex  Agent detected — installing non-interactively\n\u001b[?25l│\n◇  Source: https://github.com/gabeosx/agent-skills.git\n\u001b[?25h\u001b[?25l│\n◒  Cloning repository…\u001b[1G\u001b[J◐  Cloning repository…\u001b[1G\u001b[J◓  Cloning repository…\u001b[1G\u001b[J◑  Cloning repository…\u001b[1G\u001b[J◒  Cloning repository…\u001b[1G\u001b[J◐  Cloning repository…\u001b[1G\u001b[J◇  Repository cloned\n\u001b[?25h\u001b[?25l│\n\u001b[1G\u001b[J◇  Found 7 skills\n\u001b[?25h\n│\n◇  Available Skills\n│\n│    apple-container-skill\n│\n│      Use Apple's `container` CLI on Apple silicon macOS for Linux containers, OCI image builds, registries, volumes, networks, port forwarding, host access, persistent `container machine` Linux environments, and experimental local Kubernetes clusters. Use this skill whenever the user asks to replace Docker Desktop with Apple Container, run Linux commands on macOS, build/run/inspect Apple containers, debug Apple Container service/network/build failures, use Container Machines, or use `container k8s`.\n│\n│    benchmark-improvement-loop\n│\n│      Integrate a benchmark or run an auditable improvement campaign for an agent skill, separating development retries from frozen confirmation.\n│\n│    devcontainer-helper\n│\n│      Design, create, audit, update, troubleshoot, or optimize Dev Container and GitHub Codespaces environments, including devcontainer.json, Dockerfiles, Compose sidecars, Features, lockfiles, prebuilds, runtime compatibility, and related CI. Use when an agent must choose a development-container architecture, not merely recall configuration syntax.\n│\n│    github-scrum-flow\n│\n│      Unified expert for Project Management (Scrum/Agile) and GitHub Flow enforcement. Use this skill for track orchestration, backlog hygiene, GitHub Issue synchronization, branch management, and enforcing git best practices.\n│\n│    macwhisper\n│\n│      Read and enumerate transcriptions from MacWhisper. Use when asked to check for new meeting transcriptions, fetch a transcript, search past recordings, or mark a session as processed. Does not write to Obsidian or any other system — use the obsidian skill for that.\n│\n│    natural-writing\n│\n│      Draft, edit, or review prose to remove generic AI writing habits while keeping the writer's meaning, facts, and voice. Use when asked to make writing sound natural, less AI-generated, less robotic, less corporate, or more like the writer; also use for substantial reader-facing prose such as emails, essays, announcements, READMEs, technical documentation, reports, and product copy where voice, phrasing, and reader relevance matter. Complements subject and document-format skills. Do not use for code-only work, verbatim transcription, or judging whether a person used AI.\n│\n│    ux-designer\n│\n│      Expert UX/UI design assistant based on the \"Refactoring UI\" philosophy (by Wathan & Schoger). Enforces logic-based design, strict hierarchy, and \"buildable\" visual systems. Use for converting requirements into professional, high-fidelity specs.\n\n│\n└  Use --skill <name> to install specific skills\n\n"
+  }
+}
