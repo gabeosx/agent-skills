@@ -1,0 +1,12 @@
+{
+  "id": 3,
+  "name": "source-poor-copy",
+  "prompt": "Make this product description more compelling, in 45–75 words. Only known facts: Bracken is a desk lamp with a replaceable LED module, a steel base, and a two-year warranty. Source: 'Bracken is a transformative lighting solution that seamlessly elevates every workspace. Its innovative design is a testament to our unwavering commitment to excellence.' No testing data, customer stories, price, dimensions, country of manufacture, or ergonomic or sustainability certifications are available. Return only the revised copy.",
+  "expected_output": "Specific copy using only supported features with no invented benefits.",
+  "files": [],
+  "assertions": [
+    "Includes replaceable LED module, steel base, and two-year warranty accurately.",
+    "No invented light-quality, comfort, durability, environmental, manufacturing, certification, price, or user-experience claims.",
+    "45–75 words and no assistant or editing commentary."
+  ]
+}

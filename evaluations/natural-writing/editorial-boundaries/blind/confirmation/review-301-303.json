@@ -1,0 +1,369 @@
+{
+  "cases": [
+    {
+      "id": 301,
+      "winner": "tie",
+      "reasoning": "Tie: both are complete, decision-ready proposals. B brings the weekly hours and schedule into the opening request; A puts the approval/training dependency there and supplies the schedule shortly afterward. Each preserves the observed-count limitation, staffing commitment, existing reception route, operational responsibilities, measurable targets, and end-of-pilot decision. These sequencing choices do not establish a meaningful quality difference.",
+      "preference_severity": "none",
+      "A": {
+        "scores": {
+          "fidelity": 5,
+          "directness_and_selectivity": 5,
+          "specificity": 5,
+          "voice_and_genre": 5,
+          "cadence_and_rhetoric": 5,
+          "structure": 5,
+          "reader_relevance": 5
+        },
+        "expectations": [
+          {
+            "text": "Requests two Operations staff members for eight hours per week over a four-week pilot and gives the 26 April approval deadline and proposed 6 May start.",
+            "passed": true,
+            "evidence": "“two Operations staff members for a four-week pilot ... starting 6 May”; “Approval by 26 April”; “those eight hours each week.”"
+          },
+          {
+            "text": "Uses the observed counts accurately: 46 returns, 18 delayed more than two working days, and seven repeat inquiries; does not present them as a complete company-wide baseline or claim a measured time saving.",
+            "passed": true,
+            "evidence": "“46 returns, including 18 ... more than two working days”; “Seven employees contacted reception twice”; “they do not measure all returns across the company”; “There is no staff-time baseline.”"
+          },
+          {
+            "text": "Explains the Tuesday/Thursday West Office service and retains the existing reception option outside those hours and locations.",
+            "passed": true,
+            "evidence": "“ground-floor service counter on Tuesdays and Thursdays, 10 a.m.–2 p.m.” at West Office; “through reception on other days and at other offices.”"
+          },
+          {
+            "text": "States concrete next-working-day registration and overnight storage measures and a stop/adjust/extend review after week four, without promising the pilot will succeed.",
+            "passed": true,
+            "evidence": "“at least 90% ... by the next working day”; “whether any equipment remains outside the cabinet overnight”; “After four weeks ... stopping, adjusting, or extending.” The measures are proposed assessments, not promised results."
+          },
+          {
+            "text": "Excludes spreadsheet filenames, chart recreation, naming debates, default heading colors, the scratch request to describe drafting effort, and celebration of receipt formatting.",
+            "passed": true,
+            "evidence": "Complete passage contains only decision and operating information, for example “No new equipment or software is requested.” None of the listed drafting details appears."
+          }
+        ],
+        "critical_failures": [],
+        "substantive_defects": [],
+        "strengths": [
+          "The opening ties approval to the training dependency: “Approval by 26 April would allow IT to schedule the one-hour training session.”",
+          "Preserves intake steps, collection responsibility, manager readiness and staff-time measurement without claiming time savings."
+        ],
+        "weaknesses": []
+      },
+      "B": {
+        "scores": {
+          "fidelity": 5,
+          "directness_and_selectivity": 5,
+          "specificity": 5,
+          "voice_and_genre": 5,
+          "cadence_and_rhetoric": 5,
+          "structure": 5,
+          "reader_relevance": 5
+        },
+        "expectations": [
+          {
+            "text": "Requests two Operations staff members for eight hours per week over a four-week pilot and gives the 26 April approval deadline and proposed 6 May start.",
+            "passed": true,
+            "evidence": "“four-week pilot ... starting 6 May”; “two staff members ... covering eight hours each week”; “by 26 April.”"
+          },
+          {
+            "text": "Uses the observed counts accurately: 46 returns, 18 delayed more than two working days, and seven repeat inquiries; does not present them as a complete company-wide baseline or claim a measured time saving.",
+            "passed": true,
+            "evidence": "“46 returns, including 18 ... more than two working days”; “Seven employees contacted reception twice”; “do not measure all returns across the company”; “There is no staff-time baseline.”"
+          },
+          {
+            "text": "Explains the Tuesday/Thursday West Office service and retains the existing reception option outside those hours and locations.",
+            "passed": true,
+            "evidence": "“West Office”; “Tuesday and Thursday sessions, 10 a.m.–2 p.m.”; “existing ground-floor service counter”; “reception on other days and at other offices.”"
+          },
+          {
+            "text": "States concrete next-working-day registration and overnight storage measures and a stop/adjust/extend review after week four, without promising the pilot will succeed.",
+            "passed": true,
+            "evidence": "“target at least 90% ... by the next working day”; “no equipment left outside the locked cabinet overnight”; “After week four ... stopping, adjusting or extending.” The target is not a success guarantee."
+          },
+          {
+            "text": "Excludes spreadsheet filenames, chart recreation, naming debates, default heading colors, the scratch request to describe drafting effort, and celebration of receipt formatting.",
+            "passed": true,
+            "evidence": "Complete passage confines itself to approval and pilot details, for example “No new equipment or software is requested.” No filenames, chart history, naming debate, color, scratch instruction, or receipt-layout celebration appears."
+          }
+        ],
+        "critical_failures": [],
+        "substantive_defects": [],
+        "strengths": [
+          "The opening makes the resource decision immediately concrete: “two staff members ... covering eight hours each week.”",
+          "Combines operational readiness with explicit targets and the stop/adjust/extend review."
+        ],
+        "weaknesses": []
+      }
+    },
+    {
+      "id": 302,
+      "winner": "tie",
+      "reasoning": "Tie: both are considerate, accurate customer updates with the same useful subject, plain finish/reinspection explanation, revised dispatch date, estimated transit, tracking trigger, and wait-or-refund options. B explicitly notes both tables are paid and explains dispatch as when they leave; A expresses the same dispatch/delivery distinction more briefly. Both are ready to send, with no substantive or meaningful stylistic advantage.",
+      "preference_severity": "none",
+      "A": {
+        "scores": {
+          "fidelity": 5,
+          "directness_and_selectivity": 5,
+          "specificity": 5,
+          "voice_and_genre": 5,
+          "cadence_and_rhetoric": 5,
+          "structure": 5,
+          "reader_relevance": 5
+        },
+        "expectations": [
+          {
+            "text": "Identifies order LH-2841 or the two bedside tables and clearly communicates that the dispatch estimate changed from 12 June to 19 June.",
+            "passed": true,
+            "evidence": "“Order LH-2841”; “two oak bedside tables”; “original estimate of 12 June”; “current dispatch estimate is 19 June.”"
+          },
+          {
+            "text": "Explains the finish issue and reinspection in ordinary language, apologizes for the delay, and does not imply that damaged or unfinished goods have already shipped.",
+            "passed": true,
+            "evidence": "“I'm sorry”; “uneven coat on one table”; “holding the pair ... after that table is refinished and inspected again.”"
+          },
+          {
+            "text": "Distinguishes dispatch from delivery; any 3–5 business day transit statement remains an estimate, and the message does not invent tracking or a delivery appointment.",
+            "passed": true,
+            "evidence": "“dispatch estimate”; “Transit usually takes 3–5 business days after dispatch; this is not a delivery appointment”; “There isn't a tracking number yet”; tracking follows carrier acceptance."
+          },
+          {
+            "text": "Makes clear that Mira can wait without taking action or reply before dispatch for cancellation and a full refund; does not offer an unapproved discount or expedited service.",
+            "passed": true,
+            "evidence": "“You don't need to take any action to keep your order”; “reply before dispatch to request cancellation and a full refund for both tables.” No discount or expedited service is offered."
+          },
+          {
+            "text": "Does not mention dashboard labels, sorting changes, message-drafting history, or the copied launch-announcement instruction, and does not invent Mira's personal reasons or feelings.",
+            "passed": true,
+            "evidence": "Complete email contains no dashboard/sorting/drafting history or invented personal context. Its explanation is limited to “we found an uneven coat on one table.”"
+          },
+          {
+            "text": "Is an email with a useful subject line and stays within the requested 170-word limit.",
+            "passed": true,
+            "evidence": "“Subject: Order LH-2841: revised dispatch estimate of 19 June”; “Hi Mira”; “Larch Home.” 136 whitespace-delimited words including subject and sign-off, below 170."
+          }
+        ],
+        "critical_failures": [],
+        "substantive_defects": [],
+        "strengths": [
+          "Gives the revised estimate in the subject and preserves the absence of tracking: “There isn't a tracking number yet.”",
+          "Makes the customer options explicit without attributing feelings or circumstances to Mira."
+        ],
+        "weaknesses": []
+      },
+      "B": {
+        "scores": {
+          "fidelity": 5,
+          "directness_and_selectivity": 5,
+          "specificity": 5,
+          "voice_and_genre": 5,
+          "cadence_and_rhetoric": 5,
+          "structure": 5,
+          "reader_relevance": 5
+        },
+        "expectations": [
+          {
+            "text": "Identifies order LH-2841 or the two bedside tables and clearly communicates that the dispatch estimate changed from 12 June to 19 June.",
+            "passed": true,
+            "evidence": "“Order LH-2841”; “two oak bedside tables”; “dispatch on 19 June, instead of 12 June.”"
+          },
+          {
+            "text": "Explains the finish issue and reinspection in ordinary language, apologizes for the delay, and does not imply that damaged or unfinished goods have already shipped.",
+            "passed": true,
+            "evidence": "“I'm sorry”; “uneven coat on one table”; “holding the pair ... after that table has been refinished and inspected again.”"
+          },
+          {
+            "text": "Distinguishes dispatch from delivery; any 3–5 business day transit statement remains an estimate, and the message does not invent tracking or a delivery appointment.",
+            "passed": true,
+            "evidence": "“estimate for when the tables will leave us, rather than a delivery appointment”; “usually 3–5 business days”; “no tracking number yet”; link follows carrier acceptance."
+          },
+          {
+            "text": "Makes clear that Mira can wait without taking action or reply before dispatch for cancellation and a full refund; does not offer an unapproved discount or expedited service.",
+            "passed": true,
+            "evidence": "“you don't need to do anything to keep your order”; “reply before dispatch to request cancellation and a full refund.” No additional commercial concession is offered."
+          },
+          {
+            "text": "Does not mention dashboard labels, sorting changes, message-drafting history, or the copied launch-announcement instruction, and does not invent Mira's personal reasons or feelings.",
+            "passed": true,
+            "evidence": "Complete email contains no internal labels, sorting changes, drafting history, launch-copy instruction, or invented personal circumstances. “Both tables are paid for” is supported by the notes."
+          },
+          {
+            "text": "Is an email with a useful subject line and stays within the requested 170-word limit.",
+            "passed": true,
+            "evidence": "“Subject: Order LH-2841: revised dispatch estimate of 19 June”; “Hi Mira”; “Larch Home.” 146 whitespace-delimited words including subject and sign-off, below 170."
+          }
+        ],
+        "critical_failures": [],
+        "substantive_defects": [],
+        "strengths": [
+          "Explains dispatch concretely as “when the tables will leave us,” then qualifies transit as usual rather than guaranteed.",
+          "States payment status, automatic tracking trigger and cancellation conditions in a considerate email voice."
+        ],
+        "weaknesses": []
+      }
+    },
+    {
+      "id": 303,
+      "winner": "tie",
+      "reasoning": "Tie: both explain the asynchronous lifecycle and distinguish the documented contract from unresolved production decisions. Both preserve all four states, retention/link uncertainty, capacity limits, cancellation exclusion, access control, retry/idempotency, and dependency gaps without inventing implementation details. A explicitly warns against inferring idempotency; B also warns against assuming automatic worker retry. These are useful, supported elaborations of the same uncertainty, and both are ready-to-use explanations.",
+      "preference_severity": "none",
+      "A": {
+        "scores": {
+          "fidelity": 5,
+          "directness_and_selectivity": 5,
+          "specificity": 5,
+          "voice_and_genre": 5,
+          "cadence_and_rhetoric": 5,
+          "structure": 5,
+          "reader_relevance": 5
+        },
+        "expectations": [
+          {
+            "text": "Explains submission with workspace and date range, return of a job identifier, worker processing, status checks, and the complete/download versus failed/error-summary outcomes.",
+            "passed": true,
+            "evidence": "“submitting a workspace identifier and a date range”; “accepted request returns a job identifier”; worker “reads the matching records and writes an export file”; clients check progress; “complete job provides a download link” and failed job “includes an error summary.”"
+          },
+          {
+            "text": "Uses the documented queued, running, complete, and failed states and does not document the prototype's 'done' label as a current state.",
+            "passed": true,
+            "evidence": "“`queued`, `running`, `complete` and `failed`.” No current “done” state is documented."
+          },
+          {
+            "text": "States seven-day retention from completion while preserving uncertainty about download-link lifetime, size/date limits, and the absence of cancellation in the initial scope.",
+            "passed": true,
+            "evidence": "“seven days after completion”; “does not specify whether a download link can expire before its file is removed”; “Cancellation is outside the initial scope”; maximum range and size limits “await approval.”"
+          },
+          {
+            "text": "Identifies authentication/authorization and retry/idempotency behavior as unresolved; does not invent tokens, permission names, retry counts, backoff schedules, retryable errors, or duplicate-submission guarantees.",
+            "passed": true,
+            "evidence": "“Authentication and authorization are unspecified”; “no agreed retry count, backoff schedule or list of retryable errors”; “no client retry rule”; repeated submissions are unsettled; “should not infer idempotency.”"
+          },
+          {
+            "text": "Does not invent a package, version, storage provider, install command, endpoint path, HTTP status code, or environment variable; dependency selection remains pending.",
+            "passed": true,
+            "evidence": "“no storage client has been selected”; “no approved package, version, installation command, storage vendor or environment variable.” No endpoint or status code is supplied."
+          },
+          {
+            "text": "Reads as a technical explanation and excludes demo-recording and paragraph-editing history, arrow formatting, and the discarded promotional introduction.",
+            "passed": true,
+            "evidence": "“Several parts of the integration contract still need decisions before production use” establishes explanatory purpose. Complete text omits recording/editing/arrow history and discarded promotional wording."
+          }
+        ],
+        "critical_failures": [],
+        "substantive_defects": [],
+        "strengths": [
+          "Explains the consequence of link uncertainty: callers “cannot assume that a particular link remains usable for the full retention period.”",
+          "Keeps worker retries, client retries and repeated-submission behavior distinct and expressly unresolved."
+        ],
+        "weaknesses": []
+      },
+      "B": {
+        "scores": {
+          "fidelity": 5,
+          "directness_and_selectivity": 5,
+          "specificity": 5,
+          "voice_and_genre": 5,
+          "cadence_and_rhetoric": 5,
+          "structure": 5,
+          "reader_relevance": 5
+        },
+        "expectations": [
+          {
+            "text": "Explains submission with workspace and date range, return of a job identifier, worker processing, status checks, and the complete/download versus failed/error-summary outcomes.",
+            "passed": true,
+            "evidence": "“submits a workspace identifier and a date range”; “accepted request returns a job identifier”; worker “reads matching records and writes an export file”; client checks status; complete provides a link and failed includes an error summary."
+          },
+          {
+            "text": "Uses the documented queued, running, complete, and failed states and does not document the prototype's 'done' label as a current state.",
+            "passed": true,
+            "evidence": "“`queued`, `running`, `complete`, and `failed`.” No prototype “done” state appears."
+          },
+          {
+            "text": "States seven-day retention from completion while preserving uncertainty about download-link lifetime, size/date limits, and the absence of cancellation in the initial scope.",
+            "passed": true,
+            "evidence": "“seven days after completion”; link validity “a separate unresolved detail”; “Cancellation is outside the initial scope”; range and size limits “remain unapproved.”"
+          },
+          {
+            "text": "Identifies authentication/authorization and retry/idempotency behavior as unresolved; does not invent tokens, permission names, retry counts, backoff schedules, retryable errors, or duplicate-submission guarantees.",
+            "passed": true,
+            "evidence": "“Authentication and authorization are unspecified”; no retry count, backoff or retryable errors; “no client retry rule”; repeated submissions unsettled; callers cannot assume deduplication or automatic worker retries."
+          },
+          {
+            "text": "Does not invent a package, version, storage provider, install command, endpoint path, HTTP status code, or environment variable; dependency selection remains pending.",
+            "passed": true,
+            "evidence": "“no storage vendor, client package, version, installation command, or environment variable has been selected.” No endpoint or status code is invented."
+          },
+          {
+            "text": "Reads as a technical explanation and excludes demo-recording and paragraph-editing history, arrow formatting, and the discarded promotional introduction.",
+            "passed": true,
+            "evidence": "“The current record supports designing the request-and-status workflow, but it does not yet supply a complete production contract.” Complete text excludes the requested drafting and promotional debris."
+          }
+        ],
+        "critical_failures": [],
+        "substantive_defects": [],
+        "strengths": [
+          "Makes the caller-facing consequence explicit: resubmission is not guaranteed to be deduplicated, and automatic worker retries cannot be assumed.",
+          "The final sentence explains what integration planning can proceed and what the incomplete record cannot yet support."
+        ],
+        "weaknesses": []
+      }
+    }
+  ],
+  "summary": {
+    "cases_reviewed": 3,
+    "wins": {
+      "A": 0,
+      "B": 0,
+      "tie": 3
+    },
+    "preference_severity_counts": {
+      "none": 3,
+      "minor": 0,
+      "substantive": 0
+    },
+    "assertions": {
+      "A": {
+        "passed": 17,
+        "total": 17
+      },
+      "B": {
+        "passed": 17,
+        "total": 17
+      }
+    },
+    "mean_scores": {
+      "A": 5.0,
+      "B": 5.0
+    },
+    "critical_failures": 0,
+    "substantive_defects": 0,
+    "dimension_applicability": "Edit restraint is not scored: these are generation tasks with source notes, not edits of supplied finished prose. Preservation of useful detail and uncertainty is scored under fidelity and reader relevance.",
+    "exact_checks": [
+      {
+        "case": 301,
+        "criterion": "250–350 words",
+        "A": 302,
+        "B": 296,
+        "passed": true
+      },
+      {
+        "case": 302,
+        "criterion": "At most 170 words including subject and sign-off",
+        "A": 136,
+        "B": 146,
+        "passed": true
+      },
+      {
+        "case": 303,
+        "criterion": "220–320 words",
+        "A": 272,
+        "B": 276,
+        "passed": true
+      }
+    ],
+    "word_count_method": "Whitespace-delimited words; all outputs also pass using word-like token counts.",
+    "unsupported_claim_review": "No unsupported specifications, personal circumstances, measured savings, success guarantees, discounts or fulfillment commitments were found. The absence of a staff-time baseline supports the time-saving limitation; unresolved retry and repeated-submission notes support the production cautions.",
+    "evaluation_feedback": "The 301 and 303 assertion lists omit their explicit word limits; independent exact checks above cover them. No substantive assertion gap was observed.",
+    "interpretation": "These ties establish equivalent usable output on the reviewed cases, not demonstrated improvement or population-level superiority."
+  }
+}

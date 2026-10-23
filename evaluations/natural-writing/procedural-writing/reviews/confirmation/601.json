@@ -1,0 +1,122 @@
+{
+  "id": 601,
+  "labels": {
+    "A": {
+      "expectations": [
+        {
+          "text": "The directions specify Evening East and Destination = East review, then direct the coordinator to inspect Review desk > East review > Incoming for the receiving copy.",
+          "passed": true,
+          "evidence": "Opens Shipments, selects Evening East, sets Destination to East review, then opens Review desk > East review > Incoming in steps 1–3."
+        },
+        {
+          "text": "Success requires the Evening East row to show Status = Ready and Shipments = 24; the green Request accepted toast is not treated as delivery confirmation.",
+          "passed": true,
+          "evidence": "Step 3 requires the Evening East row to show Status = Ready and Shipments = 24; it says the toast only confirms entry into the queue."
+        },
+        {
+          "text": "Recovery for Status = Destination paused uses East review's Settings to change Receiving from Paused to Active and resend the batch, without presenting that recovery as applicable to every failure.",
+          "passed": true,
+          "evidence": "The conditional Destination paused paragraph changes Receiving from Paused to Active in Review desk > East review > Settings, resends the same batch, and rechecks Incoming. Other failed statuses explicitly have no documented operator remedy."
+        },
+        {
+          "text": "The response does not invent a partner archive address, inspection control, expected receipt, or remedy; it keeps the partner-copy outcome explicitly unverified.",
+          "passed": true,
+          "evidence": "The partner paragraph states no archive address, inspection method, or recovery procedure is supplied and that neither success nor failure is established."
+        },
+        {
+          "text": "The response is written as directions the coordinator can use, rather than commentary about writing the directions.",
+          "passed": true,
+          "evidence": "It is a directly usable numbered sending workflow, followed by conditional recovery and a clearly stated verification limit."
+        }
+      ],
+      "scores": {
+        "usefulness": 5,
+        "fidelity": 5,
+        "naturalness": 5
+      },
+      "critical": [],
+      "substantive": [],
+      "minor": []
+    },
+    "B": {
+      "expectations": [
+        {
+          "text": "The directions specify Evening East and Destination = East review, then direct the coordinator to inspect Review desk > East review > Incoming for the receiving copy.",
+          "passed": true,
+          "evidence": "Steps 1–3 specify Evening East, Destination = East review, and Review desk > East review > Incoming."
+        },
+        {
+          "text": "Success requires the Evening East row to show Status = Ready and Shipments = 24; the green Request accepted toast is not treated as delivery confirmation.",
+          "passed": true,
+          "evidence": "The receiving row must show Name: Evening East, Status: Ready, Shipments: 24. The toast confirms queue entry, while the Incoming row confirms readiness."
+        },
+        {
+          "text": "Recovery for Status = Destination paused uses East review's Settings to change Receiving from Paused to Active and resend the batch, without presenting that recovery as applicable to every failure.",
+          "passed": true,
+          "evidence": "The Destination paused section changes Receiving to Active in East review Settings, resends Evening East to East review, and repeats exact receiving checks. It limits other failures to no documented operator remedy."
+        },
+        {
+          "text": "The response does not invent a partner archive address, inspection control, expected receipt, or remedy; it keeps the partner-copy outcome explicitly unverified.",
+          "passed": true,
+          "evidence": "The partner section supplies no invented address or mechanism; it says its outcome remains unconfirmed even when the East review copy is ready."
+        },
+        {
+          "text": "The response is written as directions the coordinator can use, rather than commentary about writing the directions.",
+          "passed": true,
+          "evidence": "The output provides numbered operator actions and conditional recovery as the handover itself."
+        }
+      ],
+      "scores": {
+        "usefulness": 5,
+        "fidelity": 5,
+        "naturalness": 5
+      },
+      "critical": [],
+      "substantive": [],
+      "minor": []
+    },
+    "C": {
+      "expectations": [
+        {
+          "text": "The directions specify Evening East and Destination = East review, then direct the coordinator to inspect Review desk > East review > Incoming for the receiving copy.",
+          "passed": true,
+          "evidence": "Steps 1–4 select Evening East, send to East review, and inspect Review desk > East review > Incoming."
+        },
+        {
+          "text": "Success requires the Evening East row to show Status = Ready and Shipments = 24; the green Request accepted toast is not treated as delivery confirmation.",
+          "passed": true,
+          "evidence": "Step 4 requires the Evening East row with Status = Ready and Shipments = 24; the introduction and following paragraph explicitly distinguish queue acceptance from delivery."
+        },
+        {
+          "text": "Recovery for Status = Destination paused uses East review's Settings to change Receiving from Paused to Active and resend the batch, without presenting that recovery as applicable to every failure.",
+          "passed": true,
+          "evidence": "The conditional Destination paused recovery uses East review Settings, switches Receiving from Paused to Active, and resends the same batch without duplication. Other failed statuses have no documented operator remedy."
+        },
+        {
+          "text": "The response does not invent a partner archive address, inspection control, expected receipt, or remedy; it keeps the partner-copy outcome explicitly unverified.",
+          "passed": true,
+          "evidence": "The archive section states missing address, inspection method, and recovery procedure, and explicitly records the outcome as unverified without inferring success or failure."
+        },
+        {
+          "text": "The response is written as directions the coordinator can use, rather than commentary about writing the directions.",
+          "passed": true,
+          "evidence": "The numbered workflow, conditional troubleshooting, and archive limitation are usable coordinator directions."
+        }
+      ],
+      "scores": {
+        "usefulness": 5,
+        "fidelity": 5,
+        "naturalness": 5
+      },
+      "critical": [],
+      "substantive": [],
+      "minor": []
+    }
+  },
+  "preferred": [
+    "A",
+    "B",
+    "C"
+  ],
+  "reason": "All three preserve the source prerequisites, observable success checks, conditional remedies, and stated limits. Their organization differs slightly, but each is fully usable and faithful; no consequential unsupported claim or omission warrants a preference."
+}

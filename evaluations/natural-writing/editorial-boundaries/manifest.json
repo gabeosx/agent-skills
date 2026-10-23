@@ -1,0 +1,72 @@
+{
+  "created_at": "2026-10-23T21:22:53.437494+00:00",
+  "goal": "Review and address process leakage, metacommentary, irrelevant context, hidden audience assumptions, genre confusion, unnecessary justification and unsupported reframing while preserving meaningful history and evidence.",
+  "stage": "iteration-1 dispatch next",
+  "baseline": "old_skill = frozen pre-editorial natural-writing v3; not no-skill",
+  "candidate": "candidate-1, prepared natural-writing 1.0.0",
+  "version_policy": "Same uncommitted initial release; expand its intentional 1.0.0 contract rather than add an artificial second version.",
+  "development_ids": [
+    201,
+    202,
+    203,
+    204,
+    205,
+    206,
+    207,
+    208
+  ],
+  "regression_ids": [
+    402,
+    403,
+    405,
+    406
+  ],
+  "confirmation_ids": [
+    301,
+    302,
+    303,
+    304,
+    305,
+    306
+  ],
+  "acceptance": "skills/natural-writing/evals/editorial-rubric.md frozen before outcomes",
+  "conditions": {
+    "actors": "Fresh fork_turns=none batch actor per arm; identical task order and prompts, own skill snapshot only; cases within a batch share context.",
+    "reviewers": "Fresh blind reviewer independent of actors; root semantic audit and exact checks separate.",
+    "context": "Source notes are supplied in test prompts, not an actual full coding-session history; realistic selection stress but limited ecological validity.",
+    "model": "Inherited session model; exact build and sampling settings unavailable.",
+    "limits": "One first attempt per arm per frozen task; purposeful retries after changes retained as development. No arbitrary campaign ceiling imposed.",
+    "authority": "User authorized local tuning and iterative tests. Session subagents only; no external paid API, publishing, or automation.",
+    "accounting": "Tokens, session charge and per-case generation latency unknown, not zero. No external paid-model dispatch.",
+    "resources": "Synthetic files under campaign directory, canonical skill/catalog/changelog edits; task-specific temporary validator environment only.",
+    "exclusions": [
+      "Human preference validation",
+      "Population performance claims",
+      "Actual host automatic skill selection"
+    ]
+  },
+  "source_review": {
+    "conversation": "https://chatgpt.com/share/6adbce34-bcac-83ea-b83c-6d74212bac59",
+    "reviewed": "2026-10-23",
+    "primary_guidance": [
+      "https://developers.google.com/tech-writing/one/audience",
+      "https://diataxis.fr/reference/",
+      "https://learn.microsoft.com/en-us/azure/well-architected/architect-role/architecture-decision-record"
+    ],
+    "status": "Primary contents checked in preceding review; no empirical prevalence or causal claim adopted. Unsupported factual substitutions in conversation examples rejected."
+  },
+  "sha256": {
+    "evaluations/natural-writing/editorial-boundaries/development.json": "cbeeda14ad4acb37aa31422d0670fed87df202d3ea67a2d23569a9d1aac6bda1",
+    "evaluations/natural-writing/editorial-boundaries/confirmation.json": "bf27467d99f8f0495c8a190e0238d757bfce937eab8a2a2b76afa02795104441",
+    "skills/natural-writing/evals/editorial-rubric.md": "71860f035b7fdd293f410d6d88d3c2dbd62ae95dff8856a50eb8321f5fd40a5c",
+    "evaluations/natural-writing/editorial-boundaries/prepare_blind.py": "73f69336cf8aaf47174625d865d494d9b36a10895a21f7023a8ee187d4e976aa",
+    "evaluations/natural-writing/editorial-boundaries/summarize.py": "85e5fcfb4cc539b04ba2e25efa46adc66a792f124f15c1ca41d1bc418eea724a",
+    "evaluations/natural-writing/editorial-boundaries/snapshots/baseline/instructions.md": "704915f8c740186a43215e26bf59ee7483e3142429759722bea31228b6d9b491",
+    "evaluations/natural-writing/editorial-boundaries/snapshots/baseline/references/pattern-catalog.md": "b0d6aa59dabd6793dec6aefc4b9404d377e32696817e9cc2c251a6edcd4acd45",
+    "evaluations/natural-writing/editorial-boundaries/snapshots/baseline/references/research-notes.md": "aa0fa139a4f28eaddb50ffa8b41fdb5f13070cfc1c5c1d5cf4b76f02def33ca9",
+    "evaluations/natural-writing/editorial-boundaries/snapshots/candidate-1/instructions.md": "7ad2f63ad136c09a46668a0d865c7dddac8f4f506466679697c5bc4ee8430fbe",
+    "evaluations/natural-writing/editorial-boundaries/snapshots/candidate-1/references/editorial-judgment.md": "ae071686de2863e8459cd6be36dcd5eb40aafa090f74be2c5acaea76b0b752f7",
+    "evaluations/natural-writing/editorial-boundaries/snapshots/candidate-1/references/pattern-catalog.md": "743e15e888b90bdc1b8a34909c600b23b397a808489b56764c766b3b0f0b541c",
+    "evaluations/natural-writing/editorial-boundaries/snapshots/candidate-1/references/research-notes.md": "00a5523c1635fca55b1ad9ce6fbd45b5b0e97b75cbbe6cbb6e0bf55d202486d0"
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "with_skill": {
+    "passed": 15,
+    "total": 15,
+    "critical": [],
+    "substantive": [],
+    "preferred_cases": [
+      501,
+      502,
+      503,
+      504,
+      505
+    ],
+    "mean_scores": {
+      "usefulness": 5.0,
+      "fidelity": 5.0,
+      "naturalness": 5.0
+    }
+  },
+  "old_skill": {
+    "passed": 15,
+    "total": 15,
+    "critical": [],
+    "substantive": [],
+    "preferred_cases": [
+      501,
+      502,
+      503,
+      504,
+      505
+    ],
+    "mean_scores": {
+      "usefulness": 5.0,
+      "fidelity": 5.0,
+      "naturalness": 5.0
+    }
+  },
+  "no_skill": {
+    "passed": 15,
+    "total": 15,
+    "critical": [],
+    "substantive": [],
+    "preferred_cases": [
+      501,
+      502,
+      503,
+      504,
+      505
+    ],
+    "mean_scores": {
+      "usefulness": 5.0,
+      "fidelity": 5.0,
+      "naturalness": 5.0
+    }
+  }
+}

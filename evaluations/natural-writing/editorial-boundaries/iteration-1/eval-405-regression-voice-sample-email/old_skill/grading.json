@@ -1,0 +1,43 @@
+{
+  "expectations": [
+    {
+      "text": "Addresses Lee and signs Mara without importing Jo or replacement/shipment claims.",
+      "passed": true,
+      "evidence": "Opens “Hi Lee,” and signs “—Mara”; it contains no Jo, replacement shipment or tracking claim."
+    },
+    {
+      "text": "Preserves duplicate $24 delivery charge and submitted-today refund with usual 3–5 business days rather than guarantee.",
+      "passed": true,
+      "evidence": "“duplicate $24 delivery charge” and “I submitted the refund today; it usually appears in 3–5 business days” preserve amount, status and usual timing without guaranteeing receipt."
+    },
+    {
+      "text": "Preserves order scheduled for Tuesday without guaranteeing arrival.",
+      "passed": true,
+      "evidence": "“Your order is still scheduled for Tuesday” preserves scheduled status without a delivery guarantee."
+    },
+    {
+      "text": "Matches warmth and restrained dry voice without copying scenic-route wording or inventing events.",
+      "passed": true,
+      "evidence": "“Once was plenty” supplies restrained dry understatement; “Thanks for sticking with us” supplies the sample’s warmth. It borrows no shipping facts or scenic-route joke and invents no event."
+    }
+  ],
+  "summary": {
+    "passed": 4,
+    "failed": 0,
+    "total": 4,
+    "pass_rate": 1.0
+  },
+  "scores": {
+    "fidelity": 5,
+    "directness_and_selectivity": 5,
+    "specificity": 5,
+    "voice_and_genre": 5,
+    "cadence_and_rhetoric": 5,
+    "structure": 5,
+    "reader_relevance": 5
+  },
+  "critical_failures": [],
+  "review_method": "Independent single blind agent review; not human feedback",
+  "review_source": "blind/iteration-1/review.json",
+  "output_sha256": "fc5c01a3391f5f507ff79d9296bb5d2e620c5b01a4e4369ef9490c8101f72c47"
+}

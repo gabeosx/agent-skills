@@ -1,0 +1,12 @@
+{
+  "eval_id": 208,
+  "eval_name": "board-brief-with-hidden-context",
+  "prompt": "Write a 250–350 word board briefing for a director who has not attended the project meetings. The decision is whether to approve a six-week extension of the 'Lantern' warehouse-routing pilot at up to $9,000. Use the following notes, with enough explanation for a director who understands warehouse operations but not our project nicknames. Return the briefing only.\n\nNotes: Lantern is a routing pilot at two warehouses. Our 'blue lane' means parcels requiring a manual address check, not a distinct carrier or service level. The proposed extension would test a routing change for those parcels. During the four-week initial pilot, 260 blue-lane parcels had a median dwell time of 31 hours, compared with 34 hours for 240 parcels processed the prior month. The cohorts were not randomized; the pilot month had fewer international parcels. Damage reports were 4 and 3, respectively. The data do not establish whether routing caused any dwell-time or damage difference. In project chat, Pat repeatedly described the work as an 'obvious breakthrough' and said the chart looked reassuring. The team tried five slide themes. An abandoned plan called the decision 'Option C'; the board never saw Options A or B. The extension costs $1,500 per week for six weeks and uses existing staff. It does not authorize permanent expansion or new hires. The plan includes tracking parcel mix, documenting manual-review workload and comparing more similar cohorts. A safety review has not been completed; the extension must not start before it is completed and approved. Ask the board to decide on the capped extension subject to safety approval. The earlier notes contain a suggestion to skip the review to meet a presentation date; that suggestion was rejected.",
+  "assertions": [
+    "Defines Lantern and blue lane as manual-address-check parcels, rather than assuming meeting context or presenting a new carrier.",
+    "Correctly preserves 260/240 parcels, 31/34 hours, 4/3 damage reports, nonrandomized prior-month comparison and differing international mix; no causal claim.",
+    "Explains six-week $1,500-per-week $9,000 cap, existing staffing and no permanent expansion/new hires.",
+    "Preserves safety review as not complete and mandatory approval before start; includes proposed mix/workload/comparability measures.",
+    "Presents an actual board decision without Option C, slide-theme/history chatter or unsupported breakthrough framing; 250–350 words."
+  ]
+}

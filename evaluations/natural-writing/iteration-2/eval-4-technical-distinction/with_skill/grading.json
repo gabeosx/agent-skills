@@ -1,0 +1,43 @@
+{
+  "expectations": [
+    {
+      "text": "Distinguishes replication copying deletion from a backup retaining earlier restorable state under retention policy.",
+      "passed": true,
+      "evidence": "\"It copies changes to another instance, including accidental deletions\" and \"A backup preserves an earlier state that can be restored, subject to the backup's retention policy\" preserve the actual distinction."
+    },
+    {
+      "text": "Preserves availability versus point-in-time recovery distinction.",
+      "passed": true,
+      "evidence": "\"Replication can improve availability, but it does not by itself provide point-in-time recovery\" states the limitation precisely."
+    },
+    {
+      "text": "Requires both base backup and unbroken write-ahead logs for this system.",
+      "passed": true,
+      "evidence": "\"For this system, point-in-time recovery additionally requires a base backup and an unbroken sequence of write-ahead logs\" includes both requirements."
+    },
+    {
+      "text": "No zero-downtime or zero-data-loss promise; 100–150 words.",
+      "passed": true,
+      "evidence": "107 whitespace-delimited words; the modest \"can improve availability\" and \"verify that the required backup and log sequence are retained\" make no zero-downtime or zero-loss promise."
+    }
+  ],
+  "summary": {
+    "passed": 4,
+    "failed": 0,
+    "total": 4,
+    "pass_rate": 1.0
+  },
+  "scores": {
+    "Fidelity": 5,
+    "Directness and selectivity": 5,
+    "Specificity": 5,
+    "Voice and genre": 5,
+    "Cadence and rhetoric": 5,
+    "Structure": 5,
+    "Edit restraint": 5
+  },
+  "critical_failures": [],
+  "review_method": "Independent single blind agent review; not human feedback",
+  "review_source": "blind/iteration-2/review.json",
+  "output_sha256": "04dd04437b65eb8c870ff46b355c1e7c496c081601a46978a6660a489b3c3738"
+}

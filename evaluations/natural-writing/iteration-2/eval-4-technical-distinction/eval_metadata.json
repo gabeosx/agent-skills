@@ -1,0 +1,11 @@
+{
+  "eval_id": 4,
+  "eval_name": "technical-distinction",
+  "prompt": "Rewrite for a database administrator handbook, 100–150 words, keeping the concept precise. Material: replication is not a backup. Replication copies changes, including accidental deletion, to another instance. A backup preserves a restorable earlier state according to its retention policy. Replication can improve availability but does not by itself supply point-in-time recovery. For this system, point-in-time recovery additionally requires a base backup and an unbroken sequence of write-ahead logs. Do not promise zero downtime or zero data loss. Use technical prose; explain the actual distinction even if it uses contrast.",
+  "assertions": [
+    "Distinguishes replication copying deletion from a backup retaining earlier restorable state under retention policy.",
+    "Preserves availability versus point-in-time recovery distinction.",
+    "Requires both base backup and unbroken write-ahead logs for this system.",
+    "No zero-downtime or zero-data-loss promise; 100–150 words."
+  ]
+}

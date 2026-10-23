@@ -1,0 +1,13 @@
+{
+  "id": 502,
+  "name": "migration-coverage",
+  "prompt": "Rewrite this fictional Brindle migration page into a concise useful guide. Use current evidence to resolve stale text; return only the guide, no editing commentary. Original: Before migration, export a backup and confirm the destination workspace name on the Apply screen. Applying cannot be undone. CSV import creates opening quantities, not past transactions. Opening quantities do not retain source lot labels or expiry dates. Later receipts do not retroactively identify those opening units. Keep the source records for recalls and expiry tracking of opening stock. Old restriction: comments cannot be imported. Choose CSV under Import, preview the item and quantity rows, then Apply. Current evidence confirms every statement except the comments restriction: comments are now imported in the Comment column. No other behavior has changed.",
+  "files": [],
+  "expected_output": "Usable, faithful prose that satisfies the task without invented details.",
+  "assertions": [
+    "It preserves backup, destination confirmation and irreversible Apply warning near the action.",
+    "It preserves missing past transactions AND the distinct lot-label and expiry-date loss for opening quantities.",
+    "It preserves that later receipts cannot retroactively identify opening units and says to keep source records for recalls/expiry tracking.",
+    "It uses the current Comment-column support rather than retaining the obsolete comments restriction and keeps the supported CSV preview/apply path."
+  ]
+}

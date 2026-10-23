@@ -1,0 +1,39 @@
+{
+  "expectations": [
+    {
+      "text": "The review restores backup, workspace confirmation and irreversible Apply warning.",
+      "passed": true,
+      "evidence": "First replacement requires backing up destination, confirming destination workspace on Apply, and states Apply cannot be undone."
+    },
+    {
+      "text": "It restores matching TaskCode overwrite behavior rather than accepting a generic history warning as equivalent.",
+      "passed": true,
+      "evidence": "Adds the exact behavior: A matching TaskCode overwrites the existing task fields; separately deletes unsupported import-history limitation."
+    },
+    {
+      "text": "It names both unsupported attachments and archived tasks without restoring the stale comments restriction.",
+      "passed": true,
+      "evidence": "Replacement says comments import through Comment column and explicitly excludes attachments and archived tasks."
+    },
+    {
+      "text": "It supplies actionable replacement wording and does not invent new UI or mechanisms.",
+      "passed": true,
+      "evidence": "Provides four targeted fixes with replacement wording, using only supplied Import/CSV/Apply, TaskCode and Comment concepts; removes the unsupported history claim."
+    }
+  ],
+  "summary": {
+    "passed": 4,
+    "failed": 0,
+    "total": 4,
+    "pass_rate": 1.0
+  },
+  "blind_review": "reviews/development-2/504.json",
+  "output_sha256": "e00b379c277903a190d9ac2ef63bb563f444f0b50ebcfe80fcb0f01cbb0ff549",
+  "scores": {
+    "usefulness": 5,
+    "fidelity": 5,
+    "naturalness": 5
+  },
+  "critical": [],
+  "substantive": []
+}

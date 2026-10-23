@@ -1,0 +1,16 @@
+{
+  "id": 102,
+  "name": "decision-memo-with-limited-evidence",
+  "prompt": "Draft a decision memo of at most 180 words for the director of the fictional Sable Workshop. Use exactly these headings: Recommendation, Evidence, Next decision. Write in a direct, measured voice. Recommend a four-week extension of the shared-dispatch pilot, without committing to a permanent rollout.\n\nFacts: The pilot covered 18 shifts: 11 with a shared dispatcher and 7 without one. Median handoff time was 7 minutes on shared-dispatch shifts and 9 minutes on the other shifts. Shift assignments were not randomized, and the shared-dispatch shifts handled fewer urgent jobs. Each group recorded one missed handoff. Extending the pilot costs $2,400 per month; the director's ceiling is $3,000 per month. No staff survey has been conducted. The extension should include more comparable shift assignments and a staff survey. The director will reconsider permanent adoption after those four weeks. Do not invent a numerical success threshold or claim that the pilot established a causal effect.",
+  "expected_output": "A short memo with the three specified headings that recommends the four-week extension, accurately reports the small and nonrandomized comparison, distinguishes an observed difference from a demonstrated effect, gives the cost and ceiling, and reserves the permanent-adoption decision until the additional evidence is available.",
+  "files": [],
+  "assertions": [
+    "Uses exactly the headings Recommendation, Evidence, and Next decision and contains at most 180 words.",
+    "Recommends a four-week extension and explicitly reserves permanent adoption for the later decision.",
+    "Correctly reports 18 total shifts, comprising 11 with shared dispatch and 7 without, and associates median handoff times of 7 and 9 minutes with the correct groups.",
+    "States that assignment was not randomized and that shared-dispatch shifts had fewer urgent jobs; does not attribute the time difference causally to shared dispatch.",
+    "Reports one missed handoff in each group without suggesting that one group had fewer missed handoffs.",
+    "Accurately gives the $2,400 monthly cost and $3,000 monthly ceiling, without presenting the ceiling as the actual cost.",
+    "Calls for more comparable shift assignments and a staff survey, makes clear that no survey results exist yet, and adds no numerical success threshold or invented evidence."
+  ]
+}

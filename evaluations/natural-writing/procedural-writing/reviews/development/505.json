@@ -1,0 +1,62 @@
+{
+  "id": 505,
+  "labels": {
+    "A": {
+      "expectations": [
+        {
+          "text": "It returns the passage exactly, preserving punctuation, wording, and paragraph without procedural additions or commentary.",
+          "passed": true,
+          "evidence": "Exact comparison against the supplied passage succeeds, allowing a trailing newline only; wording, em dash, semicolon, single paragraph, and absence of commentary are preserved."
+        }
+      ],
+      "scores": {
+        "usefulness": 5,
+        "fidelity": 5,
+        "naturalness": 5
+      },
+      "critical": [],
+      "substantive": [],
+      "minor": []
+    },
+    "B": {
+      "expectations": [
+        {
+          "text": "It returns the passage exactly, preserving punctuation, wording, and paragraph without procedural additions or commentary.",
+          "passed": true,
+          "evidence": "Exact comparison against the supplied passage succeeds, allowing a trailing newline only; wording, em dash, semicolon, single paragraph, and absence of commentary are preserved."
+        }
+      ],
+      "scores": {
+        "usefulness": 5,
+        "fidelity": 5,
+        "naturalness": 5
+      },
+      "critical": [],
+      "substantive": [],
+      "minor": []
+    },
+    "C": {
+      "expectations": [
+        {
+          "text": "It returns the passage exactly, preserving punctuation, wording, and paragraph without procedural additions or commentary.",
+          "passed": true,
+          "evidence": "Exact comparison against the supplied passage succeeds, allowing a trailing newline only; wording, em dash, semicolon, single paragraph, and absence of commentary are preserved."
+        }
+      ],
+      "scores": {
+        "usefulness": 5,
+        "fidelity": 5,
+        "naturalness": 5
+      },
+      "critical": [],
+      "substantive": [],
+      "minor": []
+    }
+  },
+  "preferred": [
+    "A",
+    "B",
+    "C"
+  ],
+  "reason": "All three reproduce the passage exactly with no spelling changes or commentary."
+}

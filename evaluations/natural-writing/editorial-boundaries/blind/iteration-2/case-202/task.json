@@ -1,0 +1,14 @@
+{
+  "id": 202,
+  "name": "reference-with-unknown-specifications",
+  "prompt": "Write a concise technical-reference entry covering retries, authentication and cache configuration from the available release notes. Return only the entry, no more than 140 words.\n\nNotes: Automatic retry handling was added for failed export requests. Authentication was refactored during the same change. The notes do not identify the authentication protocol, retry count, backoff interval or exhausted-retry behavior. An experimental Redis dependency was removed. The shipped configuration still accepts `CACHE_URL`, but this note does not describe its backend or whether it is required. Developers tried two mocks and one local proxy while debugging. A review comment says 'This is now a robust, production-ready export path.' No load-test or reliability results accompany the notes.",
+  "expected_output": "Reference that states known behavior and identifies needed specification gaps without inventing defaults or broad guarantees.",
+  "files": [],
+  "assertions": [
+    "States failed export requests are retried automatically without inventing a count, interval, error policy, or delivery guarantee.",
+    "Does not infer OAuth or any other authentication protocol from a refactor; makes the authentication specification gap clear.",
+    "Preserves CACHE_URL and does not infer that all caches or external dependencies are absent from removal of experimental Redis.",
+    "Omits debugging mocks, proxy chronology and unsupported production-ready/robust claims; no more than 140 words.",
+    "Confines the entry to the requested reference subjects; omits source-hype rebuttals and development chronology that do not affect a current configuration choice."
+  ]
+}

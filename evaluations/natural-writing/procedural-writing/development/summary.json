@@ -1,0 +1,57 @@
+{
+  "with_skill": {
+    "passed": 14,
+    "total": 15,
+    "critical": [],
+    "substantive": [
+      "504: Unsupported instruction: \"Check TaskCode matches in the preview before applying.\" The supplied evidence does not establish that the preview exposes matches or supports checking them; remove the invented check or obtain evidence for it."
+    ],
+    "preferred_cases": [
+      501,
+      502,
+      503,
+      505
+    ],
+    "mean_scores": {
+      "usefulness": 4.8,
+      "fidelity": 4.8,
+      "naturalness": 5.0
+    }
+  },
+  "old_skill": {
+    "passed": 15,
+    "total": 15,
+    "critical": [],
+    "substantive": [],
+    "preferred_cases": [
+      501,
+      502,
+      503,
+      504,
+      505
+    ],
+    "mean_scores": {
+      "usefulness": 5.0,
+      "fidelity": 5.0,
+      "naturalness": 5.0
+    }
+  },
+  "no_skill": {
+    "passed": 15,
+    "total": 15,
+    "critical": [],
+    "substantive": [],
+    "preferred_cases": [
+      501,
+      502,
+      503,
+      504,
+      505
+    ],
+    "mean_scores": {
+      "usefulness": 5.0,
+      "fidelity": 5.0,
+      "naturalness": 5.0
+    }
+  }
+}

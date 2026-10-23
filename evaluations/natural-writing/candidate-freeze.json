@@ -1,0 +1,19 @@
+{
+  "candidate": "v3",
+  "frozen_at": "2026-10-23T20:52:15.404997+00:00",
+  "purpose": "Final candidate and harness freeze before reserved confirmation outcomes. Await development acceptance before dispatch.",
+  "sha256": {
+    "evaluations/natural-writing/snapshots/v3/instructions.md": "704915f8c740186a43215e26bf59ee7483e3142429759722bea31228b6d9b491",
+    "evaluations/natural-writing/snapshots/v3/references/pattern-catalog.md": "b0d6aa59dabd6793dec6aefc4b9404d377e32696817e9cc2c251a6edcd4acd45",
+    "evaluations/natural-writing/snapshots/v3/references/research-notes.md": "aa0fa139a4f28eaddb50ffa8b41fdb5f13070cfc1c5c1d5cf4b76f02def33ca9",
+    "evaluations/natural-writing/development.json": "a044384da8518f19606de11a4575300e68f3e618c75ff291b4a990eaeb560af4",
+    "evaluations/natural-writing/confirmation.json": "0ba8f394e61dfa8f6826fbe07f920e700dc25c79def4635e2ead701db7839a24",
+    "skills/natural-writing/evals/rubric.md": "0ea959e7051c1be8a18d9b2f6335f72ef4435c692cb1d2c3ab50acb53aeb19b2",
+    "evaluations/natural-writing/check_outputs.py": "05d73b51a2e8308c2de11ae862a2b2ee6ffbf42c1f3ebf49e89fd5127bb94e6b",
+    "evaluations/natural-writing/summarize.py": "5785ba96de8569be19baf9a6a9a34264bdb3fddbd161b9fa8045a3a04bce0c69",
+    "evaluations/natural-writing/prepare_blind.py": "a326db6635dcac9698cf49a32d17a5ed9438266c8be8ebba2fd7cd1e50407cf0"
+  },
+  "confirmation_protocol": "One attempt per arm on six reserved cases. Fresh baseline and candidate actors; identical prompts; blind independent review. No candidate edits after confirmation feedback without new reserved cases.",
+  "coverage_limit": "Fresh instances with some genre overlap; not six wholly novel task families.",
+  "accounting": "Session-only subagents; no separate external paid APIs; exact usage and latency unknown."
+}

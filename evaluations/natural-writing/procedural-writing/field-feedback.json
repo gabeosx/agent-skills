@@ -1,0 +1,13 @@
+{
+  "reviewed_on": "2026-10-23",
+  "source": "User-supplied independent-blind-grade.md from Formul.app docs-rewrite evidence",
+  "source_sha256": "672b6e7f1ee8cd7fbd1afd489b1a6f96c74cde6d9883411f6ff9d921510c87cf",
+  "source_scope": "One blind AI prose review with selected source checks, not a user study, full runtime/screenshot verification or skill-effect estimate.",
+  "findings": [
+    "Checks should point to actual visible controls and explain the supported remedy.",
+    "Migration rewrite initially lost the source-lot/expiry opening-stock boundary; later coverage repair accepted.",
+    "Separate normal path from conditional setup/recovery; do not impose irrelevant universal prerequisites."
+  ],
+  "attribution_limit": "Whole rewriting workflow also included fresh research, runtime checks and independent review. No causal skill gain inferred.",
+  "visual_verification": "Outside this skill update; documentation/domain workflows retain responsibility."
+}

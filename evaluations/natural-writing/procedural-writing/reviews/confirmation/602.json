@@ -1,0 +1,122 @@
+{
+  "id": 602,
+  "labels": {
+    "A": {
+      "expectations": [
+        {
+          "text": "The replacement preserves the fact that packages contain attachment filenames but omit the attachment files, and explains that needed attachments must be saved separately.",
+          "passed": true,
+          "evidence": "The saving section says the package contains record text and attachment filenames but does not contain attachment files, and directs saving needed files separately."
+        },
+        {
+          "text": "The article does not require closing other tabs or erasing saved sign-ins before export; it uses the current account label and the job's Account and Month fields to establish the selected export context.",
+          "passed": true,
+          "evidence": "The introduction uses the top-right account label and says other tabs and saved sign-ins do not affect it. Steps 1 and 3 use the job Account and Month fields; no obsolete precautions remain."
+        },
+        {
+          "text": "The workflow identifies Exports > Recent, Status = Complete, and Download package, and says existing queued or running jobs should be resumed rather than resubmitted.",
+          "passed": true,
+          "evidence": "Steps 1 and 3–5 identify Exports > Recent, resume an existing queued/running job, wait for Status = Complete, and use Download package."
+        },
+        {
+          "text": "The article allows staff to close the browser and return later, and identifies Monthly review's month-named subfolder as the destination for packages and separate attachments.",
+          "passed": true,
+          "evidence": "Step 4 allows closing the browser and returning to Recent without stopping the job. The final paragraph places package and separate attachments in Monthly review, in a subfolder named for the selected month."
+        },
+        {
+          "text": "The output is a replacement staff article with materially revised organization or wording, rather than a lightly edited copy, a change log, or a discussion of the rewrite.",
+          "passed": true,
+          "evidence": "The source is substantially reorganized into start/resume steps and a separate saving section, presented as a replacement staff article."
+        }
+      ],
+      "scores": {
+        "usefulness": 5,
+        "fidelity": 5,
+        "naturalness": 5
+      },
+      "critical": [],
+      "substantive": [],
+      "minor": []
+    },
+    "B": {
+      "expectations": [
+        {
+          "text": "The replacement preserves the fact that packages contain attachment filenames but omit the attachment files, and explains that needed attachments must be saved separately.",
+          "passed": true,
+          "evidence": "The final paragraph preserves record text and attachment filenames, excludes attachment files, and directs saving needed attachments separately in the same month subfolder."
+        },
+        {
+          "text": "The article does not require closing other tabs or erasing saved sign-ins before export; it uses the current account label and the job's Account and Month fields to establish the selected export context.",
+          "passed": true,
+          "evidence": "The introduction and step 1 establish the top-right label; step 4 checks job Account and Month. Other tabs and saved sign-ins are explicitly independent and no closure or erasure is required."
+        },
+        {
+          "text": "The workflow identifies Exports > Recent, Status = Complete, and Download package, and says existing queued or running jobs should be resumed rather than resubmitted.",
+          "passed": true,
+          "evidence": "Steps 2–5 resume existing queued/running jobs in Exports > Recent and wait for Status = Complete before Download package."
+        },
+        {
+          "text": "The article allows staff to close the browser and return later, and identifies Monthly review's month-named subfolder as the destination for packages and separate attachments.",
+          "passed": true,
+          "evidence": "The text explicitly permits closing the browser and returning to the same job in Recent. The saving section directs packages and needed attachments to the month-named subfolder within Monthly review."
+        },
+        {
+          "text": "The output is a replacement staff article with materially revised organization or wording, rather than a lightly edited copy, a change log, or a discussion of the rewrite.",
+          "passed": true,
+          "evidence": "It is a substantially rewritten staff article with a numbered start/resume workflow and a concise saving section."
+        }
+      ],
+      "scores": {
+        "usefulness": 5,
+        "fidelity": 5,
+        "naturalness": 5
+      },
+      "critical": [],
+      "substantive": [],
+      "minor": []
+    },
+    "C": {
+      "expectations": [
+        {
+          "text": "The replacement preserves the fact that packages contain attachment filenames but omit the attachment files, and explains that needed attachments must be saved separately.",
+          "passed": true,
+          "evidence": "The opening limitation names record text and attachment filenames while excluding attachment files; the last saving step instructs separate saving of needed attachment files."
+        },
+        {
+          "text": "The article does not require closing other tabs or erasing saved sign-ins before export; it uses the current account label and the job's Account and Month fields to establish the selected export context.",
+          "passed": true,
+          "evidence": "The opening removes the need to close tabs or erase saved sign-in and establishes the top-right label. Workflow steps 1 and 4 use the label and the job Account and Month fields."
+        },
+        {
+          "text": "The workflow identifies Exports > Recent, Status = Complete, and Download package, and says existing queued or running jobs should be resumed rather than resubmitted.",
+          "passed": true,
+          "evidence": "The start/resume section uses Exports > Recent and existing queued/running jobs. The download section waits for Complete and clicks Download package, explicitly forbidding duplicate submission because of delay."
+        },
+        {
+          "text": "The article allows staff to close the browser and return later, and identifies Monthly review's month-named subfolder as the destination for packages and separate attachments.",
+          "passed": true,
+          "evidence": "The final paragraph allows closing the browser while queued/running and returning to Recent. Download/save steps 3–4 put package and separate attachments in Monthly review’s selected-month subfolder."
+        },
+        {
+          "text": "The output is a replacement staff article with materially revised organization or wording, rather than a lightly edited copy, a change log, or a discussion of the rewrite.",
+          "passed": true,
+          "evidence": "It is a materially reorganized replacement article with an up-front limitation and separate start/resume and download/save sections."
+        }
+      ],
+      "scores": {
+        "usefulness": 5,
+        "fidelity": 5,
+        "naturalness": 5
+      },
+      "critical": [],
+      "substantive": [],
+      "minor": []
+    }
+  },
+  "preferred": [
+    "A",
+    "B",
+    "C"
+  ],
+  "reason": "All three preserve the source prerequisites, observable success checks, conditional remedies, and stated limits. Their organization differs slightly, but each is fully usable and faithful; no consequential unsupported claim or omission warrants a preference."
+}

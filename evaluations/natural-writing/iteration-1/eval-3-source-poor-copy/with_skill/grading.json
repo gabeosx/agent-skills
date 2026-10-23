@@ -1,0 +1,38 @@
+{
+  "expectations": [
+    {
+      "text": "Includes replaceable LED module, steel base, and two-year warranty accurately.",
+      "passed": true,
+      "evidence": "“replaceable LED module,” “A steel base,” and “a two-year warranty” preserve all known product facts."
+    },
+    {
+      "text": "No invented light-quality, comfort, durability, environmental, manufacturing, certification, price, or user-experience claims.",
+      "passed": true,
+      "evidence": "“replacing the light source doesn't mean replacing the whole lamp” follows from module replaceability. “anchors the design” is a design metaphor rather than a tested stability claim. No unsupported light quality, comfort, durability, environmental, manufacturing, certification, price, or customer experience claims appear."
+    },
+    {
+      "text": "45–75 words and no assistant or editing commentary.",
+      "passed": true,
+      "evidence": "52 whitespace-delimited words; only revised product copy."
+    }
+  ],
+  "summary": {
+    "passed": 3,
+    "failed": 0,
+    "total": 3,
+    "pass_rate": 1.0
+  },
+  "scores": {
+    "Fidelity": 5,
+    "Directness and selectivity": 4,
+    "Specificity": 5,
+    "Voice and genre": 4,
+    "Cadence and rhetoric": 3,
+    "Structure": 5,
+    "Edit restraint": 5
+  },
+  "critical_failures": [],
+  "review_method": "Independent single blind agent review; not human feedback",
+  "review_source": "blind/iteration-1/review.json",
+  "output_sha256": "bb6cac715dd520c0c35831e4ba0c42646e96240fbb5a9fe6801e7efae5a1193d"
+}

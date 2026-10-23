@@ -1,0 +1,43 @@
+{
+  "expectations": [
+    {
+      "text": "Returns the supplied passage verbatim; there is no clear error requiring correction.",
+      "passed": true,
+      "evidence": "Exact string comparison with the supplied passage passes (excluding the file-ending newline). Opening: \"At dusk the ferry came back empty.\" Ending: \"and waited for him to stop counting.\""
+    },
+    {
+      "text": "Preserves the two fragments 'Not almost empty. Empty.' and the repeated act of counting.",
+      "passed": true,
+      "evidence": "\"Not almost empty. Empty.\" remains, as do \"My father counted the windows anyway\" and \"waited for him to stop counting.\""
+    },
+    {
+      "text": "Preserves the semicolon after 'anyway' and the paired em dashes around 'his good coat, absurdly heavy for June'.",
+      "passed": true,
+      "evidence": "\"anyway; he had always trusted arithmetic more than news\" and \"coat—his good coat, absurdly heavy for June—and waited\" preserve the specified punctuation."
+    },
+    {
+      "text": "Adds no interpretation, title, editing explanation, or extra narrative facts.",
+      "passed": true,
+      "evidence": "The entire response is the source passage, from \"At dusk\" through \"stop counting.\" There is no title, note, interpretation, or added fact."
+    }
+  ],
+  "summary": {
+    "passed": 4,
+    "failed": 0,
+    "total": 4,
+    "pass_rate": 1.0
+  },
+  "scores": {
+    "Fidelity": 5,
+    "Directness and selectivity": 5,
+    "Specificity": 5,
+    "Voice and genre": 5,
+    "Cadence and rhetoric": 5,
+    "Structure": 5,
+    "Edit restraint": 5
+  },
+  "critical_failures": [],
+  "review_method": "Independent single blind agent review; not human feedback",
+  "review_source": "blind/confirmation/review.json",
+  "output_sha256": "893cd87eb343ece0290a83c0b9f9180ebaf0ea70b75f4dd86de92deae9ecac46"
+}

@@ -1,0 +1,53 @@
+{
+  "expectations": [
+    {
+      "text": "Explains submission with workspace and date range, return of a job identifier, worker processing, status checks, and the complete/download versus failed/error-summary outcomes.",
+      "passed": true,
+      "evidence": "“submitting a workspace identifier and a date range”; “accepted request returns a job identifier”; worker “reads the matching records and writes an export file”; clients check progress; “complete job provides a download link” and failed job “includes an error summary.”"
+    },
+    {
+      "text": "Uses the documented queued, running, complete, and failed states and does not document the prototype's 'done' label as a current state.",
+      "passed": true,
+      "evidence": "“`queued`, `running`, `complete` and `failed`.” No current “done” state is documented."
+    },
+    {
+      "text": "States seven-day retention from completion while preserving uncertainty about download-link lifetime, size/date limits, and the absence of cancellation in the initial scope.",
+      "passed": true,
+      "evidence": "“seven days after completion”; “does not specify whether a download link can expire before its file is removed”; “Cancellation is outside the initial scope”; maximum range and size limits “await approval.”"
+    },
+    {
+      "text": "Identifies authentication/authorization and retry/idempotency behavior as unresolved; does not invent tokens, permission names, retry counts, backoff schedules, retryable errors, or duplicate-submission guarantees.",
+      "passed": true,
+      "evidence": "“Authentication and authorization are unspecified”; “no agreed retry count, backoff schedule or list of retryable errors”; “no client retry rule”; repeated submissions are unsettled; “should not infer idempotency.”"
+    },
+    {
+      "text": "Does not invent a package, version, storage provider, install command, endpoint path, HTTP status code, or environment variable; dependency selection remains pending.",
+      "passed": true,
+      "evidence": "“no storage client has been selected”; “no approved package, version, installation command, storage vendor or environment variable.” No endpoint or status code is supplied."
+    },
+    {
+      "text": "Reads as a technical explanation and excludes demo-recording and paragraph-editing history, arrow formatting, and the discarded promotional introduction.",
+      "passed": true,
+      "evidence": "“Several parts of the integration contract still need decisions before production use” establishes explanatory purpose. Complete text omits recording/editing/arrow history and discarded promotional wording."
+    }
+  ],
+  "summary": {
+    "passed": 6,
+    "failed": 0,
+    "total": 6,
+    "pass_rate": 1.0
+  },
+  "scores": {
+    "fidelity": 5,
+    "directness_and_selectivity": 5,
+    "specificity": 5,
+    "voice_and_genre": 5,
+    "cadence_and_rhetoric": 5,
+    "structure": 5,
+    "reader_relevance": 5
+  },
+  "critical_failures": [],
+  "review_method": "Independent single blind agent review; not human feedback",
+  "review_source": "blind/confirmation/review.json",
+  "output_sha256": "d3d9df2c8a5d42252ed589dd1619f4101ab7d8e72ae9c634f36cc43a424a0493"
+}

@@ -1,0 +1,27 @@
+{
+  "501": {
+    "A": "with_skill",
+    "B": "old_skill",
+    "C": "no_skill"
+  },
+  "502": {
+    "A": "old_skill",
+    "B": "no_skill",
+    "C": "with_skill"
+  },
+  "503": {
+    "A": "no_skill",
+    "B": "with_skill",
+    "C": "old_skill"
+  },
+  "504": {
+    "A": "no_skill",
+    "B": "old_skill",
+    "C": "with_skill"
+  },
+  "505": {
+    "A": "no_skill",
+    "B": "with_skill",
+    "C": "old_skill"
+  }
+}

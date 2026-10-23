@@ -1,0 +1,11 @@
+{
+  "eval_id": 204,
+  "eval_name": "migration-history-positive-control",
+  "prompt": "Draft a migration guide from Packetline 1.x to 2.0 for existing operators, at most 220 words. Use the provided facts. Return the guide only.\n\nIn 1.x configuration used `endpoint` and API keys could appear in the configuration file. Version 2.0 requires `destination_url` instead; `endpoint` is rejected. Move the API key into the `PACKETLINE_TOKEN` environment variable and remove it from the configuration file. Queue files from 1.x remain readable in 2.0, but importing them upgrades their format and 1.x cannot read the upgraded files. Before first import, copy the queue directory while Packetline is stopped. To roll back, stop 2.0 and restore the pre-import directory copy before launching 1.x. No automatic downgrade exists. A developer originally wanted to call the new field `target`, but the reviewer disliked it. In a test-only branch the token lived in a dotfile; that branch never shipped. The change deliberately prevents new API keys being saved in configuration files.",
+  "assertions": [
+    "Explicitly maps old endpoint to destination_url and states old key rejection in 2.0; retains both exact identifiers.",
+    "Requires PACKETLINE_TOKEN environment variable and removing the API key from configuration; preserves relevant motivation.",
+    "Explains 1.x queue compatibility on import but irreversible-to-1.x format upgrade and no automatic downgrade.",
+    "Requires stopped-process directory copy before first import and stopping 2.0/restoring that copy before 1.x rollback; omits target and unshipped dotfile alternatives; at most 220 words."
+  ]
+}

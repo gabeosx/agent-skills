@@ -1,0 +1,393 @@
+{
+  "metadata": {
+    "skill_name": "natural-writing",
+    "executor_model": "session model; exact build unavailable",
+    "analyzer_model": "independent session subagent; exact build unavailable",
+    "runs_per_configuration": 1,
+    "evals_run": [
+      601,
+      602,
+      603
+    ]
+  },
+  "runs": [
+    {
+      "eval_id": 601,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "passed": 5,
+        "failed": 0,
+        "total": 5,
+        "pass_rate": 1.0
+      },
+      "expectations": [
+        {
+          "text": "The directions specify Evening East and Destination = East review, then direct the coordinator to inspect Review desk > East review > Incoming for the receiving copy.",
+          "passed": true,
+          "evidence": "Opens Shipments, selects Evening East, sets Destination to East review, then opens Review desk > East review > Incoming in steps 1\u20133."
+        },
+        {
+          "text": "Success requires the Evening East row to show Status = Ready and Shipments = 24; the green Request accepted toast is not treated as delivery confirmation.",
+          "passed": true,
+          "evidence": "Step 3 requires the Evening East row to show Status = Ready and Shipments = 24; it says the toast only confirms entry into the queue."
+        },
+        {
+          "text": "Recovery for Status = Destination paused uses East review's Settings to change Receiving from Paused to Active and resend the batch, without presenting that recovery as applicable to every failure.",
+          "passed": true,
+          "evidence": "The conditional Destination paused paragraph changes Receiving from Paused to Active in Review desk > East review > Settings, resends the same batch, and rechecks Incoming. Other failed statuses explicitly have no documented operator remedy."
+        },
+        {
+          "text": "The response does not invent a partner archive address, inspection control, expected receipt, or remedy; it keeps the partner-copy outcome explicitly unverified.",
+          "passed": true,
+          "evidence": "The partner paragraph states no archive address, inspection method, or recovery procedure is supplied and that neither success nor failure is established."
+        },
+        {
+          "text": "The response is written as directions the coordinator can use, rather than commentary about writing the directions.",
+          "passed": true,
+          "evidence": "It is a directly usable numbered sending workflow, followed by conditional recovery and a clearly stated verification limit."
+        }
+      ]
+    },
+    {
+      "eval_id": 601,
+      "configuration": "old_skill",
+      "run_number": 1,
+      "result": {
+        "passed": 5,
+        "failed": 0,
+        "total": 5,
+        "pass_rate": 1.0
+      },
+      "expectations": [
+        {
+          "text": "The directions specify Evening East and Destination = East review, then direct the coordinator to inspect Review desk > East review > Incoming for the receiving copy.",
+          "passed": true,
+          "evidence": "Steps 1\u20133 specify Evening East, Destination = East review, and Review desk > East review > Incoming."
+        },
+        {
+          "text": "Success requires the Evening East row to show Status = Ready and Shipments = 24; the green Request accepted toast is not treated as delivery confirmation.",
+          "passed": true,
+          "evidence": "The receiving row must show Name: Evening East, Status: Ready, Shipments: 24. The toast confirms queue entry, while the Incoming row confirms readiness."
+        },
+        {
+          "text": "Recovery for Status = Destination paused uses East review's Settings to change Receiving from Paused to Active and resend the batch, without presenting that recovery as applicable to every failure.",
+          "passed": true,
+          "evidence": "The Destination paused section changes Receiving to Active in East review Settings, resends Evening East to East review, and repeats exact receiving checks. It limits other failures to no documented operator remedy."
+        },
+        {
+          "text": "The response does not invent a partner archive address, inspection control, expected receipt, or remedy; it keeps the partner-copy outcome explicitly unverified.",
+          "passed": true,
+          "evidence": "The partner section supplies no invented address or mechanism; it says its outcome remains unconfirmed even when the East review copy is ready."
+        },
+        {
+          "text": "The response is written as directions the coordinator can use, rather than commentary about writing the directions.",
+          "passed": true,
+          "evidence": "The output provides numbered operator actions and conditional recovery as the handover itself."
+        }
+      ]
+    },
+    {
+      "eval_id": 601,
+      "configuration": "no_skill",
+      "run_number": 1,
+      "result": {
+        "passed": 5,
+        "failed": 0,
+        "total": 5,
+        "pass_rate": 1.0
+      },
+      "expectations": [
+        {
+          "text": "The directions specify Evening East and Destination = East review, then direct the coordinator to inspect Review desk > East review > Incoming for the receiving copy.",
+          "passed": true,
+          "evidence": "Steps 1\u20134 select Evening East, send to East review, and inspect Review desk > East review > Incoming."
+        },
+        {
+          "text": "Success requires the Evening East row to show Status = Ready and Shipments = 24; the green Request accepted toast is not treated as delivery confirmation.",
+          "passed": true,
+          "evidence": "Step 4 requires the Evening East row with Status = Ready and Shipments = 24; the introduction and following paragraph explicitly distinguish queue acceptance from delivery."
+        },
+        {
+          "text": "Recovery for Status = Destination paused uses East review's Settings to change Receiving from Paused to Active and resend the batch, without presenting that recovery as applicable to every failure.",
+          "passed": true,
+          "evidence": "The conditional Destination paused recovery uses East review Settings, switches Receiving from Paused to Active, and resends the same batch without duplication. Other failed statuses have no documented operator remedy."
+        },
+        {
+          "text": "The response does not invent a partner archive address, inspection control, expected receipt, or remedy; it keeps the partner-copy outcome explicitly unverified.",
+          "passed": true,
+          "evidence": "The archive section states missing address, inspection method, and recovery procedure, and explicitly records the outcome as unverified without inferring success or failure."
+        },
+        {
+          "text": "The response is written as directions the coordinator can use, rather than commentary about writing the directions.",
+          "passed": true,
+          "evidence": "The numbered workflow, conditional troubleshooting, and archive limitation are usable coordinator directions."
+        }
+      ]
+    },
+    {
+      "eval_id": 602,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "passed": 5,
+        "failed": 0,
+        "total": 5,
+        "pass_rate": 1.0
+      },
+      "expectations": [
+        {
+          "text": "The replacement preserves the fact that packages contain attachment filenames but omit the attachment files, and explains that needed attachments must be saved separately.",
+          "passed": true,
+          "evidence": "The saving section says the package contains record text and attachment filenames but does not contain attachment files, and directs saving needed files separately."
+        },
+        {
+          "text": "The article does not require closing other tabs or erasing saved sign-ins before export; it uses the current account label and the job's Account and Month fields to establish the selected export context.",
+          "passed": true,
+          "evidence": "The introduction uses the top-right account label and says other tabs and saved sign-ins do not affect it. Steps 1 and 3 use the job Account and Month fields; no obsolete precautions remain."
+        },
+        {
+          "text": "The workflow identifies Exports > Recent, Status = Complete, and Download package, and says existing queued or running jobs should be resumed rather than resubmitted.",
+          "passed": true,
+          "evidence": "Steps 1 and 3\u20135 identify Exports > Recent, resume an existing queued/running job, wait for Status = Complete, and use Download package."
+        },
+        {
+          "text": "The article allows staff to close the browser and return later, and identifies Monthly review's month-named subfolder as the destination for packages and separate attachments.",
+          "passed": true,
+          "evidence": "Step 4 allows closing the browser and returning to Recent without stopping the job. The final paragraph places package and separate attachments in Monthly review, in a subfolder named for the selected month."
+        },
+        {
+          "text": "The output is a replacement staff article with materially revised organization or wording, rather than a lightly edited copy, a change log, or a discussion of the rewrite.",
+          "passed": true,
+          "evidence": "The source is substantially reorganized into start/resume steps and a separate saving section, presented as a replacement staff article."
+        }
+      ]
+    },
+    {
+      "eval_id": 602,
+      "configuration": "old_skill",
+      "run_number": 1,
+      "result": {
+        "passed": 5,
+        "failed": 0,
+        "total": 5,
+        "pass_rate": 1.0
+      },
+      "expectations": [
+        {
+          "text": "The replacement preserves the fact that packages contain attachment filenames but omit the attachment files, and explains that needed attachments must be saved separately.",
+          "passed": true,
+          "evidence": "The final paragraph preserves record text and attachment filenames, excludes attachment files, and directs saving needed attachments separately in the same month subfolder."
+        },
+        {
+          "text": "The article does not require closing other tabs or erasing saved sign-ins before export; it uses the current account label and the job's Account and Month fields to establish the selected export context.",
+          "passed": true,
+          "evidence": "The introduction and step 1 establish the top-right label; step 4 checks job Account and Month. Other tabs and saved sign-ins are explicitly independent and no closure or erasure is required."
+        },
+        {
+          "text": "The workflow identifies Exports > Recent, Status = Complete, and Download package, and says existing queued or running jobs should be resumed rather than resubmitted.",
+          "passed": true,
+          "evidence": "Steps 2\u20135 resume existing queued/running jobs in Exports > Recent and wait for Status = Complete before Download package."
+        },
+        {
+          "text": "The article allows staff to close the browser and return later, and identifies Monthly review's month-named subfolder as the destination for packages and separate attachments.",
+          "passed": true,
+          "evidence": "The text explicitly permits closing the browser and returning to the same job in Recent. The saving section directs packages and needed attachments to the month-named subfolder within Monthly review."
+        },
+        {
+          "text": "The output is a replacement staff article with materially revised organization or wording, rather than a lightly edited copy, a change log, or a discussion of the rewrite.",
+          "passed": true,
+          "evidence": "It is a substantially rewritten staff article with a numbered start/resume workflow and a concise saving section."
+        }
+      ]
+    },
+    {
+      "eval_id": 602,
+      "configuration": "no_skill",
+      "run_number": 1,
+      "result": {
+        "passed": 5,
+        "failed": 0,
+        "total": 5,
+        "pass_rate": 1.0
+      },
+      "expectations": [
+        {
+          "text": "The replacement preserves the fact that packages contain attachment filenames but omit the attachment files, and explains that needed attachments must be saved separately.",
+          "passed": true,
+          "evidence": "The opening limitation names record text and attachment filenames while excluding attachment files; the last saving step instructs separate saving of needed attachment files."
+        },
+        {
+          "text": "The article does not require closing other tabs or erasing saved sign-ins before export; it uses the current account label and the job's Account and Month fields to establish the selected export context.",
+          "passed": true,
+          "evidence": "The opening removes the need to close tabs or erase saved sign-in and establishes the top-right label. Workflow steps 1 and 4 use the label and the job Account and Month fields."
+        },
+        {
+          "text": "The workflow identifies Exports > Recent, Status = Complete, and Download package, and says existing queued or running jobs should be resumed rather than resubmitted.",
+          "passed": true,
+          "evidence": "The start/resume section uses Exports > Recent and existing queued/running jobs. The download section waits for Complete and clicks Download package, explicitly forbidding duplicate submission because of delay."
+        },
+        {
+          "text": "The article allows staff to close the browser and return later, and identifies Monthly review's month-named subfolder as the destination for packages and separate attachments.",
+          "passed": true,
+          "evidence": "The final paragraph allows closing the browser while queued/running and returning to Recent. Download/save steps 3\u20134 put package and separate attachments in Monthly review\u2019s selected-month subfolder."
+        },
+        {
+          "text": "The output is a replacement staff article with materially revised organization or wording, rather than a lightly edited copy, a change log, or a discussion of the rewrite.",
+          "passed": true,
+          "evidence": "It is a materially reorganized replacement article with an up-front limitation and separate start/resume and download/save sections."
+        }
+      ]
+    },
+    {
+      "eval_id": 603,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "passed": 5,
+        "failed": 0,
+        "total": 5,
+        "pass_rate": 1.0
+      },
+      "expectations": [
+        {
+          "text": "The normal path covers power, Rooms and the intended room, Add sensor and code scanning, then Run sample; it does not make fault recovery part of every installation.",
+          "passed": true,
+          "evidence": "Steps 1\u20133 cover supplied-cable wall power, Rooms/intended room, Add sensor, back-code scan, then Run sample after the name appears. Recovery is under If something goes wrong."
+        },
+        {
+          "text": "The response identifies the room's Activity screen and Result = Received with Samples = 1 as the successful setup check.",
+          "passed": true,
+          "evidence": "Step 4 identifies that room\u2019s Activity screen with Result = Received and Samples = 1 as readiness confirmation."
+        },
+        {
+          "text": "Any included pairing reset remains conditional on Already paired, uses the six-second Pair-button hold, and is not required for a normally connecting new sensor.",
+          "passed": true,
+          "evidence": "The reset bullet is conditional on Already paired and specifies the recessed Pair button for six seconds until flashing blue; a final sentence says a normally connecting new sensor needs no reset."
+        },
+        {
+          "text": "Any included cable reseating, different outlet, room move, hub-distance change, or replacement cable is tied to its corresponding source symptom or visible damage, without inventing a universal prerequisite.",
+          "passed": true,
+          "evidence": "Each troubleshooting bullet matches its source symptom: dark after 20 seconds, wrong room, or Sensor offline. Replacement is limited to visible cable damage."
+        },
+        {
+          "text": "The output is a short guide for the colleague, using only the supplied controls and product facts.",
+          "passed": true,
+          "evidence": "The concise four-step guide and four conditional recovery bullets use only supplied controls and facts."
+        }
+      ]
+    },
+    {
+      "eval_id": 603,
+      "configuration": "old_skill",
+      "run_number": 1,
+      "result": {
+        "passed": 5,
+        "failed": 0,
+        "total": 5,
+        "pass_rate": 1.0
+      },
+      "expectations": [
+        {
+          "text": "The normal path covers power, Rooms and the intended room, Add sensor and code scanning, then Run sample; it does not make fault recovery part of every installation.",
+          "passed": true,
+          "evidence": "Steps 1\u20134 cover supplied-cable wall power, Rooms and intended room, Add sensor and square-code scanning, then Run sample when its name appears. Recovery stays in the conditional troubleshooting section."
+        },
+        {
+          "text": "The response identifies the room's Activity screen and Result = Received with Samples = 1 as the successful setup check.",
+          "passed": true,
+          "evidence": "Step 5 names that room\u2019s Activity screen and exact Result = Received / Samples = 1 success values."
+        },
+        {
+          "text": "Any included pairing reset remains conditional on Already paired, uses the six-second Pair-button hold, and is not required for a normally connecting new sensor.",
+          "passed": true,
+          "evidence": "The Already paired bullet specifies a six-second recessed Pair-button hold until flashing blue, then rescanning, and states that normally connecting new sensors need no reset."
+        },
+        {
+          "text": "Any included cable reseating, different outlet, room move, hub-distance change, or replacement cable is tied to its corresponding source symptom or visible damage, without inventing a universal prerequisite.",
+          "passed": true,
+          "evidence": "The dark-light bullet conditions reseating/another outlet on 20-second darkness and replacement on visible damage; wrong room and Sensor offline have their corresponding room-move and hub-distance actions."
+        },
+        {
+          "text": "The output is a short guide for the colleague, using only the supplied controls and product facts.",
+          "passed": true,
+          "evidence": "The short five-step guide and four troubleshooting bullets use only the supplied controls and product facts."
+        }
+      ]
+    },
+    {
+      "eval_id": 603,
+      "configuration": "no_skill",
+      "run_number": 1,
+      "result": {
+        "passed": 5,
+        "failed": 0,
+        "total": 5,
+        "pass_rate": 1.0
+      },
+      "expectations": [
+        {
+          "text": "The normal path covers power, Rooms and the intended room, Add sensor and code scanning, then Run sample; it does not make fault recovery part of every installation.",
+          "passed": true,
+          "evidence": "Steps 1\u20134 cover wall power with supplied cable, Rooms and intended room, Add sensor and back-code scanning, and Run sample after its name appears. Fault actions are under Only if you run into a problem."
+        },
+        {
+          "text": "The response identifies the room's Activity screen and Result = Received with Samples = 1 as the successful setup check.",
+          "passed": true,
+          "evidence": "Step 5 checks that room\u2019s Activity for Result = Received and Samples = 1 before ordinary use."
+        },
+        {
+          "text": "Any included pairing reset remains conditional on Already paired, uses the six-second Pair-button hold, and is not required for a normally connecting new sensor.",
+          "passed": true,
+          "evidence": "The Already paired bullet alone invokes the recessed Pair button for six seconds until flashing blue, then rescanning. The final paragraph excludes resetting a normally connecting new sensor."
+        },
+        {
+          "text": "Any included cable reseating, different outlet, room move, hub-distance change, or replacement cable is tied to its corresponding source symptom or visible damage, without inventing a universal prerequisite.",
+          "passed": true,
+          "evidence": "Darkness after 20 seconds triggers reseating and another outlet; wrong room triggers Move to room; Sensor offline triggers moving closer to the hub. Replacement is allowed only for visible cable damage."
+        },
+        {
+          "text": "The output is a short guide for the colleague, using only the supplied controls and product facts.",
+          "passed": true,
+          "evidence": "The short numbered setup and conditional troubleshooting use the exact supplied controls and product facts."
+        }
+      ]
+    }
+  ],
+  "run_summary": {
+    "with_skill": {
+      "pass_rate": {
+        "mean": 1.0,
+        "stddev": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      }
+    },
+    "old_skill": {
+      "pass_rate": {
+        "mean": 1.0,
+        "stddev": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      }
+    },
+    "no_skill": {
+      "pass_rate": {
+        "mean": 1.0,
+        "stddev": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      }
+    },
+    "delta": {
+      "pass_rate": "+0.00"
+    }
+  },
+  "notes": [
+    "Three arms; compare old-skill and no-skill separately.",
+    "Assertion rates measure task constraints, not naturalness.",
+    "Unknown tokens, runtime and billing omitted, not zero.",
+    "Development-2 reuses frozen old/no-skill outputs without resampling.",
+    "Single blind agent review is not human validation or a population estimate."
+  ]
+}

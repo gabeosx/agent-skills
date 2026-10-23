@@ -1,0 +1,1325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eval Review</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&family=Lora:wght@400;500&display=swap" rel="stylesheet">
+  <script src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js" integrity="sha384-EnyY0/GSHQGSxSgMwaIPzSESbqoOLSexfnSMN2AP+39Ckmn92stwABZynq1JyzdT" crossorigin="anonymous"></script>
+  <style>
+    :root {
+      --bg: #faf9f5;
+      --surface: #ffffff;
+      --border: #e8e6dc;
+      --text: #141413;
+      --text-muted: #b0aea5;
+      --accent: #d97757;
+      --accent-hover: #c4613f;
+      --green: #788c5d;
+      --green-bg: #eef2e8;
+      --red: #c44;
+      --red-bg: #fceaea;
+      --header-bg: #141413;
+      --header-text: #faf9f5;
+      --radius: 6px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Lora', Georgia, serif;
+      background: var(--bg);
+      color: var(--text);
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ---- Header ---- */
+    .header {
+      background: var(--header-bg);
+      color: var(--header-text);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-shrink: 0;
+    }
+    .header h1 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+    }
+    .header .instructions {
+      font-size: 0.8rem;
+      opacity: 0.7;
+      margin-top: 0.25rem;
+    }
+    .header .progress {
+      font-size: 0.875rem;
+      opacity: 0.8;
+      text-align: right;
+    }
+
+    /* ---- Main content ---- */
+    .main {
+      flex: 1;
+      overflow-y: auto;
+      padding: 1.5rem 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    /* ---- Sections ---- */
+    .section {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      flex-shrink: 0;
+    }
+    .section-header {
+      font-family: 'Poppins', sans-serif;
+      padding: 0.75rem 1rem;
+      font-size: 0.75rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      border-bottom: 1px solid var(--border);
+      background: var(--bg);
+    }
+    .section-body {
+      padding: 1rem;
+    }
+
+    /* ---- Config badge ---- */
+    .config-badge {
+      display: inline-block;
+      padding: 0.2rem 0.625rem;
+      border-radius: 9999px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.6875rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      margin-left: 0.75rem;
+      vertical-align: middle;
+    }
+    .config-badge.config-primary {
+      background: rgba(33, 150, 243, 0.12);
+      color: #1976d2;
+    }
+    .config-badge.config-baseline {
+      background: rgba(255, 193, 7, 0.15);
+      color: #f57f17;
+    }
+
+    /* ---- Prompt ---- */
+    .prompt-text {
+      white-space: pre-wrap;
+      font-size: 0.9375rem;
+      line-height: 1.6;
+    }
+
+    /* ---- Outputs ---- */
+    .output-file {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .output-file + .output-file {
+      margin-top: 1rem;
+    }
+    .output-file-header {
+      padding: 0.5rem 0.75rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      font-family: 'SF Mono', SFMono-Regular, Consolas, 'Liberation Mono', Menlo, monospace;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .output-file-header .dl-btn {
+      font-size: 0.7rem;
+      color: var(--accent);
+      text-decoration: none;
+      cursor: pointer;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-weight: 500;
+      opacity: 0.8;
+    }
+    .output-file-header .dl-btn:hover {
+      opacity: 1;
+      text-decoration: underline;
+    }
+    .output-file-content {
+      padding: 0.75rem;
+      overflow-x: auto;
+    }
+    .output-file-content pre {
+      font-size: 0.8125rem;
+      line-height: 1.5;
+      white-space: pre-wrap;
+      word-break: break-word;
+      font-family: 'SF Mono', SFMono-Regular, Consolas, 'Liberation Mono', Menlo, monospace;
+    }
+    .output-file-content img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 4px;
+    }
+    .output-file-content iframe {
+      width: 100%;
+      height: 600px;
+      border: none;
+    }
+    .output-file-content table {
+      border-collapse: collapse;
+      font-size: 0.8125rem;
+      width: 100%;
+    }
+    .output-file-content table td,
+    .output-file-content table th {
+      border: 1px solid var(--border);
+      padding: 0.375rem 0.5rem;
+      text-align: left;
+    }
+    .output-file-content table th {
+      background: var(--bg);
+      font-weight: 600;
+    }
+    .output-file-content .download-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 0.875rem;
+      cursor: pointer;
+    }
+    .output-file-content .download-link:hover {
+      background: var(--border);
+    }
+    .empty-state {
+      color: var(--text-muted);
+      font-style: italic;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    /* ---- Feedback ---- */
+    .prev-feedback {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 0.625rem 0.75rem;
+      margin-top: 0.75rem;
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+    .prev-feedback-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 0.25rem;
+      color: var(--text-muted);
+    }
+    .feedback-textarea {
+      width: 100%;
+      min-height: 100px;
+      padding: 0.75rem;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      font-family: inherit;
+      font-size: 0.9375rem;
+      line-height: 1.5;
+      resize: vertical;
+      color: var(--text);
+    }
+    .feedback-textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    }
+    .feedback-status {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 0.5rem;
+      min-height: 1.1em;
+    }
+
+    /* ---- Grades (collapsible) ---- */
+    .grades-toggle {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      user-select: none;
+    }
+    .grades-toggle:hover {
+      color: var(--accent);
+    }
+    .grades-toggle .arrow {
+      margin-right: 0.5rem;
+      transition: transform 0.15s;
+      font-size: 0.75rem;
+    }
+    .grades-toggle .arrow.open {
+      transform: rotate(90deg);
+    }
+    .grades-content {
+      display: none;
+      margin-top: 0.75rem;
+    }
+    .grades-content.open {
+      display: block;
+    }
+    .grades-summary {
+      font-size: 0.875rem;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .grade-badge {
+      display: inline-block;
+      padding: 0.125rem 0.5rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+    .grade-pass { background: var(--green-bg); color: var(--green); }
+    .grade-fail { background: var(--red-bg); color: var(--red); }
+    .assertion-list {
+      list-style: none;
+    }
+    .assertion-item {
+      padding: 0.625rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.8125rem;
+    }
+    .assertion-item:last-child { border-bottom: none; }
+    .assertion-status {
+      font-weight: 600;
+      margin-right: 0.5rem;
+    }
+    .assertion-status.pass { color: var(--green); }
+    .assertion-status.fail { color: var(--red); }
+    .assertion-evidence {
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      margin-top: 0.25rem;
+      padding-left: 1.5rem;
+    }
+
+    /* ---- View tabs ---- */
+    .view-tabs {
+      display: flex;
+      gap: 0;
+      padding: 0 2rem;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .view-tab {
+      font-family: 'Poppins', sans-serif;
+      padding: 0.625rem 1.25rem;
+      font-size: 0.8125rem;
+      font-weight: 500;
+      cursor: pointer;
+      border: none;
+      background: none;
+      color: var(--text-muted);
+      border-bottom: 2px solid transparent;
+      transition: all 0.15s;
+    }
+    .view-tab:hover { color: var(--text); }
+    .view-tab.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+    .view-panel { display: none; }
+    .view-panel.active { display: flex; flex-direction: column; flex: 1; overflow: hidden; }
+
+    /* ---- Benchmark view ---- */
+    .benchmark-view {
+      padding: 1.5rem 2rem;
+      overflow-y: auto;
+      flex: 1;
+    }
+    .benchmark-table {
+      border-collapse: collapse;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      font-size: 0.8125rem;
+      width: 100%;
+      margin-bottom: 1.5rem;
+    }
+    .benchmark-table th, .benchmark-table td {
+      padding: 0.625rem 0.75rem;
+      text-align: left;
+      border: 1px solid var(--border);
+    }
+    .benchmark-table th {
+      font-family: 'Poppins', sans-serif;
+      background: var(--header-bg);
+      color: var(--header-text);
+      font-weight: 500;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .benchmark-table tr:hover { background: var(--bg); }
+    .benchmark-table tr.benchmark-row-with { background: rgba(33, 150, 243, 0.06); }
+    .benchmark-table tr.benchmark-row-without { background: rgba(255, 193, 7, 0.06); }
+    .benchmark-table tr.benchmark-row-with:hover { background: rgba(33, 150, 243, 0.12); }
+    .benchmark-table tr.benchmark-row-without:hover { background: rgba(255, 193, 7, 0.12); }
+    .benchmark-table tr.benchmark-row-avg { font-weight: 600; border-top: 2px solid var(--border); }
+    .benchmark-table tr.benchmark-row-avg.benchmark-row-with { background: rgba(33, 150, 243, 0.12); }
+    .benchmark-table tr.benchmark-row-avg.benchmark-row-without { background: rgba(255, 193, 7, 0.12); }
+    .benchmark-delta-positive { color: var(--green); font-weight: 600; }
+    .benchmark-delta-negative { color: var(--red); font-weight: 600; }
+    .benchmark-notes {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1rem;
+    }
+    .benchmark-notes h3 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.875rem;
+      margin-bottom: 0.75rem;
+    }
+    .benchmark-notes ul {
+      list-style: disc;
+      padding-left: 1.25rem;
+    }
+    .benchmark-notes li {
+      font-size: 0.8125rem;
+      line-height: 1.6;
+      margin-bottom: 0.375rem;
+    }
+    .benchmark-empty {
+      color: var(--text-muted);
+      font-style: italic;
+      text-align: center;
+      padding: 3rem;
+    }
+
+    /* ---- Navigation ---- */
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      border-top: 1px solid var(--border);
+      background: var(--surface);
+      flex-shrink: 0;
+    }
+    .nav-btn {
+      font-family: 'Poppins', sans-serif;
+      padding: 0.5rem 1.25rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--surface);
+      cursor: pointer;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text);
+      transition: all 0.15s;
+    }
+    .nav-btn:hover:not(:disabled) {
+      background: var(--bg);
+      border-color: var(--text-muted);
+    }
+    .nav-btn:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+    .done-btn {
+      font-family: 'Poppins', sans-serif;
+      padding: 0.5rem 1.5rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--surface);
+      color: var(--text);
+      cursor: pointer;
+      font-size: 0.875rem;
+      font-weight: 500;
+      transition: all 0.15s;
+    }
+    .done-btn:hover {
+      background: var(--bg);
+      border-color: var(--text-muted);
+    }
+    .done-btn.ready {
+      border: none;
+      background: var(--accent);
+      color: white;
+      font-weight: 600;
+    }
+    .done-btn.ready:hover {
+      background: var(--accent-hover);
+    }
+    /* ---- Done overlay ---- */
+    .done-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 100;
+      justify-content: center;
+      align-items: center;
+    }
+    .done-overlay.visible {
+      display: flex;
+    }
+    .done-card {
+      background: var(--surface);
+      border-radius: 12px;
+      padding: 2rem 3rem;
+      text-align: center;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      max-width: 500px;
+    }
+    .done-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .done-card p {
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+      line-height: 1.5;
+    }
+    .done-card .btn-row {
+      display: flex;
+      gap: 0.5rem;
+      justify-content: center;
+    }
+    .done-card button {
+      padding: 0.5rem 1.25rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--surface);
+      cursor: pointer;
+      font-size: 0.875rem;
+    }
+    .done-card button:hover {
+      background: var(--bg);
+    }
+    /* ---- Toast ---- */
+    .toast {
+      position: fixed;
+      bottom: 5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--header-bg);
+      color: var(--header-text);
+      padding: 0.625rem 1.25rem;
+      border-radius: var(--radius);
+      font-size: 0.875rem;
+      opacity: 0;
+      transition: opacity 0.3s;
+      pointer-events: none;
+      z-index: 200;
+    }
+    .toast.visible {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <div id="app" style="height:100vh; display:flex; flex-direction:column;">
+    <div class="header">
+      <div>
+        <h1>Eval Review: <span id="skill-name"></span></h1>
+        <div class="instructions">Review each output and leave feedback below. Navigate with arrow keys or buttons. When done, copy feedback and paste into Claude Code.</div>
+      </div>
+      <div class="progress" id="progress"></div>
+    </div>
+
+    <!-- View tabs (only shown when benchmark data exists) -->
+    <div class="view-tabs" id="view-tabs" style="display:none;">
+      <button class="view-tab active" onclick="switchView('outputs')">Outputs</button>
+      <button class="view-tab" onclick="switchView('benchmark')">Benchmark</button>
+    </div>
+
+    <!-- Outputs panel (qualitative review) -->
+    <div class="view-panel active" id="panel-outputs">
+    <div class="main">
+      <!-- Prompt -->
+      <div class="section">
+        <div class="section-header">Prompt <span class="config-badge" id="config-badge" style="display:none;"></span></div>
+        <div class="section-body">
+          <div class="prompt-text" id="prompt-text"></div>
+        </div>
+      </div>
+
+      <!-- Outputs -->
+      <div class="section">
+        <div class="section-header">Output</div>
+        <div class="section-body" id="outputs-body">
+          <div class="empty-state">No output files found</div>
+        </div>
+      </div>
+
+      <!-- Previous Output (collapsible) -->
+      <div class="section" id="prev-outputs-section" style="display:none;">
+        <div class="section-header">
+          <div class="grades-toggle" onclick="togglePrevOutputs()">
+            <span class="arrow" id="prev-outputs-arrow">&#9654;</span>
+            Previous Output
+          </div>
+        </div>
+        <div class="grades-content" id="prev-outputs-content"></div>
+      </div>
+
+      <!-- Grades (collapsible) -->
+      <div class="section" id="grades-section" style="display:none;">
+        <div class="section-header">
+          <div class="grades-toggle" onclick="toggleGrades()">
+            <span class="arrow" id="grades-arrow">&#9654;</span>
+            Formal Grades
+          </div>
+        </div>
+        <div class="grades-content" id="grades-content"></div>
+      </div>
+
+      <!-- Feedback -->
+      <div class="section">
+        <div class="section-header">Your Feedback</div>
+        <div class="section-body">
+          <textarea
+            class="feedback-textarea"
+            id="feedback"
+            placeholder="What do you think of this output? Any issues, suggestions, or things that look great?"
+          ></textarea>
+          <div class="feedback-status" id="feedback-status"></div>
+          <div class="prev-feedback" id="prev-feedback" style="display:none;">
+            <div class="prev-feedback-label">Previous feedback</div>
+            <div id="prev-feedback-text"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="nav" id="outputs-nav">
+      <button class="nav-btn" id="prev-btn" onclick="navigate(-1)">&#8592; Previous</button>
+      <button class="done-btn" id="done-btn" onclick="showDoneDialog()">Submit All Reviews</button>
+      <button class="nav-btn" id="next-btn" onclick="navigate(1)">Next &#8594;</button>
+    </div>
+    </div><!-- end panel-outputs -->
+
+    <!-- Benchmark panel (quantitative stats) -->
+    <div class="view-panel" id="panel-benchmark">
+      <div class="benchmark-view" id="benchmark-content">
+        <div class="benchmark-empty">No benchmark data available. Run a benchmark to see quantitative results here.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Done overlay -->
+  <div class="done-overlay" id="done-overlay">
+    <div class="done-card">
+      <h2>Review Complete</h2>
+      <p>Your feedback has been saved. Go back to your Claude Code session and tell Claude you're done reviewing.</p>
+      <div class="btn-row">
+        <button onclick="closeDoneDialog()">OK</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast" id="toast"></div>
+
+  <script>
+    // ---- Embedded data (injected by generate_review.py) ----
+    const EMBEDDED_DATA = {"skill_name": "natural-writing", "runs": [{"id": "eval-1-founder-announcement-with_skill", "prompt": "Write a punchy founder announcement for LinkedIn, 90\u2013140 words. Facts: Fieldnote is a shared notebook for field technicians. Today we added offline notes. Notes sync after a connection returns; photos still need a connection. The feature is included on all plans. We built it after customers reported losing notes in basements. Existing notebooks need no migration. No customer counts, time-savings measurements, or launch discount are available. Sound like a founder speaking to customers.", "eval_id": 1, "outputs": [{"name": "output.md", "type": "text", "content": "Today we added offline notes to Fieldnote, our shared notebook for field technicians.\n\nCustomers told us they were losing notes in basements. That's a rough place to discover your notebook needs a connection. You can now write notes offline, and they'll sync once your connection returns.\n\nPhotos still need a connection. I want to be clear about that limit so you know what to expect before heading downstairs.\n\nOffline notes are included on every plan, and your existing notebooks need no migration. You can keep using them.\n\nThanks to everyone who told us where Fieldnote was falling short. This release comes directly from that feedback.\n"}], "grading": {"expectations": [{"text": "Includes offline notes and automatic sync after connection returns without promising offline photos.", "passed": true, "evidence": "\u201cwrite notes offline, and they'll sync once your connection returns\u201d followed by \u201cPhotos still need a connection.\u201d"}, {"text": "Retains all-plan inclusion and no migration for existing notebooks.", "passed": true, "evidence": "\u201cincluded on every plan\u201d and \u201cyour existing notebooks need no migration.\u201d"}, {"text": "Does not invent quotations, adoption numbers, performance measures, launch offers, or founder experiences beyond the supplied facts.", "passed": true, "evidence": "\u201cCustomers told us they were losing notes in basements\u201d and \u201cThis release comes directly from that feedback\u201d are grounded in the facts. No invented quotation, adoption count, measurement, offer, or autobiographical event appears."}, {"text": "90\u2013140 words; reads as a publishable post without assistant wrapper.", "passed": true, "evidence": "105 whitespace-delimited words; a standalone customer-facing post without an assistant wrapper."}], "summary": {"passed": 4, "failed": 0, "total": 4, "pass_rate": 1.0}, "scores": {"Fidelity": 5, "Directness and selectivity": 4, "Specificity": 5, "Voice and genre": 5, "Cadence and rhetoric": 4, "Structure": 5}, "critical_failures": [], "review_method": "Independent single blind agent review; not human feedback", "review_source": "blind/iteration-1/review.json", "output_sha256": "5968e2f3eda531246ca93e71197691082549e6e332f663ade038aa0c0f9fdfc7"}}, {"id": "eval-1-founder-announcement-without_skill", "prompt": "Write a punchy founder announcement for LinkedIn, 90\u2013140 words. Facts: Fieldnote is a shared notebook for field technicians. Today we added offline notes. Notes sync after a connection returns; photos still need a connection. The feature is included on all plans. We built it after customers reported losing notes in basements. Existing notebooks need no migration. No customer counts, time-savings measurements, or launch discount are available. Sound like a founder speaking to customers.", "eval_id": 1, "outputs": [{"name": "output.md", "type": "text", "content": "Today, Fieldnote gets offline notes.\n\nIf you've ever finished a job in a basement and lost your notes along with your signal, this is for you. Customers told us it was happening. We built this because a shared notebook for field technicians needs to work where the work happens.\n\nYou can now write notes offline. They'll sync when your connection returns. Photos still need a connection, so keep that in mind before heading downstairs.\n\nOffline notes are included on every plan, and your existing notebooks need no migration.\n\nThanks to everyone who told us where Fieldnote was falling short. Keep telling us.\n"}], "grading": {"expectations": [{"text": "Includes offline notes and automatic sync after connection returns without promising offline photos.", "passed": true, "evidence": "\u201cYou can now write notes offline. They'll sync when your connection returns. Photos still need a connection\u201d explicitly retains both behaviors and the limit."}, {"text": "Retains all-plan inclusion and no migration for existing notebooks.", "passed": true, "evidence": "\u201cincluded on every plan\u201d and \u201cyour existing notebooks need no migration\u201d preserve both requirements."}, {"text": "Does not invent quotations, adoption numbers, performance measures, launch offers, or founder experiences beyond the supplied facts.", "passed": true, "evidence": "\u201cCustomers told us it was happening. We built this\u201d tracks the supplied customer reports and resulting feature. The opening hypothetical addresses the reader; it does not invent a founder experience, customer quotation, count, performance result, or offer."}, {"text": "90\u2013140 words; reads as a publishable post without assistant wrapper.", "passed": true, "evidence": "102 whitespace-delimited words. Opens \u201cToday, Fieldnote gets offline notes.\u201d and ends as a customer-facing post with no assistant wrapper."}], "summary": {"passed": 4, "failed": 0, "total": 4, "pass_rate": 1.0}, "scores": {"Fidelity": 5, "Directness and selectivity": 5, "Specificity": 5, "Voice and genre": 5, "Cadence and rhetoric": 4, "Structure": 5}, "critical_failures": [], "review_method": "Independent single blind agent review; not human feedback", "review_source": "blind/iteration-1/review.json", "output_sha256": "9a6c039ad5d4ca5cbf4be2b31aeb5a8ca03ef10a470653badb12424da060d4fb"}}, {"id": "eval-2-uncertain-study-with_skill", "prompt": "Write a 100\u2013150 word briefing paragraph for a hospital operations director from this synthetic study summary: In a voluntary four-week pilot at one clinic, 18 nurses used a scheduling tool. Median weekly scheduling time fell from 46 to 39 minutes. There was no control group; concurrent staffing changes may explain part of the change. Nine nurses returned the optional survey and six of those nine preferred the tool. The pilot did not measure patient safety. Recommend a next step without claiming causation or broader representativeness. No heading or bullets.", "eval_id": 2, "outputs": [{"name": "output.md", "type": "text", "content": "A voluntary four-week pilot at one clinic offers an initial reason to evaluate the scheduling tool further. Among 18 participating nurses, median weekly scheduling time fell from 46 to 39 minutes. Without a control group, that change cannot be attributed to the tool; concurrent staffing changes may explain part of it. Nine nurses completed the optional survey, and six of those nine preferred the tool. That response does not establish a preference among all participants or nurses elsewhere. The pilot did not measure patient safety. Before expanding adoption, run a longer evaluation with a comparison group, track staffing changes, seek feedback from all participants, and include patient safety measures alongside scheduling time.\n"}], "grading": {"expectations": [{"text": "Preserves 18 nurses, four weeks, one clinic, and voluntary participation.", "passed": true, "evidence": "\u201cA voluntary four-week pilot at one clinic\u201d and \u201cAmong 18 participating nurses\u201d retain the design and sample."}, {"text": "Preserves median weekly 46 to 39 minutes with no causal claim and explains no control plus concurrent staffing changes.", "passed": true, "evidence": "\u201cmedian weekly scheduling time fell from 46 to 39 minutes\u201d; \u201cWithout a control group, that change cannot be attributed to the tool; concurrent staffing changes may explain part of it.\u201d"}, {"text": "States six of nine survey respondents preferred it rather than six of 18 or a majority of all nurses.", "passed": true, "evidence": "\u201cNine nurses completed the optional survey, and six of those nine preferred the tool\u201d; adds that this does not establish preference among all participants or elsewhere."}, {"text": "States patient safety was not measured; any next step is framed as recommendation, not a planned commitment.", "passed": true, "evidence": "\u201cThe pilot did not measure patient safety.\u201d \u201cBefore expanding adoption, run a longer evaluation\u201d is a recommendation, not a promised project."}, {"text": "100\u2013150 words in one paragraph without heading or bullets.", "passed": true, "evidence": "112 whitespace-delimited words, one paragraph, no heading or bullets."}], "summary": {"passed": 5, "failed": 0, "total": 5, "pass_rate": 1.0}, "scores": {"Fidelity": 5, "Directness and selectivity": 5, "Specificity": 5, "Voice and genre": 5, "Cadence and rhetoric": 5, "Structure": 5}, "critical_failures": [], "review_method": "Independent single blind agent review; not human feedback", "review_source": "blind/iteration-1/review.json", "output_sha256": "bd739b6f64e54d9975ead72660ef5d743781e9e9c8cfe6c3442b1c97714b9928"}}, {"id": "eval-2-uncertain-study-without_skill", "prompt": "Write a 100\u2013150 word briefing paragraph for a hospital operations director from this synthetic study summary: In a voluntary four-week pilot at one clinic, 18 nurses used a scheduling tool. Median weekly scheduling time fell from 46 to 39 minutes. There was no control group; concurrent staffing changes may explain part of the change. Nine nurses returned the optional survey and six of those nine preferred the tool. The pilot did not measure patient safety. Recommend a next step without claiming causation or broader representativeness. No heading or bullets.", "eval_id": 2, "outputs": [{"name": "output.md", "type": "text", "content": "A voluntary four-week pilot at one clinic offers an early reason to evaluate the scheduling tool further. Among 18 participating nurses, median weekly scheduling time fell from 46 to 39 minutes. Without a control group, however, that change cannot be attributed to the tool; concurrent staffing changes may explain part of it. Six of the nine nurses who returned the optional survey preferred the tool, but the responses do not establish a preference among all participants or nurses elsewhere. Patient safety was not measured. Before expanding adoption, run a longer evaluation with a comparison group, document staffing changes, and collect feedback from more participants. Include patient safety measures so the next decision considers more than scheduling time and reported preference.\n"}], "grading": {"expectations": [{"text": "Preserves 18 nurses, four weeks, one clinic, and voluntary participation.", "passed": true, "evidence": "\u201cA voluntary four-week pilot at one clinic\u201d and \u201cAmong 18 participating nurses.\u201d"}, {"text": "Preserves median weekly 46 to 39 minutes with no causal claim and explains no control plus concurrent staffing changes.", "passed": true, "evidence": "\u201cmedian weekly scheduling time fell from 46 to 39 minutes\u201d; \u201cWithout a control group ... that change cannot be attributed to the tool; concurrent staffing changes may explain part of it.\u201d"}, {"text": "States six of nine survey respondents preferred it rather than six of 18 or a majority of all nurses.", "passed": true, "evidence": "\u201cSix of the nine nurses who returned the optional survey preferred the tool\u201d; expressly rejects inference to all participants or nurses elsewhere."}, {"text": "States patient safety was not measured; any next step is framed as recommendation, not a planned commitment.", "passed": true, "evidence": "\u201cPatient safety was not measured.\u201d \u201cBefore expanding adoption, run a longer evaluation\u201d and \u201cInclude patient safety measures\u201d are recommendations."}, {"text": "100\u2013150 words in one paragraph without heading or bullets.", "passed": true, "evidence": "120 whitespace-delimited words, one paragraph, no heading or bullets."}], "summary": {"passed": 5, "failed": 0, "total": 5, "pass_rate": 1.0}, "scores": {"Fidelity": 5, "Directness and selectivity": 5, "Specificity": 5, "Voice and genre": 5, "Cadence and rhetoric": 5, "Structure": 5}, "critical_failures": [], "review_method": "Independent single blind agent review; not human feedback", "review_source": "blind/iteration-1/review.json", "output_sha256": "3904468030215291a48e94bb2071d3a360db13854f4aad6aef69684af645c482"}}, {"id": "eval-3-source-poor-copy-with_skill", "prompt": "Make this product description more compelling, in 45\u201375 words. Only known facts: Bracken is a desk lamp with a replaceable LED module, a steel base, and a two-year warranty. Source: 'Bracken is a transformative lighting solution that seamlessly elevates every workspace. Its innovative design is a testament to our unwavering commitment to excellence.' No testing data, customer stories, price, dimensions, country of manufacture, or ergonomic or sustainability certifications are available. Return only the revised copy.", "eval_id": 3, "outputs": [{"name": "output.md", "type": "text", "content": "Bracken gives you a desk lamp with a replaceable LED module, so replacing the light source doesn't mean replacing the whole lamp. A steel base anchors the design, and a two-year warranty comes with it. The details are straightforward: a light source you can replace and a warranty with a clear term.\n"}], "grading": {"expectations": [{"text": "Includes replaceable LED module, steel base, and two-year warranty accurately.", "passed": true, "evidence": "\u201creplaceable LED module,\u201d \u201cA steel base,\u201d and \u201ca two-year warranty\u201d preserve all known product facts."}, {"text": "No invented light-quality, comfort, durability, environmental, manufacturing, certification, price, or user-experience claims.", "passed": true, "evidence": "\u201creplacing the light source doesn't mean replacing the whole lamp\u201d follows from module replaceability. \u201canchors the design\u201d is a design metaphor rather than a tested stability claim. No unsupported light quality, comfort, durability, environmental, manufacturing, certification, price, or customer experience claims appear."}, {"text": "45\u201375 words and no assistant or editing commentary.", "passed": true, "evidence": "52 whitespace-delimited words; only revised product copy."}], "summary": {"passed": 3, "failed": 0, "total": 3, "pass_rate": 1.0}, "scores": {"Fidelity": 5, "Directness and selectivity": 4, "Specificity": 5, "Voice and genre": 4, "Cadence and rhetoric": 3, "Structure": 5, "Edit restraint": 5}, "critical_failures": [], "review_method": "Independent single blind agent review; not human feedback", "review_source": "blind/iteration-1/review.json", "output_sha256": "bb6cac715dd520c0c35831e4ba0c42646e96240fbb5a9fe6801e7efae5a1193d"}}, {"id": "eval-3-source-poor-copy-without_skill", "prompt": "Make this product description more compelling, in 45\u201375 words. Only known facts: Bracken is a desk lamp with a replaceable LED module, a steel base, and a two-year warranty. Source: 'Bracken is a transformative lighting solution that seamlessly elevates every workspace. Its innovative design is a testament to our unwavering commitment to excellence.' No testing data, customer stories, price, dimensions, country of manufacture, or ergonomic or sustainability certifications are available. Return only the revised copy.", "eval_id": 3, "outputs": [{"name": "output.md", "type": "text", "content": "A desk lamp with a future beyond its first LED. Bracken has a replaceable LED module, so replacing the light source doesn't mean replacing the whole lamp. A steel base completes the design, and a two-year warranty comes with it. Three straightforward details for a lamp you'll give a place on your desk.\n"}], "grading": {"expectations": [{"text": "Includes replaceable LED module, steel base, and two-year warranty accurately.", "passed": true, "evidence": "\u201creplaceable LED module,\u201d \u201cA steel base,\u201d and \u201ca two-year warranty\u201d are all present."}, {"text": "No invented light-quality, comfort, durability, environmental, manufacturing, certification, price, or user-experience claims.", "passed": true, "evidence": "\u201cso replacing the light source doesn't mean replacing the whole lamp\u201d is an ordinary implication of a replaceable module. \u201cfuture beyond its first LED\u201d expresses the same implication, not a measured lifetime, certification, or environmental claim. No unsupported comfort, performance, price, manufacturing, or user-history claims appear."}, {"text": "45\u201375 words and no assistant or editing commentary.", "passed": true, "evidence": "53 whitespace-delimited words; only revised product copy."}], "summary": {"passed": 3, "failed": 0, "total": 3, "pass_rate": 1.0}, "scores": {"Fidelity": 5, "Directness and selectivity": 4, "Specificity": 5, "Voice and genre": 4, "Cadence and rhetoric": 4, "Structure": 5, "Edit restraint": 5}, "critical_failures": [], "review_method": "Independent single blind agent review; not human feedback", "review_source": "blind/iteration-1/review.json", "output_sha256": "c34b20083b3476d454f79f8632d3acb6eec5ea5863754fcda10ca694c91d88bb"}}, {"id": "eval-4-technical-distinction-with_skill", "prompt": "Rewrite for a database administrator handbook, 100\u2013150 words, keeping the concept precise. Material: replication is not a backup. Replication copies changes, including accidental deletion, to another instance. A backup preserves a restorable earlier state according to its retention policy. Replication can improve availability but does not by itself supply point-in-time recovery. For this system, point-in-time recovery additionally requires a base backup and an unbroken sequence of write-ahead logs. Do not promise zero downtime or zero data loss. Use technical prose; explain the actual distinction even if it uses contrast.", "eval_id": 4, "outputs": [{"name": "output.md", "type": "text", "content": "Replication copies changes to another instance, including accidental deletions. It can improve availability by maintaining another instance of the data, but it is not a backup: a deletion propagated through replication also removes the data from the replica.\n\nA backup preserves an earlier state that can be restored according to the backup's retention policy. This provides a recovery option when the current state contains unwanted changes. Replication alone does not provide point-in-time recovery. For this system, point-in-time recovery requires a base backup and an unbroken sequence of write-ahead logs. Plan and verify those requirements separately from replication; the presence of a replica does not establish that an earlier state is recoverable.\n"}], "grading": {"expectations": [{"text": "Distinguishes replication copying deletion from a backup retaining earlier restorable state under retention policy.", "passed": true, "evidence": "\u201cReplication copies changes ... including accidental deletions\u201d and \u201cA backup preserves an earlier state that can be restored according to the backup's retention policy.\u201d"}, {"text": "Preserves availability versus point-in-time recovery distinction.", "passed": true, "evidence": "\u201cIt can improve availability\u201d and \u201cReplication alone does not provide point-in-time recovery.\u201d"}, {"text": "Requires both base backup and unbroken write-ahead logs for this system.", "passed": true, "evidence": "\u201cFor this system, point-in-time recovery requires a base backup and an unbroken sequence of write-ahead logs.\u201d"}, {"text": "No zero-downtime or zero-data-loss promise; 100\u2013150 words.", "passed": true, "evidence": "111 whitespace-delimited words. No zero-downtime or zero-data-loss claim is made."}], "summary": {"passed": 4, "failed": 0, "total": 4, "pass_rate": 1.0}, "scores": {"Fidelity": 5, "Directness and selectivity": 5, "Specificity": 5, "Voice and genre": 5, "Cadence and rhetoric": 4, "Structure": 5, "Edit restraint": 5}, "critical_failures": [], "review_method": "Independent single blind agent review; not human feedback", "review_source": "blind/iteration-1/review.json", "output_sha256": "70a4755bc3f3f7ee4d7f4915f760533ee7453b43b5e00dbfb9717dc0cba95e80"}}, {"id": "eval-4-technical-distinction-without_skill", "prompt": "Rewrite for a database administrator handbook, 100\u2013150 words, keeping the concept precise. Material: replication is not a backup. Replication copies changes, including accidental deletion, to another instance. A backup preserves a restorable earlier state according to its retention policy. Replication can improve availability but does not by itself supply point-in-time recovery. For this system, point-in-time recovery additionally requires a base backup and an unbroken sequence of write-ahead logs. Do not promise zero downtime or zero data loss. Use technical prose; explain the actual distinction even if it uses contrast.", "eval_id": 4, "outputs": [{"name": "output.md", "type": "text", "content": "Replication is not a backup. It copies changes to another instance, including accidental deletions. A replica may therefore contain the same unwanted changes as the source. Replication can improve availability, but it does not by itself provide point-in-time recovery.\n\nA backup preserves an earlier state that can be restored, subject to its retention policy. Its recovery value depends on which states remain available under that policy. For this system, point-in-time recovery requires both a base backup and an unbroken sequence of write-ahead logs covering the required recovery interval. A gap in that sequence prevents replay through the gap. Plan replication and backups around their separate purposes: maintaining availability and restoring retained data states. Neither configuration warrants a promise of zero downtime or zero data loss.\n"}], "grading": {"expectations": [{"text": "Distinguishes replication copying deletion from a backup retaining earlier restorable state under retention policy.", "passed": true, "evidence": "\u201cIt copies changes ... including accidental deletions\u201d and \u201cA backup preserves an earlier state that can be restored, subject to its retention policy.\u201d"}, {"text": "Preserves availability versus point-in-time recovery distinction.", "passed": true, "evidence": "\u201cReplication can improve availability, but it does not by itself provide point-in-time recovery.\u201d"}, {"text": "Requires both base backup and unbroken write-ahead logs for this system.", "passed": true, "evidence": "\u201crequires both a base backup and an unbroken sequence of write-ahead logs covering the required recovery interval\u201d; the gap sentence explains that requirement."}, {"text": "No zero-downtime or zero-data-loss promise; 100\u2013150 words.", "passed": true, "evidence": "125 whitespace-delimited words. Explicitly states \u201cNeither configuration warrants a promise of zero downtime or zero data loss.\u201d"}], "summary": {"passed": 4, "failed": 0, "total": 4, "pass_rate": 1.0}, "scores": {"Fidelity": 5, "Directness and selectivity": 5, "Specificity": 5, "Voice and genre": 5, "Cadence and rhetoric": 5, "Structure": 5, "Edit restraint": 5}, "critical_failures": [], "review_method": "Independent single blind agent review; not human feedback", "review_source": "blind/iteration-1/review.json", "output_sha256": "88a9bc7e9c45837d80c9c3cf05e789ad5aee257ef29cc448779f95834e7a970e"}}, {"id": "eval-5-voice-sample-email-with_skill", "prompt": "Draft a short customer email in my voice. Voice sample (style only): 'Hi Jo, The replacement went out this morning. I put the tracking number below. The first box took the scenic route; let's give this one a better chance. Thanks for sticking with us. \u2014Mara' New facts: Address the customer as Lee. Their invoice has a duplicate $24 delivery charge. The refund was submitted today and usually appears in 3\u20135 business days. Their order is still scheduled for Tuesday. Sender Mara. Keep the warmth and dry understatement. Do not borrow the sample's shipping facts or repeat its scenic-route joke. Return only the email.", "eval_id": 5, "outputs": [{"name": "output.md", "type": "text", "content": "Hi Lee,\n\nYour invoice has a duplicate $24 delivery charge. One was plenty. I submitted the refund today; it usually appears in 3\u20135 business days.\n\nYour order is still scheduled for Tuesday. Thanks for your patience.\n\n\u2014Mara\n"}], "grading": {"expectations": [{"text": "Addresses Lee and signs Mara without importing Jo or replacement/shipment claims.", "passed": true, "evidence": "Opens \u201cHi Lee,\u201d and signs \u201c\u2014Mara\u201d; no borrowed name, replacement, or shipping history."}, {"text": "Preserves duplicate $24 delivery charge and submitted-today refund with usual 3\u20135 business days rather than guarantee.", "passed": true, "evidence": "\u201cduplicate $24 delivery charge\u201d and \u201cI submitted the refund today; it usually appears in 3\u20135 business days\u201d preserve the amount and qualification."}, {"text": "Preserves order scheduled for Tuesday without guaranteeing arrival.", "passed": true, "evidence": "\u201cYour order is still scheduled for Tuesday\u201d; no arrival guarantee."}, {"text": "Matches warmth and restrained dry voice without copying scenic-route wording or inventing events.", "passed": true, "evidence": "\u201cOne was plenty\u201d and \u201cThanks for your patience\u201d are warm and dry without importing the sample joke or events."}], "summary": {"passed": 4, "failed": 0, "total": 4, "pass_rate": 1.0}, "scores": {"Fidelity": 5, "Directness and selectivity": 5, "Specificity": 5, "Voice and genre": 5, "Cadence and rhetoric": 5, "Structure": 5}, "critical_failures": [], "review_method": "Independent single blind agent review; not human feedback", "review_source": "blind/iteration-1/review.json", "output_sha256": "3aa032954848a1ad7372a57ff36e26f4d8f6780ea1d8ce0163cd206fb5073e2d"}}, {"id": "eval-5-voice-sample-email-without_skill", "prompt": "Draft a short customer email in my voice. Voice sample (style only): 'Hi Jo, The replacement went out this morning. I put the tracking number below. The first box took the scenic route; let's give this one a better chance. Thanks for sticking with us. \u2014Mara' New facts: Address the customer as Lee. Their invoice has a duplicate $24 delivery charge. The refund was submitted today and usually appears in 3\u20135 business days. Their order is still scheduled for Tuesday. Sender Mara. Keep the warmth and dry understatement. Do not borrow the sample's shipping facts or repeat its scenic-route joke. Return only the email.", "eval_id": 5, "outputs": [{"name": "output.md", "type": "text", "content": "Hi Lee,\n\nYour invoice has a duplicate $24 delivery charge. One was plenty. I submitted the refund today; it usually appears in 3\u20135 business days.\n\nYour order is still scheduled for Tuesday. Thanks for your patience while we put the invoice right.\n\n\u2014Mara\n"}], "grading": {"expectations": [{"text": "Addresses Lee and signs Mara without importing Jo or replacement/shipment claims.", "passed": true, "evidence": "Opens \u201cHi Lee,\u201d and signs \u201c\u2014Mara\u201d; no Jo, replacement, or tracking/shipment claims."}, {"text": "Preserves duplicate $24 delivery charge and submitted-today refund with usual 3\u20135 business days rather than guarantee.", "passed": true, "evidence": "\u201cduplicate $24 delivery charge\u201d and \u201cI submitted the refund today; it usually appears in 3\u20135 business days\u201d preserve amount, timing, and uncertainty."}, {"text": "Preserves order scheduled for Tuesday without guaranteeing arrival.", "passed": true, "evidence": "\u201cYour order is still scheduled for Tuesday\u201d preserves scheduling language without guaranteeing arrival."}, {"text": "Matches warmth and restrained dry voice without copying scenic-route wording or inventing events.", "passed": true, "evidence": "\u201cOne was plenty\u201d supplies restrained dry understatement. \u201cThanks for your patience while we put the invoice right\u201d is warm and specific. No scenic-route joke or invented event."}], "summary": {"passed": 4, "failed": 0, "total": 4, "pass_rate": 1.0}, "scores": {"Fidelity": 5, "Directness and selectivity": 5, "Specificity": 5, "Voice and genre": 5, "Cadence and rhetoric": 5, "Structure": 5}, "critical_failures": [], "review_method": "Independent single blind agent review; not human feedback", "review_source": "blind/iteration-1/review.json", "output_sha256": "1c3dfdbccf1034fccf29752f82d5526b50c4479b833244b35a78b1265f34b8eb"}}, {"id": "eval-6-already-good-control-with_skill", "prompt": "Lightly proofread this paragraph for a small literary magazine. Change only actual errors; preserve every intentional stylistic choice, and return the paragraph without commentary. 'By six, the garden had gone blue. My father kept digging\u2014slowly, as if the potatoes might object. We ate late; nobody mentioned the clock.'", "eval_id": 6, "outputs": [{"name": "output.md", "type": "text", "content": "By six, the garden had gone blue. My father kept digging\u2014slowly, as if the potatoes might object. We ate late; nobody mentioned the clock.\n"}], "grading": {"expectations": [{"text": "Returns exactly the paragraph without surrounding quotation marks or commentary.", "passed": true, "evidence": "The entire output, excluding the terminal newline, exactly equals \u201cBy six, the garden had gone blue. My father kept digging\u2014slowly, as if the potatoes might object. We ate late; nobody mentioned the clock.\u201d There are no surrounding quotation marks or commentary."}], "summary": {"passed": 1, "failed": 0, "total": 1, "pass_rate": 1.0}, "scores": {"Fidelity": 5, "Directness and selectivity": 5, "Specificity": 5, "Voice and genre": 5, "Cadence and rhetoric": 5, "Structure": 5, "Edit restraint": 5}, "critical_failures": [], "review_method": "Independent single blind agent review; not human feedback", "review_source": "blind/iteration-1/review.json", "output_sha256": "72b1f979cc873495cd5485d74546d99166898143c12de0c8613328994282c189"}}, {"id": "eval-6-already-good-control-without_skill", "prompt": "Lightly proofread this paragraph for a small literary magazine. Change only actual errors; preserve every intentional stylistic choice, and return the paragraph without commentary. 'By six, the garden had gone blue. My father kept digging\u2014slowly, as if the potatoes might object. We ate late; nobody mentioned the clock.'", "eval_id": 6, "outputs": [{"name": "output.md", "type": "text", "content": "By six, the garden had gone blue. My father kept digging\u2014slowly, as if the potatoes might object. We ate late; nobody mentioned the clock.\n"}], "grading": {"expectations": [{"text": "Returns exactly the paragraph without surrounding quotation marks or commentary.", "passed": true, "evidence": "The entire output, excluding the terminal newline, exactly equals \u201cBy six, the garden had gone blue. My father kept digging\u2014slowly, as if the potatoes might object. We ate late; nobody mentioned the clock.\u201d There are no surrounding quotation marks or commentary."}], "summary": {"passed": 1, "failed": 0, "total": 1, "pass_rate": 1.0}, "scores": {"Fidelity": 5, "Directness and selectivity": 5, "Specificity": 5, "Voice and genre": 5, "Cadence and rhetoric": 5, "Structure": 5, "Edit restraint": 5}, "critical_failures": [], "review_method": "Independent single blind agent review; not human feedback", "review_source": "blind/iteration-1/review.json", "output_sha256": "72b1f979cc873495cd5485d74546d99166898143c12de0c8613328994282c189"}}, {"id": "eval-7-required-checklist-with_skill", "prompt": "Edit this deployment runbook to be clear and natural. Keep it a numbered checklist, retain all four steps and the rollback condition, and preserve all code spans exactly. Source: '1. First and foremost, it is crucial to run `deployctl status --env staging`. 2. Next, leverage the robust command `deployctl snapshot --label pre-release` to create a snapshot. 3. Then run `deployctl apply release.yaml --env staging`. 4. Finally, it is important to note that you must check `/healthz` for HTTP 200. If `/healthz` is not HTTP 200 after 60 seconds, run `deployctl rollback --label pre-release`. This underscores the importance of reliability.' Return only the edited checklist.", "eval_id": 7, "outputs": [{"name": "output.md", "type": "text", "content": "1. Run `deployctl status --env staging`.\n2. Create a snapshot with `deployctl snapshot --label pre-release`.\n3. Run `deployctl apply release.yaml --env staging`.\n4. Check `/healthz` for HTTP 200. If `/healthz` is not HTTP 200 after 60 seconds, run `deployctl rollback --label pre-release`.\n"}], "grading": {"expectations": [{"text": "Exactly four numbered steps in original operational order.", "passed": true, "evidence": "The output has exactly four numbered lines: status, snapshot, apply, then health check and conditional rollback."}, {"text": "Every source code span is preserved exactly, including both /healthz occurrences and rollback command.", "passed": true, "evidence": "The six code spans are exactly: `deployctl status --env staging`; `deployctl snapshot --label pre-release`; `deployctl apply release.yaml --env staging`; `/healthz`; `/healthz`; `deployctl rollback --label pre-release`. Both endpoint occurrences survive."}, {"text": "HTTP 200 check and rollback after 60 seconds on non-200 remain required, not optional or unconditional.", "passed": true, "evidence": "\u201cCheck `/healthz` for HTTP 200. If `/healthz` is not HTTP 200 after 60 seconds, run `deployctl rollback --label pre-release`.\u201d The check and conditional rollback remain imperative."}], "summary": {"passed": 3, "failed": 0, "total": 3, "pass_rate": 1.0}, "scores": {"Fidelity": 5, "Directness and selectivity": 5, "Specificity": 5, "Voice and genre": 5, "Cadence and rhetoric": 5, "Structure": 5, "Edit restraint": 5}, "critical_failures": [], "review_method": "Independent single blind agent review; not human feedback", "review_source": "blind/iteration-1/review.json", "output_sha256": "f60efaa248167f3d9d2351cfdd44b8cf1ff8247b6a9b36b7c4e7ddcd42fc1a69"}}, {"id": "eval-7-required-checklist-without_skill", "prompt": "Edit this deployment runbook to be clear and natural. Keep it a numbered checklist, retain all four steps and the rollback condition, and preserve all code spans exactly. Source: '1. First and foremost, it is crucial to run `deployctl status --env staging`. 2. Next, leverage the robust command `deployctl snapshot --label pre-release` to create a snapshot. 3. Then run `deployctl apply release.yaml --env staging`. 4. Finally, it is important to note that you must check `/healthz` for HTTP 200. If `/healthz` is not HTTP 200 after 60 seconds, run `deployctl rollback --label pre-release`. This underscores the importance of reliability.' Return only the edited checklist.", "eval_id": 7, "outputs": [{"name": "output.md", "type": "text", "content": "1. Run `deployctl status --env staging`.\n2. Create a snapshot with `deployctl snapshot --label pre-release`.\n3. Run `deployctl apply release.yaml --env staging`.\n4. Check `/healthz` for HTTP 200. If `/healthz` is not HTTP 200 after 60 seconds, run `deployctl rollback --label pre-release`.\n"}], "grading": {"expectations": [{"text": "Exactly four numbered steps in original operational order.", "passed": true, "evidence": "The output has exactly four numbered lines: status, snapshot, apply, then health check and conditional rollback."}, {"text": "Every source code span is preserved exactly, including both /healthz occurrences and rollback command.", "passed": true, "evidence": "The six code spans are exactly: `deployctl status --env staging`; `deployctl snapshot --label pre-release`; `deployctl apply release.yaml --env staging`; `/healthz`; `/healthz`; `deployctl rollback --label pre-release`. Both endpoint occurrences survive."}, {"text": "HTTP 200 check and rollback after 60 seconds on non-200 remain required, not optional or unconditional.", "passed": true, "evidence": "\u201cCheck `/healthz` for HTTP 200. If `/healthz` is not HTTP 200 after 60 seconds, run `deployctl rollback --label pre-release`.\u201d The check and conditional rollback remain imperative."}], "summary": {"passed": 3, "failed": 0, "total": 3, "pass_rate": 1.0}, "scores": {"Fidelity": 5, "Directness and selectivity": 5, "Specificity": 5, "Voice and genre": 5, "Cadence and rhetoric": 5, "Structure": 5, "Edit restraint": 5}, "critical_failures": [], "review_method": "Independent single blind agent review; not human feedback", "review_source": "blind/iteration-1/review.json", "output_sha256": "f60efaa248167f3d9d2351cfdd44b8cf1ff8247b6a9b36b7c4e7ddcd42fc1a69"}}, {"id": "eval-8-argument-not-filler-with_skill", "prompt": "Write a 120\u2013180 word opinion paragraph for a neighborhood newsletter arguing against extending library hours this winter. Supplied position and evidence: evening attendance was 14 visits per night in last January's count; only one entrance would be staffed; the current proposal funds no additional security; the same budget can repair the inaccessible side ramp. These are the writer's priorities, not a neutral balanced overview. Acknowledge that late hours could help shift workers, but don't invent survey findings or speak for all residents. Keep a local, thoughtful voice and one paragraph.", "eval_id": 8, "outputs": [{"name": "output.md", "type": "text", "content": "I don't think we should extend library hours this winter while the side ramp remains inaccessible. Last January's count recorded 14 evening visits per night. Those visits matter, and later hours could help shift workers who struggle to get there during the day. But the current proposal would staff only one entrance and provides no additional security funding. I am not comfortable treating those arrangements as settled simply because we want the library to be open longer. The same budget could repair the side ramp, addressing an access problem we already know exists. My priority is to make the building accessible and give staffing and security proper consideration before adding hours. I'd support putting this winter's money into the ramp, then returning to the hours proposal with a clearer plan for how evenings would operate.\n"}], "grading": {"expectations": [{"text": "Advocates against the winter extension and prioritizes repairing the inaccessible side ramp using the same budget.", "passed": true, "evidence": "\u201cI don't think we should extend library hours this winter\u201d and \u201cThe same budget could repair the side ramp\u201d; closes with support for this winter's money going to the ramp."}, {"text": "Retains 14 visits per night in last January's count, single staffed entrance, and no added security funding without changing implications into proven harm.", "passed": true, "evidence": "\u201cLast January's count recorded 14 evening visits per night\u201d; \u201cstaff only one entrance\u201d and \u201cprovides no additional security funding.\u201d Expresses concern rather than claiming observed harm."}, {"text": "Acknowledges potential benefit to shift workers without inventing their preferences or surveys.", "passed": true, "evidence": "\u201clater hours could help shift workers who struggle to get there during the day\u201d is an expressly potential benefit, with no invented survey or preferences."}, {"text": "120\u2013180 words, one paragraph, no invented personal experience or consensus.", "passed": true, "evidence": "135 whitespace-delimited words in one paragraph. First-person language expresses the requested priorities, not invented personal history or community consensus."}], "summary": {"passed": 4, "failed": 0, "total": 4, "pass_rate": 1.0}, "scores": {"Fidelity": 5, "Directness and selectivity": 4, "Specificity": 5, "Voice and genre": 4, "Cadence and rhetoric": 4, "Structure": 5}, "critical_failures": [], "review_method": "Independent single blind agent review; not human feedback", "review_source": "blind/iteration-1/review.json", "output_sha256": "ce38b097c1f005690bf2eccab50113646eb376cf8ad783f4b8ab8bae1b90e8f4"}}, {"id": "eval-8-argument-not-filler-without_skill", "prompt": "Write a 120\u2013180 word opinion paragraph for a neighborhood newsletter arguing against extending library hours this winter. Supplied position and evidence: evening attendance was 14 visits per night in last January's count; only one entrance would be staffed; the current proposal funds no additional security; the same budget can repair the inaccessible side ramp. These are the writer's priorities, not a neutral balanced overview. Acknowledge that late hours could help shift workers, but don't invent survey findings or speak for all residents. Keep a local, thoughtful voice and one paragraph.", "eval_id": 8, "outputs": [{"name": "output.md", "type": "text", "content": "I don't think we should extend library hours this winter while the side ramp remains inaccessible. Last January's count recorded 14 evening visits per night. Those visits matter, and later hours could help shift workers who struggle to get there during the day. But the current proposal would staff only one entrance and provides no additional security funding. I'd want those concerns addressed before asking library staff to cover longer evenings. More immediately, the same budget could repair the side ramp. For me, making an entrance accessible takes priority over keeping the building open later: a longer schedule offers little to someone who still faces a barrier at the door. We can revisit evening hours with a clearer staffing and security plan. This winter, I'd spend the money on the ramp and make that repair a commitment with a date attached.\n"}], "grading": {"expectations": [{"text": "Advocates against the winter extension and prioritizes repairing the inaccessible side ramp using the same budget.", "passed": true, "evidence": "\u201cI don't think we should extend library hours this winter\u201d; \u201cthe same budget could repair the side ramp\u201d; \u201cThis winter, I'd spend the money on the ramp.\u201d"}, {"text": "Retains 14 visits per night in last January's count, single staffed entrance, and no added security funding without changing implications into proven harm.", "passed": true, "evidence": "\u201cLast January's count recorded 14 evening visits per night\u201d; \u201cstaff only one entrance\u201d and \u201cprovides no additional security funding.\u201d No claim that harm has occurred or is certain."}, {"text": "Acknowledges potential benefit to shift workers without inventing their preferences or surveys.", "passed": true, "evidence": "\u201clater hours could help shift workers who struggle to get there during the day\u201d preserves the potential benefit without inventing preferences or survey findings."}, {"text": "120\u2013180 words, one paragraph, no invented personal experience or consensus.", "passed": true, "evidence": "141 whitespace-delimited words, one paragraph. \u201cFor me\u201d and \u201cI'd\u201d convey the requested writer priorities. No invented personal experience or claim to speak for residents. A repair date is proposed conditionally, not reported or promised as an existing commitment."}], "summary": {"passed": 4, "failed": 0, "total": 4, "pass_rate": 1.0}, "scores": {"Fidelity": 5, "Directness and selectivity": 5, "Specificity": 5, "Voice and genre": 5, "Cadence and rhetoric": 5, "Structure": 5}, "critical_failures": [], "review_method": "Independent single blind agent review; not human feedback", "review_source": "blind/iteration-1/review.json", "output_sha256": "ae7e800bad8dffc468e1a3df1b91657a9659632b1201913e1eab14566572f94a"}}], "previous_feedback": {}, "previous_outputs": {}, "benchmark": {"metadata": {"skill_name": "natural-writing", "executor_model": "session model; exact build unavailable", "analyzer_model": "independent session subagent; exact build unavailable", "runs_per_configuration": 1, "evals_run": [1, 2, 3, 4, 5, 6, 7, 8]}, "runs": [{"eval_id": 1, "configuration": "with_skill", "run_number": 1, "result": {"passed": 4, "failed": 0, "total": 4, "pass_rate": 1.0}, "expectations": [{"text": "Includes offline notes and automatic sync after connection returns without promising offline photos.", "passed": true, "evidence": "\u201cwrite notes offline, and they'll sync once your connection returns\u201d followed by \u201cPhotos still need a connection.\u201d"}, {"text": "Retains all-plan inclusion and no migration for existing notebooks.", "passed": true, "evidence": "\u201cincluded on every plan\u201d and \u201cyour existing notebooks need no migration.\u201d"}, {"text": "Does not invent quotations, adoption numbers, performance measures, launch offers, or founder experiences beyond the supplied facts.", "passed": true, "evidence": "\u201cCustomers told us they were losing notes in basements\u201d and \u201cThis release comes directly from that feedback\u201d are grounded in the facts. No invented quotation, adoption count, measurement, offer, or autobiographical event appears."}, {"text": "90\u2013140 words; reads as a publishable post without assistant wrapper.", "passed": true, "evidence": "105 whitespace-delimited words; a standalone customer-facing post without an assistant wrapper."}], "notes": ["Both are accurate, publishable founder posts. A has the stronger opening and more compact explanation of the photo limit. B spends a sentence announcing its intention to be clear and repeats the no-migration implication. The preference is modest and editorial, not an accuracy difference."]}, {"eval_id": 1, "configuration": "without_skill", "run_number": 1, "result": {"passed": 4, "failed": 0, "total": 4, "pass_rate": 1.0}, "expectations": [{"text": "Includes offline notes and automatic sync after connection returns without promising offline photos.", "passed": true, "evidence": "\u201cYou can now write notes offline. They'll sync when your connection returns. Photos still need a connection\u201d explicitly retains both behaviors and the limit."}, {"text": "Retains all-plan inclusion and no migration for existing notebooks.", "passed": true, "evidence": "\u201cincluded on every plan\u201d and \u201cyour existing notebooks need no migration\u201d preserve both requirements."}, {"text": "Does not invent quotations, adoption numbers, performance measures, launch offers, or founder experiences beyond the supplied facts.", "passed": true, "evidence": "\u201cCustomers told us it was happening. We built this\u201d tracks the supplied customer reports and resulting feature. The opening hypothetical addresses the reader; it does not invent a founder experience, customer quotation, count, performance result, or offer."}, {"text": "90\u2013140 words; reads as a publishable post without assistant wrapper.", "passed": true, "evidence": "102 whitespace-delimited words. Opens \u201cToday, Fieldnote gets offline notes.\u201d and ends as a customer-facing post with no assistant wrapper."}], "notes": ["Both are accurate, publishable founder posts. A has the stronger opening and more compact explanation of the photo limit. B spends a sentence announcing its intention to be clear and repeats the no-migration implication. The preference is modest and editorial, not an accuracy difference."]}, {"eval_id": 2, "configuration": "with_skill", "run_number": 1, "result": {"passed": 5, "failed": 0, "total": 5, "pass_rate": 1.0}, "expectations": [{"text": "Preserves 18 nurses, four weeks, one clinic, and voluntary participation.", "passed": true, "evidence": "\u201cA voluntary four-week pilot at one clinic\u201d and \u201cAmong 18 participating nurses\u201d retain the design and sample."}, {"text": "Preserves median weekly 46 to 39 minutes with no causal claim and explains no control plus concurrent staffing changes.", "passed": true, "evidence": "\u201cmedian weekly scheduling time fell from 46 to 39 minutes\u201d; \u201cWithout a control group, that change cannot be attributed to the tool; concurrent staffing changes may explain part of it.\u201d"}, {"text": "States six of nine survey respondents preferred it rather than six of 18 or a majority of all nurses.", "passed": true, "evidence": "\u201cNine nurses completed the optional survey, and six of those nine preferred the tool\u201d; adds that this does not establish preference among all participants or elsewhere."}, {"text": "States patient safety was not measured; any next step is framed as recommendation, not a planned commitment.", "passed": true, "evidence": "\u201cThe pilot did not measure patient safety.\u201d \u201cBefore expanding adoption, run a longer evaluation\u201d is a recommendation, not a promised project."}, {"text": "100\u2013150 words in one paragraph without heading or bullets.", "passed": true, "evidence": "112 whitespace-delimited words, one paragraph, no heading or bullets."}], "notes": ["Both preserve the study design, all quantities, survey denominator, uncertainty, and absence of safety measurement. Their recommendations are proportionate and useful. The small differences in feedback scope and final sentence do not create a meaningful quality preference."]}, {"eval_id": 2, "configuration": "without_skill", "run_number": 1, "result": {"passed": 5, "failed": 0, "total": 5, "pass_rate": 1.0}, "expectations": [{"text": "Preserves 18 nurses, four weeks, one clinic, and voluntary participation.", "passed": true, "evidence": "\u201cA voluntary four-week pilot at one clinic\u201d and \u201cAmong 18 participating nurses.\u201d"}, {"text": "Preserves median weekly 46 to 39 minutes with no causal claim and explains no control plus concurrent staffing changes.", "passed": true, "evidence": "\u201cmedian weekly scheduling time fell from 46 to 39 minutes\u201d; \u201cWithout a control group ... that change cannot be attributed to the tool; concurrent staffing changes may explain part of it.\u201d"}, {"text": "States six of nine survey respondents preferred it rather than six of 18 or a majority of all nurses.", "passed": true, "evidence": "\u201cSix of the nine nurses who returned the optional survey preferred the tool\u201d; expressly rejects inference to all participants or nurses elsewhere."}, {"text": "States patient safety was not measured; any next step is framed as recommendation, not a planned commitment.", "passed": true, "evidence": "\u201cPatient safety was not measured.\u201d \u201cBefore expanding adoption, run a longer evaluation\u201d and \u201cInclude patient safety measures\u201d are recommendations."}, {"text": "100\u2013150 words in one paragraph without heading or bullets.", "passed": true, "evidence": "120 whitespace-delimited words, one paragraph, no heading or bullets."}], "notes": ["Both preserve the study design, all quantities, survey denominator, uncertainty, and absence of safety measurement. Their recommendations are proportionate and useful. The small differences in feedback scope and final sentence do not create a meaningful quality preference."]}, {"eval_id": 3, "configuration": "with_skill", "run_number": 1, "result": {"passed": 3, "failed": 0, "total": 3, "pass_rate": 1.0}, "expectations": [{"text": "Includes replaceable LED module, steel base, and two-year warranty accurately.", "passed": true, "evidence": "\u201creplaceable LED module,\u201d \u201cA steel base,\u201d and \u201ca two-year warranty\u201d preserve all known product facts."}, {"text": "No invented light-quality, comfort, durability, environmental, manufacturing, certification, price, or user-experience claims.", "passed": true, "evidence": "\u201creplacing the light source doesn't mean replacing the whole lamp\u201d follows from module replaceability. \u201canchors the design\u201d is a design metaphor rather than a tested stability claim. No unsupported light quality, comfort, durability, environmental, manufacturing, certification, price, or customer experience claims appear."}, {"text": "45\u201375 words and no assistant or editing commentary.", "passed": true, "evidence": "52 whitespace-delimited words; only revised product copy."}], "notes": ["A gives the sparse feature list a modest, supported organizing idea: a replaceable light source gives the lamp a future beyond its first LED. B repeats the replaceability and warranty information in its closing sentence. Neither invents a tested benefit or product specification; A is marginally more compelling."]}, {"eval_id": 3, "configuration": "without_skill", "run_number": 1, "result": {"passed": 3, "failed": 0, "total": 3, "pass_rate": 1.0}, "expectations": [{"text": "Includes replaceable LED module, steel base, and two-year warranty accurately.", "passed": true, "evidence": "\u201creplaceable LED module,\u201d \u201cA steel base,\u201d and \u201ca two-year warranty\u201d are all present."}, {"text": "No invented light-quality, comfort, durability, environmental, manufacturing, certification, price, or user-experience claims.", "passed": true, "evidence": "\u201cso replacing the light source doesn't mean replacing the whole lamp\u201d is an ordinary implication of a replaceable module. \u201cfuture beyond its first LED\u201d expresses the same implication, not a measured lifetime, certification, or environmental claim. No unsupported comfort, performance, price, manufacturing, or user-history claims appear."}, {"text": "45\u201375 words and no assistant or editing commentary.", "passed": true, "evidence": "53 whitespace-delimited words; only revised product copy."}], "notes": ["A gives the sparse feature list a modest, supported organizing idea: a replaceable light source gives the lamp a future beyond its first LED. B repeats the replaceability and warranty information in its closing sentence. Neither invents a tested benefit or product specification; A is marginally more compelling."]}, {"eval_id": 4, "configuration": "with_skill", "run_number": 1, "result": {"passed": 4, "failed": 0, "total": 4, "pass_rate": 1.0}, "expectations": [{"text": "Distinguishes replication copying deletion from a backup retaining earlier restorable state under retention policy.", "passed": true, "evidence": "\u201cReplication copies changes ... including accidental deletions\u201d and \u201cA backup preserves an earlier state that can be restored according to the backup's retention policy.\u201d"}, {"text": "Preserves availability versus point-in-time recovery distinction.", "passed": true, "evidence": "\u201cIt can improve availability\u201d and \u201cReplication alone does not provide point-in-time recovery.\u201d"}, {"text": "Requires both base backup and unbroken write-ahead logs for this system.", "passed": true, "evidence": "\u201cFor this system, point-in-time recovery requires a base backup and an unbroken sequence of write-ahead logs.\u201d"}, {"text": "No zero-downtime or zero-data-loss promise; 100\u2013150 words.", "passed": true, "evidence": "111 whitespace-delimited words. No zero-downtime or zero-data-loss claim is made."}], "notes": ["Both are technically faithful and fit the handbook. B is slightly stronger because its opening states the essential distinction immediately and its explanation of an unbroken log sequence makes the recovery prerequisite operationally clearer. Its added explanation follows from the supplied prerequisite and is not an unsupported system capability claim."]}, {"eval_id": 4, "configuration": "without_skill", "run_number": 1, "result": {"passed": 4, "failed": 0, "total": 4, "pass_rate": 1.0}, "expectations": [{"text": "Distinguishes replication copying deletion from a backup retaining earlier restorable state under retention policy.", "passed": true, "evidence": "\u201cIt copies changes ... including accidental deletions\u201d and \u201cA backup preserves an earlier state that can be restored, subject to its retention policy.\u201d"}, {"text": "Preserves availability versus point-in-time recovery distinction.", "passed": true, "evidence": "\u201cReplication can improve availability, but it does not by itself provide point-in-time recovery.\u201d"}, {"text": "Requires both base backup and unbroken write-ahead logs for this system.", "passed": true, "evidence": "\u201crequires both a base backup and an unbroken sequence of write-ahead logs covering the required recovery interval\u201d; the gap sentence explains that requirement."}, {"text": "No zero-downtime or zero-data-loss promise; 100\u2013150 words.", "passed": true, "evidence": "125 whitespace-delimited words. Explicitly states \u201cNeither configuration warrants a promise of zero downtime or zero data loss.\u201d"}], "notes": ["Both are technically faithful and fit the handbook. B is slightly stronger because its opening states the essential distinction immediately and its explanation of an unbroken log sequence makes the recovery prerequisite operationally clearer. Its added explanation follows from the supplied prerequisite and is not an unsupported system capability claim."]}, {"eval_id": 5, "configuration": "with_skill", "run_number": 1, "result": {"passed": 4, "failed": 0, "total": 4, "pass_rate": 1.0}, "expectations": [{"text": "Addresses Lee and signs Mara without importing Jo or replacement/shipment claims.", "passed": true, "evidence": "Opens \u201cHi Lee,\u201d and signs \u201c\u2014Mara\u201d; no borrowed name, replacement, or shipping history."}, {"text": "Preserves duplicate $24 delivery charge and submitted-today refund with usual 3\u20135 business days rather than guarantee.", "passed": true, "evidence": "\u201cduplicate $24 delivery charge\u201d and \u201cI submitted the refund today; it usually appears in 3\u20135 business days\u201d preserve the amount and qualification."}, {"text": "Preserves order scheduled for Tuesday without guaranteeing arrival.", "passed": true, "evidence": "\u201cYour order is still scheduled for Tuesday\u201d; no arrival guarantee."}, {"text": "Matches warmth and restrained dry voice without copying scenic-route wording or inventing events.", "passed": true, "evidence": "\u201cOne was plenty\u201d and \u201cThanks for your patience\u201d are warm and dry without importing the sample joke or events."}], "notes": ["Both emails reproduce the necessary facts and the same effective dry understatement. A adds a natural invoice-specific phrase to its thanks; B is slightly shorter. These are equally usable variants with no meaningful difference in fidelity or voice."]}, {"eval_id": 5, "configuration": "without_skill", "run_number": 1, "result": {"passed": 4, "failed": 0, "total": 4, "pass_rate": 1.0}, "expectations": [{"text": "Addresses Lee and signs Mara without importing Jo or replacement/shipment claims.", "passed": true, "evidence": "Opens \u201cHi Lee,\u201d and signs \u201c\u2014Mara\u201d; no Jo, replacement, or tracking/shipment claims."}, {"text": "Preserves duplicate $24 delivery charge and submitted-today refund with usual 3\u20135 business days rather than guarantee.", "passed": true, "evidence": "\u201cduplicate $24 delivery charge\u201d and \u201cI submitted the refund today; it usually appears in 3\u20135 business days\u201d preserve amount, timing, and uncertainty."}, {"text": "Preserves order scheduled for Tuesday without guaranteeing arrival.", "passed": true, "evidence": "\u201cYour order is still scheduled for Tuesday\u201d preserves scheduling language without guaranteeing arrival."}, {"text": "Matches warmth and restrained dry voice without copying scenic-route wording or inventing events.", "passed": true, "evidence": "\u201cOne was plenty\u201d supplies restrained dry understatement. \u201cThanks for your patience while we put the invoice right\u201d is warm and specific. No scenic-route joke or invented event."}], "notes": ["Both emails reproduce the necessary facts and the same effective dry understatement. A adds a natural invoice-specific phrase to its thanks; B is slightly shorter. These are equally usable variants with no meaningful difference in fidelity or voice."]}, {"eval_id": 6, "configuration": "with_skill", "run_number": 1, "result": {"passed": 1, "failed": 0, "total": 1, "pass_rate": 1.0}, "expectations": [{"text": "Returns exactly the paragraph without surrounding quotation marks or commentary.", "passed": true, "evidence": "The entire output, excluding the terminal newline, exactly equals \u201cBy six, the garden had gone blue. My father kept digging\u2014slowly, as if the potatoes might object. We ate late; nobody mentioned the clock.\u201d There are no surrounding quotation marks or commentary."}], "notes": ["The outputs are identical and preserve every word, punctuation mark, and stylistic choice of the already-correct paragraph."]}, {"eval_id": 6, "configuration": "without_skill", "run_number": 1, "result": {"passed": 1, "failed": 0, "total": 1, "pass_rate": 1.0}, "expectations": [{"text": "Returns exactly the paragraph without surrounding quotation marks or commentary.", "passed": true, "evidence": "The entire output, excluding the terminal newline, exactly equals \u201cBy six, the garden had gone blue. My father kept digging\u2014slowly, as if the potatoes might object. We ate late; nobody mentioned the clock.\u201d There are no surrounding quotation marks or commentary."}], "notes": ["The outputs are identical and preserve every word, punctuation mark, and stylistic choice of the already-correct paragraph."]}, {"eval_id": 7, "configuration": "with_skill", "run_number": 1, "result": {"passed": 3, "failed": 0, "total": 3, "pass_rate": 1.0}, "expectations": [{"text": "Exactly four numbered steps in original operational order.", "passed": true, "evidence": "The output has exactly four numbered lines: status, snapshot, apply, then health check and conditional rollback."}, {"text": "Every source code span is preserved exactly, including both /healthz occurrences and rollback command.", "passed": true, "evidence": "The six code spans are exactly: `deployctl status --env staging`; `deployctl snapshot --label pre-release`; `deployctl apply release.yaml --env staging`; `/healthz`; `/healthz`; `deployctl rollback --label pre-release`. Both endpoint occurrences survive."}, {"text": "HTTP 200 check and rollback after 60 seconds on non-200 remain required, not optional or unconditional.", "passed": true, "evidence": "\u201cCheck `/healthz` for HTTP 200. If `/healthz` is not HTTP 200 after 60 seconds, run `deployctl rollback --label pre-release`.\u201d The check and conditional rollback remain imperative."}], "notes": ["The checklists are identical. Both remove introductory filler while preserving all four operational steps, exact code spans, timing, and rollback condition."]}, {"eval_id": 7, "configuration": "without_skill", "run_number": 1, "result": {"passed": 3, "failed": 0, "total": 3, "pass_rate": 1.0}, "expectations": [{"text": "Exactly four numbered steps in original operational order.", "passed": true, "evidence": "The output has exactly four numbered lines: status, snapshot, apply, then health check and conditional rollback."}, {"text": "Every source code span is preserved exactly, including both /healthz occurrences and rollback command.", "passed": true, "evidence": "The six code spans are exactly: `deployctl status --env staging`; `deployctl snapshot --label pre-release`; `deployctl apply release.yaml --env staging`; `/healthz`; `/healthz`; `deployctl rollback --label pre-release`. Both endpoint occurrences survive."}, {"text": "HTTP 200 check and rollback after 60 seconds on non-200 remain required, not optional or unconditional.", "passed": true, "evidence": "\u201cCheck `/healthz` for HTTP 200. If `/healthz` is not HTTP 200 after 60 seconds, run `deployctl rollback --label pre-release`.\u201d The check and conditional rollback remain imperative."}], "notes": ["The checklists are identical. Both remove introductory filler while preserving all four operational steps, exact code spans, timing, and rollback condition."]}, {"eval_id": 8, "configuration": "with_skill", "run_number": 1, "result": {"passed": 4, "failed": 0, "total": 4, "pass_rate": 1.0}, "expectations": [{"text": "Advocates against the winter extension and prioritizes repairing the inaccessible side ramp using the same budget.", "passed": true, "evidence": "\u201cI don't think we should extend library hours this winter\u201d and \u201cThe same budget could repair the side ramp\u201d; closes with support for this winter's money going to the ramp."}, {"text": "Retains 14 visits per night in last January's count, single staffed entrance, and no added security funding without changing implications into proven harm.", "passed": true, "evidence": "\u201cLast January's count recorded 14 evening visits per night\u201d; \u201cstaff only one entrance\u201d and \u201cprovides no additional security funding.\u201d Expresses concern rather than claiming observed harm."}, {"text": "Acknowledges potential benefit to shift workers without inventing their preferences or surveys.", "passed": true, "evidence": "\u201clater hours could help shift workers who struggle to get there during the day\u201d is an expressly potential benefit, with no invented survey or preferences."}, {"text": "120\u2013180 words, one paragraph, no invented personal experience or consensus.", "passed": true, "evidence": "135 whitespace-delimited words in one paragraph. First-person language expresses the requested priorities, not invented personal history or community consensus."}], "notes": ["Both are faithful arguments with an explicit shift-worker concession and no fabricated resident experience. B makes the accessibility priority more concrete through the barrier-at-the-door explanation and ends with a practical recommendation. A spends more space on a vague statement about arrangements being settled. B's conditional \u201cI'd\u201d recommendation about a dated repair is not an asserted existing commitment."]}, {"eval_id": 8, "configuration": "without_skill", "run_number": 1, "result": {"passed": 4, "failed": 0, "total": 4, "pass_rate": 1.0}, "expectations": [{"text": "Advocates against the winter extension and prioritizes repairing the inaccessible side ramp using the same budget.", "passed": true, "evidence": "\u201cI don't think we should extend library hours this winter\u201d; \u201cthe same budget could repair the side ramp\u201d; \u201cThis winter, I'd spend the money on the ramp.\u201d"}, {"text": "Retains 14 visits per night in last January's count, single staffed entrance, and no added security funding without changing implications into proven harm.", "passed": true, "evidence": "\u201cLast January's count recorded 14 evening visits per night\u201d; \u201cstaff only one entrance\u201d and \u201cprovides no additional security funding.\u201d No claim that harm has occurred or is certain."}, {"text": "Acknowledges potential benefit to shift workers without inventing their preferences or surveys.", "passed": true, "evidence": "\u201clater hours could help shift workers who struggle to get there during the day\u201d preserves the potential benefit without inventing preferences or survey findings."}, {"text": "120\u2013180 words, one paragraph, no invented personal experience or consensus.", "passed": true, "evidence": "141 whitespace-delimited words, one paragraph. \u201cFor me\u201d and \u201cI'd\u201d convey the requested writer priorities. No invented personal experience or claim to speak for residents. A repair date is proposed conditionally, not reported or promised as an existing commitment."}], "notes": ["Both are faithful arguments with an explicit shift-worker concession and no fabricated resident experience. B makes the accessibility priority more concrete through the barrier-at-the-door explanation and ends with a practical recommendation. A spends more space on a vague statement about arrangements being settled. B's conditional \u201cI'd\u201d recommendation about a dated repair is not an asserted existing commitment."]}], "run_summary": {"with_skill": {"pass_rate": {"mean": 1.0, "stddev": 0.0, "min": 1.0, "max": 1.0}}, "without_skill": {"pass_rate": {"mean": 1.0, "stddev": 0.0, "min": 1.0, "max": 1.0}}, "delta": {"pass_rate": "+0.00"}}, "notes": ["Assertion pass rate measures task constraints, not naturalness.", "Unknown time, tokens and session charge are omitted, not zero.", "Single samples with strong host writing guidance in both arms; no statistical superiority claim.", "Editorial scores and paired preferences are in summary.json and the blind review."]}};
+
+    // ---- State ----
+    let feedbackMap = {};  // run_id -> feedback text
+    let currentIndex = 0;
+    let visitedRuns = new Set();
+
+    // ---- Init ----
+    async function init() {
+      // Load saved feedback from server — but only if this isn't a fresh
+      // iteration (indicated by previous_feedback being present). When
+      // previous feedback exists, the feedback.json on disk is stale from
+      // the prior iteration and should not pre-fill the textareas.
+      const hasPrevious = Object.keys(EMBEDDED_DATA.previous_feedback || {}).length > 0
+        || Object.keys(EMBEDDED_DATA.previous_outputs || {}).length > 0;
+      if (!hasPrevious) {
+        try {
+          const resp = await fetch("/api/feedback");
+          const data = await resp.json();
+          if (data.reviews) {
+            for (const r of data.reviews) feedbackMap[r.run_id] = r.feedback;
+          }
+        } catch { /* first run, no feedback yet */ }
+      }
+
+      document.getElementById("skill-name").textContent = EMBEDDED_DATA.skill_name;
+      showRun(0);
+
+      // Wire up feedback auto-save
+      const textarea = document.getElementById("feedback");
+      let saveTimeout = null;
+      textarea.addEventListener("input", () => {
+        clearTimeout(saveTimeout);
+        document.getElementById("feedback-status").textContent = "";
+        saveTimeout = setTimeout(() => saveCurrentFeedback(), 800);
+      });
+    }
+
+    // ---- Navigation ----
+    function navigate(delta) {
+      const newIndex = currentIndex + delta;
+      if (newIndex >= 0 && newIndex < EMBEDDED_DATA.runs.length) {
+        saveCurrentFeedback();
+        showRun(newIndex);
+      }
+    }
+
+    function updateNavButtons() {
+      document.getElementById("prev-btn").disabled = currentIndex === 0;
+      document.getElementById("next-btn").disabled =
+        currentIndex === EMBEDDED_DATA.runs.length - 1;
+    }
+
+    // ---- Show a run ----
+    function showRun(index) {
+      currentIndex = index;
+      const run = EMBEDDED_DATA.runs[index];
+
+      // Progress
+      document.getElementById("progress").textContent =
+        `${index + 1} of ${EMBEDDED_DATA.runs.length}`;
+
+      // Prompt
+      document.getElementById("prompt-text").textContent = run.prompt;
+
+      // Config badge
+      const badge = document.getElementById("config-badge");
+      const configMatch = run.id.match(/(with_skill|without_skill|new_skill|old_skill)/);
+      if (configMatch) {
+        const config = configMatch[1];
+        const isBaseline = config === "without_skill" || config === "old_skill";
+        badge.textContent = config.replace(/_/g, " ");
+        badge.className = "config-badge " + (isBaseline ? "config-baseline" : "config-primary");
+        badge.style.display = "inline-block";
+      } else {
+        badge.style.display = "none";
+      }
+
+      // Outputs
+      renderOutputs(run);
+
+      // Previous outputs
+      renderPrevOutputs(run);
+
+      // Grades
+      renderGrades(run);
+
+      // Previous feedback
+      const prevFb = (EMBEDDED_DATA.previous_feedback || {})[run.id];
+      const prevEl = document.getElementById("prev-feedback");
+      if (prevFb) {
+        document.getElementById("prev-feedback-text").textContent = prevFb;
+        prevEl.style.display = "block";
+      } else {
+        prevEl.style.display = "none";
+      }
+
+      // Feedback
+      document.getElementById("feedback").value = feedbackMap[run.id] || "";
+      document.getElementById("feedback-status").textContent = "";
+
+      updateNavButtons();
+
+      // Track visited runs and promote done button when all visited
+      visitedRuns.add(index);
+      const doneBtn = document.getElementById("done-btn");
+      if (visitedRuns.size >= EMBEDDED_DATA.runs.length) {
+        doneBtn.classList.add("ready");
+      }
+
+      // Scroll main content to top
+      document.querySelector(".main").scrollTop = 0;
+    }
+
+    // ---- Render outputs ----
+    function renderOutputs(run) {
+      const container = document.getElementById("outputs-body");
+      container.innerHTML = "";
+
+      const outputs = run.outputs || [];
+      if (outputs.length === 0) {
+        container.innerHTML = '<div class="empty-state">No output files</div>';
+        return;
+      }
+
+      for (const file of outputs) {
+        const fileDiv = document.createElement("div");
+        fileDiv.className = "output-file";
+
+        // Always show file header with download link
+        const header = document.createElement("div");
+        header.className = "output-file-header";
+        const nameSpan = document.createElement("span");
+        nameSpan.textContent = file.name;
+        header.appendChild(nameSpan);
+        const dlBtn = document.createElement("a");
+        dlBtn.className = "dl-btn";
+        dlBtn.textContent = "Download";
+        dlBtn.download = file.name;
+        dlBtn.href = getDownloadUri(file);
+        header.appendChild(dlBtn);
+        fileDiv.appendChild(header);
+
+        const content = document.createElement("div");
+        content.className = "output-file-content";
+
+        if (file.type === "text") {
+          const pre = document.createElement("pre");
+          pre.textContent = file.content;
+          content.appendChild(pre);
+        } else if (file.type === "image") {
+          const img = document.createElement("img");
+          img.src = file.data_uri;
+          img.alt = file.name;
+          content.appendChild(img);
+        } else if (file.type === "pdf") {
+          const iframe = document.createElement("iframe");
+          iframe.src = file.data_uri;
+          content.appendChild(iframe);
+        } else if (file.type === "xlsx") {
+          renderXlsx(content, file.data_b64);
+        } else if (file.type === "binary") {
+          const a = document.createElement("a");
+          a.className = "download-link";
+          a.href = file.data_uri;
+          a.download = file.name;
+          a.textContent = "Download " + file.name;
+          content.appendChild(a);
+        } else if (file.type === "error") {
+          const pre = document.createElement("pre");
+          pre.textContent = file.content;
+          pre.style.color = "var(--red)";
+          content.appendChild(pre);
+        }
+
+        fileDiv.appendChild(content);
+        container.appendChild(fileDiv);
+      }
+    }
+
+    // ---- XLSX rendering via SheetJS ----
+    function renderXlsx(container, b64Data) {
+      try {
+        const raw = Uint8Array.from(atob(b64Data), c => c.charCodeAt(0));
+        const wb = XLSX.read(raw, { type: "array" });
+
+        for (let i = 0; i < wb.SheetNames.length; i++) {
+          const sheetName = wb.SheetNames[i];
+          const ws = wb.Sheets[sheetName];
+
+          if (wb.SheetNames.length > 1) {
+            const sheetLabel = document.createElement("div");
+            sheetLabel.style.cssText =
+              "font-weight:600; font-size:0.8rem; color:#b0aea5; margin-top:0.5rem; margin-bottom:0.25rem;";
+            sheetLabel.textContent = "Sheet: " + sheetName;
+            container.appendChild(sheetLabel);
+          }
+
+          const htmlStr = XLSX.utils.sheet_to_html(ws, { editable: false });
+          const wrapper = document.createElement("div");
+          wrapper.innerHTML = htmlStr;
+          container.appendChild(wrapper);
+        }
+      } catch (err) {
+        container.textContent = "Error rendering spreadsheet: " + err.message;
+      }
+    }
+
+    // ---- Grades ----
+    function renderGrades(run) {
+      const section = document.getElementById("grades-section");
+      const content = document.getElementById("grades-content");
+
+      if (!run.grading) {
+        section.style.display = "none";
+        return;
+      }
+
+      const grading = run.grading;
+      section.style.display = "block";
+      // Reset to collapsed
+      content.classList.remove("open");
+      document.getElementById("grades-arrow").classList.remove("open");
+
+      const summary = grading.summary || {};
+      const expectations = grading.expectations || [];
+
+      let html = '<div style="padding: 1rem;">';
+
+      // Summary line
+      const passRate = summary.pass_rate != null
+        ? Math.round(summary.pass_rate * 100) + "%"
+        : "?";
+      const badgeClass = summary.pass_rate >= 0.8 ? "grade-pass" : summary.pass_rate >= 0.5 ? "" : "grade-fail";
+      html += '<div class="grades-summary">';
+      html += '<span class="grade-badge ' + badgeClass + '">' + passRate + '</span>';
+      html += '<span>' + (summary.passed || 0) + ' passed, ' + (summary.failed || 0) + ' failed of ' + (summary.total || 0) + '</span>';
+      html += '</div>';
+
+      // Assertions list
+      html += '<ul class="assertion-list">';
+      for (const exp of expectations) {
+        const statusClass = exp.passed ? "pass" : "fail";
+        const statusIcon = exp.passed ? "\u2713" : "\u2717";
+        html += '<li class="assertion-item">';
+        html += '<span class="assertion-status ' + statusClass + '">' + statusIcon + '</span>';
+        html += '<span>' + escapeHtml(exp.text) + '</span>';
+        if (exp.evidence) {
+          html += '<div class="assertion-evidence">' + escapeHtml(exp.evidence) + '</div>';
+        }
+        html += '</li>';
+      }
+      html += '</ul>';
+
+      html += '</div>';
+      content.innerHTML = html;
+    }
+
+    function toggleGrades() {
+      const content = document.getElementById("grades-content");
+      const arrow = document.getElementById("grades-arrow");
+      content.classList.toggle("open");
+      arrow.classList.toggle("open");
+    }
+
+    // ---- Previous outputs (collapsible) ----
+    function renderPrevOutputs(run) {
+      const section = document.getElementById("prev-outputs-section");
+      const content = document.getElementById("prev-outputs-content");
+      const prevOutputs = (EMBEDDED_DATA.previous_outputs || {})[run.id];
+
+      if (!prevOutputs || prevOutputs.length === 0) {
+        section.style.display = "none";
+        return;
+      }
+
+      section.style.display = "block";
+      // Reset to collapsed
+      content.classList.remove("open");
+      document.getElementById("prev-outputs-arrow").classList.remove("open");
+
+      // Render the files into the content area
+      content.innerHTML = "";
+      const wrapper = document.createElement("div");
+      wrapper.style.padding = "1rem";
+
+      for (const file of prevOutputs) {
+        const fileDiv = document.createElement("div");
+        fileDiv.className = "output-file";
+
+        const header = document.createElement("div");
+        header.className = "output-file-header";
+        const nameSpan = document.createElement("span");
+        nameSpan.textContent = file.name;
+        header.appendChild(nameSpan);
+        const dlBtn = document.createElement("a");
+        dlBtn.className = "dl-btn";
+        dlBtn.textContent = "Download";
+        dlBtn.download = file.name;
+        dlBtn.href = getDownloadUri(file);
+        header.appendChild(dlBtn);
+        fileDiv.appendChild(header);
+
+        const fc = document.createElement("div");
+        fc.className = "output-file-content";
+
+        if (file.type === "text") {
+          const pre = document.createElement("pre");
+          pre.textContent = file.content;
+          fc.appendChild(pre);
+        } else if (file.type === "image") {
+          const img = document.createElement("img");
+          img.src = file.data_uri;
+          img.alt = file.name;
+          fc.appendChild(img);
+        } else if (file.type === "pdf") {
+          const iframe = document.createElement("iframe");
+          iframe.src = file.data_uri;
+          fc.appendChild(iframe);
+        } else if (file.type === "xlsx") {
+          renderXlsx(fc, file.data_b64);
+        } else if (file.type === "binary") {
+          const a = document.createElement("a");
+          a.className = "download-link";
+          a.href = file.data_uri;
+          a.download = file.name;
+          a.textContent = "Download " + file.name;
+          fc.appendChild(a);
+        }
+
+        fileDiv.appendChild(fc);
+        wrapper.appendChild(fileDiv);
+      }
+
+      content.appendChild(wrapper);
+    }
+
+    function togglePrevOutputs() {
+      const content = document.getElementById("prev-outputs-content");
+      const arrow = document.getElementById("prev-outputs-arrow");
+      content.classList.toggle("open");
+      arrow.classList.toggle("open");
+    }
+
+    // ---- Feedback (saved to server -> feedback.json) ----
+    function saveCurrentFeedback() {
+      const run = EMBEDDED_DATA.runs[currentIndex];
+      const text = document.getElementById("feedback").value;
+
+      if (text.trim() === "") {
+        delete feedbackMap[run.id];
+      } else {
+        feedbackMap[run.id] = text;
+      }
+
+      // Build reviews array from map
+      const reviews = [];
+      for (const [run_id, feedback] of Object.entries(feedbackMap)) {
+        if (feedback.trim()) {
+          reviews.push({ run_id, feedback, timestamp: new Date().toISOString() });
+        }
+      }
+
+      fetch("/api/feedback", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ reviews, status: "in_progress" }),
+      }).then(() => {
+        document.getElementById("feedback-status").textContent = "Saved";
+      }).catch(() => {
+        // Static mode or server unavailable — no-op on auto-save,
+        // feedback will be downloaded on final submit
+        document.getElementById("feedback-status").textContent = "Will download on submit";
+      });
+    }
+
+    // ---- Done ----
+    function showDoneDialog() {
+      // Save current textarea to feedbackMap (but don't POST yet)
+      const run = EMBEDDED_DATA.runs[currentIndex];
+      const text = document.getElementById("feedback").value;
+      if (text.trim() === "") {
+        delete feedbackMap[run.id];
+      } else {
+        feedbackMap[run.id] = text;
+      }
+
+      // POST once with status: complete — include ALL runs so the model
+      // can distinguish "no feedback" (looks good) from "not reviewed"
+      const reviews = [];
+      const ts = new Date().toISOString();
+      for (const r of EMBEDDED_DATA.runs) {
+        reviews.push({ run_id: r.id, feedback: feedbackMap[r.id] || "", timestamp: ts });
+      }
+      const payload = JSON.stringify({ reviews, status: "complete" }, null, 2);
+      fetch("/api/feedback", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: payload,
+      }).then(() => {
+        document.getElementById("done-overlay").classList.add("visible");
+      }).catch(() => {
+        // Server not available (static mode) — download as file
+        const blob = new Blob([payload], { type: "application/json" });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "feedback.json";
+        a.click();
+        URL.revokeObjectURL(url);
+        document.getElementById("done-overlay").classList.add("visible");
+      });
+    }
+
+    function closeDoneDialog() {
+      // Reset status back to in_progress
+      saveCurrentFeedback();
+      document.getElementById("done-overlay").classList.remove("visible");
+    }
+
+    // ---- Toast ----
+    function showToast(message) {
+      const toast = document.getElementById("toast");
+      toast.textContent = message;
+      toast.classList.add("visible");
+      setTimeout(() => toast.classList.remove("visible"), 2000);
+    }
+
+    // ---- Keyboard nav ----
+    document.addEventListener("keydown", (e) => {
+      // Don't capture when typing in textarea
+      if (e.target.tagName === "TEXTAREA") return;
+
+      if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
+        e.preventDefault();
+        navigate(-1);
+      } else if (e.key === "ArrowRight" || e.key === "ArrowDown") {
+        e.preventDefault();
+        navigate(1);
+      }
+    });
+
+    // ---- Util ----
+    function getDownloadUri(file) {
+      if (file.data_uri) return file.data_uri;
+      if (file.data_b64) return "data:application/octet-stream;base64," + file.data_b64;
+      if (file.type === "text") return "data:text/plain;charset=utf-8," + encodeURIComponent(file.content);
+      return "#";
+    }
+
+    function escapeHtml(text) {
+      const div = document.createElement("div");
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    // ---- View switching ----
+    function switchView(view) {
+      document.querySelectorAll(".view-tab").forEach(t => t.classList.remove("active"));
+      document.querySelectorAll(".view-panel").forEach(p => p.classList.remove("active"));
+      document.querySelector(`[onclick="switchView('${view}')"]`).classList.add("active");
+      document.getElementById("panel-" + view).classList.add("active");
+    }
+
+    // ---- Benchmark rendering ----
+    function renderBenchmark() {
+      const data = EMBEDDED_DATA.benchmark;
+      if (!data) return;
+
+      // Show the tabs
+      document.getElementById("view-tabs").style.display = "flex";
+
+      const container = document.getElementById("benchmark-content");
+      const summary = data.run_summary || {};
+      const metadata = data.metadata || {};
+      const notes = data.notes || [];
+
+      let html = "";
+
+      // Header
+      html += "<h2 style='font-family: Poppins, sans-serif; margin-bottom: 0.5rem;'>Benchmark Results</h2>";
+      html += "<p style='color: var(--text-muted); font-size: 0.875rem; margin-bottom: 1.25rem;'>";
+      if (metadata.skill_name) html += "<strong>" + escapeHtml(metadata.skill_name) + "</strong> &mdash; ";
+      if (metadata.timestamp) html += metadata.timestamp + " &mdash; ";
+      if (metadata.evals_run) html += "Evals: " + metadata.evals_run.join(", ") + " &mdash; ";
+      html += (metadata.runs_per_configuration || "?") + " runs per configuration";
+      html += "</p>";
+
+      // Summary table
+      html += '<table class="benchmark-table">';
+
+      function fmtStat(stat, pct) {
+        if (!stat) return "—";
+        const suffix = pct ? "%" : "";
+        const m = pct ? (stat.mean * 100).toFixed(0) : stat.mean.toFixed(1);
+        const s = pct ? (stat.stddev * 100).toFixed(0) : stat.stddev.toFixed(1);
+        return m + suffix + " ± " + s + suffix;
+      }
+
+      function deltaClass(val) {
+        if (!val) return "";
+        const n = parseFloat(val);
+        if (n > 0) return "benchmark-delta-positive";
+        if (n < 0) return "benchmark-delta-negative";
+        return "";
+      }
+
+      // Discover config names dynamically (everything except "delta")
+      const configs = Object.keys(summary).filter(k => k !== "delta");
+      const configA = configs[0] || "config_a";
+      const configB = configs[1] || "config_b";
+      const labelA = configA.replace(/_/g, " ").replace(/\b\w/g, c => c.toUpperCase());
+      const labelB = configB.replace(/_/g, " ").replace(/\b\w/g, c => c.toUpperCase());
+      const a = summary[configA] || {};
+      const b = summary[configB] || {};
+      const delta = summary.delta || {};
+
+      html += "<thead><tr><th>Metric</th><th>" + escapeHtml(labelA) + "</th><th>" + escapeHtml(labelB) + "</th><th>Delta</th></tr></thead>";
+      html += "<tbody>";
+
+      html += "<tr><td><strong>Pass Rate</strong></td>";
+      html += "<td>" + fmtStat(a.pass_rate, true) + "</td>";
+      html += "<td>" + fmtStat(b.pass_rate, true) + "</td>";
+      html += '<td class="' + deltaClass(delta.pass_rate) + '">' + (delta.pass_rate || "—") + "</td></tr>";
+
+      // Time (only show row if data exists)
+      if (a.time_seconds || b.time_seconds) {
+        html += "<tr><td><strong>Time (s)</strong></td>";
+        html += "<td>" + fmtStat(a.time_seconds, false) + "</td>";
+        html += "<td>" + fmtStat(b.time_seconds, false) + "</td>";
+        html += '<td class="' + deltaClass(delta.time_seconds) + '">' + (delta.time_seconds ? delta.time_seconds + "s" : "—") + "</td></tr>";
+      }
+
+      // Tokens (only show row if data exists)
+      if (a.tokens || b.tokens) {
+        html += "<tr><td><strong>Tokens</strong></td>";
+        html += "<td>" + fmtStat(a.tokens, false) + "</td>";
+        html += "<td>" + fmtStat(b.tokens, false) + "</td>";
+        html += '<td class="' + deltaClass(delta.tokens) + '">' + (delta.tokens || "—") + "</td></tr>";
+      }
+
+      html += "</tbody></table>";
+
+      // Per-eval breakdown (if runs data available)
+      const runs = data.runs || [];
+      if (runs.length > 0) {
+        const evalIds = [...new Set(runs.map(r => r.eval_id))].sort((a, b) => a - b);
+
+        html += "<h3 style='font-family: Poppins, sans-serif; margin-bottom: 0.75rem;'>Per-Eval Breakdown</h3>";
+
+        const hasTime = runs.some(r => r.result && r.result.time_seconds != null);
+        const hasErrors = runs.some(r => r.result && r.result.errors > 0);
+
+        for (const evalId of evalIds) {
+          const evalRuns = runs.filter(r => r.eval_id === evalId);
+          const evalName = evalRuns[0] && evalRuns[0].eval_name ? evalRuns[0].eval_name : "Eval " + evalId;
+
+          html += "<h4 style='font-family: Poppins, sans-serif; margin: 1rem 0 0.5rem; color: var(--text);'>" + escapeHtml(evalName) + "</h4>";
+          html += '<table class="benchmark-table">';
+          html += "<thead><tr><th>Config</th><th>Run</th><th>Pass Rate</th>";
+          if (hasTime) html += "<th>Time (s)</th>";
+          if (hasErrors) html += "<th>Crashes During Execution</th>";
+          html += "</tr></thead>";
+          html += "<tbody>";
+
+          // Group by config and render with average rows
+          const configGroups = [...new Set(evalRuns.map(r => r.configuration))];
+          for (let ci = 0; ci < configGroups.length; ci++) {
+            const config = configGroups[ci];
+            const configRuns = evalRuns.filter(r => r.configuration === config);
+            if (configRuns.length === 0) continue;
+
+            const rowClass = ci === 0 ? "benchmark-row-with" : "benchmark-row-without";
+            const configLabel = config.replace(/_/g, " ").replace(/\b\w/g, c => c.toUpperCase());
+
+            for (const run of configRuns) {
+              const r = run.result || {};
+              const prClass = r.pass_rate >= 0.8 ? "benchmark-delta-positive" : r.pass_rate < 0.5 ? "benchmark-delta-negative" : "";
+              html += '<tr class="' + rowClass + '">';
+              html += "<td>" + configLabel + "</td>";
+              html += "<td>" + run.run_number + "</td>";
+              html += '<td class="' + prClass + '">' + ((r.pass_rate || 0) * 100).toFixed(0) + "% (" + (r.passed || 0) + "/" + (r.total || 0) + ")</td>";
+              if (hasTime) html += "<td>" + (r.time_seconds != null ? r.time_seconds.toFixed(1) : "—") + "</td>";
+              if (hasErrors) html += "<td>" + (r.errors || 0) + "</td>";
+              html += "</tr>";
+            }
+
+            // Average row
+            const rates = configRuns.map(r => (r.result || {}).pass_rate || 0);
+            const avgRate = rates.reduce((a, b) => a + b, 0) / rates.length;
+            const avgPrClass = avgRate >= 0.8 ? "benchmark-delta-positive" : avgRate < 0.5 ? "benchmark-delta-negative" : "";
+            html += '<tr class="benchmark-row-avg ' + rowClass + '">';
+            html += "<td>" + configLabel + "</td>";
+            html += "<td>Avg</td>";
+            html += '<td class="' + avgPrClass + '">' + (avgRate * 100).toFixed(0) + "%</td>";
+            if (hasTime) {
+              const times = configRuns.map(r => (r.result || {}).time_seconds).filter(t => t != null);
+              html += "<td>" + (times.length ? (times.reduce((a, b) => a + b, 0) / times.length).toFixed(1) : "—") + "</td>";
+            }
+            if (hasErrors) html += "<td></td>";
+            html += "</tr>";
+          }
+          html += "</tbody></table>";
+
+          // Per-assertion detail for this eval
+          const runsWithExpectations = {};
+          for (const config of configGroups) {
+            runsWithExpectations[config] = evalRuns.filter(r => r.configuration === config && r.expectations && r.expectations.length > 0);
+          }
+          const hasAnyExpectations = Object.values(runsWithExpectations).some(runs => runs.length > 0);
+          if (hasAnyExpectations) {
+            // Collect all unique assertion texts across all configs
+            const allAssertions = [];
+            const seen = new Set();
+            for (const config of configGroups) {
+              for (const run of runsWithExpectations[config]) {
+                for (const exp of (run.expectations || [])) {
+                  if (!seen.has(exp.text)) {
+                    seen.add(exp.text);
+                    allAssertions.push(exp.text);
+                  }
+                }
+              }
+            }
+
+            html += '<table class="benchmark-table" style="margin-top: 0.5rem;">';
+            html += "<thead><tr><th>Assertion</th>";
+            for (const config of configGroups) {
+              const label = config.replace(/_/g, " ").replace(/\b\w/g, c => c.toUpperCase());
+              html += "<th>" + escapeHtml(label) + "</th>";
+            }
+            html += "</tr></thead><tbody>";
+
+            for (const assertionText of allAssertions) {
+              html += "<tr><td>" + escapeHtml(assertionText) + "</td>";
+
+              for (const config of configGroups) {
+                html += "<td>";
+                for (const run of runsWithExpectations[config]) {
+                  const exp = (run.expectations || []).find(e => e.text === assertionText);
+                  if (exp) {
+                    const cls = exp.passed ? "benchmark-delta-positive" : "benchmark-delta-negative";
+                    const icon = exp.passed ? "\u2713" : "\u2717";
+                    html += '<span class="' + cls + '" title="Run ' + run.run_number + ': ' + escapeHtml(exp.evidence || "") + '">' + icon + "</span> ";
+                  } else {
+                    html += "— ";
+                  }
+                }
+                html += "</td>";
+              }
+              html += "</tr>";
+            }
+            html += "</tbody></table>";
+          }
+        }
+      }
+
+      // Notes
+      if (notes.length > 0) {
+        html += '<div class="benchmark-notes">';
+        html += "<h3>Analysis Notes</h3>";
+        html += "<ul>";
+        for (const note of notes) {
+          html += "<li>" + escapeHtml(note) + "</li>";
+        }
+        html += "</ul></div>";
+      }
+
+      container.innerHTML = html;
+    }
+
+    // ---- Start ----
+    init();
+    renderBenchmark();
+  </script>
+</body>
+</html>

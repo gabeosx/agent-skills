@@ -1,0 +1,38 @@
+{
+  "expectations": [
+    {
+      "text": "Includes replaceable LED module, steel base, and two-year warranty accurately.",
+      "passed": true,
+      "evidence": "\"A desk lamp with a steel base, a replaceable LED module, and a two-year warranty\" accurately includes all required features."
+    },
+    {
+      "text": "No invented light-quality, comfort, durability, environmental, manufacturing, certification, price, or user-experience claims.",
+      "passed": true,
+      "evidence": "\"You can replace that part without replacing the whole lamp\" is supported by the replaceable module. \"The lamp you choose for your desk should be one you can keep using\" states a purchasing ideal grounded in replaceability; it makes no measured lifespan, durability, comfort, light quality, environmental, manufacturing, certification, price, or customer-experience claim."
+    },
+    {
+      "text": "45–75 words and no assistant or editing commentary.",
+      "passed": true,
+      "evidence": "54 whitespace-delimited words; \"Meet Bracken\" begins the revised copy and no assistant commentary follows."
+    }
+  ],
+  "summary": {
+    "passed": 3,
+    "failed": 0,
+    "total": 3,
+    "pass_rate": 1.0
+  },
+  "scores": {
+    "Fidelity": 5,
+    "Directness and selectivity": 4,
+    "Specificity": 5,
+    "Voice and genre": 4,
+    "Cadence and rhetoric": 4,
+    "Structure": 4,
+    "Edit restraint": 4
+  },
+  "critical_failures": [],
+  "review_method": "Independent single blind agent review; not human feedback",
+  "review_source": "blind/iteration-2/review.json",
+  "output_sha256": "5dca67eb60f55fbd7f1a5dcdeca573aa3e763f37113dc91e6c60faeb3b8d0707"
+}

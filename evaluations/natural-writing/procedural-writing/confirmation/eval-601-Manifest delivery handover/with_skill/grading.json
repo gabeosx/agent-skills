@@ -1,0 +1,44 @@
+{
+  "expectations": [
+    {
+      "text": "The directions specify Evening East and Destination = East review, then direct the coordinator to inspect Review desk > East review > Incoming for the receiving copy.",
+      "passed": true,
+      "evidence": "Opens Shipments, selects Evening East, sets Destination to East review, then opens Review desk > East review > Incoming in steps 1\u20133."
+    },
+    {
+      "text": "Success requires the Evening East row to show Status = Ready and Shipments = 24; the green Request accepted toast is not treated as delivery confirmation.",
+      "passed": true,
+      "evidence": "Step 3 requires the Evening East row to show Status = Ready and Shipments = 24; it says the toast only confirms entry into the queue."
+    },
+    {
+      "text": "Recovery for Status = Destination paused uses East review's Settings to change Receiving from Paused to Active and resend the batch, without presenting that recovery as applicable to every failure.",
+      "passed": true,
+      "evidence": "The conditional Destination paused paragraph changes Receiving from Paused to Active in Review desk > East review > Settings, resends the same batch, and rechecks Incoming. Other failed statuses explicitly have no documented operator remedy."
+    },
+    {
+      "text": "The response does not invent a partner archive address, inspection control, expected receipt, or remedy; it keeps the partner-copy outcome explicitly unverified.",
+      "passed": true,
+      "evidence": "The partner paragraph states no archive address, inspection method, or recovery procedure is supplied and that neither success nor failure is established."
+    },
+    {
+      "text": "The response is written as directions the coordinator can use, rather than commentary about writing the directions.",
+      "passed": true,
+      "evidence": "It is a directly usable numbered sending workflow, followed by conditional recovery and a clearly stated verification limit."
+    }
+  ],
+  "summary": {
+    "passed": 5,
+    "failed": 0,
+    "total": 5,
+    "pass_rate": 1.0
+  },
+  "blind_review": "reviews/confirmation/601.json",
+  "output_sha256": "7bbce0c3fc66a4bd9c599296425c2621b97d624a3c1b03e77167cf2d3072d168",
+  "scores": {
+    "usefulness": 5,
+    "fidelity": 5,
+    "naturalness": 5
+  },
+  "critical": [],
+  "substantive": []
+}

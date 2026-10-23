@@ -1,0 +1,12 @@
+{
+  "method": "Exact/format checks only; independent semantic and style review required",
+  "expectations": [
+    {
+      "text": "Requested word range",
+      "passed": true,
+      "evidence": "53 words; requested 45–75"
+    }
+  ],
+  "passed": 1,
+  "total": 1
+}

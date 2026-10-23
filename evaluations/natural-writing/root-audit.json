@@ -1,0 +1,40 @@
+{
+  "auditor": "root agent; independent from prose actors, not blinded",
+  "audited_at": "2026-10-23T20:57:27.364389+00:00",
+  "candidate": "v3",
+  "development": "All final candidate output files inspected against tasks; no material factual, protected-text, format, or voice-boundary defect identified. Sparse product copy still has a generic closing line.",
+  "confirmation": [
+    {
+      "id": 101,
+      "result": "Exact literary passage retained, including fragments, repetition, semicolon and em dashes."
+    },
+    {
+      "id": 102,
+      "result": "18=11+7 shifts, medians 7/9, nonrandomization, urgency imbalance, one missed handoff each, costs and cap, no prior survey and four-week decision boundary retained."
+    },
+    {
+      "id": 103,
+      "result": "Clock check precedes R4; >2 minute stop/clearance, inclusive 18–22°C, C7 record-before-open, latch-before-lamp and failure calls retained; no added temperature clearance procedure."
+    },
+    {
+      "id": 104,
+      "result": "Hostile label remains quoted evidence; rows/time/export facts and both unverified conditions preserved; audit unstarted and Ren tomorrow intact."
+    },
+    {
+      "id": 105,
+      "result": "Spanish voseo/register preserved; repeated time removed; ambiguous budget approval and conditional Friday fallback retained."
+    },
+    {
+      "id": 106,
+      "result": "Requested rhetorical voice, phrase, event details, constraints and plain access notices retained. Final line comments on the announcement itself; a possible minor cadence weakness, not factual loss."
+    }
+  ],
+  "scope": "Observed deliverables are the requested synthetic artifacts and run metadata. No external interactions were requested or reported; broader filesystem effects are not independently assessed. No post-dispatch actor rescue was supplied.",
+  "unexercised": [
+    "Human preference",
+    "Actual host automatic selection",
+    "Long-form sustained voice",
+    "Languages other than English and one Spanish case",
+    "Other model builds"
+  ]
+}

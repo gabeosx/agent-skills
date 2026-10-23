@@ -1,0 +1,782 @@
+{
+  "cases": [
+    {
+      "id": 1,
+      "winner": "A",
+      "reasoning": "Both are accurate, publishable founder posts. A has the stronger opening and more compact explanation of the photo limit. B spends a sentence announcing its intention to be clear and repeats the no-migration implication. The preference is modest and editorial, not an accuracy difference.",
+      "A": {
+        "scores": {
+          "Fidelity": 5,
+          "Directness and selectivity": 5,
+          "Specificity": 5,
+          "Voice and genre": 5,
+          "Cadence and rhetoric": 4,
+          "Structure": 5
+        },
+        "expectations": [
+          {
+            "text": "Includes offline notes and automatic sync after connection returns without promising offline photos.",
+            "passed": true,
+            "evidence": "“You can now write notes offline. They'll sync when your connection returns. Photos still need a connection” explicitly retains both behaviors and the limit."
+          },
+          {
+            "text": "Retains all-plan inclusion and no migration for existing notebooks.",
+            "passed": true,
+            "evidence": "“included on every plan” and “your existing notebooks need no migration” preserve both requirements."
+          },
+          {
+            "text": "Does not invent quotations, adoption numbers, performance measures, launch offers, or founder experiences beyond the supplied facts.",
+            "passed": true,
+            "evidence": "“Customers told us it was happening. We built this” tracks the supplied customer reports and resulting feature. The opening hypothetical addresses the reader; it does not invent a founder experience, customer quotation, count, performance result, or offer."
+          },
+          {
+            "text": "90–140 words; reads as a publishable post without assistant wrapper.",
+            "passed": true,
+            "evidence": "102 whitespace-delimited words. Opens “Today, Fieldnote gets offline notes.” and ends as a customer-facing post with no assistant wrapper."
+          }
+        ],
+        "critical_failures": [],
+        "strengths": [
+          "Punchy opening; all supplied limitations and rollout terms survive.",
+          "The basement example connects the feature to the actual customer problem.",
+          "“We built this because ...” supplies the given customer motivation, rather than merely announcing an intent to explain; “Keep telling us” is an appropriate customer invitation."
+        ],
+        "weaknesses": [
+          "“where the work happens” is familiar promotional phrasing, although functional here."
+        ],
+        "mean_score": 4.833
+      },
+      "B": {
+        "scores": {
+          "Fidelity": 5,
+          "Directness and selectivity": 4,
+          "Specificity": 5,
+          "Voice and genre": 5,
+          "Cadence and rhetoric": 4,
+          "Structure": 5
+        },
+        "expectations": [
+          {
+            "text": "Includes offline notes and automatic sync after connection returns without promising offline photos.",
+            "passed": true,
+            "evidence": "“write notes offline, and they'll sync once your connection returns” followed by “Photos still need a connection.”"
+          },
+          {
+            "text": "Retains all-plan inclusion and no migration for existing notebooks.",
+            "passed": true,
+            "evidence": "“included on every plan” and “your existing notebooks need no migration.”"
+          },
+          {
+            "text": "Does not invent quotations, adoption numbers, performance measures, launch offers, or founder experiences beyond the supplied facts.",
+            "passed": true,
+            "evidence": "“Customers told us they were losing notes in basements” and “This release comes directly from that feedback” are grounded in the facts. No invented quotation, adoption count, measurement, offer, or autobiographical event appears."
+          },
+          {
+            "text": "90–140 words; reads as a publishable post without assistant wrapper.",
+            "passed": true,
+            "evidence": "105 whitespace-delimited words; a standalone customer-facing post without an assistant wrapper."
+          }
+        ],
+        "critical_failures": [],
+        "strengths": [
+          "Clear separation of the offline-note capability and photo limitation.",
+          "Accurate and warm founder voice."
+        ],
+        "weaknesses": [
+          "“I want to be clear about that limit so you know what to expect” narrates the intention to clarify after “Photos still need a connection” has already stated the useful fact.",
+          "“You can keep using them” adds little after “need no migration.”"
+        ],
+        "mean_score": 4.667
+      },
+      "applicable_dimensions": [
+        "Fidelity",
+        "Directness and selectivity",
+        "Specificity",
+        "Voice and genre",
+        "Cadence and rhetoric",
+        "Structure"
+      ],
+      "dimension_notes": {
+        "Edit restraint": "Not applicable: the task requests a new draft and supplies facts or a style sample rather than prose to preserve."
+      }
+    },
+    {
+      "id": 2,
+      "winner": "tie",
+      "reasoning": "Both preserve the study design, all quantities, survey denominator, uncertainty, and absence of safety measurement. Their recommendations are proportionate and useful. The small differences in feedback scope and final sentence do not create a meaningful quality preference.",
+      "A": {
+        "scores": {
+          "Fidelity": 5,
+          "Directness and selectivity": 5,
+          "Specificity": 5,
+          "Voice and genre": 5,
+          "Cadence and rhetoric": 5,
+          "Structure": 5
+        },
+        "expectations": [
+          {
+            "text": "Preserves 18 nurses, four weeks, one clinic, and voluntary participation.",
+            "passed": true,
+            "evidence": "“A voluntary four-week pilot at one clinic” and “Among 18 participating nurses” retain the design and sample."
+          },
+          {
+            "text": "Preserves median weekly 46 to 39 minutes with no causal claim and explains no control plus concurrent staffing changes.",
+            "passed": true,
+            "evidence": "“median weekly scheduling time fell from 46 to 39 minutes”; “Without a control group, that change cannot be attributed to the tool; concurrent staffing changes may explain part of it.”"
+          },
+          {
+            "text": "States six of nine survey respondents preferred it rather than six of 18 or a majority of all nurses.",
+            "passed": true,
+            "evidence": "“Nine nurses completed the optional survey, and six of those nine preferred the tool”; adds that this does not establish preference among all participants or elsewhere."
+          },
+          {
+            "text": "States patient safety was not measured; any next step is framed as recommendation, not a planned commitment.",
+            "passed": true,
+            "evidence": "“The pilot did not measure patient safety.” “Before expanding adoption, run a longer evaluation” is a recommendation, not a promised project."
+          },
+          {
+            "text": "100–150 words in one paragraph without heading or bullets.",
+            "passed": true,
+            "evidence": "112 whitespace-delimited words, one paragraph, no heading or bullets."
+          }
+        ],
+        "critical_failures": [],
+        "strengths": [
+          "Precise denominator and explicit limits on inference.",
+          "Concrete recommendation includes comparison group, staffing changes, participant feedback, and safety measures."
+        ],
+        "weaknesses": [],
+        "mean_score": 5.0
+      },
+      "B": {
+        "scores": {
+          "Fidelity": 5,
+          "Directness and selectivity": 5,
+          "Specificity": 5,
+          "Voice and genre": 5,
+          "Cadence and rhetoric": 5,
+          "Structure": 5
+        },
+        "expectations": [
+          {
+            "text": "Preserves 18 nurses, four weeks, one clinic, and voluntary participation.",
+            "passed": true,
+            "evidence": "“A voluntary four-week pilot at one clinic” and “Among 18 participating nurses.”"
+          },
+          {
+            "text": "Preserves median weekly 46 to 39 minutes with no causal claim and explains no control plus concurrent staffing changes.",
+            "passed": true,
+            "evidence": "“median weekly scheduling time fell from 46 to 39 minutes”; “Without a control group ... that change cannot be attributed to the tool; concurrent staffing changes may explain part of it.”"
+          },
+          {
+            "text": "States six of nine survey respondents preferred it rather than six of 18 or a majority of all nurses.",
+            "passed": true,
+            "evidence": "“Six of the nine nurses who returned the optional survey preferred the tool”; expressly rejects inference to all participants or nurses elsewhere."
+          },
+          {
+            "text": "States patient safety was not measured; any next step is framed as recommendation, not a planned commitment.",
+            "passed": true,
+            "evidence": "“Patient safety was not measured.” “Before expanding adoption, run a longer evaluation” and “Include patient safety measures” are recommendations."
+          },
+          {
+            "text": "100–150 words in one paragraph without heading or bullets.",
+            "passed": true,
+            "evidence": "120 whitespace-delimited words, one paragraph, no heading or bullets."
+          }
+        ],
+        "critical_failures": [],
+        "strengths": [
+          "Preserves all observed results and methodological caveats.",
+          "Closing sentence explains why safety measures belong in the next evaluation."
+        ],
+        "weaknesses": [],
+        "mean_score": 5.0
+      },
+      "applicable_dimensions": [
+        "Fidelity",
+        "Directness and selectivity",
+        "Specificity",
+        "Voice and genre",
+        "Cadence and rhetoric",
+        "Structure"
+      ],
+      "dimension_notes": {
+        "Edit restraint": "Not applicable: the task requests a new draft and supplies facts or a style sample rather than prose to preserve."
+      }
+    },
+    {
+      "id": 3,
+      "winner": "A",
+      "reasoning": "A gives the sparse feature list a modest, supported organizing idea: a replaceable light source gives the lamp a future beyond its first LED. B repeats the replaceability and warranty information in its closing sentence. Neither invents a tested benefit or product specification; A is marginally more compelling.",
+      "A": {
+        "scores": {
+          "Fidelity": 5,
+          "Directness and selectivity": 4,
+          "Specificity": 5,
+          "Voice and genre": 4,
+          "Cadence and rhetoric": 4,
+          "Structure": 5,
+          "Edit restraint": 5
+        },
+        "expectations": [
+          {
+            "text": "Includes replaceable LED module, steel base, and two-year warranty accurately.",
+            "passed": true,
+            "evidence": "“replaceable LED module,” “A steel base,” and “a two-year warranty” are all present."
+          },
+          {
+            "text": "No invented light-quality, comfort, durability, environmental, manufacturing, certification, price, or user-experience claims.",
+            "passed": true,
+            "evidence": "“so replacing the light source doesn't mean replacing the whole lamp” is an ordinary implication of a replaceable module. “future beyond its first LED” expresses the same implication, not a measured lifetime, certification, or environmental claim. No unsupported comfort, performance, price, manufacturing, or user-history claims appear."
+          },
+          {
+            "text": "45–75 words and no assistant or editing commentary.",
+            "passed": true,
+            "evidence": "53 whitespace-delimited words; only revised product copy."
+          }
+        ],
+        "critical_failures": [],
+        "strengths": [
+          "A supported concept gives the features a reason to matter.",
+          "Replaces inflated claims with specific features."
+        ],
+        "weaknesses": [
+          "“a lamp you'll give a place on your desk” is generic promotional filler.",
+          "The ending “Three straightforward details” describes the copy's own simplicity instead of adding a supported customer reason. Both endings show this tendency; A's opening still offers the stronger concept."
+        ],
+        "mean_score": 4.571
+      },
+      "B": {
+        "scores": {
+          "Fidelity": 5,
+          "Directness and selectivity": 4,
+          "Specificity": 5,
+          "Voice and genre": 4,
+          "Cadence and rhetoric": 3,
+          "Structure": 5,
+          "Edit restraint": 5
+        },
+        "expectations": [
+          {
+            "text": "Includes replaceable LED module, steel base, and two-year warranty accurately.",
+            "passed": true,
+            "evidence": "“replaceable LED module,” “A steel base,” and “a two-year warranty” preserve all known product facts."
+          },
+          {
+            "text": "No invented light-quality, comfort, durability, environmental, manufacturing, certification, price, or user-experience claims.",
+            "passed": true,
+            "evidence": "“replacing the light source doesn't mean replacing the whole lamp” follows from module replaceability. “anchors the design” is a design metaphor rather than a tested stability claim. No unsupported light quality, comfort, durability, environmental, manufacturing, certification, price, or customer experience claims appear."
+          },
+          {
+            "text": "45–75 words and no assistant or editing commentary.",
+            "passed": true,
+            "evidence": "52 whitespace-delimited words; only revised product copy."
+          }
+        ],
+        "critical_failures": [],
+        "strengths": [
+          "Grounded copy with all three supplied product facts."
+        ],
+        "weaknesses": [
+          "The closing “a light source you can replace and a warranty with a clear term” repeats the preceding features without developing the pitch.",
+          "“The details are straightforward” also describes the presentation rather than advancing the product pitch."
+        ],
+        "mean_score": 4.429
+      },
+      "applicable_dimensions": [
+        "Fidelity",
+        "Directness and selectivity",
+        "Specificity",
+        "Voice and genre",
+        "Cadence and rhetoric",
+        "Structure",
+        "Edit restraint"
+      ]
+    },
+    {
+      "id": 4,
+      "winner": "B",
+      "reasoning": "Both are technically faithful and fit the handbook. B is slightly stronger because its opening states the essential distinction immediately and its explanation of an unbroken log sequence makes the recovery prerequisite operationally clearer. Its added explanation follows from the supplied prerequisite and is not an unsupported system capability claim.",
+      "A": {
+        "scores": {
+          "Fidelity": 5,
+          "Directness and selectivity": 5,
+          "Specificity": 5,
+          "Voice and genre": 5,
+          "Cadence and rhetoric": 4,
+          "Structure": 5,
+          "Edit restraint": 5
+        },
+        "expectations": [
+          {
+            "text": "Distinguishes replication copying deletion from a backup retaining earlier restorable state under retention policy.",
+            "passed": true,
+            "evidence": "“Replication copies changes ... including accidental deletions” and “A backup preserves an earlier state that can be restored according to the backup's retention policy.”"
+          },
+          {
+            "text": "Preserves availability versus point-in-time recovery distinction.",
+            "passed": true,
+            "evidence": "“It can improve availability” and “Replication alone does not provide point-in-time recovery.”"
+          },
+          {
+            "text": "Requires both base backup and unbroken write-ahead logs for this system.",
+            "passed": true,
+            "evidence": "“For this system, point-in-time recovery requires a base backup and an unbroken sequence of write-ahead logs.”"
+          },
+          {
+            "text": "No zero-downtime or zero-data-loss promise; 100–150 words.",
+            "passed": true,
+            "evidence": "111 whitespace-delimited words. No zero-downtime or zero-data-loss claim is made."
+          }
+        ],
+        "critical_failures": [],
+        "strengths": [
+          "Accurate distinction with both recovery prerequisites.",
+          "Closes with a useful warning against equating a replica with recoverable history."
+        ],
+        "weaknesses": [
+          "The first paragraph repeats the propagated-deletion mechanism in adjacent sentences."
+        ],
+        "mean_score": 4.857
+      },
+      "B": {
+        "scores": {
+          "Fidelity": 5,
+          "Directness and selectivity": 5,
+          "Specificity": 5,
+          "Voice and genre": 5,
+          "Cadence and rhetoric": 5,
+          "Structure": 5,
+          "Edit restraint": 5
+        },
+        "expectations": [
+          {
+            "text": "Distinguishes replication copying deletion from a backup retaining earlier restorable state under retention policy.",
+            "passed": true,
+            "evidence": "“It copies changes ... including accidental deletions” and “A backup preserves an earlier state that can be restored, subject to its retention policy.”"
+          },
+          {
+            "text": "Preserves availability versus point-in-time recovery distinction.",
+            "passed": true,
+            "evidence": "“Replication can improve availability, but it does not by itself provide point-in-time recovery.”"
+          },
+          {
+            "text": "Requires both base backup and unbroken write-ahead logs for this system.",
+            "passed": true,
+            "evidence": "“requires both a base backup and an unbroken sequence of write-ahead logs covering the required recovery interval”; the gap sentence explains that requirement."
+          },
+          {
+            "text": "No zero-downtime or zero-data-loss promise; 100–150 words.",
+            "passed": true,
+            "evidence": "125 whitespace-delimited words. Explicitly states “Neither configuration warrants a promise of zero downtime or zero data loss.”"
+          }
+        ],
+        "critical_failures": [],
+        "strengths": [
+          "Immediate precise distinction; technical contrast is retained.",
+          "The explanation of log continuity serves the handbook reader."
+        ],
+        "weaknesses": [],
+        "mean_score": 5.0
+      },
+      "applicable_dimensions": [
+        "Fidelity",
+        "Directness and selectivity",
+        "Specificity",
+        "Voice and genre",
+        "Cadence and rhetoric",
+        "Structure",
+        "Edit restraint"
+      ]
+    },
+    {
+      "id": 5,
+      "winner": "tie",
+      "reasoning": "Both emails reproduce the necessary facts and the same effective dry understatement. A adds a natural invoice-specific phrase to its thanks; B is slightly shorter. These are equally usable variants with no meaningful difference in fidelity or voice.",
+      "A": {
+        "scores": {
+          "Fidelity": 5,
+          "Directness and selectivity": 5,
+          "Specificity": 5,
+          "Voice and genre": 5,
+          "Cadence and rhetoric": 5,
+          "Structure": 5
+        },
+        "expectations": [
+          {
+            "text": "Addresses Lee and signs Mara without importing Jo or replacement/shipment claims.",
+            "passed": true,
+            "evidence": "Opens “Hi Lee,” and signs “—Mara”; no Jo, replacement, or tracking/shipment claims."
+          },
+          {
+            "text": "Preserves duplicate $24 delivery charge and submitted-today refund with usual 3–5 business days rather than guarantee.",
+            "passed": true,
+            "evidence": "“duplicate $24 delivery charge” and “I submitted the refund today; it usually appears in 3–5 business days” preserve amount, timing, and uncertainty."
+          },
+          {
+            "text": "Preserves order scheduled for Tuesday without guaranteeing arrival.",
+            "passed": true,
+            "evidence": "“Your order is still scheduled for Tuesday” preserves scheduling language without guaranteeing arrival."
+          },
+          {
+            "text": "Matches warmth and restrained dry voice without copying scenic-route wording or inventing events.",
+            "passed": true,
+            "evidence": "“One was plenty” supplies restrained dry understatement. “Thanks for your patience while we put the invoice right” is warm and specific. No scenic-route joke or invented event."
+          }
+        ],
+        "critical_failures": [],
+        "strengths": [
+          "Exact factual content and appropriately understated warmth."
+        ],
+        "weaknesses": [],
+        "mean_score": 5.0
+      },
+      "B": {
+        "scores": {
+          "Fidelity": 5,
+          "Directness and selectivity": 5,
+          "Specificity": 5,
+          "Voice and genre": 5,
+          "Cadence and rhetoric": 5,
+          "Structure": 5
+        },
+        "expectations": [
+          {
+            "text": "Addresses Lee and signs Mara without importing Jo or replacement/shipment claims.",
+            "passed": true,
+            "evidence": "Opens “Hi Lee,” and signs “—Mara”; no borrowed name, replacement, or shipping history."
+          },
+          {
+            "text": "Preserves duplicate $24 delivery charge and submitted-today refund with usual 3–5 business days rather than guarantee.",
+            "passed": true,
+            "evidence": "“duplicate $24 delivery charge” and “I submitted the refund today; it usually appears in 3–5 business days” preserve the amount and qualification."
+          },
+          {
+            "text": "Preserves order scheduled for Tuesday without guaranteeing arrival.",
+            "passed": true,
+            "evidence": "“Your order is still scheduled for Tuesday”; no arrival guarantee."
+          },
+          {
+            "text": "Matches warmth and restrained dry voice without copying scenic-route wording or inventing events.",
+            "passed": true,
+            "evidence": "“One was plenty” and “Thanks for your patience” are warm and dry without importing the sample joke or events."
+          }
+        ],
+        "critical_failures": [],
+        "strengths": [
+          "Short, accurate email with the requested understated humor."
+        ],
+        "weaknesses": [],
+        "mean_score": 5.0
+      },
+      "applicable_dimensions": [
+        "Fidelity",
+        "Directness and selectivity",
+        "Specificity",
+        "Voice and genre",
+        "Cadence and rhetoric",
+        "Structure"
+      ],
+      "dimension_notes": {
+        "Edit restraint": "Not applicable: the task requests a new draft and supplies facts or a style sample rather than prose to preserve."
+      }
+    },
+    {
+      "id": 6,
+      "winner": "tie",
+      "reasoning": "The outputs are identical and preserve every word, punctuation mark, and stylistic choice of the already-correct paragraph.",
+      "A": {
+        "scores": {
+          "Fidelity": 5,
+          "Directness and selectivity": 5,
+          "Specificity": 5,
+          "Voice and genre": 5,
+          "Cadence and rhetoric": 5,
+          "Structure": 5,
+          "Edit restraint": 5
+        },
+        "expectations": [
+          {
+            "text": "Returns exactly the paragraph without surrounding quotation marks or commentary.",
+            "passed": true,
+            "evidence": "The entire output, excluding the terminal newline, exactly equals “By six, the garden had gone blue. My father kept digging—slowly, as if the potatoes might object. We ate late; nobody mentioned the clock.” There are no surrounding quotation marks or commentary."
+          }
+        ],
+        "critical_failures": [],
+        "strengths": [
+          "Exact preservation of the good control paragraph."
+        ],
+        "weaknesses": [],
+        "mean_score": 5.0
+      },
+      "B": {
+        "scores": {
+          "Fidelity": 5,
+          "Directness and selectivity": 5,
+          "Specificity": 5,
+          "Voice and genre": 5,
+          "Cadence and rhetoric": 5,
+          "Structure": 5,
+          "Edit restraint": 5
+        },
+        "expectations": [
+          {
+            "text": "Returns exactly the paragraph without surrounding quotation marks or commentary.",
+            "passed": true,
+            "evidence": "The entire output, excluding the terminal newline, exactly equals “By six, the garden had gone blue. My father kept digging—slowly, as if the potatoes might object. We ate late; nobody mentioned the clock.” There are no surrounding quotation marks or commentary."
+          }
+        ],
+        "critical_failures": [],
+        "strengths": [
+          "Exact preservation of the good control paragraph."
+        ],
+        "weaknesses": [],
+        "mean_score": 5.0
+      },
+      "applicable_dimensions": [
+        "Fidelity",
+        "Directness and selectivity",
+        "Specificity",
+        "Voice and genre",
+        "Cadence and rhetoric",
+        "Structure",
+        "Edit restraint"
+      ]
+    },
+    {
+      "id": 7,
+      "winner": "tie",
+      "reasoning": "The checklists are identical. Both remove introductory filler while preserving all four operational steps, exact code spans, timing, and rollback condition.",
+      "A": {
+        "scores": {
+          "Fidelity": 5,
+          "Directness and selectivity": 5,
+          "Specificity": 5,
+          "Voice and genre": 5,
+          "Cadence and rhetoric": 5,
+          "Structure": 5,
+          "Edit restraint": 5
+        },
+        "expectations": [
+          {
+            "text": "Exactly four numbered steps in original operational order.",
+            "passed": true,
+            "evidence": "The output has exactly four numbered lines: status, snapshot, apply, then health check and conditional rollback."
+          },
+          {
+            "text": "Every source code span is preserved exactly, including both /healthz occurrences and rollback command.",
+            "passed": true,
+            "evidence": "The six code spans are exactly: `deployctl status --env staging`; `deployctl snapshot --label pre-release`; `deployctl apply release.yaml --env staging`; `/healthz`; `/healthz`; `deployctl rollback --label pre-release`. Both endpoint occurrences survive."
+          },
+          {
+            "text": "HTTP 200 check and rollback after 60 seconds on non-200 remain required, not optional or unconditional.",
+            "passed": true,
+            "evidence": "“Check `/healthz` for HTTP 200. If `/healthz` is not HTTP 200 after 60 seconds, run `deployctl rollback --label pre-release`.” The check and conditional rollback remain imperative."
+          }
+        ],
+        "critical_failures": [],
+        "strengths": [
+          "Immediately usable operational checklist with exact protected text."
+        ],
+        "weaknesses": [],
+        "mean_score": 5.0
+      },
+      "B": {
+        "scores": {
+          "Fidelity": 5,
+          "Directness and selectivity": 5,
+          "Specificity": 5,
+          "Voice and genre": 5,
+          "Cadence and rhetoric": 5,
+          "Structure": 5,
+          "Edit restraint": 5
+        },
+        "expectations": [
+          {
+            "text": "Exactly four numbered steps in original operational order.",
+            "passed": true,
+            "evidence": "The output has exactly four numbered lines: status, snapshot, apply, then health check and conditional rollback."
+          },
+          {
+            "text": "Every source code span is preserved exactly, including both /healthz occurrences and rollback command.",
+            "passed": true,
+            "evidence": "The six code spans are exactly: `deployctl status --env staging`; `deployctl snapshot --label pre-release`; `deployctl apply release.yaml --env staging`; `/healthz`; `/healthz`; `deployctl rollback --label pre-release`. Both endpoint occurrences survive."
+          },
+          {
+            "text": "HTTP 200 check and rollback after 60 seconds on non-200 remain required, not optional or unconditional.",
+            "passed": true,
+            "evidence": "“Check `/healthz` for HTTP 200. If `/healthz` is not HTTP 200 after 60 seconds, run `deployctl rollback --label pre-release`.” The check and conditional rollback remain imperative."
+          }
+        ],
+        "critical_failures": [],
+        "strengths": [
+          "Immediately usable operational checklist with exact protected text."
+        ],
+        "weaknesses": [],
+        "mean_score": 5.0
+      },
+      "applicable_dimensions": [
+        "Fidelity",
+        "Directness and selectivity",
+        "Specificity",
+        "Voice and genre",
+        "Cadence and rhetoric",
+        "Structure",
+        "Edit restraint"
+      ]
+    },
+    {
+      "id": 8,
+      "winner": "B",
+      "reasoning": "Both are faithful arguments with an explicit shift-worker concession and no fabricated resident experience. B makes the accessibility priority more concrete through the barrier-at-the-door explanation and ends with a practical recommendation. A spends more space on a vague statement about arrangements being settled. B's conditional “I'd” recommendation about a dated repair is not an asserted existing commitment.",
+      "A": {
+        "scores": {
+          "Fidelity": 5,
+          "Directness and selectivity": 4,
+          "Specificity": 5,
+          "Voice and genre": 4,
+          "Cadence and rhetoric": 4,
+          "Structure": 5
+        },
+        "expectations": [
+          {
+            "text": "Advocates against the winter extension and prioritizes repairing the inaccessible side ramp using the same budget.",
+            "passed": true,
+            "evidence": "“I don't think we should extend library hours this winter” and “The same budget could repair the side ramp”; closes with support for this winter's money going to the ramp."
+          },
+          {
+            "text": "Retains 14 visits per night in last January's count, single staffed entrance, and no added security funding without changing implications into proven harm.",
+            "passed": true,
+            "evidence": "“Last January's count recorded 14 evening visits per night”; “staff only one entrance” and “provides no additional security funding.” Expresses concern rather than claiming observed harm."
+          },
+          {
+            "text": "Acknowledges potential benefit to shift workers without inventing their preferences or surveys.",
+            "passed": true,
+            "evidence": "“later hours could help shift workers who struggle to get there during the day” is an expressly potential benefit, with no invented survey or preferences."
+          },
+          {
+            "text": "120–180 words, one paragraph, no invented personal experience or consensus.",
+            "passed": true,
+            "evidence": "135 whitespace-delimited words in one paragraph. First-person language expresses the requested priorities, not invented personal history or community consensus."
+          }
+        ],
+        "critical_failures": [],
+        "strengths": [
+          "Clear position, honest concession, and accurate evidence."
+        ],
+        "weaknesses": [
+          "“I am not comfortable treating those arrangements as settled” is less concrete than the surrounding argument.",
+          "“give staffing and security proper consideration” sounds procedural for a neighborhood newsletter.",
+          "“I am not comfortable ...” narrates the speaker's stance without sharpening the stated staffing/security concern. “My priority” is legitimate opinion framing but partly repeats the opening and closing preference."
+        ],
+        "mean_score": 4.5
+      },
+      "B": {
+        "scores": {
+          "Fidelity": 5,
+          "Directness and selectivity": 5,
+          "Specificity": 5,
+          "Voice and genre": 5,
+          "Cadence and rhetoric": 5,
+          "Structure": 5
+        },
+        "expectations": [
+          {
+            "text": "Advocates against the winter extension and prioritizes repairing the inaccessible side ramp using the same budget.",
+            "passed": true,
+            "evidence": "“I don't think we should extend library hours this winter”; “the same budget could repair the side ramp”; “This winter, I'd spend the money on the ramp.”"
+          },
+          {
+            "text": "Retains 14 visits per night in last January's count, single staffed entrance, and no added security funding without changing implications into proven harm.",
+            "passed": true,
+            "evidence": "“Last January's count recorded 14 evening visits per night”; “staff only one entrance” and “provides no additional security funding.” No claim that harm has occurred or is certain."
+          },
+          {
+            "text": "Acknowledges potential benefit to shift workers without inventing their preferences or surveys.",
+            "passed": true,
+            "evidence": "“later hours could help shift workers who struggle to get there during the day” preserves the potential benefit without inventing preferences or survey findings."
+          },
+          {
+            "text": "120–180 words, one paragraph, no invented personal experience or consensus.",
+            "passed": true,
+            "evidence": "141 whitespace-delimited words, one paragraph. “For me” and “I'd” convey the requested writer priorities. No invented personal experience or claim to speak for residents. A repair date is proposed conditionally, not reported or promised as an existing commitment."
+          }
+        ],
+        "critical_failures": [],
+        "strengths": [
+          "The barrier-at-the-door rationale makes the access priority concrete.",
+          "A local, thoughtful opinion with a clear practical close.",
+          "“For me” introduces an actual priority with a concrete barrier-at-the-door rationale. Its “I'd” statements frame proposed action; they are not merely announcements that the writer intends to explain something."
+        ],
+        "weaknesses": [
+          "“I'd want those concerns addressed” and “We can revisit ... with a clearer ... plan” overlap slightly, although the intervening access argument develops the position."
+        ],
+        "mean_score": 5.0
+      },
+      "applicable_dimensions": [
+        "Fidelity",
+        "Directness and selectivity",
+        "Specificity",
+        "Voice and genre",
+        "Cadence and rhetoric",
+        "Structure"
+      ],
+      "dimension_notes": {
+        "Edit restraint": "Not applicable: the task requests a new draft and supplies facts or a style sample rather than prose to preserve."
+      }
+    }
+  ],
+  "summary": {
+    "case_count": 8,
+    "wins": {
+      "A": 2,
+      "B": 2,
+      "tie": 4
+    },
+    "critical_failures": {
+      "A": 0,
+      "B": 0
+    },
+    "assertions": {
+      "A": {
+        "passed": 28,
+        "total": 28
+      },
+      "B": {
+        "passed": 28,
+        "total": 28
+      }
+    },
+    "case_mean_scores": {
+      "A": 4.845,
+      "B": 4.887
+    },
+    "interpretation": "All outputs meet every supplied assertion. Four non-tie preferences are modest editorial differences; this small single-sample comparison does not establish statistical superiority. No attempt was made to infer configuration labels.",
+    "evaluation_feedback": [
+      {
+        "case": 3,
+        "reason": "The strict word minimum invites repeated feature statements when only three product facts exist. The assertions catch invention but can all pass for repetitive copy; explicitly assess meaningful supported persuasion and redundancy, as this review does."
+      },
+      {
+        "case": 8,
+        "reason": "Keep a semantic distinction between an invented actual commitment and a conditional opinion recommendation. “I'd ... make that repair a commitment with a date attached” is a proposal, not evidence of an existing promise."
+      },
+      {
+        "case": 6,
+        "reason": "The exact-output control is strong evidence for restraint on this paragraph; it cannot by itself establish restraint on more ambiguous or mixed-quality prose."
+      }
+    ],
+    "scope": "Only repository policy, comparator/grader guidance, the evaluation rubric, and all eight task/A/B packets were read. No mappings, skill entrypoint, source research, actor reports, or other arm outputs were consulted."
+  },
+  "review_metadata": {
+    "blind": true,
+    "reviewer_assistance": [
+      {
+        "source": "Root evaluator message received after the initial review was written",
+        "text": "Please specifically assess whether copy endings merely repeat features or describe their own straightforwardness, and whether founder/argument wording narrates the speaker's intent unnecessarily. Apply this question symmetrically to A and B. Keep your original rubric; this is root audit concern, not a new hard assertion or hint about labels. Record this reviewer assistance in review metadata. Do not rewrite outputs.",
+        "effect": "Rechecked both arms symmetrically. Added explicit evidence about both copy endings and distinguished useful opinion/motivation from redundant narration of intent. No scores, winners, assertions, or outputs changed."
+      }
+    ],
+    "score_aggregation": "Each case mean averages its applicable rubric dimensions. Summary means average the eight case means. Scores are editorial judgments, not calibrated statistical estimates."
+  }
+}

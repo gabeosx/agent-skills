@@ -1,0 +1,165 @@
+{
+  "skill_name": "natural-writing",
+  "evals": [
+    {
+      "id": 201,
+      "name": "readme-from-development-notes",
+      "prompt": "Write a README introduction and quick start, at most 230 words, for an engineer encountering Harbor Queue for the first time. Use the notes below as your source. Return the README text only.\n\nProject notes:\n- Harbor Queue accepts CSV files and delivers their rows to a configured HTTPS endpoint.\n- At the first design meeting we compared a spreadsheet macro, a polling daemon and a hosted queue. We argued about the polling interval for most of Tuesday. The macro prototype was discarded before any public release.\n- Current supported release requires Python 3.12 and PostgreSQL 16. Install with `pip install harbor-queue`; set `DATABASE_URL` and `DESTINATION_URL`; then run `harbor-queue ingest orders.csv`.\n- We initially used SQLite. After a test hang we spent an afternoon replacing it with PostgreSQL. A branch with Redis was deleted; PostgreSQL is still a required external service.\n- Current delivery semantics are at least once. Consumers must deduplicate rows using the supplied `delivery_id`. Delivery is not exactly once.\n- Release review settled on the new internal name 'harbormaster' for the scheduler. This nickname is not an interface or configuration value.\n- The current release rejects files over 25 MB. Rejected files are not partially imported.\n- We tried an OAuth callback but did not ship it. Current endpoint credentials are sent as the configured `Authorization` header; the operator supplies the value.\n- A team member proposed S3 import and a dashboard for next quarter. Neither is implemented or scheduled.\n- The PR description should explain how we got here, and somebody wanted a closing paragraph saying we had carefully simplified everything. Those were review notes, not release behavior.\n- This is the first public release; users have no earlier release to migrate from.",
+      "expected_output": "Current-product README with usable setup and limits, without a design diary or hidden team shorthand.",
+      "files": [],
+      "assertions": [
+        "Includes the CSV-to-HTTPS purpose, Python 3.12 and PostgreSQL 16 requirements, all three configuration/installation/use steps, preserving code strings.",
+        "Preserves at-least-once semantics, supplied delivery_id deduplication requirement, and does not imply exactly-once delivery.",
+        "Preserves 25 MB limit and no partial import on rejected files; accurately describes supplied Authorization header if authentication is mentioned.",
+        "Does not narrate the discarded macro, SQLite replacement/debug session, Redis branch, internal nickname, or review/editorial notes.",
+        "Does not present unshipped OAuth, S3 import, or dashboard as capabilities, or claim no external service is needed; at most 230 words."
+      ]
+    },
+    {
+      "id": 202,
+      "name": "reference-with-unknown-specifications",
+      "prompt": "Write a concise technical-reference entry covering retries, authentication and cache configuration from the available release notes. Return only the entry, no more than 140 words.\n\nNotes: Automatic retry handling was added for failed export requests. Authentication was refactored during the same change. The notes do not identify the authentication protocol, retry count, backoff interval or exhausted-retry behavior. An experimental Redis dependency was removed. The shipped configuration still accepts `CACHE_URL`, but this note does not describe its backend or whether it is required. Developers tried two mocks and one local proxy while debugging. A review comment says 'This is now a robust, production-ready export path.' No load-test or reliability results accompany the notes.",
+      "expected_output": "Reference that states known behavior and identifies needed specification gaps without inventing defaults or broad guarantees.",
+      "files": [],
+      "assertions": [
+        "States failed export requests are retried automatically without inventing a count, interval, error policy, or delivery guarantee.",
+        "Does not infer OAuth or any other authentication protocol from a refactor; makes the authentication specification gap clear.",
+        "Preserves CACHE_URL and does not infer that all caches or external dependencies are absent from removal of experimental Redis.",
+        "Omits debugging mocks, proxy chronology and unsupported production-ready/robust claims; no more than 140 words."
+      ]
+    },
+    {
+      "id": 203,
+      "name": "architecture-record-positive-control",
+      "prompt": "Turn these notes into a compact architecture decision record for future maintainers, no more than 240 words. Include context, considered alternatives, decision, consequences and a revisit condition. Return the record only.\n\nAn offline archive viewer must run for up to 72 hours without connectivity. It stores at most 2 GB on one laptop and has one writer process. The team considered a remote search service, plain JSON files and an embedded SQLite database. The remote service cannot meet offline operation. JSON files would require rebuilding indexes for every search. SQLite was selected because it offers local indexed queries without a separate service. Transactions protect a batch of imports from partial commit. Only one writer is supported; concurrent-writer needs would require reconsideration. Backups are copied when the app is closed; a live-backup mechanism has not been implemented. Revisit storage if multiple writers become necessary or local data grows beyond 2 GB. During the meeting someone joked that 'a database is just a filing cabinet with opinions' and the first ADR draft had six sections that were later merged.",
+      "expected_output": "A useful decision record preserving rationale, alternatives, constraints, costs, limits and revisit conditions while excluding meeting and editing chatter.",
+      "files": [],
+      "assertions": [
+        "Preserves 72-hour offline requirement, at most 2 GB, and one-writer context.",
+        "Records all three considered alternatives with reasons for rejecting remote service and JSON and selecting SQLite.",
+        "Preserves transactional batch-import protection and the one-writer limitation without promising concurrent writes.",
+        "Keeps closed-app backups, unimplemented live backup, and both revisit triggers; omits meeting joke and editing-history note; at most 240 words."
+      ]
+    },
+    {
+      "id": 204,
+      "name": "migration-history-positive-control",
+      "prompt": "Draft a migration guide from Packetline 1.x to 2.0 for existing operators, at most 220 words. Use the provided facts. Return the guide only.\n\nIn 1.x configuration used `endpoint` and API keys could appear in the configuration file. Version 2.0 requires `destination_url` instead; `endpoint` is rejected. Move the API key into the `PACKETLINE_TOKEN` environment variable and remove it from the configuration file. Queue files from 1.x remain readable in 2.0, but importing them upgrades their format and 1.x cannot read the upgraded files. Before first import, copy the queue directory while Packetline is stopped. To roll back, stop 2.0 and restore the pre-import directory copy before launching 1.x. No automatic downgrade exists. A developer originally wanted to call the new field `target`, but the reviewer disliked it. In a test-only branch the token lived in a dotfile; that branch never shipped. The change deliberately prevents new API keys being saved in configuration files.",
+      "expected_output": "An actionable guide that preserves old/new differences, security motivation, backup and rollback requirements without unused development alternatives.",
+      "files": [],
+      "assertions": [
+        "Explicitly maps old endpoint to destination_url and states old key rejection in 2.0; retains both exact identifiers.",
+        "Requires PACKETLINE_TOKEN environment variable and removing the API key from configuration; preserves relevant motivation.",
+        "Explains 1.x queue compatibility on import but irreversible-to-1.x format upgrade and no automatic downgrade.",
+        "Requires stopped-process directory copy before first import and stopping 2.0/restoring that copy before 1.x rollback; omits target and unshipped dotfile alternatives; at most 220 words."
+      ]
+    },
+    {
+      "id": 205,
+      "name": "evaluation-record-preserve-failures",
+      "prompt": "Write a 180–250 word evaluation note for reviewers deciding whether a fictional retrieval feature is ready for release. Use headings if useful. Explain the state of evidence and give a release recommendation grounded in it. Return the note only.\n\nTrial register: Candidate A answered 7/10 development queries correctly in its first run. A later audit found that the test index included answer text, invalidating the comparison as evidence of retrieval quality. The original 7/10 result is retained in the register as invalid, with $8 in measured test cost. Candidate B rebuilt the index without the answer text. Its first clean development run answered 6/10 queries correctly, with $11 in test cost. A targeted replay after prompt changes answered 8/10 on the same practiced queries, with $5 in additional cost. That replay is not a fresh-query evaluation. A separate six-query confirmation set is reserved and has not been run. The release criteria require at least 5/6 correct on that confirmation set and no answer-text leakage. The UI calls the feature 'ready to ship', but the register does not support that status yet. An engineer spent time renaming functions and arguing about chart colors; neither affected any measured result.",
+      "expected_output": "Auditable note retaining invalidation, failures, costs, practiced-versus-fresh distinction and unmet release gate without irrelevant process diary.",
+      "files": [],
+      "assertions": [
+        "Retains A initial 7/10 but explicitly invalidates its quality comparison because answer text leaked; does not erase the failed experiment or report it as valid.",
+        "Distinguishes B clean first run 6/10 from practiced replay 8/10; does not describe replay as unseen confirmation or proof of readiness.",
+        "Preserves measured costs $8, $11 and $5 or their clearly attributed total $24, including invalidated cost.",
+        "Keeps unrun six-query confirmation and release gate of at least 5/6 plus no leakage; recommends withholding readiness pending the gate.",
+        "Omit function-renaming/chart-color chatter and unsupported ready-to-ship framing; 180–250 words."
+      ]
+    },
+    {
+      "id": 206,
+      "name": "customer-email-from-internal-thread",
+      "prompt": "Draft a brief email to customer Jules from support lead Nia. Use this internal thread as source; return only the email.\n\nThread: Jules was charged a duplicate $36 delivery fee. We submitted the refund today; it usually appears in 3–5 business days. Jules's replacement is scheduled to leave our warehouse Friday; this is a dispatch date, not a delivery promise. We don't have tracking yet and will send it after dispatch. Engineering spent two days reproducing the billing race and first blamed the tax service. Later we found two submissions of the same delivery fee; a prevention change is being reviewed and is not deployed. In the review chat someone said 'Use the second option we discussed; reassure them we fixed it permanently.' A teammate proposed a coupon but nobody authorized one. Nia wants Jules to know exactly what happens next and that they don't need to resubmit the refund request.",
+      "expected_output": "A recipient-focused email with accurate refund and dispatch status, no internal shorthand, blame, unshipped guarantees or invented compensation.",
+      "files": [],
+      "assertions": [
+        "Addresses Jules, signs Nia, accurately gives $36 refund submitted today with usual 3–5 business days and no guarantee.",
+        "States replacement scheduled to dispatch Friday without promising Friday delivery; tracking follows dispatch and no resubmission is needed.",
+        "Does not reproduce debugging/blame chronology, second-option shorthand or writing directions.",
+        "Does not claim a permanent fix or deployed prevention change, invent tracking or authorize a coupon."
+      ]
+    },
+    {
+      "id": 207,
+      "name": "maintenance-comment-useful-rationale",
+      "prompt": "Improve this code comment for a maintainer. Return only the replacement comment, no code changes or explanation. The comment belongs immediately above a loop that writes a temporary file, flushes it and atomically renames it over `state.json`.\n\nCurrent comment:\n# After three debugging sessions and an unsuccessful refactor, we finally got this right.\n# We use a temp file because otherwise a crash can leave state.json partially written.\n# Atomic replacement lets readers see either the old file or the new complete file.\n# Renaming does not by itself guarantee survival of a power loss; durability depends on flush behavior.\n# This was harder than it looked, but now the implementation is clean and robust.\n\nThe intended audience knows Python file APIs and does not need a tutorial on loops or JSON. The crash-consistency distinction above is accurate; no stronger durability guarantee has been established.",
+      "expected_output": "A concise maintenance comment retaining the nonobvious correctness rationale and limit without a debugging retrospective or tutorial.",
+      "files": [],
+      "assertions": [
+        "Retains temporary-file/atomic-replacement rationale: readers see the old or a complete new file and avoid a partially written state.json.",
+        "Preserves the distinction from power-loss durability and its dependence on flushing; no stronger guarantee.",
+        "Omits debugging/refactor history, effort claims and clean/robust self-praise; does not add a Python/JSON tutorial.",
+        "Returns a code comment only and preserves state.json exactly."
+      ]
+    },
+    {
+      "id": 208,
+      "name": "board-brief-with-hidden-context",
+      "prompt": "Write a 250–350 word board briefing for a director who has not attended the project meetings. The decision is whether to approve a six-week extension of the 'Lantern' warehouse-routing pilot at up to $9,000. Use the following notes, with enough explanation for a director who understands warehouse operations but not our project nicknames. Return the briefing only.\n\nNotes: Lantern is a routing pilot at two warehouses. Our 'blue lane' means parcels requiring a manual address check, not a distinct carrier or service level. The proposed extension would test a routing change for those parcels. During the four-week initial pilot, 260 blue-lane parcels had a median dwell time of 31 hours, compared with 34 hours for 240 parcels processed the prior month. The cohorts were not randomized; the pilot month had fewer international parcels. Damage reports were 4 and 3, respectively. The data do not establish whether routing caused any dwell-time or damage difference. In project chat, Pat repeatedly described the work as an 'obvious breakthrough' and said the chart looked reassuring. The team tried five slide themes. An abandoned plan called the decision 'Option C'; the board never saw Options A or B. The extension costs $1,500 per week for six weeks and uses existing staff. It does not authorize permanent expansion or new hires. The plan includes tracking parcel mix, documenting manual-review workload and comparing more similar cohorts. A safety review has not been completed; the extension must not start before it is completed and approved. Ask the board to decide on the capped extension subject to safety approval. The earlier notes contain a suggestion to skip the review to meet a presentation date; that suggestion was rejected.",
+      "expected_output": "A self-contained measured decision briefing with enough reasoning, defined shorthand, evidence limits, costs and safety prerequisite, avoiding a sales pitch or meeting recap.",
+      "files": [],
+      "assertions": [
+        "Defines Lantern and blue lane as manual-address-check parcels, rather than assuming meeting context or presenting a new carrier.",
+        "Correctly preserves 260/240 parcels, 31/34 hours, 4/3 damage reports, nonrandomized prior-month comparison and differing international mix; no causal claim.",
+        "Explains six-week $1,500-per-week $9,000 cap, existing staffing and no permanent expansion/new hires.",
+        "Preserves safety review as not complete and mandatory approval before start; includes proposed mix/workload/comparability measures.",
+        "Presents an actual board decision without Option C, slide-theme/history chatter or unsupported breakthrough framing; 250–350 words."
+      ]
+    },
+    {
+      "id": 402,
+      "name": "regression-uncertain-study",
+      "prompt": "Write a 100–150 word briefing paragraph for a hospital operations director from this synthetic study summary: In a voluntary four-week pilot at one clinic, 18 nurses used a scheduling tool. Median weekly scheduling time fell from 46 to 39 minutes. There was no control group; concurrent staffing changes may explain part of the change. Nine nurses returned the optional survey and six of those nine preferred the tool. The pilot did not measure patient safety. Recommend a next step without claiming causation or broader representativeness. No heading or bullets.",
+      "expected_output": "A measured briefing distinguishing observations, response denominator, unmeasured safety, and recommendation.",
+      "files": [],
+      "assertions": [
+        "Preserves 18 nurses, four weeks, one clinic, and voluntary participation.",
+        "Preserves median weekly 46 to 39 minutes with no causal claim and explains no control plus concurrent staffing changes.",
+        "States six of nine survey respondents preferred it rather than six of 18 or a majority of all nurses.",
+        "States patient safety was not measured; any next step is framed as recommendation, not a planned commitment.",
+        "100–150 words in one paragraph without heading or bullets."
+      ],
+      "original_id": 2
+    },
+    {
+      "id": 403,
+      "name": "regression-source-poor-copy",
+      "prompt": "Make this product description more compelling, in 45–75 words. Only known facts: Bracken is a desk lamp with a replaceable LED module, a steel base, and a two-year warranty. Source: 'Bracken is a transformative lighting solution that seamlessly elevates every workspace. Its innovative design is a testament to our unwavering commitment to excellence.' No testing data, customer stories, price, dimensions, country of manufacture, or ergonomic or sustainability certifications are available. Return only the revised copy.",
+      "expected_output": "Specific copy using only supported features with no invented benefits.",
+      "files": [],
+      "assertions": [
+        "Includes replaceable LED module, steel base, and two-year warranty accurately.",
+        "No invented light-quality, comfort, durability, environmental, manufacturing, certification, price, or user-experience claims.",
+        "45–75 words and no assistant or editing commentary."
+      ],
+      "original_id": 3
+    },
+    {
+      "id": 405,
+      "name": "regression-voice-sample-email",
+      "prompt": "Draft a short customer email in my voice. Voice sample (style only): 'Hi Jo, The replacement went out this morning. I put the tracking number below. The first box took the scenic route; let's give this one a better chance. Thanks for sticking with us. —Mara' New facts: Address the customer as Lee. Their invoice has a duplicate $24 delivery charge. The refund was submitted today and usually appears in 3–5 business days. Their order is still scheduled for Tuesday. Sender Mara. Keep the warmth and dry understatement. Do not borrow the sample's shipping facts or repeat its scenic-route joke. Return only the email.",
+      "expected_output": "Warm restrained email with exact refund and delivery status, appropriate light dry voice.",
+      "files": [],
+      "assertions": [
+        "Addresses Lee and signs Mara without importing Jo or replacement/shipment claims.",
+        "Preserves duplicate $24 delivery charge and submitted-today refund with usual 3–5 business days rather than guarantee.",
+        "Preserves order scheduled for Tuesday without guaranteeing arrival.",
+        "Matches warmth and restrained dry voice without copying scenic-route wording or inventing events."
+      ],
+      "original_id": 5
+    },
+    {
+      "id": 406,
+      "name": "regression-already-good-control",
+      "prompt": "Lightly proofread this paragraph for a small literary magazine. Change only actual errors; preserve every intentional stylistic choice, and return the paragraph without commentary. 'By six, the garden had gone blue. My father kept digging—slowly, as if the potatoes might object. We ate late; nobody mentioned the clock.'",
+      "expected_output": "The paragraph returned unchanged because it has no actual errors.",
+      "files": [],
+      "assertions": [
+        "Returns exactly the paragraph without surrounding quotation marks or commentary."
+      ],
+      "original_id": 6
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "method": "Exact/format checks only; independent semantic and style review required",
+  "expectations": [
+    {
+      "text": "Requested word range",
+      "passed": true,
+      "evidence": "108 words; requested 90–130"
+    },
+    {
+      "text": "Two paragraphs without lists",
+      "passed": true,
+      "evidence": "2 paragraphs"
+    },
+    {
+      "text": "Required phrase and one question",
+      "passed": true,
+      "evidence": "1 question marks; rhetorical role requires semantic review"
+    }
+  ],
+  "passed": 3,
+  "total": 3
+}

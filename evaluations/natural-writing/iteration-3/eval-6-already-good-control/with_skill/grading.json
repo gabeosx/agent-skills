@@ -1,0 +1,27 @@
+{
+  "expectations": [
+    {
+      "text": "Returns exactly the paragraph without surrounding quotation marks or commentary.",
+      "passed": true,
+      "evidence": "The complete output is exactly “By six, the garden had gone blue. My father kept digging—slowly, as if the potatoes might object. We ate late; nobody mentioned the clock.” The displayed quotation here is evidence notation; the file contains no surrounding quotation marks or commentary."
+    }
+  ],
+  "summary": {
+    "passed": 1,
+    "failed": 0,
+    "total": 1,
+    "pass_rate": 1.0
+  },
+  "scores": {
+    "Fidelity": 5,
+    "Directness and selectivity": 5,
+    "Voice and genre": 5,
+    "Cadence and rhetoric": 5,
+    "Structure": 5,
+    "Edit restraint": 5
+  },
+  "critical_failures": [],
+  "review_method": "Independent single blind agent review; not human feedback",
+  "review_source": "blind/iteration-3/review.json",
+  "output_sha256": "72b1f979cc873495cd5485d74546d99166898143c12de0c8613328994282c189"
+}

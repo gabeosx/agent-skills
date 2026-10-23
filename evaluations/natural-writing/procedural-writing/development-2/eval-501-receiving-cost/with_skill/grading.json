@@ -1,0 +1,34 @@
+{
+  "expectations": [
+    {
+      "text": "The guide names the receiving location and enters 6000 grams and $0.012 per gram, with cost per stock unit distinguished from total sack cost.",
+      "passed": true,
+      "evidence": "Names the receiving path and states 6 kg = 6,000 g, Quantity 6000 and Cost 0.012, explicitly $0.012 per gram from the total $72 sack cost."
+    },
+    {
+      "text": "The check has observable fields and expected values, with correction before Post and a warning that blank cost becomes zero.",
+      "passed": true,
+      "evidence": "Step 3 explicitly checks Quantity 6000 and Cost 0.012 before Post and permits correction in either field; step 2 warns blank cost is stored as zero."
+    },
+    {
+      "text": "After posting, it uses the History receipt ID and inventory lead for audited correction; it invents neither an undo nor a cost-unit selector.",
+      "passed": true,
+      "evidence": "Step 4 checks the posted History row against 6,000 g at $0.012 per gram and sends its receipt ID to the inventory lead for audited correction. Denies edit/undo and cost-unit selector."
+    }
+  ],
+  "summary": {
+    "passed": 3,
+    "failed": 0,
+    "total": 3,
+    "pass_rate": 1.0
+  },
+  "blind_review": "reviews/development-2/501.json",
+  "output_sha256": "a1859d78517e6c144499b5880a128c391c93e89d4090e4e4d65fd788e25a9f0e",
+  "scores": {
+    "usefulness": 5,
+    "fidelity": 5,
+    "naturalness": 5
+  },
+  "critical": [],
+  "substantive": []
+}

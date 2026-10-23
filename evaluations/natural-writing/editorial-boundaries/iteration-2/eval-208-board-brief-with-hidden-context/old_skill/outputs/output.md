@@ -1,0 +1,9 @@
+Approve a six-week extension of the Lantern warehouse-routing pilot, capped at $9,000 and subject to completion and approval of the safety review before work starts. The extension would test a routing change for parcels requiring a manual address check. The project calls these parcels the “blue lane”; this refers to their review needs, not a separate carrier or service level.
+
+Lantern currently operates at two warehouses. During its initial four weeks, 260 parcels requiring manual address checks had a median dwell time of 31 hours. The comparison group comprised 240 such parcels processed during the prior month, with a median dwell time of 34 hours. Damage reports numbered four during the pilot and three in the earlier group.
+
+These figures offer a reason to investigate further, but they do not establish that routing caused either difference. The groups were not randomized, and the pilot month included fewer international parcels. Differences in parcel mix could therefore affect the comparison. The damage counts also do not establish whether the routing change altered damage risk. The board should treat this as preliminary evidence when deciding whether to fund another limited test.
+
+The proposed extension costs $1,500 per week for six weeks and uses existing staff. It would track parcel mix, document the workload associated with manual review and compare more similar cohorts. Those measures would help the team assess the routing change with a better understanding of the parcels involved and the staff effort required.
+
+Approval would cover this capped extension only. It would not authorize permanent expansion or new hires. The safety review remains incomplete, so approval must explicitly require that review to be completed and approved before the extension begins. The requested decision is whether to fund the additional six weeks under those conditions.

@@ -1,0 +1,92 @@
+{
+  "id": 503,
+  "labels": {
+    "A": {
+      "expectations": [
+        {
+          "text": "The normal sequence is authorize, import, review mappings, Start sync after all mapped; import alone does not start sync.",
+          "passed": true,
+          "evidence": "Numbered sequence authorizes desired shop, imports, reviews mappings, then Start sync after all mapped; explicitly states import does not start order sync."
+        },
+        {
+          "text": "It gives Mapping status location, Mapped/Unmatched conditions, and Link item or inventory-lead remedy only for Unmatched rows.",
+          "passed": true,
+          "evidence": "Connections > Products > Mapping status is specified. Mapped rows are ready and must not be remapped; only Unmatched rows receive Link item or inventory-lead creation instructions."
+        },
+        {
+          "text": "Disconnect/reimport and Reauthorize are clearly conditional on wrong shop and Authorization expired respectively, not universal prerequisites.",
+          "passed": true,
+          "evidence": "Separate conditional recovery bullets restrict Disconnect/reauthorize/reimport to wrong shop shown under Connections > Account, and Reauthorize to Authorization expired status."
+        }
+      ],
+      "scores": {
+        "usefulness": 5,
+        "fidelity": 5,
+        "naturalness": 5
+      },
+      "critical": [],
+      "substantive": [],
+      "minor": []
+    },
+    "B": {
+      "expectations": [
+        {
+          "text": "The normal sequence is authorize, import, review mappings, Start sync after all mapped; import alone does not start sync.",
+          "passed": true,
+          "evidence": "Normal steps authorize, import, review mappings, then Start sync after all rows mapped; import alone explicitly does not start order sync."
+        },
+        {
+          "text": "It gives Mapping status location, Mapped/Unmatched conditions, and Link item or inventory-lead remedy only for Unmatched rows.",
+          "passed": true,
+          "evidence": "Names Connections > Products and Mapping status; leaves Mapped rows alone and applies Link item plus missing-item escalation only to Unmatched rows."
+        },
+        {
+          "text": "Disconnect/reimport and Reauthorize are clearly conditional on wrong shop and Authorization expired respectively, not universal prerequisites.",
+          "passed": true,
+          "evidence": "Wrong-shop recovery begins If Connections > Account shows the wrong shop; Reauthorize begins If sync status is Authorization expired and says only needed for that status."
+        }
+      ],
+      "scores": {
+        "usefulness": 5,
+        "fidelity": 5,
+        "naturalness": 5
+      },
+      "critical": [],
+      "substantive": [],
+      "minor": []
+    },
+    "C": {
+      "expectations": [
+        {
+          "text": "The normal sequence is authorize, import, review mappings, Start sync after all mapped; import alone does not start sync.",
+          "passed": true,
+          "evidence": "Steps authorize desired shop, Import products, review mappings, then Start sync after all mapped; explicitly says importing alone does not start order sync."
+        },
+        {
+          "text": "It gives Mapping status location, Mapped/Unmatched conditions, and Link item or inventory-lead remedy only for Unmatched rows.",
+          "passed": true,
+          "evidence": "Names Connections > Products and Mapping status; leaves Mapped mappings as-is and supplies Link item or inventory-lead creation only for Unmatched rows."
+        },
+        {
+          "text": "Disconnect/reimport and Reauthorize are clearly conditional on wrong shop and Authorization expired respectively, not universal prerequisites.",
+          "passed": true,
+          "evidence": "Disconnect recovery is restricted to wrong shop in Connections > Account; Reauthorize is restricted to Authorization expired status."
+        }
+      ],
+      "scores": {
+        "usefulness": 5,
+        "fidelity": 5,
+        "naturalness": 5
+      },
+      "critical": [],
+      "substantive": [],
+      "minor": []
+    }
+  },
+  "preferred": [
+    "A",
+    "B",
+    "C"
+  ],
+  "reason": "All three keep the correct normal setup and conditional recovery paths, including mapping states, escalation, and explicit Start sync. No substantive preference."
+}

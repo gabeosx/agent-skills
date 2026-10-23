@@ -1,0 +1,44 @@
+{
+  "expectations": [
+    {
+      "text": "The directions specify Evening East and Destination = East review, then direct the coordinator to inspect Review desk > East review > Incoming for the receiving copy.",
+      "passed": true,
+      "evidence": "Steps 1\u20134 select Evening East, send to East review, and inspect Review desk > East review > Incoming."
+    },
+    {
+      "text": "Success requires the Evening East row to show Status = Ready and Shipments = 24; the green Request accepted toast is not treated as delivery confirmation.",
+      "passed": true,
+      "evidence": "Step 4 requires the Evening East row with Status = Ready and Shipments = 24; the introduction and following paragraph explicitly distinguish queue acceptance from delivery."
+    },
+    {
+      "text": "Recovery for Status = Destination paused uses East review's Settings to change Receiving from Paused to Active and resend the batch, without presenting that recovery as applicable to every failure.",
+      "passed": true,
+      "evidence": "The conditional Destination paused recovery uses East review Settings, switches Receiving from Paused to Active, and resends the same batch without duplication. Other failed statuses have no documented operator remedy."
+    },
+    {
+      "text": "The response does not invent a partner archive address, inspection control, expected receipt, or remedy; it keeps the partner-copy outcome explicitly unverified.",
+      "passed": true,
+      "evidence": "The archive section states missing address, inspection method, and recovery procedure, and explicitly records the outcome as unverified without inferring success or failure."
+    },
+    {
+      "text": "The response is written as directions the coordinator can use, rather than commentary about writing the directions.",
+      "passed": true,
+      "evidence": "The numbered workflow, conditional troubleshooting, and archive limitation are usable coordinator directions."
+    }
+  ],
+  "summary": {
+    "passed": 5,
+    "failed": 0,
+    "total": 5,
+    "pass_rate": 1.0
+  },
+  "blind_review": "reviews/confirmation/601.json",
+  "output_sha256": "63ade8282aa5aa6459f35485b7bb978b245e23275c1f0eef974d242fa10e4508",
+  "scores": {
+    "usefulness": 5,
+    "fidelity": 5,
+    "naturalness": 5
+  },
+  "critical": [],
+  "substantive": []
+}

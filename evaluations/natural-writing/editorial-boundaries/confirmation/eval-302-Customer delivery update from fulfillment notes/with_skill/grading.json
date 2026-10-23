@@ -1,0 +1,53 @@
+{
+  "expectations": [
+    {
+      "text": "Identifies order LH-2841 or the two bedside tables and clearly communicates that the dispatch estimate changed from 12 June to 19 June.",
+      "passed": true,
+      "evidence": "“Order LH-2841”; “two oak bedside tables”; “dispatch on 19 June, instead of 12 June.”"
+    },
+    {
+      "text": "Explains the finish issue and reinspection in ordinary language, apologizes for the delay, and does not imply that damaged or unfinished goods have already shipped.",
+      "passed": true,
+      "evidence": "“I'm sorry”; “uneven coat on one table”; “holding the pair ... after that table has been refinished and inspected again.”"
+    },
+    {
+      "text": "Distinguishes dispatch from delivery; any 3–5 business day transit statement remains an estimate, and the message does not invent tracking or a delivery appointment.",
+      "passed": true,
+      "evidence": "“estimate for when the tables will leave us, rather than a delivery appointment”; “usually 3–5 business days”; “no tracking number yet”; link follows carrier acceptance."
+    },
+    {
+      "text": "Makes clear that Mira can wait without taking action or reply before dispatch for cancellation and a full refund; does not offer an unapproved discount or expedited service.",
+      "passed": true,
+      "evidence": "“you don't need to do anything to keep your order”; “reply before dispatch to request cancellation and a full refund.” No additional commercial concession is offered."
+    },
+    {
+      "text": "Does not mention dashboard labels, sorting changes, message-drafting history, or the copied launch-announcement instruction, and does not invent Mira's personal reasons or feelings.",
+      "passed": true,
+      "evidence": "Complete email contains no internal labels, sorting changes, drafting history, launch-copy instruction, or invented personal circumstances. “Both tables are paid for” is supported by the notes."
+    },
+    {
+      "text": "Is an email with a useful subject line and stays within the requested 170-word limit.",
+      "passed": true,
+      "evidence": "“Subject: Order LH-2841: revised dispatch estimate of 19 June”; “Hi Mira”; “Larch Home.” 146 whitespace-delimited words including subject and sign-off, below 170."
+    }
+  ],
+  "summary": {
+    "passed": 6,
+    "failed": 0,
+    "total": 6,
+    "pass_rate": 1.0
+  },
+  "scores": {
+    "fidelity": 5,
+    "directness_and_selectivity": 5,
+    "specificity": 5,
+    "voice_and_genre": 5,
+    "cadence_and_rhetoric": 5,
+    "structure": 5,
+    "reader_relevance": 5
+  },
+  "critical_failures": [],
+  "review_method": "Independent single blind agent review; not human feedback",
+  "review_source": "blind/confirmation/review.json",
+  "output_sha256": "b43934b125f125be849918b2f436469deb95337939db6d8db6574a26123cc288"
+}

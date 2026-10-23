@@ -1,0 +1,58 @@
+{
+  "condition": "old_skill",
+  "files": [
+    {
+      "path": "/Users/gabe/agent-skills/evaluations/natural-writing/editorial-boundaries/iteration-1/eval-201-readme-from-development-notes/old_skill/outputs/output.md",
+      "file_write_timestamp_utc": "2026-10-23T21:24:02.243947+00:00"
+    },
+    {
+      "path": "/Users/gabe/agent-skills/evaluations/natural-writing/editorial-boundaries/iteration-1/eval-202-reference-with-unknown-specifications/old_skill/outputs/output.md",
+      "file_write_timestamp_utc": "2026-10-23T21:24:02.244185+00:00"
+    },
+    {
+      "path": "/Users/gabe/agent-skills/evaluations/natural-writing/editorial-boundaries/iteration-1/eval-203-architecture-record-positive-control/old_skill/outputs/output.md",
+      "file_write_timestamp_utc": "2026-10-23T21:24:02.244301+00:00"
+    },
+    {
+      "path": "/Users/gabe/agent-skills/evaluations/natural-writing/editorial-boundaries/iteration-1/eval-204-migration-history-positive-control/old_skill/outputs/output.md",
+      "file_write_timestamp_utc": "2026-10-23T21:24:02.244412+00:00"
+    },
+    {
+      "path": "/Users/gabe/agent-skills/evaluations/natural-writing/editorial-boundaries/iteration-1/eval-205-evaluation-record-preserve-failures/old_skill/outputs/output.md",
+      "file_write_timestamp_utc": "2026-10-23T21:24:02.244513+00:00"
+    },
+    {
+      "path": "/Users/gabe/agent-skills/evaluations/natural-writing/editorial-boundaries/iteration-1/eval-206-customer-email-from-internal-thread/old_skill/outputs/output.md",
+      "file_write_timestamp_utc": "2026-10-23T21:24:02.244614+00:00"
+    },
+    {
+      "path": "/Users/gabe/agent-skills/evaluations/natural-writing/editorial-boundaries/iteration-1/eval-207-maintenance-comment-useful-rationale/old_skill/outputs/output.md",
+      "file_write_timestamp_utc": "2026-10-23T21:24:02.244718+00:00"
+    },
+    {
+      "path": "/Users/gabe/agent-skills/evaluations/natural-writing/editorial-boundaries/iteration-1/eval-208-board-brief-with-hidden-context/old_skill/outputs/output.md",
+      "file_write_timestamp_utc": "2026-10-23T21:24:02.244823+00:00"
+    },
+    {
+      "path": "/Users/gabe/agent-skills/evaluations/natural-writing/editorial-boundaries/iteration-1/eval-402-regression-uncertain-study/old_skill/outputs/output.md",
+      "file_write_timestamp_utc": "2026-10-23T21:24:02.244922+00:00"
+    },
+    {
+      "path": "/Users/gabe/agent-skills/evaluations/natural-writing/editorial-boundaries/iteration-1/eval-403-regression-source-poor-copy/old_skill/outputs/output.md",
+      "file_write_timestamp_utc": "2026-10-23T21:24:02.245018+00:00"
+    },
+    {
+      "path": "/Users/gabe/agent-skills/evaluations/natural-writing/editorial-boundaries/iteration-1/eval-405-regression-voice-sample-email/old_skill/outputs/output.md",
+      "file_write_timestamp_utc": "2026-10-23T21:24:02.245106+00:00"
+    },
+    {
+      "path": "/Users/gabe/agent-skills/evaluations/natural-writing/editorial-boundaries/iteration-1/eval-406-regression-already-good-control/old_skill/outputs/output.md",
+      "file_write_timestamp_utc": "2026-10-23T21:24:02.245212+00:00"
+    }
+  ],
+  "file_write_timestamp_utc": "2026-10-23T21:24:02.245256+00:00",
+  "generation_time_seconds": null,
+  "tokens": null,
+  "session_charge": null,
+  "exact_model_build": null
+}

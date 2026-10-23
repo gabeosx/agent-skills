@@ -1,0 +1,44 @@
+{
+  "expectations": [
+    {
+      "text": "The replacement preserves the fact that packages contain attachment filenames but omit the attachment files, and explains that needed attachments must be saved separately.",
+      "passed": true,
+      "evidence": "The saving section says the package contains record text and attachment filenames but does not contain attachment files, and directs saving needed files separately."
+    },
+    {
+      "text": "The article does not require closing other tabs or erasing saved sign-ins before export; it uses the current account label and the job's Account and Month fields to establish the selected export context.",
+      "passed": true,
+      "evidence": "The introduction uses the top-right account label and says other tabs and saved sign-ins do not affect it. Steps 1 and 3 use the job Account and Month fields; no obsolete precautions remain."
+    },
+    {
+      "text": "The workflow identifies Exports > Recent, Status = Complete, and Download package, and says existing queued or running jobs should be resumed rather than resubmitted.",
+      "passed": true,
+      "evidence": "Steps 1 and 3\u20135 identify Exports > Recent, resume an existing queued/running job, wait for Status = Complete, and use Download package."
+    },
+    {
+      "text": "The article allows staff to close the browser and return later, and identifies Monthly review's month-named subfolder as the destination for packages and separate attachments.",
+      "passed": true,
+      "evidence": "Step 4 allows closing the browser and returning to Recent without stopping the job. The final paragraph places package and separate attachments in Monthly review, in a subfolder named for the selected month."
+    },
+    {
+      "text": "The output is a replacement staff article with materially revised organization or wording, rather than a lightly edited copy, a change log, or a discussion of the rewrite.",
+      "passed": true,
+      "evidence": "The source is substantially reorganized into start/resume steps and a separate saving section, presented as a replacement staff article."
+    }
+  ],
+  "summary": {
+    "passed": 5,
+    "failed": 0,
+    "total": 5,
+    "pass_rate": 1.0
+  },
+  "blind_review": "reviews/confirmation/602.json",
+  "output_sha256": "b606faecc8b1888972c6ad1fb5a5f1d1ded71e576ca3adbdb67477ebeea23850",
+  "scores": {
+    "usefulness": 5,
+    "fidelity": 5,
+    "naturalness": 5
+  },
+  "critical": [],
+  "substantive": []
+}

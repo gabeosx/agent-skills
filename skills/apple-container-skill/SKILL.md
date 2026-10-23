@@ -2,7 +2,7 @@
 name: apple-container-skill
 description: Use Apple's `container` CLI on Apple silicon macOS for Linux containers, OCI image builds, registries, volumes, networks, port forwarding, host access, persistent `container machine` Linux environments, and experimental local Kubernetes clusters. Use this skill whenever the user asks to replace Docker Desktop with Apple Container, run Linux commands on macOS, build/run/inspect Apple containers, debug Apple Container service/network/build failures, use Container Machines, or use `container k8s`.
 metadata:
-  version: "1.3.0"
+  version: "1.3.1"
 ---
 
 # Apple Container Skill

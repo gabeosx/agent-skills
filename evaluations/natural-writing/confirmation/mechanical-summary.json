@@ -1,0 +1,74 @@
+[
+  {
+    "eval_id": 101,
+    "arm": "with_skill",
+    "failed": [],
+    "checks": 1
+  },
+  {
+    "eval_id": 101,
+    "arm": "without_skill",
+    "failed": [],
+    "checks": 1
+  },
+  {
+    "eval_id": 102,
+    "arm": "with_skill",
+    "failed": [],
+    "checks": 2
+  },
+  {
+    "eval_id": 102,
+    "arm": "without_skill",
+    "failed": [],
+    "checks": 2
+  },
+  {
+    "eval_id": 103,
+    "arm": "with_skill",
+    "failed": [],
+    "checks": 0
+  },
+  {
+    "eval_id": 103,
+    "arm": "without_skill",
+    "failed": [],
+    "checks": 0
+  },
+  {
+    "eval_id": 104,
+    "arm": "with_skill",
+    "failed": [],
+    "checks": 3
+  },
+  {
+    "eval_id": 104,
+    "arm": "without_skill",
+    "failed": [],
+    "checks": 3
+  },
+  {
+    "eval_id": 105,
+    "arm": "with_skill",
+    "failed": [],
+    "checks": 1
+  },
+  {
+    "eval_id": 105,
+    "arm": "without_skill",
+    "failed": [],
+    "checks": 1
+  },
+  {
+    "eval_id": 106,
+    "arm": "with_skill",
+    "failed": [],
+    "checks": 3
+  },
+  {
+    "eval_id": 106,
+    "arm": "without_skill",
+    "failed": [],
+    "checks": 3
+  }
+]

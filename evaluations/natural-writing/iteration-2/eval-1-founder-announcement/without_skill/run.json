@@ -1,0 +1,78 @@
+{
+  "condition": "without_skill",
+  "sample_kind": "fresh baseline",
+  "attempts_per_prompt": 1,
+  "prompt_order": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+  ],
+  "elapsed_model_generation_time_seconds": null,
+  "tokens": null,
+  "model_build": null,
+  "cost": null,
+  "unavailable_metadata_note": "Precise elapsed model-generation time, tokens, model build and cost are unavailable. File-write times describe artifact persistence only.",
+  "files": [
+    {
+      "id": 1,
+      "name": "founder-announcement",
+      "file": "/Users/gabe/agent-skills/evaluations/natural-writing/iteration-2/eval-1-founder-announcement/without_skill/outputs/output.md",
+      "file_write_time_utc": "2026-10-23T20:46:21.737203+00:00",
+      "word_count": 108
+    },
+    {
+      "id": 2,
+      "name": "uncertain-study",
+      "file": "/Users/gabe/agent-skills/evaluations/natural-writing/iteration-2/eval-2-uncertain-study/without_skill/outputs/output.md",
+      "file_write_time_utc": "2026-10-23T20:46:21.737367+00:00",
+      "word_count": 118
+    },
+    {
+      "id": 3,
+      "name": "source-poor-copy",
+      "file": "/Users/gabe/agent-skills/evaluations/natural-writing/iteration-2/eval-3-source-poor-copy/without_skill/outputs/output.md",
+      "file_write_time_utc": "2026-10-23T20:46:21.737455+00:00",
+      "word_count": 54
+    },
+    {
+      "id": 4,
+      "name": "technical-distinction",
+      "file": "/Users/gabe/agent-skills/evaluations/natural-writing/iteration-2/eval-4-technical-distinction/without_skill/outputs/output.md",
+      "file_write_time_utc": "2026-10-23T20:46:21.737530+00:00",
+      "word_count": 113
+    },
+    {
+      "id": 5,
+      "name": "voice-sample-email",
+      "file": "/Users/gabe/agent-skills/evaluations/natural-writing/iteration-2/eval-5-voice-sample-email/without_skill/outputs/output.md",
+      "file_write_time_utc": "2026-10-23T20:46:21.737599+00:00",
+      "word_count": 43
+    },
+    {
+      "id": 6,
+      "name": "already-good-control",
+      "file": "/Users/gabe/agent-skills/evaluations/natural-writing/iteration-2/eval-6-already-good-control/without_skill/outputs/output.md",
+      "file_write_time_utc": "2026-10-23T20:46:21.737678+00:00",
+      "word_count": 24
+    },
+    {
+      "id": 7,
+      "name": "required-checklist",
+      "file": "/Users/gabe/agent-skills/evaluations/natural-writing/iteration-2/eval-7-required-checklist/without_skill/outputs/output.md",
+      "file_write_time_utc": "2026-10-23T20:46:21.737743+00:00",
+      "word_count": 42
+    },
+    {
+      "id": 8,
+      "name": "argument-not-filler",
+      "file": "/Users/gabe/agent-skills/evaluations/natural-writing/iteration-2/eval-8-argument-not-filler/without_skill/outputs/output.md",
+      "file_write_time_utc": "2026-10-23T20:46:21.737806+00:00",
+      "word_count": 141
+    }
+  ]
+}

@@ -6,6 +6,9 @@ All notable skill changes are recorded in this file. Each skill is versioned ind
 
 ### Repository
 
+- Preserve the retained unified-diff evidence verbatim, with a whitespace-check exception scoped to that artifact's required context-line spaces.
+- Rewrite the public README catalog and installation path with Natural Writing, and review the Apple Container, MacWhisper, and archived Jev READMEs for reader needs and procedural coverage. Preserve historical studies, raw evaluations, and existing release records. Validate the published skill with the skills CLI.
+
 - Corrected the root catalog entry for Apple Container Skill to cite release-aware guidance through Apple Container 1.5.0, matching the merged apple-container-skill 1.3.0 update.
 
 - Recognize explicitly retired skills through validated archive manifests, preserve their historical source versions, and verify that no public installer entrypoint remains. Move Agent Browser Jev out of the active catalog and replace the repository's installation example with an active skill.
@@ -32,6 +35,60 @@ All notable skill changes are recorded in this file. Each skill is versioned ind
 
 - Added canonical agent instructions and a dependency-free release-contract validator requiring every affected skill change to include an independent Semantic Version increment, a matching root changelog entry, relevant validation, and scoped cleanup evidence.
 - Required repository-only changes to be recorded without inventing unrelated skill version bumps, and documented the definition of done and release-tagging workflow.
+
+## natural-writing 1.0.0 - 2026-10-23
+
+### Added
+
+- Add a tool-independent prose drafting, editing, and review skill that addresses repeated rhetorical templates, generic significance, vague authority, and unnecessary formatting while preserving the writer's voice and useful structure.
+- Make procedural checks observable and actionable, distinguish normal setup from conditional recovery, and require a separate coverage pass after substantial rewrites. Keep live UI and screenshot verification in the relevant documentation workflow. A source-boundary clarification prevents plausible checks from becoming invented product capabilities.
+- Add audience and artifact-boundary guidance for source selection: omit irrelevant process narratives, hidden chat assumptions, genre contamination, and editorial commentary while retaining useful rationale, migration history, incident chronology, and audit evidence. Reframing history must not invent current specifications.
+- Keep contextual pattern examples and research limitations outside the entrypoint. Treat supplied research as design input, with its unresolved citation markers explicitly unverified; avoid punctuation bans, invented human experience, and detector guarantees.
+- Add synthetic development and reserved confirmation prompts, a fidelity-first editorial rubric, description-routing checks, frozen source snapshots, anonymized comparisons, and a reproducible exact-constraint checker. Evidence and validation are recorded in `evaluations/natural-writing/REPORT.md`.
+
+### Validation
+
+- The initial style study completes three paired development rounds and a six-case reserved confirmation set, preserving all 60 outputs and failed candidates. Its frozen v3 snapshot passes 64 task assertions and 21 exact/format checks across 14 scenarios. Independent agent review prefers it on three development pairs with five ties; confirmation yields five ties and one minor preference for baseline, with no critical failures or substantive regression. This is historical snapshot evidence; the editorial-boundary follow-up is recorded in `evaluations/natural-writing/editorial-boundaries/REPORT.md`. No human preference or universal improvement is claimed.
+- Pass the skill-creator structural validator, resource-link and JSON checks, exact-checker positive and negative controls, frozen-source and reviewed-output checks, the release contract, and whitespace checks. Independently review 16 intended description-routing cases; actual automatic host selection remains untested.
+- Complete an editorial-boundary test/fix loop against the pre-edit skill, preserving all 60 additional outputs. Independent review finds an unsupported sender-knowledge claim missed by the original assertions; supplement the next round's checks before output and repair that failure plus source-assessment commentary leaking into reference. The final candidate passes 85 assertions and 22 exact checks across 18 scenarios, including four earlier writing controls and five history-positive controls. It wins three development preferences with nine ties and two minor confirmation preferences with four ties; no critical or substantive final-candidate defect is observed.
+- Review 22 description-routing cases after expanding documentation coverage. Retain one ambiguous error-only proofreading mismatch (21/22), without claiming actual automatic host selection or human validation. Preserve source snapshots, failed attempts, audit evidence and current-versus-historical study boundaries; remove only the task-specific temporary validation environment.
+
+- Complete the procedural test/fix loop with 29 new drafts in old-skill, updated-skill, and no-skill conditions. Preserve candidate 1's unsupported preview-check failure (14/15 assertions); the source-boundary repair passes all 30 final assertions across five development and three reserved scenarios, plus the exact proofreading control. Both baselines also pass all 30; every final preference ties, so no incremental performance benefit is claimed. Matched inputs and common review assistance isolate this from the broader Formul.app workflow. See `evaluations/natural-writing/procedural-writing/REPORT.md`.
+
+### Compatibility and limitations
+
+- Initial release; no required runtime tools or external service. Complements domain and artifact-format skills. Local agent review is not human validation, a detector score, or proof of authorship. Host writing instructions already constrain both comparison arms.
+
+## apple-container-skill 1.3.1 - 2026-10-23
+
+### Changed
+
+- Reorganize the README around installation, runtime requirements, workflows, and retained validation history. Describe the diagnostic helper's container, image-pull, DNS, and ping effects instead of calling it read-only. Runtime code and agent workflows are unchanged.
+
+### Validation
+
+- Compare the rewrite independently with the original, skill instructions, and diagnostic source; preserve version-specific validation limits. Check structure, local links, whitespace, and the release contract. No new container-runtime test is claimed.
+
+## macwhisper 1.0.1 - 2026-10-23
+
+### Fixed
+
+- Explain installation, JSON status checks, and how the working directory controls the processed-session state location. Distinguish the unchanged transcript database from the writable local state file.
+- Correct search documentation to match SQL substring queries; there is no FTS fallback. Document that the whole-line character and all-caps filters can discard legitimate speech, including non-Latin text and English curly punctuation. Runtime code is unchanged.
+
+### Validation
+
+- Independently compare the README with the original, environment defaults, state handling, search query, and filter code. Exercise the filter on synthetic text without reading private transcripts. Check structure, local links, whitespace, and the release contract.
+
+## agent-browser-jev 2.0.1 - 2026-10-23
+
+### Changed
+
+- Clarify the archive README's installation status and link to the active catalog. Preserve the retirement date, failed and incomplete research, private-evidence limits, historical runtime 1.3.0, and the initial 2.0.0 retirement. No public installer entrypoint or runtime behavior is added.
+
+### Validation
+
+- Independently compare source coverage and archive metadata. Validate the manifest, preserved instruction structure in an isolated copy, public discovery, local links, and the release contract.
 
 ## agent-browser-jev 2.0.0 - 2026-10-02
 

@@ -1,0 +1,59 @@
+{
+  "arm": "with_skill",
+  "snapshot": "evaluations/natural-writing/snapshots/v2/instructions.md",
+  "artifacts": [
+    {
+      "id": 1,
+      "name": "founder-announcement",
+      "file": "/Users/gabe/agent-skills/evaluations/natural-writing/iteration-2/eval-1-founder-announcement/with_skill/outputs/output.md",
+      "file_write_time_utc": "2026-10-23T20:46:29.732633Z"
+    },
+    {
+      "id": 2,
+      "name": "uncertain-study",
+      "file": "/Users/gabe/agent-skills/evaluations/natural-writing/iteration-2/eval-2-uncertain-study/with_skill/outputs/output.md",
+      "file_write_time_utc": "2026-10-23T20:46:29.732789Z"
+    },
+    {
+      "id": 3,
+      "name": "source-poor-copy",
+      "file": "/Users/gabe/agent-skills/evaluations/natural-writing/iteration-2/eval-3-source-poor-copy/with_skill/outputs/output.md",
+      "file_write_time_utc": "2026-10-23T20:46:29.732871Z"
+    },
+    {
+      "id": 4,
+      "name": "technical-distinction",
+      "file": "/Users/gabe/agent-skills/evaluations/natural-writing/iteration-2/eval-4-technical-distinction/with_skill/outputs/output.md",
+      "file_write_time_utc": "2026-10-23T20:46:29.732944Z"
+    },
+    {
+      "id": 5,
+      "name": "voice-sample-email",
+      "file": "/Users/gabe/agent-skills/evaluations/natural-writing/iteration-2/eval-5-voice-sample-email/with_skill/outputs/output.md",
+      "file_write_time_utc": "2026-10-23T20:46:29.733005Z"
+    },
+    {
+      "id": 6,
+      "name": "already-good-control",
+      "file": "/Users/gabe/agent-skills/evaluations/natural-writing/iteration-2/eval-6-already-good-control/with_skill/outputs/output.md",
+      "file_write_time_utc": "2026-10-23T20:46:29.733076Z"
+    },
+    {
+      "id": 7,
+      "name": "required-checklist",
+      "file": "/Users/gabe/agent-skills/evaluations/natural-writing/iteration-2/eval-7-required-checklist/with_skill/outputs/output.md",
+      "file_write_time_utc": "2026-10-23T20:46:29.733135Z"
+    },
+    {
+      "id": 8,
+      "name": "argument-not-filler",
+      "file": "/Users/gabe/agent-skills/evaluations/natural-writing/iteration-2/eval-8-argument-not-filler/with_skill/outputs/output.md",
+      "file_write_time_utc": "2026-10-23T20:46:29.733193Z"
+    }
+  ],
+  "elapsed_model_generation_time_seconds": null,
+  "tokens": null,
+  "model_build": null,
+  "cost": null,
+  "measurement_note": "UTC timestamps record file writes only. Model-generation elapsed time, token usage, model build, and cost were unavailable."
+}

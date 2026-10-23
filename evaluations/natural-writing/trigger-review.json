@@ -1,0 +1,85 @@
+{
+  "method": "Independent description interpretation, not actual host selection",
+  "predictions": [
+    {
+      "id": 1,
+      "should_trigger": true,
+      "reason": "Explicit prose rewrite to sound less corporate, with facts preserved; directly covered by the description."
+    },
+    {
+      "id": 2,
+      "should_trigger": true,
+      "reason": "A reader-facing founder announcement with an explicit request for a natural speaking voice fits both the named genre and the voice guidance."
+    },
+    {
+      "id": 3,
+      "should_trigger": true,
+      "reason": "Explicitly asks to remove generic AI phrasing from an essay while retaining the argument."
+    },
+    {
+      "id": 4,
+      "should_trigger": true,
+      "reason": "Polishing a substantial grant narrative to match the writer, including a formal voice, falls within preserving meaning and voice."
+    },
+    {
+      "id": 5,
+      "should_trigger": true,
+      "reason": "A reader-facing research summary for directors is substantial prose where clarity and phrasing matter; preserving caveats and citations fits the factual boundary."
+    },
+    {
+      "id": 6,
+      "should_trigger": true,
+      "reason": "Humanizing landing-page prose directly matches natural-writing and product-copy triggers. The additional detector-guarantee request does not eliminate that applicable prose task; the description does not promise such a guarantee."
+    },
+    {
+      "id": 7,
+      "should_trigger": true,
+      "reason": "Tightening reader-facing troubleshooting prose is within editing for phrasing, while preserving steps and shell commands respects the complementary document-format role. This is not code-only work."
+    },
+    {
+      "id": 8,
+      "should_trigger": true,
+      "reason": "Reviewing prose while preserving the writer's punctuation and voice is within the described review role; use should respect the explicit limit to actual errors and allow no changes."
+    },
+    {
+      "id": 9,
+      "should_trigger": false,
+      "reason": "The description explicitly excludes judging whether a person used AI."
+    },
+    {
+      "id": 10,
+      "should_trigger": false,
+      "reason": "The request is code-only work, which the description explicitly excludes."
+    },
+    {
+      "id": 11,
+      "should_trigger": false,
+      "reason": "The request is verbatim transcription, which the description explicitly excludes."
+    },
+    {
+      "id": 12,
+      "should_trigger": false,
+      "reason": "A literal, exhaustive string replacement with no other changes is a mechanical file edit, not prose work involving naturalness, voice, or phrasing choices."
+    },
+    {
+      "id": 13,
+      "should_trigger": false,
+      "reason": "A one-sentence factual definition is not a substantial reader-facing prose task and does not request any natural-writing or voice adjustment."
+    },
+    {
+      "id": 14,
+      "should_trigger": false,
+      "reason": "Counting punctuation and contractions and returning JSON is text measurement rather than drafting, editing, or reviewing prose for naturalness or voice."
+    },
+    {
+      "id": 15,
+      "should_trigger": false,
+      "reason": "Configuring and evaluating a detector API is a technical benchmarking task, not prose drafting, editing, or review under this description."
+    },
+    {
+      "id": 16,
+      "should_trigger": false,
+      "reason": "The requested output is SQL code only, which falls under the explicit code-only exclusion."
+    }
+  ]
+}

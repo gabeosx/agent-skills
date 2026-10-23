@@ -1,0 +1,57 @@
+{
+  "expectations": [
+    {
+      "text": "Uses exactly the headings Recommendation, Evidence, and Next decision and contains at most 180 words.",
+      "passed": true,
+      "evidence": "Only the headings \"Recommendation\", \"Evidence\", and \"Next decision\" appear. The response is 123 whitespace-delimited words, including headings and Markdown markers, below 180."
+    },
+    {
+      "text": "Recommends a four-week extension and explicitly reserves permanent adoption for the later decision.",
+      "passed": true,
+      "evidence": "\"Extend the shared-dispatch pilot for four weeks\" and \"Defer any commitment to permanent adoption\"; \"After four weeks, reconsider permanent adoption\" reserves the later decision."
+    },
+    {
+      "text": "Correctly reports 18 total shifts, comprising 11 with shared dispatch and 7 without, and associates median handoff times of 7 and 9 minutes with the correct groups.",
+      "passed": true,
+      "evidence": "\"18 shifts: 11 with a shared dispatcher and 7 without\"; \"7 minutes with shared dispatch and 9 minutes without it.\""
+    },
+    {
+      "text": "States that assignment was not randomized and that shared-dispatch shifts had fewer urgent jobs; does not attribute the time difference causally to shared dispatch.",
+      "passed": true,
+      "evidence": "\"they do not establish that shared dispatch caused faster handoffs. Assignments were not randomized, and shared-dispatch shifts handled fewer urgent jobs.\" The preceding \"warrant further testing\" is a recommendation consistent with the requested extension, not invented evidence."
+    },
+    {
+      "text": "Reports one missed handoff in each group without suggesting that one group had fewer missed handoffs.",
+      "passed": true,
+      "evidence": "\"Each group recorded one missed handoff.\" No unequal missed-handoff claim appears."
+    },
+    {
+      "text": "Accurately gives the $2,400 monthly cost and $3,000 monthly ceiling, without presenting the ceiling as the actual cost.",
+      "passed": true,
+      "evidence": "\"at $2,400 per month, within the $3,000 monthly ceiling.\" Cost and ceiling are correctly distinguished."
+    },
+    {
+      "text": "Calls for more comparable shift assignments and a staff survey, makes clear that no survey results exist yet, and adds no numerical success threshold or invented evidence.",
+      "passed": true,
+      "evidence": "\"No staff survey has been conducted\"; \"make shift assignments more comparable and conduct a staff survey.\" No numerical success threshold or additional evidence is supplied."
+    }
+  ],
+  "summary": {
+    "passed": 7,
+    "failed": 0,
+    "total": 7,
+    "pass_rate": 1.0
+  },
+  "scores": {
+    "Fidelity": 5,
+    "Directness and selectivity": 5,
+    "Specificity": 5,
+    "Voice and genre": 5,
+    "Cadence and rhetoric": 5,
+    "Structure": 5
+  },
+  "critical_failures": [],
+  "review_method": "Independent single blind agent review; not human feedback",
+  "review_source": "blind/confirmation/review.json",
+  "output_sha256": "ca0869e6331a94a6a66351e1abb80db507e9028a277d5190e5b30fca33d5e81a"
+}

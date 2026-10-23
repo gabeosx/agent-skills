@@ -1,0 +1,12 @@
+{
+  "started_at": "2026-10-23T20:54:54.438999+00:00",
+  "candidate": "v3",
+  "development_acceptance": "28/28 assertions, 11/11 exact checks; 4.89/5 mean; three wins, zero losses, five ties; control unchanged. No unresolved substantive regression.",
+  "arm_status": {
+    "with_skill": "dispatched next",
+    "without_skill": "dispatched next"
+  },
+  "attempt": 1,
+  "intervention": "None beyond supplying frozen task/skill paths",
+  "usage_metrics": "unknown"
+}

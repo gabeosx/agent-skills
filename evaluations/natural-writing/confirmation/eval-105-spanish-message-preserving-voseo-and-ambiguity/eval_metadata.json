@@ -1,0 +1,13 @@
+{
+  "eval_id": 105,
+  "eval_name": "spanish-message-preserving-voseo-and-ambiguity",
+  "prompt": "Pulí apenas este mensaje para una compañera del taller. Mantené el español rioplatense, el voseo y el tono cercano; no lo traduzcas ni lo conviertas en un correo formal. Podés corregir puntuación y quitar repeticiones. No resuelvas la duda sobre cuál de los dos presupuestos aprobó Lucía. Devolvé solo el mensaje.\n\nChe, Vale: si podés pasá por el taller el jueves después de las seis, después de las seis así ya terminé de ordenar. Dejé dos presupuestos arriba de la mesa; Lucía dijo que aprobó uno, pero no me dijo cuál. No encargues la madera todavía. Traé el cuaderno azul, porfa. Si llueve, lo vemos el viernes por videollamada, a la misma hora.",
+  "assertions": [
+    "Returns only a Spanish message and preserves Rioplatense voseo, including forms such as podés, pasá, and traé rather than switching to tú or usted.",
+    "Keeps the familiar relationship and conversational register represented by Che, Vale and porfa; does not add formal salutations or a professional sign-off.",
+    "Removes the accidental repetition of después de las seis while preserving Thursday after six as the initial meeting time.",
+    "Keeps two budgets on the table, Lucía's approval of one unspecified budget, and the uncertainty about which one she approved.",
+    "Preserves the instruction not to order wood yet and the request to bring the blue notebook.",
+    "Preserves the conditional fallback: if it rains, meet Friday by video call at the same time; does not turn the fallback into an unconditional rescheduling."
+  ]
+}

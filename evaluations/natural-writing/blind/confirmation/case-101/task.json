@@ -1,0 +1,13 @@
+{
+  "id": 101,
+  "name": "literary-restraint-and-purposeful-punctuation",
+  "prompt": "Give this passage a light copyedit only if it contains a clear error. The fragments, semicolon, em dash, repetition, and odd image are deliberate. If no correction is necessary, return it unchanged. Return only the passage, without a note about your edits.\n\nAt dusk the ferry came back empty. Not almost empty. Empty. My father counted the windows anyway; he had always trusted arithmetic more than news. On the far bank, a house burned with the slow patience of a candle. I held his coat—his good coat, absurdly heavy for June—and waited for him to stop counting.",
+  "expected_output": "At dusk the ferry came back empty. Not almost empty. Empty. My father counted the windows anyway; he had always trusted arithmetic more than news. On the far bank, a house burned with the slow patience of a candle. I held his coat—his good coat, absurdly heavy for June—and waited for him to stop counting.",
+  "files": [],
+  "assertions": [
+    "Returns the supplied passage verbatim; there is no clear error requiring correction.",
+    "Preserves the two fragments 'Not almost empty. Empty.' and the repeated act of counting.",
+    "Preserves the semicolon after 'anyway' and the paired em dashes around 'his good coat, absurdly heavy for June'.",
+    "Adds no interpretation, title, editing explanation, or extra narrative facts."
+  ]
+}

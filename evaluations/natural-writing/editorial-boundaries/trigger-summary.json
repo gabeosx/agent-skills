@@ -1,0 +1,20 @@
+{
+  "matched": 21,
+  "total": 22,
+  "mismatches": [
+    {
+      "expected": {
+        "id": 8,
+        "query": "Review this already-good paragraph for actual errors only; do not change my punctuation for style.",
+        "should_trigger": true,
+        "reason": "Restrained editing is in scope"
+      },
+      "actual": {
+        "id": 8,
+        "should_trigger": false,
+        "reason": "This is a narrow check for actual errors in a paragraph, with stylistic editing expressly restricted. It does not ask for naturalness, voice work, or substantial reader-facing composition."
+      }
+    }
+  ],
+  "method": "Independent description interpretation; not actual host auto-selection"
+}

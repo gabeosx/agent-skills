@@ -1,0 +1,21 @@
+{
+  "stage": "iteration-1",
+  "auditor": "root; not blind; separate from unchanged independent assertions/grades",
+  "observations": [
+    {
+      "id": 202,
+      "type": "reader-relevance defect",
+      "finding": "Reference entry requested retries/auth/cache but ends with a commentary on missing reliability evidence and production readiness. It also recounts Redis removal while explaining unknown cache specification. This continues source-selection leakage rather than giving requested current reference."
+    },
+    {
+      "id": 206,
+      "type": "unsupported knowledge claim",
+      "finding": "Both old and candidate email say we do not yet have a delivery date. Source supplies only a dispatch date and explicitly no tracking; it does not establish sender lacks a delivery date. Existing task assertions did not isolate this omission-to-absence inference."
+    }
+  ],
+  "source_sha256": {
+    "evaluations/natural-writing/editorial-boundaries/iteration-1/eval-202-reference-with-unknown-specifications/with_skill/outputs/output.md": "3c2b053de4f5e9ee3a05fa9a99b8362005da95806e951a833b1c0033e9d03c6f",
+    "evaluations/natural-writing/editorial-boundaries/iteration-1/eval-206-customer-email-from-internal-thread/with_skill/outputs/output.md": "9d8362042fb8f17e4f8f57df49f16ebf610ac765f01bd20aec620c68cd0be147"
+  },
+  "decision": "Revise guidance generally and rerun development; preserve first comparison and raw assertions. Do not expose root findings to first blind reviewers."
+}

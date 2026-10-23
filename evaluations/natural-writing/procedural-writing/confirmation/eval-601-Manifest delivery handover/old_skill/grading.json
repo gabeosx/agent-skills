@@ -1,0 +1,44 @@
+{
+  "expectations": [
+    {
+      "text": "The directions specify Evening East and Destination = East review, then direct the coordinator to inspect Review desk > East review > Incoming for the receiving copy.",
+      "passed": true,
+      "evidence": "Steps 1\u20133 specify Evening East, Destination = East review, and Review desk > East review > Incoming."
+    },
+    {
+      "text": "Success requires the Evening East row to show Status = Ready and Shipments = 24; the green Request accepted toast is not treated as delivery confirmation.",
+      "passed": true,
+      "evidence": "The receiving row must show Name: Evening East, Status: Ready, Shipments: 24. The toast confirms queue entry, while the Incoming row confirms readiness."
+    },
+    {
+      "text": "Recovery for Status = Destination paused uses East review's Settings to change Receiving from Paused to Active and resend the batch, without presenting that recovery as applicable to every failure.",
+      "passed": true,
+      "evidence": "The Destination paused section changes Receiving to Active in East review Settings, resends Evening East to East review, and repeats exact receiving checks. It limits other failures to no documented operator remedy."
+    },
+    {
+      "text": "The response does not invent a partner archive address, inspection control, expected receipt, or remedy; it keeps the partner-copy outcome explicitly unverified.",
+      "passed": true,
+      "evidence": "The partner section supplies no invented address or mechanism; it says its outcome remains unconfirmed even when the East review copy is ready."
+    },
+    {
+      "text": "The response is written as directions the coordinator can use, rather than commentary about writing the directions.",
+      "passed": true,
+      "evidence": "The output provides numbered operator actions and conditional recovery as the handover itself."
+    }
+  ],
+  "summary": {
+    "passed": 5,
+    "failed": 0,
+    "total": 5,
+    "pass_rate": 1.0
+  },
+  "blind_review": "reviews/confirmation/601.json",
+  "output_sha256": "feedb0b87c39fd177378a7ea971b616b4a8e45fdc40916ca701cdc6efad34d57",
+  "scores": {
+    "usefulness": 5,
+    "fidelity": 5,
+    "naturalness": 5
+  },
+  "critical": [],
+  "substantive": []
+}

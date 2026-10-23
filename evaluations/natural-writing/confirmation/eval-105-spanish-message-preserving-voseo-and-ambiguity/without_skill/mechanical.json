@@ -1,0 +1,12 @@
+{
+  "method": "Exact/format checks only; independent semantic and style review required",
+  "expectations": [
+    {
+      "text": "Accidental repetition removed",
+      "passed": true,
+      "evidence": "1 occurrences of meeting time"
+    }
+  ],
+  "passed": 1,
+  "total": 1
+}

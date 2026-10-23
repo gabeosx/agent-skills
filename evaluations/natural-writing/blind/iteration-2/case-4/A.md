@@ -1,0 +1,3 @@
+Replication is not a backup. It copies changes to another database instance, including accidental deletions. That copy can improve availability, but it can also reproduce the error from which you need to recover. A backup preserves an earlier state that can be restored within the limits of its retention policy.
+
+Replication alone does not provide point-in-time recovery. For this system, recovery to a specific point requires both a base backup and an unbroken sequence of write-ahead logs covering the required recovery interval. A gap in that sequence prevents recovery through the gap. Plan replication for availability and maintain backups and write-ahead logs for recovery. Neither arrangement guarantees zero downtime or zero data loss.

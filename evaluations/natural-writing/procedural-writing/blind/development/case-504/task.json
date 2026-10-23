@@ -1,0 +1,13 @@
+{
+  "id": 504,
+  "name": "coverage-audit",
+  "prompt": "Review this fictional Cedar task-import rewrite against its original and current evidence. Give only consequential fixes and replacement wording; no full rewrite. Original: Back up the destination and confirm the workspace on Apply. Apply cannot be undone. A matching TaskCode overwrites the existing task fields. Comments, attachments and archived tasks cannot be imported. Draft: Select CSV under Import, preview the rows, and press Apply. Comments are supported. Import history is limited. Current evidence: Comment-column import now works. Attachments and archived tasks remain unsupported. TaskCode matching still overwrites existing fields, Apply remains irreversible, and backup plus destination confirmation are still prerequisites. Do not rely on any behavior outside this evidence.",
+  "files": [],
+  "expected_output": "Usable, faithful prose that satisfies the task without invented details.",
+  "assertions": [
+    "The review restores backup, workspace confirmation and irreversible Apply warning.",
+    "It restores matching TaskCode overwrite behavior rather than accepting a generic history warning as equivalent.",
+    "It names both unsupported attachments and archived tasks without restoring the stale comments restriction.",
+    "It supplies actionable replacement wording and does not invent new UI or mechanisms."
+  ]
+}

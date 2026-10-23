@@ -1,0 +1,4 @@
+- Restore the prerequisites and irreversible-action warning. Replace the opening instruction with: “Back up the destination before importing. Select CSV under Import and preview the rows. On Apply, confirm the destination workspace before proceeding. Apply cannot be undone.”
+- Restore the overwrite behavior: “A matching TaskCode overwrites the existing task fields.”
+- Make the supported and unsupported content explicit. Replace “Comments are supported” with: “Comments can be imported through the Comment column. Attachments and archived tasks cannot be imported.”
+- Delete “Import history is limited.” The supplied evidence does not establish an import-history limitation.

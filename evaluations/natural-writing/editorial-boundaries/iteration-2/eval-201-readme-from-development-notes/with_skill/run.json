@@ -1,0 +1,23 @@
+{
+  "arm": "candidate-2",
+  "files": [
+    "/Users/gabe/agent-skills/evaluations/natural-writing/editorial-boundaries/iteration-2/eval-201-readme-from-development-notes/with_skill/outputs/output.md",
+    "/Users/gabe/agent-skills/evaluations/natural-writing/editorial-boundaries/iteration-2/eval-202-reference-with-unknown-specifications/with_skill/outputs/output.md",
+    "/Users/gabe/agent-skills/evaluations/natural-writing/editorial-boundaries/iteration-2/eval-203-architecture-record-positive-control/with_skill/outputs/output.md",
+    "/Users/gabe/agent-skills/evaluations/natural-writing/editorial-boundaries/iteration-2/eval-204-migration-history-positive-control/with_skill/outputs/output.md",
+    "/Users/gabe/agent-skills/evaluations/natural-writing/editorial-boundaries/iteration-2/eval-205-evaluation-record-preserve-failures/with_skill/outputs/output.md",
+    "/Users/gabe/agent-skills/evaluations/natural-writing/editorial-boundaries/iteration-2/eval-206-customer-email-from-internal-thread/with_skill/outputs/output.md",
+    "/Users/gabe/agent-skills/evaluations/natural-writing/editorial-boundaries/iteration-2/eval-207-maintenance-comment-useful-rationale/with_skill/outputs/output.md",
+    "/Users/gabe/agent-skills/evaluations/natural-writing/editorial-boundaries/iteration-2/eval-208-board-brief-with-hidden-context/with_skill/outputs/output.md",
+    "/Users/gabe/agent-skills/evaluations/natural-writing/editorial-boundaries/iteration-2/eval-402-regression-uncertain-study/with_skill/outputs/output.md",
+    "/Users/gabe/agent-skills/evaluations/natural-writing/editorial-boundaries/iteration-2/eval-403-regression-source-poor-copy/with_skill/outputs/output.md",
+    "/Users/gabe/agent-skills/evaluations/natural-writing/editorial-boundaries/iteration-2/eval-405-regression-voice-sample-email/with_skill/outputs/output.md",
+    "/Users/gabe/agent-skills/evaluations/natural-writing/editorial-boundaries/iteration-2/eval-406-regression-already-good-control/with_skill/outputs/output.md"
+  ],
+  "utc_file_write_timestamp": "2026-10-23T21:28:40.318606+00:00",
+  "generation_time": null,
+  "tokens": null,
+  "charge": null,
+  "exact_build": null,
+  "measurement_note": "Generation time, token usage, charge and exact model build were not exposed. Timestamp records batch artifact writing, not generation duration."
+}

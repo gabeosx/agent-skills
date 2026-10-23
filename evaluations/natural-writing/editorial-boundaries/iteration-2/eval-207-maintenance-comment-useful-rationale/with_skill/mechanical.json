@@ -1,0 +1,17 @@
+{
+  "expectations": [
+    {
+      "text": "Required interface strings retained",
+      "passed": true,
+      "evidence": "Missing: []"
+    },
+    {
+      "text": "Only comment text returned",
+      "passed": true,
+      "evidence": "Every nonempty line starts with #; no markdown fence or response wrapper"
+    }
+  ],
+  "passed": 2,
+  "total": 2,
+  "method": "Exact/format constraints only; semantic review separate"
+}

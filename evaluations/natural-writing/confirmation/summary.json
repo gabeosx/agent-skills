@@ -1,0 +1,38 @@
+{
+  "with_skill": {
+    "cases": 6,
+    "passed": 36,
+    "total": 36,
+    "critical_failures": [],
+    "case_means": [
+      5,
+      5,
+      5,
+      5,
+      5,
+      4.666666666666667
+    ],
+    "wins": 0,
+    "losses": 1,
+    "ties": 5,
+    "mean_score": 4.944444444444445
+  },
+  "without_skill": {
+    "cases": 6,
+    "passed": 36,
+    "total": 36,
+    "critical_failures": [],
+    "case_means": [
+      5,
+      5,
+      5,
+      5,
+      5,
+      5
+    ],
+    "wins": 1,
+    "losses": 0,
+    "ties": 5,
+    "mean_score": 5
+  }
+}

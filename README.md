@@ -1,70 +1,64 @@
 # Agent Skills
 
-A collection of specialized skills following the open standard for agent capabilities.
+Reusable instructions for agents working on writing, development environments, design, and transcripts. Each skill has its own version and follows the [Agent Skills specification](https://agentskills.io/specification).
 
-## Included Skills
+## Install a skill
 
-### 🧪 [Benchmark Improvement Loop](./skills/benchmark-improvement-loop)
-Introduce a benchmark and run an auditable test–verify–improve campaign for an agent skill. It separates first-attempt results, targeted retries, and untouched holdouts; requires independent outcome checks, scoped infrastructure, spend accounting, and evidence-backed changes. The repository's agent instructions route benchmark work through this skill.
-
-### 🍎 [Apple Container Skill](./skills/apple-container-skill)
-Interact with the Apple Container CLI to manage containers, images, volumes, networks, and system services on macOS.
-- **Key Features:** Release-aware security guidance through Apple Container 1.5.0, system lifecycle and diagnostics, current Container Machine selection, build SSH forwarding, safe isolation paths, scoped filesystem cleanup, and experimental local Kubernetes.
-
-### 🛠️ [DevContainer Helper](./skills/devcontainer-helper)
-Design, audit, troubleshoot, and optimize Dev Container and GitHub Codespaces environments.
-- **Key Features:** Inspection-first architecture choices, current image and Feature verification, explicit LTS selection, sidecar and Docker-access safety, Feature lockfiles and Dependabot, OCI authentication hardening, Codespaces prebuild guidance, WSL Containers version checks, runtime portability, and end-to-end validation.
-
-### 🎨 [UX Designer](./skills/ux-designer)
-Expert UX/UI design assistant based on the "Refactoring UI" philosophy.
-- **Key Features:** Logic-based design rules, strict hierarchy enforcement, complete design system tokens, Responsive Design & Robustness rules, Data-Dense Interface Principles, and Component Standards.
-
-### 🔄 [GitHub Scrum Flow](./skills/github-scrum-flow)
-Unified expert for Project Management (Scrum/Agile) and GitHub Flow enforcement.
-- **Key Features:** Track orchestration, backlog hygiene, GitHub Issue synchronization, branch management, and enforcing strict PR-first workflows (Issue <-> Track <-> Branch).
-
-### 🎙️ [MacWhisper](./skills/macwhisper)
-Read-only access to [MacWhisper](https://goodsnooze.gumroad.com/l/macwhisper) transcription sessions from its local SQLite database. Zero configuration for a standard MacWhisper install.
-- **Key Features:** List unprocessed recordings, fetch diarized transcripts with hallucination filtering, keyword search, processed-session state tracking, and UTC time windows for calendar enrichment.
-
-## Archived Research
-
-### [Agent Browser Jev](./skills/agent-browser-jev/RESEARCH.md)
-
-Archived October 2, 2026. The comprehensive research report preserves the browser-delegation trials, public benchmark studies, caller comparisons, failed architectures, costs and final NO-GO decisions. The [evidence register](./skills/agent-browser-jev/EVIDENCE.md) identifies public artifacts and private-source limits. Its source remains for research, but `SKILL.md` and installation guidance have been removed. Jev is no longer offered as an installable skill in this repository tree; historical versions and existing copies remain available independently.
-
-## Versioning and Releases
-
-Each skill is versioned independently according to [Semantic Versioning 2.0.0](https://semver.org/). The canonical machine-readable version is the quoted `metadata.version` value in that skill's `SKILL.md` frontmatter. A repository-wide [CHANGELOG.md](./CHANGELOG.md), maintained in the style of [Keep a Changelog](https://keepachangelog.com/en/2.0.0/), is the canonical human-readable release history.
-
-An intentionally retired skill removes `SKILL.md` and records its name, archived status, incompatible retirement version and retained research paths in `ARCHIVE.json`. Its `metadata.version` becomes the canonical archive-contract version. Preserved executable package versions describe historical source and remain unchanged. The release validator checks the archive manifest and rejects public `SKILL.md` files inside an archived directory.
-
-- **Major:** An incompatible change to triggering, required inputs, behavioral guarantees, outputs, or resource layout.
-- **Minor:** A backward-compatible capability, workflow, or material guidance improvement.
-- **Patch:** A backward-compatible correction or clarification that does not add a material capability.
-
-For each release:
-
-1. Update `metadata.version` and `CHANGELOG.md` in the same change.
-2. Run `python3 .agents/scripts/validate_release_contract.py`, the skill structural validator, and any skill-specific tests.
-3. Commit or merge the release change.
-4. Tag that commit as `<skill-name>/v<version>` (for example, `devcontainer-helper/v1.0.0`). A GitHub Release may then be created from the matching changelog entry.
-
-Never tag an uncommitted working tree. The versions established here are the first formal baselines; earlier unversioned development remains available in Git history.
-
-## Usage
-
-These skills are designed to be dropped into your agent's skills directory.
-
-Install a selected skill using the [skills CLI](https://github.com/vercel-labs/skills):
+From the project where you want to use it, run:
 
 ```bash
-npx skills add gabeosx/agent-skills --skill apple-container-skill
+npx skills add gabeosx/agent-skills --skill natural-writing
 ```
 
-Consult the selected active skill's instructions for any dependencies. Archived research directories are excluded from the installable catalog.
+Choose the target agent when prompted. The [skills CLI](https://github.com/vercel-labs/skills) requires Node.js 22.20 or later and installs to the current project by default. Add `-g` for an installation across projects, or select Codex explicitly:
 
 ```bash
-# Example: Symlink a skill to your agent's skills location
-ln -s $(pwd)/skills/apple-container-skill /path/to/agent/skills/
+npx skills add gabeosx/agent-skills --skill natural-writing -a codex
 ```
+
+To see the available skills before installing:
+
+```bash
+npx skills add gabeosx/agent-skills --list
+```
+
+Read the selected skill's instructions for runtime dependencies. Natural Writing requires no runtime tools or external services.
+
+For a local checkout, you can also link a skill into your agent's skills directory. Replace the destination below with that directory's actual path:
+
+```bash
+ln -s "$PWD/skills/natural-writing" /path/to/agent/skills/natural-writing
+```
+
+## Choose a skill
+
+| Skill | Use it for |
+| --- | --- |
+| [Natural Writing](skills/natural-writing/SKILL.md) | Drafting, editing, and reviewing prose with fewer generic AI writing habits. Preserves facts, uncertainty, voice, and useful detail; selects content for the reader; makes procedural checks actionable. Includes contextual examples and [comparison studies](evaluations/natural-writing/procedural-writing/REPORT.md). It does not judge authorship or promise detector evasion. |
+| [Benchmark Improvement Loop](skills/benchmark-improvement-loop/SKILL.md) | Adding benchmarks and improving skills through comparable trials, independent outcome checks, separate development and confirmation sets, and recorded costs and failures. Repository agent instructions route benchmark work here. |
+| [Apple Container Skill](skills/apple-container-skill/README.md) | Running and troubleshooting Apple's `container` CLI on Apple silicon macOS: images, registries, networks, volumes, Container Machines, SSH forwarding, and experimental local Kubernetes. Guidance covers release differences and security fixes through 1.5.0. |
+| [DevContainer Helper](skills/devcontainer-helper/SKILL.md) | Designing and repairing Dev Containers and GitHub Codespaces: architecture, LTS images and Features, lockfiles, authentication, Docker access, prebuilds, WSL compatibility, and runtime validation. |
+| [UX Designer](skills/ux-designer/SKILL.md) | Applying Refactoring UI principles to hierarchy, spacing, typography, responsive layouts, data-heavy interfaces, components, and design tokens. |
+| [GitHub Scrum Flow](skills/github-scrum-flow/SKILL.md) | Coordinating tracks, backlog items, GitHub issues, and branches through a PR-first Issue ↔ Track ↔ Branch workflow. |
+| [MacWhisper](skills/macwhisper/README.md) | Listing and searching local transcriptions, fetching diarized transcripts with filtering, and tracking processed sessions. Includes UTC time windows for calendar lookup. Requires macOS, MacWhisper, Node.js, and `sqlite3`. |
+
+## Archived research
+
+[Agent Browser Jev](skills/agent-browser-jev/README.md) was retired on October 2, 2026. Its research report, evidence register, historical source, costs, failed experiments, and final NO-GO decisions remain available. The archive has no public `SKILL.md` and is excluded from installation discovery. Existing copies, old commits, tags, and forks remain available independently.
+
+## Versions and releases
+
+Skills use [Semantic Versioning](https://semver.org/) independently. An active skill's quoted `metadata.version` in `SKILL.md` is its canonical version; the root [changelog](CHANGELOG.md) records release history in [Keep a Changelog](https://keepachangelog.com/en/2.0.0/) format. Earlier unversioned development remains in Git history.
+
+- **Major:** incompatible changes to triggering, required inputs, guarantees, outputs, or resource paths.
+- **Minor:** compatible additions to capabilities, workflows, or material guidance.
+- **Patch:** compatible corrections and clarifications.
+
+To prepare a release:
+
+1. Update the skill's version and matching changelog entry together.
+2. Run `python3 .agents/scripts/validate_release_contract.py`, the skill-creator structural validator, and the checks relevant to that skill. Repository contributors should read [.agents/AGENTS.md](.agents/AGENTS.md) for the full requirements.
+3. Commit or merge the validated change, then tag that commit as `<skill-name>/v<version>`, for example `natural-writing/v1.0.0`.
+4. If creating a GitHub Release, use the matching committed changelog entry.
+
+Tag only committed changes. A retired skill removes `SKILL.md` and records its name, archived status, retirement version, and research paths in `ARCHIVE.json`. That manifest's `metadata.version` becomes the archive-contract version; retained executable package versions stay historical. The release validator checks the manifest and rejects public `SKILL.md` entrypoints inside archived directories.

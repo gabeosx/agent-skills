@@ -1,0 +1,1180 @@
+{
+  "cases": [
+    {
+      "id": 201,
+      "winner": "tie",
+      "reasoning": "Tie. Both provide a complete first-use README with exact setup commands, delivery semantics and rejection behavior, and both exclude development chatter. B adds a useful limits heading; A is slightly more compact. Neither difference changes reader usefulness.",
+      "preference_severity": "none",
+      "A": {
+        "scores": {
+          "fidelity": 5,
+          "directness_and_selectivity": 5,
+          "specificity": 5,
+          "voice_and_genre": 5,
+          "cadence_and_rhetoric": 5,
+          "structure": 5,
+          "edit_restraint": 5,
+          "reader_relevance": 5
+        },
+        "expectations": [
+          {
+            "text": "Includes the CSV-to-HTTPS purpose, Python 3.12 and PostgreSQL 16 requirements, all three configuration/installation/use steps, preserving code strings.",
+            "passed": true,
+            "evidence": "“accepts CSV files and delivers their rows to a configured HTTPS endpoint”; “Python 3.12 and an external PostgreSQL 16 service”; exact strings `pip install harbor-queue`, `DATABASE_URL`, `DESTINATION_URL`, and `harbor-queue ingest orders.csv` are present."
+          },
+          {
+            "text": "Preserves at-least-once semantics, supplied delivery_id deduplication requirement, and does not imply exactly-once delivery.",
+            "passed": true,
+            "evidence": "“Delivery is at least once”; “Deduplicate rows using the supplied `delivery_id`; delivery is not exactly once.”"
+          },
+          {
+            "text": "Preserves 25 MB limit and no partial import on rejected files; accurately describes supplied Authorization header if authentication is mentioned.",
+            "passed": true,
+            "evidence": "“Files over 25 MB are rejected without partially importing their rows.” Authentication is operator supplied: “Configure the `Authorization` header with the credential value your endpoint requires.”"
+          },
+          {
+            "text": "Does not narrate the discarded macro, SQLite replacement/debug session, Redis branch, internal nickname, or review/editorial notes.",
+            "passed": true,
+            "evidence": "The complete text moves from “Harbor Queue accepts CSV files” to “Quick start,” delivery semantics and file limits; none of the macro, SQLite, Redis, nickname or review notes appears."
+          },
+          {
+            "text": "Does not present unshipped OAuth, S3 import, or dashboard as capabilities, or claim no external service is needed; at most 230 words.",
+            "passed": true,
+            "evidence": "“external PostgreSQL 16 service” preserves the dependency. No OAuth, S3 or dashboard capability appears. 111 whitespace-delimited words, including headings and code fences, is below 230."
+          }
+        ],
+        "critical_failures": [],
+        "substantive_defects": [],
+        "strengths": [
+          "Complete first-use setup with exact commands and configuration names.",
+          "Retains operational limits and external PostgreSQL dependency while excluding abandoned designs."
+        ],
+        "weaknesses": []
+      },
+      "B": {
+        "scores": {
+          "fidelity": 5,
+          "directness_and_selectivity": 5,
+          "specificity": 5,
+          "voice_and_genre": 5,
+          "cadence_and_rhetoric": 5,
+          "structure": 5,
+          "edit_restraint": 5,
+          "reader_relevance": 5
+        },
+        "expectations": [
+          {
+            "text": "Includes the CSV-to-HTTPS purpose, Python 3.12 and PostgreSQL 16 requirements, all three configuration/installation/use steps, preserving code strings.",
+            "passed": true,
+            "evidence": "“accepts CSV files and delivers their rows to a configured HTTPS endpoint”; “Python 3.12 and PostgreSQL 16, with PostgreSQL running as an external service”; exact strings `pip install harbor-queue`, `DATABASE_URL`, `DESTINATION_URL`, and `harbor-queue ingest orders.csv` are present."
+          },
+          {
+            "text": "Preserves at-least-once semantics, supplied delivery_id deduplication requirement, and does not imply exactly-once delivery.",
+            "passed": true,
+            "evidence": "“Delivery is at least once”; “Consumers must deduplicate rows using the supplied `delivery_id`; Harbor Queue does not guarantee exactly-once delivery.”"
+          },
+          {
+            "text": "Preserves 25 MB limit and no partial import on rejected files; accurately describes supplied Authorization header if authentication is mentioned.",
+            "passed": true,
+            "evidence": "“Files over 25 MB are rejected without importing any rows.” Authentication is operator supplied: “Supply the endpoint's credentials as the configured `Authorization` header value.”"
+          },
+          {
+            "text": "Does not narrate the discarded macro, SQLite replacement/debug session, Redis branch, internal nickname, or review/editorial notes.",
+            "passed": true,
+            "evidence": "The complete text contains purpose, “Quick start,” and “Delivery and file limits”; none of the discarded designs, debug history, internal nickname or editorial notes appears."
+          },
+          {
+            "text": "Does not present unshipped OAuth, S3 import, or dashboard as capabilities, or claim no external service is needed; at most 230 words.",
+            "passed": true,
+            "evidence": "“PostgreSQL running as an external service” preserves the dependency. No OAuth, S3 or dashboard capability appears. 117 whitespace-delimited words, including headings and code fences, is below 230."
+          }
+        ],
+        "critical_failures": [],
+        "substantive_defects": [],
+        "strengths": [
+          "Complete first-use setup with exact commands and configuration names.",
+          "Retains operational limits and external PostgreSQL dependency while excluding abandoned designs."
+        ],
+        "weaknesses": []
+      }
+    },
+    {
+      "id": 202,
+      "winner": "tie",
+      "reasoning": "Tie. Both state automatic retries while making the authentication, retry-policy and CACHE_URL gaps explicit. Both appropriately withhold reliability guarantees. B uses a more direct opening; A explicitly records the auth refactor. These are equivalent reference entries.",
+      "preference_severity": "none",
+      "A": {
+        "scores": {
+          "fidelity": 5,
+          "directness_and_selectivity": 5,
+          "specificity": 5,
+          "voice_and_genre": 5,
+          "cadence_and_rhetoric": 5,
+          "structure": 5,
+          "edit_restraint": 5,
+          "reader_relevance": 5
+        },
+        "expectations": [
+          {
+            "text": "States failed export requests are retried automatically without inventing a count, interval, error policy, or delivery guarantee.",
+            "passed": true,
+            "evidence": "“Failed export requests now receive automatic retry handling.” It explicitly leaves “retry count, backoff interval or what happens after retries are exhausted” unspecified."
+          },
+          {
+            "text": "Does not infer OAuth or any other authentication protocol from a refactor; makes the authentication specification gap clear.",
+            "passed": true,
+            "evidence": "“Authentication was refactored, but the notes do not identify the authentication protocol or describe its configuration.” No protocol is invented."
+          },
+          {
+            "text": "Preserves CACHE_URL and does not infer that all caches or external dependencies are absent from removal of experimental Redis.",
+            "passed": true,
+            "evidence": "“`CACHE_URL` remains an accepted configuration setting. Its backend and whether it is required are unspecified.” It adds that experimental Redis removal “does not establish what backend `CACHE_URL` uses.”"
+          },
+          {
+            "text": "Omits debugging mocks, proxy chronology and unsupported production-ready/robust claims; no more than 140 words.",
+            "passed": true,
+            "evidence": "No mocks or proxy chronology appears. “The notes include no load-test or reliability results supporting a production-readiness claim” reports the evidence gap rather than adopting the claim. 90 words is below 140."
+          }
+        ],
+        "critical_failures": [],
+        "substantive_defects": [],
+        "strengths": [
+          "Separates known retry behavior from unspecified policy and authentication details.",
+          "Preserves CACHE_URL uncertainty and rejects unsupported production-readiness claims."
+        ],
+        "weaknesses": []
+      },
+      "B": {
+        "scores": {
+          "fidelity": 5,
+          "directness_and_selectivity": 5,
+          "specificity": 5,
+          "voice_and_genre": 5,
+          "cadence_and_rhetoric": 5,
+          "structure": 5,
+          "edit_restraint": 5,
+          "reader_relevance": 5
+        },
+        "expectations": [
+          {
+            "text": "States failed export requests are retried automatically without inventing a count, interval, error policy, or delivery guarantee.",
+            "passed": true,
+            "evidence": "“Failed export requests are retried automatically.” It explicitly leaves “retry count, backoff interval or behavior after retries are exhausted” unspecified."
+          },
+          {
+            "text": "Does not infer OAuth or any other authentication protocol from a refactor; makes the authentication specification gap clear.",
+            "passed": true,
+            "evidence": "“The authentication protocol is unspecified in the available notes. Confirm the required protocol before configuring export credentials.” No protocol is invented."
+          },
+          {
+            "text": "Preserves CACHE_URL and does not infer that all caches or external dependencies are absent from removal of experimental Redis.",
+            "passed": true,
+            "evidence": "“`CACHE_URL` remains an accepted configuration setting. Its backend and whether it is required are undocumented in these notes”; Redis removal “does not resolve either question.”"
+          },
+          {
+            "text": "Omits debugging mocks, proxy chronology and unsupported production-ready/robust claims; no more than 140 words.",
+            "passed": true,
+            "evidence": "No mocks or proxy chronology appears. “No load-test or reliability results are provided, so the notes do not establish production readiness.” 91 words is below 140."
+          }
+        ],
+        "critical_failures": [],
+        "substantive_defects": [],
+        "strengths": [
+          "Separates known retry behavior from unspecified policy and authentication details.",
+          "Preserves CACHE_URL uncertainty and rejects unsupported production-readiness claims."
+        ],
+        "weaknesses": []
+      }
+    },
+    {
+      "id": 203,
+      "winner": "tie",
+      "reasoning": "Tie. Both retain the decision history that future maintainers need: alternatives, reasons, operating constraints, transactional protection, backup limitation and revisit triggers. Neither deletes rationale merely to shorten the record. B expands the no-separate-service consequence without adding an unsupported capability.",
+      "preference_severity": "none",
+      "A": {
+        "scores": {
+          "fidelity": 5,
+          "directness_and_selectivity": 5,
+          "specificity": 5,
+          "voice_and_genre": 5,
+          "cadence_and_rhetoric": 5,
+          "structure": 5,
+          "edit_restraint": 5,
+          "reader_relevance": 5
+        },
+        "expectations": [
+          {
+            "text": "Preserves 72-hour offline requirement, at most 2 GB, and one-writer context.",
+            "passed": true,
+            "evidence": "“run for up to 72 hours without connectivity”; “at most 2 GB on one laptop and has one writer process.”"
+          },
+          {
+            "text": "Records all three considered alternatives with reasons for rejecting remote service and JSON and selecting SQLite.",
+            "passed": true,
+            "evidence": "Lists “A remote search service” unable to support offline operation, “Plain JSON files” requiring index rebuilding “for every search,” and “An embedded SQLite database” providing local indexed queries “without a separate service”; decision is “Use SQLite.”"
+          },
+          {
+            "text": "Preserves transactional batch-import protection and the one-writer limitation without promising concurrent writes.",
+            "passed": true,
+            "evidence": "“Transactions protect each batch of imports from partial commit.” “Only one writer is supported.”"
+          },
+          {
+            "text": "Keeps closed-app backups, unimplemented live backup, and both revisit triggers; omits meeting joke and editing-history note; at most 240 words.",
+            "passed": true,
+            "evidence": "“Backups must be copied while the app is closed; a live-backup mechanism has not been implemented.” “Reconsider storage if multiple writers become necessary or local data grows beyond 2 GB.” Meeting joke and editing history are absent. 136 words is below 240."
+          }
+        ],
+        "critical_failures": [],
+        "substantive_defects": [],
+        "strengths": [
+          "Preserves useful architecture history and causal rationale for all alternatives.",
+          "Keeps operating constraints, backup limitations and both explicit revisit triggers."
+        ],
+        "weaknesses": []
+      },
+      "B": {
+        "scores": {
+          "fidelity": 5,
+          "directness_and_selectivity": 5,
+          "specificity": 5,
+          "voice_and_genre": 5,
+          "cadence_and_rhetoric": 5,
+          "structure": 5,
+          "edit_restraint": 5,
+          "reader_relevance": 5
+        },
+        "expectations": [
+          {
+            "text": "Preserves 72-hour offline requirement, at most 2 GB, and one-writer context.",
+            "passed": true,
+            "evidence": "“operate for up to 72 hours without connectivity”; “at most 2 GB on one laptop and supports one writer process.”"
+          },
+          {
+            "text": "Records all three considered alternatives with reasons for rejecting remote service and JSON and selecting SQLite.",
+            "passed": true,
+            "evidence": "Lists “A remote search service” unable to meet offline operation, “Plain JSON files” requiring index rebuilding “for every search,” and “Embedded SQLite” providing local indexed queries “without a separate service”; decision selects “an embedded SQLite database.”"
+          },
+          {
+            "text": "Preserves transactional batch-import protection and the one-writer limitation without promising concurrent writes.",
+            "passed": true,
+            "evidence": "“Use transactions to prevent a batch of imports from being partially committed.” “Only one writer is supported.”"
+          },
+          {
+            "text": "Keeps closed-app backups, unimplemented live backup, and both revisit triggers; omits meeting joke and editing-history note; at most 240 words.",
+            "passed": true,
+            "evidence": "“Backups must be copied while the app is closed; a live-backup mechanism has not been implemented.” “Reconsider storage if multiple writers become necessary or local data grows beyond 2 GB.” Meeting joke and editing history are absent. 144 words is below 240."
+          }
+        ],
+        "critical_failures": [],
+        "substantive_defects": [],
+        "strengths": [
+          "Preserves useful architecture history and causal rationale for all alternatives.",
+          "Keeps operating constraints, backup limitations and both explicit revisit triggers."
+        ],
+        "weaknesses": []
+      }
+    },
+    {
+      "id": 204,
+      "winner": "tie",
+      "reasoning": "Tie. Both are actionable migrations preserving old/new identifiers, security motivation, irreversible queue conversion and correctly ordered backup/rollback steps. B numbers rollback steps and repeats backup retention; A communicates the same sequence in two concise sentences. This is a minor presentation preference.",
+      "preference_severity": "none",
+      "A": {
+        "scores": {
+          "fidelity": 5,
+          "directness_and_selectivity": 5,
+          "specificity": 5,
+          "voice_and_genre": 5,
+          "cadence_and_rhetoric": 5,
+          "structure": 5,
+          "edit_restraint": 5,
+          "reader_relevance": 5
+        },
+        "expectations": [
+          {
+            "text": "Explicitly maps old endpoint to destination_url and states old key rejection in 2.0; retains both exact identifiers.",
+            "passed": true,
+            "evidence": "“Replace `endpoint` with `destination_url`. Version 2.0 rejects the old field.” The preceding exact mapping makes the rejected field unambiguous."
+          },
+          {
+            "text": "Requires PACKETLINE_TOKEN environment variable and removing the API key from configuration; preserves relevant motivation.",
+            "passed": true,
+            "evidence": "“Move your API key from the configuration file into the `PACKETLINE_TOKEN` environment variable, then remove it from the file.” Preserves motivation: “deliberately prevents new API keys from being saved in configuration files.”"
+          },
+          {
+            "text": "Explains 1.x queue compatibility on import but irreversible-to-1.x format upgrade and no automatic downgrade.",
+            "passed": true,
+            "evidence": "“Version 2.0 can read 1.x queue files, but importing them upgrades their format. Version 1.x cannot read the upgraded files, and there is no automatic downgrade.”"
+          },
+          {
+            "text": "Requires stopped-process directory copy before first import and stopping 2.0/restoring that copy before 1.x rollback; omits target and unshipped dotfile alternatives; at most 220 words.",
+            "passed": true,
+            "evidence": "“Stop Packetline and copy the queue directory before the first import into 2.0.” Rollback: “Stop Packetline 2.0. Restore the pre-import queue directory copy before launching 1.x.” No target/dotfile alternative appears. 111 words is below 220."
+          }
+        ],
+        "critical_failures": [],
+        "substantive_defects": [],
+        "strengths": [
+          "Makes old/new configuration and token changes actionable.",
+          "Retains pre-import backup timing, format incompatibility and rollback order."
+        ],
+        "weaknesses": []
+      },
+      "B": {
+        "scores": {
+          "fidelity": 5,
+          "directness_and_selectivity": 5,
+          "specificity": 5,
+          "voice_and_genre": 5,
+          "cadence_and_rhetoric": 5,
+          "structure": 5,
+          "edit_restraint": 5,
+          "reader_relevance": 5
+        },
+        "expectations": [
+          {
+            "text": "Explicitly maps old endpoint to destination_url and states old key rejection in 2.0; retains both exact identifiers.",
+            "passed": true,
+            "evidence": "“Replace `endpoint` with `destination_url`. Packetline 2.0 rejects `endpoint`.”"
+          },
+          {
+            "text": "Requires PACKETLINE_TOKEN environment variable and removing the API key from configuration; preserves relevant motivation.",
+            "passed": true,
+            "evidence": "“Move the API key from the configuration file into the `PACKETLINE_TOKEN` environment variable, then remove the key from the file.” Preserves motivation: “deliberately prevents new API keys from being saved in configuration files.”"
+          },
+          {
+            "text": "Explains 1.x queue compatibility on import but irreversible-to-1.x format upgrade and no automatic downgrade.",
+            "passed": true,
+            "evidence": "“Version 2.0 can read 1.x queue files, but importing them upgrades their format. Packetline 1.x cannot read the upgraded files, and there is no automatic downgrade.”"
+          },
+          {
+            "text": "Requires stopped-process directory copy before first import and stopping 2.0/restoring that copy before 1.x rollback; omits target and unshipped dotfile alternatives; at most 220 words.",
+            "passed": true,
+            "evidence": "“Stop Packetline and copy the queue directory before the first import into 2.0.” Numbered rollback requires “Stop Packetline 2.0,” “Restore the pre-import copy of the queue directory,” then “Launch Packetline 1.x.” No target/dotfile alternative appears. 125 words is below 220."
+          }
+        ],
+        "critical_failures": [],
+        "substantive_defects": [],
+        "strengths": [
+          "Makes old/new configuration and token changes actionable.",
+          "Retains pre-import backup timing, format incompatibility and rollback order."
+        ],
+        "weaknesses": []
+      }
+    },
+    {
+      "id": 205,
+      "winner": "tie",
+      "reasoning": "Tie. Both distinguish invalid evidence, clean first development evidence, practiced replay and unrun confirmation, preserve every cost, and recommend holding release. B puts the exact gate in the opening; A states it in the recommendation. Both serve the release reviewer equally well.",
+      "preference_severity": "none",
+      "A": {
+        "scores": {
+          "fidelity": 5,
+          "directness_and_selectivity": 5,
+          "specificity": 5,
+          "voice_and_genre": 5,
+          "cadence_and_rhetoric": 5,
+          "structure": 5,
+          "edit_restraint": 5,
+          "reader_relevance": 5
+        },
+        "expectations": [
+          {
+            "text": "Retains A initial 7/10 but explicitly invalidates its quality comparison because answer text leaked; does not erase the failed experiment or report it as valid.",
+            "passed": true,
+            "evidence": "“Candidate A answered 7 of 10 development queries correctly on its first run” and “answer text in the test index” that “invalidates the comparison as evidence of retrieval quality.” “Keep the result in the register, marked invalid, along with its cost.”"
+          },
+          {
+            "text": "Distinguishes B clean first run 6/10 from practiced replay 8/10; does not describe replay as unseen confirmation or proof of readiness.",
+            "passed": true,
+            "evidence": "“first clean development run answered 6 of 10”; “After prompt changes, a targeted replay reached 8 of 10”; “same practiced queries, so the replay cannot establish performance on fresh queries.”"
+          },
+          {
+            "text": "Preserves measured costs $8, $11 and $5 or their clearly attributed total $24, including invalidated cost.",
+            "passed": true,
+            "evidence": "Attributes A “$8,” B first clean run “$11,” replay “additional cost of $5,” and “Total recorded test cost is $24, including the invalid run.”"
+          },
+          {
+            "text": "Keeps unrun six-query confirmation and release gate of at least 5/6 plus no leakage; recommends withholding readiness pending the gate.",
+            "passed": true,
+            "evidence": "“required confirmation evaluation has not been run”; “Run the reserved six-query confirmation set”; “Release requires at least 5 of 6 correct answers and no leakage.” Recommendation: “Hold release and correct the UI status.”"
+          },
+          {
+            "text": "Omit function-renaming/chart-color chatter and unsupported ready-to-ship framing; 180–250 words.",
+            "passed": true,
+            "evidence": "No function-renaming or chart-color chatter appears. “UI's ‘ready to ship’ label is unsupported by the register” rejects the claim. 204 words falls within 180–250."
+          }
+        ],
+        "critical_failures": [],
+        "substantive_defects": [],
+        "strengths": [
+          "Auditable separation of invalid, clean-development, practiced and reserved evidence.",
+          "Preserves invalidated cost and all other costs; recommendation follows the unmet release gate."
+        ],
+        "weaknesses": []
+      },
+      "B": {
+        "scores": {
+          "fidelity": 5,
+          "directness_and_selectivity": 5,
+          "specificity": 5,
+          "voice_and_genre": 5,
+          "cadence_and_rhetoric": 5,
+          "structure": 5,
+          "edit_restraint": 5,
+          "reader_relevance": 5
+        },
+        "expectations": [
+          {
+            "text": "Retains A initial 7/10 but explicitly invalidates its quality comparison because answer text leaked; does not erase the failed experiment or report it as valid.",
+            "passed": true,
+            "evidence": "“Candidate A answered 7/10 development queries correctly in its first run” and “answer text in the test index, invalidating the comparison as evidence of retrieval quality.” “Keep the result in the register, marked invalid, along with its cost.”"
+          },
+          {
+            "text": "Distinguishes B clean first run 6/10 from practiced replay 8/10; does not describe replay as unseen confirmation or proof of readiness.",
+            "passed": true,
+            "evidence": "“first clean development run scored 6/10”; “After prompt changes, a targeted replay scored 8/10 on the same practiced queries”; “not a fresh-query evaluation and does not establish performance on the reserved set.”"
+          },
+          {
+            "text": "Preserves measured costs $8, $11 and $5 or their clearly attributed total $24, including invalidated cost.",
+            "passed": true,
+            "evidence": "Attributes A “$8,” B first clean run “$11,” replay “another $5,” and “Measured test spending totals $24, including the invalid run.”"
+          },
+          {
+            "text": "Keeps unrun six-query confirmation and release gate of at least 5/6 plus no leakage; recommends withholding readiness pending the gate.",
+            "passed": true,
+            "evidence": "“separate six-query confirmation set remains unrun; release requires at least 5/6 correct on that set and no answer-text leakage.” Recommendation: “hold release” and evaluate the reserved set before restoring readiness."
+          },
+          {
+            "text": "Omit function-renaming/chart-color chatter and unsupported ready-to-ship framing; 180–250 words.",
+            "passed": true,
+            "evidence": "No function-renaming or chart-color chatter appears. “UI's ‘ready to ship’ label is ahead of the evidence and should be corrected” rejects the claim. 201 words falls within 180–250."
+          }
+        ],
+        "critical_failures": [],
+        "substantive_defects": [],
+        "strengths": [
+          "Auditable separation of invalid, clean-development, practiced and reserved evidence.",
+          "Preserves invalidated cost and all other costs; recommendation follows the unmet release gate."
+        ],
+        "weaknesses": []
+      }
+    },
+    {
+      "id": 206,
+      "winner": "tie",
+      "reasoning": "Tie with a shared source-fidelity defect. Both accurately preserve the refund and dispatch requirements and avoid the prohibited internal material. Both additionally assert “we don't yet have a delivery date,” which the thread does not establish: a dispatch date being no delivery promise is not evidence that no delivery date is known. Apology placement is only a preference; it does not distinguish the shared defect.",
+      "preference_severity": "none",
+      "A": {
+        "scores": {
+          "fidelity": 4,
+          "directness_and_selectivity": 5,
+          "specificity": 3,
+          "voice_and_genre": 5,
+          "cadence_and_rhetoric": 5,
+          "structure": 5,
+          "edit_restraint": 5,
+          "reader_relevance": 5
+        },
+        "expectations": [
+          {
+            "text": "Addresses Jules, signs Nia, accurately gives $36 refund submitted today with usual 3–5 business days and no guarantee.",
+            "passed": true,
+            "evidence": "“Hi Jules” and signed “Nia / Support lead.” “duplicate $36 delivery fee”; “We submitted the refund today; it usually appears in 3–5 business days.” “Usually” retains uncertainty."
+          },
+          {
+            "text": "States replacement scheduled to dispatch Friday without promising Friday delivery; tracking follows dispatch and no resubmission is needed.",
+            "passed": true,
+            "evidence": "“replacement is scheduled to leave our warehouse Friday. That's the dispatch date”; “We'll send the tracking information after dispatch”; “You don't need to resubmit the request.” No Friday-delivery promise."
+          },
+          {
+            "text": "Does not reproduce debugging/blame chronology, second-option shorthand or writing directions.",
+            "passed": true,
+            "evidence": "The email contains only refund and dispatch next steps plus an apology; no engineering chronology, tax-service blame, second-option shorthand or writing directions appears."
+          },
+          {
+            "text": "Does not claim a permanent fix or deployed prevention change, invent tracking or authorize a coupon.",
+            "passed": true,
+            "evidence": "“we don't yet have a delivery date or tracking number” confirms tracking is unavailable; “We'll send the tracking information after dispatch” preserves its timing. No prevention deployment, permanent-fix claim or coupon appears. The delivery-date portion is separately flagged as unsupported."
+          }
+        ],
+        "critical_failures": [
+          "Unsupported factual status: “we don't yet have a delivery date.” The source establishes a scheduled Friday dispatch and that it is not a delivery promise, but does not establish whether a delivery date is known. This is an invented current customer-facing fact under the rubric's factual-invention rule."
+        ],
+        "substantive_defects": [
+          "The unsupported no-known-delivery-date statement should not be treated as source-supported reassurance; the shared defect prevents a fully source-faithful acceptance despite passing the supplied assertions."
+        ],
+        "strengths": [
+          "Clearly explains refund timing, no-resubmission requirement and tracking after dispatch.",
+          "Keeps a courteous support voice without internal blame, unauthorized compensation or permanent-fix claims."
+        ],
+        "weaknesses": [
+          "No other substantive relevance or style defect observed. Apology placement and capitalization of the support title are minor preferences."
+        ]
+      },
+      "B": {
+        "scores": {
+          "fidelity": 4,
+          "directness_and_selectivity": 5,
+          "specificity": 3,
+          "voice_and_genre": 5,
+          "cadence_and_rhetoric": 5,
+          "structure": 5,
+          "edit_restraint": 5,
+          "reader_relevance": 5
+        },
+        "expectations": [
+          {
+            "text": "Addresses Jules, signs Nia, accurately gives $36 refund submitted today with usual 3–5 business days and no guarantee.",
+            "passed": true,
+            "evidence": "“Hi Jules” and signed “Nia / Support Lead.” “refund for your duplicate $36 delivery fee today”; “It usually appears in 3–5 business days.” “Usually” retains uncertainty."
+          },
+          {
+            "text": "States replacement scheduled to dispatch Friday without promising Friday delivery; tracking follows dispatch and no resubmission is needed.",
+            "passed": true,
+            "evidence": "“replacement is scheduled to leave our warehouse Friday. That's the dispatch date”; “We'll send your tracking information after dispatch”; “you don't need to resubmit the refund request.” No Friday-delivery promise."
+          },
+          {
+            "text": "Does not reproduce debugging/blame chronology, second-option shorthand or writing directions.",
+            "passed": true,
+            "evidence": "The email contains only refund and dispatch next steps plus an apology; no engineering chronology, tax-service blame, second-option shorthand or writing directions appears."
+          },
+          {
+            "text": "Does not claim a permanent fix or deployed prevention change, invent tracking or authorize a coupon.",
+            "passed": true,
+            "evidence": "“we don't yet have a delivery date or tracking number” confirms tracking is unavailable; “We'll send your tracking information after dispatch” preserves its timing. No prevention deployment, permanent-fix claim or coupon appears. The delivery-date portion is separately flagged as unsupported."
+          }
+        ],
+        "critical_failures": [
+          "Unsupported factual status: “we don't yet have a delivery date.” The source establishes a scheduled Friday dispatch and that it is not a delivery promise, but does not establish whether a delivery date is known. This is an invented current customer-facing fact under the rubric's factual-invention rule."
+        ],
+        "substantive_defects": [
+          "The unsupported no-known-delivery-date statement should not be treated as source-supported reassurance; the shared defect prevents a fully source-faithful acceptance despite passing the supplied assertions."
+        ],
+        "strengths": [
+          "Clearly explains refund timing, no-resubmission requirement and tracking after dispatch.",
+          "Keeps a courteous support voice without internal blame, unauthorized compensation or permanent-fix claims."
+        ],
+        "weaknesses": [
+          "No other substantive relevance or style defect observed. Apology placement and capitalization of the support title are minor preferences."
+        ]
+      }
+    },
+    {
+      "id": 207,
+      "winner": "tie",
+      "reasoning": "The comments differ only in “new complete file” versus “complete new file.” Both preserve the temporary-file and atomic-replacement rationale, the flushing-dependent power-loss limit, and the exact filename in a concise comment suitable for a maintainer. This word-order difference has no meaningful effect.",
+      "preference_severity": "none",
+      "A": {
+        "scores": {
+          "fidelity": 5,
+          "directness_and_selectivity": 5,
+          "specificity": 5,
+          "voice_and_genre": 5,
+          "cadence_and_rhetoric": 5,
+          "structure": 5,
+          "reader_relevance": 5,
+          "edit_restraint": 5
+        },
+        "expectations": [
+          {
+            "text": "Retains temporary-file/atomic-replacement rationale: readers see the old or a complete new file and avoid a partially written state.json.",
+            "passed": true,
+            "evidence": "“Write to a temporary file and replace state.json atomically” ensures readers see “either the old file or the new complete file, never a partial write.”"
+          },
+          {
+            "text": "Preserves the distinction from power-loss durability and its dependence on flushing; no stronger guarantee.",
+            "passed": true,
+            "evidence": "“Atomic replacement alone does not guarantee survival of a power loss; durability depends on flush behavior.” No stronger durability guarantee follows."
+          },
+          {
+            "text": "Omits debugging/refactor history, effort claims and clean/robust self-praise; does not add a Python/JSON tutorial.",
+            "passed": true,
+            "evidence": "The entire four-line comment addresses atomicity and durability, beginning “Write to a temporary file”; it contains no debugging/refactor retrospective, self-praise or Python/JSON tutorial."
+          },
+          {
+            "text": "Returns a code comment only and preserves state.json exactly.",
+            "passed": true,
+            "evidence": "All four lines begin with “#”; “state.json” is exact and there is no surrounding explanation."
+          }
+        ],
+        "critical_failures": [],
+        "substantive_defects": [],
+        "strengths": [
+          "“never a partial write” gives the maintainer the correctness rationale.",
+          "The final two lines retain the nonobvious power-loss limitation."
+        ],
+        "weaknesses": []
+      },
+      "B": {
+        "scores": {
+          "fidelity": 5,
+          "directness_and_selectivity": 5,
+          "specificity": 5,
+          "voice_and_genre": 5,
+          "cadence_and_rhetoric": 5,
+          "structure": 5,
+          "reader_relevance": 5,
+          "edit_restraint": 5
+        },
+        "expectations": [
+          {
+            "text": "Retains temporary-file/atomic-replacement rationale: readers see the old or a complete new file and avoid a partially written state.json.",
+            "passed": true,
+            "evidence": "“Write to a temporary file and replace state.json atomically” ensures readers see “either the old file or the complete new file, never a partial write.”"
+          },
+          {
+            "text": "Preserves the distinction from power-loss durability and its dependence on flushing; no stronger guarantee.",
+            "passed": true,
+            "evidence": "“Atomic replacement alone does not guarantee survival of a power loss; durability depends on flush behavior.” No stronger durability guarantee follows."
+          },
+          {
+            "text": "Omits debugging/refactor history, effort claims and clean/robust self-praise; does not add a Python/JSON tutorial.",
+            "passed": true,
+            "evidence": "The entire four-line comment addresses atomicity and durability, beginning “Write to a temporary file”; it contains no debugging/refactor retrospective, self-praise or Python/JSON tutorial."
+          },
+          {
+            "text": "Returns a code comment only and preserves state.json exactly.",
+            "passed": true,
+            "evidence": "All four lines begin with “#”; “state.json” is exact and there is no surrounding explanation."
+          }
+        ],
+        "critical_failures": [],
+        "substantive_defects": [],
+        "strengths": [
+          "“never a partial write” gives the maintainer the correctness rationale.",
+          "The final two lines retain the nonobvious power-loss limitation."
+        ],
+        "weaknesses": []
+      }
+    },
+    {
+      "id": 208,
+      "winner": "tie",
+      "reasoning": "Both are self-contained, measured board briefings with complete figures, cohort limitations, cost and staffing scope, and mandatory safety approval. A integrates the evidence limits with the results and ends on whether better evidence warrants the cost; B separates results from interpretation and reinforces uncertainty. Neither organizational choice creates a material advantage for this director.",
+      "preference_severity": "none",
+      "A": {
+        "scores": {
+          "fidelity": 5,
+          "directness_and_selectivity": 5,
+          "specificity": 5,
+          "voice_and_genre": 5,
+          "cadence_and_rhetoric": 5,
+          "structure": 5,
+          "reader_relevance": 5
+        },
+        "expectations": [
+          {
+            "text": "Defines Lantern and blue lane as manual-address-check parcels, rather than assuming meeting context or presenting a new carrier.",
+            "passed": true,
+            "evidence": "“Lantern, the routing pilot at two warehouses” and parcels “requiring a manual address check, known within the project as the ‘blue lane’” explain both nicknames; “not a carrier or service level” removes ambiguity."
+          },
+          {
+            "text": "Correctly preserves 260/240 parcels, 31/34 hours, 4/3 damage reports, nonrandomized prior-month comparison and differing international mix; no causal claim.",
+            "passed": true,
+            "evidence": "“260 parcels” with “31 hours” versus “240 such parcels processed in the prior month” with “34 hours”; “not randomized,” “fewer international parcels,” and damage “four” versus “three” all survive. “Does not establish that the routing change improved results” and “no routing effect on damage” preserve the evidence limit."
+          },
+          {
+            "text": "Explains six-week $1,500-per-week $9,000 cap, existing staffing and no permanent expansion/new hires.",
+            "passed": true,
+            "evidence": "“$1,500 per week for six weeks,” “spending capped at $9,000,” and “uses existing staff”; “would not authorize permanent expansion or new hires.”"
+          },
+          {
+            "text": "Preserves safety review as not complete and mandatory approval before start; includes proposed mix/workload/comparability measures.",
+            "passed": true,
+            "evidence": "“Safety approval remains outstanding” and “completed and approved before the extension starts” preserve the start condition. It would “track parcel mix, document the workload created by manual review and compare more similar cohorts.”"
+          },
+          {
+            "text": "Presents an actual board decision without Option C, slide-theme/history chatter or unsupported breakthrough framing; 250–350 words.",
+            "passed": true,
+            "evidence": "“The board is asked to decide whether the opportunity to gather better evidence warrants up to $9,000” makes the decision explicit. The 281-word briefing contains no Option C, slide themes, presentation-date recap or breakthrough claim."
+          }
+        ],
+        "critical_failures": [],
+        "substantive_defects": [],
+        "strengths": [
+          "“Differences in parcel mix may account for some or all” explains the comparison limitation to an uninvolved director.",
+          "“what it requires of warehouse staff” connects the proposed measurements to operational relevance."
+        ],
+        "weaknesses": []
+      },
+      "B": {
+        "scores": {
+          "fidelity": 5,
+          "directness_and_selectivity": 5,
+          "specificity": 5,
+          "voice_and_genre": 5,
+          "cadence_and_rhetoric": 5,
+          "structure": 5,
+          "reader_relevance": 5
+        },
+        "expectations": [
+          {
+            "text": "Defines Lantern and blue lane as manual-address-check parcels, rather than assuming meeting context or presenting a new carrier.",
+            "passed": true,
+            "evidence": "“Lantern warehouse-routing pilot” and “Lantern operates at two warehouses” define the project. “Parcels requiring a manual address check” defines “blue lane”; “does not identify a carrier or service level” is explicit."
+          },
+          {
+            "text": "Correctly preserves 260/240 parcels, 31/34 hours, 4/3 damage reports, nonrandomized prior-month comparison and differing international mix; no causal claim.",
+            "passed": true,
+            "evidence": "“260 parcels” with “31 hours” versus “240 such parcels processed in the prior month” with “34 hours”; damage “four” versus “three,” “not randomized,” and “fewer international parcels” all survive. “Do not establish that routing caused a change in either dwell time or damage” preserves the causal limit."
+          },
+          {
+            "text": "Explains six-week $1,500-per-week $9,000 cap, existing staffing and no permanent expansion/new hires.",
+            "passed": true,
+            "evidence": "“$1,500 per week for six weeks,” “up to $9,000,” and “uses existing staff”; “only this capped extension” and separate authorization for “permanent expansion and new hires” preserve scope."
+          },
+          {
+            "text": "Preserves safety review as not complete and mandatory approval before start; includes proposed mix/workload/comparability measures.",
+            "passed": true,
+            "evidence": "“The safety review is still incomplete” and “completed and approved before work begins” preserve the prerequisite. “Track parcel mix, document the workload involved in manual review and compare more similar cohorts” retains the proposed measurements."
+          },
+          {
+            "text": "Presents an actual board decision without Option C, slide-theme/history chatter or unsupported breakthrough framing; 250–350 words.",
+            "passed": true,
+            "evidence": "“The board is asked to approve the extension” presents the decision. The 285-word briefing contains no Option C, slide-theme or meeting history, or breakthrough framing."
+          }
+        ],
+        "critical_failures": [],
+        "substantive_defects": [],
+        "strengths": [
+          "“the observed three-hour reduction cannot yet be treated as an effect” makes the causal limit easy to understand.",
+          "Defines the operational jargon and keeps authorization and safety conditions explicit."
+        ],
+        "weaknesses": []
+      }
+    },
+    {
+      "id": 402,
+      "winner": "tie",
+      "reasoning": "Both deliver 105-word, single-paragraph briefings that preserve every quantity and limitation and recommend controlled evaluation before expansion. B makes “six of those nine” explicit; A’s immediately preceding nine-respondent sentence is equally clear. “Cannot be attributed” in B is appropriately about the study’s evidentiary limit in context, not a claim of no possible effect. Neither has a substantive voice or fidelity disadvantage.",
+      "preference_severity": "none",
+      "A": {
+        "scores": {
+          "fidelity": 5,
+          "directness_and_selectivity": 5,
+          "specificity": 5,
+          "voice_and_genre": 5,
+          "cadence_and_rhetoric": 5,
+          "structure": 5,
+          "reader_relevance": 5
+        },
+        "expectations": [
+          {
+            "text": "Preserves 18 nurses, four weeks, one clinic, and voluntary participation.",
+            "passed": true,
+            "evidence": "“In a voluntary four-week pilot at one clinic, 18 nurses used a scheduling tool” preserves all four scope conditions."
+          },
+          {
+            "text": "Preserves median weekly 46 to 39 minutes with no causal claim and explains no control plus concurrent staffing changes.",
+            "passed": true,
+            "evidence": "“median weekly scheduling time fell from 46 to 39 minutes”; “Without a control group, the study cannot establish that the tool caused the decrease; concurrent staffing changes may explain part of it.”"
+          },
+          {
+            "text": "States six of nine survey respondents preferred it rather than six of 18 or a majority of all nurses.",
+            "passed": true,
+            "evidence": "“Nine nurses completed the optional survey, and six preferred the tool” supplies the correct denominator, followed by “does not establish a preference among all participants or nurses elsewhere.”"
+          },
+          {
+            "text": "States patient safety was not measured; any next step is framed as recommendation, not a planned commitment.",
+            "passed": true,
+            "evidence": "“Patient safety was not measured.” “A next step is a controlled pilot” is a recommendation, not a claim that another trial is planned; it recommends safety measurement before wider adoption."
+          },
+          {
+            "text": "100–150 words in one paragraph without heading or bullets.",
+            "passed": true,
+            "evidence": "105 whitespace-separated words, one paragraph; opens “In a voluntary four-week pilot” without heading or bullets."
+          }
+        ],
+        "critical_failures": [],
+        "substantive_defects": [],
+        "strengths": [
+          "Preserves the optional-survey denominator and limited generalizability explicitly.",
+          "Recommends a controlled pilot that tracks staffing, feedback and safety."
+        ],
+        "weaknesses": []
+      },
+      "B": {
+        "scores": {
+          "fidelity": 5,
+          "directness_and_selectivity": 5,
+          "specificity": 5,
+          "voice_and_genre": 5,
+          "cadence_and_rhetoric": 5,
+          "structure": 5,
+          "reader_relevance": 5
+        },
+        "expectations": [
+          {
+            "text": "Preserves 18 nurses, four weeks, one clinic, and voluntary participation.",
+            "passed": true,
+            "evidence": "“In a voluntary four-week pilot at one clinic, 18 nurses used a scheduling tool” preserves all four scope conditions."
+          },
+          {
+            "text": "Preserves median weekly 46 to 39 minutes with no causal claim and explains no control plus concurrent staffing changes.",
+            "passed": true,
+            "evidence": "“median weekly scheduling time fell from 46 to 39 minutes”; “Without a control group, the seven-minute reduction cannot be attributed to the tool; concurrent staffing changes may explain part of it.”"
+          },
+          {
+            "text": "States six of nine survey respondents preferred it rather than six of 18 or a majority of all nurses.",
+            "passed": true,
+            "evidence": "“Nine nurses completed the optional survey, and six of those nine preferred the tool”; “not necessarily all participants or nurses elsewhere” prevents broader representativeness claims."
+          },
+          {
+            "text": "States patient safety was not measured; any next step is framed as recommendation, not a planned commitment.",
+            "passed": true,
+            "evidence": "“The pilot did not measure patient safety.” “A next step is a controlled evaluation” recommends further work rather than asserting a planned commitment; patient-safety measures precede an expansion decision."
+          },
+          {
+            "text": "100–150 words in one paragraph without heading or bullets.",
+            "passed": true,
+            "evidence": "105 whitespace-separated words, one paragraph; opens “In a voluntary four-week pilot” without heading or bullets."
+          }
+        ],
+        "critical_failures": [],
+        "substantive_defects": [],
+        "strengths": [
+          "“six of those nine” states the denominator directly.",
+          "The next-step recommendation addresses staffing confounding, feedback and unmeasured safety."
+        ],
+        "weaknesses": []
+      }
+    },
+    {
+      "id": 403,
+      "winner": "B",
+      "reasoning": "Both meet the factual and length constraints. B reads more naturally as short product copy: “you can change that part of the lamp” explains the supported feature clearly. A explains replacement and then repeats it in the awkward “the LED module can change when it needs to,” preceded by generic desk-personalization language. B also has a redundant warranty gloss, so this is a minor readability preference, not a substantive or fidelity failure.",
+      "preference_severity": "minor",
+      "A": {
+        "scores": {
+          "fidelity": 5,
+          "directness_and_selectivity": 4,
+          "specificity": 5,
+          "voice_and_genre": 4,
+          "cadence_and_rhetoric": 4,
+          "structure": 5,
+          "reader_relevance": 5,
+          "edit_restraint": 5
+        },
+        "expectations": [
+          {
+            "text": "Includes replaceable LED module, steel base, and two-year warranty accurately.",
+            "passed": true,
+            "evidence": "“steel base,” “replaceable LED module,” and “two-year warranty” are all stated accurately."
+          },
+          {
+            "text": "No invented light-quality, comfort, durability, environmental, manufacturing, certification, price, or user-experience claims.",
+            "passed": true,
+            "evidence": "“light source can be replaced without replacing the whole lamp” is a direct explanation of the supplied replaceable-module feature. “a practical detail to consider” adds opinion rather than an unprovided tested benefit; no light-quality, comfort, lifespan, environmental, origin, certification or price claims appear."
+          },
+          {
+            "text": "45–75 words and no assistant or editing commentary.",
+            "passed": true,
+            "evidence": "55 whitespace-separated words, one paragraph of product copy beginning “Bracken pairs a steel base”; no assistant/editorial commentary."
+          }
+        ],
+        "critical_failures": [],
+        "substantive_defects": [],
+        "strengths": [
+          "Uses the actual materials, replaceable module and warranty instead of the unsupported source superlatives."
+        ],
+        "weaknesses": [
+          "Minor: repeats the replacement point in “the LED module can change when it needs to,” an awkward closing formulation after already explaining replacement.",
+          "Minor: “For a desk you’re making your own” adds generic personalization without useful product information."
+        ]
+      },
+      "B": {
+        "scores": {
+          "fidelity": 5,
+          "directness_and_selectivity": 4,
+          "specificity": 5,
+          "voice_and_genre": 5,
+          "cadence_and_rhetoric": 5,
+          "structure": 5,
+          "reader_relevance": 5,
+          "edit_restraint": 5
+        },
+        "expectations": [
+          {
+            "text": "Includes replaceable LED module, steel base, and two-year warranty accurately.",
+            "passed": true,
+            "evidence": "“steel base,” “replaceable LED module,” and “two-year warranty” are all stated accurately."
+          },
+          {
+            "text": "No invented light-quality, comfort, durability, environmental, manufacturing, certification, price, or user-experience claims.",
+            "passed": true,
+            "evidence": "“When the module needs replacing, you can change that part of the lamp” explains the known replaceability. “a defined period of coverage from the start” restates the two-year warranty without promising a coverage scope or invented product benefit. No unprovided performance, sustainability, manufacturing, certification, price or experience claims appear."
+          },
+          {
+            "text": "45–75 words and no assistant or editing commentary.",
+            "passed": true,
+            "evidence": "48 whitespace-separated words, one paragraph of product copy beginning “Make room on your desk for Bracken”; no assistant/editorial commentary."
+          }
+        ],
+        "critical_failures": [],
+        "substantive_defects": [],
+        "strengths": [
+          "“Make room on your desk for Bracken” gives the copy a simple commercial opening.",
+          "Explains replacement in natural language while staying within the sparse facts."
+        ],
+        "weaknesses": [
+          "Minor: “giving you a defined period of coverage from the start” is redundant after “two-year warranty.”"
+        ]
+      }
+    },
+    {
+      "id": 405,
+      "winner": "tie",
+      "reasoning": "The emails preserve exactly the same factual content and timing qualifications. “One was plenty” and “Once was plenty” both fit the requested understatement; “Thanks for your patience” and “Thanks for sticking with us” both fit the requested warmth. The latter’s reuse of a permitted stylistic closing is not a copied joke or invented event. These are equivalent voice choices.",
+      "preference_severity": "none",
+      "A": {
+        "scores": {
+          "fidelity": 5,
+          "directness_and_selectivity": 5,
+          "specificity": 5,
+          "voice_and_genre": 5,
+          "cadence_and_rhetoric": 5,
+          "structure": 5,
+          "reader_relevance": 5
+        },
+        "expectations": [
+          {
+            "text": "Addresses Lee and signs Mara without importing Jo or replacement/shipment claims.",
+            "passed": true,
+            "evidence": "Opens “Hi Lee,” and signs “—Mara”; it contains no Jo, replacement shipment or tracking claim."
+          },
+          {
+            "text": "Preserves duplicate $24 delivery charge and submitted-today refund with usual 3–5 business days rather than guarantee.",
+            "passed": true,
+            "evidence": "“duplicate $24 delivery charge” and “I submitted the refund today; it usually appears in 3–5 business days” preserve amount, status and usual timing without guaranteeing receipt."
+          },
+          {
+            "text": "Preserves order scheduled for Tuesday without guaranteeing arrival.",
+            "passed": true,
+            "evidence": "“Your order is still scheduled for Tuesday” preserves scheduled status without a delivery guarantee."
+          },
+          {
+            "text": "Matches warmth and restrained dry voice without copying scenic-route wording or inventing events.",
+            "passed": true,
+            "evidence": "“One was plenty” supplies restrained dry understatement; “Thanks for your patience” supplies warmth. No scenic-route joke or invented event appears."
+          }
+        ],
+        "critical_failures": [],
+        "substantive_defects": [],
+        "strengths": [
+          "The brief “One was plenty” matches the sample’s dry warmth.",
+          "Refund and order status remain exact and unembellished."
+        ],
+        "weaknesses": []
+      },
+      "B": {
+        "scores": {
+          "fidelity": 5,
+          "directness_and_selectivity": 5,
+          "specificity": 5,
+          "voice_and_genre": 5,
+          "cadence_and_rhetoric": 5,
+          "structure": 5,
+          "reader_relevance": 5
+        },
+        "expectations": [
+          {
+            "text": "Addresses Lee and signs Mara without importing Jo or replacement/shipment claims.",
+            "passed": true,
+            "evidence": "Opens “Hi Lee,” and signs “—Mara”; it contains no Jo, replacement shipment or tracking claim."
+          },
+          {
+            "text": "Preserves duplicate $24 delivery charge and submitted-today refund with usual 3–5 business days rather than guarantee.",
+            "passed": true,
+            "evidence": "“duplicate $24 delivery charge” and “I submitted the refund today; it usually appears in 3–5 business days” preserve amount, status and usual timing without guaranteeing receipt."
+          },
+          {
+            "text": "Preserves order scheduled for Tuesday without guaranteeing arrival.",
+            "passed": true,
+            "evidence": "“Your order is still scheduled for Tuesday” preserves scheduled status without a delivery guarantee."
+          },
+          {
+            "text": "Matches warmth and restrained dry voice without copying scenic-route wording or inventing events.",
+            "passed": true,
+            "evidence": "“Once was plenty” supplies restrained dry understatement; “Thanks for sticking with us” supplies the sample’s warmth. It borrows no shipping facts or scenic-route joke and invents no event."
+          }
+        ],
+        "critical_failures": [],
+        "substantive_defects": [],
+        "strengths": [
+          "“Once was plenty” is a restrained joke appropriate to correcting a duplicate charge.",
+          "Keeps the sample’s warm closing without copying its shipping joke or facts."
+        ],
+        "weaknesses": []
+      }
+    },
+    {
+      "id": 406,
+      "winner": "tie",
+      "reasoning": "The outputs are identical and exactly preserve the supplied error-free paragraph, including its punctuation and intentional stylistic choices. Both satisfy the restraint control fully.",
+      "preference_severity": "none",
+      "A": {
+        "scores": {
+          "fidelity": 5,
+          "directness_and_selectivity": 5,
+          "specificity": 5,
+          "voice_and_genre": 5,
+          "cadence_and_rhetoric": 5,
+          "structure": 5,
+          "reader_relevance": 5,
+          "edit_restraint": 5
+        },
+        "expectations": [
+          {
+            "text": "Returns exactly the paragraph without surrounding quotation marks or commentary.",
+            "passed": true,
+            "evidence": "Exact match after removing the file’s terminal newline: “By six, the garden had gone blue. My father kept digging—slowly, as if the potatoes might object. We ate late; nobody mentioned the clock.” No surrounding quotation marks or commentary."
+          }
+        ],
+        "critical_failures": [],
+        "substantive_defects": [],
+        "strengths": [
+          "Preserves “digging—slowly,” the potato personification, and the semicolon exactly.",
+          "Makes no unnecessary edits to the already-correct paragraph."
+        ],
+        "weaknesses": []
+      },
+      "B": {
+        "scores": {
+          "fidelity": 5,
+          "directness_and_selectivity": 5,
+          "specificity": 5,
+          "voice_and_genre": 5,
+          "cadence_and_rhetoric": 5,
+          "structure": 5,
+          "reader_relevance": 5,
+          "edit_restraint": 5
+        },
+        "expectations": [
+          {
+            "text": "Returns exactly the paragraph without surrounding quotation marks or commentary.",
+            "passed": true,
+            "evidence": "Exact match after removing the file’s terminal newline: “By six, the garden had gone blue. My father kept digging—slowly, as if the potatoes might object. We ate late; nobody mentioned the clock.” No surrounding quotation marks or commentary."
+          }
+        ],
+        "critical_failures": [],
+        "substantive_defects": [],
+        "strengths": [
+          "Preserves “digging—slowly,” the potato personification, and the semicolon exactly.",
+          "Makes no unnecessary edits to the already-correct paragraph."
+        ],
+        "weaknesses": []
+      }
+    }
+  ],
+  "summary": {
+    "method": "Two fresh blind reviewers on disjoint six-case blocks; each independent of actors",
+    "source_reviews": [
+      "review-main.json",
+      "review-regressions.json"
+    ],
+    "block_summaries": [
+      {
+        "case_count": 6,
+        "preference_wins": {
+          "A": 0,
+          "B": 0,
+          "tie": 6
+        },
+        "assertion_results": {
+          "A": {
+            "passed": 26,
+            "total": 26
+          },
+          "B": {
+            "passed": 26,
+            "total": 26
+          }
+        },
+        "critical_failures": {
+          "A": 1,
+          "B": 1
+        },
+        "substantive_relevance_or_style_defects": {
+          "A": 0,
+          "B": 0
+        },
+        "source_fidelity_defects": {
+          "A": 1,
+          "B": 1
+        },
+        "mean_applicable_dimension_score": {
+          "A": 4.9375,
+          "B": 4.9375
+        },
+        "findings": [
+          "Cases 201–205 are ready-to-use equivalents; no demonstrated preference improvement in these pairs.",
+          "Positive history controls survive: ADR rationale, migration history and invalidated evaluation evidence are retained.",
+          "Case 206 has the same unsupported delivery-date status in both outputs. All supplied assertions pass, but assertion success alone does not establish source fidelity."
+        ],
+        "eval_feedback": [
+          {
+            "case_id": 206,
+            "reason": "The existing assertions check the Friday dispatch distinction and prohibit invented tracking/coupons/fixes, but do not catch a new claim about whether a delivery date is known. Both outputs make that unsupported claim. A source-fidelity check should cover newly asserted customer-status facts as well as promises."
+          }
+        ],
+        "method": "Blind comparison of only supplied case-201 through case-206 task/A/B packets and the assigned rubrics/comparator/grader instructions. Numeric scores use the eight applicable requested dimensions. Word counts use whitespace splitting and include headings/code fences, safely inside all limits. No actor reports, mappings, skill instructions, prior outcomes or other reviewers were consulted.",
+        "limitations": [
+          "Single-sample editorial judgments, not statistical superiority or human review.",
+          "No execution behavior or automatic skill triggering can be inferred from text-only artifacts."
+        ]
+      },
+      {
+        "case_count": 6,
+        "wins": {
+          "A": 0,
+          "B": 1,
+          "tie": 5
+        },
+        "preference_counts": {
+          "none": 5,
+          "minor": 1,
+          "substantive": 0
+        },
+        "expectations": {
+          "A": {
+            "passed": 22,
+            "failed": 0,
+            "total": 22
+          },
+          "B": {
+            "passed": 22,
+            "failed": 0,
+            "total": 22
+          }
+        },
+        "critical_failures": [],
+        "substantive_defects": [],
+        "main_findings": [
+          "All assigned cases preserve their required facts, uncertainty, audience context and output formats.",
+          "Maintenance rationale and power-loss limits survive in 207; board context and safety prerequisites survive in 208.",
+          "The uncertain-study, customer-voice and unchanged-prose controls show no substantive regression between A and B.",
+          "B has a minor readability advantage on 403; five ties are equivalence findings, not evidence of improvement."
+        ],
+        "scoring_notes": [
+          "Scores use the supplied 1–5 writing dimensions plus reader relevance. Edit restraint is scored for actual revision/proofreading tasks 207, 403 and 406, and omitted for fresh briefing/email drafting.",
+          "No score is reduced for stylistic variation alone. Minor defects in 403 affect fluency/selectivity without making the copy unusable.",
+          "Word counts use whitespace-separated words; all outputs are comfortably inside their requested intervals. Exact paragraph preservation in 406 ignores only the file’s terminal newline."
+        ],
+        "eval_feedback": [
+          {
+            "case": 403,
+            "reason": "The assertions enforce factual restraint and length but do not directly test whether the copy is compelling or reads naturally. Both pass despite A’s repeated replacement explanation and awkward “the LED module can change when it needs to.” The qualitative writing dimensions are needed to catch that difference."
+          }
+        ],
+        "limitations": [
+          "These are single-sample blind editorial comparisons of the six assigned packets. No authorship labels, actor reports, prior results, skill instructions or external claims were consulted."
+        ],
+        "mean_applicable_dimension_score": {
+          "A": 4.933,
+          "B": 4.978
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "expectations": [
+    {
+      "text": "It returns the passage exactly, preserving punctuation, wording, and paragraph without procedural additions or commentary.",
+      "passed": true,
+      "evidence": "Exact string comparison with the supplied passage passes after allowing the trailing newline; wording, em dash, semicolon and single paragraph are unchanged, with no commentary."
+    }
+  ],
+  "summary": {
+    "passed": 1,
+    "failed": 0,
+    "total": 1,
+    "pass_rate": 1.0
+  },
+  "blind_review": "reviews/development-2/505.json",
+  "output_sha256": "72b1f979cc873495cd5485d74546d99166898143c12de0c8613328994282c189",
+  "scores": {
+    "usefulness": 5,
+    "fidelity": 5,
+    "naturalness": 5
+  },
+  "critical": [],
+  "substantive": []
+}

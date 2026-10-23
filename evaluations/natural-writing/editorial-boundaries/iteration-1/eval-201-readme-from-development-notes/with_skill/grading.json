@@ -1,0 +1,49 @@
+{
+  "expectations": [
+    {
+      "text": "Includes the CSV-to-HTTPS purpose, Python 3.12 and PostgreSQL 16 requirements, all three configuration/installation/use steps, preserving code strings.",
+      "passed": true,
+      "evidence": "“accepts CSV files and delivers their rows to a configured HTTPS endpoint”; “Python 3.12 and an external PostgreSQL 16 service”; exact strings `pip install harbor-queue`, `DATABASE_URL`, `DESTINATION_URL`, and `harbor-queue ingest orders.csv` are present."
+    },
+    {
+      "text": "Preserves at-least-once semantics, supplied delivery_id deduplication requirement, and does not imply exactly-once delivery.",
+      "passed": true,
+      "evidence": "“Delivery is at least once”; “Deduplicate rows using the supplied `delivery_id`; delivery is not exactly once.”"
+    },
+    {
+      "text": "Preserves 25 MB limit and no partial import on rejected files; accurately describes supplied Authorization header if authentication is mentioned.",
+      "passed": true,
+      "evidence": "“Files over 25 MB are rejected without partially importing their rows.” Authentication is operator supplied: “Configure the `Authorization` header with the credential value your endpoint requires.”"
+    },
+    {
+      "text": "Does not narrate the discarded macro, SQLite replacement/debug session, Redis branch, internal nickname, or review/editorial notes.",
+      "passed": true,
+      "evidence": "The complete text moves from “Harbor Queue accepts CSV files” to “Quick start,” delivery semantics and file limits; none of the macro, SQLite, Redis, nickname or review notes appears."
+    },
+    {
+      "text": "Does not present unshipped OAuth, S3 import, or dashboard as capabilities, or claim no external service is needed; at most 230 words.",
+      "passed": true,
+      "evidence": "“external PostgreSQL 16 service” preserves the dependency. No OAuth, S3 or dashboard capability appears. 111 whitespace-delimited words, including headings and code fences, is below 230."
+    }
+  ],
+  "summary": {
+    "passed": 5,
+    "failed": 0,
+    "total": 5,
+    "pass_rate": 1.0
+  },
+  "scores": {
+    "fidelity": 5,
+    "directness_and_selectivity": 5,
+    "specificity": 5,
+    "voice_and_genre": 5,
+    "cadence_and_rhetoric": 5,
+    "structure": 5,
+    "edit_restraint": 5,
+    "reader_relevance": 5
+  },
+  "critical_failures": [],
+  "review_method": "Independent single blind agent review; not human feedback",
+  "review_source": "blind/iteration-1/review.json",
+  "output_sha256": "9e77b3802e710e57360b218599aa22acfcb682695978cb88a233a4464205e5d8"
+}

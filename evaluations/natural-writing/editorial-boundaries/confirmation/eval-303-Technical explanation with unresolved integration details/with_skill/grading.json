@@ -1,0 +1,53 @@
+{
+  "expectations": [
+    {
+      "text": "Explains submission with workspace and date range, return of a job identifier, worker processing, status checks, and the complete/download versus failed/error-summary outcomes.",
+      "passed": true,
+      "evidence": "“submits a workspace identifier and a date range”; “accepted request returns a job identifier”; worker “reads matching records and writes an export file”; client checks status; complete provides a link and failed includes an error summary."
+    },
+    {
+      "text": "Uses the documented queued, running, complete, and failed states and does not document the prototype's 'done' label as a current state.",
+      "passed": true,
+      "evidence": "“`queued`, `running`, `complete`, and `failed`.” No prototype “done” state appears."
+    },
+    {
+      "text": "States seven-day retention from completion while preserving uncertainty about download-link lifetime, size/date limits, and the absence of cancellation in the initial scope.",
+      "passed": true,
+      "evidence": "“seven days after completion”; link validity “a separate unresolved detail”; “Cancellation is outside the initial scope”; range and size limits “remain unapproved.”"
+    },
+    {
+      "text": "Identifies authentication/authorization and retry/idempotency behavior as unresolved; does not invent tokens, permission names, retry counts, backoff schedules, retryable errors, or duplicate-submission guarantees.",
+      "passed": true,
+      "evidence": "“Authentication and authorization are unspecified”; no retry count, backoff or retryable errors; “no client retry rule”; repeated submissions unsettled; callers cannot assume deduplication or automatic worker retries."
+    },
+    {
+      "text": "Does not invent a package, version, storage provider, install command, endpoint path, HTTP status code, or environment variable; dependency selection remains pending.",
+      "passed": true,
+      "evidence": "“no storage vendor, client package, version, installation command, or environment variable has been selected.” No endpoint or status code is invented."
+    },
+    {
+      "text": "Reads as a technical explanation and excludes demo-recording and paragraph-editing history, arrow formatting, and the discarded promotional introduction.",
+      "passed": true,
+      "evidence": "“The current record supports designing the request-and-status workflow, but it does not yet supply a complete production contract.” Complete text excludes the requested drafting and promotional debris."
+    }
+  ],
+  "summary": {
+    "passed": 6,
+    "failed": 0,
+    "total": 6,
+    "pass_rate": 1.0
+  },
+  "scores": {
+    "fidelity": 5,
+    "directness_and_selectivity": 5,
+    "specificity": 5,
+    "voice_and_genre": 5,
+    "cadence_and_rhetoric": 5,
+    "structure": 5,
+    "reader_relevance": 5
+  },
+  "critical_failures": [],
+  "review_method": "Independent single blind agent review; not human feedback",
+  "review_source": "blind/confirmation/review.json",
+  "output_sha256": "710b44feaaafa5294878158c2efe427d8442fef87947c3bb51a6ab7d139e7c7f"
+}

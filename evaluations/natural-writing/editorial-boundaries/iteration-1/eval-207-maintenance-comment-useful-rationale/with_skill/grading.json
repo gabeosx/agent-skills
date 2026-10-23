@@ -1,0 +1,44 @@
+{
+  "expectations": [
+    {
+      "text": "Retains temporary-file/atomic-replacement rationale: readers see the old or a complete new file and avoid a partially written state.json.",
+      "passed": true,
+      "evidence": "“Write to a temporary file and replace state.json atomically” ensures readers see “either the old file or the complete new file, never a partial write.”"
+    },
+    {
+      "text": "Preserves the distinction from power-loss durability and its dependence on flushing; no stronger guarantee.",
+      "passed": true,
+      "evidence": "“Atomic replacement alone does not guarantee survival of a power loss; durability depends on flush behavior.” No stronger durability guarantee follows."
+    },
+    {
+      "text": "Omits debugging/refactor history, effort claims and clean/robust self-praise; does not add a Python/JSON tutorial.",
+      "passed": true,
+      "evidence": "The entire four-line comment addresses atomicity and durability, beginning “Write to a temporary file”; it contains no debugging/refactor retrospective, self-praise or Python/JSON tutorial."
+    },
+    {
+      "text": "Returns a code comment only and preserves state.json exactly.",
+      "passed": true,
+      "evidence": "All four lines begin with “#”; “state.json” is exact and there is no surrounding explanation."
+    }
+  ],
+  "summary": {
+    "passed": 4,
+    "failed": 0,
+    "total": 4,
+    "pass_rate": 1.0
+  },
+  "scores": {
+    "fidelity": 5,
+    "directness_and_selectivity": 5,
+    "specificity": 5,
+    "voice_and_genre": 5,
+    "cadence_and_rhetoric": 5,
+    "structure": 5,
+    "reader_relevance": 5,
+    "edit_restraint": 5
+  },
+  "critical_failures": [],
+  "review_method": "Independent single blind agent review; not human feedback",
+  "review_source": "blind/iteration-1/review.json",
+  "output_sha256": "ca7c3cb0a84a31a24972e118dfefa5f6a6c25a667687bad868802aee3bbfe322"
+}

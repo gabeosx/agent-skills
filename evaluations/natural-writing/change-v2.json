@@ -1,0 +1,20 @@
+{
+  "candidate": "v2",
+  "reason": "Root audit found feature recap and self-conscious plainness in sparse product copy, and unnecessary intent-signposting in announcement. Preserve warmth/conviction rather than flattening output while cutting stock rhetoric.",
+  "evidence": [
+    "iteration-1/eval-3-source-poor-copy/with_skill/outputs/output.md",
+    "iteration-1/eval-1-founder-announcement/with_skill/outputs/output.md"
+  ],
+  "changes": [
+    "Each sentence should add information, a useful relation or voice; no recaps to meet word counts.",
+    "No self-praise for simple/honest/no-hype writing.",
+    "Retain requested energy and give actual reasons to care."
+  ],
+  "retry_purpose": "Run same 8 development tasks with v2 and fresh baseline to test general advice without using reserved confirmation.",
+  "timestamp": "2026-10-23T20:45:30.388910+00:00",
+  "sha256": {
+    "evaluations/natural-writing/snapshots/v2/instructions.md": "a552c771e54fb95346efed052d25cf69a8ea773d0650d50304db787b284ddb0f",
+    "evaluations/natural-writing/snapshots/v2/references/pattern-catalog.md": "b0d6aa59dabd6793dec6aefc4b9404d377e32696817e9cc2c251a6edcd4acd45",
+    "evaluations/natural-writing/snapshots/v2/references/research-notes.md": "aa0fa139a4f28eaddb50ffa8b41fdb5f13070cfc1c5c1d5cf4b76f02def33ca9"
+  }
+}

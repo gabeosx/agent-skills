@@ -1,0 +1,8 @@
+{
+  "eval_id": 6,
+  "eval_name": "already-good-control",
+  "prompt": "Lightly proofread this paragraph for a small literary magazine. Change only actual errors; preserve every intentional stylistic choice, and return the paragraph without commentary. 'By six, the garden had gone blue. My father kept digging—slowly, as if the potatoes might object. We ate late; nobody mentioned the clock.'",
+  "assertions": [
+    "Returns exactly the paragraph without surrounding quotation marks or commentary."
+  ]
+}

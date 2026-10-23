@@ -1,0 +1,16 @@
+{
+  "frozen_at": "2026-10-23T21:26:26.735419+00:00",
+  "reason": "Root audit found source-assessment commentary surviving selection, and missing source detail becoming a false knowledge claim.",
+  "evidence": "root-audit-iteration-1.json",
+  "change": [
+    "Do not replace irrelevant material with a statement about rejecting it.",
+    "Distinguish absence in source from absence in the world or sender knowledge."
+  ],
+  "retry_purpose": "Rerun all 12 development/regression cases with fresh old-skill baseline after this general change; no confirmation outcomes used.",
+  "sha256": {
+    "evaluations/natural-writing/editorial-boundaries/snapshots/candidate-2/instructions.md": "c4d45ba75f35605677a0d095944630a56cb9168b2eac6cd68c0cd553047d3486",
+    "evaluations/natural-writing/editorial-boundaries/snapshots/candidate-2/references/editorial-judgment.md": "15dba9484cdfb8a8fb1fa70e71ff89a0ca6ef872d88b37f3cfc6c93582536e41",
+    "evaluations/natural-writing/editorial-boundaries/snapshots/candidate-2/references/pattern-catalog.md": "743e15e888b90bdc1b8a34909c600b23b397a808489b56764c766b3b0f0b541c",
+    "evaluations/natural-writing/editorial-boundaries/snapshots/candidate-2/references/research-notes.md": "00a5523c1635fca55b1ad9ce6fbd45b5b0e97b75cbbe6cbb6e0bf55d202486d0"
+  }
+}

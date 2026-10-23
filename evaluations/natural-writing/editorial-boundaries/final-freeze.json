@@ -1,0 +1,19 @@
+{
+  "frozen_at": "2026-10-23T21:33:22.152088+00:00",
+  "candidate": "candidate-2",
+  "development_acceptance": "50/50 assertions, 15/15 exact checks, mean 4.91/5, no critical or substantive defects, three preference wins and nine ties. Four previous voice/fidelity controls pass.",
+  "confirmation": "One attempt per frozen arm on independently authored six-case set; no source edits using these outcomes without fresh confirmation.",
+  "sha256": {
+    "evaluations/natural-writing/editorial-boundaries/development-2.json": "890da2f002b152977ac7fbe3326659a4783b9fde229baed10ed11420b239666f",
+    "evaluations/natural-writing/editorial-boundaries/confirmation.json": "bf27467d99f8f0495c8a190e0238d757bfce937eab8a2a2b76afa02795104441",
+    "evaluations/natural-writing/editorial-boundaries/check_outputs.py": "1b3f233335881cd633ec020180acea50e56194aea8de1bf77fb41c22f8443127",
+    "evaluations/natural-writing/editorial-boundaries/check_confirmation.py": "05afd8b4eb92fe9fe37820296c3f411a79cdabe3a90b032b54bcacaadc6e67cc",
+    "evaluations/natural-writing/editorial-boundaries/prepare_blind.py": "73f69336cf8aaf47174625d865d494d9b36a10895a21f7023a8ee187d4e976aa",
+    "evaluations/natural-writing/editorial-boundaries/summarize.py": "85e5fcfb4cc539b04ba2e25efa46adc66a792f124f15c1ca41d1bc418eea724a",
+    "skills/natural-writing/evals/editorial-rubric.md": "71860f035b7fdd293f410d6d88d3c2dbd62ae95dff8856a50eb8321f5fd40a5c",
+    "evaluations/natural-writing/editorial-boundaries/snapshots/candidate-2/instructions.md": "c4d45ba75f35605677a0d095944630a56cb9168b2eac6cd68c0cd553047d3486",
+    "evaluations/natural-writing/editorial-boundaries/snapshots/candidate-2/references/editorial-judgment.md": "15dba9484cdfb8a8fb1fa70e71ff89a0ca6ef872d88b37f3cfc6c93582536e41",
+    "evaluations/natural-writing/editorial-boundaries/snapshots/candidate-2/references/pattern-catalog.md": "743e15e888b90bdc1b8a34909c600b23b397a808489b56764c766b3b0f0b541c",
+    "evaluations/natural-writing/editorial-boundaries/snapshots/candidate-2/references/research-notes.md": "00a5523c1635fca55b1ad9ce6fbd45b5b0e97b75cbbe6cbb6e0bf55d202486d0"
+  }
+}

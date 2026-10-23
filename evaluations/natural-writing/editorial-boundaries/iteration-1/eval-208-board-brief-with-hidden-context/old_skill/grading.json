@@ -1,0 +1,48 @@
+{
+  "expectations": [
+    {
+      "text": "Defines Lantern and blue lane as manual-address-check parcels, rather than assuming meeting context or presenting a new carrier.",
+      "passed": true,
+      "evidence": "“Lantern warehouse-routing pilot” and “Lantern operates at two warehouses” define the project. “Parcels requiring a manual address check” defines “blue lane”; “does not identify a carrier or service level” is explicit."
+    },
+    {
+      "text": "Correctly preserves 260/240 parcels, 31/34 hours, 4/3 damage reports, nonrandomized prior-month comparison and differing international mix; no causal claim.",
+      "passed": true,
+      "evidence": "“260 parcels” with “31 hours” versus “240 such parcels processed in the prior month” with “34 hours”; damage “four” versus “three,” “not randomized,” and “fewer international parcels” all survive. “Do not establish that routing caused a change in either dwell time or damage” preserves the causal limit."
+    },
+    {
+      "text": "Explains six-week $1,500-per-week $9,000 cap, existing staffing and no permanent expansion/new hires.",
+      "passed": true,
+      "evidence": "“$1,500 per week for six weeks,” “up to $9,000,” and “uses existing staff”; “only this capped extension” and separate authorization for “permanent expansion and new hires” preserve scope."
+    },
+    {
+      "text": "Preserves safety review as not complete and mandatory approval before start; includes proposed mix/workload/comparability measures.",
+      "passed": true,
+      "evidence": "“The safety review is still incomplete” and “completed and approved before work begins” preserve the prerequisite. “Track parcel mix, document the workload involved in manual review and compare more similar cohorts” retains the proposed measurements."
+    },
+    {
+      "text": "Presents an actual board decision without Option C, slide-theme/history chatter or unsupported breakthrough framing; 250–350 words.",
+      "passed": true,
+      "evidence": "“The board is asked to approve the extension” presents the decision. The 285-word briefing contains no Option C, slide-theme or meeting history, or breakthrough framing."
+    }
+  ],
+  "summary": {
+    "passed": 5,
+    "failed": 0,
+    "total": 5,
+    "pass_rate": 1.0
+  },
+  "scores": {
+    "fidelity": 5,
+    "directness_and_selectivity": 5,
+    "specificity": 5,
+    "voice_and_genre": 5,
+    "cadence_and_rhetoric": 5,
+    "structure": 5,
+    "reader_relevance": 5
+  },
+  "critical_failures": [],
+  "review_method": "Independent single blind agent review; not human feedback",
+  "review_source": "blind/iteration-1/review.json",
+  "output_sha256": "ac620b5419e3dfae0187ad2be969ebf8135a4a3b32644bb441a0fcbee2ccbc89"
+}

@@ -1,0 +1,17 @@
+{
+  "method": "Exact/format checks only; independent semantic and style review required",
+  "expectations": [
+    {
+      "text": "Requested word range",
+      "passed": true,
+      "evidence": "139 words; requested 120–180"
+    },
+    {
+      "text": "One prose paragraph",
+      "passed": true,
+      "evidence": "1 paragraphs"
+    }
+  ],
+  "passed": 2,
+  "total": 2
+}

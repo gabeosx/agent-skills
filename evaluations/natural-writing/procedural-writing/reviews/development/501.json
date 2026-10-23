@@ -1,0 +1,92 @@
+{
+  "id": 501,
+  "labels": {
+    "A": {
+      "expectations": [
+        {
+          "text": "The guide names the receiving location and enters 6000 grams and $0.012 per gram, with cost per stock unit distinguished from total sack cost.",
+          "passed": true,
+          "evidence": "Opens Items > Flour > Receive existing stock; enters Quantity 6000 and Cost (per stock unit) 0.012, explicitly $72 / 6000 grams = $0.012 per gram and warns against entering $72 total."
+        },
+        {
+          "text": "The check has observable fields and expected values, with correction before Post and a warning that blank cost becomes zero.",
+          "passed": true,
+          "evidence": "Step 4 checks Quantity 6000 and Cost 0.012 and permits direct correction before Post; step 3 warns blank cost is stored as zero."
+        },
+        {
+          "text": "After posting, it uses the History receipt ID and inventory lead for audited correction; it invents neither an undo nor a cost-unit selector.",
+          "passed": true,
+          "evidence": "History location and receipt row fields are explicit; posted errors go to inventory lead with receipt ID for audited correction. States no edit/undo and no cost-unit selector."
+        }
+      ],
+      "scores": {
+        "usefulness": 5,
+        "fidelity": 5,
+        "naturalness": 5
+      },
+      "critical": [],
+      "substantive": [],
+      "minor": []
+    },
+    "B": {
+      "expectations": [
+        {
+          "text": "The guide names the receiving location and enters 6000 grams and $0.012 per gram, with cost per stock unit distinguished from total sack cost.",
+          "passed": true,
+          "evidence": "Names Items > select item > Receive existing stock; Flour uses grams and entries are 6000 and 0.012, derived from $72 / 6000 g and labeled per stock unit."
+        },
+        {
+          "text": "The check has observable fields and expected values, with correction before Post and a warning that blank cost becomes zero.",
+          "passed": true,
+          "evidence": "Step 2 supplies the precise expected Quantity and Cost values; step 3 tells operators to check both fields, directly correct either before Post, and warns blank cost is zero."
+        },
+        {
+          "text": "After posting, it uses the History receipt ID and inventory lead for audited correction; it invents neither an undo nor a cost-unit selector.",
+          "passed": true,
+          "evidence": "Names Items > select item > History with receipt ID; no edit or undo after posting, and the inventory lead performs an audited correction using that ID. Explicitly no cost-unit selector."
+        }
+      ],
+      "scores": {
+        "usefulness": 5,
+        "fidelity": 5,
+        "naturalness": 5
+      },
+      "critical": [],
+      "substantive": [],
+      "minor": []
+    },
+    "C": {
+      "expectations": [
+        {
+          "text": "The guide names the receiving location and enters 6000 grams and $0.012 per gram, with cost per stock unit distinguished from total sack cost.",
+          "passed": true,
+          "evidence": "Names Items > select item > Receive existing stock and explains cost of one stock unit; Flour entries are Quantity 6000 and Cost $0.012 for a 6 kg, $72 sack."
+        },
+        {
+          "text": "The check has observable fields and expected values, with correction before Post and a warning that blank cost becomes zero.",
+          "passed": true,
+          "evidence": "Step 2 gives exact expected values; step 3 checks both fields before Post, warns blank cost is zero, and permits direct correction."
+        },
+        {
+          "text": "After posting, it uses the History receipt ID and inventory lead for audited correction; it invents neither an undo nor a cost-unit selector.",
+          "passed": true,
+          "evidence": "Names History location and receipt ID, prohibits posted edit/undo, routes errors to inventory lead for audited correction, and states there is no cost-unit selector."
+        }
+      ],
+      "scores": {
+        "usefulness": 5,
+        "fidelity": 5,
+        "naturalness": 5
+      },
+      "critical": [],
+      "substantive": [],
+      "minor": []
+    }
+  },
+  "preferred": [
+    "A",
+    "B",
+    "C"
+  ],
+  "reason": "All three provide the correct conversion and unit cost, an observable pre-Post check, blank-cost warning, and supported post-receipt recovery. Differences are presentation only."
+}

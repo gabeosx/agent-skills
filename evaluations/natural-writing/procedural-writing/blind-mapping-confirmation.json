@@ -1,0 +1,17 @@
+{
+  "601": {
+    "A": "with_skill",
+    "B": "old_skill",
+    "C": "no_skill"
+  },
+  "602": {
+    "A": "with_skill",
+    "B": "old_skill",
+    "C": "no_skill"
+  },
+  "603": {
+    "A": "with_skill",
+    "B": "no_skill",
+    "C": "old_skill"
+  }
+}

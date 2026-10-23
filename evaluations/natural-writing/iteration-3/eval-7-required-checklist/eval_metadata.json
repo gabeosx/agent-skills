@@ -1,0 +1,10 @@
+{
+  "eval_id": 7,
+  "eval_name": "required-checklist",
+  "prompt": "Edit this deployment runbook to be clear and natural. Keep it a numbered checklist, retain all four steps and the rollback condition, and preserve all code spans exactly. Source: '1. First and foremost, it is crucial to run `deployctl status --env staging`. 2. Next, leverage the robust command `deployctl snapshot --label pre-release` to create a snapshot. 3. Then run `deployctl apply release.yaml --env staging`. 4. Finally, it is important to note that you must check `/healthz` for HTTP 200. If `/healthz` is not HTTP 200 after 60 seconds, run `deployctl rollback --label pre-release`. This underscores the importance of reliability.' Return only the edited checklist.",
+  "assertions": [
+    "Exactly four numbered steps in original operational order.",
+    "Every source code span is preserved exactly, including both /healthz occurrences and rollback command.",
+    "HTTP 200 check and rollback after 60 seconds on non-200 remain required, not optional or unconditional."
+  ]
+}

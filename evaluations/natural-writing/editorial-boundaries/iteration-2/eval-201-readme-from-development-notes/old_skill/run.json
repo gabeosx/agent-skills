@@ -1,0 +1,21 @@
+{
+  "files": [
+    "/Users/gabe/agent-skills/evaluations/natural-writing/editorial-boundaries/iteration-2/eval-201-readme-from-development-notes/old_skill/outputs/output.md",
+    "/Users/gabe/agent-skills/evaluations/natural-writing/editorial-boundaries/iteration-2/eval-202-reference-with-unknown-specifications/old_skill/outputs/output.md",
+    "/Users/gabe/agent-skills/evaluations/natural-writing/editorial-boundaries/iteration-2/eval-203-architecture-record-positive-control/old_skill/outputs/output.md",
+    "/Users/gabe/agent-skills/evaluations/natural-writing/editorial-boundaries/iteration-2/eval-204-migration-history-positive-control/old_skill/outputs/output.md",
+    "/Users/gabe/agent-skills/evaluations/natural-writing/editorial-boundaries/iteration-2/eval-205-evaluation-record-preserve-failures/old_skill/outputs/output.md",
+    "/Users/gabe/agent-skills/evaluations/natural-writing/editorial-boundaries/iteration-2/eval-206-customer-email-from-internal-thread/old_skill/outputs/output.md",
+    "/Users/gabe/agent-skills/evaluations/natural-writing/editorial-boundaries/iteration-2/eval-207-maintenance-comment-useful-rationale/old_skill/outputs/output.md",
+    "/Users/gabe/agent-skills/evaluations/natural-writing/editorial-boundaries/iteration-2/eval-208-board-brief-with-hidden-context/old_skill/outputs/output.md",
+    "/Users/gabe/agent-skills/evaluations/natural-writing/editorial-boundaries/iteration-2/eval-402-regression-uncertain-study/old_skill/outputs/output.md",
+    "/Users/gabe/agent-skills/evaluations/natural-writing/editorial-boundaries/iteration-2/eval-403-regression-source-poor-copy/old_skill/outputs/output.md",
+    "/Users/gabe/agent-skills/evaluations/natural-writing/editorial-boundaries/iteration-2/eval-405-regression-voice-sample-email/old_skill/outputs/output.md",
+    "/Users/gabe/agent-skills/evaluations/natural-writing/editorial-boundaries/iteration-2/eval-406-regression-already-good-control/old_skill/outputs/output.md"
+  ],
+  "file_write_timestamp_utc": "2026-10-23T21:28:33.663063+00:00",
+  "generation_time_seconds": null,
+  "tokens": null,
+  "charge_usd": null,
+  "exact_build": null
+}

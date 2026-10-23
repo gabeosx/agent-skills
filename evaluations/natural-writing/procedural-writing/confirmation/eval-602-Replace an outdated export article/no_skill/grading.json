@@ -1,0 +1,44 @@
+{
+  "expectations": [
+    {
+      "text": "The replacement preserves the fact that packages contain attachment filenames but omit the attachment files, and explains that needed attachments must be saved separately.",
+      "passed": true,
+      "evidence": "The opening limitation names record text and attachment filenames while excluding attachment files; the last saving step instructs separate saving of needed attachment files."
+    },
+    {
+      "text": "The article does not require closing other tabs or erasing saved sign-ins before export; it uses the current account label and the job's Account and Month fields to establish the selected export context.",
+      "passed": true,
+      "evidence": "The opening removes the need to close tabs or erase saved sign-in and establishes the top-right label. Workflow steps 1 and 4 use the label and the job Account and Month fields."
+    },
+    {
+      "text": "The workflow identifies Exports > Recent, Status = Complete, and Download package, and says existing queued or running jobs should be resumed rather than resubmitted.",
+      "passed": true,
+      "evidence": "The start/resume section uses Exports > Recent and existing queued/running jobs. The download section waits for Complete and clicks Download package, explicitly forbidding duplicate submission because of delay."
+    },
+    {
+      "text": "The article allows staff to close the browser and return later, and identifies Monthly review's month-named subfolder as the destination for packages and separate attachments.",
+      "passed": true,
+      "evidence": "The final paragraph allows closing the browser while queued/running and returning to Recent. Download/save steps 3\u20134 put package and separate attachments in Monthly review\u2019s selected-month subfolder."
+    },
+    {
+      "text": "The output is a replacement staff article with materially revised organization or wording, rather than a lightly edited copy, a change log, or a discussion of the rewrite.",
+      "passed": true,
+      "evidence": "It is a materially reorganized replacement article with an up-front limitation and separate start/resume and download/save sections."
+    }
+  ],
+  "summary": {
+    "passed": 5,
+    "failed": 0,
+    "total": 5,
+    "pass_rate": 1.0
+  },
+  "blind_review": "reviews/confirmation/602.json",
+  "output_sha256": "c1184b2fcf31d1ed5afe0d4f26b1058f1bc7375de14e7dd0d07434f5a99c1823",
+  "scores": {
+    "usefulness": 5,
+    "fidelity": 5,
+    "naturalness": 5
+  },
+  "critical": [],
+  "substantive": []
+}

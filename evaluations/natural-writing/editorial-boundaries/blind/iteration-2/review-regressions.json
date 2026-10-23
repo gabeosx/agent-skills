@@ -1,0 +1,639 @@
+{
+  "cases": [
+    {
+      "id": 207,
+      "winner": "tie",
+      "reasoning": "Both comments preserve the nonobvious crash-consistency rationale and flush-dependent power-loss limit in four comment lines. A separates the rationale into two sentences; B joins it. This is an equivalent editorial result.",
+      "preference_severity": "none",
+      "A": {
+        "scores": {
+          "fidelity": 5,
+          "directness_and_selectivity": 5,
+          "specificity": 5,
+          "voice_and_genre": 5,
+          "cadence_and_rhetoric": 5,
+          "structure": 5,
+          "edit_restraint": 5,
+          "reader_relevance": 5
+        },
+        "expectations": [
+          {
+            "text": "Retains temporary-file/atomic-replacement rationale: readers see the old or a complete new file and avoid a partially written state.json.",
+            "passed": true,
+            "evidence": "“temporary file so a crash cannot leave state.json partially written” and “either the old file or the complete new file” preserve both rationale elements."
+          },
+          {
+            "text": "Preserves the distinction from power-loss durability and its dependence on flushing; no stronger guarantee.",
+            "passed": true,
+            "evidence": "“Rename alone does not guarantee survival of a power loss; durability depends / # on flush behavior.” No stronger durability promise follows."
+          },
+          {
+            "text": "Omits debugging/refactor history, effort claims and clean/robust self-praise; does not add a Python/JSON tutorial.",
+            "passed": true,
+            "evidence": "The complete comment contains only the temporary-file rationale, atomic visibility and power-loss limit; “Write to a temporary file” replaces the debugging history without adding API instruction."
+          },
+          {
+            "text": "Returns a code comment only and preserves state.json exactly.",
+            "passed": true,
+            "evidence": "All four lines begin with “#”; “state.json” is exact, and there is no prose outside the comment."
+          }
+        ],
+        "critical_failures": [],
+        "substantive_defects": [],
+        "strengths": [
+          "Retains the maintainer-relevant reason and its limit.",
+          "Removes retrospective and self-praise while preserving state.json."
+        ],
+        "weaknesses": [],
+        "claims_audit": {
+          "unsupported_claims": [],
+          "checked": "“a crash cannot leave state.json partially written” concerns atomic replacement visibility and is immediately qualified separately for power-loss durability; it does not promise durable persistence."
+        }
+      },
+      "B": {
+        "scores": {
+          "fidelity": 5,
+          "directness_and_selectivity": 5,
+          "specificity": 5,
+          "voice_and_genre": 5,
+          "cadence_and_rhetoric": 5,
+          "structure": 5,
+          "edit_restraint": 5,
+          "reader_relevance": 5
+        },
+        "expectations": [
+          {
+            "text": "Retains temporary-file/atomic-replacement rationale: readers see the old or a complete new file and avoid a partially written state.json.",
+            "passed": true,
+            "evidence": "“atomically replace state.json so readers see / # either the old file or the complete new file, avoiding partial writes on a crash.”"
+          },
+          {
+            "text": "Preserves the distinction from power-loss durability and its dependence on flushing; no stronger guarantee.",
+            "passed": true,
+            "evidence": "“Atomic rename alone does not guarantee survival of a power loss; durability / # depends on flush behavior.”"
+          },
+          {
+            "text": "Omits debugging/refactor history, effort claims and clean/robust self-praise; does not add a Python/JSON tutorial.",
+            "passed": true,
+            "evidence": "The complete comment contains the atomic replacement rationale and durability limit only; “Write to a temporary file and atomically replace” is concise rationale, with no debugging history, praise or Python/JSON tutorial."
+          },
+          {
+            "text": "Returns a code comment only and preserves state.json exactly.",
+            "passed": true,
+            "evidence": "All four lines begin with “#”; “state.json” is exact and there is no surrounding explanation."
+          }
+        ],
+        "critical_failures": [],
+        "substantive_defects": [],
+        "strengths": [
+          "Combines mechanism and reader-visible outcome clearly.",
+          "Keeps the flush-dependent durability qualification."
+        ],
+        "weaknesses": [],
+        "claims_audit": {
+          "unsupported_claims": [],
+          "checked": "“avoiding partial writes on a crash” is bounded by the explicit separate power-loss caveat and makes no stronger durability claim."
+        }
+      }
+    },
+    {
+      "id": 208,
+      "winner": "tie",
+      "reasoning": "Both are self-contained board briefings with all observations, limitations, spending and staffing boundaries, proposed evidence collection and mandatory safety approval. B separates results from interpretation; A integrates them. Neither organization creates a substantive advantage.",
+      "preference_severity": "none",
+      "A": {
+        "scores": {
+          "fidelity": 5,
+          "directness_and_selectivity": 4,
+          "specificity": 5,
+          "voice_and_genre": 5,
+          "cadence_and_rhetoric": 4,
+          "structure": 5,
+          "edit_restraint": 5,
+          "reader_relevance": 5
+        },
+        "expectations": [
+          {
+            "text": "Defines Lantern and blue lane as manual-address-check parcels, rather than assuming meeting context or presenting a new carrier.",
+            "passed": true,
+            "evidence": "“Lantern, the routing pilot at two warehouses” and “parcels requiring a manual address check, known within the project as ‘blue lane’ parcels”; “does not identify a carrier or service level.”"
+          },
+          {
+            "text": "Correctly preserves 260/240 parcels, 31/34 hours, 4/3 damage reports, nonrandomized prior-month comparison and differing international mix; no causal claim.",
+            "passed": true,
+            "evidence": "“260 parcels ... median dwell time was 31 hours”; “240 parcels processed the prior month was 34 hours”; “not randomized”; “fewer international parcels”; damage “four ... and three”; “does not establish that routing improved outcomes.”"
+          },
+          {
+            "text": "Explains six-week $1,500-per-week $9,000 cap, existing staffing and no permanent expansion/new hires.",
+            "passed": true,
+            "evidence": "“$1,500 per week for six weeks and use existing staff”; opening “spending capped at $9,000”; ending “does not authorize permanent expansion or new hires.”"
+          },
+          {
+            "text": "Preserves safety review as not complete and mandatory approval before start; includes proposed mix/workload/comparability measures.",
+            "passed": true,
+            "evidence": "“The safety review remains incomplete” and “must not permit work to begin before that review is completed and approved”; “tracking parcel mix, documenting manual-review workload and comparing more similar cohorts.”"
+          },
+          {
+            "text": "Presents an actual board decision without Option C, slide-theme/history chatter or unsupported breakthrough framing; 250–350 words.",
+            "passed": true,
+            "evidence": "“The board is asked to approve the extension on those terms”; 287 whitespace-delimited words, briefing only. No Option C, theme selection or breakthrough language."
+          }
+        ],
+        "critical_failures": [],
+        "substantive_defects": [],
+        "strengths": [
+          "Explains why additional evidence matters to this director.",
+          "Keeps the safety prerequisite and authorization scope explicit."
+        ],
+        "weaknesses": [
+          "Repeats the conditional approval and limited-test decision at the opening and end; useful reinforcement but slightly verbose."
+        ],
+        "claims_audit": {
+          "unsupported_claims": [],
+          "checked": "“Differences in parcel mix may account for some or all” is a conditional interpretation of the stated confound, not an assertion of an established cause. The further evaluation is proposed, and no operational success or safety is claimed."
+        }
+      },
+      "B": {
+        "scores": {
+          "fidelity": 5,
+          "directness_and_selectivity": 4,
+          "specificity": 5,
+          "voice_and_genre": 5,
+          "cadence_and_rhetoric": 4,
+          "structure": 5,
+          "edit_restraint": 5,
+          "reader_relevance": 5
+        },
+        "expectations": [
+          {
+            "text": "Defines Lantern and blue lane as manual-address-check parcels, rather than assuming meeting context or presenting a new carrier.",
+            "passed": true,
+            "evidence": "“Lantern warehouse-routing pilot”; “Lantern currently operates at two warehouses”; “parcels requiring a manual address check” defines “‘blue lane’” as review needs, “not a separate carrier or service level.”"
+          },
+          {
+            "text": "Correctly preserves 260/240 parcels, 31/34 hours, 4/3 damage reports, nonrandomized prior-month comparison and differing international mix; no causal claim.",
+            "passed": true,
+            "evidence": "“260 ... 31 hours”; “240 ... prior month ... 34 hours”; damage “four ... three”; “not randomized”; “fewer international parcels”; “do not establish that routing caused either difference.”"
+          },
+          {
+            "text": "Explains six-week $1,500-per-week $9,000 cap, existing staffing and no permanent expansion/new hires.",
+            "passed": true,
+            "evidence": "“$1,500 per week for six weeks and uses existing staff”; “capped at $9,000”; “would not authorize permanent expansion or new hires.”"
+          },
+          {
+            "text": "Preserves safety review as not complete and mandatory approval before start; includes proposed mix/workload/comparability measures.",
+            "passed": true,
+            "evidence": "“The safety review remains incomplete” and “completed and approved before the extension begins”; “track parcel mix, document the workload ... and compare more similar cohorts.”"
+          },
+          {
+            "text": "Presents an actual board decision without Option C, slide-theme/history chatter or unsupported breakthrough framing; 250–350 words.",
+            "passed": true,
+            "evidence": "“The requested decision is whether to fund the additional six weeks under those conditions”; 293 whitespace-delimited words, briefing only. No Option C, presentation history or breakthrough framing."
+          }
+        ],
+        "critical_failures": [],
+        "substantive_defects": [],
+        "strengths": [
+          "Defines project shorthand without assuming attendance at meetings.",
+          "Separates observations from uncertainty and ties the request to a bounded test."
+        ],
+        "weaknesses": [
+          "Repeats the damage uncertainty after already saying neither difference is causal, and repeats the safety condition at the end."
+        ],
+        "claims_audit": {
+          "unsupported_claims": [],
+          "checked": "“offer a reason to investigate further” is a measured funding rationale. “could therefore affect the comparison” preserves uncertainty; no effectiveness, safety or permanent rollout claim is made."
+        }
+      }
+    },
+    {
+      "id": 402,
+      "winner": "tie",
+      "reasoning": "Both deliver one measured paragraph with correct quantities, response denominator, confounds, unmeasured safety and a controlled-evaluation recommendation. A explicitly says the pilot cannot establish causation; B calls the reduction observed and explains the same limits. Both are ready to use.",
+      "preference_severity": "none",
+      "A": {
+        "scores": {
+          "fidelity": 5,
+          "directness_and_selectivity": 5,
+          "specificity": 5,
+          "voice_and_genre": 5,
+          "cadence_and_rhetoric": 5,
+          "structure": 5,
+          "edit_restraint": 5,
+          "reader_relevance": 5
+        },
+        "expectations": [
+          {
+            "text": "Preserves 18 nurses, four weeks, one clinic, and voluntary participation.",
+            "passed": true,
+            "evidence": "“A voluntary four-week pilot at one clinic ... among 18 nurses”."
+          },
+          {
+            "text": "Preserves median weekly 46 to 39 minutes with no causal claim and explains no control plus concurrent staffing changes.",
+            "passed": true,
+            "evidence": "“median weekly scheduling time ... fell from 46 to 39 minutes”; “cannot establish that the scheduling tool caused it”; “no control group” and “concurrent staffing changes may explain part”."
+          },
+          {
+            "text": "States six of nine survey respondents preferred it rather than six of 18 or a majority of all nurses.",
+            "passed": true,
+            "evidence": "“Nine nurses returned the optional survey, of whom six preferred the tool”; it “cannot establish preferences among all participants or nurses elsewhere.”"
+          },
+          {
+            "text": "States patient safety was not measured; any next step is framed as recommendation, not a planned commitment.",
+            "passed": true,
+            "evidence": "“Patient safety was not measured”; “Before considering wider adoption, run a controlled evaluation” is a recommended next step, not an announced commitment."
+          },
+          {
+            "text": "100–150 words in one paragraph without heading or bullets.",
+            "passed": true,
+            "evidence": "111 whitespace-delimited words, one paragraph beginning “A voluntary four-week pilot”, without heading or bullets."
+          }
+        ],
+        "critical_failures": [],
+        "substantive_defects": [],
+        "strengths": [
+          "Makes the causal limit explicit.",
+          "Selects the adoption-relevant denominator and safety gap."
+        ],
+        "weaknesses": [],
+        "claims_audit": {
+          "unsupported_claims": [],
+          "checked": "The “seven-minute reduction” is 46 minus 39. The controlled evaluation and expanded feedback/safety collection are recommendations, not invented study findings."
+        }
+      },
+      "B": {
+        "scores": {
+          "fidelity": 5,
+          "directness_and_selectivity": 5,
+          "specificity": 5,
+          "voice_and_genre": 5,
+          "cadence_and_rhetoric": 5,
+          "structure": 5,
+          "edit_restraint": 5,
+          "reader_relevance": 5
+        },
+        "expectations": [
+          {
+            "text": "Preserves 18 nurses, four weeks, one clinic, and voluntary participation.",
+            "passed": true,
+            "evidence": "“In a voluntary four-week pilot at one clinic, 18 nurses used a scheduling tool”."
+          },
+          {
+            "text": "Preserves median weekly 46 to 39 minutes with no causal claim and explains no control plus concurrent staffing changes.",
+            "passed": true,
+            "evidence": "“median weekly scheduling time fell from 46 to 39 minutes”; “observed seven-minute reduction”; “no control group” and “concurrent staffing changes may explain part of it” prevent a causal claim."
+          },
+          {
+            "text": "States six of nine survey respondents preferred it rather than six of 18 or a majority of all nurses.",
+            "passed": true,
+            "evidence": "“Nine nurses completed the optional survey; six of those nine preferred the tool”; responses “cannot establish preference across the full group or other clinics.”"
+          },
+          {
+            "text": "States patient safety was not measured; any next step is framed as recommendation, not a planned commitment.",
+            "passed": true,
+            "evidence": "“Patient safety was not measured”; “A next step is a controlled evaluation” recommends further work before a broader rollout decision."
+          },
+          {
+            "text": "100–150 words in one paragraph without heading or bullets.",
+            "passed": true,
+            "evidence": "112 whitespace-delimited words, one paragraph beginning “In a voluntary four-week pilot”, with no heading or bullets."
+          }
+        ],
+        "critical_failures": [],
+        "substantive_defects": [],
+        "strengths": [
+          "Preserves selection and generalizability limits.",
+          "Connects the recommended evaluation to staffing, feedback and safety."
+        ],
+        "weaknesses": [],
+        "claims_audit": {
+          "unsupported_claims": [],
+          "checked": "“Those responses describe half the participants” correctly refers to nine respondents out of eighteen, not to the six who preferred the tool. The seven-minute calculation is correct; proposed next steps are not represented as completed or scheduled."
+        }
+      }
+    },
+    {
+      "id": 403,
+      "winner": "B",
+      "reasoning": "B makes the supported replaceability feature useful to a buyer with “change that part and keep the lamp” and a direct opening. A repeatedly restates replaceability (“replace that component”, “built with that option”) without developing the copy. B still repeats the warranty and has room for a tighter final sentence. The advantage is minor; neither invents a material product benefit.",
+      "preference_severity": "minor",
+      "A": {
+        "scores": {
+          "fidelity": 5,
+          "directness_and_selectivity": 3,
+          "specificity": 4,
+          "voice_and_genre": 4,
+          "cadence_and_rhetoric": 3,
+          "structure": 4,
+          "edit_restraint": 4,
+          "reader_relevance": 4
+        },
+        "expectations": [
+          {
+            "text": "Includes replaceable LED module, steel base, and two-year warranty accurately.",
+            "passed": true,
+            "evidence": "“a steel base and a replaceable LED module”; “The lamp comes with a two-year warranty.”"
+          },
+          {
+            "text": "No invented light-quality, comfort, durability, environmental, manufacturing, certification, price, or user-experience claims.",
+            "passed": true,
+            "evidence": "“When the module needs replacing, you can replace that component” restates the known replaceability. No light-quality, comfort, longevity, environmental, origin, certification or price promise appears."
+          },
+          {
+            "text": "45–75 words and no assistant or editing commentary.",
+            "passed": true,
+            "evidence": "49 whitespace-delimited words, revised product copy only; starts “Bracken brings a steel base” with no editing commentary."
+          }
+        ],
+        "critical_failures": [],
+        "substantive_defects": [],
+        "strengths": [
+          "Removes grand claims and retains all three supported features.",
+          "Avoids unsupported performance or sustainability promises."
+        ],
+        "weaknesses": [
+          "“When the module needs replacing, you can replace that component” is circular; the closing “built with that option” repeats the same point.",
+          "The opening and close are serviceable but make the sparse copy less compelling than its concrete facts allow."
+        ],
+        "claims_audit": {
+          "unsupported_claims": [],
+          "checked": "“brings ... to your desk” is ordinary positioning for a desk lamp, not a claim about shipping, dimensions or user outcomes. Replaceability is stated narrowly, without promising future module availability or product life."
+        }
+      },
+      "B": {
+        "scores": {
+          "fidelity": 5,
+          "directness_and_selectivity": 4,
+          "specificity": 4,
+          "voice_and_genre": 4,
+          "cadence_and_rhetoric": 4,
+          "structure": 4,
+          "edit_restraint": 4,
+          "reader_relevance": 4
+        },
+        "expectations": [
+          {
+            "text": "Includes replaceable LED module, steel base, and two-year warranty accurately.",
+            "passed": true,
+            "evidence": "“Bracken pairs a replaceable LED module with a steel base and a two-year warranty.”"
+          },
+          {
+            "text": "No invented light-quality, comfort, durability, environmental, manufacturing, certification, price, or user-experience claims.",
+            "passed": true,
+            "evidence": "“change that part and keep the lamp” describes replacing the known replaceable module, without an added lifespan, durability, environmental or comfort promise. “two years of coverage” stays within the stated warranty; no exclusions or broader protection are invented."
+          },
+          {
+            "text": "45–75 words and no assistant or editing commentary.",
+            "passed": true,
+            "evidence": "49 whitespace-delimited words, copy only; begins “Choose a desk lamp with a light source you can replace”, with no assistant commentary."
+          }
+        ],
+        "critical_failures": [],
+        "substantive_defects": [],
+        "strengths": [
+          "Starts with a specific buyer-relevant feature.",
+          "States the narrow practical consequence of replacing a module without turning it into an environmental or lifespan claim."
+        ],
+        "weaknesses": [
+          "“The warranty provides two years of coverage for your purchase” repeats the already-stated two-year warranty and adds little."
+        ],
+        "claims_audit": {
+          "unsupported_claims": [],
+          "checked": "“keep the lamp” follows from changing its replaceable module and is not a claim of indefinite life, repairability of all parts or sustainability certification. Warranty coverage is not described as comprehensive, unconditional or a specific repair/refund entitlement."
+        }
+      }
+    },
+    {
+      "id": 405,
+      "winner": "tie",
+      "reasoning": "Both preserve the exact refund and order status in the requested restrained warm voice, including the same original dry line “Once was plenty.” The different thanks and paragraph break are equivalent choices.",
+      "preference_severity": "none",
+      "A": {
+        "scores": {
+          "fidelity": 5,
+          "directness_and_selectivity": 5,
+          "specificity": 5,
+          "voice_and_genre": 5,
+          "cadence_and_rhetoric": 5,
+          "structure": 5,
+          "edit_restraint": 5,
+          "reader_relevance": 5
+        },
+        "expectations": [
+          {
+            "text": "Addresses Lee and signs Mara without importing Jo or replacement/shipment claims.",
+            "passed": true,
+            "evidence": "“Hi Lee,” and “—Mara”; no Jo, replacement package, tracking or new shipping event appears."
+          },
+          {
+            "text": "Preserves duplicate $24 delivery charge and submitted-today refund with usual 3–5 business days rather than guarantee.",
+            "passed": true,
+            "evidence": "“duplicate $24 delivery charge”; “I submitted the refund today; it usually appears in 3–5 business days.” “Usually” retains uncertainty."
+          },
+          {
+            "text": "Preserves order scheduled for Tuesday without guaranteeing arrival.",
+            "passed": true,
+            "evidence": "“Your order is still scheduled for Tuesday” preserves scheduling without guaranteeing arrival."
+          },
+          {
+            "text": "Matches warmth and restrained dry voice without copying scenic-route wording or inventing events.",
+            "passed": true,
+            "evidence": "“Once was plenty” supplies dry understatement; “Thanks for sticking with us” retains warmth. No scenic-route wording or invented event appears."
+          }
+        ],
+        "critical_failures": [],
+        "substantive_defects": [],
+        "strengths": [
+          "Matches the sample’s short sentences and understated humor.",
+          "Keeps usual refund timing and scheduled order status precise."
+        ],
+        "weaknesses": [],
+        "claims_audit": {
+          "unsupported_claims": [],
+          "checked": "Refund submission, amount and timing match the supplied facts. The thanks is a normal courteous closing, not a new operational claim."
+        }
+      },
+      "B": {
+        "scores": {
+          "fidelity": 5,
+          "directness_and_selectivity": 5,
+          "specificity": 5,
+          "voice_and_genre": 5,
+          "cadence_and_rhetoric": 5,
+          "structure": 5,
+          "edit_restraint": 5,
+          "reader_relevance": 5
+        },
+        "expectations": [
+          {
+            "text": "Addresses Lee and signs Mara without importing Jo or replacement/shipment claims.",
+            "passed": true,
+            "evidence": "“Hi Lee,” and “—Mara”; no Jo, replacement shipment or tracking claim appears."
+          },
+          {
+            "text": "Preserves duplicate $24 delivery charge and submitted-today refund with usual 3–5 business days rather than guarantee.",
+            "passed": true,
+            "evidence": "“duplicate $24 delivery charge”; “I submitted the refund today; it usually appears in 3–5 business days.”"
+          },
+          {
+            "text": "Preserves order scheduled for Tuesday without guaranteeing arrival.",
+            "passed": true,
+            "evidence": "“Your order is still scheduled for Tuesday.” No promise that it will arrive is added."
+          },
+          {
+            "text": "Matches warmth and restrained dry voice without copying scenic-route wording or inventing events.",
+            "passed": true,
+            "evidence": "“Once was plenty” is original dry understatement, followed by “Thanks for bearing with us.” No scenic-route joke or invented event appears."
+          }
+        ],
+        "critical_failures": [],
+        "substantive_defects": [],
+        "strengths": [
+          "Combines clear service information with warmth and a brief dry aside.",
+          "Preserves uncertainty without sounding bureaucratic."
+        ],
+        "weaknesses": [],
+        "claims_audit": {
+          "unsupported_claims": [],
+          "checked": "All operational claims match the provided facts; the revised thanks adds no event or commitment."
+        }
+      }
+    },
+    {
+      "id": 406,
+      "winner": "tie",
+      "reasoning": "The outputs are identical and preserve the already-correct literary paragraph exactly apart from terminal file whitespace. Neither makes an unnecessary edit.",
+      "preference_severity": "none",
+      "A": {
+        "scores": {
+          "fidelity": 5,
+          "directness_and_selectivity": 5,
+          "specificity": 5,
+          "voice_and_genre": 5,
+          "cadence_and_rhetoric": 5,
+          "structure": 5,
+          "edit_restraint": 5,
+          "reader_relevance": 5
+        },
+        "expectations": [
+          {
+            "text": "Returns exactly the paragraph without surrounding quotation marks or commentary.",
+            "passed": true,
+            "evidence": "Exact comparison after trimming terminal file whitespace equals “By six, the garden had gone blue. My father kept digging—slowly, as if the potatoes might object. We ate late; nobody mentioned the clock.” No quotation marks or commentary."
+          }
+        ],
+        "critical_failures": [],
+        "substantive_defects": [],
+        "strengths": [
+          "Preserves the intentional em dash, semicolon, imagery and cadence.",
+          "Shows appropriate restraint by changing nothing."
+        ],
+        "weaknesses": [],
+        "claims_audit": {
+          "unsupported_claims": [],
+          "checked": "The entire output is the supplied paragraph. No new claim or prose is added."
+        }
+      },
+      "B": {
+        "scores": {
+          "fidelity": 5,
+          "directness_and_selectivity": 5,
+          "specificity": 5,
+          "voice_and_genre": 5,
+          "cadence_and_rhetoric": 5,
+          "structure": 5,
+          "edit_restraint": 5,
+          "reader_relevance": 5
+        },
+        "expectations": [
+          {
+            "text": "Returns exactly the paragraph without surrounding quotation marks or commentary.",
+            "passed": true,
+            "evidence": "Exact comparison after trimming terminal file whitespace equals “By six, the garden had gone blue. My father kept digging—slowly, as if the potatoes might object. We ate late; nobody mentioned the clock.” No quotation marks or commentary."
+          }
+        ],
+        "critical_failures": [],
+        "substantive_defects": [],
+        "strengths": [
+          "Preserves every stylistic choice.",
+          "Makes no unnecessary correction."
+        ],
+        "weaknesses": [],
+        "claims_audit": {
+          "unsupported_claims": [],
+          "checked": "The entire output is the supplied paragraph. No new claim or prose is added."
+        }
+      }
+    }
+  ],
+  "summary": {
+    "case_count": 6,
+    "wins": {
+      "A": 0,
+      "B": 1,
+      "tie": 5
+    },
+    "preference_severities": {
+      "none": 5,
+      "minor": 1,
+      "substantive": 0
+    },
+    "assertions": {
+      "A": {
+        "passed": 22,
+        "failed": 0,
+        "total": 22
+      },
+      "B": {
+        "passed": 22,
+        "failed": 0,
+        "total": 22
+      }
+    },
+    "critical_failures": {
+      "A": 0,
+      "B": 0
+    },
+    "substantive_defects": {
+      "A": 0,
+      "B": 0
+    },
+    "score_means": {
+      "A": 4.7708,
+      "A_by_case": {
+        "207": 5.0,
+        "208": 4.75,
+        "402": 5.0,
+        "403": 3.875,
+        "405": 5.0,
+        "406": 5.0
+      },
+      "B": 4.8125,
+      "B_by_case": {
+        "207": 5.0,
+        "208": 4.75,
+        "402": 5.0,
+        "403": 4.125,
+        "405": 5.0,
+        "406": 5.0
+      }
+    },
+    "limitations": [
+      "Single-sample blind editorial judgments for these six assigned cases only; no arm identities inferred and no population-level superiority claimed.",
+      "Claims were checked against each supplied task and its two outputs only; no external verification or actor-process claim is available.",
+      "Whitespace-delimited word counts verify the requested ranges; they do not establish editorial quality."
+    ],
+    "eval_feedback": [
+      {
+        "case_id": 403,
+        "observation": "Both copies satisfy all factual/length assertions while repeating scarce source facts. A repeats replaceability through most of the copy; B repeats the warranty.",
+        "suggestion": "Keep assertions unchanged for this evaluation. In future tests, assess the positive request to make copy more compelling separately from factual restraint, so compliant word-count padding is not mistaken for effective copy."
+      },
+      {
+        "case_id": 402,
+        "observation": "The explicit assertions do not separately name broader representativeness, although the prompt forbids it. Both outputs pass that semantic check: A says “cannot establish preferences ... elsewhere”; B says “cannot establish preference ... other clinics.”",
+        "suggestion": "A future assertion could explicitly test that the pilot and optional survey are not generalized to other clinics; current rubric scoring already includes this."
+      }
+    ]
+  }
+}

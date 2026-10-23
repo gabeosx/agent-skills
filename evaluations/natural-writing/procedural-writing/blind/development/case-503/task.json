@@ -1,0 +1,12 @@
+{
+  "id": 503,
+  "name": "conditional-recovery",
+  "prompt": "Turn these messy fictional Larch shop-connector notes into an onboarding page. Return only the page. Verified source: First Connections > Add shop, authorize the desired shop, then Import products. Next open Connections > Products and review Mapping status. A Mapped row is ready; do not remap it. Only an Unmatched row needs Link item and selection of the corresponding inventory item. If no inventory item exists, ask the inventory lead to create it before linking that row. Product import does not start order sync: press Start sync after all rows are mapped. Only if Connections > Account shows the wrong shop, Disconnect and authorize the correct shop, then reimport. Only if sync status is Authorization expired, select Reauthorize; this is not a routine setup step. Old notes currently mix disconnecting, relinking every row and reauthorizing into the numbered setup list.",
+  "files": [],
+  "expected_output": "Usable, faithful prose that satisfies the task without invented details.",
+  "assertions": [
+    "The normal sequence is authorize, import, review mappings, Start sync after all mapped; import alone does not start sync.",
+    "It gives Mapping status location, Mapped/Unmatched conditions, and Link item or inventory-lead remedy only for Unmatched rows.",
+    "Disconnect/reimport and Reauthorize are clearly conditional on wrong shop and Authorization expired respectively, not universal prerequisites."
+  ]
+}

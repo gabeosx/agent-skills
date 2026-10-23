@@ -1,0 +1,42 @@
+{
+  "expectations": [
+    {
+      "text": "Includes offline notes and automatic sync after connection returns without promising offline photos.",
+      "passed": true,
+      "evidence": "“Today we added offline notes”; “they'll sync after your connection returns. Photos still need a connection”."
+    },
+    {
+      "text": "Retains all-plan inclusion and no migration for existing notebooks.",
+      "passed": true,
+      "evidence": "“included on every plan. Your existing notebooks need no migration”."
+    },
+    {
+      "text": "Does not invent quotations, adoption numbers, performance measures, launch offers, or founder experiences beyond the supplied facts.",
+      "passed": true,
+      "evidence": "“Customers told us they were losing notes in basements” is sourced. “where Fieldnote was falling short” is a grounded characterization of that report; there are no invented quotes, metrics, offers or founder anecdotes."
+    },
+    {
+      "text": "90–140 words; reads as a publishable post without assistant wrapper.",
+      "passed": true,
+      "evidence": "105 whitespace-delimited words. Opens “Fieldnote now works for notes when your connection doesn't.” and contains only the publishable post."
+    }
+  ],
+  "summary": {
+    "passed": 4,
+    "failed": 0,
+    "total": 4,
+    "pass_rate": 1.0
+  },
+  "scores": {
+    "Fidelity": 5,
+    "Directness and selectivity": 5,
+    "Specificity": 5,
+    "Voice and genre": 5,
+    "Cadence and rhetoric": 5,
+    "Structure": 5
+  },
+  "critical_failures": [],
+  "review_method": "Independent single blind agent review; not human feedback",
+  "review_source": "blind/iteration-3/review.json",
+  "output_sha256": "86163028b66db6eb69be861ac3604709ffaecaedb79603d6d837a72f3f342396"
+}

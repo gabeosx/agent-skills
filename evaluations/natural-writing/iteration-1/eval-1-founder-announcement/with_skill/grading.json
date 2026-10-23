@@ -1,0 +1,42 @@
+{
+  "expectations": [
+    {
+      "text": "Includes offline notes and automatic sync after connection returns without promising offline photos.",
+      "passed": true,
+      "evidence": "“write notes offline, and they'll sync once your connection returns” followed by “Photos still need a connection.”"
+    },
+    {
+      "text": "Retains all-plan inclusion and no migration for existing notebooks.",
+      "passed": true,
+      "evidence": "“included on every plan” and “your existing notebooks need no migration.”"
+    },
+    {
+      "text": "Does not invent quotations, adoption numbers, performance measures, launch offers, or founder experiences beyond the supplied facts.",
+      "passed": true,
+      "evidence": "“Customers told us they were losing notes in basements” and “This release comes directly from that feedback” are grounded in the facts. No invented quotation, adoption count, measurement, offer, or autobiographical event appears."
+    },
+    {
+      "text": "90–140 words; reads as a publishable post without assistant wrapper.",
+      "passed": true,
+      "evidence": "105 whitespace-delimited words; a standalone customer-facing post without an assistant wrapper."
+    }
+  ],
+  "summary": {
+    "passed": 4,
+    "failed": 0,
+    "total": 4,
+    "pass_rate": 1.0
+  },
+  "scores": {
+    "Fidelity": 5,
+    "Directness and selectivity": 4,
+    "Specificity": 5,
+    "Voice and genre": 5,
+    "Cadence and rhetoric": 4,
+    "Structure": 5
+  },
+  "critical_failures": [],
+  "review_method": "Independent single blind agent review; not human feedback",
+  "review_source": "blind/iteration-1/review.json",
+  "output_sha256": "5968e2f3eda531246ca93e71197691082549e6e332f663ade038aa0c0f9fdfc7"
+}

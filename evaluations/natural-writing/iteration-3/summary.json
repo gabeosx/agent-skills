@@ -1,0 +1,42 @@
+{
+  "with_skill": {
+    "cases": 8,
+    "passed": 28,
+    "total": 28,
+    "critical_failures": [],
+    "case_means": [
+      5,
+      5,
+      4.142857142857143,
+      5,
+      5,
+      5,
+      5,
+      5
+    ],
+    "wins": 3,
+    "losses": 0,
+    "ties": 5,
+    "mean_score": 4.892857142857143
+  },
+  "without_skill": {
+    "cases": 8,
+    "passed": 28,
+    "total": 28,
+    "critical_failures": [],
+    "case_means": [
+      4.666666666666667,
+      5,
+      3.857142857142857,
+      4.857142857142857,
+      5,
+      5,
+      5,
+      5
+    ],
+    "wins": 0,
+    "losses": 3,
+    "ties": 5,
+    "mean_score": 4.7976190476190474
+  }
+}

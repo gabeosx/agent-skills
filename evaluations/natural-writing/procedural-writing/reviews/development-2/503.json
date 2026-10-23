@@ -1,0 +1,92 @@
+{
+  "id": 503,
+  "labels": {
+    "A": {
+      "expectations": [
+        {
+          "text": "The normal sequence is authorize, import, review mappings, Start sync after all mapped; import alone does not start sync.",
+          "passed": true,
+          "evidence": "Steps 1–4 authorize, import products, review mappings, and Start sync only once all rows are mapped; explicitly says import alone does not start order sync."
+        },
+        {
+          "text": "It gives Mapping status location, Mapped/Unmatched conditions, and Link item or inventory-lead remedy only for Unmatched rows.",
+          "passed": true,
+          "evidence": "Step 3 gives Connections > Products and Mapping status. Mapped rows remain unchanged; only the Unmatched branch instructs Link item or asking the lead to create a missing inventory item before linking."
+        },
+        {
+          "text": "Disconnect/reimport and Reauthorize are clearly conditional on wrong shop and Authorization expired respectively, not universal prerequisites.",
+          "passed": true,
+          "evidence": "Recovery paragraphs condition Disconnect/authorize/reimport on the wrong shop in Connections > Account and Reauthorize on Authorization expired; neither is in the universal setup sequence."
+        }
+      ],
+      "scores": {
+        "usefulness": 5,
+        "fidelity": 5,
+        "naturalness": 5
+      },
+      "critical": [],
+      "substantive": [],
+      "minor": []
+    },
+    "B": {
+      "expectations": [
+        {
+          "text": "The normal sequence is authorize, import, review mappings, Start sync after all mapped; import alone does not start sync.",
+          "passed": true,
+          "evidence": "Steps 1–4 authorize, import products, review mappings and Start sync after all rows are mapped; explicitly says importing products does not start order sync."
+        },
+        {
+          "text": "It gives Mapping status location, Mapped/Unmatched conditions, and Link item or inventory-lead remedy only for Unmatched rows.",
+          "passed": true,
+          "evidence": "Connections > Products / Mapping status has separate Mapped (do not remap) and Unmatched branches, with Link item and inventory-lead creation before linking only in the latter."
+        },
+        {
+          "text": "Disconnect/reimport and Reauthorize are clearly conditional on wrong shop and Authorization expired respectively, not universal prerequisites.",
+          "passed": true,
+          "evidence": "Separate attention section uses Only if for wrong-shop Disconnect/authorize/reimport and Authorization expired Reauthorize, explicitly calling reauthorization nonroutine."
+        }
+      ],
+      "scores": {
+        "usefulness": 5,
+        "fidelity": 5,
+        "naturalness": 5
+      },
+      "critical": [],
+      "substantive": [],
+      "minor": []
+    },
+    "C": {
+      "expectations": [
+        {
+          "text": "The normal sequence is authorize, import, review mappings, Start sync after all mapped; import alone does not start sync.",
+          "passed": true,
+          "evidence": "Four steps preserve authorize, import, review mappings, then Start sync once all rows mapped; explicitly says product import alone does not start order sync."
+        },
+        {
+          "text": "It gives Mapping status location, Mapped/Unmatched conditions, and Link item or inventory-lead remedy only for Unmatched rows.",
+          "passed": true,
+          "evidence": "Step 3 locates Mapping status in Connections > Products and separates ready Mapped rows from Unmatched rows requiring Link item or lead creation before linking."
+        },
+        {
+          "text": "Disconnect/reimport and Reauthorize are clearly conditional on wrong shop and Authorization expired respectively, not universal prerequisites.",
+          "passed": true,
+          "evidence": "Wrong-shop paragraph conditions Disconnect/authorize/reimport on Connections > Account showing the wrong shop; Reauthorize is stated to be needed only for Authorization expired."
+        }
+      ],
+      "scores": {
+        "usefulness": 5,
+        "fidelity": 5,
+        "naturalness": 5
+      },
+      "critical": [],
+      "substantive": [],
+      "minor": []
+    }
+  },
+  "preferred": [
+    "A",
+    "B",
+    "C"
+  ],
+  "reason": "All three preserve the consequential source facts and provide clear, usable wording; differences in headings, formatting or phrasing do not create a meaningful preference."
+}

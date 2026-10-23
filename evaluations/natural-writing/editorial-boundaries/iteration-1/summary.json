@@ -1,0 +1,60 @@
+{
+  "with_skill": {
+    "cases": 12,
+    "passed": 48,
+    "total": 48,
+    "critical_failures": [
+      {
+        "case_id": 206,
+        "finding": "Unsupported factual status: “we don't yet have a delivery date.” The source establishes a scheduled Friday dispatch and that it is not a delivery promise, but does not establish whether a delivery date is known. This is an invented current customer-facing fact under the rubric's factual-invention rule."
+      }
+    ],
+    "case_means": [
+      5,
+      5,
+      5,
+      5,
+      5,
+      4.625,
+      5,
+      5,
+      5,
+      4.875,
+      5,
+      5
+    ],
+    "wins": 1,
+    "losses": 0,
+    "ties": 11,
+    "mean_score": 4.958333333333333
+  },
+  "old_skill": {
+    "cases": 12,
+    "passed": 48,
+    "total": 48,
+    "critical_failures": [
+      {
+        "case_id": 206,
+        "finding": "Unsupported factual status: “we don't yet have a delivery date.” The source establishes a scheduled Friday dispatch and that it is not a delivery promise, but does not establish whether a delivery date is known. This is an invented current customer-facing fact under the rubric's factual-invention rule."
+      }
+    ],
+    "case_means": [
+      5,
+      5,
+      5,
+      5,
+      5,
+      4.625,
+      5,
+      5,
+      5,
+      4.625,
+      5,
+      5
+    ],
+    "wins": 0,
+    "losses": 1,
+    "ties": 11,
+    "mean_score": 4.9375
+  }
+}

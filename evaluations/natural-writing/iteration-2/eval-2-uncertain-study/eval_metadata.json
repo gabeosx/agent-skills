@@ -1,0 +1,12 @@
+{
+  "eval_id": 2,
+  "eval_name": "uncertain-study",
+  "prompt": "Write a 100–150 word briefing paragraph for a hospital operations director from this synthetic study summary: In a voluntary four-week pilot at one clinic, 18 nurses used a scheduling tool. Median weekly scheduling time fell from 46 to 39 minutes. There was no control group; concurrent staffing changes may explain part of the change. Nine nurses returned the optional survey and six of those nine preferred the tool. The pilot did not measure patient safety. Recommend a next step without claiming causation or broader representativeness. No heading or bullets.",
+  "assertions": [
+    "Preserves 18 nurses, four weeks, one clinic, and voluntary participation.",
+    "Preserves median weekly 46 to 39 minutes with no causal claim and explains no control plus concurrent staffing changes.",
+    "States six of nine survey respondents preferred it rather than six of 18 or a majority of all nurses.",
+    "States patient safety was not measured; any next step is framed as recommendation, not a planned commitment.",
+    "100–150 words in one paragraph without heading or bullets."
+  ]
+}

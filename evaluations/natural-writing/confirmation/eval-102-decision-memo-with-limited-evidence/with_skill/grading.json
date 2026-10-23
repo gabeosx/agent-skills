@@ -1,0 +1,57 @@
+{
+  "expectations": [
+    {
+      "text": "Uses exactly the headings Recommendation, Evidence, and Next decision and contains at most 180 words.",
+      "passed": true,
+      "evidence": "Only the headings \"Recommendation\", \"Evidence\", and \"Next decision\" appear. The response is 121 whitespace-delimited words, including headings and Markdown markers, below 180."
+    },
+    {
+      "text": "Recommends a four-week extension and explicitly reserves permanent adoption for the later decision.",
+      "passed": true,
+      "evidence": "\"Extend the shared-dispatch pilot for four weeks\" and \"This does not commit Sable Workshop to permanent adoption\"; \"After four weeks, reconsider permanent adoption\" reserves the later decision."
+    },
+    {
+      "text": "Correctly reports 18 total shifts, comprising 11 with shared dispatch and 7 without, and associates median handoff times of 7 and 9 minutes with the correct groups.",
+      "passed": true,
+      "evidence": "\"18 shifts: 11 with a shared dispatcher and 7 without\"; \"7 minutes on shared-dispatch shifts and 9 minutes on the others.\""
+    },
+    {
+      "text": "States that assignment was not randomized and that shared-dispatch shifts had fewer urgent jobs; does not attribute the time difference causally to shared dispatch.",
+      "passed": true,
+      "evidence": "\"Assignments were not randomized, and shared-dispatch shifts handled fewer urgent jobs, so the difference does not establish a causal effect.\" Both confounders and the noncausal interpretation remain."
+    },
+    {
+      "text": "Reports one missed handoff in each group without suggesting that one group had fewer missed handoffs.",
+      "passed": true,
+      "evidence": "\"Each group recorded one missed handoff.\" No unequal missed-handoff claim appears."
+    },
+    {
+      "text": "Accurately gives the $2,400 monthly cost and $3,000 monthly ceiling, without presenting the ceiling as the actual cost.",
+      "passed": true,
+      "evidence": "\"The extension costs $2,400 per month, within the $3,000 monthly ceiling.\" Cost and ceiling are correctly distinguished."
+    },
+    {
+      "text": "Calls for more comparable shift assignments and a staff survey, makes clear that no survey results exist yet, and adds no numerical success threshold or invented evidence.",
+      "passed": true,
+      "evidence": "\"No staff survey has been conducted\"; \"Use more comparable shift assignments during the extension and conduct a staff survey.\" No numerical success threshold or additional evidence is supplied."
+    }
+  ],
+  "summary": {
+    "passed": 7,
+    "failed": 0,
+    "total": 7,
+    "pass_rate": 1.0
+  },
+  "scores": {
+    "Fidelity": 5,
+    "Directness and selectivity": 5,
+    "Specificity": 5,
+    "Voice and genre": 5,
+    "Cadence and rhetoric": 5,
+    "Structure": 5
+  },
+  "critical_failures": [],
+  "review_method": "Independent single blind agent review; not human feedback",
+  "review_source": "blind/confirmation/review.json",
+  "output_sha256": "7c19072e0759d3e3aed42f45cc5106c0216ccdb1f4949f7c200ff034b6365b98"
+}

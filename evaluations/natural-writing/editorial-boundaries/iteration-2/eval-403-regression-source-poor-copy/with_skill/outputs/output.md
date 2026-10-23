@@ -1,0 +1,1 @@
+Choose a desk lamp with a light source you can replace. Bracken pairs a replaceable LED module with a steel base and a two-year warranty. When the module needs replacing, you can change that part and keep the lamp. The warranty provides two years of coverage for your purchase.

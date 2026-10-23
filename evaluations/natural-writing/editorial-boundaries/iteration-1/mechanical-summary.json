@@ -1,0 +1,146 @@
+[
+  {
+    "id": 201,
+    "arm": "with_skill",
+    "checks": 2,
+    "failed": []
+  },
+  {
+    "id": 201,
+    "arm": "old_skill",
+    "checks": 2,
+    "failed": []
+  },
+  {
+    "id": 202,
+    "arm": "with_skill",
+    "checks": 2,
+    "failed": []
+  },
+  {
+    "id": 202,
+    "arm": "old_skill",
+    "checks": 2,
+    "failed": []
+  },
+  {
+    "id": 203,
+    "arm": "with_skill",
+    "checks": 1,
+    "failed": []
+  },
+  {
+    "id": 203,
+    "arm": "old_skill",
+    "checks": 1,
+    "failed": []
+  },
+  {
+    "id": 204,
+    "arm": "with_skill",
+    "checks": 2,
+    "failed": []
+  },
+  {
+    "id": 204,
+    "arm": "old_skill",
+    "checks": 2,
+    "failed": []
+  },
+  {
+    "id": 205,
+    "arm": "with_skill",
+    "checks": 1,
+    "failed": []
+  },
+  {
+    "id": 205,
+    "arm": "old_skill",
+    "checks": 1,
+    "failed": []
+  },
+  {
+    "id": 206,
+    "arm": "with_skill",
+    "checks": 0,
+    "failed": []
+  },
+  {
+    "id": 206,
+    "arm": "old_skill",
+    "checks": 0,
+    "failed": []
+  },
+  {
+    "id": 207,
+    "arm": "with_skill",
+    "checks": 2,
+    "failed": []
+  },
+  {
+    "id": 207,
+    "arm": "old_skill",
+    "checks": 2,
+    "failed": []
+  },
+  {
+    "id": 208,
+    "arm": "with_skill",
+    "checks": 1,
+    "failed": []
+  },
+  {
+    "id": 208,
+    "arm": "old_skill",
+    "checks": 1,
+    "failed": []
+  },
+  {
+    "id": 402,
+    "arm": "with_skill",
+    "checks": 2,
+    "failed": []
+  },
+  {
+    "id": 402,
+    "arm": "old_skill",
+    "checks": 2,
+    "failed": []
+  },
+  {
+    "id": 403,
+    "arm": "with_skill",
+    "checks": 1,
+    "failed": []
+  },
+  {
+    "id": 403,
+    "arm": "old_skill",
+    "checks": 1,
+    "failed": []
+  },
+  {
+    "id": 405,
+    "arm": "with_skill",
+    "checks": 0,
+    "failed": []
+  },
+  {
+    "id": 405,
+    "arm": "old_skill",
+    "checks": 0,
+    "failed": []
+  },
+  {
+    "id": 406,
+    "arm": "with_skill",
+    "checks": 1,
+    "failed": []
+  },
+  {
+    "id": 406,
+    "arm": "old_skill",
+    "checks": 1,
+    "failed": []
+  }
+]

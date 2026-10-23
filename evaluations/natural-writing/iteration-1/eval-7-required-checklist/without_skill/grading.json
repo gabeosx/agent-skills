@@ -1,0 +1,38 @@
+{
+  "expectations": [
+    {
+      "text": "Exactly four numbered steps in original operational order.",
+      "passed": true,
+      "evidence": "The output has exactly four numbered lines: status, snapshot, apply, then health check and conditional rollback."
+    },
+    {
+      "text": "Every source code span is preserved exactly, including both /healthz occurrences and rollback command.",
+      "passed": true,
+      "evidence": "The six code spans are exactly: `deployctl status --env staging`; `deployctl snapshot --label pre-release`; `deployctl apply release.yaml --env staging`; `/healthz`; `/healthz`; `deployctl rollback --label pre-release`. Both endpoint occurrences survive."
+    },
+    {
+      "text": "HTTP 200 check and rollback after 60 seconds on non-200 remain required, not optional or unconditional.",
+      "passed": true,
+      "evidence": "“Check `/healthz` for HTTP 200. If `/healthz` is not HTTP 200 after 60 seconds, run `deployctl rollback --label pre-release`.” The check and conditional rollback remain imperative."
+    }
+  ],
+  "summary": {
+    "passed": 3,
+    "failed": 0,
+    "total": 3,
+    "pass_rate": 1.0
+  },
+  "scores": {
+    "Fidelity": 5,
+    "Directness and selectivity": 5,
+    "Specificity": 5,
+    "Voice and genre": 5,
+    "Cadence and rhetoric": 5,
+    "Structure": 5,
+    "Edit restraint": 5
+  },
+  "critical_failures": [],
+  "review_method": "Independent single blind agent review; not human feedback",
+  "review_source": "blind/iteration-1/review.json",
+  "output_sha256": "f60efaa248167f3d9d2351cfdd44b8cf1ff8247b6a9b36b7c4e7ddcd42fc1a69"
+}

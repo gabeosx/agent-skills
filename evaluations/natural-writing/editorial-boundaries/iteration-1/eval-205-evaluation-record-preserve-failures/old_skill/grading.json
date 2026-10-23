@@ -1,0 +1,49 @@
+{
+  "expectations": [
+    {
+      "text": "Retains A initial 7/10 but explicitly invalidates its quality comparison because answer text leaked; does not erase the failed experiment or report it as valid.",
+      "passed": true,
+      "evidence": "“Candidate A answered 7/10 development queries correctly in its first run” and “answer text in the test index, invalidating the comparison as evidence of retrieval quality.” “Keep the result in the register, marked invalid, along with its cost.”"
+    },
+    {
+      "text": "Distinguishes B clean first run 6/10 from practiced replay 8/10; does not describe replay as unseen confirmation or proof of readiness.",
+      "passed": true,
+      "evidence": "“first clean development run scored 6/10”; “After prompt changes, a targeted replay scored 8/10 on the same practiced queries”; “not a fresh-query evaluation and does not establish performance on the reserved set.”"
+    },
+    {
+      "text": "Preserves measured costs $8, $11 and $5 or their clearly attributed total $24, including invalidated cost.",
+      "passed": true,
+      "evidence": "Attributes A “$8,” B first clean run “$11,” replay “another $5,” and “Measured test spending totals $24, including the invalid run.”"
+    },
+    {
+      "text": "Keeps unrun six-query confirmation and release gate of at least 5/6 plus no leakage; recommends withholding readiness pending the gate.",
+      "passed": true,
+      "evidence": "“separate six-query confirmation set remains unrun; release requires at least 5/6 correct on that set and no answer-text leakage.” Recommendation: “hold release” and evaluate the reserved set before restoring readiness."
+    },
+    {
+      "text": "Omit function-renaming/chart-color chatter and unsupported ready-to-ship framing; 180–250 words.",
+      "passed": true,
+      "evidence": "No function-renaming or chart-color chatter appears. “UI's ‘ready to ship’ label is ahead of the evidence and should be corrected” rejects the claim. 201 words falls within 180–250."
+    }
+  ],
+  "summary": {
+    "passed": 5,
+    "failed": 0,
+    "total": 5,
+    "pass_rate": 1.0
+  },
+  "scores": {
+    "fidelity": 5,
+    "directness_and_selectivity": 5,
+    "specificity": 5,
+    "voice_and_genre": 5,
+    "cadence_and_rhetoric": 5,
+    "structure": 5,
+    "edit_restraint": 5,
+    "reader_relevance": 5
+  },
+  "critical_failures": [],
+  "review_method": "Independent single blind agent review; not human feedback",
+  "review_source": "blind/iteration-1/review.json",
+  "output_sha256": "051f19e18eb19b729bbfcfd9bb4327a8dcf2f0606327930a7dccdc55f6c17a67"
+}

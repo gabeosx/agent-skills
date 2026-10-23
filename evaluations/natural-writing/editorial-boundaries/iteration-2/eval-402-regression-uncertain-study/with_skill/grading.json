@@ -1,0 +1,49 @@
+{
+  "expectations": [
+    {
+      "text": "Preserves 18 nurses, four weeks, one clinic, and voluntary participation.",
+      "passed": true,
+      "evidence": "“A voluntary four-week pilot at one clinic ... among 18 nurses”."
+    },
+    {
+      "text": "Preserves median weekly 46 to 39 minutes with no causal claim and explains no control plus concurrent staffing changes.",
+      "passed": true,
+      "evidence": "“median weekly scheduling time ... fell from 46 to 39 minutes”; “cannot establish that the scheduling tool caused it”; “no control group” and “concurrent staffing changes may explain part”."
+    },
+    {
+      "text": "States six of nine survey respondents preferred it rather than six of 18 or a majority of all nurses.",
+      "passed": true,
+      "evidence": "“Nine nurses returned the optional survey, of whom six preferred the tool”; it “cannot establish preferences among all participants or nurses elsewhere.”"
+    },
+    {
+      "text": "States patient safety was not measured; any next step is framed as recommendation, not a planned commitment.",
+      "passed": true,
+      "evidence": "“Patient safety was not measured”; “Before considering wider adoption, run a controlled evaluation” is a recommended next step, not an announced commitment."
+    },
+    {
+      "text": "100–150 words in one paragraph without heading or bullets.",
+      "passed": true,
+      "evidence": "111 whitespace-delimited words, one paragraph beginning “A voluntary four-week pilot”, without heading or bullets."
+    }
+  ],
+  "summary": {
+    "passed": 5,
+    "failed": 0,
+    "total": 5,
+    "pass_rate": 1.0
+  },
+  "scores": {
+    "fidelity": 5,
+    "directness_and_selectivity": 5,
+    "specificity": 5,
+    "voice_and_genre": 5,
+    "cadence_and_rhetoric": 5,
+    "structure": 5,
+    "edit_restraint": 5,
+    "reader_relevance": 5
+  },
+  "critical_failures": [],
+  "review_method": "Independent single blind agent review; not human feedback",
+  "review_source": "blind/iteration-2/review.json",
+  "output_sha256": "21e4f294d574d51c30574d55aaae84c1cf823a9d7317acd488124697e3237545"
+}

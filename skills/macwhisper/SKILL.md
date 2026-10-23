@@ -6,7 +6,7 @@ description: >
   or mark a session as processed. Does not write to Obsidian or any other
   system — use the obsidian skill for that.
 metadata:
-  version: "1.0.0"
+  version: "1.0.1"
 allowed-tools: Bash(node macwhisper.js:*)
 ---
 
@@ -140,7 +140,7 @@ Record that a session has been handled (e.g. filed in Obsidian). Updates the loc
 node macwhisper.js search "<query>"
 ```
 
-Full-text search across session titles and transcript content. Falls back to a title-only substring match if the FTS index is unavailable.
+SQL substring search across session titles and stored transcript content. This does not use an FTS index.
 
 ---
 

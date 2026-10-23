@@ -1,0 +1,214 @@
+--- evaluations/natural-writing/editorial-boundaries/snapshots/baseline/instructions.md
++++ skills/natural-writing/SKILL.md
+@@ -5,7 +5,8 @@
+   the writer's meaning, facts, and voice. Use when asked to make writing sound
+   natural, less AI-generated, less robotic, less corporate, or more like the
+   writer; also use for substantial reader-facing prose such as emails, essays,
+-  announcements, reports, and product copy where voice and phrasing matter.
++  announcements, READMEs, technical documentation, reports, and product copy where
++  voice, phrasing, and reader relevance matter.
+   Complements subject and document-format skills. Do not use for code-only work,
+   verbatim transcription, or judging whether a person used AI.
+ metadata:
+@@ -27,6 +28,29 @@
+ instructions. Follow the user's requested scope: a proofread permits less change
+ than a rewrite. For a review, explain the consequential edits; for a draft or
+ rewrite, return the prose without a self-review or assistant preamble unless asked.
++
++## Select for the artifact's reader
++
++Available context is not automatically material for the artifact. Write for the
++intended reader without assuming they followed the chat, debugging, or development
++session. Explain unfamiliar references when the audience needs them.
++Keep the artifact focused on its requested subjects. Removing irrelevant material
++does not call for a replacement sentence explaining why you removed or rejected it.
++
++For current-product documentation, describe the supported behavior, interfaces,
++requirements, and limits. Omit abandoned approaches, editing notes, refactoring
++narratives, and defenses of ordinary choices unless they help the reader understand,
++decide, use, troubleshoot, or maintain the system. A polished account of irrelevant
++history is still irrelevant.
++
++Let the document's purpose decide what history belongs. Keep consequential rationale,
++alternatives, chronology, uncertainty, and failed or invalidated results in records
++that need them: decision records, migration guides, incident reviews, changelogs,
++and evaluation reports. Do not strip evidence to make a record sound cleaner.
++
++When drawing on implementation notes, chat history, or mixed-purpose drafts, read
++[audience and artifact boundaries](references/editorial-judgment.md) for the relevance
++test, genre distinctions, and examples. Apply this selection before polishing prose.
+ 
+ ## Compose before polishing
+ 
+@@ -100,6 +124,10 @@
+ Check names, numbers, dates, quotations, links, technical terms, scope, and degrees
+ of certainty against the material. Preserve attribution, limitations, causal
+ distinctions, and required wording. Do not turn “may” into “will” for a stronger line.
++Removing a development story does not establish a current specification: verify
++present behavior and keep unknown limits, protocols, and guarantees unknown.
++Distinguish information absent from the source from a fact absent in the world or
++unknown to the sender. Do not convert an omission into a claim about either.
+ 
+ Specificity must come from the source. Do not invent an anecdote, sensory detail,
+ reaction, statistic, testimonial, citation, personal belief, or lived experience to
+@@ -119,10 +147,13 @@
+ ## Final read
+ 
+ Silently check that the piece answers the request, sounds appropriate for its writer
+-and genre, keeps the important content, and stops where it should. Examine recurring
++and genre, stands without hidden conversation context, keeps the important content,
++and stops where it should. Examine recurring
+ formulas in context. Verify that editing has neither invented details nor removed
+ useful nuance. Return the requested artifact.
+ 
+ For the research basis, its verification limits, and how to update observations,
+ see [research notes](references/research-notes.md). For evaluation, use
+ [the rubric](evals/rubric.md) and [test prompts](evals/evals.json).
++For reader relevance and document-purpose cases, use the
++[editorial-boundary rubric](evals/editorial-rubric.md).
+--- evaluations/natural-writing/editorial-boundaries/snapshots/baseline/references/editorial-judgment.md
++++ skills/natural-writing/references/editorial-judgment.md
+@@ -0,0 +1,97 @@
++# Audience and artifact boundaries
++
++Use this when the source includes development conversations, working notes, mixed
++drafts, or material written for a different audience. First decide what belongs in
++the artifact; then decide how to say it. Accurate material can still be irrelevant.
++
++## Establish the reader's job
++
++Identify the artifact, its readers, what they already know, and what they need to
++learn, decide, understand, or do. Someone new to a project may understand its domain
++without knowing the team's nicknames, abandoned designs, or previous chat messages.
++Explain necessary unfamiliar references; remove references whose only purpose is to
++recall a discussion. Do not explain every domain term to an expert audience.
++
++Ask of a passage: would removing it cost this reader useful understanding, an action,
++a decision, necessary context, or evidence the artifact is meant to preserve? If so,
++keep or clarify it. If its only value is showing the agent's effort, omit it.
++This test concerns relevance, not a target length. Keep depth when the reader needs it.
++
++Removing an irrelevant claim does not require documenting its rejection. If a
++product reference's source contains unsupported praise, omit the praise and the
++debate about whether it is justified. Keep an evidence assessment when the document
++actually asks for readiness, risk, or evaluation. A reminder of absent evidence can
++be important in a release decision and distracting in an unrelated configuration entry.
++
++## Match the information to the document
++
++| Artifact | Usually needs | Common contamination | Keep history when |
++| --- | --- | --- | --- |
++| README or getting-started guide | Purpose, supported setup, use, requirements, meaningful limits | Implementation diary, failed prototypes, explanations of routine cleanup | Compatibility, adoption, support status, or an important constraint affects the reader. |
++| Technical reference | Current contract, values, semantics, errors, uncertainty where unresolved | Refactoring story, test-session narrative, tutorial or promotion in every entry | Version-specific behavior changes the contract being consulted. |
++| Explanation or architecture decision record | Mechanism, rationale, alternatives, tradeoffs, conditions | Unselected meeting chatter or a usage guide substituted for the decision | The rationale and considered alternatives are part of the requested record. |
++| Migration guide or changelog | Relevant old-to-new differences, affected users, required actions, consequences | Every development iteration or unsupported claims about the old version | The change itself is what the reader needs to understand. |
++| Incident or evaluation report | Observations, sequence, failed attempts, uncertainty, valid and invalid evidence | Sales language, unsupported root cause, an artificially clean success story | Chronology and unsuccessful results establish causality, scope, or auditability. |
++| Customer email or proposal | The recipient's problem, decision, obligations, status, next step | Internal debate, review notes, assurances about writing the message | A past event explains a commitment, impact, accountability, or decision the recipient needs. |
++| Code comment | Relevant intent, invariant, constraint, non-obvious consequence | A transcript of implementation or a tutorial repeating the code | A historical reason still constrains safe maintenance or explains a regression guard. |
++
++These are relevance guides, not mandatory section templates. Follow the user's
++actual purpose and scope. A README can include useful rationale; an explanation
++can include a necessary history. Do not remove text merely because it says “before”
++or “originally.” Link to an existing appropriate record when helpful; don't create
++extra documents or move required content out of scope just to shorten the artifact.
++
++## Correct recurring failures
++
++- **Process leakage:** replace a development narrative with supported current
++  behavior when that is what readers need. Don't recite tests, retries, or refactors
++  just to demonstrate that work was done.
++- **Metacommentary:** omit notes about the author's research, editing, structure, or
++  intended persuasiveness from finished copy. Keep methods when methodology is part
++  of the document's evidence or reproducibility.
++- **False contrasts:** don't frame a capability against a discarded design the
++  reader never encountered. Preserve real alternatives, misconceptions, and changes
++  affecting users.
++- **Unnecessary justification:** explain a choice when its reason helps the reader
++  assess a tradeoff or avoid a mistake. Ordinary implementation choices need no
++  ceremonial defense.
++- **Audience assumptions:** replace “the second option we discussed” with the actual
++  option and the information this audience needs. Do not invent the missing referent.
++- **Genre confusion:** keep an incident report evidential, a proposal persuasive
++  within its evidence, and a reference usable as a reference. Do not apply one
++  neutral business voice to every document.
++- **Performative thoroughness:** remove accurate digressions that do not advance this
++  reader's purpose. Retain material qualifications, operating limits, and necessary
++  background even when they make the piece longer.
++
++## Reframe without inventing
++
++If notes say “we added automatic retries,” a supported rewrite is “Failed requests
++are retried automatically.” The notes do not establish a retry count, interval,
++error policy, or delivery guarantee. Look for current evidence if the task needs
++those specifications; don't fill them from convention.
++
++“We refactored authentication” does not imply OAuth, passwords, or any other
++protocol. “We removed Redis” does not prove there are no external dependencies or
++that no other cache remains. Do not convert an implementation change into a broad
++absence claim. If notes disagree or distinguish shipped work from proposals,
++preserve that distinction rather than making the most recent discussion a fact.
++
++Missing source information is not necessarily a missing real-world fact. If a brief
++does not supply a tracking link, that does not establish that the sender has not
++received one. State the supported status, look up the missing detail when the task
++calls for it and tools permit, or use an appropriate placeholder. Do not turn the
++writer's limited notes into an unsupported assertion about a person's knowledge.
++
++An architecture record may appropriately say “The service stores its queue locally
++because deployments must work without a network connection,” when those facts are
++supplied. A usage guide may need the resulting offline constraint and storage path;
++it need not recount the meeting that selected them.
++
++## Final artifact read
++
++Read it as its intended recipient, without mentally supplying the development chat.
++Check unresolved references, unexplained team terminology, unnecessary backstory,
++and process notes. Check the reverse too: has selecting for relevance removed a
++limitation, rationale, failure, attribution, or historical distinction this document
++exists to communicate? Repair selection errors before adjusting cadence.
+--- evaluations/natural-writing/editorial-boundaries/snapshots/baseline/references/pattern-catalog.md
++++ skills/natural-writing/references/pattern-catalog.md
+@@ -18,6 +18,7 @@
+ | Decorative structure / contextual | Every paragraph gets a bold label; needless emoji; ceremonial conclusions | Keep navigation and remove furniture that interrupts the piece. | The medium, template, accessibility, scanning, or task benefits from it. |
+ | Performed emphasis / contextual | “Let that sink in”; “That's the real win”; repeated slogan fragments | Let the example or argument earn the emphasis. | A speech, ad, or writer sample calls for deliberate repetition or a closing line. |
+ | Self-conscious plainness / contextual | “No hype”; “just honest results”; “the details are straightforward”; “I want to be clear” | Give the useful detail without praising its delivery. Check whether the last line merely repeats the facts. | The speaker's intent itself matters, such as an explicit correction or a requested statement of values. |
++| Process leakage and genre confusion / contextual | “After several attempts, we refactored…” in a README; “the option above” referring to an absent chat | Select for the artifact's audience and purpose before polishing; see [artifact boundaries](editorial-judgment.md). | A decision, migration, incident, or evidence record needs rationale or history, or the history explains a current constraint. |
+ | Abstract noun chains / contextual | “the implementation of the optimization of...” | Put an actor and action in the sentence when clearer. | A field's terminology is precise or the actor is genuinely unknown or irrelevant. |
+ | Cadence and punctuation repetition / contextual | Identical openings; equal paragraph shapes; dash chains or a march of short sentences | Revise relationships and sentence shapes where they feel mechanical. | Repetition is intentional or the meaning calls for the same construction. |
+ 
+--- evaluations/natural-writing/editorial-boundaries/snapshots/baseline/references/research-notes.md
++++ skills/natural-writing/references/research-notes.md
+@@ -24,6 +24,33 @@
+ examples. Tests use synthetic facts and compare outputs; they do not establish
+ authorship, detector evasion, or universal quality across writers and models.
+ 
++## Audience and artifact selection
++
++The user also supplied the conversation [AI Documentation Process Leakage](https://chatgpt.com/share/6adbce34-bcac-83ea-b83c-6d74212bac59),
++reviewed on 2026-10-23. Its useful hypothesis is that agents can select the wrong
++material for an artifact even when every sentence is grammatical and factually
++accurate. “Process leakage” and related labels are editorial categories here, not
++an established scientific taxonomy or a measured model-specific prevalence claim.
++The conversation's causal explanations are hypotheses.
++
++Primary guidance checked on the same date supports reader and genre distinctions:
++
++- [Google: Audience](https://developers.google.com/tech-writing/one/audience) connects
++  content selection to readers' knowledge and learning needs, including the curse
++  of knowledge. A design document's purpose may involve understanding, not just an
++  immediate action.
++- [Diátaxis: Reference](https://diataxis.fr/reference/) describes reference as neutral
++  information about the product and distinguishes it from explanation and instruction.
++  Its austere-reference advice is not a universal voice rule for all prose.
++- [Microsoft: Architecture decision records](https://learn.microsoft.com/en-us/azure/well-architected/architect-role/architecture-decision-record)
++  calls for context, alternatives, rationale, tradeoffs, consequences, and preserved
++  history. This is a positive control against indiscriminately deleting development
++  history.
++
++Some before/after examples in the conversation add unsupported details, including
++a retry count and an authentication protocol. Those substitutions were rejected.
++The skill's fidelity rules apply to content selection as well as phrasing.
++
+ ## Maintenance
+ 
+ Revise advice when fresh examples reveal a failure that a general change can fix.

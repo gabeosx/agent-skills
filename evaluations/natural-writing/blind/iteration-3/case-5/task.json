@@ -1,0 +1,13 @@
+{
+  "id": 5,
+  "name": "voice-sample-email",
+  "prompt": "Draft a short customer email in my voice. Voice sample (style only): 'Hi Jo, The replacement went out this morning. I put the tracking number below. The first box took the scenic route; let's give this one a better chance. Thanks for sticking with us. —Mara' New facts: Address the customer as Lee. Their invoice has a duplicate $24 delivery charge. The refund was submitted today and usually appears in 3–5 business days. Their order is still scheduled for Tuesday. Sender Mara. Keep the warmth and dry understatement. Do not borrow the sample's shipping facts or repeat its scenic-route joke. Return only the email.",
+  "expected_output": "Warm restrained email with exact refund and delivery status, appropriate light dry voice.",
+  "files": [],
+  "assertions": [
+    "Addresses Lee and signs Mara without importing Jo or replacement/shipment claims.",
+    "Preserves duplicate $24 delivery charge and submitted-today refund with usual 3–5 business days rather than guarantee.",
+    "Preserves order scheduled for Tuesday without guaranteeing arrival.",
+    "Matches warmth and restrained dry voice without copying scenic-route wording or inventing events."
+  ]
+}

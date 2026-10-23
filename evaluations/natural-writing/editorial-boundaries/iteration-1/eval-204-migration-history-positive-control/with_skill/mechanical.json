@@ -1,0 +1,17 @@
+{
+  "expectations": [
+    {
+      "text": "Requested maximum length",
+      "passed": true,
+      "evidence": "107 words; maximum 220"
+    },
+    {
+      "text": "Required interface strings retained",
+      "passed": true,
+      "evidence": "Missing: []"
+    }
+  ],
+  "passed": 2,
+  "total": 2,
+  "method": "Exact/format constraints only; semantic review separate"
+}

@@ -1,65 +1,52 @@
 # MacWhisper Skill
 
-Read-only access to [MacWhisper](https://goodsnooze.gumroad.com/l/macwhisper) transcription sessions stored in its local SQLite database. Outputs structured JSON so other skills or Claude itself can process, summarize, and file meeting notes.
+Read transcription sessions from [MacWhisper](https://goodsnooze.gumroad.com/l/macwhisper)'s local SQLite database and return JSON for summaries, meeting notes, or other tools. The skill leaves the database unchanged. Marking a session as processed writes a separate local state file.
 
-It complies with the [Agent Skills specification](https://agentskills.io/specification).
+## Requirements and installation
 
-## Features
-
-- **List unprocessed sessions** — returns new recordings not yet marked as handled, with UTC start/end times for calendar enrichment
-- **Fetch full transcripts** — diarized, speaker-grouped, with Whisper hallucination filtering (Cyrillic watermarks, all-caps screen artifacts, non-Latin confabulation)
-- **Search** — keyword search across session titles and full transcript text
-- **State tracking** — marks sessions as processed so they don't re-appear in future `list` runs; state file lives in your project root, not the skill directory
-- **Zero configuration** — works out of the box with a standard MacWhisper installation; all paths default to MacWhisper's standard locations
-
-## Requirements
-
-- macOS with [MacWhisper](https://goodsnooze.gumroad.com/l/macwhisper) installed
-- Node.js (built-ins only — no `npm install` required)
-- `sqlite3` CLI (ships with macOS)
-
-## Setup
-
-1. Drop the `macwhisper/` directory into your agent's skills folder.
-2. No `.env` needed for a standard MacWhisper install. If you need to override any path, copy `.env.example` to `.env` and uncomment the relevant line.
-3. Add `macwhisper-state.json` to your project's `.gitignore`.
-
-## Usage
-
-Run from the skill directory:
+You need macOS with MacWhisper installed, Node.js, and the `sqlite3` CLI supplied with macOS. The script uses Node.js built-ins; there are no npm dependencies to install.
 
 ```bash
-node macwhisper.js list                          # new, unprocessed sessions
-node macwhisper.js list --since 2026-07-01       # sessions from a date onwards
-node macwhisper.js fetch <session-id>            # full transcript for one session
-node macwhisper.js search "keyword"              # search titles + transcript text
-node macwhisper.js mark-processed <id> \
+npx skills add gabeosx/agent-skills --skill macwhisper
+```
+
+Choose your agent when prompted. See the [repository installation guide](../../README.md#install-a-skill) for the skills CLI's requirements and installation scope.
+
+A standard MacWhisper installation needs no configuration. To override the database path, state-file path, or microphone label, copy [.env.example](.env.example) to `.env` in the installed skill directory and uncomment the settings you need. The default database is `~/Library/Application Support/MacWhisper/Database/main.sqlite`.
+
+Add `macwhisper-state.json` to your project's `.gitignore`. Its default location is the working directory where you invoke the script. To keep state with your project, run commands from that project using the script's installed path; running from the skill directory stores state there instead. `MACWHISPER_STATE_FILE` overrides that location.
+
+## Commands
+
+Replace `/path/to/macwhisper` below with the installed skill directory. Run `list` to get session IDs, then use an ID with `fetch` or `mark-processed`.
+
+```bash
+node /path/to/macwhisper/macwhisper.js list
+node /path/to/macwhisper/macwhisper.js list --since 2026-07-01
+node /path/to/macwhisper/macwhisper.js fetch <session-id>
+node /path/to/macwhisper/macwhisper.js search "keyword"
+node /path/to/macwhisper/macwhisper.js status
+```
+
+`list` returns sessions not yet marked as processed; add `--all` to include handled sessions. `fetch` returns speaker-grouped text with transcript filtering. `search` uses SQL substring matching over titles and stored transcript text. `status` returns session counts and the last sync time.
+
+Each command emits one JSON line. Read its `status`: `ok` indicates success; `error` means the operation failed. On an error, use `error.message` to identify the cause before continuing. The [skill instructions](SKILL.md) document response fields and error codes.
+
+## File a meeting note
+
+1. Run `list` and `fetch` for the recording you want.
+2. Use `start_time_utc` and `end_time_utc` with a calendar tool to find the matching event. Its title, organiser, and attendees can help interpret generic speaker labels.
+3. Draft and save the note with your writing or notes tool. This skill does not write to Obsidian or another notes system.
+4. After saving, record the session as handled:
+
+```bash
+node /path/to/macwhisper/macwhisper.js mark-processed <session-id> \
   --note "2026-07-13 Meeting.md" \
-  --account acme-corp                            # mark session as filed
-node macwhisper.js status                        # counts: total / processed / unprocessed
+  --account acme-corp
 ```
 
-All subcommands emit a single JSON line to stdout. See `SKILL.md` for the full response schema.
+The state file stores the processed ID and optional note and account metadata, keeping the session out of later default `list` results. It is local state and should not be committed.
 
-## Calendar Enrichment
+## Transcript filtering
 
-Each session includes `start_time_utc` and `end_time_utc`. Pass these to a calendar skill to look up the formal meeting title, attendee names, and organiser — useful for replacing generic "Speaker 1" labels in the diarized transcript.
-
-## Workflow Example (with Obsidian)
-
-```
-1. node macwhisper.js list                 # find new sessions
-2. node macwhisper.js fetch <id>           # get transcript + time window
-3. [calendar skill] lookup start_time_utc  # get attendees, meeting title
-4. [Claude] generate meeting note markdown
-5. [obsidian skill] tag to client account
-6. node macwhisper.js mark-processed <id> --note <file> --account <tag>
-```
-
-## Hallucination Filtering
-
-Whisper sometimes confabulates non-speech content: Cyrillic subtitle watermarks, Icelandic/Nordic text fragments, and all-caps UI elements it "reads" off the screen. The skill silently drops these lines before returning the transcript, so downstream note generation isn't polluted by noise.
-
-## State File
-
-Processed session IDs are tracked in `macwhisper-state.json` in the **current working directory** when the skill is invoked (typically your project root). Override with `MACWHISPER_STATE_FILE` in `.env`. The file is listed in `.gitignore` — it is machine-local and should not be committed.
+The script drops whole lines containing characters outside U+0000–U+024F, as well as lines matching its all-caps and other filters. This can remove legitimate speech, including non-Latin languages and English lines containing curly punctuation or em dashes. Use the original recording or MacWhisper transcript when checking completeness or accuracy.

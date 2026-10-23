@@ -1,0 +1,107 @@
+{
+  "id": 502,
+  "labels": {
+    "A": {
+      "expectations": [
+        {
+          "text": "It preserves backup, destination confirmation and irreversible Apply warning near the action.",
+          "passed": true,
+          "evidence": "Opens with export a backup and Apply cannot be undone; step 3 requires destination workspace name confirmation on the Apply screen before Apply. The short guide keeps the warning close to the action."
+        },
+        {
+          "text": "It preserves missing past transactions AND the distinct lot-label and expiry-date loss for opening quantities.",
+          "passed": true,
+          "evidence": "Explicitly says CSV import creates opening quantities, not past transactions, and opening quantities retain neither source lot labels nor expiry dates."
+        },
+        {
+          "text": "It preserves that later receipts cannot retroactively identify opening units and says to keep source records for recalls/expiry tracking.",
+          "passed": true,
+          "evidence": "Says later receipts do not retroactively identify those units and requires keeping source records for recalls and expiry tracking of opening stock."
+        },
+        {
+          "text": "It uses the current Comment-column support rather than retaining the obsolete comments restriction and keeps the supported CSV preview/apply path.",
+          "passed": true,
+          "evidence": "Step 1 states comments can be imported in the Comment column; steps 1–3 preserve Import > CSV, preview item and quantity rows, then confirm and Apply."
+        }
+      ],
+      "scores": {
+        "usefulness": 5,
+        "fidelity": 5,
+        "naturalness": 5
+      },
+      "critical": [],
+      "substantive": [],
+      "minor": []
+    },
+    "B": {
+      "expectations": [
+        {
+          "text": "It preserves backup, destination confirmation and irreversible Apply warning near the action.",
+          "passed": true,
+          "evidence": "Step 1 requires a backup, and step 4 combines destination workspace confirmation with the warning that applying cannot be undone."
+        },
+        {
+          "text": "It preserves missing past transactions AND the distinct lot-label and expiry-date loss for opening quantities.",
+          "passed": true,
+          "evidence": "Explicitly distinguishes opening quantities from past transactions and separately names source lot labels and expiry dates as not retained."
+        },
+        {
+          "text": "It preserves that later receipts cannot retroactively identify opening units and says to keep source records for recalls/expiry tracking.",
+          "passed": true,
+          "evidence": "Explicitly says later receipts do not retroactively identify opening units and source records must be kept for recalls and expiry tracking."
+        },
+        {
+          "text": "It uses the current Comment-column support rather than retaining the obsolete comments restriction and keeps the supported CSV preview/apply path.",
+          "passed": true,
+          "evidence": "Imports comments through the Comment column and preserves Import > CSV, item/quantity preview, then Apply."
+        }
+      ],
+      "scores": {
+        "usefulness": 5,
+        "fidelity": 5,
+        "naturalness": 5
+      },
+      "critical": [],
+      "substantive": [],
+      "minor": []
+    },
+    "C": {
+      "expectations": [
+        {
+          "text": "It preserves backup, destination confirmation and irreversible Apply warning near the action.",
+          "passed": true,
+          "evidence": "Opens with a backup prerequisite and irreversible migration warning; step 3 requires destination workspace name confirmation on Apply before selecting Apply. The short guide keeps these near the action."
+        },
+        {
+          "text": "It preserves missing past transactions AND the distinct lot-label and expiry-date loss for opening quantities.",
+          "passed": true,
+          "evidence": "Explicitly states opening quantities are created instead of past transactions and do not retain source lot labels or expiry dates."
+        },
+        {
+          "text": "It preserves that later receipts cannot retroactively identify opening units and says to keep source records for recalls/expiry tracking.",
+          "passed": true,
+          "evidence": "Explicitly preserves later receipts not retroactively identifying opening units and keeping source records for recalls and expiry tracking."
+        },
+        {
+          "text": "It uses the current Comment-column support rather than retaining the obsolete comments restriction and keeps the supported CSV preview/apply path.",
+          "passed": true,
+          "evidence": "Includes current Comment-column support and preserves Import > CSV, preview item and quantity rows, then Apply."
+        }
+      ],
+      "scores": {
+        "usefulness": 5,
+        "fidelity": 5,
+        "naturalness": 5
+      },
+      "critical": [],
+      "substantive": [],
+      "minor": []
+    }
+  },
+  "preferred": [
+    "A",
+    "B",
+    "C"
+  ],
+  "reason": "All three preserve the consequential source facts and provide clear, usable wording; differences in headings, formatting or phrasing do not create a meaningful preference."
+}

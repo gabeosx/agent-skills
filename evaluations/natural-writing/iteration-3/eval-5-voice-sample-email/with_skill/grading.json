@@ -1,0 +1,42 @@
+{
+  "expectations": [
+    {
+      "text": "Addresses Lee and signs Mara without importing Jo or replacement/shipment claims.",
+      "passed": true,
+      "evidence": "“Hi Lee,” and “—Mara”; no Jo, replacement or shipment claim appears."
+    },
+    {
+      "text": "Preserves duplicate $24 delivery charge and submitted-today refund with usual 3–5 business days rather than guarantee.",
+      "passed": true,
+      "evidence": "“duplicate $24 delivery charge”; “I submitted the refund today; it usually appears in 3–5 business days.” “usually” preserves uncertainty."
+    },
+    {
+      "text": "Preserves order scheduled for Tuesday without guaranteeing arrival.",
+      "passed": true,
+      "evidence": "“Your order is still scheduled for Tuesday.” This preserves schedule status without promising arrival."
+    },
+    {
+      "text": "Matches warmth and restrained dry voice without copying scenic-route wording or inventing events.",
+      "passed": true,
+      "evidence": "“One delivery charge was plenty” supplies restrained dry humor; “Thanks for bearing with us” supplies warmth. No scenic-route wording or invented incident appears."
+    }
+  ],
+  "summary": {
+    "passed": 4,
+    "failed": 0,
+    "total": 4,
+    "pass_rate": 1.0
+  },
+  "scores": {
+    "Fidelity": 5,
+    "Directness and selectivity": 5,
+    "Specificity": 5,
+    "Voice and genre": 5,
+    "Cadence and rhetoric": 5,
+    "Structure": 5
+  },
+  "critical_failures": [],
+  "review_method": "Independent single blind agent review; not human feedback",
+  "review_source": "blind/iteration-3/review.json",
+  "output_sha256": "7aed5d51a2bd792d1ab326404496c339cf1d2d7289ade3799eb667d839126ded"
+}

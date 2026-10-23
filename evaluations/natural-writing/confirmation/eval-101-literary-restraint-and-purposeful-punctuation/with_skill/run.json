@@ -1,0 +1,17 @@
+{
+  "attempt": 1,
+  "batch_file_list": [
+    "/Users/gabe/agent-skills/evaluations/natural-writing/confirmation/eval-101-literary-restraint-and-purposeful-punctuation/with_skill/outputs/output.md",
+    "/Users/gabe/agent-skills/evaluations/natural-writing/confirmation/eval-102-decision-memo-with-limited-evidence/with_skill/outputs/output.md",
+    "/Users/gabe/agent-skills/evaluations/natural-writing/confirmation/eval-103-operational-checklist-with-conditional-stops/with_skill/outputs/output.md",
+    "/Users/gabe/agent-skills/evaluations/natural-writing/confirmation/eval-104-incident-note-with-hostile-source-string/with_skill/outputs/output.md",
+    "/Users/gabe/agent-skills/evaluations/natural-writing/confirmation/eval-105-spanish-message-preserving-voseo-and-ambiguity/with_skill/outputs/output.md",
+    "/Users/gabe/agent-skills/evaluations/natural-writing/confirmation/eval-106-playful-event-invitation-with-rhetorical-voice/with_skill/outputs/output.md"
+  ],
+  "write_timestamp_utc": "2026-10-23T20:55:41.170578+00:00",
+  "generation_time_seconds": null,
+  "tokens": null,
+  "cost": null,
+  "build": null,
+  "unexposed_metrics_note": "Generation time, tokens, cost, and build are not exposed to this actor."
+}

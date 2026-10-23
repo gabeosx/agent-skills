@@ -1,0 +1,17 @@
+{
+  "method": "Exact/format checks only; independent semantic and style review required",
+  "expectations": [
+    {
+      "text": "Requested maximum word count",
+      "passed": true,
+      "evidence": "118 words; maximum 180"
+    },
+    {
+      "text": "Required headings present in order",
+      "passed": true,
+      "evidence": "['Recommendation', 'Evidence', 'Next decision']"
+    }
+  ],
+  "passed": 2,
+  "total": 2
+}

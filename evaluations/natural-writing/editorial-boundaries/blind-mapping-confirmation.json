@@ -1,0 +1,26 @@
+{
+  "301": {
+    "A": "with_skill",
+    "B": "old_skill"
+  },
+  "302": {
+    "A": "old_skill",
+    "B": "with_skill"
+  },
+  "303": {
+    "A": "old_skill",
+    "B": "with_skill"
+  },
+  "304": {
+    "A": "with_skill",
+    "B": "old_skill"
+  },
+  "305": {
+    "A": "old_skill",
+    "B": "with_skill"
+  },
+  "306": {
+    "A": "with_skill",
+    "B": "old_skill"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "eval_id": 103,
+  "eval_name": "operational-checklist-with-conditional-stops",
+  "prompt": "Turn these notes into a usable opening checklist for a fictional museum display case. Use numbered steps, with indented bullets where a step has alternative conditions. Keep the safety-critical order and every exact value. Do not turn it into paragraphs or add equipment or procedures. Return only the checklist.\n\nBefore opening: read temperature sensor R4. First check the logger's clock against the wall clock: if the difference is more than 2 minutes, stop and call Mara at extension 214; do not continue until she clears the clock problem. Once the clock is cleared or is already within 2 minutes, read R4. A reading below 18°C or above 22°C means stop and call Mara at extension 214; do not open the case. The endpoints 18°C and 22°C are acceptable. If the reading is acceptable, record the exact temperature and time on sheet C7, then open the case. After arranging the objects, close the case and engage the latch before turning on the lamp. If the latch will not engage, leave the lamp off and call Mara at extension 214.",
+  "assertions": [
+    "Uses numbered steps and indented bullets for alternative conditions rather than replacing the checklist with prose paragraphs.",
+    "Checks the logger clock against the wall clock before the operational reading of sensor R4; a difference greater than 2 minutes requires stopping and calling Mara at extension 214 until she clears the problem.",
+    "Treats a clock difference of exactly 2 minutes as acceptable and does not require a clock adjustment when no adjustment was specified.",
+    "Stops opening for temperatures below 18°C or above 22°C, calls Mara at extension 214, and explicitly allows 18°C and 22°C.",
+    "Requires recording the exact temperature and time on sheet C7 before opening the case.",
+    "Places closing and engaging the latch after arranging the objects and before turning on the lamp; if the latch does not engage, the lamp remains off and Mara is called.",
+    "Adds no new equipment, acceptance limits, clearance requirement for temperature, or procedure not present in the source notes."
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "1": {
+    "A": "without_skill",
+    "B": "with_skill"
+  },
+  "2": {
+    "A": "with_skill",
+    "B": "without_skill"
+  },
+  "3": {
+    "A": "without_skill",
+    "B": "with_skill"
+  },
+  "4": {
+    "A": "with_skill",
+    "B": "without_skill"
+  },
+  "5": {
+    "A": "without_skill",
+    "B": "with_skill"
+  },
+  "6": {
+    "A": "without_skill",
+    "B": "with_skill"
+  },
+  "7": {
+    "A": "with_skill",
+    "B": "without_skill"
+  },
+  "8": {
+    "A": "with_skill",
+    "B": "without_skill"
+  }
+}

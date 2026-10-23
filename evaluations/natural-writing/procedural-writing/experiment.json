@@ -1,0 +1,38 @@
+{
+  "frozen_at": "2026-10-23T23:14:23.123855+00:00",
+  "arms": [
+    "with_skill",
+    "old_skill",
+    "no_skill"
+  ],
+  "candidate": "snapshots/candidate-1",
+  "baseline": "snapshots/old-skill",
+  "development": [
+    501,
+    502,
+    503,
+    504,
+    505
+  ],
+  "confirmation": "confirmation.json, independently authored before outcomes",
+  "conditions": "Same source/prompt/host model and host instructions; fresh arm contexts; one first draft per case; no live research, runtime verification, external model API, retries or nested agents. Actors see prompt/files only. All arms stop at the first draft; common independent reviewer audits original/current evidence before acceptance. This controls assistance but does not test autonomous reviewer dispatch. One actor per arm batches cases; not fresh per-case contexts.",
+  "acceptance": "Candidate passes all predeclared assertions, exact literary control, no critical or substantive defects, usefulness and fidelity scores >=4/5. Preference ties are acceptable. Report absence of incremental benefit honestly. Development and confirmation separate.",
+  "unknown_metrics": [
+    "tokens",
+    "billed_cost",
+    "model_runtime_seconds"
+  ],
+  "hashes": {
+    "development.json": "e15805f3436a7dbd61551bd58126eda59893b7d4c3d25cdea23c2215e5c000c2",
+    "confirmation.json": "588729e9836c109dd19aa9c8fe88718336ded4db855ee04ccfdd150b6467c3f2",
+    "snapshots/candidate-1/instructions.md": "81ff4aafb5772f3849cc55b64e10b8c4a1fc7004cf8e9fcc7cb07055dff160d2",
+    "snapshots/candidate-1/references/editorial-judgment.md": "15dba9484cdfb8a8fb1fa70e71ff89a0ca6ef872d88b37f3cfc6c93582536e41",
+    "snapshots/candidate-1/references/procedural-writing.md": "7fbeaf2d2a99b4c171ff9ed4f32380a96ef312689ba1db415f4f0ae359b273df",
+    "snapshots/candidate-1/references/research-notes.md": "00a5523c1635fca55b1ad9ce6fbd45b5b0e97b75cbbe6cbb6e0bf55d202486d0",
+    "snapshots/candidate-1/references/pattern-catalog.md": "743e15e888b90bdc1b8a34909c600b23b397a808489b56764c766b3b0f0b541c",
+    "snapshots/old-skill/instructions.md": "c4d45ba75f35605677a0d095944630a56cb9168b2eac6cd68c0cd553047d3486",
+    "snapshots/old-skill/references/editorial-judgment.md": "15dba9484cdfb8a8fb1fa70e71ff89a0ca6ef872d88b37f3cfc6c93582536e41",
+    "snapshots/old-skill/references/research-notes.md": "00a5523c1635fca55b1ad9ce6fbd45b5b0e97b75cbbe6cbb6e0bf55d202486d0",
+    "snapshots/old-skill/references/pattern-catalog.md": "743e15e888b90bdc1b8a34909c600b23b397a808489b56764c766b3b0f0b541c"
+  }
+}

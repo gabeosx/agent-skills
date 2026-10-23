@@ -1,0 +1,49 @@
+{
+  "expectations": [
+    {
+      "text": "Includes the CSV-to-HTTPS purpose, Python 3.12 and PostgreSQL 16 requirements, all three configuration/installation/use steps, preserving code strings.",
+      "passed": true,
+      "evidence": "“accepts CSV files and delivers their rows to a configured HTTPS endpoint”; “Python 3.12 and a PostgreSQL 16 service”; exact `pip install harbor-queue`, `DATABASE_URL`, `DESTINATION_URL` and `harbor-queue ingest orders.csv` appear."
+    },
+    {
+      "text": "Preserves at-least-once semantics, supplied delivery_id deduplication requirement, and does not imply exactly-once delivery.",
+      "passed": true,
+      "evidence": "“Delivery is at least once: a row may arrive more than once” and “must use the supplied `delivery_id` to deduplicate rows.”"
+    },
+    {
+      "text": "Preserves 25 MB limit and no partial import on rejected files; accurately describes supplied Authorization header if authentication is mentioned.",
+      "passed": true,
+      "evidence": "“Files over 25 MB are rejected without importing any rows”; “Configure the `Authorization` header with the credential value your endpoint requires.”"
+    },
+    {
+      "text": "Does not narrate the discarded macro, SQLite replacement/debug session, Redis branch, internal nickname, or review/editorial notes.",
+      "passed": true,
+      "evidence": "The text proceeds from “Quick start” through current “Delivery” and file limits; no discarded prototypes, internal nickname or editorial notes appear."
+    },
+    {
+      "text": "Does not present unshipped OAuth, S3 import, or dashboard as capabilities, or claim no external service is needed; at most 230 words.",
+      "passed": true,
+      "evidence": "“a PostgreSQL 16 service” preserves the external prerequisite; no OAuth/S3/dashboard capabilities appear. 107 whitespace-delimited words."
+    }
+  ],
+  "summary": {
+    "passed": 5,
+    "failed": 0,
+    "total": 5,
+    "pass_rate": 1.0
+  },
+  "scores": {
+    "fidelity": 5,
+    "directness_and_selectivity": 5,
+    "specificity": 5,
+    "voice_and_genre": 5,
+    "cadence_and_rhetoric": 5,
+    "structure": 5,
+    "edit_restraint": 5,
+    "reader_relevance": 5
+  },
+  "critical_failures": [],
+  "review_method": "Independent single blind agent review; not human feedback",
+  "review_source": "blind/iteration-2/review.json",
+  "output_sha256": "47667580b5b02951270074938ef14a411b0ba89dd533b6d025daf1742a047c94"
+}

@@ -1,0 +1,48 @@
+{
+  "expectations": [
+    {
+      "text": "Defines Lantern and blue lane as manual-address-check parcels, rather than assuming meeting context or presenting a new carrier.",
+      "passed": true,
+      "evidence": "“Lantern, the routing pilot at two warehouses” and parcels “requiring a manual address check, known within the project as the ‘blue lane’” explain both nicknames; “not a carrier or service level” removes ambiguity."
+    },
+    {
+      "text": "Correctly preserves 260/240 parcels, 31/34 hours, 4/3 damage reports, nonrandomized prior-month comparison and differing international mix; no causal claim.",
+      "passed": true,
+      "evidence": "“260 parcels” with “31 hours” versus “240 such parcels processed in the prior month” with “34 hours”; “not randomized,” “fewer international parcels,” and damage “four” versus “three” all survive. “Does not establish that the routing change improved results” and “no routing effect on damage” preserve the evidence limit."
+    },
+    {
+      "text": "Explains six-week $1,500-per-week $9,000 cap, existing staffing and no permanent expansion/new hires.",
+      "passed": true,
+      "evidence": "“$1,500 per week for six weeks,” “spending capped at $9,000,” and “uses existing staff”; “would not authorize permanent expansion or new hires.”"
+    },
+    {
+      "text": "Preserves safety review as not complete and mandatory approval before start; includes proposed mix/workload/comparability measures.",
+      "passed": true,
+      "evidence": "“Safety approval remains outstanding” and “completed and approved before the extension starts” preserve the start condition. It would “track parcel mix, document the workload created by manual review and compare more similar cohorts.”"
+    },
+    {
+      "text": "Presents an actual board decision without Option C, slide-theme/history chatter or unsupported breakthrough framing; 250–350 words.",
+      "passed": true,
+      "evidence": "“The board is asked to decide whether the opportunity to gather better evidence warrants up to $9,000” makes the decision explicit. The 281-word briefing contains no Option C, slide themes, presentation-date recap or breakthrough claim."
+    }
+  ],
+  "summary": {
+    "passed": 5,
+    "failed": 0,
+    "total": 5,
+    "pass_rate": 1.0
+  },
+  "scores": {
+    "fidelity": 5,
+    "directness_and_selectivity": 5,
+    "specificity": 5,
+    "voice_and_genre": 5,
+    "cadence_and_rhetoric": 5,
+    "structure": 5,
+    "reader_relevance": 5
+  },
+  "critical_failures": [],
+  "review_method": "Independent single blind agent review; not human feedback",
+  "review_source": "blind/iteration-1/review.json",
+  "output_sha256": "61f76b9c7a31e8088632ffc8f408fbd601680a47cba4887e25527661d5dcccbf"
+}

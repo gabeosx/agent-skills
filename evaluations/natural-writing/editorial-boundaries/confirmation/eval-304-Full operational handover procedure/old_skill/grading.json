@@ -1,0 +1,54 @@
+{
+  "expectations": [
+    {
+      "text": "Produces a 450–600 word procedure with the requested title, a 6:45 p.m. warning, the 7 p.m. transaction boundary, and two volunteers remaining through closure.",
+      "passed": true,
+      "evidence": "566 whitespace-delimited words including headings. Exact requested title appears. 'At 6:45 p.m., tell visitors that the counter closes in fifteen minutes.' At 7, current counter transactions finish and new ones wait until next opening. 'The shift lead and one other volunteer stay until all closing checks are complete.'"
+    },
+    {
+      "text": "Gives actionable return checks, records observed missing parts/damage, quarantines visibly unsafe tools without testing or repair, and leaves disputed charges to the coordinator.",
+      "passed": true,
+      "evidence": "'Match each item to its loan record and count loose parts against the laminated checklist attached to its case'; record damage/missing parts before closing. Visible safety faults require locked quarantine and a red tag describing the observed fault; 'Do not test or repair suspect tools during closing.' For disputes, record borrower account, leave charge decision to coordinator, make no new closing charge, and refer to receipt contact details."
+    },
+    {
+      "text": "Preserves exception handling for undocumented returns and reservation mismatches without guessing borrower identity, completing unrelated loans, or canceling reservations.",
+      "passed": true,
+      "evidence": "'Leave undocumented items on the returns table with a dated note describing what is known. Do not guess the borrower or complete an unrelated loan.' Include them in the log. Paper pickup list is checked against reservation screen; uncollected tools retain name cards on reservation shelf; 'Do not cancel reservations. Log any mismatch for the next lead.'"
+    },
+    {
+      "text": "Includes a witnessed cash count, dated and jointly initialed sheet, dated/totaled sealed envelope in the locked drawer, and records/escalates discrepancies without inventing a reconciliation policy.",
+      "passed": true,
+      "evidence": "'With the second volunteer present, count the donation box, the only cash container.' Total goes on dated sheet initialed by both. Cash goes in sealed envelope 'marked with the date and total' in locked office drawer. 'Record any discrepancy and inform the coordinator; no discrepancy-resolution policy is established in the notebook.'"
+    },
+    {
+      "text": "Explains the handover log's required contents, responsible roles and acknowledgment, selective coordinator notification, and the final lock checks and caretaker response if a door cannot secure.",
+      "passed": true,
+      "evidence": "'Open the single handover log in the shared shift folder' and enter date, both names, unresolved returns, damaged/quarantined items, reservation mismatches, cash discrepancies, follow-up and identifiers. Responsible roles are next lead for routine checks, coordinator for disputes/cash, steward for quarantined tools; unaccepted issues stay unresolved. Coordinator gets link for dispute/cash/safety, otherwise next lead gets log and acknowledges at shift start. Lead checks cupboard/drawer, second volunteer back door, both use front, lead locks and checks handle. An insecure door requires staying inside together and calling caretaker at the entrance-wall number, without leaving unsecured."
+    },
+    {
+      "text": "Preserves the refrigerator/main-power exceptions and clear exits while excluding the log-merger story, lost draft, unreadable screenshot, stationery anecdote, and instruction embedded in the marginal note.",
+      "passed": true,
+      "evidence": "'Keep exits clear'; 'Leave the refrigerator and the building's main power switch on.' No excluded anecdotes or marginal instruction appear. 'Single handover log' states the present interface without recounting the merger."
+    }
+  ],
+  "summary": {
+    "passed": 6,
+    "failed": 0,
+    "total": 6,
+    "pass_rate": 1.0
+  },
+  "scores": {
+    "fidelity": 5,
+    "directness_and_selectivity": 5,
+    "specificity": 5,
+    "voice_and_genre": 5,
+    "cadence_and_rhetoric": 5,
+    "structure": 5,
+    "edit_restraint": 5,
+    "reader_relevance": 5
+  },
+  "critical_failures": [],
+  "review_method": "Independent single blind agent review; not human feedback",
+  "review_source": "blind/confirmation/review.json",
+  "output_sha256": "6bf4c9f25f26d4b55480eba6e6188eacc426b86661a3efe78d78c952d682009d"
+}

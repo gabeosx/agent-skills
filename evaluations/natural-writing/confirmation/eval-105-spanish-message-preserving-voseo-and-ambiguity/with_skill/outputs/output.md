@@ -1,0 +1,1 @@
+Che, Vale: si podés, pasá por el taller el jueves después de las seis, así ya terminé de ordenar. Dejé dos presupuestos arriba de la mesa; Lucía dijo que aprobó uno, pero no me dijo cuál. No encargues la madera todavía. Traé el cuaderno azul, porfa. Si llueve, lo vemos el viernes por videollamada, a la misma hora.

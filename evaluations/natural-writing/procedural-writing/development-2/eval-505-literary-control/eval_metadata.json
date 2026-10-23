@@ -1,0 +1,8 @@
+{
+  "eval_id": 505,
+  "eval_name": "literary-control",
+  "prompt": "Proofread only for spelling errors. If there are none, return the passage unchanged, without quotation marks or commentary.\n\nBy six, the garden had gone blue. My father kept digging\u2014slowly, as if the potatoes might object. We ate late; nobody mentioned the clock.",
+  "assertions": [
+    "It returns the passage exactly, preserving punctuation, wording, and paragraph without procedural additions or commentary."
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "with_skill": {
+    "cases": 6,
+    "passed": 35,
+    "total": 35,
+    "critical_failures": [],
+    "case_means": [
+      5,
+      5,
+      5,
+      5,
+      5,
+      5
+    ],
+    "wins": 2,
+    "losses": 0,
+    "ties": 4,
+    "mean_score": 5
+  },
+  "old_skill": {
+    "cases": 6,
+    "passed": 35,
+    "total": 35,
+    "critical_failures": [],
+    "case_means": [
+      5,
+      5,
+      5,
+      5,
+      5,
+      5
+    ],
+    "wins": 0,
+    "losses": 2,
+    "ties": 4,
+    "mean_score": 5
+  }
+}

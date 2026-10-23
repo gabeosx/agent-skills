@@ -1,0 +1,66 @@
+[
+  {
+    "id": 1,
+    "query": "Rewrite this customer apology so it sounds less corporate, keeping the refund date and amount."
+  },
+  {
+    "id": 2,
+    "query": "Please draft a founder announcement for our offline feature. Sound like a person speaking to customers."
+  },
+  {
+    "id": 3,
+    "query": "This essay feels like ChatGPT. Remove the canned contrasts but preserve my argument."
+  },
+  {
+    "id": 4,
+    "query": "Match my writing sample when you polish this grant narrative, including its formal tone."
+  },
+  {
+    "id": 5,
+    "query": "Make this research summary readable for directors. Keep the caveats and citations."
+  },
+  {
+    "id": 6,
+    "query": "Humanize this landing page. Can you guarantee an AI detector will not flag it?"
+  },
+  {
+    "id": 7,
+    "query": "Tighten the wording in this troubleshooting guide while preserving the numbered steps and shell commands."
+  },
+  {
+    "id": 8,
+    "query": "Review this already-good paragraph for actual errors only; do not change my punctuation for style."
+  },
+  {
+    "id": 9,
+    "query": "Did my employee use AI to write this report? Give a probability from the writing style."
+  },
+  {
+    "id": 10,
+    "query": "Write a Python function that removes duplicate strings while preserving order. Code only."
+  },
+  {
+    "id": 11,
+    "query": "Transcribe this audio verbatim, including filler words and false starts."
+  },
+  {
+    "id": 12,
+    "query": "Replace every occurrence of the word landscape with terrain in this file, no other changes."
+  },
+  {
+    "id": 13,
+    "query": "What does the term negative parallelism mean? Give a one-sentence definition."
+  },
+  {
+    "id": 14,
+    "query": "Count the em dashes and contractions in this paragraph and return only JSON."
+  },
+  {
+    "id": 15,
+    "query": "Configure a detector API and benchmark its false-positive rate on these documents."
+  },
+  {
+    "id": 16,
+    "query": "Use SQL to select invoices with duplicate delivery charges. Return only the query."
+  }
+]

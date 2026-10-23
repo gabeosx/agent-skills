@@ -1,0 +1,51 @@
+{
+  "expectations": [
+    {
+      "text": "Addresses Jules, signs Nia, accurately gives $36 refund submitted today with usual 3–5 business days and no guarantee.",
+      "passed": true,
+      "evidence": "“Hi Jules”; “refund for your duplicate $36 delivery fee today”; “usually appears in 3–5 business days”; signed “Nia / Support Lead.”"
+    },
+    {
+      "text": "States replacement scheduled to dispatch Friday without promising Friday delivery; tracking follows dispatch and no resubmission is needed.",
+      "passed": true,
+      "evidence": "“scheduled to leave our warehouse Friday”; “That's the dispatch date”; “send your tracking information after dispatch”; “don't need to resubmit the request.”"
+    },
+    {
+      "text": "Does not reproduce debugging/blame chronology, second-option shorthand or writing directions.",
+      "passed": true,
+      "evidence": "The email contains refund/dispatch information and an apology (“sorry for the duplicate charge”); no engineering chronology, blame, second option or editorial instructions."
+    },
+    {
+      "text": "Does not claim a permanent fix or deployed prevention change, invent tracking or authorize a coupon.",
+      "passed": true,
+      "evidence": "No permanent fix/deployed change/coupon is claimed; “don't yet have ... tracking number” matches the source’s explicit lack of tracking."
+    },
+    {
+      "text": "Does not turn unsupplied logistics information into an assertion that it is absent or unknown to the sender; preserves the difference between source omission and real-world status.",
+      "passed": false,
+      "evidence": "“we don't yet have a delivery date” asserts a real-world information gap absent from the thread, which supplies only that Friday is dispatch rather than a delivery promise."
+    }
+  ],
+  "summary": {
+    "passed": 4,
+    "failed": 1,
+    "total": 5,
+    "pass_rate": 0.8
+  },
+  "scores": {
+    "fidelity": 2,
+    "directness_and_selectivity": 5,
+    "specificity": 2,
+    "voice_and_genre": 5,
+    "cadence_and_rhetoric": 5,
+    "structure": 5,
+    "edit_restraint": 4,
+    "reader_relevance": 3
+  },
+  "critical_failures": [
+    "Unsupported current logistics status: “we don't yet have a delivery date” is not supplied by the thread. Absence of a date in the source does not establish the sender lacks one."
+  ],
+  "review_method": "Independent single blind agent review; not human feedback",
+  "review_source": "blind/iteration-2/review.json",
+  "output_sha256": "b3c78e4b82be1a97ae7904642cb608fa7147a76e84f282643d9b155db33783b7"
+}

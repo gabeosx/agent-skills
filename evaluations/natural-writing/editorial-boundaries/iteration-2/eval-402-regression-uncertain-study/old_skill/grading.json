@@ -1,0 +1,49 @@
+{
+  "expectations": [
+    {
+      "text": "Preserves 18 nurses, four weeks, one clinic, and voluntary participation.",
+      "passed": true,
+      "evidence": "“In a voluntary four-week pilot at one clinic, 18 nurses used a scheduling tool”."
+    },
+    {
+      "text": "Preserves median weekly 46 to 39 minutes with no causal claim and explains no control plus concurrent staffing changes.",
+      "passed": true,
+      "evidence": "“median weekly scheduling time fell from 46 to 39 minutes”; “observed seven-minute reduction”; “no control group” and “concurrent staffing changes may explain part of it” prevent a causal claim."
+    },
+    {
+      "text": "States six of nine survey respondents preferred it rather than six of 18 or a majority of all nurses.",
+      "passed": true,
+      "evidence": "“Nine nurses completed the optional survey; six of those nine preferred the tool”; responses “cannot establish preference across the full group or other clinics.”"
+    },
+    {
+      "text": "States patient safety was not measured; any next step is framed as recommendation, not a planned commitment.",
+      "passed": true,
+      "evidence": "“Patient safety was not measured”; “A next step is a controlled evaluation” recommends further work before a broader rollout decision."
+    },
+    {
+      "text": "100–150 words in one paragraph without heading or bullets.",
+      "passed": true,
+      "evidence": "112 whitespace-delimited words, one paragraph beginning “In a voluntary four-week pilot”, with no heading or bullets."
+    }
+  ],
+  "summary": {
+    "passed": 5,
+    "failed": 0,
+    "total": 5,
+    "pass_rate": 1.0
+  },
+  "scores": {
+    "fidelity": 5,
+    "directness_and_selectivity": 5,
+    "specificity": 5,
+    "voice_and_genre": 5,
+    "cadence_and_rhetoric": 5,
+    "structure": 5,
+    "edit_restraint": 5,
+    "reader_relevance": 5
+  },
+  "critical_failures": [],
+  "review_method": "Independent single blind agent review; not human feedback",
+  "review_source": "blind/iteration-2/review.json",
+  "output_sha256": "d2d9f830c286fe4be58055ac10c5edae70fffd3e349b8675f15a36b1ae9ac734"
+}

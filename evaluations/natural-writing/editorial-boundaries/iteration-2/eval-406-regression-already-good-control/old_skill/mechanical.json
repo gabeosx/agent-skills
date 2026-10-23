@@ -1,0 +1,12 @@
+{
+  "expectations": [
+    {
+      "text": "Already-good control unchanged",
+      "passed": true,
+      "evidence": "Exact Unicode comparison, ignoring outer whitespace only"
+    }
+  ],
+  "passed": 1,
+  "total": 1,
+  "method": "Exact/format constraints only; semantic review separate"
+}

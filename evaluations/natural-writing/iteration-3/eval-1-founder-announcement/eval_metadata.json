@@ -1,0 +1,11 @@
+{
+  "eval_id": 1,
+  "eval_name": "founder-announcement",
+  "prompt": "Write a punchy founder announcement for LinkedIn, 90–140 words. Facts: Fieldnote is a shared notebook for field technicians. Today we added offline notes. Notes sync after a connection returns; photos still need a connection. The feature is included on all plans. We built it after customers reported losing notes in basements. Existing notebooks need no migration. No customer counts, time-savings measurements, or launch discount are available. Sound like a founder speaking to customers.",
+  "assertions": [
+    "Includes offline notes and automatic sync after connection returns without promising offline photos.",
+    "Retains all-plan inclusion and no migration for existing notebooks.",
+    "Does not invent quotations, adoption numbers, performance measures, launch offers, or founder experiences beyond the supplied facts.",
+    "90–140 words; reads as a publishable post without assistant wrapper."
+  ]
+}

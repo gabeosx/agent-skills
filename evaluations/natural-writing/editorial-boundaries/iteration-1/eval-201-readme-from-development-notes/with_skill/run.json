@@ -1,0 +1,22 @@
+{
+  "candidate": "CANDIDATE-1",
+  "file_list": [
+    "/Users/gabe/agent-skills/evaluations/natural-writing/editorial-boundaries/iteration-1/eval-201-readme-from-development-notes/with_skill/outputs/output.md",
+    "/Users/gabe/agent-skills/evaluations/natural-writing/editorial-boundaries/iteration-1/eval-202-reference-with-unknown-specifications/with_skill/outputs/output.md",
+    "/Users/gabe/agent-skills/evaluations/natural-writing/editorial-boundaries/iteration-1/eval-203-architecture-record-positive-control/with_skill/outputs/output.md",
+    "/Users/gabe/agent-skills/evaluations/natural-writing/editorial-boundaries/iteration-1/eval-204-migration-history-positive-control/with_skill/outputs/output.md",
+    "/Users/gabe/agent-skills/evaluations/natural-writing/editorial-boundaries/iteration-1/eval-205-evaluation-record-preserve-failures/with_skill/outputs/output.md",
+    "/Users/gabe/agent-skills/evaluations/natural-writing/editorial-boundaries/iteration-1/eval-206-customer-email-from-internal-thread/with_skill/outputs/output.md",
+    "/Users/gabe/agent-skills/evaluations/natural-writing/editorial-boundaries/iteration-1/eval-207-maintenance-comment-useful-rationale/with_skill/outputs/output.md",
+    "/Users/gabe/agent-skills/evaluations/natural-writing/editorial-boundaries/iteration-1/eval-208-board-brief-with-hidden-context/with_skill/outputs/output.md",
+    "/Users/gabe/agent-skills/evaluations/natural-writing/editorial-boundaries/iteration-1/eval-402-regression-uncertain-study/with_skill/outputs/output.md",
+    "/Users/gabe/agent-skills/evaluations/natural-writing/editorial-boundaries/iteration-1/eval-403-regression-source-poor-copy/with_skill/outputs/output.md",
+    "/Users/gabe/agent-skills/evaluations/natural-writing/editorial-boundaries/iteration-1/eval-405-regression-voice-sample-email/with_skill/outputs/output.md",
+    "/Users/gabe/agent-skills/evaluations/natural-writing/editorial-boundaries/iteration-1/eval-406-regression-already-good-control/with_skill/outputs/output.md"
+  ],
+  "file_write_timestamp_utc": "2026-10-23T21:24:11.019579+00:00",
+  "generation_time": null,
+  "tokens": null,
+  "session_charge": null,
+  "exact_model_build": null
+}

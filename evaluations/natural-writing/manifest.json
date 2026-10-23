@@ -1,0 +1,59 @@
+{
+  "created_on": "2026-10-23",
+  "purpose": "Local qualitative skill evaluation; no detector or authorship claim",
+  "authorization": "User requested create/test/iterate/fix/test. Uses session subagents only; no external paid API or unattended automation.",
+  "model": "Session model inherited by subagents; exact model build, sampling settings and token/charge metrics unavailable unless reported by tool.",
+  "conditions": {
+    "actors": "fresh fork_turns=none contexts; two batch actors, one per arm; same prompts; candidate reads frozen instructions and catalog; baseline reads no writing skill",
+    "known_confound": "Host developer instructions already impose plain-language style on both arms; baseline is not an unprompted model. Cases in each actor batch share that actor context.",
+    "limits": "One first attempt per prompt per frozen arm; retries only after relevant change, recorded separately.",
+    "isolation": "Distinct paths and fresh actor contexts; source/task state are immutable files. No browser/backend state.",
+    "verifier": "Independent fresh-context blinded reviewer plus deterministic constraint checks and root audit; no human quality review yet.",
+    "scope": "Synthetic writing artifacts only; no external sends or publications.",
+    "acceptance": "Frozen in skills/natural-writing/evals/rubric.md before outcomes."
+  },
+  "development_ids": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+  ],
+  "confirmation_ids": [
+    101,
+    102,
+    103,
+    104,
+    105,
+    106
+  ],
+  "source_report_sha256": "c7fc55e2f646b6c533f1b947de608e571107575e256dabbfe425c2317a385153",
+  "frozen_files": {
+    "evaluations/natural-writing/development.json": "a044384da8518f19606de11a4575300e68f3e618c75ff291b4a990eaeb560af4",
+    "evaluations/natural-writing/confirmation.json": "0ba8f394e61dfa8f6826fbe07f920e700dc25c79def4635e2ead701db7839a24",
+    "skills/natural-writing/evals/rubric.md": "0ea959e7051c1be8a18d9b2f6335f72ef4435c692cb1d2c3ab50acb53aeb19b2",
+    "evaluations/natural-writing/snapshots/v1/instructions.md": "f7e55ab8050f163b3a7ff032af5bc96318c75fed1af0e1e24b917aec73fbac58",
+    "evaluations/natural-writing/snapshots/v1/references/pattern-catalog.md": "f339b1d7acaa3b51e648162a66ed8fc375f861747814d9dae4509f1b49b76ce4",
+    "evaluations/natural-writing/snapshots/v1/references/research-notes.md": "aa0fa139a4f28eaddb50ffa8b41fdb5f13070cfc1c5c1d5cf4b76f02def33ca9"
+  },
+  "accounting": {
+    "external_api_spend": 0,
+    "session_usage": "unknown; included in user session, not separately metered",
+    "wall_time": "not yet measured"
+  },
+  "exclusions": [
+    "detector testing",
+    "empirical verification of report citations",
+    "statistical population claims",
+    "host automatic skill-selection execution"
+  ],
+  "checker_sha256_before_outcome_audit": "cc8ca7204cb35bcebdce7dec403f70d890130af8f9ebea7528ab0681f345ae21",
+  "timing_limit": "No trustworthy per-case generation latency. First baseline started_at/finished_at cover file serialization, not model generation; excluded from comparisons. Other actor times are self-reported.",
+  "routing_sources": {
+    "skills/natural-writing/evals/trigger-evals.json": "c4925610fdbd32e5df9d54b814cedf97f0aa9af7b14490d3cf30ed4aafb87b36",
+    "evaluations/natural-writing/trigger-description.txt": "d4f63e26a47543d2b575e6aabf0fb833549515b04632d9482a08b7a5f70c324b"
+  }
+}

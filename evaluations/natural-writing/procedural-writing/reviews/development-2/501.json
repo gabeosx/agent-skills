@@ -1,0 +1,92 @@
+{
+  "id": 501,
+  "labels": {
+    "A": {
+      "expectations": [
+        {
+          "text": "The guide names the receiving location and enters 6000 grams and $0.012 per gram, with cost per stock unit distinguished from total sack cost.",
+          "passed": true,
+          "evidence": "Names Items > select item > Receive existing stock and specifies Quantity: 6000 and Cost (per stock unit): $0.012; $72 ÷ 6000 = $0.012 per gram, not $72 per gram."
+        },
+        {
+          "text": "The check has observable fields and expected values, with correction before Post and a warning that blank cost becomes zero.",
+          "passed": true,
+          "evidence": "Entry instructions identify Quantity and Cost with expected values 6000 and $0.012; step 3 says check both fields, correct either directly before Post, and warns blank cost is stored as zero."
+        },
+        {
+          "text": "After posting, it uses the History receipt ID and inventory lead for audited correction; it invents neither an undo nor a cost-unit selector.",
+          "passed": true,
+          "evidence": "Names Items > select item > History and its receipt ID, directs errors to inventory lead for audited correction, and explicitly says receipts cannot be edited or undone and there is no cost-unit selector."
+        }
+      ],
+      "scores": {
+        "usefulness": 5,
+        "fidelity": 5,
+        "naturalness": 5
+      },
+      "critical": [],
+      "substantive": [],
+      "minor": []
+    },
+    "B": {
+      "expectations": [
+        {
+          "text": "The guide names the receiving location and enters 6000 grams and $0.012 per gram, with cost per stock unit distinguished from total sack cost.",
+          "passed": true,
+          "evidence": "Opens Items > select item > Receive existing stock and specifies Quantity 6000 for 6,000 g and Cost (per stock unit) 0.012, calculated as $72 ÷ 6,000 g."
+        },
+        {
+          "text": "The check has observable fields and expected values, with correction before Post and a warning that blank cost becomes zero.",
+          "passed": true,
+          "evidence": "Step 2 gives both fields and expected values; step 3 instructs checking both before Post, warns blank cost is stored as zero, and allows direct correction of either field."
+        },
+        {
+          "text": "After posting, it uses the History receipt ID and inventory lead for audited correction; it invents neither an undo nor a cost-unit selector.",
+          "passed": true,
+          "evidence": "History path lists quantity, stock unit, unit cost and receipt ID; final paragraph sends the receipt ID to the inventory lead for audited correction. Explicitly denies edit/undo and cost-unit selector."
+        }
+      ],
+      "scores": {
+        "usefulness": 5,
+        "fidelity": 5,
+        "naturalness": 5
+      },
+      "critical": [],
+      "substantive": [],
+      "minor": []
+    },
+    "C": {
+      "expectations": [
+        {
+          "text": "The guide names the receiving location and enters 6000 grams and $0.012 per gram, with cost per stock unit distinguished from total sack cost.",
+          "passed": true,
+          "evidence": "Names the receiving path and states 6 kg = 6,000 g, Quantity 6000 and Cost 0.012, explicitly $0.012 per gram from the total $72 sack cost."
+        },
+        {
+          "text": "The check has observable fields and expected values, with correction before Post and a warning that blank cost becomes zero.",
+          "passed": true,
+          "evidence": "Step 3 explicitly checks Quantity 6000 and Cost 0.012 before Post and permits correction in either field; step 2 warns blank cost is stored as zero."
+        },
+        {
+          "text": "After posting, it uses the History receipt ID and inventory lead for audited correction; it invents neither an undo nor a cost-unit selector.",
+          "passed": true,
+          "evidence": "Step 4 checks the posted History row against 6,000 g at $0.012 per gram and sends its receipt ID to the inventory lead for audited correction. Denies edit/undo and cost-unit selector."
+        }
+      ],
+      "scores": {
+        "usefulness": 5,
+        "fidelity": 5,
+        "naturalness": 5
+      },
+      "critical": [],
+      "substantive": [],
+      "minor": []
+    }
+  },
+  "preferred": [
+    "A",
+    "B",
+    "C"
+  ],
+  "reason": "All three preserve the consequential source facts and provide clear, usable wording; differences in headings, formatting or phrasing do not create a meaningful preference."
+}

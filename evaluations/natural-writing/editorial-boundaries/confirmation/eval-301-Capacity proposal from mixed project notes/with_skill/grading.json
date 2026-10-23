@@ -1,0 +1,48 @@
+{
+  "expectations": [
+    {
+      "text": "Requests two Operations staff members for eight hours per week over a four-week pilot and gives the 26 April approval deadline and proposed 6 May start.",
+      "passed": true,
+      "evidence": "“two Operations staff members for a four-week pilot ... starting 6 May”; “Approval by 26 April”; “those eight hours each week.”"
+    },
+    {
+      "text": "Uses the observed counts accurately: 46 returns, 18 delayed more than two working days, and seven repeat inquiries; does not present them as a complete company-wide baseline or claim a measured time saving.",
+      "passed": true,
+      "evidence": "“46 returns, including 18 ... more than two working days”; “Seven employees contacted reception twice”; “they do not measure all returns across the company”; “There is no staff-time baseline.”"
+    },
+    {
+      "text": "Explains the Tuesday/Thursday West Office service and retains the existing reception option outside those hours and locations.",
+      "passed": true,
+      "evidence": "“ground-floor service counter on Tuesdays and Thursdays, 10 a.m.–2 p.m.” at West Office; “through reception on other days and at other offices.”"
+    },
+    {
+      "text": "States concrete next-working-day registration and overnight storage measures and a stop/adjust/extend review after week four, without promising the pilot will succeed.",
+      "passed": true,
+      "evidence": "“at least 90% ... by the next working day”; “whether any equipment remains outside the cabinet overnight”; “After four weeks ... stopping, adjusting, or extending.” The measures are proposed assessments, not promised results."
+    },
+    {
+      "text": "Excludes spreadsheet filenames, chart recreation, naming debates, default heading colors, the scratch request to describe drafting effort, and celebration of receipt formatting.",
+      "passed": true,
+      "evidence": "Complete passage contains only decision and operating information, for example “No new equipment or software is requested.” None of the listed drafting details appears."
+    }
+  ],
+  "summary": {
+    "passed": 5,
+    "failed": 0,
+    "total": 5,
+    "pass_rate": 1.0
+  },
+  "scores": {
+    "fidelity": 5,
+    "directness_and_selectivity": 5,
+    "specificity": 5,
+    "voice_and_genre": 5,
+    "cadence_and_rhetoric": 5,
+    "structure": 5,
+    "reader_relevance": 5
+  },
+  "critical_failures": [],
+  "review_method": "Independent single blind agent review; not human feedback",
+  "review_source": "blind/confirmation/review.json",
+  "output_sha256": "2a8b99b04e6a732186fcfb378d1f1831db7c173c40afb5443c7f5e13d659436f"
+}

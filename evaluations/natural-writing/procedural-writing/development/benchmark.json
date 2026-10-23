@@ -1,0 +1,473 @@
+{
+  "metadata": {
+    "skill_name": "natural-writing",
+    "executor_model": "session model; exact build unavailable",
+    "analyzer_model": "independent session subagent; exact build unavailable",
+    "runs_per_configuration": 1,
+    "evals_run": [
+      501,
+      502,
+      503,
+      504,
+      505
+    ]
+  },
+  "runs": [
+    {
+      "eval_id": 501,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "passed": 3,
+        "failed": 0,
+        "total": 3,
+        "pass_rate": 1.0
+      },
+      "expectations": [
+        {
+          "text": "The guide names the receiving location and enters 6000 grams and $0.012 per gram, with cost per stock unit distinguished from total sack cost.",
+          "passed": true,
+          "evidence": "Opens Items > Flour > Receive existing stock; enters Quantity 6000 and Cost (per stock unit) 0.012, explicitly $72 / 6000 grams = $0.012 per gram and warns against entering $72 total."
+        },
+        {
+          "text": "The check has observable fields and expected values, with correction before Post and a warning that blank cost becomes zero.",
+          "passed": true,
+          "evidence": "Step 4 checks Quantity 6000 and Cost 0.012 and permits direct correction before Post; step 3 warns blank cost is stored as zero."
+        },
+        {
+          "text": "After posting, it uses the History receipt ID and inventory lead for audited correction; it invents neither an undo nor a cost-unit selector.",
+          "passed": true,
+          "evidence": "History location and receipt row fields are explicit; posted errors go to inventory lead with receipt ID for audited correction. States no edit/undo and no cost-unit selector."
+        }
+      ]
+    },
+    {
+      "eval_id": 501,
+      "configuration": "old_skill",
+      "run_number": 1,
+      "result": {
+        "passed": 3,
+        "failed": 0,
+        "total": 3,
+        "pass_rate": 1.0
+      },
+      "expectations": [
+        {
+          "text": "The guide names the receiving location and enters 6000 grams and $0.012 per gram, with cost per stock unit distinguished from total sack cost.",
+          "passed": true,
+          "evidence": "Names Items > select item > Receive existing stock; Flour uses grams and entries are 6000 and 0.012, derived from $72 / 6000 g and labeled per stock unit."
+        },
+        {
+          "text": "The check has observable fields and expected values, with correction before Post and a warning that blank cost becomes zero.",
+          "passed": true,
+          "evidence": "Step 2 supplies the precise expected Quantity and Cost values; step 3 tells operators to check both fields, directly correct either before Post, and warns blank cost is zero."
+        },
+        {
+          "text": "After posting, it uses the History receipt ID and inventory lead for audited correction; it invents neither an undo nor a cost-unit selector.",
+          "passed": true,
+          "evidence": "Names Items > select item > History with receipt ID; no edit or undo after posting, and the inventory lead performs an audited correction using that ID. Explicitly no cost-unit selector."
+        }
+      ]
+    },
+    {
+      "eval_id": 501,
+      "configuration": "no_skill",
+      "run_number": 1,
+      "result": {
+        "passed": 3,
+        "failed": 0,
+        "total": 3,
+        "pass_rate": 1.0
+      },
+      "expectations": [
+        {
+          "text": "The guide names the receiving location and enters 6000 grams and $0.012 per gram, with cost per stock unit distinguished from total sack cost.",
+          "passed": true,
+          "evidence": "Names Items > select item > Receive existing stock and explains cost of one stock unit; Flour entries are Quantity 6000 and Cost $0.012 for a 6 kg, $72 sack."
+        },
+        {
+          "text": "The check has observable fields and expected values, with correction before Post and a warning that blank cost becomes zero.",
+          "passed": true,
+          "evidence": "Step 2 gives exact expected values; step 3 checks both fields before Post, warns blank cost is zero, and permits direct correction."
+        },
+        {
+          "text": "After posting, it uses the History receipt ID and inventory lead for audited correction; it invents neither an undo nor a cost-unit selector.",
+          "passed": true,
+          "evidence": "Names History location and receipt ID, prohibits posted edit/undo, routes errors to inventory lead for audited correction, and states there is no cost-unit selector."
+        }
+      ]
+    },
+    {
+      "eval_id": 502,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "pass_rate": 1.0
+      },
+      "expectations": [
+        {
+          "text": "It preserves backup, destination confirmation and irreversible Apply warning near the action.",
+          "passed": true,
+          "evidence": "Begins with backup and irreversible Apply warning; step 3 confirms the intended destination on Apply and reiterates backup before Apply."
+        },
+        {
+          "text": "It preserves missing past transactions AND the distinct lot-label and expiry-date loss for opening quantities.",
+          "passed": true,
+          "evidence": "Explicitly distinguishes opening quantities from past transactions and preserves missing source lot labels and expiry dates."
+        },
+        {
+          "text": "It preserves that later receipts cannot retroactively identify opening units and says to keep source records for recalls/expiry tracking.",
+          "passed": true,
+          "evidence": "Preserves later receipts inability to identify opening units retroactively and source-record retention for recalls/expiry tracking."
+        },
+        {
+          "text": "It uses the current Comment-column support rather than retaining the obsolete comments restriction and keeps the supported CSV preview/apply path.",
+          "passed": true,
+          "evidence": "Step 1 supports Comment-column imports; supported CSV choice, item/quantity preview, and Apply path remain."
+        }
+      ]
+    },
+    {
+      "eval_id": 502,
+      "configuration": "old_skill",
+      "run_number": 1,
+      "result": {
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "pass_rate": 1.0
+      },
+      "expectations": [
+        {
+          "text": "It preserves backup, destination confirmation and irreversible Apply warning near the action.",
+          "passed": true,
+          "evidence": "Begins with export a backup and Apply cannot be undone; step 3 requires destination workspace confirmation on the Apply screen before selecting Apply."
+        },
+        {
+          "text": "It preserves missing past transactions AND the distinct lot-label and expiry-date loss for opening quantities.",
+          "passed": true,
+          "evidence": "Explicitly says CSV creates opening quantities, not past transactions, and opening quantities retain neither source lot labels nor expiry dates."
+        },
+        {
+          "text": "It preserves that later receipts cannot retroactively identify opening units and says to keep source records for recalls/expiry tracking.",
+          "passed": true,
+          "evidence": "Says later receipts do not retroactively identify those units and source records must be kept for recalls and expiry tracking of opening stock."
+        },
+        {
+          "text": "It uses the current Comment-column support rather than retaining the obsolete comments restriction and keeps the supported CSV preview/apply path.",
+          "passed": true,
+          "evidence": "Step 1 permits imported comments in the Comment column; steps 1\u20133 preserve Import > CSV, item/quantity preview, and Apply."
+        }
+      ]
+    },
+    {
+      "eval_id": 502,
+      "configuration": "no_skill",
+      "run_number": 1,
+      "result": {
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "pass_rate": 1.0
+      },
+      "expectations": [
+        {
+          "text": "It preserves backup, destination confirmation and irreversible Apply warning near the action.",
+          "passed": true,
+          "evidence": "Begins with backup and irreversible Apply warning; step 3 confirms the destination workspace name on Apply before selecting Apply."
+        },
+        {
+          "text": "It preserves missing past transactions AND the distinct lot-label and expiry-date loss for opening quantities.",
+          "passed": true,
+          "evidence": "Preserves the separate limitations: no past transactions, no source lot labels, and no expiry dates for opening quantities."
+        },
+        {
+          "text": "It preserves that later receipts cannot retroactively identify opening units and says to keep source records for recalls/expiry tracking.",
+          "passed": true,
+          "evidence": "Explicitly states later receipts do not retroactively identify opening units and requires source records for recalls and expiry tracking."
+        },
+        {
+          "text": "It uses the current Comment-column support rather than retaining the obsolete comments restriction and keeps the supported CSV preview/apply path.",
+          "passed": true,
+          "evidence": "Uses current Comment-column import support and the Import > CSV, preview item/quantity rows, Apply sequence."
+        }
+      ]
+    },
+    {
+      "eval_id": 503,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "passed": 3,
+        "failed": 0,
+        "total": 3,
+        "pass_rate": 1.0
+      },
+      "expectations": [
+        {
+          "text": "The normal sequence is authorize, import, review mappings, Start sync after all mapped; import alone does not start sync.",
+          "passed": true,
+          "evidence": "Normal steps authorize, import, review mappings, then Start sync after all rows mapped; import alone explicitly does not start order sync."
+        },
+        {
+          "text": "It gives Mapping status location, Mapped/Unmatched conditions, and Link item or inventory-lead remedy only for Unmatched rows.",
+          "passed": true,
+          "evidence": "Names Connections > Products and Mapping status; leaves Mapped rows alone and applies Link item plus missing-item escalation only to Unmatched rows."
+        },
+        {
+          "text": "Disconnect/reimport and Reauthorize are clearly conditional on wrong shop and Authorization expired respectively, not universal prerequisites.",
+          "passed": true,
+          "evidence": "Wrong-shop recovery begins If Connections > Account shows the wrong shop; Reauthorize begins If sync status is Authorization expired and says only needed for that status."
+        }
+      ]
+    },
+    {
+      "eval_id": 503,
+      "configuration": "old_skill",
+      "run_number": 1,
+      "result": {
+        "passed": 3,
+        "failed": 0,
+        "total": 3,
+        "pass_rate": 1.0
+      },
+      "expectations": [
+        {
+          "text": "The normal sequence is authorize, import, review mappings, Start sync after all mapped; import alone does not start sync.",
+          "passed": true,
+          "evidence": "Steps authorize desired shop, Import products, review mappings, then Start sync after all mapped; explicitly says importing alone does not start order sync."
+        },
+        {
+          "text": "It gives Mapping status location, Mapped/Unmatched conditions, and Link item or inventory-lead remedy only for Unmatched rows.",
+          "passed": true,
+          "evidence": "Names Connections > Products and Mapping status; leaves Mapped mappings as-is and supplies Link item or inventory-lead creation only for Unmatched rows."
+        },
+        {
+          "text": "Disconnect/reimport and Reauthorize are clearly conditional on wrong shop and Authorization expired respectively, not universal prerequisites.",
+          "passed": true,
+          "evidence": "Disconnect recovery is restricted to wrong shop in Connections > Account; Reauthorize is restricted to Authorization expired status."
+        }
+      ]
+    },
+    {
+      "eval_id": 503,
+      "configuration": "no_skill",
+      "run_number": 1,
+      "result": {
+        "passed": 3,
+        "failed": 0,
+        "total": 3,
+        "pass_rate": 1.0
+      },
+      "expectations": [
+        {
+          "text": "The normal sequence is authorize, import, review mappings, Start sync after all mapped; import alone does not start sync.",
+          "passed": true,
+          "evidence": "Numbered sequence authorizes desired shop, imports, reviews mappings, then Start sync after all mapped; explicitly states import does not start order sync."
+        },
+        {
+          "text": "It gives Mapping status location, Mapped/Unmatched conditions, and Link item or inventory-lead remedy only for Unmatched rows.",
+          "passed": true,
+          "evidence": "Connections > Products > Mapping status is specified. Mapped rows are ready and must not be remapped; only Unmatched rows receive Link item or inventory-lead creation instructions."
+        },
+        {
+          "text": "Disconnect/reimport and Reauthorize are clearly conditional on wrong shop and Authorization expired respectively, not universal prerequisites.",
+          "passed": true,
+          "evidence": "Separate conditional recovery bullets restrict Disconnect/reauthorize/reimport to wrong shop shown under Connections > Account, and Reauthorize to Authorization expired status."
+        }
+      ]
+    },
+    {
+      "eval_id": 504,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "passed": 3,
+        "failed": 1,
+        "total": 4,
+        "pass_rate": 0.75
+      },
+      "expectations": [
+        {
+          "text": "The review restores backup, workspace confirmation and irreversible Apply warning.",
+          "passed": true,
+          "evidence": "First replacement restores destination backup, intended-workspace confirmation before Apply, and Apply cannot be undone."
+        },
+        {
+          "text": "It restores matching TaskCode overwrite behavior rather than accepting a generic history warning as equivalent.",
+          "passed": true,
+          "evidence": "Second replacement states A matching TaskCode overwrites the existing task fields, rather than substituting history behavior."
+        },
+        {
+          "text": "It names both unsupported attachments and archived tasks without restoring the stale comments restriction.",
+          "passed": true,
+          "evidence": "Last replacement permits Comment-column import and excludes attachments and archived tasks; no obsolete comments restriction."
+        },
+        {
+          "text": "It supplies actionable replacement wording and does not invent new UI or mechanisms.",
+          "passed": false,
+          "evidence": "Actionable replacements are supplied, but Check TaskCode matches in the preview before applying assumes preview exposes matching TaskCodes or match information. Evidence only establishes previewing rows and overwrite semantics, not that verification mechanism."
+        }
+      ]
+    },
+    {
+      "eval_id": 504,
+      "configuration": "old_skill",
+      "run_number": 1,
+      "result": {
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "pass_rate": 1.0
+      },
+      "expectations": [
+        {
+          "text": "The review restores backup, workspace confirmation and irreversible Apply warning.",
+          "passed": true,
+          "evidence": "First bullet restores backing up the destination, destination workspace confirmation before Apply, and irreversible Apply."
+        },
+        {
+          "text": "It restores matching TaskCode overwrite behavior rather than accepting a generic history warning as equivalent.",
+          "passed": true,
+          "evidence": "Second bullet explicitly restores A matching TaskCode overwrites the existing task fields; final bullet removes unsupported history claim."
+        },
+        {
+          "text": "It names both unsupported attachments and archived tasks without restoring the stale comments restriction.",
+          "passed": true,
+          "evidence": "Third bullet preserves current Comment-column support while excluding both attachments and archived tasks."
+        },
+        {
+          "text": "It supplies actionable replacement wording and does not invent new UI or mechanisms.",
+          "passed": true,
+          "evidence": "Actionable insertion/replacement/removal wording uses supported Apply screen and Comment-column behavior without inventing mechanisms."
+        }
+      ]
+    },
+    {
+      "eval_id": 504,
+      "configuration": "no_skill",
+      "run_number": 1,
+      "result": {
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "pass_rate": 1.0
+      },
+      "expectations": [
+        {
+          "text": "The review restores backup, workspace confirmation and irreversible Apply warning.",
+          "passed": true,
+          "evidence": "First replacement restores destination backup, workspace confirmation on Apply, and Apply cannot be undone."
+        },
+        {
+          "text": "It restores matching TaskCode overwrite behavior rather than accepting a generic history warning as equivalent.",
+          "passed": true,
+          "evidence": "Restores exact matching TaskCode overwrite behavior and separately deletes unsupported Import history is limited."
+        },
+        {
+          "text": "It names both unsupported attachments and archived tasks without restoring the stale comments restriction.",
+          "passed": true,
+          "evidence": "Allows comments through the Comment column and names both unsupported attachments and archived tasks."
+        },
+        {
+          "text": "It supplies actionable replacement wording and does not invent new UI or mechanisms.",
+          "passed": true,
+          "evidence": "Provides direct replacement text and deletion instructions using only supplied CSV/Import/preview/Apply behavior; adds no mechanisms."
+        }
+      ]
+    },
+    {
+      "eval_id": 505,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "passed": 1,
+        "failed": 0,
+        "total": 1,
+        "pass_rate": 1.0
+      },
+      "expectations": [
+        {
+          "text": "It returns the passage exactly, preserving punctuation, wording, and paragraph without procedural additions or commentary.",
+          "passed": true,
+          "evidence": "Exact comparison against the supplied passage succeeds, allowing a trailing newline only; wording, em dash, semicolon, single paragraph, and absence of commentary are preserved."
+        }
+      ]
+    },
+    {
+      "eval_id": 505,
+      "configuration": "old_skill",
+      "run_number": 1,
+      "result": {
+        "passed": 1,
+        "failed": 0,
+        "total": 1,
+        "pass_rate": 1.0
+      },
+      "expectations": [
+        {
+          "text": "It returns the passage exactly, preserving punctuation, wording, and paragraph without procedural additions or commentary.",
+          "passed": true,
+          "evidence": "Exact comparison against the supplied passage succeeds, allowing a trailing newline only; wording, em dash, semicolon, single paragraph, and absence of commentary are preserved."
+        }
+      ]
+    },
+    {
+      "eval_id": 505,
+      "configuration": "no_skill",
+      "run_number": 1,
+      "result": {
+        "passed": 1,
+        "failed": 0,
+        "total": 1,
+        "pass_rate": 1.0
+      },
+      "expectations": [
+        {
+          "text": "It returns the passage exactly, preserving punctuation, wording, and paragraph without procedural additions or commentary.",
+          "passed": true,
+          "evidence": "Exact comparison against the supplied passage succeeds, allowing a trailing newline only; wording, em dash, semicolon, single paragraph, and absence of commentary are preserved."
+        }
+      ]
+    }
+  ],
+  "run_summary": {
+    "with_skill": {
+      "pass_rate": {
+        "mean": 0.95,
+        "stddev": 0.11180339887498948,
+        "min": 0.75,
+        "max": 1.0
+      }
+    },
+    "old_skill": {
+      "pass_rate": {
+        "mean": 1.0,
+        "stddev": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      }
+    },
+    "no_skill": {
+      "pass_rate": {
+        "mean": 1.0,
+        "stddev": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      }
+    },
+    "delta": {
+      "pass_rate": "-0.05"
+    }
+  },
+  "notes": [
+    "Three arms; compare old-skill and no-skill separately.",
+    "Assertion rates measure task constraints, not naturalness.",
+    "Unknown tokens, runtime and billing omitted, not zero.",
+    "Development-2 reuses frozen old/no-skill outputs without resampling.",
+    "Single blind agent review is not human validation or a population estimate."
+  ]
+}

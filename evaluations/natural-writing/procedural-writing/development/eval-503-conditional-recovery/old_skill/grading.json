@@ -1,0 +1,34 @@
+{
+  "expectations": [
+    {
+      "text": "The normal sequence is authorize, import, review mappings, Start sync after all mapped; import alone does not start sync.",
+      "passed": true,
+      "evidence": "Steps authorize desired shop, Import products, review mappings, then Start sync after all mapped; explicitly says importing alone does not start order sync."
+    },
+    {
+      "text": "It gives Mapping status location, Mapped/Unmatched conditions, and Link item or inventory-lead remedy only for Unmatched rows.",
+      "passed": true,
+      "evidence": "Names Connections > Products and Mapping status; leaves Mapped mappings as-is and supplies Link item or inventory-lead creation only for Unmatched rows."
+    },
+    {
+      "text": "Disconnect/reimport and Reauthorize are clearly conditional on wrong shop and Authorization expired respectively, not universal prerequisites.",
+      "passed": true,
+      "evidence": "Disconnect recovery is restricted to wrong shop in Connections > Account; Reauthorize is restricted to Authorization expired status."
+    }
+  ],
+  "summary": {
+    "passed": 3,
+    "failed": 0,
+    "total": 3,
+    "pass_rate": 1.0
+  },
+  "blind_review": "reviews/development/503.json",
+  "output_sha256": "3cf2da0831c1d3936dd68d4dd107162ec0271d1d4646a75693587c981cd540e0",
+  "scores": {
+    "usefulness": 5,
+    "fidelity": 5,
+    "naturalness": 5
+  },
+  "critical": [],
+  "substantive": []
+}

@@ -1,0 +1,42 @@
+{
+  "expectations": [
+    {
+      "text": "Advocates against the winter extension and prioritizes repairing the inaccessible side ramp using the same budget.",
+      "passed": true,
+      "evidence": "“I don't think we should extend library hours this winter” and “The same budget could repair the side ramp”; closes with support for this winter's money going to the ramp."
+    },
+    {
+      "text": "Retains 14 visits per night in last January's count, single staffed entrance, and no added security funding without changing implications into proven harm.",
+      "passed": true,
+      "evidence": "“Last January's count recorded 14 evening visits per night”; “staff only one entrance” and “provides no additional security funding.” Expresses concern rather than claiming observed harm."
+    },
+    {
+      "text": "Acknowledges potential benefit to shift workers without inventing their preferences or surveys.",
+      "passed": true,
+      "evidence": "“later hours could help shift workers who struggle to get there during the day” is an expressly potential benefit, with no invented survey or preferences."
+    },
+    {
+      "text": "120–180 words, one paragraph, no invented personal experience or consensus.",
+      "passed": true,
+      "evidence": "135 whitespace-delimited words in one paragraph. First-person language expresses the requested priorities, not invented personal history or community consensus."
+    }
+  ],
+  "summary": {
+    "passed": 4,
+    "failed": 0,
+    "total": 4,
+    "pass_rate": 1.0
+  },
+  "scores": {
+    "Fidelity": 5,
+    "Directness and selectivity": 4,
+    "Specificity": 5,
+    "Voice and genre": 4,
+    "Cadence and rhetoric": 4,
+    "Structure": 5
+  },
+  "critical_failures": [],
+  "review_method": "Independent single blind agent review; not human feedback",
+  "review_source": "blind/iteration-1/review.json",
+  "output_sha256": "ce38b097c1f005690bf2eccab50113646eb376cf8ad783f4b8ab8bae1b90e8f4"
+}

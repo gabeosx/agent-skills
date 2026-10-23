@@ -1,0 +1,48 @@
+{
+  "expectations": [
+    {
+      "text": "Preserves 18 nurses, four weeks, one clinic, and voluntary participation.",
+      "passed": true,
+      "evidence": "“In a voluntary four-week pilot at one clinic, 18 nurses used a scheduling tool” preserves all four scope conditions."
+    },
+    {
+      "text": "Preserves median weekly 46 to 39 minutes with no causal claim and explains no control plus concurrent staffing changes.",
+      "passed": true,
+      "evidence": "“median weekly scheduling time fell from 46 to 39 minutes”; “Without a control group, the study cannot establish that the tool caused the decrease; concurrent staffing changes may explain part of it.”"
+    },
+    {
+      "text": "States six of nine survey respondents preferred it rather than six of 18 or a majority of all nurses.",
+      "passed": true,
+      "evidence": "“Nine nurses completed the optional survey, and six preferred the tool” supplies the correct denominator, followed by “does not establish a preference among all participants or nurses elsewhere.”"
+    },
+    {
+      "text": "States patient safety was not measured; any next step is framed as recommendation, not a planned commitment.",
+      "passed": true,
+      "evidence": "“Patient safety was not measured.” “A next step is a controlled pilot” is a recommendation, not a claim that another trial is planned; it recommends safety measurement before wider adoption."
+    },
+    {
+      "text": "100–150 words in one paragraph without heading or bullets.",
+      "passed": true,
+      "evidence": "105 whitespace-separated words, one paragraph; opens “In a voluntary four-week pilot” without heading or bullets."
+    }
+  ],
+  "summary": {
+    "passed": 5,
+    "failed": 0,
+    "total": 5,
+    "pass_rate": 1.0
+  },
+  "scores": {
+    "fidelity": 5,
+    "directness_and_selectivity": 5,
+    "specificity": 5,
+    "voice_and_genre": 5,
+    "cadence_and_rhetoric": 5,
+    "structure": 5,
+    "reader_relevance": 5
+  },
+  "critical_failures": [],
+  "review_method": "Independent single blind agent review; not human feedback",
+  "review_source": "blind/iteration-1/review.json",
+  "output_sha256": "a6342668b07203f2b2414c7a2f15fd89e4a9e5cf601d48dbb40f9090240e8661"
+}

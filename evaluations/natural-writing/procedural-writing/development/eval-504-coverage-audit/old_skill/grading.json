@@ -1,0 +1,39 @@
+{
+  "expectations": [
+    {
+      "text": "The review restores backup, workspace confirmation and irreversible Apply warning.",
+      "passed": true,
+      "evidence": "First bullet restores backing up the destination, destination workspace confirmation before Apply, and irreversible Apply."
+    },
+    {
+      "text": "It restores matching TaskCode overwrite behavior rather than accepting a generic history warning as equivalent.",
+      "passed": true,
+      "evidence": "Second bullet explicitly restores A matching TaskCode overwrites the existing task fields; final bullet removes unsupported history claim."
+    },
+    {
+      "text": "It names both unsupported attachments and archived tasks without restoring the stale comments restriction.",
+      "passed": true,
+      "evidence": "Third bullet preserves current Comment-column support while excluding both attachments and archived tasks."
+    },
+    {
+      "text": "It supplies actionable replacement wording and does not invent new UI or mechanisms.",
+      "passed": true,
+      "evidence": "Actionable insertion/replacement/removal wording uses supported Apply screen and Comment-column behavior without inventing mechanisms."
+    }
+  ],
+  "summary": {
+    "passed": 4,
+    "failed": 0,
+    "total": 4,
+    "pass_rate": 1.0
+  },
+  "blind_review": "reviews/development/504.json",
+  "output_sha256": "591b3c00e26b634ca9cf5980cb1aee0adda4955052e880ea3119726d118ac6e7",
+  "scores": {
+    "usefulness": 5,
+    "fidelity": 5,
+    "naturalness": 5
+  },
+  "critical": [],
+  "substantive": []
+}

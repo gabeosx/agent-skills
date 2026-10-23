@@ -1,0 +1,2 @@
+# Preserve required context-line spaces in the retained unified diff artifact.
+evaluations/natural-writing/editorial-boundaries/final-source.diff -whitespace

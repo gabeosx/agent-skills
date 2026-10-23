@@ -1,0 +1,42 @@
+{
+  "expectations": [
+    {
+      "text": "Advocates against the winter extension and prioritizes repairing the inaccessible side ramp using the same budget.",
+      "passed": true,
+      "evidence": "“put this winter's library funding toward repairing the inaccessible side ramp before extending evening hours”; “For this winter, I would fix the ramp.” This identifies the same funding as the competing use."
+    },
+    {
+      "text": "Retains 14 visits per night in last January's count, single staffed entrance, and no added security funding without changing implications into proven harm.",
+      "passed": true,
+      "evidence": "“only one staffed entrance and provides no additional security funding”; “Last January's count recorded 14 evening visits per night.” “I am not comfortable” states the writer’s concern without claiming an actual safety incident."
+    },
+    {
+      "text": "Acknowledges potential benefit to shift workers without inventing their preferences or surveys.",
+      "passed": true,
+      "evidence": "“Later hours could help shift workers, and that is a good reason to consider them.” No preference or survey is attributed to shift workers."
+    },
+    {
+      "text": "120–180 words, one paragraph, no invented personal experience or consensus.",
+      "passed": true,
+      "evidence": "134 whitespace-delimited words, one paragraph. “I would” and “I am not comfortable” are opinions rather than invented personal experiences. “Those visits matter” recognizes attendees without claiming resident consensus."
+    }
+  ],
+  "summary": {
+    "passed": 4,
+    "failed": 0,
+    "total": 4,
+    "pass_rate": 1.0
+  },
+  "scores": {
+    "Fidelity": 5,
+    "Directness and selectivity": 5,
+    "Specificity": 5,
+    "Voice and genre": 5,
+    "Cadence and rhetoric": 5,
+    "Structure": 5
+  },
+  "critical_failures": [],
+  "review_method": "Independent single blind agent review; not human feedback",
+  "review_source": "blind/iteration-3/review.json",
+  "output_sha256": "4f01291dae806293fd112a8f55f79a67bddf059af9b759b0661c5d96f93516f2"
+}

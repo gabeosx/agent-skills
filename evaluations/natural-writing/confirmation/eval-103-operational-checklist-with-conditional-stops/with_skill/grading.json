@@ -1,0 +1,58 @@
+{
+  "expectations": [
+    {
+      "text": "Uses numbered steps and indented bullets for alternative conditions rather than replacing the checklist with prose paragraphs.",
+      "passed": true,
+      "evidence": "Five numbered steps organize the action; indented \"- If\" bullets under steps 1, 2 and 5 give the alternative conditions."
+    },
+    {
+      "text": "Checks the logger clock against the wall clock before the operational reading of sensor R4; a difference greater than 2 minutes requires stopping and calling Mara at extension 214 until she clears the problem.",
+      "passed": true,
+      "evidence": "Step 1: \"Check the logger's clock against the wall clock\"; \"more than 2 minutes, stop and call Mara at extension 214. Do not continue until she clears the clock problem.\" Only step 2 reads R4."
+    },
+    {
+      "text": "Treats a clock difference of exactly 2 minutes as acceptable and does not require a clock adjustment when no adjustment was specified.",
+      "passed": true,
+      "evidence": "\"If the difference is within 2 minutes, or Mara has cleared the clock problem, continue to step 2.\" Together with the strict \"more than 2 minutes\" stop condition, this accepts exactly 2 minutes. No adjustment is required."
+    },
+    {
+      "text": "Stops opening for temperatures below 18°C or above 22°C, calls Mara at extension 214, and explicitly allows 18°C and 22°C.",
+      "passed": true,
+      "evidence": "Step 2: \"below 18°C or above 22°C, stop and call Mara at extension 214. Do not open the case.\" The acceptance bullet explicitly says \"including both endpoints\" for 18°C and 22°C."
+    },
+    {
+      "text": "Requires recording the exact temperature and time on sheet C7 before opening the case.",
+      "passed": true,
+      "evidence": "Step 3: \"Record the exact temperature and time on sheet C7, then open the case.\" Recording precedes opening."
+    },
+    {
+      "text": "Places closing and engaging the latch after arranging the objects and before turning on the lamp; if the latch does not engage, the lamp remains off and Mara is called.",
+      "passed": true,
+      "evidence": "Step 4: \"Arrange the objects, then close the case.\" Step 5: \"Engage the latch before turning on the lamp\"; \"If the latch engages, turn on the lamp\"; \"If the latch will not engage, leave the lamp off and call Mara at extension 214.\""
+    },
+    {
+      "text": "Adds no new equipment, acceptance limits, clearance requirement for temperature, or procedure not present in the source notes.",
+      "passed": true,
+      "evidence": "All equipment and actions are supplied: logger, wall clock, R4, C7, case, latch, lamp and calling Mara. \"Do not continue until she clears the clock problem\" is limited to the clock; the temperature branch only says \"stop ... Do not open the case.\" No added clearance or adjustment procedure appears."
+    }
+  ],
+  "summary": {
+    "passed": 7,
+    "failed": 0,
+    "total": 7,
+    "pass_rate": 1.0
+  },
+  "scores": {
+    "Fidelity": 5,
+    "Directness and selectivity": 5,
+    "Specificity": 5,
+    "Voice and genre": 5,
+    "Cadence and rhetoric": 5,
+    "Structure": 5,
+    "Edit restraint": 5
+  },
+  "critical_failures": [],
+  "review_method": "Independent single blind agent review; not human feedback",
+  "review_source": "blind/confirmation/review.json",
+  "output_sha256": "d3314586070fcc327251160d3c88c5947953f2994c7a877e29ff15bf97600e2a"
+}

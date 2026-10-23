@@ -1,0 +1,74 @@
+[
+  {
+    "id": 301,
+    "arm": "with_skill",
+    "checks": 1,
+    "failed": []
+  },
+  {
+    "id": 301,
+    "arm": "old_skill",
+    "checks": 1,
+    "failed": []
+  },
+  {
+    "id": 302,
+    "arm": "with_skill",
+    "checks": 1,
+    "failed": []
+  },
+  {
+    "id": 302,
+    "arm": "old_skill",
+    "checks": 1,
+    "failed": []
+  },
+  {
+    "id": 303,
+    "arm": "with_skill",
+    "checks": 1,
+    "failed": []
+  },
+  {
+    "id": 303,
+    "arm": "old_skill",
+    "checks": 1,
+    "failed": []
+  },
+  {
+    "id": 304,
+    "arm": "with_skill",
+    "checks": 2,
+    "failed": []
+  },
+  {
+    "id": 304,
+    "arm": "old_skill",
+    "checks": 2,
+    "failed": []
+  },
+  {
+    "id": 305,
+    "arm": "with_skill",
+    "checks": 1,
+    "failed": []
+  },
+  {
+    "id": 305,
+    "arm": "old_skill",
+    "checks": 1,
+    "failed": []
+  },
+  {
+    "id": 306,
+    "arm": "with_skill",
+    "checks": 1,
+    "failed": []
+  },
+  {
+    "id": 306,
+    "arm": "old_skill",
+    "checks": 1,
+    "failed": []
+  }
+]

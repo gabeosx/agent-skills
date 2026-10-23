@@ -1,0 +1,34 @@
+{
+  "auditor": "root; independent of actors, unblinded, separate from preserved blind reviews",
+  "candidate": "candidate-2",
+  "audit": "Canonical source, each final candidate output and source prompt, independent semantic findings, exact checks and all frozen hashes inspected.",
+  "findings": {
+    "reader_selection": "Current-product README and reference omit development/editorial detritus; supplied status/requirements/limits remain.",
+    "positive_history": "ADR alternatives, migration old/new and rollback, evaluation invalidation/costs, incident failed mitigation and pending fix, adoption failed import and alternatives remain.",
+    "audience": "Board shorthand explained, customer email preserves recipient-relevant next steps, comment retains maintenance rationale, longer procedure preserves opening/closing exceptions and owner handoff.",
+    "fidelity": "Unknown auth/retry/dependency details remain unknown. Final email bounds a delivery commitment without asserting an unknown delivery date. No unsupported claims identified in final candidate by root or blind reviewers.",
+    "regression": "Four current-source prior writing controls pass, including exact literary preservation."
+  },
+  "description_review": {
+    "matched": 21,
+    "total": 22,
+    "mismatches": [
+      {
+        "expected": {
+          "id": 8,
+          "query": "Review this already-good paragraph for actual errors only; do not change my punctuation for style.",
+          "should_trigger": true,
+          "reason": "Restrained editing is in scope"
+        },
+        "actual": {
+          "id": 8,
+          "should_trigger": false,
+          "reason": "This is a narrow check for actual errors in a paragraph, with stylistic editing expressly restricted. It does not ask for naturalness, voice work, or substantial reader-facing composition."
+        }
+      }
+    ],
+    "method": "Independent description interpretation; not actual host auto-selection"
+  },
+  "scope_limit": "Observed artifacts and recorded actions audited; broader filesystem effects not independently assessed. No external interactions were requested or reported.",
+  "no_source_edit_after_confirmation_outcomes": true
+}

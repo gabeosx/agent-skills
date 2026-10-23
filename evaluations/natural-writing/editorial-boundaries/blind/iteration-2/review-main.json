@@ -1,0 +1,621 @@
+{
+  "cases": [
+    {
+      "id": 201,
+      "winner": "tie",
+      "reasoning": "Both are ready-to-use introductions and quick starts. B supplies shell exports and explicitly says delivery is not exactly once; A gives equally actionable numbered configuration steps and explains duplicate arrivals. These are equivalent ways to satisfy the request.",
+      "preference_severity": "none",
+      "A": {
+        "scores": {
+          "fidelity": 5,
+          "directness_and_selectivity": 5,
+          "specificity": 5,
+          "voice_and_genre": 5,
+          "cadence_and_rhetoric": 5,
+          "structure": 5,
+          "edit_restraint": 5,
+          "reader_relevance": 5
+        },
+        "expectations": [
+          {
+            "text": "Includes the CSV-to-HTTPS purpose, Python 3.12 and PostgreSQL 16 requirements, all three configuration/installation/use steps, preserving code strings.",
+            "passed": true,
+            "evidence": "“accepts CSV files and delivers their rows to a configured HTTPS endpoint”; “Python 3.12 and a PostgreSQL 16 service”; exact `pip install harbor-queue`, `DATABASE_URL`, `DESTINATION_URL` and `harbor-queue ingest orders.csv` appear."
+          },
+          {
+            "text": "Preserves at-least-once semantics, supplied delivery_id deduplication requirement, and does not imply exactly-once delivery.",
+            "passed": true,
+            "evidence": "“Delivery is at least once: a row may arrive more than once” and “must use the supplied `delivery_id` to deduplicate rows.”"
+          },
+          {
+            "text": "Preserves 25 MB limit and no partial import on rejected files; accurately describes supplied Authorization header if authentication is mentioned.",
+            "passed": true,
+            "evidence": "“Files over 25 MB are rejected without importing any rows”; “Configure the `Authorization` header with the credential value your endpoint requires.”"
+          },
+          {
+            "text": "Does not narrate the discarded macro, SQLite replacement/debug session, Redis branch, internal nickname, or review/editorial notes.",
+            "passed": true,
+            "evidence": "The text proceeds from “Quick start” through current “Delivery” and file limits; no discarded prototypes, internal nickname or editorial notes appear."
+          },
+          {
+            "text": "Does not present unshipped OAuth, S3 import, or dashboard as capabilities, or claim no external service is needed; at most 230 words.",
+            "passed": true,
+            "evidence": "“a PostgreSQL 16 service” preserves the external prerequisite; no OAuth/S3/dashboard capabilities appear. 107 whitespace-delimited words."
+          }
+        ],
+        "critical_failures": [],
+        "substantive_defects": [],
+        "strengths": [
+          "Current supported behavior and operating constraints are complete.",
+          "Numbered quick start is easy to follow."
+        ],
+        "weaknesses": []
+      },
+      "B": {
+        "scores": {
+          "fidelity": 5,
+          "directness_and_selectivity": 5,
+          "specificity": 5,
+          "voice_and_genre": 5,
+          "cadence_and_rhetoric": 5,
+          "structure": 5,
+          "edit_restraint": 5,
+          "reader_relevance": 5
+        },
+        "expectations": [
+          {
+            "text": "Includes the CSV-to-HTTPS purpose, Python 3.12 and PostgreSQL 16 requirements, all three configuration/installation/use steps, preserving code strings.",
+            "passed": true,
+            "evidence": "“accepts CSV files and delivers their rows to a configured HTTPS endpoint”; “Python 3.12 and PostgreSQL 16”; exact `pip install harbor-queue`, `DATABASE_URL`, `DESTINATION_URL` and `harbor-queue ingest orders.csv` appear."
+          },
+          {
+            "text": "Preserves at-least-once semantics, supplied delivery_id deduplication requirement, and does not imply exactly-once delivery.",
+            "passed": true,
+            "evidence": "“at least once”; “must deduplicate rows using the supplied `delivery_id`; delivery is not exactly once.”"
+          },
+          {
+            "text": "Preserves 25 MB limit and no partial import on rejected files; accurately describes supplied Authorization header if authentication is mentioned.",
+            "passed": true,
+            "evidence": "“Files over 25 MB are rejected without importing any of their rows”; “supply the configured `Authorization` header value.”"
+          },
+          {
+            "text": "Does not narrate the discarded macro, SQLite replacement/debug session, Redis branch, internal nickname, or review/editorial notes.",
+            "passed": true,
+            "evidence": "The entry contains purpose, “Quick start”, authentication, delivery semantics and file limit, with none of the discarded alternatives, nickname or review notes."
+          },
+          {
+            "text": "Does not present unshipped OAuth, S3 import, or dashboard as capabilities, or claim no external service is needed; at most 230 words.",
+            "passed": true,
+            "evidence": "“PostgreSQL running as an external service”; no unshipped capabilities. 113 whitespace-delimited words."
+          }
+        ],
+        "critical_failures": [],
+        "substantive_defects": [],
+        "strengths": [
+          "Runnable installation/configuration outline.",
+          "Explicit delivery semantics and external database requirement."
+        ],
+        "weaknesses": []
+      }
+    },
+    {
+      "id": 202,
+      "winner": "A",
+      "reasoning": "A selects exactly the requested retry, authentication and cache facts and their gaps. B is factually cautious, but its final paragraph about absent reliability results is an explicit source-hype rebuttal outside the requested reference subjects; its refactor/removal history also adds avoidable development framing. Removing that paragraph is a substantive relevance edit under the frozen fifth assertion.",
+      "preference_severity": "substantive",
+      "A": {
+        "scores": {
+          "fidelity": 5,
+          "directness_and_selectivity": 5,
+          "specificity": 5,
+          "voice_and_genre": 5,
+          "cadence_and_rhetoric": 5,
+          "structure": 5,
+          "edit_restraint": 5,
+          "reader_relevance": 5
+        },
+        "expectations": [
+          {
+            "text": "States failed export requests are retried automatically without inventing a count, interval, error policy, or delivery guarantee.",
+            "passed": true,
+            "evidence": "“Failed export requests are retried automatically”; “do not specify the retry count, backoff interval or behavior after retries are exhausted.”"
+          },
+          {
+            "text": "Does not infer OAuth or any other authentication protocol from a refactor; makes the authentication specification gap clear.",
+            "passed": true,
+            "evidence": "“The notes do not identify the authentication protocol”; no protocol is invented."
+          },
+          {
+            "text": "Preserves CACHE_URL and does not infer that all caches or external dependencies are absent from removal of experimental Redis.",
+            "passed": true,
+            "evidence": "“The shipped configuration accepts `CACHE_URL`” and “do not specify its backend or whether it is required.”"
+          },
+          {
+            "text": "Omits debugging mocks, proxy chronology and unsupported production-ready/robust claims; no more than 140 words.",
+            "passed": true,
+            "evidence": "Only the three configuration subjects appear; no mocks/proxy or reliability claim. 64 whitespace-delimited words."
+          },
+          {
+            "text": "Confines the entry to the requested reference subjects; omits source-hype rebuttals and development chronology that do not affect a current configuration choice.",
+            "passed": true,
+            "evidence": "Three substantive paragraphs cover retries, authentication and `CACHE_URL`; the closing sentence is the relevant backend/requiredness gap, with no hype rebuttal or development chronology."
+          }
+        ],
+        "critical_failures": [],
+        "substantive_defects": [],
+        "strengths": [
+          "Unknown specifications are explicit without invented defaults.",
+          "Reference stays focused on current configuration decisions."
+        ],
+        "weaknesses": []
+      },
+      "B": {
+        "scores": {
+          "fidelity": 5,
+          "directness_and_selectivity": 4,
+          "specificity": 5,
+          "voice_and_genre": 4,
+          "cadence_and_rhetoric": 5,
+          "structure": 4,
+          "edit_restraint": 4,
+          "reader_relevance": 3
+        },
+        "expectations": [
+          {
+            "text": "States failed export requests are retried automatically without inventing a count, interval, error policy, or delivery guarantee.",
+            "passed": true,
+            "evidence": "“Failed export requests now receive automatic retries”; “do not specify the retry count, backoff interval or behavior after retries are exhausted.”"
+          },
+          {
+            "text": "Does not infer OAuth or any other authentication protocol from a refactor; makes the authentication specification gap clear.",
+            "passed": true,
+            "evidence": "“the notes do not identify the protocol or describe the resulting authentication behavior”; no OAuth or other protocol is inferred."
+          },
+          {
+            "text": "Preserves CACHE_URL and does not infer that all caches or external dependencies are absent from removal of experimental Redis.",
+            "passed": true,
+            "evidence": "“`CACHE_URL` remains an accepted configuration setting”; “Its backend and whether it is required are unspecified”; Redis removal is explicitly not used to infer a backend."
+          },
+          {
+            "text": "Omits debugging mocks, proxy chronology and unsupported production-ready/robust claims; no more than 140 words.",
+            "passed": true,
+            "evidence": "No mocks or local proxy are mentioned, and “no load-test or reliability results to support a production-readiness claim” rejects rather than asserts unsupported readiness. 92 whitespace-delimited words."
+          },
+          {
+            "text": "Confines the entry to the requested reference subjects; omits source-hype rebuttals and development chronology that do not affect a current configuration choice.",
+            "passed": false,
+            "evidence": "“The notes include no load-test or reliability results to support a production-readiness claim” is a separate source-hype rebuttal outside retries/authentication/cache. “Authentication was refactored” and “experimental Redis dependency was removed” also retain development framing."
+          }
+        ],
+        "critical_failures": [],
+        "substantive_defects": [
+          "The final reliability-results paragraph is outside the requested technical-reference subjects and directly violates the instruction to omit source-hype rebuttals."
+        ],
+        "strengths": [
+          "Preserves all uncertainty and avoids invented technical specifications."
+        ],
+        "weaknesses": [
+          "Refactor and removed-dependency history make current configuration facts less immediate."
+        ]
+      }
+    },
+    {
+      "id": 203,
+      "winner": "tie",
+      "reasoning": "Both preserve the decision rationale, rejected alternatives, operational limitations and revisit triggers in a compact maintainable ADR. Differences such as “must be copied” versus “are copied” do not alter the closed-app backup requirement. Neither loses useful history or adds meeting chatter.",
+      "preference_severity": "none",
+      "A": {
+        "scores": {
+          "fidelity": 5,
+          "directness_and_selectivity": 5,
+          "specificity": 5,
+          "voice_and_genre": 5,
+          "cadence_and_rhetoric": 5,
+          "structure": 5,
+          "edit_restraint": 5,
+          "reader_relevance": 5
+        },
+        "expectations": [
+          {
+            "text": "Preserves 72-hour offline requirement, at most 2 GB, and one-writer context.",
+            "passed": true,
+            "evidence": "“up to 72 hours without connectivity”; “at most 2 GB on one laptop”; “one writer process.”"
+          },
+          {
+            "text": "Records all three considered alternatives with reasons for rejecting remote service and JSON and selecting SQLite.",
+            "passed": true,
+            "evidence": "“remote search service cannot meet the offline requirement”; JSON “rebuilding indexes for every search”; SQLite “local indexed queries without a separate service.”"
+          },
+          {
+            "text": "Preserves transactional batch-import protection and the one-writer limitation without promising concurrent writes.",
+            "passed": true,
+            "evidence": "“transactions protect batches of imports from partial commit”; “Only one writer is supported.”"
+          },
+          {
+            "text": "Keeps closed-app backups, unimplemented live backup, and both revisit triggers; omits meeting joke and editing-history note; at most 240 words.",
+            "passed": true,
+            "evidence": "“Backups must be copied while the app is closed”; “live-backup mechanism has not been implemented”; “multiple writers” and “beyond 2 GB” are both revisit triggers. No joke/editing history. 146 whitespace-delimited words."
+          }
+        ],
+        "critical_failures": [],
+        "substantive_defects": [],
+        "strengths": [
+          "Decision history serves future maintainers.",
+          "Costs and revisit conditions survive intact."
+        ],
+        "weaknesses": []
+      },
+      "B": {
+        "scores": {
+          "fidelity": 5,
+          "directness_and_selectivity": 5,
+          "specificity": 5,
+          "voice_and_genre": 5,
+          "cadence_and_rhetoric": 5,
+          "structure": 5,
+          "edit_restraint": 5,
+          "reader_relevance": 5
+        },
+        "expectations": [
+          {
+            "text": "Preserves 72-hour offline requirement, at most 2 GB, and one-writer context.",
+            "passed": true,
+            "evidence": "“without connectivity for up to 72 hours”; “at most 2 GB on one laptop”; “one writer process.”"
+          },
+          {
+            "text": "Records all three considered alternatives with reasons for rejecting remote service and JSON and selecting SQLite.",
+            "passed": true,
+            "evidence": "“remote search service cannot meet the offline requirement”; JSON “rebuilding indexes for every search”; SQLite “local indexed queries without a separate service.”"
+          },
+          {
+            "text": "Preserves transactional batch-import protection and the one-writer limitation without promising concurrent writes.",
+            "passed": true,
+            "evidence": "“Use transactions to prevent partial commits of import batches”; “Only one writer is supported.”"
+          },
+          {
+            "text": "Keeps closed-app backups, unimplemented live backup, and both revisit triggers; omits meeting joke and editing-history note; at most 240 words.",
+            "passed": true,
+            "evidence": "“Backups are copied while the app is closed; live backup has not been implemented”; “multiple writers” and “beyond 2 GB” are both revisit triggers. No joke/editing history. 138 whitespace-delimited words."
+          }
+        ],
+        "critical_failures": [],
+        "substantive_defects": [],
+        "strengths": [
+          "All requested ADR sections are useful and concise.",
+          "Preserves offline rationale and operational limitations."
+        ],
+        "weaknesses": []
+      }
+    },
+    {
+      "id": 204,
+      "winner": "tie",
+      "reasoning": "Both guides preserve exact configuration changes, security motivation, upgrade incompatibility, stopped-process backup and rollback order. B puts backup first; A gives a dedicated backup section before any import. Both are actionable and complete, without a substantive preference.",
+      "preference_severity": "none",
+      "A": {
+        "scores": {
+          "fidelity": 5,
+          "directness_and_selectivity": 5,
+          "specificity": 5,
+          "voice_and_genre": 5,
+          "cadence_and_rhetoric": 5,
+          "structure": 5,
+          "edit_restraint": 5,
+          "reader_relevance": 5
+        },
+        "expectations": [
+          {
+            "text": "Explicitly maps old endpoint to destination_url and states old key rejection in 2.0; retains both exact identifiers.",
+            "passed": true,
+            "evidence": "“Replace `endpoint` with `destination_url`. Version 2.0 rejects `endpoint`.”"
+          },
+          {
+            "text": "Requires PACKETLINE_TOKEN environment variable and removing the API key from configuration; preserves relevant motivation.",
+            "passed": true,
+            "evidence": "“into the `PACKETLINE_TOKEN` environment variable, then remove the key from the file”; “deliberately prevents new API keys from being saved in configuration files.”"
+          },
+          {
+            "text": "Explains 1.x queue compatibility on import but irreversible-to-1.x format upgrade and no automatic downgrade.",
+            "passed": true,
+            "evidence": "“Version 2.0 can read 1.x queue files, but importing them upgrades their format”; “Version 1.x cannot read the upgraded files”; “no automatic downgrade exists.”"
+          },
+          {
+            "text": "Requires stopped-process directory copy before first import and stopping 2.0/restoring that copy before 1.x rollback; omits target and unshipped dotfile alternatives; at most 220 words.",
+            "passed": true,
+            "evidence": "“Stop Packetline and copy the queue directory before the first import into 2.0”; rollback lists “Stop Packetline 2.0”, “Restore the pre-import queue directory copy”, “Launch Packetline 1.x.” No target/dotfile alternatives. 123 whitespace-delimited words."
+          }
+        ],
+        "critical_failures": [],
+        "substantive_defects": [],
+        "strengths": [
+          "Preserves the migration history that operators need.",
+          "Rollback actions are explicit and ordered."
+        ],
+        "weaknesses": []
+      },
+      "B": {
+        "scores": {
+          "fidelity": 5,
+          "directness_and_selectivity": 5,
+          "specificity": 5,
+          "voice_and_genre": 5,
+          "cadence_and_rhetoric": 5,
+          "structure": 5,
+          "edit_restraint": 5,
+          "reader_relevance": 5
+        },
+        "expectations": [
+          {
+            "text": "Explicitly maps old endpoint to destination_url and states old key rejection in 2.0; retains both exact identifiers.",
+            "passed": true,
+            "evidence": "“Replace `endpoint` with `destination_url`”; “Version 2.0 rejects `endpoint`.”"
+          },
+          {
+            "text": "Requires PACKETLINE_TOKEN environment variable and removing the API key from configuration; preserves relevant motivation.",
+            "passed": true,
+            "evidence": "“to the `PACKETLINE_TOKEN` environment variable and remove it from the configuration file”; “deliberately prevents new API keys from being saved in configuration files.”"
+          },
+          {
+            "text": "Explains 1.x queue compatibility on import but irreversible-to-1.x format upgrade and no automatic downgrade.",
+            "passed": true,
+            "evidence": "“Version 2.0 can read 1.x queue files, but importing them upgrades their format”; “Packetline 1.x cannot read the upgraded files”; “There is no automatic downgrade.”"
+          },
+          {
+            "text": "Requires stopped-process directory copy before first import and stopping 2.0/restoring that copy before 1.x rollback; omits target and unshipped dotfile alternatives; at most 220 words.",
+            "passed": true,
+            "evidence": "Under “Before the first import”: “Stop Packetline and copy the queue directory.” Rollback: “Stop 2.0, restore the pre-import queue directory copy, then launch 1.x.” No target/dotfile alternatives. 118 whitespace-delimited words."
+          }
+        ],
+        "critical_failures": [],
+        "substantive_defects": [],
+        "strengths": [
+          "Backup comes first in the migration sequence.",
+          "Accurate old/new identifiers and data-format incompatibility."
+        ],
+        "weaknesses": []
+      }
+    },
+    {
+      "id": 205,
+      "winner": "tie",
+      "reasoning": "Both are auditable release recommendations retaining invalid evidence, all measured costs, clean first run, practiced replay and the untouched gate. B explicitly requests separate outcome recording; A explicitly requests correcting the UI status. Both additions serve reviewers and neither changes the evidence.",
+      "preference_severity": "none",
+      "A": {
+        "scores": {
+          "fidelity": 5,
+          "directness_and_selectivity": 5,
+          "specificity": 5,
+          "voice_and_genre": 5,
+          "cadence_and_rhetoric": 5,
+          "structure": 5,
+          "edit_restraint": 5,
+          "reader_relevance": 5
+        },
+        "expectations": [
+          {
+            "text": "Retains A initial 7/10 but explicitly invalidates its quality comparison because answer text leaked; does not erase the failed experiment or report it as valid.",
+            "passed": true,
+            "evidence": "“Candidate A answered 7/10 ... first run”; “answer text in the test index, invalidating the comparison as evidence of retrieval quality”; “marked invalid, along with its cost.”"
+          },
+          {
+            "text": "Distinguishes B clean first run 6/10 from practiced replay 8/10; does not describe replay as unseen confirmation or proof of readiness.",
+            "passed": true,
+            "evidence": "B’s “first clean development run answered 6/10”; replay “8/10 on the same practiced queries”; “does not establish performance on fresh queries.”"
+          },
+          {
+            "text": "Preserves measured costs $8, $11 and $5 or their clearly attributed total $24, including invalidated cost.",
+            "passed": true,
+            "evidence": "A cost “$8”; clean B “$11”; replay “$5”; “Total measured test cost ... $24, including the invalid run.”"
+          },
+          {
+            "text": "Keeps unrun six-query confirmation and release gate of at least 5/6 plus no leakage; recommends withholding readiness pending the gate.",
+            "passed": true,
+            "evidence": "“Recommendation: hold release”; requires “at least 5/6 ... reserved confirmation set and no answer-text leakage”; “six-query confirmation set, which remains unused.”"
+          },
+          {
+            "text": "Omit function-renaming/chart-color chatter and unsupported ready-to-ship framing; 180–250 words.",
+            "passed": true,
+            "evidence": "No renaming/color chatter; “development replay alone does not justify the current UI status.” 214 whitespace-delimited words, within 180–250."
+          }
+        ],
+        "critical_failures": [],
+        "substantive_defects": [],
+        "strengths": [
+          "Invalidation and failed first clean performance remain visible.",
+          "Costs and practiced-versus-fresh distinction support a grounded hold recommendation."
+        ],
+        "weaknesses": []
+      },
+      "B": {
+        "scores": {
+          "fidelity": 5,
+          "directness_and_selectivity": 5,
+          "specificity": 5,
+          "voice_and_genre": 5,
+          "cadence_and_rhetoric": 5,
+          "structure": 5,
+          "edit_restraint": 5,
+          "reader_relevance": 5
+        },
+        "expectations": [
+          {
+            "text": "Retains A initial 7/10 but explicitly invalidates its quality comparison because answer text leaked; does not erase the failed experiment or report it as valid.",
+            "passed": true,
+            "evidence": "“Candidate A answered 7/10 ... first run”; audit found “answer text in the test index, invalidating the comparison”; “Retain the result as invalid ... together with its cost.”"
+          },
+          {
+            "text": "Distinguishes B clean first run 6/10 from practiced replay 8/10; does not describe replay as unseen confirmation or proof of readiness.",
+            "passed": true,
+            "evidence": "“first clean development run answered 6/10”; replay “8/10”; “same practiced queries” and “does not establish performance on fresh queries.”"
+          },
+          {
+            "text": "Preserves measured costs $8, $11 and $5 or their clearly attributed total $24, including invalidated cost.",
+            "passed": true,
+            "evidence": "A “$8”; clean B “$11”; replay “$5”; “Total measured test cost ... $24, including the invalid run.”"
+          },
+          {
+            "text": "Keeps unrun six-query confirmation and release gate of at least 5/6 plus no leakage; recommends withholding readiness pending the gate.",
+            "passed": true,
+            "evidence": "“Hold release pending confirmation”; “at least 5/6 ... reserved confirmation set and no answer-text leakage”; “That set has not been run.”"
+          },
+          {
+            "text": "Omit function-renaming/chart-color chatter and unsupported ready-to-ship framing; 180–250 words.",
+            "passed": true,
+            "evidence": "No renaming/color chatter; “the UI's ‘ready to ship’ status is unsupported” and “current evidence supports further evaluation, not readiness.” 216 whitespace-delimited words, within 180–250."
+          }
+        ],
+        "critical_failures": [],
+        "substantive_defects": [],
+        "strengths": [
+          "Separates confirmation from development and replay.",
+          "Retains all quality and cost evidence, including invalid results."
+        ],
+        "weaknesses": []
+      }
+    },
+    {
+      "id": 206,
+      "winner": "B",
+      "reasoning": "B gives the customer all next steps while keeping delivery assurance bounded. A turns the source’s omission of a delivery date into the factual status claim “we don't yet have a delivery date”, which the thread does not establish. B says “we can't promise a delivery date yet”: this limits the commitment, consistent with dispatch not being a delivery promise, without asserting that no date is known.",
+      "preference_severity": "substantive",
+      "A": {
+        "scores": {
+          "fidelity": 2,
+          "directness_and_selectivity": 5,
+          "specificity": 2,
+          "voice_and_genre": 5,
+          "cadence_and_rhetoric": 5,
+          "structure": 5,
+          "edit_restraint": 4,
+          "reader_relevance": 3
+        },
+        "expectations": [
+          {
+            "text": "Addresses Jules, signs Nia, accurately gives $36 refund submitted today with usual 3–5 business days and no guarantee.",
+            "passed": true,
+            "evidence": "“Hi Jules”; “refund for your duplicate $36 delivery fee today”; “usually appears in 3–5 business days”; signed “Nia / Support Lead.”"
+          },
+          {
+            "text": "States replacement scheduled to dispatch Friday without promising Friday delivery; tracking follows dispatch and no resubmission is needed.",
+            "passed": true,
+            "evidence": "“scheduled to leave our warehouse Friday”; “That's the dispatch date”; “send your tracking information after dispatch”; “don't need to resubmit the request.”"
+          },
+          {
+            "text": "Does not reproduce debugging/blame chronology, second-option shorthand or writing directions.",
+            "passed": true,
+            "evidence": "The email contains refund/dispatch information and an apology (“sorry for the duplicate charge”); no engineering chronology, blame, second option or editorial instructions."
+          },
+          {
+            "text": "Does not claim a permanent fix or deployed prevention change, invent tracking or authorize a coupon.",
+            "passed": true,
+            "evidence": "No permanent fix/deployed change/coupon is claimed; “don't yet have ... tracking number” matches the source’s explicit lack of tracking."
+          },
+          {
+            "text": "Does not turn unsupplied logistics information into an assertion that it is absent or unknown to the sender; preserves the difference between source omission and real-world status.",
+            "passed": false,
+            "evidence": "“we don't yet have a delivery date” asserts a real-world information gap absent from the thread, which supplies only that Friday is dispatch rather than a delivery promise."
+          }
+        ],
+        "critical_failures": [
+          "Unsupported current logistics status: “we don't yet have a delivery date” is not supplied by the thread. Absence of a date in the source does not establish the sender lacks one."
+        ],
+        "substantive_defects": [],
+        "strengths": [
+          "Accurate refund, dispatch and tracking next steps.",
+          "Brief and direct customer-facing email."
+        ],
+        "weaknesses": [
+          "“extra follow-up” is a small unsourced characterization of the customer experience; it is not needed for the apology."
+        ]
+      },
+      "B": {
+        "scores": {
+          "fidelity": 5,
+          "directness_and_selectivity": 5,
+          "specificity": 5,
+          "voice_and_genre": 5,
+          "cadence_and_rhetoric": 5,
+          "structure": 5,
+          "edit_restraint": 5,
+          "reader_relevance": 5
+        },
+        "expectations": [
+          {
+            "text": "Addresses Jules, signs Nia, accurately gives $36 refund submitted today with usual 3–5 business days and no guarantee.",
+            "passed": true,
+            "evidence": "“Hi Jules”; “$36 delivery fee twice”; “submitted the refund today”; “usually appears in 3–5 business days”; signed “Nia / Support Lead.”"
+          },
+          {
+            "text": "States replacement scheduled to dispatch Friday without promising Friday delivery; tracking follows dispatch and no resubmission is needed.",
+            "passed": true,
+            "evidence": "“scheduled to leave our warehouse Friday”; “That's the dispatch date”; “will send [tracking] after dispatch”; “don't need to resubmit the request.”"
+          },
+          {
+            "text": "Does not reproduce debugging/blame chronology, second-option shorthand or writing directions.",
+            "passed": true,
+            "evidence": "Only the apology and customer actions/status appear; no engineering blame, second-option shorthand or writing directions."
+          },
+          {
+            "text": "Does not claim a permanent fix or deployed prevention change, invent tracking or authorize a coupon.",
+            "passed": true,
+            "evidence": "“We don't have tracking yet” accurately reflects the thread; no invented tracking, coupon, permanent fix or deployment claim."
+          },
+          {
+            "text": "Does not turn unsupplied logistics information into an assertion that it is absent or unknown to the sender; preserves the difference between source omission and real-world status.",
+            "passed": true,
+            "evidence": "“we can't promise a delivery date yet” bounds delivery commitment; it does not say the sender has no date. “We don't have tracking yet” is explicitly supplied by the source."
+          }
+        ],
+        "critical_failures": [],
+        "substantive_defects": [],
+        "strengths": [
+          "Customer gets the refund timeline and next action without unsupported operational status.",
+          "Distinguishes dispatch from a delivery commitment."
+        ],
+        "weaknesses": []
+      }
+    }
+  ],
+  "summary": {
+    "cases_reviewed": 6,
+    "wins": {
+      "A": 1,
+      "B": 1,
+      "tie": 4
+    },
+    "assertions": {
+      "A": {
+        "passed": 27,
+        "total": 28
+      },
+      "B": {
+        "passed": 27,
+        "total": 28
+      }
+    },
+    "critical_failures": {
+      "A": 1,
+      "B": 0
+    },
+    "substantive_defects": {
+      "A": 0,
+      "B": 1
+    },
+    "findings": [
+      "202: A wins on requested-reference relevance; B retains a prohibited source-hype rebuttal.",
+      "206: B wins on factual fidelity; A invents absence of a delivery date.",
+      "201, 203, 204 and 205 are genuine task-quality ties; no demonstrated advantage is inferred from equivalence."
+    ],
+    "claims_audit": [
+      "All quantities, commands, identifiers, operating conditions and evidence-status claims were checked against the task notes. No additional material unsupported claims were found beyond 206 A.",
+      "202 B’s no-load-test/reliability-results statement is supported by the notes but irrelevant to the requested reference subjects. Truth alone does not establish reader relevance.",
+      "206 B’s delivery wording is interpreted as limiting a promise, not establishing missing sender knowledge."
+    ],
+    "exact_checks": "Whitespace word counts A/B: 201 107/113; 202 64/92; 203 146/138; 204 123/118; 205 214/216. All requested word limits pass. Required code identifiers and numeric thresholds were checked in the quoted expectation evidence.",
+    "eval_feedback": [
+      "The assertions discriminate useful historical rationale from irrelevant chronology and correctly expose 206 A’s source-omission inference.",
+      "202’s fourth assertion permits an accurate reliability rebuttal while its fifth excludes it as irrelevant. These are compatible checks; this distinction should remain explicit in reporting. No criterion was changed."
+    ],
+    "limitations": "Single blind comparison of these six packets only; editorial preferences are provisional, not population-level superiority evidence."
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "expectations": [
+    {
+      "text": "Accurately states the 8 August 09:10–10:05 UTC impact, 312 affected accounts with one extra notification each, and no extra charges or invoice/ledger corruption.",
+      "passed": true,
+      "evidence": "Title supplies '8 August'; 'Between 09:10 and 10:05 UTC, 312 accounts received one extra invoice notification. The ledger and invoices remained correct, and no account received an extra charge.' Reconciliation found no missed notifications; support contact completed at 11:40 with unchanged amounts/payment status."
+    },
+    {
+      "text": "Explains the concurrency race between separate selection and claiming, the added second worker, and the missing two-worker checklist test.",
+      "passed": true,
+      "evidence": "'08:55 deployment of a second notification worker'; workers could choose the same rows because 'selecting and claiming work were separate operations.' Marking sent after external send let the other worker select/send. Checklist checked queue depth/successful sends but 'did not test two workers processing the same account concurrently.'"
+    },
+    {
+      "text": "Retains the failed batch-size mitigation, including its large-batch assumption and why reducing batches from 100 to 10 did not remove the race.",
+      "passed": true,
+      "evidence": "After the 09:22 support report, 'At 09:28, engineering reduced each worker's batch size from 100 to 10, assuming that large batches caused the overlap.' 'Duplicates continued because a smaller batch still allowed simultaneous selection of the same row.' It explains amount selected changed but claiming did not."
+    },
+    {
+      "text": "Distinguishes containment by pausing the second worker and draining work from the atomic-claim fix still being prepared; does not claim the permanent fix is deployed.",
+      "passed": true,
+      "evidence": "'At 09:46, engineering paused the second worker. The remaining worker drained already claimed work, and by 10:05 no new duplicates were observed.' Separately, engineering 'is preparing a fix that claims pending rows atomically before sending' with expiry; 'This fix has not been deployed.'"
+    },
+    {
+      "text": "Includes the assigned concurrency/recovery tests and checklist follow-up, preserving unset completion dates and the monitoring proposal's unresolved threshold and owner.",
+      "passed": true,
+      "evidence": "'Engineering owns a concurrency test with two workers and a recovery test for expired claims' before deployment. Operations lead owns the checklist two-worker check. 'Completion dates have not been set.' Monitoring would detect repeated notification identifiers within sending window; 'Its threshold and owner still need agreement.'"
+    },
+    {
+      "text": "Excludes the mistaken working title, timeline-formatting history, and scratch instruction about reconstruction effort without removing operationally relevant incident history.",
+      "passed": true,
+      "evidence": "Complete review excludes the working title, formatting revisions and reconstruction-effort instruction. It retains deployment, report, failed batch reduction, pausing/draining, reconciliation and notification history. Total length is 330 whitespace-delimited words including title, within 300–420."
+    }
+  ],
+  "summary": {
+    "passed": 6,
+    "failed": 0,
+    "total": 6,
+    "pass_rate": 1.0
+  },
+  "scores": {
+    "fidelity": 5,
+    "directness_and_selectivity": 5,
+    "specificity": 5,
+    "voice_and_genre": 5,
+    "cadence_and_rhetoric": 5,
+    "structure": 5,
+    "edit_restraint": 5,
+    "reader_relevance": 5
+  },
+  "critical_failures": [],
+  "review_method": "Independent single blind agent review; not human feedback",
+  "review_source": "blind/confirmation/review.json",
+  "output_sha256": "eff076bad59e520f8c082e6ea1cb60660a68a3cbdbbf8b843e903ed5c706cc84"
+}

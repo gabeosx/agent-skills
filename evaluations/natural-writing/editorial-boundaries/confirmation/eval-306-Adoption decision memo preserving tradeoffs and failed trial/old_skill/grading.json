@@ -1,0 +1,54 @@
+{
+  "expectations": [
+    {
+      "text": "Recommends a one-quarter food-delivery-only Harbor pilot at $90 per month, leaving other programs on current calendars and requiring a named administrator, export rehearsal, and checked route mapping before launch.",
+      "passed": true,
+      "evidence": "'Approve Harbor for a one-quarter pilot in the food-delivery program, conditional on a checked route mapping, a successful export rehearsal and a named administrator before launch.' Other programs retain calendars; later 'Harbor would cost $90 per month for this program; the trial was free.'"
+    },
+    {
+      "text": "Retains the failed initial import affecting four volunteers, the inconsistent-route-name cause, its correction, and its relevance to migration readiness.",
+      "passed": true,
+      "evidence": "First-week CSV import assigned 'four volunteers to the wrong route because old route names were inconsistent.' Team corrected/re-imported and no wrong-route assignment remained after second import. 'Checking that mapping is a prerequisite for the pilot.'"
+    },
+    {
+      "text": "Accurately uses the 24-volunteer trial, 19 link users and five phone users without inventing why phone users did not use the link or claiming phone handling is eliminated.",
+      "passed": true,
+      "evidence": "Two-week trial had '24 volunteers and two coordinators'; 'Nineteen volunteers accepted at least one shift through the link; five booked by phone, with a coordinator entering their shifts.' The record does not explain why; phone booking/data entry remained necessary."
+    },
+    {
+      "text": "Compares Harbor with the shared spreadsheet and separate calendars using their actual cost/conflict/reconciliation tradeoffs, without treating the two spreadsheet conflicts as a valid comparative rate.",
+      "passed": true,
+      "evidence": "Harbor showed conflicting assignments across two test routes. Protected-column spreadsheet avoids subscription cost and accommodates phone but needs manual conflict checking. Two conflicts were found in a one-week exercise; 'There is no comparable Harbor conflict-rate measurement.' Separate calendars avoid migration/subscription cost but retain email reconciliation and no combined conflict view."
+    },
+    {
+      "text": "Does not annualize the 11 observed reconciliation hours, claim measured Harbor time savings, assume proven export reversibility, invent an administrator, or supply unagreed numerical success thresholds; preserves the end-of-quarter stop/extend/expand review.",
+      "passed": true,
+      "evidence": "11 combined hours over two observed weeks 'does not establish annual savings or how much time Harbor would save'; time savings not measured. Export/rebuilding rehearsal includes phone-entered bookings; reversibility not demonstrated. Director must name administrator and 'nobody has volunteered.' Quarter-end review covers time/conflicts/booking methods/admin workload to 'stop, extend or expand'; 'Numerical success thresholds still need agreement.'"
+    },
+    {
+      "text": "Excludes slide orientation, icon preferences, and evenings spent polishing the presentation while retaining decision-relevant evaluation history and rationale.",
+      "passed": true,
+      "evidence": "No orientation, icon or presentation-polishing history appears. Import failure/correction, uptake uncertainty, alternative exercise, export gap and workload remain. Length is 365 whitespace-delimited words including title, within 300–420."
+    }
+  ],
+  "summary": {
+    "passed": 6,
+    "failed": 0,
+    "total": 6,
+    "pass_rate": 1.0
+  },
+  "scores": {
+    "fidelity": 5,
+    "directness_and_selectivity": 5,
+    "specificity": 5,
+    "voice_and_genre": 5,
+    "cadence_and_rhetoric": 5,
+    "structure": 5,
+    "edit_restraint": 5,
+    "reader_relevance": 5
+  },
+  "critical_failures": [],
+  "review_method": "Independent single blind agent review; not human feedback",
+  "review_source": "blind/confirmation/review.json",
+  "output_sha256": "48b545a8fee4c30f09fde7ddcad78ba22d063435910ceeee24e01bb7f14ca2b2"
+}

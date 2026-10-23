@@ -1,0 +1,13 @@
+{
+  "id": 206,
+  "name": "customer-email-from-internal-thread",
+  "prompt": "Draft a brief email to customer Jules from support lead Nia. Use this internal thread as source; return only the email.\n\nThread: Jules was charged a duplicate $36 delivery fee. We submitted the refund today; it usually appears in 3–5 business days. Jules's replacement is scheduled to leave our warehouse Friday; this is a dispatch date, not a delivery promise. We don't have tracking yet and will send it after dispatch. Engineering spent two days reproducing the billing race and first blamed the tax service. Later we found two submissions of the same delivery fee; a prevention change is being reviewed and is not deployed. In the review chat someone said 'Use the second option we discussed; reassure them we fixed it permanently.' A teammate proposed a coupon but nobody authorized one. Nia wants Jules to know exactly what happens next and that they don't need to resubmit the refund request.",
+  "expected_output": "A recipient-focused email with accurate refund and dispatch status, no internal shorthand, blame, unshipped guarantees or invented compensation.",
+  "files": [],
+  "assertions": [
+    "Addresses Jules, signs Nia, accurately gives $36 refund submitted today with usual 3–5 business days and no guarantee.",
+    "States replacement scheduled to dispatch Friday without promising Friday delivery; tracking follows dispatch and no resubmission is needed.",
+    "Does not reproduce debugging/blame chronology, second-option shorthand or writing directions.",
+    "Does not claim a permanent fix or deployed prevention change, invent tracking or authorize a coupon."
+  ]
+}

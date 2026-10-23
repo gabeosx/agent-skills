@@ -1,0 +1,54 @@
+{
+  "expectations": [
+    {
+      "text": "Produces a 450–600 word procedure with the requested title, a 6:45 p.m. warning, the 7 p.m. transaction boundary, and two volunteers remaining through closure.",
+      "passed": true,
+      "evidence": "572 whitespace-delimited words including headings. Title is 'Evening handover for the community tool library'; 'At 6:45 p.m., tell visitors'; 'At 7 p.m., let visitors already at the counter finish their current transaction. New transactions must wait until the next opening.' Opening specifies that the lead and one other volunteer 'stay until all closing checks are complete.'"
+    },
+    {
+      "text": "Gives actionable return checks, records observed missing parts/damage, quarantines visibly unsafe tools without testing or repair, and leaves disputed charges to the coordinator.",
+      "passed": true,
+      "evidence": "'Match each item to its loan record, then count loose parts against the laminated checklist'; 'Record missing parts and visible damage ... before closing the loan.' Unsafe tools go in the 'locked quarantine cupboard' with a red tag describing the observed fault; 'Do not test or repair suspect tools.' Disputes require recording the borrower's account and leaving the charge decision to the coordinator, with 'do not make a new charge at closing' and receipt contact details."
+    },
+    {
+      "text": "Preserves exception handling for undocumented returns and reservation mismatches without guessing borrower identity, completing unrelated loans, or canceling reservations.",
+      "passed": true,
+      "evidence": "'Leave undocumented items on the returns table with a dated note describing what is known. Do not guess the borrower or close an unrelated loan.' They are included in the log. 'Check the paper pickup list against the reservation screen'; retain existing name cards on the reservation shelf, 'Do not cancel reservations,' and log list mismatches."
+    },
+    {
+      "text": "Includes a witnessed cash count, dated and jointly initialed sheet, dated/totaled sealed envelope in the locked drawer, and records/escalates discrepancies without inventing a reconciliation policy.",
+      "passed": true,
+      "evidence": "'With the second volunteer present, count the donation box, the library's only cash container.' The dated donation sheet receives the total and both initials. 'Seal the cash in an envelope marked with the date and total, then place it in the locked office drawer.' 'Record any cash discrepancy and inform the coordinator; no discrepancy-resolution policy is established in the notebook.'"
+    },
+    {
+      "text": "Explains the handover log's required contents, responsible roles and acknowledgment, selective coordinator notification, and the final lock checks and caretaker response if a door cannot secure.",
+      "passed": true,
+      "evidence": "The shared-folder log includes date, both names, unresolved returns, damage/quarantine, reservation mismatches, cash discrepancies, follow-up and identifiers. It assigns 'next shift lead for routine checks, coordinator for borrower disputes and cash discrepancies, equipment steward for quarantined tools' and marks unaccepted issues unresolved. 'Send the coordinator the log link' only for dispute, cash or safety issues; next lead acknowledges at shift start. Lead checks cupboard/drawer; second volunteer checks back door; lead locks front and checks handle. 'If any door will not secure, stay together inside and call the building caretaker' using the entrance-wall number; do not leave unsecured."
+    },
+    {
+      "text": "Preserves the refrigerator/main-power exceptions and clear exits while excluding the log-merger story, lost draft, unreadable screenshot, stationery anecdote, and instruction embedded in the marginal note.",
+      "passed": true,
+      "evidence": "'Keep exits clear'; 'Leave the refrigerator and the building's main power switch on.' Complete text contains none of the excluded production history or marginal instruction. It gives current shared-folder instructions directly."
+    }
+  ],
+  "summary": {
+    "passed": 6,
+    "failed": 0,
+    "total": 6,
+    "pass_rate": 1.0
+  },
+  "scores": {
+    "fidelity": 5,
+    "directness_and_selectivity": 5,
+    "specificity": 5,
+    "voice_and_genre": 5,
+    "cadence_and_rhetoric": 5,
+    "structure": 5,
+    "edit_restraint": 5,
+    "reader_relevance": 5
+  },
+  "critical_failures": [],
+  "review_method": "Independent single blind agent review; not human feedback",
+  "review_source": "blind/confirmation/review.json",
+  "output_sha256": "dced30f9700f91c3a23db35863e3315bb4691d7d9afb35eab0fa8e5fb208e841"
+}

@@ -1,0 +1,54 @@
+{
+  "expectations": [
+    {
+      "text": "Recommends a one-quarter food-delivery-only Harbor pilot at $90 per month, leaving other programs on current calendars and requiring a named administrator, export rehearsal, and checked route mapping before launch.",
+      "passed": true,
+      "evidence": "Opening recommends 'a one-quarter pilot in the food-delivery program, conditional on a successful export rehearsal, a checked route mapping, and a named administrator before launch.' Other programs retain current calendars. Later: 'Harbor would cost $90 per month for this pilot, following a free trial.'"
+    },
+    {
+      "text": "Retains the failed initial import affecting four volunteers, the inconsistent-route-name cause, its correction, and its relevance to migration readiness.",
+      "passed": true,
+      "evidence": "'The first week's CSV import assigned four volunteers to the wrong route because the old route names were inconsistent.' Corrected mapping/re-import left no wrong-route assignment. 'Checking route mappings before the pilot is essential,' and maintenance is assigned to administrator's duties."
+    },
+    {
+      "text": "Accurately uses the 24-volunteer trial, 19 link users and five phone users without inventing why phone users did not use the link or claiming phone handling is eliminated.",
+      "passed": true,
+      "evidence": "'24 volunteers and two coordinators' in two weeks; 'Nineteen volunteers accepted at least one shift through the link. Five used phone calls, with a coordinator entering their shifts; the record does not explain their choice.' It explicitly says phone bookings and manual entry remained necessary."
+    },
+    {
+      "text": "Compares Harbor with the shared spreadsheet and separate calendars using their actual cost/conflict/reconciliation tradeoffs, without treating the two spreadsheet conflicts as a valid comparative rate.",
+      "passed": true,
+      "evidence": "Harbor provides a conflict view across two test routes at $90/month. Protected-column spreadsheet has no new subscription and permits phone bookings but requires manual checks. Its two conflicts in one week 'does not establish which approach has a lower conflict rate' without comparable Harbor measurements. Separate calendars avoid migration/subscription costs while retaining email reconciliation and no combined view."
+    },
+    {
+      "text": "Does not annualize the 11 observed reconciliation hours, claim measured Harbor time savings, assume proven export reversibility, invent an administrator, or supply unagreed numerical success thresholds; preserves the end-of-quarter stop/extend/expand review.",
+      "passed": true,
+      "evidence": "11 combined hours in two weeks are 'not an estimate of annual savings'; trial did not measure time saved. CSV interface exists but 'reversibility has not yet been demonstrated'; rehearsal must rebuild schedules including phone-entered bookings. Director must name administrator; 'nobody has volunteered.' Quarter-end reviews time, conflicts, booking methods and administration to 'stop, extend, or expand'; numerical thresholds still require agreement, with no values invented."
+    },
+    {
+      "text": "Excludes slide orientation, icon preferences, and evenings spent polishing the presentation while retaining decision-relevant evaluation history and rationale.",
+      "passed": true,
+      "evidence": "Complete memo omits the presentation orientation, anchor icon and polishing instruction. It retains import failure/correction, trial limits, alternative exercise, duties and pending export test. Length is 366 whitespace-delimited words including title, within 300–420."
+    }
+  ],
+  "summary": {
+    "passed": 6,
+    "failed": 0,
+    "total": 6,
+    "pass_rate": 1.0
+  },
+  "scores": {
+    "fidelity": 5,
+    "directness_and_selectivity": 5,
+    "specificity": 5,
+    "voice_and_genre": 5,
+    "cadence_and_rhetoric": 5,
+    "structure": 5,
+    "edit_restraint": 5,
+    "reader_relevance": 5
+  },
+  "critical_failures": [],
+  "review_method": "Independent single blind agent review; not human feedback",
+  "review_source": "blind/confirmation/review.json",
+  "output_sha256": "d5178c716a7b76e40b6de39c916bdbc0f36fcac0fa4e8d239616dcf282c47853"
+}

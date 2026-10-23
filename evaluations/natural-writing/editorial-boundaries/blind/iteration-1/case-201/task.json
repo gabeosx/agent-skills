@@ -1,0 +1,14 @@
+{
+  "id": 201,
+  "name": "readme-from-development-notes",
+  "prompt": "Write a README introduction and quick start, at most 230 words, for an engineer encountering Harbor Queue for the first time. Use the notes below as your source. Return the README text only.\n\nProject notes:\n- Harbor Queue accepts CSV files and delivers their rows to a configured HTTPS endpoint.\n- At the first design meeting we compared a spreadsheet macro, a polling daemon and a hosted queue. We argued about the polling interval for most of Tuesday. The macro prototype was discarded before any public release.\n- Current supported release requires Python 3.12 and PostgreSQL 16. Install with `pip install harbor-queue`; set `DATABASE_URL` and `DESTINATION_URL`; then run `harbor-queue ingest orders.csv`.\n- We initially used SQLite. After a test hang we spent an afternoon replacing it with PostgreSQL. A branch with Redis was deleted; PostgreSQL is still a required external service.\n- Current delivery semantics are at least once. Consumers must deduplicate rows using the supplied `delivery_id`. Delivery is not exactly once.\n- Release review settled on the new internal name 'harbormaster' for the scheduler. This nickname is not an interface or configuration value.\n- The current release rejects files over 25 MB. Rejected files are not partially imported.\n- We tried an OAuth callback but did not ship it. Current endpoint credentials are sent as the configured `Authorization` header; the operator supplies the value.\n- A team member proposed S3 import and a dashboard for next quarter. Neither is implemented or scheduled.\n- The PR description should explain how we got here, and somebody wanted a closing paragraph saying we had carefully simplified everything. Those were review notes, not release behavior.\n- This is the first public release; users have no earlier release to migrate from.",
+  "expected_output": "Current-product README with usable setup and limits, without a design diary or hidden team shorthand.",
+  "files": [],
+  "assertions": [
+    "Includes the CSV-to-HTTPS purpose, Python 3.12 and PostgreSQL 16 requirements, all three configuration/installation/use steps, preserving code strings.",
+    "Preserves at-least-once semantics, supplied delivery_id deduplication requirement, and does not imply exactly-once delivery.",
+    "Preserves 25 MB limit and no partial import on rejected files; accurately describes supplied Authorization header if authentication is mentioned.",
+    "Does not narrate the discarded macro, SQLite replacement/debug session, Redis branch, internal nickname, or review/editorial notes.",
+    "Does not present unshipped OAuth, S3 import, or dashboard as capabilities, or claim no external service is needed; at most 230 words."
+  ]
+}

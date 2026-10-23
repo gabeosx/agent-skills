@@ -1,0 +1,49 @@
+{
+  "expectations": [
+    {
+      "text": "Retains A initial 7/10 but explicitly invalidates its quality comparison because answer text leaked; does not erase the failed experiment or report it as valid.",
+      "passed": true,
+      "evidence": "“Candidate A answered 7/10 ... first run”; audit found “answer text in the test index, invalidating the comparison”; “Retain the result as invalid ... together with its cost.”"
+    },
+    {
+      "text": "Distinguishes B clean first run 6/10 from practiced replay 8/10; does not describe replay as unseen confirmation or proof of readiness.",
+      "passed": true,
+      "evidence": "“first clean development run answered 6/10”; replay “8/10”; “same practiced queries” and “does not establish performance on fresh queries.”"
+    },
+    {
+      "text": "Preserves measured costs $8, $11 and $5 or their clearly attributed total $24, including invalidated cost.",
+      "passed": true,
+      "evidence": "A “$8”; clean B “$11”; replay “$5”; “Total measured test cost ... $24, including the invalid run.”"
+    },
+    {
+      "text": "Keeps unrun six-query confirmation and release gate of at least 5/6 plus no leakage; recommends withholding readiness pending the gate.",
+      "passed": true,
+      "evidence": "“Hold release pending confirmation”; “at least 5/6 ... reserved confirmation set and no answer-text leakage”; “That set has not been run.”"
+    },
+    {
+      "text": "Omit function-renaming/chart-color chatter and unsupported ready-to-ship framing; 180–250 words.",
+      "passed": true,
+      "evidence": "No renaming/color chatter; “the UI's ‘ready to ship’ status is unsupported” and “current evidence supports further evaluation, not readiness.” 216 whitespace-delimited words, within 180–250."
+    }
+  ],
+  "summary": {
+    "passed": 5,
+    "failed": 0,
+    "total": 5,
+    "pass_rate": 1.0
+  },
+  "scores": {
+    "fidelity": 5,
+    "directness_and_selectivity": 5,
+    "specificity": 5,
+    "voice_and_genre": 5,
+    "cadence_and_rhetoric": 5,
+    "structure": 5,
+    "edit_restraint": 5,
+    "reader_relevance": 5
+  },
+  "critical_failures": [],
+  "review_method": "Independent single blind agent review; not human feedback",
+  "review_source": "blind/iteration-2/review.json",
+  "output_sha256": "3f20173367eba8c3d9f4b58555d4eb80ed6eda10f9395e6b2495fa7dd833ae77"
+}

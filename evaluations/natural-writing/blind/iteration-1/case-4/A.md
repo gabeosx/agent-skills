@@ -1,0 +1,3 @@
+Replication copies changes to another instance, including accidental deletions. It can improve availability by maintaining another instance of the data, but it is not a backup: a deletion propagated through replication also removes the data from the replica.
+
+A backup preserves an earlier state that can be restored according to the backup's retention policy. This provides a recovery option when the current state contains unwanted changes. Replication alone does not provide point-in-time recovery. For this system, point-in-time recovery requires a base backup and an unbroken sequence of write-ahead logs. Plan and verify those requirements separately from replication; the presence of a replica does not establish that an earlier state is recoverable.

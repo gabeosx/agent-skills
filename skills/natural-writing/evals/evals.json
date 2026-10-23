@@ -1,0 +1,105 @@
+{
+  "skill_name": "natural-writing",
+  "evals": [
+    {
+      "id": 1,
+      "name": "founder-announcement",
+      "prompt": "Write a punchy founder announcement for LinkedIn, 90–140 words. Facts: Fieldnote is a shared notebook for field technicians. Today we added offline notes. Notes sync after a connection returns; photos still need a connection. The feature is included on all plans. We built it after customers reported losing notes in basements. Existing notebooks need no migration. No customer counts, time-savings measurements, or launch discount are available. Sound like a founder speaking to customers.",
+      "expected_output": "An engaging grounded announcement with the photo caveat and no invented launch claims.",
+      "files": [],
+      "assertions": [
+        "Includes offline notes and automatic sync after connection returns without promising offline photos.",
+        "Retains all-plan inclusion and no migration for existing notebooks.",
+        "Does not invent quotations, adoption numbers, performance measures, launch offers, or founder experiences beyond the supplied facts.",
+        "90–140 words; reads as a publishable post without assistant wrapper."
+      ]
+    },
+    {
+      "id": 2,
+      "name": "uncertain-study",
+      "prompt": "Write a 100–150 word briefing paragraph for a hospital operations director from this synthetic study summary: In a voluntary four-week pilot at one clinic, 18 nurses used a scheduling tool. Median weekly scheduling time fell from 46 to 39 minutes. There was no control group; concurrent staffing changes may explain part of the change. Nine nurses returned the optional survey and six of those nine preferred the tool. The pilot did not measure patient safety. Recommend a next step without claiming causation or broader representativeness. No heading or bullets.",
+      "expected_output": "A measured briefing distinguishing observations, response denominator, unmeasured safety, and recommendation.",
+      "files": [],
+      "assertions": [
+        "Preserves 18 nurses, four weeks, one clinic, and voluntary participation.",
+        "Preserves median weekly 46 to 39 minutes with no causal claim and explains no control plus concurrent staffing changes.",
+        "States six of nine survey respondents preferred it rather than six of 18 or a majority of all nurses.",
+        "States patient safety was not measured; any next step is framed as recommendation, not a planned commitment.",
+        "100–150 words in one paragraph without heading or bullets."
+      ]
+    },
+    {
+      "id": 3,
+      "name": "source-poor-copy",
+      "prompt": "Make this product description more compelling, in 45–75 words. Only known facts: Bracken is a desk lamp with a replaceable LED module, a steel base, and a two-year warranty. Source: 'Bracken is a transformative lighting solution that seamlessly elevates every workspace. Its innovative design is a testament to our unwavering commitment to excellence.' No testing data, customer stories, price, dimensions, country of manufacture, or ergonomic or sustainability certifications are available. Return only the revised copy.",
+      "expected_output": "Specific copy using only supported features with no invented benefits.",
+      "files": [],
+      "assertions": [
+        "Includes replaceable LED module, steel base, and two-year warranty accurately.",
+        "No invented light-quality, comfort, durability, environmental, manufacturing, certification, price, or user-experience claims.",
+        "45–75 words and no assistant or editing commentary."
+      ]
+    },
+    {
+      "id": 4,
+      "name": "technical-distinction",
+      "prompt": "Rewrite for a database administrator handbook, 100–150 words, keeping the concept precise. Material: replication is not a backup. Replication copies changes, including accidental deletion, to another instance. A backup preserves a restorable earlier state according to its retention policy. Replication can improve availability but does not by itself supply point-in-time recovery. For this system, point-in-time recovery additionally requires a base backup and an unbroken sequence of write-ahead logs. Do not promise zero downtime or zero data loss. Use technical prose; explain the actual distinction even if it uses contrast.",
+      "expected_output": "Precise formal explanation that retains necessary contrast and recovery prerequisites.",
+      "files": [],
+      "assertions": [
+        "Distinguishes replication copying deletion from a backup retaining earlier restorable state under retention policy.",
+        "Preserves availability versus point-in-time recovery distinction.",
+        "Requires both base backup and unbroken write-ahead logs for this system.",
+        "No zero-downtime or zero-data-loss promise; 100–150 words."
+      ]
+    },
+    {
+      "id": 5,
+      "name": "voice-sample-email",
+      "prompt": "Draft a short customer email in my voice. Voice sample (style only): 'Hi Jo, The replacement went out this morning. I put the tracking number below. The first box took the scenic route; let's give this one a better chance. Thanks for sticking with us. —Mara' New facts: Address the customer as Lee. Their invoice has a duplicate $24 delivery charge. The refund was submitted today and usually appears in 3–5 business days. Their order is still scheduled for Tuesday. Sender Mara. Keep the warmth and dry understatement. Do not borrow the sample's shipping facts or repeat its scenic-route joke. Return only the email.",
+      "expected_output": "Warm restrained email with exact refund and delivery status, appropriate light dry voice.",
+      "files": [],
+      "assertions": [
+        "Addresses Lee and signs Mara without importing Jo or replacement/shipment claims.",
+        "Preserves duplicate $24 delivery charge and submitted-today refund with usual 3–5 business days rather than guarantee.",
+        "Preserves order scheduled for Tuesday without guaranteeing arrival.",
+        "Matches warmth and restrained dry voice without copying scenic-route wording or inventing events."
+      ]
+    },
+    {
+      "id": 6,
+      "name": "already-good-control",
+      "prompt": "Lightly proofread this paragraph for a small literary magazine. Change only actual errors; preserve every intentional stylistic choice, and return the paragraph without commentary. 'By six, the garden had gone blue. My father kept digging—slowly, as if the potatoes might object. We ate late; nobody mentioned the clock.'",
+      "expected_output": "The paragraph returned unchanged because it has no actual errors.",
+      "files": [],
+      "assertions": [
+        "Returns exactly the paragraph without surrounding quotation marks or commentary."
+      ]
+    },
+    {
+      "id": 7,
+      "name": "required-checklist",
+      "prompt": "Edit this deployment runbook to be clear and natural. Keep it a numbered checklist, retain all four steps and the rollback condition, and preserve all code spans exactly. Source: '1. First and foremost, it is crucial to run `deployctl status --env staging`. 2. Next, leverage the robust command `deployctl snapshot --label pre-release` to create a snapshot. 3. Then run `deployctl apply release.yaml --env staging`. 4. Finally, it is important to note that you must check `/healthz` for HTTP 200. If `/healthz` is not HTTP 200 after 60 seconds, run `deployctl rollback --label pre-release`. This underscores the importance of reliability.' Return only the edited checklist.",
+      "expected_output": "A usable four-step numbered runbook with exact commands and conditional rollback.",
+      "files": [],
+      "assertions": [
+        "Exactly four numbered steps in original operational order.",
+        "Every source code span is preserved exactly, including both /healthz occurrences and rollback command.",
+        "HTTP 200 check and rollback after 60 seconds on non-200 remain required, not optional or unconditional."
+      ]
+    },
+    {
+      "id": 8,
+      "name": "argument-not-filler",
+      "prompt": "Write a 120–180 word opinion paragraph for a neighborhood newsletter arguing against extending library hours this winter. Supplied position and evidence: evening attendance was 14 visits per night in last January's count; only one entrance would be staffed; the current proposal funds no additional security; the same budget can repair the inaccessible side ramp. These are the writer's priorities, not a neutral balanced overview. Acknowledge that late hours could help shift workers, but don't invent survey findings or speak for all residents. Keep a local, thoughtful voice and one paragraph.",
+      "expected_output": "A situated argument that retains concession and priority without fake resident experience or generic balanced essay.",
+      "files": [],
+      "assertions": [
+        "Advocates against the winter extension and prioritizes repairing the inaccessible side ramp using the same budget.",
+        "Retains 14 visits per night in last January's count, single staffed entrance, and no added security funding without changing implications into proven harm.",
+        "Acknowledges potential benefit to shift workers without inventing their preferences or surveys.",
+        "120–180 words, one paragraph, no invented personal experience or consensus."
+      ]
+    }
+  ]
+}

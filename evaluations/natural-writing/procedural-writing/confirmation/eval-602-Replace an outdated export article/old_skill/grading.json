@@ -1,0 +1,44 @@
+{
+  "expectations": [
+    {
+      "text": "The replacement preserves the fact that packages contain attachment filenames but omit the attachment files, and explains that needed attachments must be saved separately.",
+      "passed": true,
+      "evidence": "The final paragraph preserves record text and attachment filenames, excludes attachment files, and directs saving needed attachments separately in the same month subfolder."
+    },
+    {
+      "text": "The article does not require closing other tabs or erasing saved sign-ins before export; it uses the current account label and the job's Account and Month fields to establish the selected export context.",
+      "passed": true,
+      "evidence": "The introduction and step 1 establish the top-right label; step 4 checks job Account and Month. Other tabs and saved sign-ins are explicitly independent and no closure or erasure is required."
+    },
+    {
+      "text": "The workflow identifies Exports > Recent, Status = Complete, and Download package, and says existing queued or running jobs should be resumed rather than resubmitted.",
+      "passed": true,
+      "evidence": "Steps 2\u20135 resume existing queued/running jobs in Exports > Recent and wait for Status = Complete before Download package."
+    },
+    {
+      "text": "The article allows staff to close the browser and return later, and identifies Monthly review's month-named subfolder as the destination for packages and separate attachments.",
+      "passed": true,
+      "evidence": "The text explicitly permits closing the browser and returning to the same job in Recent. The saving section directs packages and needed attachments to the month-named subfolder within Monthly review."
+    },
+    {
+      "text": "The output is a replacement staff article with materially revised organization or wording, rather than a lightly edited copy, a change log, or a discussion of the rewrite.",
+      "passed": true,
+      "evidence": "It is a substantially rewritten staff article with a numbered start/resume workflow and a concise saving section."
+    }
+  ],
+  "summary": {
+    "passed": 5,
+    "failed": 0,
+    "total": 5,
+    "pass_rate": 1.0
+  },
+  "blind_review": "reviews/confirmation/602.json",
+  "output_sha256": "01c01d37a81065d6ae9ed1cc9c1cd7e651db65105fd7200d285460e9b916f14c",
+  "scores": {
+    "usefulness": 5,
+    "fidelity": 5,
+    "naturalness": 5
+  },
+  "critical": [],
+  "substantive": []
+}

@@ -1,0 +1,12 @@
+{
+  "expectations": [
+    {
+      "text": "Requested maximum length",
+      "passed": true,
+      "evidence": "135 words; maximum 240"
+    }
+  ],
+  "passed": 1,
+  "total": 1,
+  "method": "Exact/format constraints only; semantic review separate"
+}

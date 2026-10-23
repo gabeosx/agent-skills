@@ -1,0 +1,115 @@
+{
+  "method": "Independent description interpretation; not actual host selection",
+  "predictions": [
+    {
+      "id": 1,
+      "should_trigger": true,
+      "reason": "The request explicitly asks to make prose less corporate while preserving facts, which the description directly covers."
+    },
+    {
+      "id": 2,
+      "should_trigger": true,
+      "reason": "A customer announcement is reader-facing prose, and the requested personal voice falls within the described scope."
+    },
+    {
+      "id": 3,
+      "should_trigger": true,
+      "reason": "The request explicitly seeks to remove AI writing habits from an essay while preserving its argument."
+    },
+    {
+      "id": 4,
+      "should_trigger": true,
+      "reason": "Polishing a narrative to match the writer's sample and formal voice is directly covered by preserving and matching the writer's voice."
+    },
+    {
+      "id": 5,
+      "should_trigger": true,
+      "reason": "Revising a research summary for director readers is prose editing where phrasing, reader relevance, and factual fidelity matter."
+    },
+    {
+      "id": 6,
+      "should_trigger": true,
+      "reason": "Humanizing landing-page copy is an explicit prose-editing use case. The additional detector-guarantee question does not remove that editing task from scope, though the description does not supply such a guarantee."
+    },
+    {
+      "id": 7,
+      "should_trigger": true,
+      "reason": "Tightening a troubleshooting guide is editing technical documentation; embedded commands and numbered steps do not make the request code-only."
+    },
+    {
+      "id": 8,
+      "should_trigger": false,
+      "reason": "This is a narrow check for actual errors in a paragraph, with stylistic editing expressly restricted. It does not ask for naturalness, voice work, or substantial reader-facing composition."
+    },
+    {
+      "id": 9,
+      "should_trigger": false,
+      "reason": "The description expressly excludes judging whether a person used AI."
+    },
+    {
+      "id": 10,
+      "should_trigger": false,
+      "reason": "The request is code-only work, which the description expressly excludes."
+    },
+    {
+      "id": 11,
+      "should_trigger": false,
+      "reason": "The request is verbatim transcription, which the description expressly excludes."
+    },
+    {
+      "id": 12,
+      "should_trigger": false,
+      "reason": "A fixed word substitution with no other changes is a mechanical transformation, not prose drafting, stylistic editing, or reader-relevance review."
+    },
+    {
+      "id": 13,
+      "should_trigger": false,
+      "reason": "A one-sentence definition is a terminology question, with no request for naturalness editing or substantial reader-facing prose."
+    },
+    {
+      "id": 14,
+      "should_trigger": false,
+      "reason": "Counting punctuation and contractions into JSON is text analysis rather than prose composition or editing."
+    },
+    {
+      "id": 15,
+      "should_trigger": false,
+      "reason": "Configuring and benchmarking a detector API is technical implementation and measurement, not the writing work described by the skill."
+    },
+    {
+      "id": 16,
+      "should_trigger": false,
+      "reason": "Returning only a SQL query is code-only work, which the description excludes."
+    },
+    {
+      "id": 17,
+      "should_trigger": true,
+      "reason": "A README for first-time installers is explicitly covered, and selecting relevant background is a reader-relevance decision."
+    },
+    {
+      "id": 18,
+      "should_trigger": true,
+      "reason": "Polishing an incident review is editing a reader-facing report while retaining facts and details its engineering readers need."
+    },
+    {
+      "id": 19,
+      "should_trigger": true,
+      "reason": "An architecture decision record is substantial technical documentation whose explanation, tradeoffs, and reader relevance fall within the description."
+    },
+    {
+      "id": 20,
+      "should_trigger": true,
+      "reason": "The requested change is a prose rewrite of maintainer documentation inside a code comment, with meaning and caveats preserved; it is not code-only implementation."
+    },
+    {
+      "id": 21,
+      "should_trigger": false,
+      "reason": "Exporting exact Git metadata as JSON without summarization is data extraction, not reader-facing prose work."
+    },
+    {
+      "id": 22,
+      "should_trigger": false,
+      "reason": "Copying a transcript verbatim is an exact preservation task rather than prose editing, matching the description's verbatim-transcription exclusion."
+    }
+  ]
+}

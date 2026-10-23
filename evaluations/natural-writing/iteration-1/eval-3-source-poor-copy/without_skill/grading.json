@@ -1,0 +1,38 @@
+{
+  "expectations": [
+    {
+      "text": "Includes replaceable LED module, steel base, and two-year warranty accurately.",
+      "passed": true,
+      "evidence": "“replaceable LED module,” “A steel base,” and “a two-year warranty” are all present."
+    },
+    {
+      "text": "No invented light-quality, comfort, durability, environmental, manufacturing, certification, price, or user-experience claims.",
+      "passed": true,
+      "evidence": "“so replacing the light source doesn't mean replacing the whole lamp” is an ordinary implication of a replaceable module. “future beyond its first LED” expresses the same implication, not a measured lifetime, certification, or environmental claim. No unsupported comfort, performance, price, manufacturing, or user-history claims appear."
+    },
+    {
+      "text": "45–75 words and no assistant or editing commentary.",
+      "passed": true,
+      "evidence": "53 whitespace-delimited words; only revised product copy."
+    }
+  ],
+  "summary": {
+    "passed": 3,
+    "failed": 0,
+    "total": 3,
+    "pass_rate": 1.0
+  },
+  "scores": {
+    "Fidelity": 5,
+    "Directness and selectivity": 4,
+    "Specificity": 5,
+    "Voice and genre": 4,
+    "Cadence and rhetoric": 4,
+    "Structure": 5,
+    "Edit restraint": 5
+  },
+  "critical_failures": [],
+  "review_method": "Independent single blind agent review; not human feedback",
+  "review_source": "blind/iteration-1/review.json",
+  "output_sha256": "c34b20083b3476d454f79f8632d3acb6eec5ea5863754fcda10ca694c91d88bb"
+}

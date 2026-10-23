@@ -1,0 +1,46 @@
+{
+  "expectations": [
+    {
+      "text": "Addresses Jules, signs Nia, accurately gives $36 refund submitted today with usual 3–5 business days and no guarantee.",
+      "passed": true,
+      "evidence": "“Hi Jules” and signed “Nia / Support lead.” “duplicate $36 delivery fee”; “We submitted the refund today; it usually appears in 3–5 business days.” “Usually” retains uncertainty."
+    },
+    {
+      "text": "States replacement scheduled to dispatch Friday without promising Friday delivery; tracking follows dispatch and no resubmission is needed.",
+      "passed": true,
+      "evidence": "“replacement is scheduled to leave our warehouse Friday. That's the dispatch date”; “We'll send the tracking information after dispatch”; “You don't need to resubmit the request.” No Friday-delivery promise."
+    },
+    {
+      "text": "Does not reproduce debugging/blame chronology, second-option shorthand or writing directions.",
+      "passed": true,
+      "evidence": "The email contains only refund and dispatch next steps plus an apology; no engineering chronology, tax-service blame, second-option shorthand or writing directions appears."
+    },
+    {
+      "text": "Does not claim a permanent fix or deployed prevention change, invent tracking or authorize a coupon.",
+      "passed": true,
+      "evidence": "“we don't yet have a delivery date or tracking number” confirms tracking is unavailable; “We'll send the tracking information after dispatch” preserves its timing. No prevention deployment, permanent-fix claim or coupon appears. The delivery-date portion is separately flagged as unsupported."
+    }
+  ],
+  "summary": {
+    "passed": 4,
+    "failed": 0,
+    "total": 4,
+    "pass_rate": 1.0
+  },
+  "scores": {
+    "fidelity": 4,
+    "directness_and_selectivity": 5,
+    "specificity": 3,
+    "voice_and_genre": 5,
+    "cadence_and_rhetoric": 5,
+    "structure": 5,
+    "edit_restraint": 5,
+    "reader_relevance": 5
+  },
+  "critical_failures": [
+    "Unsupported factual status: “we don't yet have a delivery date.” The source establishes a scheduled Friday dispatch and that it is not a delivery promise, but does not establish whether a delivery date is known. This is an invented current customer-facing fact under the rubric's factual-invention rule."
+  ],
+  "review_method": "Independent single blind agent review; not human feedback",
+  "review_source": "blind/iteration-1/review.json",
+  "output_sha256": "9d8362042fb8f17e4f8f57df49f16ebf610ac765f01bd20aec620c68cd0be147"
+}

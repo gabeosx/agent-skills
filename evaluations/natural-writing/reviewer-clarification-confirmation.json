@@ -1,0 +1,6 @@
+{
+  "reviewer": "confirmation_blind_review",
+  "timing": "After provisional findings, before final review and unblinding",
+  "message": "Please also label any preference's severity: is it a substantive regression that makes one output require an edit before use, or a minor editorial preference between usable outputs? Apply the frozen rubric symmetrically; don't change scores to meet acceptance. Record this clarification in review metadata. This is to assess the predeclared 'no unresolved substantive style regression' gate. Preserve your original judgments.",
+  "effect": "Reviewer reported unchanged scores and preferences; no substantive style regression."
+}

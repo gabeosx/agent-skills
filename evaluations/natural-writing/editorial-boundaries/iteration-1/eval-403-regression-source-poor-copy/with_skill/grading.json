@@ -1,0 +1,39 @@
+{
+  "expectations": [
+    {
+      "text": "Includes replaceable LED module, steel base, and two-year warranty accurately.",
+      "passed": true,
+      "evidence": "“steel base,” “replaceable LED module,” and “two-year warranty” are all stated accurately."
+    },
+    {
+      "text": "No invented light-quality, comfort, durability, environmental, manufacturing, certification, price, or user-experience claims.",
+      "passed": true,
+      "evidence": "“When the module needs replacing, you can change that part of the lamp” explains the known replaceability. “a defined period of coverage from the start” restates the two-year warranty without promising a coverage scope or invented product benefit. No unprovided performance, sustainability, manufacturing, certification, price or experience claims appear."
+    },
+    {
+      "text": "45–75 words and no assistant or editing commentary.",
+      "passed": true,
+      "evidence": "48 whitespace-separated words, one paragraph of product copy beginning “Make room on your desk for Bracken”; no assistant/editorial commentary."
+    }
+  ],
+  "summary": {
+    "passed": 3,
+    "failed": 0,
+    "total": 3,
+    "pass_rate": 1.0
+  },
+  "scores": {
+    "fidelity": 5,
+    "directness_and_selectivity": 4,
+    "specificity": 5,
+    "voice_and_genre": 5,
+    "cadence_and_rhetoric": 5,
+    "structure": 5,
+    "reader_relevance": 5,
+    "edit_restraint": 5
+  },
+  "critical_failures": [],
+  "review_method": "Independent single blind agent review; not human feedback",
+  "review_source": "blind/iteration-1/review.json",
+  "output_sha256": "0331b74e4705e8ca754f9fcfb86b8f6dc7d74b62a41a097f7457c19e2021c39e"
+}

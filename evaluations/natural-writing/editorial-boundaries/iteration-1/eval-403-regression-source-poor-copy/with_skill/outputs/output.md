@@ -1,0 +1,1 @@
+Make room on your desk for Bracken, a lamp with a steel base and a replaceable LED module. When the module needs replacing, you can change that part of the lamp. Bracken also comes with a two-year warranty, giving you a defined period of coverage from the start.

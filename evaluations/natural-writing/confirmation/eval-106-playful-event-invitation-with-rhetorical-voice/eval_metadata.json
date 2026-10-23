@@ -1,0 +1,13 @@
+{
+  "eval_id": 106,
+  "eval_name": "playful-event-invitation-with-rhetorical-voice",
+  "prompt": "Write a 90–130 word invitation for the fictional Moss Street Library's tiny-zine swap. The narrator is a mock-grandiose town crier who is sincerely fond of the guests. Be playful: keep one deliberate rhetorical question and the phrase 'Citizens of the stapled republic'. A little theatrical excess is part of the voice. Use two short paragraphs, with no bullets, hashtags, or emoji.\n\nFacts to preserve: Saturday, 17 May, 2–4 p.m.; Moss Street Library, upstairs room; admission free; bring up to five zines to trade, or come empty-handed to browse; all ages welcome; the upstairs room has stair access only; the ground-floor desk has a small selection available for browsing. Do not invent refreshments, prizes, registration, a year, or an accessible route upstairs. Include the stair-only access and the ground-floor browsing option clearly within the invitation, without making either a joke.",
+  "assertions": [
+    "Contains 90–130 words in exactly two paragraphs, with no bullets, hashtags, or emoji.",
+    "Includes the exact phrase Citizens of the stapled republic and exactly one rhetorical question, retaining a warm mock-grandiose town-crier voice.",
+    "Accurately states Saturday, 17 May, 2–4 p.m. at Moss Street Library in the upstairs room, with free admission and all ages welcome.",
+    "Says guests may bring up to five zines to trade or come empty-handed to browse; does not imply that bringing zines is required.",
+    "Clearly states that upstairs access is by stairs only and that a small selection can be browsed at the ground-floor desk; neither access statement is presented as a joke or as a full equivalent of the upstairs event.",
+    "Does not invent refreshments, prizes, registration, a year, or an accessible route upstairs."
+  ]
+}

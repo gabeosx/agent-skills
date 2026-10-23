@@ -1,0 +1,34 @@
+{
+  "expectations": [
+    {
+      "text": "The guide names the receiving location and enters 6000 grams and $0.012 per gram, with cost per stock unit distinguished from total sack cost.",
+      "passed": true,
+      "evidence": "Names Items > select item > Receive existing stock; Flour uses grams and entries are 6000 and 0.012, derived from $72 / 6000 g and labeled per stock unit."
+    },
+    {
+      "text": "The check has observable fields and expected values, with correction before Post and a warning that blank cost becomes zero.",
+      "passed": true,
+      "evidence": "Step 2 supplies the precise expected Quantity and Cost values; step 3 tells operators to check both fields, directly correct either before Post, and warns blank cost is zero."
+    },
+    {
+      "text": "After posting, it uses the History receipt ID and inventory lead for audited correction; it invents neither an undo nor a cost-unit selector.",
+      "passed": true,
+      "evidence": "Names Items > select item > History with receipt ID; no edit or undo after posting, and the inventory lead performs an audited correction using that ID. Explicitly no cost-unit selector."
+    }
+  ],
+  "summary": {
+    "passed": 3,
+    "failed": 0,
+    "total": 3,
+    "pass_rate": 1.0
+  },
+  "blind_review": "reviews/development/501.json",
+  "output_sha256": "1e3877c4dd38cb72681ace59309d519ce45e6e9e46fdb446ba1d0eb0ddf29b96",
+  "scores": {
+    "usefulness": 5,
+    "fidelity": 5,
+    "naturalness": 5
+  },
+  "critical": [],
+  "substantive": []
+}

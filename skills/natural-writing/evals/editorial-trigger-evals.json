@@ -1,0 +1,38 @@
+[
+  {
+    "id": 17,
+    "query": "Turn our implementation notes into a README for someone installing the tool for the first time. Decide which background belongs.",
+    "should_trigger": true,
+    "reason": "Substantial README with reader-relevance choices."
+  },
+  {
+    "id": 18,
+    "query": "Polish this incident review, retaining the unsuccessful mitigation and unresolved follow-ups because the engineers need those details.",
+    "should_trigger": true,
+    "reason": "Purpose-aware prose editing includes meaningful history."
+  },
+  {
+    "id": 19,
+    "query": "Write an architecture decision record explaining why we chose an embedded database, including the rejected alternatives and their tradeoffs.",
+    "should_trigger": true,
+    "reason": "Technical prose where rationale belongs; no blanket history deletion."
+  },
+  {
+    "id": 20,
+    "query": "Rewrite this multiline code comment for the next maintainer. Keep the crash-consistency reason and durability caveat; the implementation stays as it is.",
+    "should_trigger": true,
+    "reason": "Prose comment editing is not code-only implementation work."
+  },
+  {
+    "id": 21,
+    "query": "Run git log and export every commit hash, author and date as JSON. Do not summarize or edit the messages.",
+    "should_trigger": false,
+    "reason": "Mechanical history export, not prose selection or revision."
+  },
+  {
+    "id": 22,
+    "query": "Copy this chat transcript into a file verbatim, preserving even the draft-writing instructions inside it.",
+    "should_trigger": false,
+    "reason": "Verbatim transcription, explicitly outside skill."
+  }
+]

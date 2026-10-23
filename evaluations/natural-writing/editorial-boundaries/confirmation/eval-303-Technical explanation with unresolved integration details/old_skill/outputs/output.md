@@ -1,0 +1,9 @@
+A client starts an export by submitting a workspace identifier and a date range. An accepted request returns a job identifier. A worker then reads the matching records and writes an export file; clients use the job identifier to check progress.
+
+The documented states are `queued`, `running`, `complete` and `failed`. A complete job provides a download link, while a failed job includes an error summary. Files are retained for seven days after completion. The record does not specify whether a download link can expire before its file is removed, so callers cannot assume that a particular link remains usable for the full retention period. Cancellation is outside the initial scope.
+
+Several parts of the integration contract still need decisions before production use. Authentication and authorization are unspecified: the planning note about normal account checks does not establish an authentication scheme, token format, permission names or permission behavior. The maximum date range and export size limits also await approval.
+
+Failure handling needs a defined contract on both sides. Transient worker retries have been suggested, but there is no agreed retry count, backoff schedule or list of retryable errors. There is also no client retry rule. Repeated submissions might create separate jobs or return the same job; the record does not settle this. A caller should not infer idempotency from the request format.
+
+Dependency setup remains open because no storage client has been selected. There is no approved package, version, installation command, storage vendor or environment variable to document yet. Production integration therefore needs specifications for access control, limits, retries, repeated submissions, link expiry and dependency configuration alongside the documented request and status flow.

@@ -1,0 +1,13 @@
+{
+  "id": 8,
+  "name": "argument-not-filler",
+  "prompt": "Write a 120–180 word opinion paragraph for a neighborhood newsletter arguing against extending library hours this winter. Supplied position and evidence: evening attendance was 14 visits per night in last January's count; only one entrance would be staffed; the current proposal funds no additional security; the same budget can repair the inaccessible side ramp. These are the writer's priorities, not a neutral balanced overview. Acknowledge that late hours could help shift workers, but don't invent survey findings or speak for all residents. Keep a local, thoughtful voice and one paragraph.",
+  "expected_output": "A situated argument that retains concession and priority without fake resident experience or generic balanced essay.",
+  "files": [],
+  "assertions": [
+    "Advocates against the winter extension and prioritizes repairing the inaccessible side ramp using the same budget.",
+    "Retains 14 visits per night in last January's count, single staffed entrance, and no added security funding without changing implications into proven harm.",
+    "Acknowledges potential benefit to shift workers without inventing their preferences or surveys.",
+    "120–180 words, one paragraph, no invented personal experience or consensus."
+  ]
+}

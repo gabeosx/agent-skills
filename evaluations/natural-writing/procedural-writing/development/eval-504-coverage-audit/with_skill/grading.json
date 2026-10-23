@@ -1,0 +1,41 @@
+{
+  "expectations": [
+    {
+      "text": "The review restores backup, workspace confirmation and irreversible Apply warning.",
+      "passed": true,
+      "evidence": "First replacement restores destination backup, intended-workspace confirmation before Apply, and Apply cannot be undone."
+    },
+    {
+      "text": "It restores matching TaskCode overwrite behavior rather than accepting a generic history warning as equivalent.",
+      "passed": true,
+      "evidence": "Second replacement states A matching TaskCode overwrites the existing task fields, rather than substituting history behavior."
+    },
+    {
+      "text": "It names both unsupported attachments and archived tasks without restoring the stale comments restriction.",
+      "passed": true,
+      "evidence": "Last replacement permits Comment-column import and excludes attachments and archived tasks; no obsolete comments restriction."
+    },
+    {
+      "text": "It supplies actionable replacement wording and does not invent new UI or mechanisms.",
+      "passed": false,
+      "evidence": "Actionable replacements are supplied, but Check TaskCode matches in the preview before applying assumes preview exposes matching TaskCodes or match information. Evidence only establishes previewing rows and overwrite semantics, not that verification mechanism."
+    }
+  ],
+  "summary": {
+    "passed": 3,
+    "failed": 1,
+    "total": 4,
+    "pass_rate": 0.75
+  },
+  "blind_review": "reviews/development/504.json",
+  "output_sha256": "3e79b399471837609e77d42d1a46679c6bdb3c2259c84828d1886b79f5050556",
+  "scores": {
+    "usefulness": 4,
+    "fidelity": 4,
+    "naturalness": 5
+  },
+  "critical": [],
+  "substantive": [
+    "Unsupported instruction: \"Check TaskCode matches in the preview before applying.\" The supplied evidence does not establish that the preview exposes matches or supports checking them; remove the invented check or obtain evidence for it."
+  ]
+}

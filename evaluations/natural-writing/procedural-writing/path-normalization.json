@@ -1,0 +1,17 @@
+[
+  {
+    "from": "confirmation/eval-601-manifest-delivery-handover/no_skill",
+    "to": "confirmation/eval-601-Manifest delivery handover/no_skill",
+    "action": "Administrative directory normalization only; output and run bytes unchanged; no resampling."
+  },
+  {
+    "from": "confirmation/eval-602-replace-an-outdated-export-article/no_skill",
+    "to": "confirmation/eval-602-Replace an outdated export article/no_skill",
+    "action": "Administrative directory normalization only; output and run bytes unchanged; no resampling."
+  },
+  {
+    "from": "confirmation/eval-603-room-sensor-quick-start/no_skill",
+    "to": "confirmation/eval-603-Room sensor quick start/no_skill",
+    "action": "Administrative directory normalization only; output and run bytes unchanged; no resampling."
+  }
+]

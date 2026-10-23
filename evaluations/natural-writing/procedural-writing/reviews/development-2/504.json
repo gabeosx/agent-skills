@@ -1,0 +1,107 @@
+{
+  "id": 504,
+  "labels": {
+    "A": {
+      "expectations": [
+        {
+          "text": "The review restores backup, workspace confirmation and irreversible Apply warning.",
+          "passed": true,
+          "evidence": "First replacement requires backing up destination, confirming destination workspace on Apply, and states Apply cannot be undone."
+        },
+        {
+          "text": "It restores matching TaskCode overwrite behavior rather than accepting a generic history warning as equivalent.",
+          "passed": true,
+          "evidence": "Adds the exact behavior: A matching TaskCode overwrites the existing task fields; separately deletes unsupported import-history limitation."
+        },
+        {
+          "text": "It names both unsupported attachments and archived tasks without restoring the stale comments restriction.",
+          "passed": true,
+          "evidence": "Replacement says comments import through Comment column and explicitly excludes attachments and archived tasks."
+        },
+        {
+          "text": "It supplies actionable replacement wording and does not invent new UI or mechanisms.",
+          "passed": true,
+          "evidence": "Provides four targeted fixes with replacement wording, using only supplied Import/CSV/Apply, TaskCode and Comment concepts; removes the unsupported history claim."
+        }
+      ],
+      "scores": {
+        "usefulness": 5,
+        "fidelity": 5,
+        "naturalness": 5
+      },
+      "critical": [],
+      "substantive": [],
+      "minor": []
+    },
+    "B": {
+      "expectations": [
+        {
+          "text": "The review restores backup, workspace confirmation and irreversible Apply warning.",
+          "passed": true,
+          "evidence": "First replacement restores backup before import, workspace confirmation before pressing Apply, and irreversible Apply warning."
+        },
+        {
+          "text": "It restores matching TaskCode overwrite behavior rather than accepting a generic history warning as equivalent.",
+          "passed": true,
+          "evidence": "Restores A matching TaskCode overwrites the existing task fields and does not treat the history statement as equivalent."
+        },
+        {
+          "text": "It names both unsupported attachments and archived tasks without restoring the stale comments restriction.",
+          "passed": true,
+          "evidence": "Replacement names Comment-column support and both unsupported attachments and archived tasks."
+        },
+        {
+          "text": "It supplies actionable replacement wording and does not invent new UI or mechanisms.",
+          "passed": true,
+          "evidence": "Four focused fixes contain actionable replacement sentences and remove the unevidenced history assertion without introducing mechanisms."
+        }
+      ],
+      "scores": {
+        "usefulness": 5,
+        "fidelity": 5,
+        "naturalness": 5
+      },
+      "critical": [],
+      "substantive": [],
+      "minor": []
+    },
+    "C": {
+      "expectations": [
+        {
+          "text": "The review restores backup, workspace confirmation and irreversible Apply warning.",
+          "passed": true,
+          "evidence": "First replacement restores backup, confirming selected workspace is intended destination before proceeding on Apply, and Apply cannot be undone."
+        },
+        {
+          "text": "It restores matching TaskCode overwrite behavior rather than accepting a generic history warning as equivalent.",
+          "passed": true,
+          "evidence": "Explicit overwrite warning states a matching TaskCode overwrites existing task fields; history limitation is removed independently."
+        },
+        {
+          "text": "It names both unsupported attachments and archived tasks without restoring the stale comments restriction.",
+          "passed": true,
+          "evidence": "Replacement permits comments through Comment column while retaining both attachments and archived tasks exclusions."
+        },
+        {
+          "text": "It supplies actionable replacement wording and does not invent new UI or mechanisms.",
+          "passed": true,
+          "evidence": "Targeted fix list supplies replacement wording for missing safeguards, overwrite behavior and import scope, and deletes unsupported history limitation. No new UI or mechanism is introduced."
+        }
+      ],
+      "scores": {
+        "usefulness": 5,
+        "fidelity": 5,
+        "naturalness": 5
+      },
+      "critical": [],
+      "substantive": [],
+      "minor": []
+    }
+  },
+  "preferred": [
+    "A",
+    "B",
+    "C"
+  ],
+  "reason": "All three preserve the consequential source facts and provide clear, usable wording; differences in headings, formatting or phrasing do not create a meaningful preference."
+}

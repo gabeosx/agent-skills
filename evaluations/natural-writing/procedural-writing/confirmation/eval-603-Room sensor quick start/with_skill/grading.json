@@ -1,0 +1,44 @@
+{
+  "expectations": [
+    {
+      "text": "The normal path covers power, Rooms and the intended room, Add sensor and code scanning, then Run sample; it does not make fault recovery part of every installation.",
+      "passed": true,
+      "evidence": "Steps 1\u20133 cover supplied-cable wall power, Rooms/intended room, Add sensor, back-code scan, then Run sample after the name appears. Recovery is under If something goes wrong."
+    },
+    {
+      "text": "The response identifies the room's Activity screen and Result = Received with Samples = 1 as the successful setup check.",
+      "passed": true,
+      "evidence": "Step 4 identifies that room\u2019s Activity screen with Result = Received and Samples = 1 as readiness confirmation."
+    },
+    {
+      "text": "Any included pairing reset remains conditional on Already paired, uses the six-second Pair-button hold, and is not required for a normally connecting new sensor.",
+      "passed": true,
+      "evidence": "The reset bullet is conditional on Already paired and specifies the recessed Pair button for six seconds until flashing blue; a final sentence says a normally connecting new sensor needs no reset."
+    },
+    {
+      "text": "Any included cable reseating, different outlet, room move, hub-distance change, or replacement cable is tied to its corresponding source symptom or visible damage, without inventing a universal prerequisite.",
+      "passed": true,
+      "evidence": "Each troubleshooting bullet matches its source symptom: dark after 20 seconds, wrong room, or Sensor offline. Replacement is limited to visible cable damage."
+    },
+    {
+      "text": "The output is a short guide for the colleague, using only the supplied controls and product facts.",
+      "passed": true,
+      "evidence": "The concise four-step guide and four conditional recovery bullets use only supplied controls and facts."
+    }
+  ],
+  "summary": {
+    "passed": 5,
+    "failed": 0,
+    "total": 5,
+    "pass_rate": 1.0
+  },
+  "blind_review": "reviews/confirmation/603.json",
+  "output_sha256": "832855445846119ead6116e0401c395b973f3b8162a85064009cd651ed307734",
+  "scores": {
+    "usefulness": 5,
+    "fidelity": 5,
+    "naturalness": 5
+  },
+  "critical": [],
+  "substantive": []
+}

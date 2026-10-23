@@ -1,0 +1,17 @@
+{
+  "files": [
+    "/Users/gabe/agent-skills/evaluations/natural-writing/iteration-3/eval-1-founder-announcement/with_skill/outputs/output.md",
+    "/Users/gabe/agent-skills/evaluations/natural-writing/iteration-3/eval-2-uncertain-study/with_skill/outputs/output.md",
+    "/Users/gabe/agent-skills/evaluations/natural-writing/iteration-3/eval-3-source-poor-copy/with_skill/outputs/output.md",
+    "/Users/gabe/agent-skills/evaluations/natural-writing/iteration-3/eval-4-technical-distinction/with_skill/outputs/output.md",
+    "/Users/gabe/agent-skills/evaluations/natural-writing/iteration-3/eval-5-voice-sample-email/with_skill/outputs/output.md",
+    "/Users/gabe/agent-skills/evaluations/natural-writing/iteration-3/eval-6-already-good-control/with_skill/outputs/output.md",
+    "/Users/gabe/agent-skills/evaluations/natural-writing/iteration-3/eval-7-required-checklist/with_skill/outputs/output.md",
+    "/Users/gabe/agent-skills/evaluations/natural-writing/iteration-3/eval-8-argument-not-filler/with_skill/outputs/output.md"
+  ],
+  "utc_write_timestamp": "2026-10-23T20:51:07.119238+00:00",
+  "generation_time_seconds": null,
+  "tokens": null,
+  "cost": null,
+  "build": null
+}

@@ -1,0 +1,43 @@
+{
+  "expectations": [
+    {
+      "text": "Distinguishes replication copying deletion from a backup retaining earlier restorable state under retention policy.",
+      "passed": true,
+      "evidence": "“Replication copies changes to another instance, including accidental deletions”; “A backup preserves an earlier state that can be restored, subject to its retention policy.”"
+    },
+    {
+      "text": "Preserves availability versus point-in-time recovery distinction.",
+      "passed": true,
+      "evidence": "“It can improve availability”; “point-in-time recovery requires both a base backup and an unbroken sequence of write-ahead logs”; “Replication alone does not provide those recovery materials.” These sentences make clear that availability is not sufficient recovery."
+    },
+    {
+      "text": "Requires both base backup and unbroken write-ahead logs for this system.",
+      "passed": true,
+      "evidence": "“For this system, point-in-time recovery requires both a base backup and an unbroken sequence of write-ahead logs covering the recovery interval.” The added interval phrase clarifies the required log sequence."
+    },
+    {
+      "text": "No zero-downtime or zero-data-loss promise; 100–150 words.",
+      "passed": true,
+      "evidence": "117 whitespace-delimited words. “Neither mechanism warrants a promise of zero downtime or zero data loss” expressly rejects the forbidden guarantees."
+    }
+  ],
+  "summary": {
+    "passed": 4,
+    "failed": 0,
+    "total": 4,
+    "pass_rate": 1.0
+  },
+  "scores": {
+    "Fidelity": 5,
+    "Directness and selectivity": 4,
+    "Specificity": 5,
+    "Voice and genre": 5,
+    "Cadence and rhetoric": 5,
+    "Structure": 5,
+    "Edit restraint": 5
+  },
+  "critical_failures": [],
+  "review_method": "Independent single blind agent review; not human feedback",
+  "review_source": "blind/iteration-3/review.json",
+  "output_sha256": "ba2d4629c2ff909fc95c11258c06990b7377c0267d3e24ff3d2a87590496506f"
+}

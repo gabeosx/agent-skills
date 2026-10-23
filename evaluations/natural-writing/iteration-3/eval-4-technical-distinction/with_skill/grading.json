@@ -1,0 +1,43 @@
+{
+  "expectations": [
+    {
+      "text": "Distinguishes replication copying deletion from a backup retaining earlier restorable state under retention policy.",
+      "passed": true,
+      "evidence": "“copies changes to another instance, including accidental deletions”; “A backup preserves an earlier state that can be restored, subject to its retention policy.”"
+    },
+    {
+      "text": "Preserves availability versus point-in-time recovery distinction.",
+      "passed": true,
+      "evidence": "“Replication can improve availability, but it does not by itself provide point-in-time recovery.”"
+    },
+    {
+      "text": "Requires both base backup and unbroken write-ahead logs for this system.",
+      "passed": true,
+      "evidence": "“For this system, point-in-time recovery additionally requires a base backup and an unbroken sequence of write-ahead logs.”"
+    },
+    {
+      "text": "No zero-downtime or zero-data-loss promise; 100–150 words.",
+      "passed": true,
+      "evidence": "111 whitespace-delimited words. “can improve availability” is qualified; no promise of zero downtime or zero data loss appears."
+    }
+  ],
+  "summary": {
+    "passed": 4,
+    "failed": 0,
+    "total": 4,
+    "pass_rate": 1.0
+  },
+  "scores": {
+    "Fidelity": 5,
+    "Directness and selectivity": 5,
+    "Specificity": 5,
+    "Voice and genre": 5,
+    "Cadence and rhetoric": 5,
+    "Structure": 5,
+    "Edit restraint": 5
+  },
+  "critical_failures": [],
+  "review_method": "Independent single blind agent review; not human feedback",
+  "review_source": "blind/iteration-3/review.json",
+  "output_sha256": "8e74bdd31b1578ca0231e6db5bc059b4ed383259a48238e813cee363fe4684cd"
+}

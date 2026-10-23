@@ -1,0 +1,4 @@
+- Restore the prerequisites and irreversible-action warning before the Apply instruction: “Back up the destination before importing. On the Apply screen, confirm the destination workspace before pressing Apply. Apply cannot be undone.”
+- Restore the overwrite warning: “A matching TaskCode overwrites the existing task fields.”
+- Make the supported comment format and remaining exclusions explicit. Replace “Comments are supported” with: “Comments can be imported in the Comment column. Attachments and archived tasks cannot be imported.”
+- Remove “Import history is limited.” The supplied evidence establishes no import-history behavior; no replacement is needed.

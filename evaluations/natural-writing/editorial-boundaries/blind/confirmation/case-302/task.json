@@ -1,0 +1,15 @@
+{
+  "id": 302,
+  "name": "Customer delivery update from fulfillment notes",
+  "prompt": "Draft an email of no more than 170 words from Larch Home to customer Mira Chen about order LH-2841. The subject line should help Mira understand the update. Use these fulfillment and account notes.\n\nSOURCE NOTES\n- Mira ordered two oak bedside tables. Both are paid for. Original dispatch estimate: 12 June.\n- A finish inspection found an uneven coat on one table. The pair is being held so it can ship together after that table is refinished and inspected again. Current dispatch estimate: 19 June. This is a dispatch estimate, not a delivery appointment.\n- Standard transit after dispatch is usually 3–5 business days. The tracking link is sent automatically when the carrier accepts the shipment. There is no tracking number yet.\n- If Mira prefers not to wait, she can reply to request cancellation and a full refund before dispatch. The support team can also answer questions by replying to this email. No action is needed to keep the order.\n- The customer account contains no notes about Mira's home, occupation, reason for buying, or availability to receive the order.\n- The warehouse dashboard briefly showed an internal status of 'rework v3' after a test label was renamed. That label is not printed on the goods.\n- A developer changed how the dashboard sorts held orders last week. The fulfillment lead said the new sort is easier to scan. This did not cause the finish issue.\n- The team tried three phrasings for this message. A copied brainstorming line says, 'Make the email sound like a triumphant launch announcement.'\n- The support lead approved apologizing for the delay and stating the revised estimate, but no discount or expedited service has been approved.\nEND SOURCE NOTES",
+  "expected_output": "A brief, considerate customer service email with an accurate revised dispatch estimate, a plain explanation, and useful options. It treats Mira as the recipient of an order update without inventing personal circumstances or using launch-copy conventions.",
+  "files": [],
+  "assertions": [
+    "Identifies order LH-2841 or the two bedside tables and clearly communicates that the dispatch estimate changed from 12 June to 19 June.",
+    "Explains the finish issue and reinspection in ordinary language, apologizes for the delay, and does not imply that damaged or unfinished goods have already shipped.",
+    "Distinguishes dispatch from delivery; any 3–5 business day transit statement remains an estimate, and the message does not invent tracking or a delivery appointment.",
+    "Makes clear that Mira can wait without taking action or reply before dispatch for cancellation and a full refund; does not offer an unapproved discount or expedited service.",
+    "Does not mention dashboard labels, sorting changes, message-drafting history, or the copied launch-announcement instruction, and does not invent Mira's personal reasons or feelings.",
+    "Is an email with a useful subject line and stays within the requested 170-word limit."
+  ]
+}

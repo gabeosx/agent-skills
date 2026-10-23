@@ -1,0 +1,9 @@
+{
+  "frozen_at": "2026-10-23T21:26:54.661930+00:00",
+  "why": "Expose two coverage gaps found in root audit; original first-round assertions/results remain unchanged. Applies equally to both arms in second round; prompted tasks are byte-identical.",
+  "assertions": {
+    "202": "Confines the entry to the requested reference subjects; omits source-hype rebuttals and development chronology that do not affect a current configuration choice.",
+    "206": "Does not turn unsupplied logistics information into an assertion that it is absent or unknown to the sender; preserves the difference between source omission and real-world status."
+  },
+  "development_2_sha256": "890da2f002b152977ac7fbe3326659a4783b9fde229baed10ed11420b239666f"
+}

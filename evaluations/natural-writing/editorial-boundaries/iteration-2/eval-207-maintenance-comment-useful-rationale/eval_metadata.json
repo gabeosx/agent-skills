@@ -1,0 +1,11 @@
+{
+  "eval_id": 207,
+  "eval_name": "maintenance-comment-useful-rationale",
+  "prompt": "Improve this code comment for a maintainer. Return only the replacement comment, no code changes or explanation. The comment belongs immediately above a loop that writes a temporary file, flushes it and atomically renames it over `state.json`.\n\nCurrent comment:\n# After three debugging sessions and an unsuccessful refactor, we finally got this right.\n# We use a temp file because otherwise a crash can leave state.json partially written.\n# Atomic replacement lets readers see either the old file or the new complete file.\n# Renaming does not by itself guarantee survival of a power loss; durability depends on flush behavior.\n# This was harder than it looked, but now the implementation is clean and robust.\n\nThe intended audience knows Python file APIs and does not need a tutorial on loops or JSON. The crash-consistency distinction above is accurate; no stronger durability guarantee has been established.",
+  "assertions": [
+    "Retains temporary-file/atomic-replacement rationale: readers see the old or a complete new file and avoid a partially written state.json.",
+    "Preserves the distinction from power-loss durability and its dependence on flushing; no stronger guarantee.",
+    "Omits debugging/refactor history, effort claims and clean/robust self-praise; does not add a Python/JSON tutorial.",
+    "Returns a code comment only and preserves state.json exactly."
+  ]
+}

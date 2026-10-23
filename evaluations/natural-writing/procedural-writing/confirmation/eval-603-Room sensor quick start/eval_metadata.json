@@ -1,0 +1,12 @@
+{
+  "eval_id": 603,
+  "eval_name": "Room sensor quick start",
+  "prompt": "Write a short getting-started guide for a colleague installing a fictional Plover Room sensor. They have a new sensor, its supplied cable, and the Plover app, and have not reported any fault. Here are the complete product notes.\n\nPlug the sensor into a wall outlet with the supplied cable. The light normally turns blue within 20 seconds. In the app, open Rooms, choose the intended room, tap Add sensor, and scan the square code on the back of the sensor. When its name appears in that room, tap Run sample. A successful sample appears on that room's Activity screen as Result = Received with Samples = 1. The sensor is then ready for ordinary use.\n\nSupport notes: If the light is still dark after 20 seconds, reseat both cable ends and try another wall outlet. If scanning the code produces 'Already paired', hold the recessed Pair button for six seconds until the light flashes blue, then scan again; this removes an old pairing. If the sensor appears in the wrong room, open that sensor's menu and choose Move to room. If Run sample shows 'Sensor offline', move the sensor closer to the room's hub and run the sample again. There is no need to reset a normally connecting new sensor. The supplied cable is sufficient; a replacement cable is only needed if it is visibly damaged. Don't add product controls or requirements beyond these notes.",
+  "assertions": [
+    "The normal path covers power, Rooms and the intended room, Add sensor and code scanning, then Run sample; it does not make fault recovery part of every installation.",
+    "The response identifies the room's Activity screen and Result = Received with Samples = 1 as the successful setup check.",
+    "Any included pairing reset remains conditional on Already paired, uses the six-second Pair-button hold, and is not required for a normally connecting new sensor.",
+    "Any included cable reseating, different outlet, room move, hub-distance change, or replacement cable is tied to its corresponding source symptom or visible damage, without inventing a universal prerequisite.",
+    "The output is a short guide for the colleague, using only the supplied controls and product facts."
+  ]
+}

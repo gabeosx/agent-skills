@@ -1,0 +1,53 @@
+{
+  "expectations": [
+    {
+      "text": "Returns only a Spanish message and preserves Rioplatense voseo, including forms such as podés, pasá, and traé rather than switching to tú or usted.",
+      "passed": true,
+      "evidence": "The sole Spanish message retains \"si podés, pasá\" and \"Traé el cuaderno azul\"; no tú or usted forms replace the voseo."
+    },
+    {
+      "text": "Keeps the familiar relationship and conversational register represented by Che, Vale and porfa; does not add formal salutations or a professional sign-off.",
+      "passed": true,
+      "evidence": "\"Che, Vale:\" and \"porfa\" remain. The message ends \"a la misma hora\" without a formal salutation or sign-off."
+    },
+    {
+      "text": "Removes the accidental repetition of después de las seis while preserving Thursday after six as the initial meeting time.",
+      "passed": true,
+      "evidence": "\"el jueves después de las seis\" occurs once; the source’s immediate repetition is removed while Thursday after six remains."
+    },
+    {
+      "text": "Keeps two budgets on the table, Lucía's approval of one unspecified budget, and the uncertainty about which one she approved.",
+      "passed": true,
+      "evidence": "\"Dejé dos presupuestos arriba de la mesa; Lucía dijo que aprobó uno, pero no me dijo cuál.\" Both the count and unresolved identity remain."
+    },
+    {
+      "text": "Preserves the instruction not to order wood yet and the request to bring the blue notebook.",
+      "passed": true,
+      "evidence": "\"No encargues la madera todavía. Traé el cuaderno azul, porfa.\" Both instructions and the notebook color remain."
+    },
+    {
+      "text": "Preserves the conditional fallback: if it rains, meet Friday by video call at the same time; does not turn the fallback into an unconditional rescheduling.",
+      "passed": true,
+      "evidence": "\"Si llueve, lo vemos el viernes por videollamada, a la misma hora.\" The rain condition, Friday fallback, medium and same-time relation remain."
+    }
+  ],
+  "summary": {
+    "passed": 6,
+    "failed": 0,
+    "total": 6,
+    "pass_rate": 1.0
+  },
+  "scores": {
+    "Fidelity": 5,
+    "Directness and selectivity": 5,
+    "Specificity": 5,
+    "Voice and genre": 5,
+    "Cadence and rhetoric": 5,
+    "Structure": 5,
+    "Edit restraint": 5
+  },
+  "critical_failures": [],
+  "review_method": "Independent single blind agent review; not human feedback",
+  "review_source": "blind/confirmation/review.json",
+  "output_sha256": "92c0413ded48f799d16f5c110653507a1f0fe9bb9c421621a040118f55d2809e"
+}

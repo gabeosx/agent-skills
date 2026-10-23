@@ -1,0 +1,47 @@
+{
+  "expectations": [
+    {
+      "text": "Preserves 18 nurses, four weeks, one clinic, and voluntary participation.",
+      "passed": true,
+      "evidence": "\"A voluntary four-week pilot at one clinic\" and \"Among 18 participating nurses\" preserve the design and sample."
+    },
+    {
+      "text": "Preserves median weekly 46 to 39 minutes with no causal claim and explains no control plus concurrent staffing changes.",
+      "passed": true,
+      "evidence": "\"Median weekly scheduling time fell from 46 to 39 minutes\"; \"With no control group and staffing changes occurring during the pilot\" explicitly explains why causation remains unestablished."
+    },
+    {
+      "text": "States six of nine survey respondents preferred it rather than six of 18 or a majority of all nurses.",
+      "passed": true,
+      "evidence": "\"Six of the nine nurses who returned the optional survey preferred the tool\" preserves the responding subgroup and is qualified by \"may not reflect the views of all participants or nurses elsewhere.\""
+    },
+    {
+      "text": "States patient safety was not measured; any next step is framed as recommendation, not a planned commitment.",
+      "passed": true,
+      "evidence": "\"Patient safety was not measured\" preserves the unknown. \"Before broader adoption, run a longer evaluation\" is an imperative recommendation to the director, not a claim that an evaluation is already planned."
+    },
+    {
+      "text": "100–150 words in one paragraph without heading or bullets.",
+      "passed": true,
+      "evidence": "113 whitespace-delimited words in one paragraph; no heading or bullets."
+    }
+  ],
+  "summary": {
+    "passed": 5,
+    "failed": 0,
+    "total": 5,
+    "pass_rate": 1.0
+  },
+  "scores": {
+    "Fidelity": 5,
+    "Directness and selectivity": 5,
+    "Specificity": 5,
+    "Voice and genre": 5,
+    "Cadence and rhetoric": 5,
+    "Structure": 5
+  },
+  "critical_failures": [],
+  "review_method": "Independent single blind agent review; not human feedback",
+  "review_source": "blind/iteration-2/review.json",
+  "output_sha256": "e00432383bb19a60a4d59a9ec084b1c661b7e9282b51dfb0fbbb9792ee470fa2"
+}

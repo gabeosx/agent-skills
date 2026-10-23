@@ -1,0 +1,1754 @@
+[
+  {
+    "stage": "iteration-1",
+    "id": 201,
+    "arm": "with_skill",
+    "attempt": 1,
+    "snapshot": "candidate-1",
+    "instructions_sha256": "7ad2f63ad136c09a46668a0d865c7dddac8f4f506466679697c5bc4ee8430fbe",
+    "output": "evaluations/natural-writing/editorial-boundaries/iteration-1/eval-201-readme-from-development-notes/with_skill/outputs/output.md",
+    "output_sha256": "9e77b3802e710e57360b218599aa22acfcb682695978cb88a233a4464205e5d8",
+    "prompt_sha256": "78443f2ebe1ad80c8ef8b95d2b72f610f49c5cf3a0feead0e9621514c4f663db",
+    "assertions": {
+      "passed": 5,
+      "failed": 0,
+      "total": 5,
+      "pass_rate": 1.0
+    },
+    "critical_failures": [],
+    "substantive_defects": [],
+    "exact_checks": {
+      "passed": 2,
+      "total": 2
+    },
+    "root_audit": "root-audit-iteration-1.json",
+    "post_dispatch_actor_assistance": 0,
+    "model_build": null,
+    "generation_seconds": null,
+    "tokens": null,
+    "session_charge": null
+  },
+  {
+    "stage": "iteration-1",
+    "id": 201,
+    "arm": "old_skill",
+    "attempt": 1,
+    "snapshot": "baseline",
+    "instructions_sha256": "704915f8c740186a43215e26bf59ee7483e3142429759722bea31228b6d9b491",
+    "output": "evaluations/natural-writing/editorial-boundaries/iteration-1/eval-201-readme-from-development-notes/old_skill/outputs/output.md",
+    "output_sha256": "1929dea6b7b95efdc3a0394b6da348e57f13a460b198f14c10aecea6927b0b36",
+    "prompt_sha256": "78443f2ebe1ad80c8ef8b95d2b72f610f49c5cf3a0feead0e9621514c4f663db",
+    "assertions": {
+      "passed": 5,
+      "failed": 0,
+      "total": 5,
+      "pass_rate": 1.0
+    },
+    "critical_failures": [],
+    "substantive_defects": [],
+    "exact_checks": {
+      "passed": 2,
+      "total": 2
+    },
+    "root_audit": "root-audit-iteration-1.json",
+    "post_dispatch_actor_assistance": 0,
+    "model_build": null,
+    "generation_seconds": null,
+    "tokens": null,
+    "session_charge": null
+  },
+  {
+    "stage": "iteration-1",
+    "id": 202,
+    "arm": "with_skill",
+    "attempt": 1,
+    "snapshot": "candidate-1",
+    "instructions_sha256": "7ad2f63ad136c09a46668a0d865c7dddac8f4f506466679697c5bc4ee8430fbe",
+    "output": "evaluations/natural-writing/editorial-boundaries/iteration-1/eval-202-reference-with-unknown-specifications/with_skill/outputs/output.md",
+    "output_sha256": "3c2b053de4f5e9ee3a05fa9a99b8362005da95806e951a833b1c0033e9d03c6f",
+    "prompt_sha256": "448a3d215064a271bcda219cfbf0efdeba489c01a582163dab0020aedae32e22",
+    "assertions": {
+      "passed": 4,
+      "failed": 0,
+      "total": 4,
+      "pass_rate": 1.0
+    },
+    "critical_failures": [],
+    "substantive_defects": [],
+    "exact_checks": {
+      "passed": 2,
+      "total": 2
+    },
+    "root_audit": "root-audit-iteration-1.json",
+    "post_dispatch_actor_assistance": 0,
+    "model_build": null,
+    "generation_seconds": null,
+    "tokens": null,
+    "session_charge": null
+  },
+  {
+    "stage": "iteration-1",
+    "id": 202,
+    "arm": "old_skill",
+    "attempt": 1,
+    "snapshot": "baseline",
+    "instructions_sha256": "704915f8c740186a43215e26bf59ee7483e3142429759722bea31228b6d9b491",
+    "output": "evaluations/natural-writing/editorial-boundaries/iteration-1/eval-202-reference-with-unknown-specifications/old_skill/outputs/output.md",
+    "output_sha256": "1dfaa1aa39d717f60120e2fe9dde4f73445afaa48ba505844f04037c3c42ae73",
+    "prompt_sha256": "448a3d215064a271bcda219cfbf0efdeba489c01a582163dab0020aedae32e22",
+    "assertions": {
+      "passed": 4,
+      "failed": 0,
+      "total": 4,
+      "pass_rate": 1.0
+    },
+    "critical_failures": [],
+    "substantive_defects": [],
+    "exact_checks": {
+      "passed": 2,
+      "total": 2
+    },
+    "root_audit": "root-audit-iteration-1.json",
+    "post_dispatch_actor_assistance": 0,
+    "model_build": null,
+    "generation_seconds": null,
+    "tokens": null,
+    "session_charge": null
+  },
+  {
+    "stage": "iteration-1",
+    "id": 203,
+    "arm": "with_skill",
+    "attempt": 1,
+    "snapshot": "candidate-1",
+    "instructions_sha256": "7ad2f63ad136c09a46668a0d865c7dddac8f4f506466679697c5bc4ee8430fbe",
+    "output": "evaluations/natural-writing/editorial-boundaries/iteration-1/eval-203-architecture-record-positive-control/with_skill/outputs/output.md",
+    "output_sha256": "6d05736a049662928996499d613260833797db99be0bbad4d6da22cbe25e9e13",
+    "prompt_sha256": "e3e37e24c6fbdbd66b6e4bc9e3f02a750347eace113187935f7fde74f57682d4",
+    "assertions": {
+      "passed": 4,
+      "failed": 0,
+      "total": 4,
+      "pass_rate": 1.0
+    },
+    "critical_failures": [],
+    "substantive_defects": [],
+    "exact_checks": {
+      "passed": 1,
+      "total": 1
+    },
+    "root_audit": "root-audit-iteration-1.json",
+    "post_dispatch_actor_assistance": 0,
+    "model_build": null,
+    "generation_seconds": null,
+    "tokens": null,
+    "session_charge": null
+  },
+  {
+    "stage": "iteration-1",
+    "id": 203,
+    "arm": "old_skill",
+    "attempt": 1,
+    "snapshot": "baseline",
+    "instructions_sha256": "704915f8c740186a43215e26bf59ee7483e3142429759722bea31228b6d9b491",
+    "output": "evaluations/natural-writing/editorial-boundaries/iteration-1/eval-203-architecture-record-positive-control/old_skill/outputs/output.md",
+    "output_sha256": "e1a4ce3195345c2cb5d148f80c3b9d396c9e3d0e84bb2706d0fc36782d936781",
+    "prompt_sha256": "e3e37e24c6fbdbd66b6e4bc9e3f02a750347eace113187935f7fde74f57682d4",
+    "assertions": {
+      "passed": 4,
+      "failed": 0,
+      "total": 4,
+      "pass_rate": 1.0
+    },
+    "critical_failures": [],
+    "substantive_defects": [],
+    "exact_checks": {
+      "passed": 1,
+      "total": 1
+    },
+    "root_audit": "root-audit-iteration-1.json",
+    "post_dispatch_actor_assistance": 0,
+    "model_build": null,
+    "generation_seconds": null,
+    "tokens": null,
+    "session_charge": null
+  },
+  {
+    "stage": "iteration-1",
+    "id": 204,
+    "arm": "with_skill",
+    "attempt": 1,
+    "snapshot": "candidate-1",
+    "instructions_sha256": "7ad2f63ad136c09a46668a0d865c7dddac8f4f506466679697c5bc4ee8430fbe",
+    "output": "evaluations/natural-writing/editorial-boundaries/iteration-1/eval-204-migration-history-positive-control/with_skill/outputs/output.md",
+    "output_sha256": "90648971c508ce390a1702459f1931fe7528bc154e59ef33cfc5313a66895971",
+    "prompt_sha256": "446de9d445ce1cff392b8bee5f89d84a41b79deef6ff58dfd66ebfccbd966543",
+    "assertions": {
+      "passed": 4,
+      "failed": 0,
+      "total": 4,
+      "pass_rate": 1.0
+    },
+    "critical_failures": [],
+    "substantive_defects": [],
+    "exact_checks": {
+      "passed": 2,
+      "total": 2
+    },
+    "root_audit": "root-audit-iteration-1.json",
+    "post_dispatch_actor_assistance": 0,
+    "model_build": null,
+    "generation_seconds": null,
+    "tokens": null,
+    "session_charge": null
+  },
+  {
+    "stage": "iteration-1",
+    "id": 204,
+    "arm": "old_skill",
+    "attempt": 1,
+    "snapshot": "baseline",
+    "instructions_sha256": "704915f8c740186a43215e26bf59ee7483e3142429759722bea31228b6d9b491",
+    "output": "evaluations/natural-writing/editorial-boundaries/iteration-1/eval-204-migration-history-positive-control/old_skill/outputs/output.md",
+    "output_sha256": "c40e264e4e31299913c1a7414ddd60b83ba3f335decb362c9ac2b3567725153e",
+    "prompt_sha256": "446de9d445ce1cff392b8bee5f89d84a41b79deef6ff58dfd66ebfccbd966543",
+    "assertions": {
+      "passed": 4,
+      "failed": 0,
+      "total": 4,
+      "pass_rate": 1.0
+    },
+    "critical_failures": [],
+    "substantive_defects": [],
+    "exact_checks": {
+      "passed": 2,
+      "total": 2
+    },
+    "root_audit": "root-audit-iteration-1.json",
+    "post_dispatch_actor_assistance": 0,
+    "model_build": null,
+    "generation_seconds": null,
+    "tokens": null,
+    "session_charge": null
+  },
+  {
+    "stage": "iteration-1",
+    "id": 205,
+    "arm": "with_skill",
+    "attempt": 1,
+    "snapshot": "candidate-1",
+    "instructions_sha256": "7ad2f63ad136c09a46668a0d865c7dddac8f4f506466679697c5bc4ee8430fbe",
+    "output": "evaluations/natural-writing/editorial-boundaries/iteration-1/eval-205-evaluation-record-preserve-failures/with_skill/outputs/output.md",
+    "output_sha256": "cfc968576fa99d20e8ed65f6e1904c4ebe5fbc7e9bcba888bce6845a12607f28",
+    "prompt_sha256": "a6ee915294c080531a8df784f76d4edda6a37165f6bbd2362c0fc433a9b6c7ed",
+    "assertions": {
+      "passed": 5,
+      "failed": 0,
+      "total": 5,
+      "pass_rate": 1.0
+    },
+    "critical_failures": [],
+    "substantive_defects": [],
+    "exact_checks": {
+      "passed": 1,
+      "total": 1
+    },
+    "root_audit": "root-audit-iteration-1.json",
+    "post_dispatch_actor_assistance": 0,
+    "model_build": null,
+    "generation_seconds": null,
+    "tokens": null,
+    "session_charge": null
+  },
+  {
+    "stage": "iteration-1",
+    "id": 205,
+    "arm": "old_skill",
+    "attempt": 1,
+    "snapshot": "baseline",
+    "instructions_sha256": "704915f8c740186a43215e26bf59ee7483e3142429759722bea31228b6d9b491",
+    "output": "evaluations/natural-writing/editorial-boundaries/iteration-1/eval-205-evaluation-record-preserve-failures/old_skill/outputs/output.md",
+    "output_sha256": "051f19e18eb19b729bbfcfd9bb4327a8dcf2f0606327930a7dccdc55f6c17a67",
+    "prompt_sha256": "a6ee915294c080531a8df784f76d4edda6a37165f6bbd2362c0fc433a9b6c7ed",
+    "assertions": {
+      "passed": 5,
+      "failed": 0,
+      "total": 5,
+      "pass_rate": 1.0
+    },
+    "critical_failures": [],
+    "substantive_defects": [],
+    "exact_checks": {
+      "passed": 1,
+      "total": 1
+    },
+    "root_audit": "root-audit-iteration-1.json",
+    "post_dispatch_actor_assistance": 0,
+    "model_build": null,
+    "generation_seconds": null,
+    "tokens": null,
+    "session_charge": null
+  },
+  {
+    "stage": "iteration-1",
+    "id": 206,
+    "arm": "with_skill",
+    "attempt": 1,
+    "snapshot": "candidate-1",
+    "instructions_sha256": "7ad2f63ad136c09a46668a0d865c7dddac8f4f506466679697c5bc4ee8430fbe",
+    "output": "evaluations/natural-writing/editorial-boundaries/iteration-1/eval-206-customer-email-from-internal-thread/with_skill/outputs/output.md",
+    "output_sha256": "9d8362042fb8f17e4f8f57df49f16ebf610ac765f01bd20aec620c68cd0be147",
+    "prompt_sha256": "9a89725177838164aaa8d4d9afaafa9906269ac155e20abab0fc9f08a30b75f6",
+    "assertions": {
+      "passed": 4,
+      "failed": 0,
+      "total": 4,
+      "pass_rate": 1.0
+    },
+    "critical_failures": [
+      "Unsupported factual status: “we don't yet have a delivery date.” The source establishes a scheduled Friday dispatch and that it is not a delivery promise, but does not establish whether a delivery date is known. This is an invented current customer-facing fact under the rubric's factual-invention rule."
+    ],
+    "substantive_defects": [
+      "The unsupported no-known-delivery-date statement should not be treated as source-supported reassurance; the shared defect prevents a fully source-faithful acceptance despite passing the supplied assertions."
+    ],
+    "exact_checks": {
+      "passed": 0,
+      "total": 0
+    },
+    "root_audit": "root-audit-iteration-1.json",
+    "post_dispatch_actor_assistance": 0,
+    "model_build": null,
+    "generation_seconds": null,
+    "tokens": null,
+    "session_charge": null
+  },
+  {
+    "stage": "iteration-1",
+    "id": 206,
+    "arm": "old_skill",
+    "attempt": 1,
+    "snapshot": "baseline",
+    "instructions_sha256": "704915f8c740186a43215e26bf59ee7483e3142429759722bea31228b6d9b491",
+    "output": "evaluations/natural-writing/editorial-boundaries/iteration-1/eval-206-customer-email-from-internal-thread/old_skill/outputs/output.md",
+    "output_sha256": "0f8075592868802b514ef42160511faa5bcc054a1b1a923c4ab0b74c487c84dd",
+    "prompt_sha256": "9a89725177838164aaa8d4d9afaafa9906269ac155e20abab0fc9f08a30b75f6",
+    "assertions": {
+      "passed": 4,
+      "failed": 0,
+      "total": 4,
+      "pass_rate": 1.0
+    },
+    "critical_failures": [
+      "Unsupported factual status: “we don't yet have a delivery date.” The source establishes a scheduled Friday dispatch and that it is not a delivery promise, but does not establish whether a delivery date is known. This is an invented current customer-facing fact under the rubric's factual-invention rule."
+    ],
+    "substantive_defects": [
+      "The unsupported no-known-delivery-date statement should not be treated as source-supported reassurance; the shared defect prevents a fully source-faithful acceptance despite passing the supplied assertions."
+    ],
+    "exact_checks": {
+      "passed": 0,
+      "total": 0
+    },
+    "root_audit": "root-audit-iteration-1.json",
+    "post_dispatch_actor_assistance": 0,
+    "model_build": null,
+    "generation_seconds": null,
+    "tokens": null,
+    "session_charge": null
+  },
+  {
+    "stage": "iteration-1",
+    "id": 207,
+    "arm": "with_skill",
+    "attempt": 1,
+    "snapshot": "candidate-1",
+    "instructions_sha256": "7ad2f63ad136c09a46668a0d865c7dddac8f4f506466679697c5bc4ee8430fbe",
+    "output": "evaluations/natural-writing/editorial-boundaries/iteration-1/eval-207-maintenance-comment-useful-rationale/with_skill/outputs/output.md",
+    "output_sha256": "ca7c3cb0a84a31a24972e118dfefa5f6a6c25a667687bad868802aee3bbfe322",
+    "prompt_sha256": "38ad1ad6e5f558047985817066ae5b43a7f1461c8fb814e93309b0b81e9805da",
+    "assertions": {
+      "passed": 4,
+      "failed": 0,
+      "total": 4,
+      "pass_rate": 1.0
+    },
+    "critical_failures": [],
+    "substantive_defects": [],
+    "exact_checks": {
+      "passed": 2,
+      "total": 2
+    },
+    "root_audit": "root-audit-iteration-1.json",
+    "post_dispatch_actor_assistance": 0,
+    "model_build": null,
+    "generation_seconds": null,
+    "tokens": null,
+    "session_charge": null
+  },
+  {
+    "stage": "iteration-1",
+    "id": 207,
+    "arm": "old_skill",
+    "attempt": 1,
+    "snapshot": "baseline",
+    "instructions_sha256": "704915f8c740186a43215e26bf59ee7483e3142429759722bea31228b6d9b491",
+    "output": "evaluations/natural-writing/editorial-boundaries/iteration-1/eval-207-maintenance-comment-useful-rationale/old_skill/outputs/output.md",
+    "output_sha256": "60260dc1fc3093ef477e201970d04c3a469e1111fa03fee38d95a97760bf3d69",
+    "prompt_sha256": "38ad1ad6e5f558047985817066ae5b43a7f1461c8fb814e93309b0b81e9805da",
+    "assertions": {
+      "passed": 4,
+      "failed": 0,
+      "total": 4,
+      "pass_rate": 1.0
+    },
+    "critical_failures": [],
+    "substantive_defects": [],
+    "exact_checks": {
+      "passed": 2,
+      "total": 2
+    },
+    "root_audit": "root-audit-iteration-1.json",
+    "post_dispatch_actor_assistance": 0,
+    "model_build": null,
+    "generation_seconds": null,
+    "tokens": null,
+    "session_charge": null
+  },
+  {
+    "stage": "iteration-1",
+    "id": 208,
+    "arm": "with_skill",
+    "attempt": 1,
+    "snapshot": "candidate-1",
+    "instructions_sha256": "7ad2f63ad136c09a46668a0d865c7dddac8f4f506466679697c5bc4ee8430fbe",
+    "output": "evaluations/natural-writing/editorial-boundaries/iteration-1/eval-208-board-brief-with-hidden-context/with_skill/outputs/output.md",
+    "output_sha256": "61f76b9c7a31e8088632ffc8f408fbd601680a47cba4887e25527661d5dcccbf",
+    "prompt_sha256": "b1861a0c9c36af33c452fbaba885b6e6811dd3f5b9e01314582e4f5db462e2de",
+    "assertions": {
+      "passed": 5,
+      "failed": 0,
+      "total": 5,
+      "pass_rate": 1.0
+    },
+    "critical_failures": [],
+    "substantive_defects": [],
+    "exact_checks": {
+      "passed": 1,
+      "total": 1
+    },
+    "root_audit": "root-audit-iteration-1.json",
+    "post_dispatch_actor_assistance": 0,
+    "model_build": null,
+    "generation_seconds": null,
+    "tokens": null,
+    "session_charge": null
+  },
+  {
+    "stage": "iteration-1",
+    "id": 208,
+    "arm": "old_skill",
+    "attempt": 1,
+    "snapshot": "baseline",
+    "instructions_sha256": "704915f8c740186a43215e26bf59ee7483e3142429759722bea31228b6d9b491",
+    "output": "evaluations/natural-writing/editorial-boundaries/iteration-1/eval-208-board-brief-with-hidden-context/old_skill/outputs/output.md",
+    "output_sha256": "ac620b5419e3dfae0187ad2be969ebf8135a4a3b32644bb441a0fcbee2ccbc89",
+    "prompt_sha256": "b1861a0c9c36af33c452fbaba885b6e6811dd3f5b9e01314582e4f5db462e2de",
+    "assertions": {
+      "passed": 5,
+      "failed": 0,
+      "total": 5,
+      "pass_rate": 1.0
+    },
+    "critical_failures": [],
+    "substantive_defects": [],
+    "exact_checks": {
+      "passed": 1,
+      "total": 1
+    },
+    "root_audit": "root-audit-iteration-1.json",
+    "post_dispatch_actor_assistance": 0,
+    "model_build": null,
+    "generation_seconds": null,
+    "tokens": null,
+    "session_charge": null
+  },
+  {
+    "stage": "iteration-1",
+    "id": 402,
+    "arm": "with_skill",
+    "attempt": 1,
+    "snapshot": "candidate-1",
+    "instructions_sha256": "7ad2f63ad136c09a46668a0d865c7dddac8f4f506466679697c5bc4ee8430fbe",
+    "output": "evaluations/natural-writing/editorial-boundaries/iteration-1/eval-402-regression-uncertain-study/with_skill/outputs/output.md",
+    "output_sha256": "a6342668b07203f2b2414c7a2f15fd89e4a9e5cf601d48dbb40f9090240e8661",
+    "prompt_sha256": "3273863a24d626b0a4fea12236f30ed12566bc6744cd2205658c17ab300e970b",
+    "assertions": {
+      "passed": 5,
+      "failed": 0,
+      "total": 5,
+      "pass_rate": 1.0
+    },
+    "critical_failures": [],
+    "substantive_defects": [],
+    "exact_checks": {
+      "passed": 2,
+      "total": 2
+    },
+    "root_audit": "root-audit-iteration-1.json",
+    "post_dispatch_actor_assistance": 0,
+    "model_build": null,
+    "generation_seconds": null,
+    "tokens": null,
+    "session_charge": null
+  },
+  {
+    "stage": "iteration-1",
+    "id": 402,
+    "arm": "old_skill",
+    "attempt": 1,
+    "snapshot": "baseline",
+    "instructions_sha256": "704915f8c740186a43215e26bf59ee7483e3142429759722bea31228b6d9b491",
+    "output": "evaluations/natural-writing/editorial-boundaries/iteration-1/eval-402-regression-uncertain-study/old_skill/outputs/output.md",
+    "output_sha256": "fc9dc0a8b2e02b492804866082672de9c794f7b0784e51b7e0f9e822cd08c38d",
+    "prompt_sha256": "3273863a24d626b0a4fea12236f30ed12566bc6744cd2205658c17ab300e970b",
+    "assertions": {
+      "passed": 5,
+      "failed": 0,
+      "total": 5,
+      "pass_rate": 1.0
+    },
+    "critical_failures": [],
+    "substantive_defects": [],
+    "exact_checks": {
+      "passed": 2,
+      "total": 2
+    },
+    "root_audit": "root-audit-iteration-1.json",
+    "post_dispatch_actor_assistance": 0,
+    "model_build": null,
+    "generation_seconds": null,
+    "tokens": null,
+    "session_charge": null
+  },
+  {
+    "stage": "iteration-1",
+    "id": 403,
+    "arm": "with_skill",
+    "attempt": 1,
+    "snapshot": "candidate-1",
+    "instructions_sha256": "7ad2f63ad136c09a46668a0d865c7dddac8f4f506466679697c5bc4ee8430fbe",
+    "output": "evaluations/natural-writing/editorial-boundaries/iteration-1/eval-403-regression-source-poor-copy/with_skill/outputs/output.md",
+    "output_sha256": "0331b74e4705e8ca754f9fcfb86b8f6dc7d74b62a41a097f7457c19e2021c39e",
+    "prompt_sha256": "065129cd838053158905822c6edcfacb30ce420c250022b2031478cc90cda0c9",
+    "assertions": {
+      "passed": 3,
+      "failed": 0,
+      "total": 3,
+      "pass_rate": 1.0
+    },
+    "critical_failures": [],
+    "substantive_defects": [],
+    "exact_checks": {
+      "passed": 1,
+      "total": 1
+    },
+    "root_audit": "root-audit-iteration-1.json",
+    "post_dispatch_actor_assistance": 0,
+    "model_build": null,
+    "generation_seconds": null,
+    "tokens": null,
+    "session_charge": null
+  },
+  {
+    "stage": "iteration-1",
+    "id": 403,
+    "arm": "old_skill",
+    "attempt": 1,
+    "snapshot": "baseline",
+    "instructions_sha256": "704915f8c740186a43215e26bf59ee7483e3142429759722bea31228b6d9b491",
+    "output": "evaluations/natural-writing/editorial-boundaries/iteration-1/eval-403-regression-source-poor-copy/old_skill/outputs/output.md",
+    "output_sha256": "e6819c44f001c1e6b9f967b9ed2710f4f15a5fb54856f130c07171930832ec58",
+    "prompt_sha256": "065129cd838053158905822c6edcfacb30ce420c250022b2031478cc90cda0c9",
+    "assertions": {
+      "passed": 3,
+      "failed": 0,
+      "total": 3,
+      "pass_rate": 1.0
+    },
+    "critical_failures": [],
+    "substantive_defects": [],
+    "exact_checks": {
+      "passed": 1,
+      "total": 1
+    },
+    "root_audit": "root-audit-iteration-1.json",
+    "post_dispatch_actor_assistance": 0,
+    "model_build": null,
+    "generation_seconds": null,
+    "tokens": null,
+    "session_charge": null
+  },
+  {
+    "stage": "iteration-1",
+    "id": 405,
+    "arm": "with_skill",
+    "attempt": 1,
+    "snapshot": "candidate-1",
+    "instructions_sha256": "7ad2f63ad136c09a46668a0d865c7dddac8f4f506466679697c5bc4ee8430fbe",
+    "output": "evaluations/natural-writing/editorial-boundaries/iteration-1/eval-405-regression-voice-sample-email/with_skill/outputs/output.md",
+    "output_sha256": "3aa032954848a1ad7372a57ff36e26f4d8f6780ea1d8ce0163cd206fb5073e2d",
+    "prompt_sha256": "2d0fe2f546a26f1adf2ab5625df099cc02d86fc257a63566556f70e1c88fabb3",
+    "assertions": {
+      "passed": 4,
+      "failed": 0,
+      "total": 4,
+      "pass_rate": 1.0
+    },
+    "critical_failures": [],
+    "substantive_defects": [],
+    "exact_checks": {
+      "passed": 0,
+      "total": 0
+    },
+    "root_audit": "root-audit-iteration-1.json",
+    "post_dispatch_actor_assistance": 0,
+    "model_build": null,
+    "generation_seconds": null,
+    "tokens": null,
+    "session_charge": null
+  },
+  {
+    "stage": "iteration-1",
+    "id": 405,
+    "arm": "old_skill",
+    "attempt": 1,
+    "snapshot": "baseline",
+    "instructions_sha256": "704915f8c740186a43215e26bf59ee7483e3142429759722bea31228b6d9b491",
+    "output": "evaluations/natural-writing/editorial-boundaries/iteration-1/eval-405-regression-voice-sample-email/old_skill/outputs/output.md",
+    "output_sha256": "fc5c01a3391f5f507ff79d9296bb5d2e620c5b01a4e4369ef9490c8101f72c47",
+    "prompt_sha256": "2d0fe2f546a26f1adf2ab5625df099cc02d86fc257a63566556f70e1c88fabb3",
+    "assertions": {
+      "passed": 4,
+      "failed": 0,
+      "total": 4,
+      "pass_rate": 1.0
+    },
+    "critical_failures": [],
+    "substantive_defects": [],
+    "exact_checks": {
+      "passed": 0,
+      "total": 0
+    },
+    "root_audit": "root-audit-iteration-1.json",
+    "post_dispatch_actor_assistance": 0,
+    "model_build": null,
+    "generation_seconds": null,
+    "tokens": null,
+    "session_charge": null
+  },
+  {
+    "stage": "iteration-1",
+    "id": 406,
+    "arm": "with_skill",
+    "attempt": 1,
+    "snapshot": "candidate-1",
+    "instructions_sha256": "7ad2f63ad136c09a46668a0d865c7dddac8f4f506466679697c5bc4ee8430fbe",
+    "output": "evaluations/natural-writing/editorial-boundaries/iteration-1/eval-406-regression-already-good-control/with_skill/outputs/output.md",
+    "output_sha256": "72b1f979cc873495cd5485d74546d99166898143c12de0c8613328994282c189",
+    "prompt_sha256": "83dbe4550f91e1061804ed376f8aaf5fa4b9c01d40b4148800665119e64061c1",
+    "assertions": {
+      "passed": 1,
+      "failed": 0,
+      "total": 1,
+      "pass_rate": 1.0
+    },
+    "critical_failures": [],
+    "substantive_defects": [],
+    "exact_checks": {
+      "passed": 1,
+      "total": 1
+    },
+    "root_audit": "root-audit-iteration-1.json",
+    "post_dispatch_actor_assistance": 0,
+    "model_build": null,
+    "generation_seconds": null,
+    "tokens": null,
+    "session_charge": null
+  },
+  {
+    "stage": "iteration-1",
+    "id": 406,
+    "arm": "old_skill",
+    "attempt": 1,
+    "snapshot": "baseline",
+    "instructions_sha256": "704915f8c740186a43215e26bf59ee7483e3142429759722bea31228b6d9b491",
+    "output": "evaluations/natural-writing/editorial-boundaries/iteration-1/eval-406-regression-already-good-control/old_skill/outputs/output.md",
+    "output_sha256": "72b1f979cc873495cd5485d74546d99166898143c12de0c8613328994282c189",
+    "prompt_sha256": "83dbe4550f91e1061804ed376f8aaf5fa4b9c01d40b4148800665119e64061c1",
+    "assertions": {
+      "passed": 1,
+      "failed": 0,
+      "total": 1,
+      "pass_rate": 1.0
+    },
+    "critical_failures": [],
+    "substantive_defects": [],
+    "exact_checks": {
+      "passed": 1,
+      "total": 1
+    },
+    "root_audit": "root-audit-iteration-1.json",
+    "post_dispatch_actor_assistance": 0,
+    "model_build": null,
+    "generation_seconds": null,
+    "tokens": null,
+    "session_charge": null
+  },
+  {
+    "stage": "iteration-2",
+    "id": 201,
+    "arm": "with_skill",
+    "attempt": 1,
+    "snapshot": "candidate-2",
+    "instructions_sha256": "c4d45ba75f35605677a0d095944630a56cb9168b2eac6cd68c0cd553047d3486",
+    "output": "evaluations/natural-writing/editorial-boundaries/iteration-2/eval-201-readme-from-development-notes/with_skill/outputs/output.md",
+    "output_sha256": "47667580b5b02951270074938ef14a411b0ba89dd533b6d025daf1742a047c94",
+    "prompt_sha256": "78443f2ebe1ad80c8ef8b95d2b72f610f49c5cf3a0feead0e9621514c4f663db",
+    "assertions": {
+      "passed": 5,
+      "failed": 0,
+      "total": 5,
+      "pass_rate": 1.0
+    },
+    "critical_failures": [],
+    "substantive_defects": [],
+    "exact_checks": {
+      "passed": 2,
+      "total": 2
+    },
+    "root_audit": null,
+    "post_dispatch_actor_assistance": 0,
+    "model_build": null,
+    "generation_seconds": null,
+    "tokens": null,
+    "session_charge": null
+  },
+  {
+    "stage": "iteration-2",
+    "id": 201,
+    "arm": "old_skill",
+    "attempt": 1,
+    "snapshot": "baseline",
+    "instructions_sha256": "704915f8c740186a43215e26bf59ee7483e3142429759722bea31228b6d9b491",
+    "output": "evaluations/natural-writing/editorial-boundaries/iteration-2/eval-201-readme-from-development-notes/old_skill/outputs/output.md",
+    "output_sha256": "37624e68b6fe952be61f3ac196444d445e2e2a7ed9027139939399f88eaac754",
+    "prompt_sha256": "78443f2ebe1ad80c8ef8b95d2b72f610f49c5cf3a0feead0e9621514c4f663db",
+    "assertions": {
+      "passed": 5,
+      "failed": 0,
+      "total": 5,
+      "pass_rate": 1.0
+    },
+    "critical_failures": [],
+    "substantive_defects": [],
+    "exact_checks": {
+      "passed": 2,
+      "total": 2
+    },
+    "root_audit": null,
+    "post_dispatch_actor_assistance": 0,
+    "model_build": null,
+    "generation_seconds": null,
+    "tokens": null,
+    "session_charge": null
+  },
+  {
+    "stage": "iteration-2",
+    "id": 202,
+    "arm": "with_skill",
+    "attempt": 1,
+    "snapshot": "candidate-2",
+    "instructions_sha256": "c4d45ba75f35605677a0d095944630a56cb9168b2eac6cd68c0cd553047d3486",
+    "output": "evaluations/natural-writing/editorial-boundaries/iteration-2/eval-202-reference-with-unknown-specifications/with_skill/outputs/output.md",
+    "output_sha256": "033ef775fe09064efddd132a0f4f299d9b74fa91c942c916826a3ef485857a16",
+    "prompt_sha256": "448a3d215064a271bcda219cfbf0efdeba489c01a582163dab0020aedae32e22",
+    "assertions": {
+      "passed": 5,
+      "failed": 0,
+      "total": 5,
+      "pass_rate": 1.0
+    },
+    "critical_failures": [],
+    "substantive_defects": [],
+    "exact_checks": {
+      "passed": 2,
+      "total": 2
+    },
+    "root_audit": null,
+    "post_dispatch_actor_assistance": 0,
+    "model_build": null,
+    "generation_seconds": null,
+    "tokens": null,
+    "session_charge": null
+  },
+  {
+    "stage": "iteration-2",
+    "id": 202,
+    "arm": "old_skill",
+    "attempt": 1,
+    "snapshot": "baseline",
+    "instructions_sha256": "704915f8c740186a43215e26bf59ee7483e3142429759722bea31228b6d9b491",
+    "output": "evaluations/natural-writing/editorial-boundaries/iteration-2/eval-202-reference-with-unknown-specifications/old_skill/outputs/output.md",
+    "output_sha256": "b080c651b9d4a2ee5489b4f5ca6403bff9a8edf7b5e5e7fd7981c2095b4f9d33",
+    "prompt_sha256": "448a3d215064a271bcda219cfbf0efdeba489c01a582163dab0020aedae32e22",
+    "assertions": {
+      "passed": 4,
+      "failed": 1,
+      "total": 5,
+      "pass_rate": 0.8
+    },
+    "critical_failures": [],
+    "substantive_defects": [
+      "The final reliability-results paragraph is outside the requested technical-reference subjects and directly violates the instruction to omit source-hype rebuttals."
+    ],
+    "exact_checks": {
+      "passed": 2,
+      "total": 2
+    },
+    "root_audit": null,
+    "post_dispatch_actor_assistance": 0,
+    "model_build": null,
+    "generation_seconds": null,
+    "tokens": null,
+    "session_charge": null
+  },
+  {
+    "stage": "iteration-2",
+    "id": 203,
+    "arm": "with_skill",
+    "attempt": 1,
+    "snapshot": "candidate-2",
+    "instructions_sha256": "c4d45ba75f35605677a0d095944630a56cb9168b2eac6cd68c0cd553047d3486",
+    "output": "evaluations/natural-writing/editorial-boundaries/iteration-2/eval-203-architecture-record-positive-control/with_skill/outputs/output.md",
+    "output_sha256": "257f2c28088795b33ef34d29ff40e7ff46766888b3154bbfcb736e7b62a24762",
+    "prompt_sha256": "e3e37e24c6fbdbd66b6e4bc9e3f02a750347eace113187935f7fde74f57682d4",
+    "assertions": {
+      "passed": 4,
+      "failed": 0,
+      "total": 4,
+      "pass_rate": 1.0
+    },
+    "critical_failures": [],
+    "substantive_defects": [],
+    "exact_checks": {
+      "passed": 1,
+      "total": 1
+    },
+    "root_audit": null,
+    "post_dispatch_actor_assistance": 0,
+    "model_build": null,
+    "generation_seconds": null,
+    "tokens": null,
+    "session_charge": null
+  },
+  {
+    "stage": "iteration-2",
+    "id": 203,
+    "arm": "old_skill",
+    "attempt": 1,
+    "snapshot": "baseline",
+    "instructions_sha256": "704915f8c740186a43215e26bf59ee7483e3142429759722bea31228b6d9b491",
+    "output": "evaluations/natural-writing/editorial-boundaries/iteration-2/eval-203-architecture-record-positive-control/old_skill/outputs/output.md",
+    "output_sha256": "6b357c3e7b6292f95a86bfc562691d95d00fb113798f2b50b8a4174879323cda",
+    "prompt_sha256": "e3e37e24c6fbdbd66b6e4bc9e3f02a750347eace113187935f7fde74f57682d4",
+    "assertions": {
+      "passed": 4,
+      "failed": 0,
+      "total": 4,
+      "pass_rate": 1.0
+    },
+    "critical_failures": [],
+    "substantive_defects": [],
+    "exact_checks": {
+      "passed": 1,
+      "total": 1
+    },
+    "root_audit": null,
+    "post_dispatch_actor_assistance": 0,
+    "model_build": null,
+    "generation_seconds": null,
+    "tokens": null,
+    "session_charge": null
+  },
+  {
+    "stage": "iteration-2",
+    "id": 204,
+    "arm": "with_skill",
+    "attempt": 1,
+    "snapshot": "candidate-2",
+    "instructions_sha256": "c4d45ba75f35605677a0d095944630a56cb9168b2eac6cd68c0cd553047d3486",
+    "output": "evaluations/natural-writing/editorial-boundaries/iteration-2/eval-204-migration-history-positive-control/with_skill/outputs/output.md",
+    "output_sha256": "3698f4c43a9ae7177999f49f5ac940e3b1c66b9ef52ad2ac1876bc56c72515d2",
+    "prompt_sha256": "446de9d445ce1cff392b8bee5f89d84a41b79deef6ff58dfd66ebfccbd966543",
+    "assertions": {
+      "passed": 4,
+      "failed": 0,
+      "total": 4,
+      "pass_rate": 1.0
+    },
+    "critical_failures": [],
+    "substantive_defects": [],
+    "exact_checks": {
+      "passed": 2,
+      "total": 2
+    },
+    "root_audit": null,
+    "post_dispatch_actor_assistance": 0,
+    "model_build": null,
+    "generation_seconds": null,
+    "tokens": null,
+    "session_charge": null
+  },
+  {
+    "stage": "iteration-2",
+    "id": 204,
+    "arm": "old_skill",
+    "attempt": 1,
+    "snapshot": "baseline",
+    "instructions_sha256": "704915f8c740186a43215e26bf59ee7483e3142429759722bea31228b6d9b491",
+    "output": "evaluations/natural-writing/editorial-boundaries/iteration-2/eval-204-migration-history-positive-control/old_skill/outputs/output.md",
+    "output_sha256": "52f79f4ea782f17ecda672127d89f00cf92d192ad7b5cb9b236c1da66b07f13d",
+    "prompt_sha256": "446de9d445ce1cff392b8bee5f89d84a41b79deef6ff58dfd66ebfccbd966543",
+    "assertions": {
+      "passed": 4,
+      "failed": 0,
+      "total": 4,
+      "pass_rate": 1.0
+    },
+    "critical_failures": [],
+    "substantive_defects": [],
+    "exact_checks": {
+      "passed": 2,
+      "total": 2
+    },
+    "root_audit": null,
+    "post_dispatch_actor_assistance": 0,
+    "model_build": null,
+    "generation_seconds": null,
+    "tokens": null,
+    "session_charge": null
+  },
+  {
+    "stage": "iteration-2",
+    "id": 205,
+    "arm": "with_skill",
+    "attempt": 1,
+    "snapshot": "candidate-2",
+    "instructions_sha256": "c4d45ba75f35605677a0d095944630a56cb9168b2eac6cd68c0cd553047d3486",
+    "output": "evaluations/natural-writing/editorial-boundaries/iteration-2/eval-205-evaluation-record-preserve-failures/with_skill/outputs/output.md",
+    "output_sha256": "3f20173367eba8c3d9f4b58555d4eb80ed6eda10f9395e6b2495fa7dd833ae77",
+    "prompt_sha256": "a6ee915294c080531a8df784f76d4edda6a37165f6bbd2362c0fc433a9b6c7ed",
+    "assertions": {
+      "passed": 5,
+      "failed": 0,
+      "total": 5,
+      "pass_rate": 1.0
+    },
+    "critical_failures": [],
+    "substantive_defects": [],
+    "exact_checks": {
+      "passed": 1,
+      "total": 1
+    },
+    "root_audit": null,
+    "post_dispatch_actor_assistance": 0,
+    "model_build": null,
+    "generation_seconds": null,
+    "tokens": null,
+    "session_charge": null
+  },
+  {
+    "stage": "iteration-2",
+    "id": 205,
+    "arm": "old_skill",
+    "attempt": 1,
+    "snapshot": "baseline",
+    "instructions_sha256": "704915f8c740186a43215e26bf59ee7483e3142429759722bea31228b6d9b491",
+    "output": "evaluations/natural-writing/editorial-boundaries/iteration-2/eval-205-evaluation-record-preserve-failures/old_skill/outputs/output.md",
+    "output_sha256": "9be8eb845cfd169960a266e4e6c1dc23110033a0580b029fea16bf167891b668",
+    "prompt_sha256": "a6ee915294c080531a8df784f76d4edda6a37165f6bbd2362c0fc433a9b6c7ed",
+    "assertions": {
+      "passed": 5,
+      "failed": 0,
+      "total": 5,
+      "pass_rate": 1.0
+    },
+    "critical_failures": [],
+    "substantive_defects": [],
+    "exact_checks": {
+      "passed": 1,
+      "total": 1
+    },
+    "root_audit": null,
+    "post_dispatch_actor_assistance": 0,
+    "model_build": null,
+    "generation_seconds": null,
+    "tokens": null,
+    "session_charge": null
+  },
+  {
+    "stage": "iteration-2",
+    "id": 206,
+    "arm": "with_skill",
+    "attempt": 1,
+    "snapshot": "candidate-2",
+    "instructions_sha256": "c4d45ba75f35605677a0d095944630a56cb9168b2eac6cd68c0cd553047d3486",
+    "output": "evaluations/natural-writing/editorial-boundaries/iteration-2/eval-206-customer-email-from-internal-thread/with_skill/outputs/output.md",
+    "output_sha256": "a3a8cf310d5b658eeb4f134b8ee2fe84c3df7474192e3b705fdec71ce7440de5",
+    "prompt_sha256": "9a89725177838164aaa8d4d9afaafa9906269ac155e20abab0fc9f08a30b75f6",
+    "assertions": {
+      "passed": 5,
+      "failed": 0,
+      "total": 5,
+      "pass_rate": 1.0
+    },
+    "critical_failures": [],
+    "substantive_defects": [],
+    "exact_checks": {
+      "passed": 0,
+      "total": 0
+    },
+    "root_audit": null,
+    "post_dispatch_actor_assistance": 0,
+    "model_build": null,
+    "generation_seconds": null,
+    "tokens": null,
+    "session_charge": null
+  },
+  {
+    "stage": "iteration-2",
+    "id": 206,
+    "arm": "old_skill",
+    "attempt": 1,
+    "snapshot": "baseline",
+    "instructions_sha256": "704915f8c740186a43215e26bf59ee7483e3142429759722bea31228b6d9b491",
+    "output": "evaluations/natural-writing/editorial-boundaries/iteration-2/eval-206-customer-email-from-internal-thread/old_skill/outputs/output.md",
+    "output_sha256": "b3c78e4b82be1a97ae7904642cb608fa7147a76e84f282643d9b155db33783b7",
+    "prompt_sha256": "9a89725177838164aaa8d4d9afaafa9906269ac155e20abab0fc9f08a30b75f6",
+    "assertions": {
+      "passed": 4,
+      "failed": 1,
+      "total": 5,
+      "pass_rate": 0.8
+    },
+    "critical_failures": [
+      "Unsupported current logistics status: “we don't yet have a delivery date” is not supplied by the thread. Absence of a date in the source does not establish the sender lacks one."
+    ],
+    "substantive_defects": [],
+    "exact_checks": {
+      "passed": 0,
+      "total": 0
+    },
+    "root_audit": null,
+    "post_dispatch_actor_assistance": 0,
+    "model_build": null,
+    "generation_seconds": null,
+    "tokens": null,
+    "session_charge": null
+  },
+  {
+    "stage": "iteration-2",
+    "id": 207,
+    "arm": "with_skill",
+    "attempt": 1,
+    "snapshot": "candidate-2",
+    "instructions_sha256": "c4d45ba75f35605677a0d095944630a56cb9168b2eac6cd68c0cd553047d3486",
+    "output": "evaluations/natural-writing/editorial-boundaries/iteration-2/eval-207-maintenance-comment-useful-rationale/with_skill/outputs/output.md",
+    "output_sha256": "c1ad2448866cac54e3e1f0a44e259266a3032575b92e1539a790e4e245e8b9c6",
+    "prompt_sha256": "38ad1ad6e5f558047985817066ae5b43a7f1461c8fb814e93309b0b81e9805da",
+    "assertions": {
+      "passed": 4,
+      "failed": 0,
+      "total": 4,
+      "pass_rate": 1.0
+    },
+    "critical_failures": [],
+    "substantive_defects": [],
+    "exact_checks": {
+      "passed": 2,
+      "total": 2
+    },
+    "root_audit": null,
+    "post_dispatch_actor_assistance": 0,
+    "model_build": null,
+    "generation_seconds": null,
+    "tokens": null,
+    "session_charge": null
+  },
+  {
+    "stage": "iteration-2",
+    "id": 207,
+    "arm": "old_skill",
+    "attempt": 1,
+    "snapshot": "baseline",
+    "instructions_sha256": "704915f8c740186a43215e26bf59ee7483e3142429759722bea31228b6d9b491",
+    "output": "evaluations/natural-writing/editorial-boundaries/iteration-2/eval-207-maintenance-comment-useful-rationale/old_skill/outputs/output.md",
+    "output_sha256": "6f2a656957dbce98a045384ebf46a1121f22e151a6f8533bdcd8262cd44e331e",
+    "prompt_sha256": "38ad1ad6e5f558047985817066ae5b43a7f1461c8fb814e93309b0b81e9805da",
+    "assertions": {
+      "passed": 4,
+      "failed": 0,
+      "total": 4,
+      "pass_rate": 1.0
+    },
+    "critical_failures": [],
+    "substantive_defects": [],
+    "exact_checks": {
+      "passed": 2,
+      "total": 2
+    },
+    "root_audit": null,
+    "post_dispatch_actor_assistance": 0,
+    "model_build": null,
+    "generation_seconds": null,
+    "tokens": null,
+    "session_charge": null
+  },
+  {
+    "stage": "iteration-2",
+    "id": 208,
+    "arm": "with_skill",
+    "attempt": 1,
+    "snapshot": "candidate-2",
+    "instructions_sha256": "c4d45ba75f35605677a0d095944630a56cb9168b2eac6cd68c0cd553047d3486",
+    "output": "evaluations/natural-writing/editorial-boundaries/iteration-2/eval-208-board-brief-with-hidden-context/with_skill/outputs/output.md",
+    "output_sha256": "be607325e44989ccce49b61f161f97c2064cd43eee28049ee40aed8f7783634d",
+    "prompt_sha256": "b1861a0c9c36af33c452fbaba885b6e6811dd3f5b9e01314582e4f5db462e2de",
+    "assertions": {
+      "passed": 5,
+      "failed": 0,
+      "total": 5,
+      "pass_rate": 1.0
+    },
+    "critical_failures": [],
+    "substantive_defects": [],
+    "exact_checks": {
+      "passed": 1,
+      "total": 1
+    },
+    "root_audit": null,
+    "post_dispatch_actor_assistance": 0,
+    "model_build": null,
+    "generation_seconds": null,
+    "tokens": null,
+    "session_charge": null
+  },
+  {
+    "stage": "iteration-2",
+    "id": 208,
+    "arm": "old_skill",
+    "attempt": 1,
+    "snapshot": "baseline",
+    "instructions_sha256": "704915f8c740186a43215e26bf59ee7483e3142429759722bea31228b6d9b491",
+    "output": "evaluations/natural-writing/editorial-boundaries/iteration-2/eval-208-board-brief-with-hidden-context/old_skill/outputs/output.md",
+    "output_sha256": "2ecd29cb3d56af081cbabc30e734fb67b61e2df0526f12a736f5ecb5ab0d8c64",
+    "prompt_sha256": "b1861a0c9c36af33c452fbaba885b6e6811dd3f5b9e01314582e4f5db462e2de",
+    "assertions": {
+      "passed": 5,
+      "failed": 0,
+      "total": 5,
+      "pass_rate": 1.0
+    },
+    "critical_failures": [],
+    "substantive_defects": [],
+    "exact_checks": {
+      "passed": 1,
+      "total": 1
+    },
+    "root_audit": null,
+    "post_dispatch_actor_assistance": 0,
+    "model_build": null,
+    "generation_seconds": null,
+    "tokens": null,
+    "session_charge": null
+  },
+  {
+    "stage": "iteration-2",
+    "id": 402,
+    "arm": "with_skill",
+    "attempt": 1,
+    "snapshot": "candidate-2",
+    "instructions_sha256": "c4d45ba75f35605677a0d095944630a56cb9168b2eac6cd68c0cd553047d3486",
+    "output": "evaluations/natural-writing/editorial-boundaries/iteration-2/eval-402-regression-uncertain-study/with_skill/outputs/output.md",
+    "output_sha256": "21e4f294d574d51c30574d55aaae84c1cf823a9d7317acd488124697e3237545",
+    "prompt_sha256": "3273863a24d626b0a4fea12236f30ed12566bc6744cd2205658c17ab300e970b",
+    "assertions": {
+      "passed": 5,
+      "failed": 0,
+      "total": 5,
+      "pass_rate": 1.0
+    },
+    "critical_failures": [],
+    "substantive_defects": [],
+    "exact_checks": {
+      "passed": 2,
+      "total": 2
+    },
+    "root_audit": null,
+    "post_dispatch_actor_assistance": 0,
+    "model_build": null,
+    "generation_seconds": null,
+    "tokens": null,
+    "session_charge": null
+  },
+  {
+    "stage": "iteration-2",
+    "id": 402,
+    "arm": "old_skill",
+    "attempt": 1,
+    "snapshot": "baseline",
+    "instructions_sha256": "704915f8c740186a43215e26bf59ee7483e3142429759722bea31228b6d9b491",
+    "output": "evaluations/natural-writing/editorial-boundaries/iteration-2/eval-402-regression-uncertain-study/old_skill/outputs/output.md",
+    "output_sha256": "d2d9f830c286fe4be58055ac10c5edae70fffd3e349b8675f15a36b1ae9ac734",
+    "prompt_sha256": "3273863a24d626b0a4fea12236f30ed12566bc6744cd2205658c17ab300e970b",
+    "assertions": {
+      "passed": 5,
+      "failed": 0,
+      "total": 5,
+      "pass_rate": 1.0
+    },
+    "critical_failures": [],
+    "substantive_defects": [],
+    "exact_checks": {
+      "passed": 2,
+      "total": 2
+    },
+    "root_audit": null,
+    "post_dispatch_actor_assistance": 0,
+    "model_build": null,
+    "generation_seconds": null,
+    "tokens": null,
+    "session_charge": null
+  },
+  {
+    "stage": "iteration-2",
+    "id": 403,
+    "arm": "with_skill",
+    "attempt": 1,
+    "snapshot": "candidate-2",
+    "instructions_sha256": "c4d45ba75f35605677a0d095944630a56cb9168b2eac6cd68c0cd553047d3486",
+    "output": "evaluations/natural-writing/editorial-boundaries/iteration-2/eval-403-regression-source-poor-copy/with_skill/outputs/output.md",
+    "output_sha256": "dfdbdaa598b410878f0b6d8e8db9d4625b24d55fcecfd4d33522ec23834640a6",
+    "prompt_sha256": "065129cd838053158905822c6edcfacb30ce420c250022b2031478cc90cda0c9",
+    "assertions": {
+      "passed": 3,
+      "failed": 0,
+      "total": 3,
+      "pass_rate": 1.0
+    },
+    "critical_failures": [],
+    "substantive_defects": [],
+    "exact_checks": {
+      "passed": 1,
+      "total": 1
+    },
+    "root_audit": null,
+    "post_dispatch_actor_assistance": 0,
+    "model_build": null,
+    "generation_seconds": null,
+    "tokens": null,
+    "session_charge": null
+  },
+  {
+    "stage": "iteration-2",
+    "id": 403,
+    "arm": "old_skill",
+    "attempt": 1,
+    "snapshot": "baseline",
+    "instructions_sha256": "704915f8c740186a43215e26bf59ee7483e3142429759722bea31228b6d9b491",
+    "output": "evaluations/natural-writing/editorial-boundaries/iteration-2/eval-403-regression-source-poor-copy/old_skill/outputs/output.md",
+    "output_sha256": "b940f56bbd9facde9ac9cd5a4c009fc8d0cce2214533d42031f9244036084095",
+    "prompt_sha256": "065129cd838053158905822c6edcfacb30ce420c250022b2031478cc90cda0c9",
+    "assertions": {
+      "passed": 3,
+      "failed": 0,
+      "total": 3,
+      "pass_rate": 1.0
+    },
+    "critical_failures": [],
+    "substantive_defects": [],
+    "exact_checks": {
+      "passed": 1,
+      "total": 1
+    },
+    "root_audit": null,
+    "post_dispatch_actor_assistance": 0,
+    "model_build": null,
+    "generation_seconds": null,
+    "tokens": null,
+    "session_charge": null
+  },
+  {
+    "stage": "iteration-2",
+    "id": 405,
+    "arm": "with_skill",
+    "attempt": 1,
+    "snapshot": "candidate-2",
+    "instructions_sha256": "c4d45ba75f35605677a0d095944630a56cb9168b2eac6cd68c0cd553047d3486",
+    "output": "evaluations/natural-writing/editorial-boundaries/iteration-2/eval-405-regression-voice-sample-email/with_skill/outputs/output.md",
+    "output_sha256": "fc5c01a3391f5f507ff79d9296bb5d2e620c5b01a4e4369ef9490c8101f72c47",
+    "prompt_sha256": "2d0fe2f546a26f1adf2ab5625df099cc02d86fc257a63566556f70e1c88fabb3",
+    "assertions": {
+      "passed": 4,
+      "failed": 0,
+      "total": 4,
+      "pass_rate": 1.0
+    },
+    "critical_failures": [],
+    "substantive_defects": [],
+    "exact_checks": {
+      "passed": 0,
+      "total": 0
+    },
+    "root_audit": null,
+    "post_dispatch_actor_assistance": 0,
+    "model_build": null,
+    "generation_seconds": null,
+    "tokens": null,
+    "session_charge": null
+  },
+  {
+    "stage": "iteration-2",
+    "id": 405,
+    "arm": "old_skill",
+    "attempt": 1,
+    "snapshot": "baseline",
+    "instructions_sha256": "704915f8c740186a43215e26bf59ee7483e3142429759722bea31228b6d9b491",
+    "output": "evaluations/natural-writing/editorial-boundaries/iteration-2/eval-405-regression-voice-sample-email/old_skill/outputs/output.md",
+    "output_sha256": "8908745aa5cdc62e785881846350da136390f2f9a82eb37b716d855e8619c324",
+    "prompt_sha256": "2d0fe2f546a26f1adf2ab5625df099cc02d86fc257a63566556f70e1c88fabb3",
+    "assertions": {
+      "passed": 4,
+      "failed": 0,
+      "total": 4,
+      "pass_rate": 1.0
+    },
+    "critical_failures": [],
+    "substantive_defects": [],
+    "exact_checks": {
+      "passed": 0,
+      "total": 0
+    },
+    "root_audit": null,
+    "post_dispatch_actor_assistance": 0,
+    "model_build": null,
+    "generation_seconds": null,
+    "tokens": null,
+    "session_charge": null
+  },
+  {
+    "stage": "iteration-2",
+    "id": 406,
+    "arm": "with_skill",
+    "attempt": 1,
+    "snapshot": "candidate-2",
+    "instructions_sha256": "c4d45ba75f35605677a0d095944630a56cb9168b2eac6cd68c0cd553047d3486",
+    "output": "evaluations/natural-writing/editorial-boundaries/iteration-2/eval-406-regression-already-good-control/with_skill/outputs/output.md",
+    "output_sha256": "72b1f979cc873495cd5485d74546d99166898143c12de0c8613328994282c189",
+    "prompt_sha256": "83dbe4550f91e1061804ed376f8aaf5fa4b9c01d40b4148800665119e64061c1",
+    "assertions": {
+      "passed": 1,
+      "failed": 0,
+      "total": 1,
+      "pass_rate": 1.0
+    },
+    "critical_failures": [],
+    "substantive_defects": [],
+    "exact_checks": {
+      "passed": 1,
+      "total": 1
+    },
+    "root_audit": null,
+    "post_dispatch_actor_assistance": 0,
+    "model_build": null,
+    "generation_seconds": null,
+    "tokens": null,
+    "session_charge": null
+  },
+  {
+    "stage": "iteration-2",
+    "id": 406,
+    "arm": "old_skill",
+    "attempt": 1,
+    "snapshot": "baseline",
+    "instructions_sha256": "704915f8c740186a43215e26bf59ee7483e3142429759722bea31228b6d9b491",
+    "output": "evaluations/natural-writing/editorial-boundaries/iteration-2/eval-406-regression-already-good-control/old_skill/outputs/output.md",
+    "output_sha256": "72b1f979cc873495cd5485d74546d99166898143c12de0c8613328994282c189",
+    "prompt_sha256": "83dbe4550f91e1061804ed376f8aaf5fa4b9c01d40b4148800665119e64061c1",
+    "assertions": {
+      "passed": 1,
+      "failed": 0,
+      "total": 1,
+      "pass_rate": 1.0
+    },
+    "critical_failures": [],
+    "substantive_defects": [],
+    "exact_checks": {
+      "passed": 1,
+      "total": 1
+    },
+    "root_audit": null,
+    "post_dispatch_actor_assistance": 0,
+    "model_build": null,
+    "generation_seconds": null,
+    "tokens": null,
+    "session_charge": null
+  },
+  {
+    "stage": "confirmation",
+    "id": 301,
+    "arm": "with_skill",
+    "attempt": 1,
+    "snapshot": "candidate-2",
+    "instructions_sha256": "c4d45ba75f35605677a0d095944630a56cb9168b2eac6cd68c0cd553047d3486",
+    "output": "evaluations/natural-writing/editorial-boundaries/confirmation/eval-301-Capacity proposal from mixed project notes/with_skill/outputs/output.md",
+    "output_sha256": "2a8b99b04e6a732186fcfb378d1f1831db7c173c40afb5443c7f5e13d659436f",
+    "prompt_sha256": "ad461d4c74af62ac6ca1c8cd2155e5616002348f1919af77999eb79c2f20fb6b",
+    "assertions": {
+      "passed": 5,
+      "failed": 0,
+      "total": 5,
+      "pass_rate": 1.0
+    },
+    "critical_failures": [],
+    "substantive_defects": [],
+    "exact_checks": {
+      "passed": 1,
+      "total": 1
+    },
+    "root_audit": null,
+    "post_dispatch_actor_assistance": 0,
+    "model_build": null,
+    "generation_seconds": null,
+    "tokens": null,
+    "session_charge": null
+  },
+  {
+    "stage": "confirmation",
+    "id": 301,
+    "arm": "old_skill",
+    "attempt": 1,
+    "snapshot": "baseline",
+    "instructions_sha256": "704915f8c740186a43215e26bf59ee7483e3142429759722bea31228b6d9b491",
+    "output": "evaluations/natural-writing/editorial-boundaries/confirmation/eval-301-Capacity proposal from mixed project notes/old_skill/outputs/output.md",
+    "output_sha256": "8c6d632ffe8797d4061ec48043f7c3b374cf60659bb957cf644931c341c26276",
+    "prompt_sha256": "ad461d4c74af62ac6ca1c8cd2155e5616002348f1919af77999eb79c2f20fb6b",
+    "assertions": {
+      "passed": 5,
+      "failed": 0,
+      "total": 5,
+      "pass_rate": 1.0
+    },
+    "critical_failures": [],
+    "substantive_defects": [],
+    "exact_checks": {
+      "passed": 1,
+      "total": 1
+    },
+    "root_audit": null,
+    "post_dispatch_actor_assistance": 0,
+    "model_build": null,
+    "generation_seconds": null,
+    "tokens": null,
+    "session_charge": null
+  },
+  {
+    "stage": "confirmation",
+    "id": 302,
+    "arm": "with_skill",
+    "attempt": 1,
+    "snapshot": "candidate-2",
+    "instructions_sha256": "c4d45ba75f35605677a0d095944630a56cb9168b2eac6cd68c0cd553047d3486",
+    "output": "evaluations/natural-writing/editorial-boundaries/confirmation/eval-302-Customer delivery update from fulfillment notes/with_skill/outputs/output.md",
+    "output_sha256": "b43934b125f125be849918b2f436469deb95337939db6d8db6574a26123cc288",
+    "prompt_sha256": "9ffd8c9cd40761d663f252962f17826cde547e879e70f637e5f426501493348c",
+    "assertions": {
+      "passed": 6,
+      "failed": 0,
+      "total": 6,
+      "pass_rate": 1.0
+    },
+    "critical_failures": [],
+    "substantive_defects": [],
+    "exact_checks": {
+      "passed": 1,
+      "total": 1
+    },
+    "root_audit": null,
+    "post_dispatch_actor_assistance": 0,
+    "model_build": null,
+    "generation_seconds": null,
+    "tokens": null,
+    "session_charge": null
+  },
+  {
+    "stage": "confirmation",
+    "id": 302,
+    "arm": "old_skill",
+    "attempt": 1,
+    "snapshot": "baseline",
+    "instructions_sha256": "704915f8c740186a43215e26bf59ee7483e3142429759722bea31228b6d9b491",
+    "output": "evaluations/natural-writing/editorial-boundaries/confirmation/eval-302-Customer delivery update from fulfillment notes/old_skill/outputs/output.md",
+    "output_sha256": "4f5542e9002838418fc0a1d725d10714e9f092aa5752f495643cd22beac7360f",
+    "prompt_sha256": "9ffd8c9cd40761d663f252962f17826cde547e879e70f637e5f426501493348c",
+    "assertions": {
+      "passed": 6,
+      "failed": 0,
+      "total": 6,
+      "pass_rate": 1.0
+    },
+    "critical_failures": [],
+    "substantive_defects": [],
+    "exact_checks": {
+      "passed": 1,
+      "total": 1
+    },
+    "root_audit": null,
+    "post_dispatch_actor_assistance": 0,
+    "model_build": null,
+    "generation_seconds": null,
+    "tokens": null,
+    "session_charge": null
+  },
+  {
+    "stage": "confirmation",
+    "id": 303,
+    "arm": "with_skill",
+    "attempt": 1,
+    "snapshot": "candidate-2",
+    "instructions_sha256": "c4d45ba75f35605677a0d095944630a56cb9168b2eac6cd68c0cd553047d3486",
+    "output": "evaluations/natural-writing/editorial-boundaries/confirmation/eval-303-Technical explanation with unresolved integration details/with_skill/outputs/output.md",
+    "output_sha256": "710b44feaaafa5294878158c2efe427d8442fef87947c3bb51a6ab7d139e7c7f",
+    "prompt_sha256": "059e4439d00e834e6fd53d2be90788635a94f4c594ae0ea65de55b83c9879225",
+    "assertions": {
+      "passed": 6,
+      "failed": 0,
+      "total": 6,
+      "pass_rate": 1.0
+    },
+    "critical_failures": [],
+    "substantive_defects": [],
+    "exact_checks": {
+      "passed": 1,
+      "total": 1
+    },
+    "root_audit": null,
+    "post_dispatch_actor_assistance": 0,
+    "model_build": null,
+    "generation_seconds": null,
+    "tokens": null,
+    "session_charge": null
+  },
+  {
+    "stage": "confirmation",
+    "id": 303,
+    "arm": "old_skill",
+    "attempt": 1,
+    "snapshot": "baseline",
+    "instructions_sha256": "704915f8c740186a43215e26bf59ee7483e3142429759722bea31228b6d9b491",
+    "output": "evaluations/natural-writing/editorial-boundaries/confirmation/eval-303-Technical explanation with unresolved integration details/old_skill/outputs/output.md",
+    "output_sha256": "d3d9df2c8a5d42252ed589dd1619f4101ab7d8e72ae9c634f36cc43a424a0493",
+    "prompt_sha256": "059e4439d00e834e6fd53d2be90788635a94f4c594ae0ea65de55b83c9879225",
+    "assertions": {
+      "passed": 6,
+      "failed": 0,
+      "total": 6,
+      "pass_rate": 1.0
+    },
+    "critical_failures": [],
+    "substantive_defects": [],
+    "exact_checks": {
+      "passed": 1,
+      "total": 1
+    },
+    "root_audit": null,
+    "post_dispatch_actor_assistance": 0,
+    "model_build": null,
+    "generation_seconds": null,
+    "tokens": null,
+    "session_charge": null
+  },
+  {
+    "stage": "confirmation",
+    "id": 304,
+    "arm": "with_skill",
+    "attempt": 1,
+    "snapshot": "candidate-2",
+    "instructions_sha256": "c4d45ba75f35605677a0d095944630a56cb9168b2eac6cd68c0cd553047d3486",
+    "output": "evaluations/natural-writing/editorial-boundaries/confirmation/eval-304-Full operational handover procedure/with_skill/outputs/output.md",
+    "output_sha256": "dced30f9700f91c3a23db35863e3315bb4691d7d9afb35eab0fa8e5fb208e841",
+    "prompt_sha256": "c0fde471307a08bc6ddfe7e9ecc37206bbef3dbcb39d0bf876cfe6e126a6aa6e",
+    "assertions": {
+      "passed": 6,
+      "failed": 0,
+      "total": 6,
+      "pass_rate": 1.0
+    },
+    "critical_failures": [],
+    "substantive_defects": [],
+    "exact_checks": {
+      "passed": 2,
+      "total": 2
+    },
+    "root_audit": null,
+    "post_dispatch_actor_assistance": 0,
+    "model_build": null,
+    "generation_seconds": null,
+    "tokens": null,
+    "session_charge": null
+  },
+  {
+    "stage": "confirmation",
+    "id": 304,
+    "arm": "old_skill",
+    "attempt": 1,
+    "snapshot": "baseline",
+    "instructions_sha256": "704915f8c740186a43215e26bf59ee7483e3142429759722bea31228b6d9b491",
+    "output": "evaluations/natural-writing/editorial-boundaries/confirmation/eval-304-Full operational handover procedure/old_skill/outputs/output.md",
+    "output_sha256": "6bf4c9f25f26d4b55480eba6e6188eacc426b86661a3efe78d78c952d682009d",
+    "prompt_sha256": "c0fde471307a08bc6ddfe7e9ecc37206bbef3dbcb39d0bf876cfe6e126a6aa6e",
+    "assertions": {
+      "passed": 6,
+      "failed": 0,
+      "total": 6,
+      "pass_rate": 1.0
+    },
+    "critical_failures": [],
+    "substantive_defects": [],
+    "exact_checks": {
+      "passed": 2,
+      "total": 2
+    },
+    "root_audit": null,
+    "post_dispatch_actor_assistance": 0,
+    "model_build": null,
+    "generation_seconds": null,
+    "tokens": null,
+    "session_charge": null
+  },
+  {
+    "stage": "confirmation",
+    "id": 305,
+    "arm": "with_skill",
+    "attempt": 1,
+    "snapshot": "candidate-2",
+    "instructions_sha256": "c4d45ba75f35605677a0d095944630a56cb9168b2eac6cd68c0cd553047d3486",
+    "output": "evaluations/natural-writing/editorial-boundaries/confirmation/eval-305-Incident review that requires failure history/with_skill/outputs/output.md",
+    "output_sha256": "ddb9e75fb69ecb754449fb34905247bde8a6e3bbe8409b6235f6871e6c56c5bc",
+    "prompt_sha256": "42d9be753b47047bf194f4abfd6cbe99c57476d4ddd20eb3828313ce7f94fc93",
+    "assertions": {
+      "passed": 6,
+      "failed": 0,
+      "total": 6,
+      "pass_rate": 1.0
+    },
+    "critical_failures": [],
+    "substantive_defects": [],
+    "exact_checks": {
+      "passed": 1,
+      "total": 1
+    },
+    "root_audit": null,
+    "post_dispatch_actor_assistance": 0,
+    "model_build": null,
+    "generation_seconds": null,
+    "tokens": null,
+    "session_charge": null
+  },
+  {
+    "stage": "confirmation",
+    "id": 305,
+    "arm": "old_skill",
+    "attempt": 1,
+    "snapshot": "baseline",
+    "instructions_sha256": "704915f8c740186a43215e26bf59ee7483e3142429759722bea31228b6d9b491",
+    "output": "evaluations/natural-writing/editorial-boundaries/confirmation/eval-305-Incident review that requires failure history/old_skill/outputs/output.md",
+    "output_sha256": "eff076bad59e520f8c082e6ea1cb60660a68a3cbdbbf8b843e903ed5c706cc84",
+    "prompt_sha256": "42d9be753b47047bf194f4abfd6cbe99c57476d4ddd20eb3828313ce7f94fc93",
+    "assertions": {
+      "passed": 6,
+      "failed": 0,
+      "total": 6,
+      "pass_rate": 1.0
+    },
+    "critical_failures": [],
+    "substantive_defects": [],
+    "exact_checks": {
+      "passed": 1,
+      "total": 1
+    },
+    "root_audit": null,
+    "post_dispatch_actor_assistance": 0,
+    "model_build": null,
+    "generation_seconds": null,
+    "tokens": null,
+    "session_charge": null
+  },
+  {
+    "stage": "confirmation",
+    "id": 306,
+    "arm": "with_skill",
+    "attempt": 1,
+    "snapshot": "candidate-2",
+    "instructions_sha256": "c4d45ba75f35605677a0d095944630a56cb9168b2eac6cd68c0cd553047d3486",
+    "output": "evaluations/natural-writing/editorial-boundaries/confirmation/eval-306-Adoption decision memo preserving tradeoffs and failed trial/with_skill/outputs/output.md",
+    "output_sha256": "d5178c716a7b76e40b6de39c916bdbc0f36fcac0fa4e8d239616dcf282c47853",
+    "prompt_sha256": "8924041cfee4f95932e3e21230ada02be8722416e78475945513fd39362ea77c",
+    "assertions": {
+      "passed": 6,
+      "failed": 0,
+      "total": 6,
+      "pass_rate": 1.0
+    },
+    "critical_failures": [],
+    "substantive_defects": [],
+    "exact_checks": {
+      "passed": 1,
+      "total": 1
+    },
+    "root_audit": null,
+    "post_dispatch_actor_assistance": 0,
+    "model_build": null,
+    "generation_seconds": null,
+    "tokens": null,
+    "session_charge": null
+  },
+  {
+    "stage": "confirmation",
+    "id": 306,
+    "arm": "old_skill",
+    "attempt": 1,
+    "snapshot": "baseline",
+    "instructions_sha256": "704915f8c740186a43215e26bf59ee7483e3142429759722bea31228b6d9b491",
+    "output": "evaluations/natural-writing/editorial-boundaries/confirmation/eval-306-Adoption decision memo preserving tradeoffs and failed trial/old_skill/outputs/output.md",
+    "output_sha256": "48b545a8fee4c30f09fde7ddcad78ba22d063435910ceeee24e01bb7f14ca2b2",
+    "prompt_sha256": "8924041cfee4f95932e3e21230ada02be8722416e78475945513fd39362ea77c",
+    "assertions": {
+      "passed": 6,
+      "failed": 0,
+      "total": 6,
+      "pass_rate": 1.0
+    },
+    "critical_failures": [],
+    "substantive_defects": [],
+    "exact_checks": {
+      "passed": 1,
+      "total": 1
+    },
+    "root_audit": null,
+    "post_dispatch_actor_assistance": 0,
+    "model_build": null,
+    "generation_seconds": null,
+    "tokens": null,
+    "session_charge": null
+  }
+]

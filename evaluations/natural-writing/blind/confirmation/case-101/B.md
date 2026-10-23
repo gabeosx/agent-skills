@@ -1,0 +1,1 @@
+At dusk the ferry came back empty. Not almost empty. Empty. My father counted the windows anyway; he had always trusted arithmetic more than news. On the far bank, a house burned with the slow patience of a candle. I held his coat—his good coat, absurdly heavy for June—and waited for him to stop counting.

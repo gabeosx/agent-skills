@@ -1,0 +1,583 @@
+{
+  "metadata": {
+    "skill_name": "natural-writing",
+    "executor_model": "session model; exact build unavailable",
+    "analyzer_model": "independent session subagent; exact build unavailable",
+    "runs_per_configuration": 1,
+    "evals_run": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ]
+  },
+  "runs": [
+    {
+      "eval_id": 1,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "pass_rate": 1.0
+      },
+      "expectations": [
+        {
+          "text": "Includes offline notes and automatic sync after connection returns without promising offline photos.",
+          "passed": true,
+          "evidence": "\"You can now keep taking notes offline, and they'll sync when your connection returns.\" The separate sentence \"Photos still need a connection\" prevents an offline-photo promise."
+        },
+        {
+          "text": "Retains all-plan inclusion and no migration for existing notebooks.",
+          "passed": true,
+          "evidence": "\"Offline notes are included on every plan, and your existing notebooks need no migration.\""
+        },
+        {
+          "text": "Does not invent quotations, adoption numbers, performance measures, launch offers, or founder experiences beyond the supplied facts.",
+          "passed": true,
+          "evidence": "\"Customers told us they were losing notes in basements\" is supplied background. \"Thanks to the customers\" adds a permissible expression of gratitude; no quotation, metric, discount, or invented founder experience appears."
+        },
+        {
+          "text": "90–140 words; reads as a publishable post without assistant wrapper.",
+          "passed": true,
+          "evidence": "100 whitespace-delimited words; starts \"Today we added offline notes\" and ends \"where Fieldnote was letting them down,\" with no assistant wrapper."
+        }
+      ],
+      "notes": [
+        "Both are usable, grounded founder posts. A makes the photo limit especially explicit; B has a livelier opening and invitation to customers. The tradeoffs do not produce a meaningful overall preference."
+      ]
+    },
+    {
+      "eval_id": 1,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "pass_rate": 1.0
+      },
+      "expectations": [
+        {
+          "text": "Includes offline notes and automatic sync after connection returns without promising offline photos.",
+          "passed": true,
+          "evidence": "\"You can now write notes without a connection. They'll sync when you're connected again. Photos still need a connection\" preserves both behavior and limit."
+        },
+        {
+          "text": "Retains all-plan inclusion and no migration for existing notebooks.",
+          "passed": true,
+          "evidence": "\"Offline notes are included on every plan\" and \"there's nothing to migrate\" preserve both requirements."
+        },
+        {
+          "text": "Does not invent quotations, adoption numbers, performance measures, launch offers, or founder experiences beyond the supplied facts.",
+          "passed": true,
+          "evidence": "\"Customers told us they were losing notes there\" follows the supplied basement fact. \"There's more work for us to do on that front\" expresses an outlook without promising a roadmap, and no prohibited numbers, quotes, offers, or personal experiences appear."
+        },
+        {
+          "text": "90–140 words; reads as a publishable post without assistant wrapper.",
+          "passed": true,
+          "evidence": "108 whitespace-delimited words; opens \"Basements are a bad place\" and ends \"works where you work,\" as a complete post with no wrapper."
+        }
+      ],
+      "notes": [
+        "Both are usable, grounded founder posts. A makes the photo limit especially explicit; B has a livelier opening and invitation to customers. The tradeoffs do not produce a meaningful overall preference."
+      ]
+    },
+    {
+      "eval_id": 2,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "passed": 5,
+        "failed": 0,
+        "total": 5,
+        "pass_rate": 1.0
+      },
+      "expectations": [
+        {
+          "text": "Preserves 18 nurses, four weeks, one clinic, and voluntary participation.",
+          "passed": true,
+          "evidence": "\"A voluntary four-week pilot at one clinic\" and \"Among 18 participating nurses\" preserve the design and sample."
+        },
+        {
+          "text": "Preserves median weekly 46 to 39 minutes with no causal claim and explains no control plus concurrent staffing changes.",
+          "passed": true,
+          "evidence": "\"Median weekly scheduling time fell from 46 to 39 minutes\"; \"With no control group and staffing changes occurring during the pilot\" explicitly explains why causation remains unestablished."
+        },
+        {
+          "text": "States six of nine survey respondents preferred it rather than six of 18 or a majority of all nurses.",
+          "passed": true,
+          "evidence": "\"Six of the nine nurses who returned the optional survey preferred the tool\" preserves the responding subgroup and is qualified by \"may not reflect the views of all participants or nurses elsewhere.\""
+        },
+        {
+          "text": "States patient safety was not measured; any next step is framed as recommendation, not a planned commitment.",
+          "passed": true,
+          "evidence": "\"Patient safety was not measured\" preserves the unknown. \"Before broader adoption, run a longer evaluation\" is an imperative recommendation to the director, not a claim that an evaluation is already planned."
+        },
+        {
+          "text": "100–150 words in one paragraph without heading or bullets.",
+          "passed": true,
+          "evidence": "113 whitespace-delimited words in one paragraph; no heading or bullets."
+        }
+      ],
+      "notes": [
+        "Both preserve the study's quantities, limitations, survey denominator, and unmeasured safety outcome, and both offer useful next evaluations. A emphasizes predefined measures and multiple clinics; B emphasizes collecting feedback from everyone. Neither is meaningfully better for the requested briefing."
+      ]
+    },
+    {
+      "eval_id": 2,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "passed": 5,
+        "failed": 0,
+        "total": 5,
+        "pass_rate": 1.0
+      },
+      "expectations": [
+        {
+          "text": "Preserves 18 nurses, four weeks, one clinic, and voluntary participation.",
+          "passed": true,
+          "evidence": "\"A voluntary four-week pilot at one clinic\" and \"Among 18 participating nurses\" retain all four design details."
+        },
+        {
+          "text": "Preserves median weekly 46 to 39 minutes with no causal claim and explains no control plus concurrent staffing changes.",
+          "passed": true,
+          "evidence": "\"Median weekly scheduling time fell from 46 to 39 minutes\" is followed by \"Without a control group, that change cannot be attributed to the tool; concurrent staffing changes may have contributed.\""
+        },
+        {
+          "text": "States six of nine survey respondents preferred it rather than six of 18 or a majority of all nurses.",
+          "passed": true,
+          "evidence": "\"Nine nurses completed the optional survey, and six preferred the tool\" explicitly fixes the denominator, reinforced by \"only half the participants.\""
+        },
+        {
+          "text": "States patient safety was not measured; any next step is framed as recommendation, not a planned commitment.",
+          "passed": true,
+          "evidence": "\"The pilot did not measure patient safety\" retains the unknown; \"A reasonable next step is a longer, controlled evaluation\" is expressly a recommendation."
+        },
+        {
+          "text": "100–150 words in one paragraph without heading or bullets.",
+          "passed": true,
+          "evidence": "118 whitespace-delimited words in a single paragraph; no heading or bullets."
+        }
+      ],
+      "notes": [
+        "Both preserve the study's quantities, limitations, survey denominator, and unmeasured safety outcome, and both offer useful next evaluations. A emphasizes predefined measures and multiple clinics; B emphasizes collecting feedback from everyone. Neither is meaningfully better for the requested briefing."
+      ]
+    },
+    {
+      "eval_id": 3,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "passed": 3,
+        "failed": 0,
+        "total": 3,
+        "pass_rate": 1.0
+      },
+      "expectations": [
+        {
+          "text": "Includes replaceable LED module, steel base, and two-year warranty accurately.",
+          "passed": true,
+          "evidence": "\"A replaceable LED module in a desk lamp with a steel base and a two-year warranty\" accurately lists all three facts."
+        },
+        {
+          "text": "No invented light-quality, comfort, durability, environmental, manufacturing, certification, price, or user-experience claims.",
+          "passed": true,
+          "evidence": "\"When the LED module needs replacing, you can replace that part of the lamp\" only restates replaceability; \"a useful detail to consider\" is general evaluation, not a fabricated test, user story, certification, or performance claim."
+        },
+        {
+          "text": "45–75 words and no assistant or editing commentary.",
+          "passed": true,
+          "evidence": "45 whitespace-delimited words, beginning \"Bracken puts\"; only product copy is returned."
+        }
+      ],
+      "notes": [
+        "B makes the replaceable module meaningful by explaining that replacing it does not require replacing the whole lamp. That is a supported implication of the supplied feature, and the closing is an aspiration rather than a quantified durability or environmental promise. A repeats replaceability almost verbatim and finishes with a generic statement about choosing desk objects; it meets the assertions but is less compelling."
+      ]
+    },
+    {
+      "eval_id": 3,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "passed": 3,
+        "failed": 0,
+        "total": 3,
+        "pass_rate": 1.0
+      },
+      "expectations": [
+        {
+          "text": "Includes replaceable LED module, steel base, and two-year warranty accurately.",
+          "passed": true,
+          "evidence": "\"A desk lamp with a steel base, a replaceable LED module, and a two-year warranty\" accurately includes all required features."
+        },
+        {
+          "text": "No invented light-quality, comfort, durability, environmental, manufacturing, certification, price, or user-experience claims.",
+          "passed": true,
+          "evidence": "\"You can replace that part without replacing the whole lamp\" is supported by the replaceable module. \"The lamp you choose for your desk should be one you can keep using\" states a purchasing ideal grounded in replaceability; it makes no measured lifespan, durability, comfort, light quality, environmental, manufacturing, certification, price, or customer-experience claim."
+        },
+        {
+          "text": "45–75 words and no assistant or editing commentary.",
+          "passed": true,
+          "evidence": "54 whitespace-delimited words; \"Meet Bracken\" begins the revised copy and no assistant commentary follows."
+        }
+      ],
+      "notes": [
+        "B makes the replaceable module meaningful by explaining that replacing it does not require replacing the whole lamp. That is a supported implication of the supplied feature, and the closing is an aspiration rather than a quantified durability or environmental promise. A repeats replaceability almost verbatim and finishes with a generic statement about choosing desk objects; it meets the assertions but is less compelling."
+      ]
+    },
+    {
+      "eval_id": 4,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "pass_rate": 1.0
+      },
+      "expectations": [
+        {
+          "text": "Distinguishes replication copying deletion from a backup retaining earlier restorable state under retention policy.",
+          "passed": true,
+          "evidence": "\"It copies changes to another instance, including accidental deletions\" and \"A backup preserves an earlier state that can be restored, subject to the backup's retention policy\" preserve the actual distinction."
+        },
+        {
+          "text": "Preserves availability versus point-in-time recovery distinction.",
+          "passed": true,
+          "evidence": "\"Replication can improve availability, but it does not by itself provide point-in-time recovery\" states the limitation precisely."
+        },
+        {
+          "text": "Requires both base backup and unbroken write-ahead logs for this system.",
+          "passed": true,
+          "evidence": "\"For this system, point-in-time recovery additionally requires a base backup and an unbroken sequence of write-ahead logs\" includes both requirements."
+        },
+        {
+          "text": "No zero-downtime or zero-data-loss promise; 100–150 words.",
+          "passed": true,
+          "evidence": "107 whitespace-delimited words; the modest \"can improve availability\" and \"verify that the required backup and log sequence are retained\" make no zero-downtime or zero-loss promise."
+        }
+      ],
+      "notes": [
+        "Both give handbook-ready technical explanations, retain necessary contrast, and preserve the exact recovery prerequisites. A usefully explains a log gap; B ends with a useful retention check. These are comparable choices, with no material loss or unsupported guarantee."
+      ]
+    },
+    {
+      "eval_id": 4,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "pass_rate": 1.0
+      },
+      "expectations": [
+        {
+          "text": "Distinguishes replication copying deletion from a backup retaining earlier restorable state under retention policy.",
+          "passed": true,
+          "evidence": "\"It copies changes to another database instance, including accidental deletions\" contrasts with \"A backup preserves an earlier state that can be restored within the limits of its retention policy.\""
+        },
+        {
+          "text": "Preserves availability versus point-in-time recovery distinction.",
+          "passed": true,
+          "evidence": "\"That copy can improve availability\" and \"Replication alone does not provide point-in-time recovery\" keep the two purposes distinct."
+        },
+        {
+          "text": "Requires both base backup and unbroken write-ahead logs for this system.",
+          "passed": true,
+          "evidence": "\"For this system, recovery to a specific point requires both a base backup and an unbroken sequence of write-ahead logs\" retains both prerequisites. \"A gap in that sequence prevents recovery through the gap\" explains a supported technical consequence."
+        },
+        {
+          "text": "No zero-downtime or zero-data-loss promise; 100–150 words.",
+          "passed": true,
+          "evidence": "113 whitespace-delimited words; \"Neither arrangement guarantees zero downtime or zero data loss\" explicitly avoids the prohibited guarantees."
+        }
+      ],
+      "notes": [
+        "Both give handbook-ready technical explanations, retain necessary contrast, and preserve the exact recovery prerequisites. A usefully explains a log gap; B ends with a useful retention check. These are comparable choices, with no material loss or unsupported guarantee."
+      ]
+    },
+    {
+      "eval_id": 5,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "pass_rate": 1.0
+      },
+      "expectations": [
+        {
+          "text": "Addresses Lee and signs Mara without importing Jo or replacement/shipment claims.",
+          "passed": true,
+          "evidence": "\"Hi Lee\" and \"—Mara\" identify the right recipient and sender; the email contains no Jo, replacement, or shipment event."
+        },
+        {
+          "text": "Preserves duplicate $24 delivery charge and submitted-today refund with usual 3–5 business days rather than guarantee.",
+          "passed": true,
+          "evidence": "\"Your invoice has a duplicate $24 delivery charge\" and \"I submitted the refund today; it usually appears in 3–5 business days\" preserve the amount, action, and uncertainty."
+        },
+        {
+          "text": "Preserves order scheduled for Tuesday without guaranteeing arrival.",
+          "passed": true,
+          "evidence": "\"Your order is still scheduled for Tuesday\" preserves scheduled status rather than promising arrival."
+        },
+        {
+          "text": "Matches warmth and restrained dry voice without copying scenic-route wording or inventing events.",
+          "passed": true,
+          "evidence": "\"One was quite enough\" and \"Thanks for your patience with the extra arithmetic\" supply dry understatement and warmth. There is no scenic-route wording or new factual event."
+        }
+      ],
+      "notes": [
+        "The emails are substantively equivalent and both capture the sample's restrained humor. A's \"extra arithmetic\" is slightly more playful; B's \"get the bill right\" is plainer. Both are credible, warm choices without importing the sample's events."
+      ]
+    },
+    {
+      "eval_id": 5,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "pass_rate": 1.0
+      },
+      "expectations": [
+        {
+          "text": "Addresses Lee and signs Mara without importing Jo or replacement/shipment claims.",
+          "passed": true,
+          "evidence": "\"Hi Lee\" and \"—Mara\" are correct; no Jo, replacement, or shipment claims appear."
+        },
+        {
+          "text": "Preserves duplicate $24 delivery charge and submitted-today refund with usual 3–5 business days rather than guarantee.",
+          "passed": true,
+          "evidence": "\"A duplicate $24 delivery charge\" and \"I submitted the refund today; it usually appears in 3–5 business days\" exactly retain the fact and typical timeframe."
+        },
+        {
+          "text": "Preserves order scheduled for Tuesday without guaranteeing arrival.",
+          "passed": true,
+          "evidence": "\"Your order is still scheduled for Tuesday\" remains a schedule statement, not an arrival guarantee."
+        },
+        {
+          "text": "Matches warmth and restrained dry voice without copying scenic-route wording or inventing events.",
+          "passed": true,
+          "evidence": "\"One was plenty\" is restrained dry humor; \"Thanks for your patience while we get the bill right\" adds warmth. Neither invents an event or copies the scenic-route joke."
+        }
+      ],
+      "notes": [
+        "The emails are substantively equivalent and both capture the sample's restrained humor. A's \"extra arithmetic\" is slightly more playful; B's \"get the bill right\" is plainer. Both are credible, warm choices without importing the sample's events."
+      ]
+    },
+    {
+      "eval_id": 6,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "passed": 1,
+        "failed": 0,
+        "total": 1,
+        "pass_rate": 1.0
+      },
+      "expectations": [
+        {
+          "text": "Returns exactly the paragraph without surrounding quotation marks or commentary.",
+          "passed": true,
+          "evidence": "\"By six, the garden had gone blue. My father kept digging—slowly, as if the potatoes might object. We ate late; nobody mentioned the clock.\" The output matches the supplied paragraph exactly after removing only the prompt's surrounding quotation marks; no commentary appears."
+        }
+      ],
+      "notes": [
+        "The outputs are identical and preserve every intentional stylistic choice. Both exercise the required restraint."
+      ]
+    },
+    {
+      "eval_id": 6,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "passed": 1,
+        "failed": 0,
+        "total": 1,
+        "pass_rate": 1.0
+      },
+      "expectations": [
+        {
+          "text": "Returns exactly the paragraph without surrounding quotation marks or commentary.",
+          "passed": true,
+          "evidence": "\"By six, the garden had gone blue. My father kept digging—slowly, as if the potatoes might object. We ate late; nobody mentioned the clock.\" The output matches the supplied paragraph exactly after removing only the prompt's surrounding quotation marks; no commentary appears."
+        }
+      ],
+      "notes": [
+        "The outputs are identical and preserve every intentional stylistic choice. Both exercise the required restraint."
+      ]
+    },
+    {
+      "eval_id": 7,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "passed": 3,
+        "failed": 0,
+        "total": 3,
+        "pass_rate": 1.0
+      },
+      "expectations": [
+        {
+          "text": "Exactly four numbered steps in original operational order.",
+          "passed": true,
+          "evidence": "Exactly four numbered items: \"1. Run\", \"2. Create a snapshot\", \"3. Run\", and \"4. Check\" retain status → snapshot → apply → health check order."
+        },
+        {
+          "text": "Every source code span is preserved exactly, including both /healthz occurrences and rollback command.",
+          "passed": true,
+          "evidence": "Exact ordered code-span comparison with the source passes: \"deployctl status --env staging\", \"deployctl snapshot --label pre-release\", \"deployctl apply release.yaml --env staging\", \"/healthz\", \"/healthz\", and \"deployctl rollback --label pre-release\"."
+        },
+        {
+          "text": "HTTP 200 check and rollback after 60 seconds on non-200 remain required, not optional or unconditional.",
+          "passed": true,
+          "evidence": "\"Check `/healthz` for HTTP 200. If `/healthz` is not HTTP 200 after 60 seconds, run `deployctl rollback --label pre-release`.\" Both the required check and conditional rollback are imperative."
+        }
+      ],
+      "notes": [
+        "The outputs are identical. Both remove the source's filler while preserving all operational content, exact code spans, step order, and rollback timing."
+      ]
+    },
+    {
+      "eval_id": 7,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "passed": 3,
+        "failed": 0,
+        "total": 3,
+        "pass_rate": 1.0
+      },
+      "expectations": [
+        {
+          "text": "Exactly four numbered steps in original operational order.",
+          "passed": true,
+          "evidence": "Exactly four numbered items: \"1. Run\", \"2. Create a snapshot\", \"3. Run\", and \"4. Check\" retain status → snapshot → apply → health check order."
+        },
+        {
+          "text": "Every source code span is preserved exactly, including both /healthz occurrences and rollback command.",
+          "passed": true,
+          "evidence": "Exact ordered code-span comparison with the source passes: \"deployctl status --env staging\", \"deployctl snapshot --label pre-release\", \"deployctl apply release.yaml --env staging\", \"/healthz\", \"/healthz\", and \"deployctl rollback --label pre-release\"."
+        },
+        {
+          "text": "HTTP 200 check and rollback after 60 seconds on non-200 remain required, not optional or unconditional.",
+          "passed": true,
+          "evidence": "\"Check `/healthz` for HTTP 200. If `/healthz` is not HTTP 200 after 60 seconds, run `deployctl rollback --label pre-release`.\" Both the required check and conditional rollback are imperative."
+        }
+      ],
+      "notes": [
+        "The outputs are identical. Both remove the source's filler while preserving all operational content, exact code spans, step order, and rollback timing."
+      ]
+    },
+    {
+      "eval_id": 8,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "pass_rate": 1.0
+      },
+      "expectations": [
+        {
+          "text": "Advocates against the winter extension and prioritizes repairing the inaccessible side ramp using the same budget.",
+          "passed": true,
+          "evidence": "\"I don't think we should extend library hours this winter\" states the position; \"The same budget could repair the side ramp\" and \"That is where I would put the money this winter\" establish the accessibility priority."
+        },
+        {
+          "text": "Retains 14 visits per night in last January's count, single staffed entrance, and no added security funding without changing implications into proven harm.",
+          "passed": true,
+          "evidence": "\"Last January's count recorded 14 visits per night\"; \"only one entrance would be staffed, and there is no funding for additional security\" preserve the supplied conditions. \"I would want those limits addressed\" frames their significance as a judgment, not proven harm."
+        },
+        {
+          "text": "Acknowledges potential benefit to shift workers without inventing their preferences or surveys.",
+          "passed": true,
+          "evidence": "\"Longer evenings could help shift workers, and that deserves consideration\" acknowledges potential benefit without inventing preferences, survey results, or a collective endorsement."
+        },
+        {
+          "text": "120–180 words, one paragraph, no invented personal experience or consensus.",
+          "passed": true,
+          "evidence": "139 whitespace-delimited words in one paragraph; \"I would want\" and \"I would put\" are the writer's views. No invented personal event or consensus appears."
+        }
+      ],
+      "notes": [
+        "Both retain the writer's position, factual limits, and concession. B advances from the proposal's limits to the ramp priority more economically. A repeats the access-versus-hours priority in \"My priority,\" \"I'd put,\" and the final maxim after already making the case. The preference is editorial and modest, not a factual or safety difference."
+      ]
+    },
+    {
+      "eval_id": 8,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "pass_rate": 1.0
+      },
+      "expectations": [
+        {
+          "text": "Advocates against the winter extension and prioritizes repairing the inaccessible side ramp using the same budget.",
+          "passed": true,
+          "evidence": "\"I don't think we should extend library hours this winter while the side ramp remains inaccessible\" establishes opposition; \"the same budget could repair the side ramp\" and \"I'd put this winter's money into the ramp\" establish the alternative priority."
+        },
+        {
+          "text": "Retains 14 visits per night in last January's count, single staffed entrance, and no added security funding without changing implications into proven harm.",
+          "passed": true,
+          "evidence": "\"Last January's count recorded 14 evening visits per night\"; \"the current proposal would staff only one entrance and add no security funding\" retain the evidence. \"We ought to fund the support those hours require\" is an argued priority, not a claim of an observed security incident."
+        },
+        {
+          "text": "Acknowledges potential benefit to shift workers without inventing their preferences or surveys.",
+          "passed": true,
+          "evidence": "\"Later hours could help shift workers who struggle to get there during the day\" acknowledges a plausible conditional benefit without inventing survey results or claiming that shift workers collectively favor the plan."
+        },
+        {
+          "text": "120–180 words, one paragraph, no invented personal experience or consensus.",
+          "passed": true,
+          "evidence": "141 whitespace-delimited words in one paragraph. \"My priority\" and \"I'd put\" identify the writer's stance; no personal incident or resident consensus is fabricated."
+        }
+      ],
+      "notes": [
+        "Both retain the writer's position, factual limits, and concession. B advances from the proposal's limits to the ramp priority more economically. A repeats the access-versus-hours priority in \"My priority,\" \"I'd put,\" and the final maxim after already making the case. The preference is editorial and modest, not a factual or safety difference."
+      ]
+    }
+  ],
+  "run_summary": {
+    "with_skill": {
+      "pass_rate": {
+        "mean": 1.0,
+        "stddev": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      }
+    },
+    "without_skill": {
+      "pass_rate": {
+        "mean": 1.0,
+        "stddev": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      }
+    },
+    "delta": {
+      "pass_rate": "+0.00"
+    }
+  },
+  "notes": [
+    "Assertion pass rate measures task constraints, not naturalness.",
+    "Unknown time, tokens and session charge are omitted, not zero.",
+    "Single samples with strong host writing guidance in both arms; no statistical superiority claim.",
+    "Editorial scores and paired preferences are in summary.json and the blind review."
+  ]
+}

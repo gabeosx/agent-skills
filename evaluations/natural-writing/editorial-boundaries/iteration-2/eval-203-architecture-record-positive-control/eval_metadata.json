@@ -1,0 +1,11 @@
+{
+  "eval_id": 203,
+  "eval_name": "architecture-record-positive-control",
+  "prompt": "Turn these notes into a compact architecture decision record for future maintainers, no more than 240 words. Include context, considered alternatives, decision, consequences and a revisit condition. Return the record only.\n\nAn offline archive viewer must run for up to 72 hours without connectivity. It stores at most 2 GB on one laptop and has one writer process. The team considered a remote search service, plain JSON files and an embedded SQLite database. The remote service cannot meet offline operation. JSON files would require rebuilding indexes for every search. SQLite was selected because it offers local indexed queries without a separate service. Transactions protect a batch of imports from partial commit. Only one writer is supported; concurrent-writer needs would require reconsideration. Backups are copied when the app is closed; a live-backup mechanism has not been implemented. Revisit storage if multiple writers become necessary or local data grows beyond 2 GB. During the meeting someone joked that 'a database is just a filing cabinet with opinions' and the first ADR draft had six sections that were later merged.",
+  "assertions": [
+    "Preserves 72-hour offline requirement, at most 2 GB, and one-writer context.",
+    "Records all three considered alternatives with reasons for rejecting remote service and JSON and selecting SQLite.",
+    "Preserves transactional batch-import protection and the one-writer limitation without promising concurrent writes.",
+    "Keeps closed-app backups, unimplemented live backup, and both revisit triggers; omits meeting joke and editing-history note; at most 240 words."
+  ]
+}

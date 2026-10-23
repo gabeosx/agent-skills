@@ -1,0 +1,16 @@
+{
+  "arm": "old_skill",
+  "file_list": [
+    "/Users/gabe/agent-skills/evaluations/natural-writing/editorial-boundaries/confirmation/eval-301-Capacity proposal from mixed project notes/old_skill/outputs/output.md",
+    "/Users/gabe/agent-skills/evaluations/natural-writing/editorial-boundaries/confirmation/eval-302-Customer delivery update from fulfillment notes/old_skill/outputs/output.md",
+    "/Users/gabe/agent-skills/evaluations/natural-writing/editorial-boundaries/confirmation/eval-303-Technical explanation with unresolved integration details/old_skill/outputs/output.md",
+    "/Users/gabe/agent-skills/evaluations/natural-writing/editorial-boundaries/confirmation/eval-304-Full operational handover procedure/old_skill/outputs/output.md",
+    "/Users/gabe/agent-skills/evaluations/natural-writing/editorial-boundaries/confirmation/eval-305-Incident review that requires failure history/old_skill/outputs/output.md",
+    "/Users/gabe/agent-skills/evaluations/natural-writing/editorial-boundaries/confirmation/eval-306-Adoption decision memo preserving tradeoffs and failed trial/old_skill/outputs/output.md"
+  ],
+  "utc_write_timestamp": "2026-10-23T21:34:36.258720+00:00",
+  "generation_time_seconds": null,
+  "tokens": null,
+  "charge": null,
+  "build": null
+}

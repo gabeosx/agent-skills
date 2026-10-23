@@ -1,0 +1,18 @@
+{
+  "started_at": "2026-10-23T20:42:09.210633+00:00",
+  "finished_at": "2026-10-23T20:42:09.211498+00:00",
+  "model": null,
+  "tokens": null,
+  "session_charge": null,
+  "files": [
+    "/Users/gabe/agent-skills/evaluations/natural-writing/iteration-1/eval-1-founder-announcement/without_skill/outputs/output.md",
+    "/Users/gabe/agent-skills/evaluations/natural-writing/iteration-1/eval-2-uncertain-study/without_skill/outputs/output.md",
+    "/Users/gabe/agent-skills/evaluations/natural-writing/iteration-1/eval-3-source-poor-copy/without_skill/outputs/output.md",
+    "/Users/gabe/agent-skills/evaluations/natural-writing/iteration-1/eval-4-technical-distinction/without_skill/outputs/output.md",
+    "/Users/gabe/agent-skills/evaluations/natural-writing/iteration-1/eval-5-voice-sample-email/without_skill/outputs/output.md",
+    "/Users/gabe/agent-skills/evaluations/natural-writing/iteration-1/eval-6-already-good-control/without_skill/outputs/output.md",
+    "/Users/gabe/agent-skills/evaluations/natural-writing/iteration-1/eval-7-required-checklist/without_skill/outputs/output.md",
+    "/Users/gabe/agent-skills/evaluations/natural-writing/iteration-1/eval-8-argument-not-filler/without_skill/outputs/output.md"
+  ],
+  "note": "First-attempt batch actor; prompts executed once in listed order using normal writing ability."
+}

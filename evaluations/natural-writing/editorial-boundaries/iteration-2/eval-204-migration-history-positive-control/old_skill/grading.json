@@ -1,0 +1,44 @@
+{
+  "expectations": [
+    {
+      "text": "Explicitly maps old endpoint to destination_url and states old key rejection in 2.0; retains both exact identifiers.",
+      "passed": true,
+      "evidence": "“Replace `endpoint` with `destination_url`. Version 2.0 rejects `endpoint`.”"
+    },
+    {
+      "text": "Requires PACKETLINE_TOKEN environment variable and removing the API key from configuration; preserves relevant motivation.",
+      "passed": true,
+      "evidence": "“into the `PACKETLINE_TOKEN` environment variable, then remove the key from the file”; “deliberately prevents new API keys from being saved in configuration files.”"
+    },
+    {
+      "text": "Explains 1.x queue compatibility on import but irreversible-to-1.x format upgrade and no automatic downgrade.",
+      "passed": true,
+      "evidence": "“Version 2.0 can read 1.x queue files, but importing them upgrades their format”; “Version 1.x cannot read the upgraded files”; “no automatic downgrade exists.”"
+    },
+    {
+      "text": "Requires stopped-process directory copy before first import and stopping 2.0/restoring that copy before 1.x rollback; omits target and unshipped dotfile alternatives; at most 220 words.",
+      "passed": true,
+      "evidence": "“Stop Packetline and copy the queue directory before the first import into 2.0”; rollback lists “Stop Packetline 2.0”, “Restore the pre-import queue directory copy”, “Launch Packetline 1.x.” No target/dotfile alternatives. 123 whitespace-delimited words."
+    }
+  ],
+  "summary": {
+    "passed": 4,
+    "failed": 0,
+    "total": 4,
+    "pass_rate": 1.0
+  },
+  "scores": {
+    "fidelity": 5,
+    "directness_and_selectivity": 5,
+    "specificity": 5,
+    "voice_and_genre": 5,
+    "cadence_and_rhetoric": 5,
+    "structure": 5,
+    "edit_restraint": 5,
+    "reader_relevance": 5
+  },
+  "critical_failures": [],
+  "review_method": "Independent single blind agent review; not human feedback",
+  "review_source": "blind/iteration-2/review.json",
+  "output_sha256": "52f79f4ea782f17ecda672127d89f00cf92d192ad7b5cb9b236c1da66b07f13d"
+}

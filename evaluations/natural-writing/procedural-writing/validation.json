@@ -1,0 +1,30 @@
+{
+  "checked_at": "2026-10-23T23:24:58.203400+00:00",
+  "structural_validation": {
+    "natural-writing": "passed",
+    "apple-container-skill": "passed",
+    "macwhisper": "passed",
+    "agent-browser-jev": "passed on isolated historical frontmatter copy; public archive remains without SKILL.md"
+  },
+  "release_contract": "passed after archive README patch required archive-contract 2.0.1; initial version-check rejection retained in narrative",
+  "integrity": "passed frozen-source, actor-input projection, reviewed-output identity, copied baseline and exact-control checks",
+  "exact_control": "6 output checks across both development rounds; 3 deliberately altered negatives rejected",
+  "json_and_resources": "JSON parses and selected current local resource paths pass",
+  "public_export_discovery": {
+    "cli": "skills 1.7.4",
+    "node": "26.12.1",
+    "full_depth_skills": 7,
+    "includes": "natural-writing",
+    "excludes": "agent-browser-jev"
+  },
+  "whitespace": "passed with scoped .gitattributes exception preserving literal context-line spaces in historical final-source.diff",
+  "unexercised": [
+    "human preference",
+    "automatic host triggering",
+    "detector behavior",
+    "autonomous reviewer dispatch",
+    "new Apple Container live runtime",
+    "private MacWhisper transcripts"
+  ],
+  "cleanup": "Only task-owned temporary environments/export and CLI cache to be removed after remote installation test; frozen study evidence retained."
+}

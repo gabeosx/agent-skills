@@ -1,0 +1,52 @@
+{
+  "expectations": [
+    {
+      "text": "Contains 90–130 words in exactly two paragraphs, with no bullets, hashtags, or emoji.",
+      "passed": true,
+      "evidence": "The invitation has 108 whitespace-delimited words and exactly two paragraphs. It begins \"Citizens\" and the second paragraph begins \"The upstairs room\"; there are no bullets, hashtags or emoji."
+    },
+    {
+      "text": "Includes the exact phrase Citizens of the stapled republic and exactly one rhetorical question, retaining a warm mock-grandiose town-crier voice.",
+      "passed": true,
+      "evidence": "Exact phrase: \"Citizens of the stapled republic\". Its only question is \"Who among us can resist a kingdom small enough to fit in a pocket?\" \"hear ye\", \"illustrious gathering\", and \"Dear neighbors\" supply the mock-grandiose, affectionate voice."
+    },
+    {
+      "text": "Accurately states Saturday, 17 May, 2–4 p.m. at Moss Street Library in the upstairs room, with free admission and all ages welcome.",
+      "passed": true,
+      "evidence": "\"On Saturday, 17 May, from 2–4 p.m., Moss Street Library summons you to its upstairs room\"; \"Admission is free, and all ages are welcome.\""
+    },
+    {
+      "text": "Says guests may bring up to five zines to trade or come empty-handed to browse; does not imply that bringing zines is required.",
+      "passed": true,
+      "evidence": "\"Bring up to five zines to trade, or come empty-handed to browse.\" Bringing zines is expressly optional."
+    },
+    {
+      "text": "Clearly states that upstairs access is by stairs only and that a small selection can be browsed at the ground-floor desk; neither access statement is presented as a joke or as a full equivalent of the upstairs event.",
+      "passed": true,
+      "evidence": "\"The upstairs room has stair access only. A small selection is available for browsing at the ground-floor desk.\" These are plain standalone sentences and describe only a small selection, not an equivalent downstairs event."
+    },
+    {
+      "text": "Does not invent refreshments, prizes, registration, a year, or an accessible route upstairs.",
+      "passed": true,
+      "evidence": "No refreshments, prizes, registration, year or accessible upstairs route is mentioned. The access fact remains \"stair access only.\""
+    }
+  ],
+  "summary": {
+    "passed": 6,
+    "failed": 0,
+    "total": 6,
+    "pass_rate": 1.0
+  },
+  "scores": {
+    "Fidelity": 5,
+    "Directness and selectivity": 5,
+    "Specificity": 5,
+    "Voice and genre": 4,
+    "Cadence and rhetoric": 4,
+    "Structure": 5
+  },
+  "critical_failures": [],
+  "review_method": "Independent single blind agent review; not human feedback",
+  "review_source": "blind/confirmation/review.json",
+  "output_sha256": "75faea8477b8183dd9a817523f62da9eec89aec1e9b25801841c00004eb67f31"
+}

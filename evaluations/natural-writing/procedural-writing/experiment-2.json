@@ -1,0 +1,14 @@
+{
+  "frozen_at": "2026-10-23T23:17:24.240062+00:00",
+  "reason": "First candidate adds an unsupported check of collision matches in preview. Clarify that a screen existing does not establish its observable content.",
+  "candidate": "candidate-2",
+  "baseline_outputs": "Reuse immutable first drafts from development; no resampling unchanged baselines.",
+  "conditions": "Same as experiment.json. Fresh candidate actor, unchanged prompts/assertions. Confirmation remains unopened.",
+  "hashes": {
+    "snapshots/candidate-2/instructions.md": "81ff4aafb5772f3849cc55b64e10b8c4a1fc7004cf8e9fcc7cb07055dff160d2",
+    "snapshots/candidate-2/references/editorial-judgment.md": "15dba9484cdfb8a8fb1fa70e71ff89a0ca6ef872d88b37f3cfc6c93582536e41",
+    "snapshots/candidate-2/references/procedural-writing.md": "35f7ef31687f0067442a6bff17981f5caf063ce7a1b8e6d906c47c7c21d2d313",
+    "snapshots/candidate-2/references/research-notes.md": "00a5523c1635fca55b1ad9ce6fbd45b5b0e97b75cbbe6cbb6e0bf55d202486d0",
+    "snapshots/candidate-2/references/pattern-catalog.md": "743e15e888b90bdc1b8a34909c600b23b397a808489b56764c766b3b0f0b541c"
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "201": {
+    "A": "with_skill",
+    "B": "old_skill"
+  },
+  "202": {
+    "A": "old_skill",
+    "B": "with_skill"
+  },
+  "203": {
+    "A": "old_skill",
+    "B": "with_skill"
+  },
+  "204": {
+    "A": "with_skill",
+    "B": "old_skill"
+  },
+  "205": {
+    "A": "with_skill",
+    "B": "old_skill"
+  },
+  "206": {
+    "A": "with_skill",
+    "B": "old_skill"
+  },
+  "207": {
+    "A": "old_skill",
+    "B": "with_skill"
+  },
+  "208": {
+    "A": "with_skill",
+    "B": "old_skill"
+  },
+  "402": {
+    "A": "with_skill",
+    "B": "old_skill"
+  },
+  "403": {
+    "A": "old_skill",
+    "B": "with_skill"
+  },
+  "405": {
+    "A": "with_skill",
+    "B": "old_skill"
+  },
+  "406": {
+    "A": "with_skill",
+    "B": "old_skill"
+  }
+}

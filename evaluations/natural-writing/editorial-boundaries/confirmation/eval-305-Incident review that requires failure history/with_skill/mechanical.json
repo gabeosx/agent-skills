@@ -1,0 +1,12 @@
+{
+  "expectations": [
+    {
+      "text": "Requested word range or maximum",
+      "passed": true,
+      "evidence": "343 words; requested 300\u2013420"
+    }
+  ],
+  "passed": 1,
+  "total": 1,
+  "method": "Exact/length checks; semantic and relevance review separate"
+}

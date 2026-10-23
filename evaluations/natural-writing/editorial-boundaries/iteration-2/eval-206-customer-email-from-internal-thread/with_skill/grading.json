@@ -1,0 +1,49 @@
+{
+  "expectations": [
+    {
+      "text": "Addresses Jules, signs Nia, accurately gives $36 refund submitted today with usual 3–5 business days and no guarantee.",
+      "passed": true,
+      "evidence": "“Hi Jules”; “$36 delivery fee twice”; “submitted the refund today”; “usually appears in 3–5 business days”; signed “Nia / Support Lead.”"
+    },
+    {
+      "text": "States replacement scheduled to dispatch Friday without promising Friday delivery; tracking follows dispatch and no resubmission is needed.",
+      "passed": true,
+      "evidence": "“scheduled to leave our warehouse Friday”; “That's the dispatch date”; “will send [tracking] after dispatch”; “don't need to resubmit the request.”"
+    },
+    {
+      "text": "Does not reproduce debugging/blame chronology, second-option shorthand or writing directions.",
+      "passed": true,
+      "evidence": "Only the apology and customer actions/status appear; no engineering blame, second-option shorthand or writing directions."
+    },
+    {
+      "text": "Does not claim a permanent fix or deployed prevention change, invent tracking or authorize a coupon.",
+      "passed": true,
+      "evidence": "“We don't have tracking yet” accurately reflects the thread; no invented tracking, coupon, permanent fix or deployment claim."
+    },
+    {
+      "text": "Does not turn unsupplied logistics information into an assertion that it is absent or unknown to the sender; preserves the difference between source omission and real-world status.",
+      "passed": true,
+      "evidence": "“we can't promise a delivery date yet” bounds delivery commitment; it does not say the sender has no date. “We don't have tracking yet” is explicitly supplied by the source."
+    }
+  ],
+  "summary": {
+    "passed": 5,
+    "failed": 0,
+    "total": 5,
+    "pass_rate": 1.0
+  },
+  "scores": {
+    "fidelity": 5,
+    "directness_and_selectivity": 5,
+    "specificity": 5,
+    "voice_and_genre": 5,
+    "cadence_and_rhetoric": 5,
+    "structure": 5,
+    "edit_restraint": 5,
+    "reader_relevance": 5
+  },
+  "critical_failures": [],
+  "review_method": "Independent single blind agent review; not human feedback",
+  "review_source": "blind/iteration-2/review.json",
+  "output_sha256": "a3a8cf310d5b658eeb4f134b8ee2fe84c3df7474192e3b705fdec71ce7440de5"
+}

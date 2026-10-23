@@ -1,0 +1,42 @@
+{
+  "expectations": [
+    {
+      "text": "Advocates against the winter extension and prioritizes repairing the inaccessible side ramp using the same budget.",
+      "passed": true,
+      "evidence": "“spend this winter’s available budget repairing the inaccessible side ramp before extending evening hours”; “For this winter, I would put the money toward getting people through the door.” The same available budget is directed to the ramp."
+    },
+    {
+      "text": "Retains 14 visits per night in last January's count, single staffed entrance, and no added security funding without changing implications into proven harm.",
+      "passed": true,
+      "evidence": "“last January’s count recorded 14 evening visits per night”; “staff only one entrance while funding no additional security.” “Those details make me reluctant” identifies the writer’s judgment, not a proven harm."
+    },
+    {
+      "text": "Acknowledges potential benefit to shift workers without inventing their preferences or surveys.",
+      "passed": true,
+      "evidence": "“Late hours could help shift workers, and that is a real reason to consider them.” It states a potential benefit without claiming their preferences or survey evidence."
+    },
+    {
+      "text": "120–180 words, one paragraph, no invented personal experience or consensus.",
+      "passed": true,
+      "evidence": "135 whitespace-delimited words, a single paragraph. “I’d like” and “I’m willing to revisit” express priorities; neither asserts a personal incident nor resident consensus."
+    }
+  ],
+  "summary": {
+    "passed": 4,
+    "failed": 0,
+    "total": 4,
+    "pass_rate": 1.0
+  },
+  "scores": {
+    "Fidelity": 5,
+    "Directness and selectivity": 5,
+    "Specificity": 5,
+    "Voice and genre": 5,
+    "Cadence and rhetoric": 5,
+    "Structure": 5
+  },
+  "critical_failures": [],
+  "review_method": "Independent single blind agent review; not human feedback",
+  "review_source": "blind/iteration-3/review.json",
+  "output_sha256": "9ea7250aa91e85a076a06e0210c1dd0814ee6ee505098d5c6f157a22ca415fe9"
+}

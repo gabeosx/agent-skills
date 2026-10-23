@@ -1,0 +1,49 @@
+{
+  "expectations": [
+    {
+      "text": "States failed export requests are retried automatically without inventing a count, interval, error policy, or delivery guarantee.",
+      "passed": true,
+      "evidence": "“Failed export requests now receive automatic retries”; “do not specify the retry count, backoff interval or behavior after retries are exhausted.”"
+    },
+    {
+      "text": "Does not infer OAuth or any other authentication protocol from a refactor; makes the authentication specification gap clear.",
+      "passed": true,
+      "evidence": "“the notes do not identify the protocol or describe the resulting authentication behavior”; no OAuth or other protocol is inferred."
+    },
+    {
+      "text": "Preserves CACHE_URL and does not infer that all caches or external dependencies are absent from removal of experimental Redis.",
+      "passed": true,
+      "evidence": "“`CACHE_URL` remains an accepted configuration setting”; “Its backend and whether it is required are unspecified”; Redis removal is explicitly not used to infer a backend."
+    },
+    {
+      "text": "Omits debugging mocks, proxy chronology and unsupported production-ready/robust claims; no more than 140 words.",
+      "passed": true,
+      "evidence": "No mocks or local proxy are mentioned, and “no load-test or reliability results to support a production-readiness claim” rejects rather than asserts unsupported readiness. 92 whitespace-delimited words."
+    },
+    {
+      "text": "Confines the entry to the requested reference subjects; omits source-hype rebuttals and development chronology that do not affect a current configuration choice.",
+      "passed": false,
+      "evidence": "“The notes include no load-test or reliability results to support a production-readiness claim” is a separate source-hype rebuttal outside retries/authentication/cache. “Authentication was refactored” and “experimental Redis dependency was removed” also retain development framing."
+    }
+  ],
+  "summary": {
+    "passed": 4,
+    "failed": 1,
+    "total": 5,
+    "pass_rate": 0.8
+  },
+  "scores": {
+    "fidelity": 5,
+    "directness_and_selectivity": 4,
+    "specificity": 5,
+    "voice_and_genre": 4,
+    "cadence_and_rhetoric": 5,
+    "structure": 4,
+    "edit_restraint": 4,
+    "reader_relevance": 3
+  },
+  "critical_failures": [],
+  "review_method": "Independent single blind agent review; not human feedback",
+  "review_source": "blind/iteration-2/review.json",
+  "output_sha256": "b080c651b9d4a2ee5489b4f5ca6403bff9a8edf7b5e5e7fd7981c2095b4f9d33"
+}

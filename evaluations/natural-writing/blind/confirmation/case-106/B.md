@@ -1,0 +1,3 @@
+Citizens of the stapled republic, hear the proclamation! On Saturday, 17 May, from 2–4 p.m., Moss Street Library summons you to its upstairs room for a tiny-zine swap of magnificent proportions. What kingdom could offer greater riches than a roomful of small, unruly pages? Bring up to five zines to trade, or come empty-handed to browse. Your presence alone is a worthy contribution to this paper-loving assembly.
+
+Admission is free, and all ages are welcome. The upstairs room has stair access only. A small selection is available for browsing at the ground-floor desk. Come, dear neighbors, and let our modest republic grow one folded page at a time.

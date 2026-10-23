@@ -1,0 +1,42 @@
+{
+  "expectations": [
+    {
+      "text": "Includes offline notes and automatic sync after connection returns without promising offline photos.",
+      "passed": true,
+      "evidence": "“adding offline notes to Fieldnote”; “When you’re connected again, those notes sync. Photos still need a connection”. This describes reconnection-triggered sync and explicitly limits photos."
+    },
+    {
+      "text": "Retains all-plan inclusion and no migration for existing notebooks.",
+      "passed": true,
+      "evidence": "“included on every plan, and your existing notebooks need no migration.”"
+    },
+    {
+      "text": "Does not invent quotations, adoption numbers, performance measures, launch offers, or founder experiences beyond the supplied facts.",
+      "passed": true,
+      "evidence": "“Customers told us they were losing notes” restates the supplied origin. “If you’ve ever climbed out of a basement” is explicitly conditional, not an asserted founder experience or customer quotation. No adoption, performance or offer claims appear."
+    },
+    {
+      "text": "90–140 words; reads as a publishable post without assistant wrapper.",
+      "passed": true,
+      "evidence": "113 whitespace-delimited words. Opens “Basements are a bad place to lose your work.” and ends “Thanks for that.”; the entire output is the post, with no wrapper."
+    }
+  ],
+  "summary": {
+    "passed": 4,
+    "failed": 0,
+    "total": 4,
+    "pass_rate": 1.0
+  },
+  "scores": {
+    "Fidelity": 5,
+    "Directness and selectivity": 4,
+    "Specificity": 5,
+    "Voice and genre": 5,
+    "Cadence and rhetoric": 4,
+    "Structure": 5
+  },
+  "critical_failures": [],
+  "review_method": "Independent single blind agent review; not human feedback",
+  "review_source": "blind/iteration-3/review.json",
+  "output_sha256": "c1222f3fcf68a73fbe4db1ff782c37499295490c64ba4cbe5cf73e90850e45d7"
+}

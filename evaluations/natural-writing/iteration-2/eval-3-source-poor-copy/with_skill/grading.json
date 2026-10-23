@@ -1,0 +1,38 @@
+{
+  "expectations": [
+    {
+      "text": "Includes replaceable LED module, steel base, and two-year warranty accurately.",
+      "passed": true,
+      "evidence": "\"A replaceable LED module in a desk lamp with a steel base and a two-year warranty\" accurately lists all three facts."
+    },
+    {
+      "text": "No invented light-quality, comfort, durability, environmental, manufacturing, certification, price, or user-experience claims.",
+      "passed": true,
+      "evidence": "\"When the LED module needs replacing, you can replace that part of the lamp\" only restates replaceability; \"a useful detail to consider\" is general evaluation, not a fabricated test, user story, certification, or performance claim."
+    },
+    {
+      "text": "45–75 words and no assistant or editing commentary.",
+      "passed": true,
+      "evidence": "45 whitespace-delimited words, beginning \"Bracken puts\"; only product copy is returned."
+    }
+  ],
+  "summary": {
+    "passed": 3,
+    "failed": 0,
+    "total": 3,
+    "pass_rate": 1.0
+  },
+  "scores": {
+    "Fidelity": 5,
+    "Directness and selectivity": 3,
+    "Specificity": 4,
+    "Voice and genre": 3,
+    "Cadence and rhetoric": 3,
+    "Structure": 4,
+    "Edit restraint": 3
+  },
+  "critical_failures": [],
+  "review_method": "Independent single blind agent review; not human feedback",
+  "review_source": "blind/iteration-2/review.json",
+  "output_sha256": "e52ab6ab382c619ca6af6f2371cb733b7d7ceda2c6c413ac545c6829a7fcc67e"
+}

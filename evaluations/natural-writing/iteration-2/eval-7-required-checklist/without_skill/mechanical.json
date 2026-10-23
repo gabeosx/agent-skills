@@ -1,0 +1,22 @@
+{
+  "method": "Exact/format checks only; independent semantic and style review required",
+  "expectations": [
+    {
+      "text": "Four ordered numbered steps",
+      "passed": true,
+      "evidence": "['1', '2', '3', '4']"
+    },
+    {
+      "text": "Protected code spans unchanged and ordered",
+      "passed": true,
+      "evidence": "['deployctl status --env staging', 'deployctl snapshot --label pre-release', 'deployctl apply release.yaml --env staging', '/healthz', '/healthz', 'deployctl rollback --label pre-release']"
+    },
+    {
+      "text": "Rollback threshold retained",
+      "passed": true,
+      "evidence": "60 seconds literal check; conditional meaning requires independent review"
+    }
+  ],
+  "passed": 3,
+  "total": 3
+}

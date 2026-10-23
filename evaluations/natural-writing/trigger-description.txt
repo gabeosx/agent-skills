@@ -1,0 +1,7 @@
+  Draft, edit, or review prose to remove generic AI writing habits while keeping
+  the writer's meaning, facts, and voice. Use when asked to make writing sound
+  natural, less AI-generated, less robotic, less corporate, or more like the
+  writer; also use for substantial reader-facing prose such as emails, essays,
+  announcements, reports, and product copy where voice and phrasing matter.
+  Complements subject and document-format skills. Do not use for code-only work,
+  verbatim transcription, or judging whether a person used AI.

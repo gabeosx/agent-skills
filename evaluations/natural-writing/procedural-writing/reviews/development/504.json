@@ -1,0 +1,108 @@
+{
+  "id": 504,
+  "labels": {
+    "A": {
+      "expectations": [
+        {
+          "text": "The review restores backup, workspace confirmation and irreversible Apply warning.",
+          "passed": true,
+          "evidence": "First replacement restores destination backup, workspace confirmation on Apply, and Apply cannot be undone."
+        },
+        {
+          "text": "It restores matching TaskCode overwrite behavior rather than accepting a generic history warning as equivalent.",
+          "passed": true,
+          "evidence": "Restores exact matching TaskCode overwrite behavior and separately deletes unsupported Import history is limited."
+        },
+        {
+          "text": "It names both unsupported attachments and archived tasks without restoring the stale comments restriction.",
+          "passed": true,
+          "evidence": "Allows comments through the Comment column and names both unsupported attachments and archived tasks."
+        },
+        {
+          "text": "It supplies actionable replacement wording and does not invent new UI or mechanisms.",
+          "passed": true,
+          "evidence": "Provides direct replacement text and deletion instructions using only supplied CSV/Import/preview/Apply behavior; adds no mechanisms."
+        }
+      ],
+      "scores": {
+        "usefulness": 5,
+        "fidelity": 5,
+        "naturalness": 5
+      },
+      "critical": [],
+      "substantive": [],
+      "minor": []
+    },
+    "B": {
+      "expectations": [
+        {
+          "text": "The review restores backup, workspace confirmation and irreversible Apply warning.",
+          "passed": true,
+          "evidence": "First bullet restores backing up the destination, destination workspace confirmation before Apply, and irreversible Apply."
+        },
+        {
+          "text": "It restores matching TaskCode overwrite behavior rather than accepting a generic history warning as equivalent.",
+          "passed": true,
+          "evidence": "Second bullet explicitly restores A matching TaskCode overwrites the existing task fields; final bullet removes unsupported history claim."
+        },
+        {
+          "text": "It names both unsupported attachments and archived tasks without restoring the stale comments restriction.",
+          "passed": true,
+          "evidence": "Third bullet preserves current Comment-column support while excluding both attachments and archived tasks."
+        },
+        {
+          "text": "It supplies actionable replacement wording and does not invent new UI or mechanisms.",
+          "passed": true,
+          "evidence": "Actionable insertion/replacement/removal wording uses supported Apply screen and Comment-column behavior without inventing mechanisms."
+        }
+      ],
+      "scores": {
+        "usefulness": 5,
+        "fidelity": 5,
+        "naturalness": 5
+      },
+      "critical": [],
+      "substantive": [],
+      "minor": []
+    },
+    "C": {
+      "expectations": [
+        {
+          "text": "The review restores backup, workspace confirmation and irreversible Apply warning.",
+          "passed": true,
+          "evidence": "First replacement restores destination backup, intended-workspace confirmation before Apply, and Apply cannot be undone."
+        },
+        {
+          "text": "It restores matching TaskCode overwrite behavior rather than accepting a generic history warning as equivalent.",
+          "passed": true,
+          "evidence": "Second replacement states A matching TaskCode overwrites the existing task fields, rather than substituting history behavior."
+        },
+        {
+          "text": "It names both unsupported attachments and archived tasks without restoring the stale comments restriction.",
+          "passed": true,
+          "evidence": "Last replacement permits Comment-column import and excludes attachments and archived tasks; no obsolete comments restriction."
+        },
+        {
+          "text": "It supplies actionable replacement wording and does not invent new UI or mechanisms.",
+          "passed": false,
+          "evidence": "Actionable replacements are supplied, but Check TaskCode matches in the preview before applying assumes preview exposes matching TaskCodes or match information. Evidence only establishes previewing rows and overwrite semantics, not that verification mechanism."
+        }
+      ],
+      "scores": {
+        "usefulness": 4,
+        "fidelity": 4,
+        "naturalness": 5
+      },
+      "critical": [],
+      "substantive": [
+        "Unsupported instruction: \"Check TaskCode matches in the preview before applying.\" The supplied evidence does not establish that the preview exposes matches or supports checking them; remove the invented check or obtain evidence for it."
+      ],
+      "minor": []
+    }
+  },
+  "preferred": [
+    "A",
+    "B"
+  ],
+  "reason": "A and B are fully supported and actionable. C restores the required facts but adds a preview-based TaskCode match check not established by the evidence."
+}

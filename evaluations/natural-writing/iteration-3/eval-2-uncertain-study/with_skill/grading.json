@@ -1,0 +1,47 @@
+{
+  "expectations": [
+    {
+      "text": "Preserves 18 nurses, four weeks, one clinic, and voluntary participation.",
+      "passed": true,
+      "evidence": "“A voluntary four-week pilot at one clinic”; “the 18 nurses who used it”."
+    },
+    {
+      "text": "Preserves median weekly 46 to 39 minutes with no causal claim and explains no control plus concurrent staffing changes.",
+      "passed": true,
+      "evidence": "“median weekly scheduling time fell from 46 to 39 minutes”; “Without a control group, that change cannot be attributed to the tool; concurrent staffing changes may explain part of it.”"
+    },
+    {
+      "text": "States six of nine survey respondents preferred it rather than six of 18 or a majority of all nurses.",
+      "passed": true,
+      "evidence": "“Nine nurses completed the optional survey, and six of those nine preferred the tool.” It adds that this does not establish preference among all participants or elsewhere."
+    },
+    {
+      "text": "States patient safety was not measured; any next step is framed as recommendation, not a planned commitment.",
+      "passed": true,
+      "evidence": "“The pilot did not measure patient safety. A next step would be a longer evaluation with a comparison group”. “would be” clearly frames advice rather than a commitment."
+    },
+    {
+      "text": "100–150 words in one paragraph without heading or bullets.",
+      "passed": true,
+      "evidence": "115 whitespace-delimited words, a single unheaded paragraph, no bullets."
+    }
+  ],
+  "summary": {
+    "passed": 5,
+    "failed": 0,
+    "total": 5,
+    "pass_rate": 1.0
+  },
+  "scores": {
+    "Fidelity": 5,
+    "Directness and selectivity": 5,
+    "Specificity": 5,
+    "Voice and genre": 5,
+    "Cadence and rhetoric": 5,
+    "Structure": 5
+  },
+  "critical_failures": [],
+  "review_method": "Independent single blind agent review; not human feedback",
+  "review_source": "blind/iteration-3/review.json",
+  "output_sha256": "61ebbb12438d89777f2dbe4d7e6e41eb64f827172982b219491ddd476eb240da"
+}

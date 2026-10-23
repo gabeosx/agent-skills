@@ -1,0 +1,61 @@
+{
+  "validated_at": "2026-10-23T20:59:43.419555+00:00",
+  "skill": "natural-writing",
+  "version": "1.0.0",
+  "status": "passed",
+  "structural_validator": {
+    "status": "passed; reused unchanged v3 source",
+    "command": "uv run --offline --cache-dir /private/tmp/natural-writing-uv-cache --with pyyaml python .agents/skills/skill-creator/scripts/quick_validate.py skills/natural-writing",
+    "instructions_sha256": "704915f8c740186a43215e26bf59ee7483e3142429759722bea31228b6d9b491",
+    "dependency_note": "System Python lacked PyYAML; temporary task-local uv environment supplied it. No runtime dependency for the writing skill."
+  },
+  "checks": {
+    "python3 .agents/scripts/validate_release_contract.py": {
+      "status": "passed",
+      "output": "Release contract valid relative to HEAD.\nAffected skills: natural-writing\nRepository-level files covered: 382"
+    },
+    "git diff --check": {
+      "status": "passed",
+      "output": "No whitespace errors."
+    }
+  },
+  "other_passed": [
+    "Frozen initial sources, rubric and reserved prompts unchanged",
+    "Current skill equals frozen v3 instructions and references",
+    "All 60 reviewed output hashes match",
+    "All evaluation JSON parses and evaluator scripts parse",
+    "All changed skill and report resource links resolve",
+    "No trailing whitespace in authored skill/evidence sources",
+    "Positive and deliberate negative exact-checker controls passed on frozen checker; results reused",
+    "Final candidate: 64 assertions and 21 exact/format checks across 14 cases",
+    "Independent routing-description interpretation: 16/16",
+    "Confirmation: no substantive style regression; no instruction edit after outcomes"
+  ],
+  "acceptance": {
+    "development_mean": 4.892857142857143,
+    "confirmation_mean": 4.944444444444445,
+    "development_preferences": {
+      "wins": 3,
+      "losses": 0,
+      "ties": 5
+    },
+    "confirmation_preferences": {
+      "wins": 0,
+      "minor_losses": 1,
+      "ties": 5
+    }
+  },
+  "cleanup": {
+    "removed": "/private/tmp/natural-writing-uv-cache",
+    "retained": "All sources, failed candidates, trial outputs, reviews and evidence",
+    "background_resources": "None started",
+    "preexisting_work": "Untracked .agents/skills/ and skills-lock.json preserved"
+  },
+  "unexercised": [
+    "Human review",
+    "Actual automatic host selection",
+    "Long-form writing",
+    "Additional languages/models"
+  ],
+  "committed_or_published": false
+}

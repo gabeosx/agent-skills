@@ -1,0 +1,12 @@
+{
+  "eval_id": 601,
+  "eval_name": "Manifest delivery handover",
+  "prompt": "Write directions for a new evening coordinator to send tonight's shipment manifest through the fictional Alder Dispatch service. Use only these source facts, and make the directions usable without a trainer present.\n\nThe coordinator starts on Shipments, selects the batch named Evening East, and clicks Send manifest. Tonight's batch contains 24 shipments. The send dialog has a Destination field, which must be East review, and a Send button. A green 'Request accepted' toast means only that the request entered the queue. The receiving team's copy is visible in Review desk > East review > Incoming. Its row should be named Evening East, have Status = Ready, and show Shipments = 24. If that row says Status = Destination paused, the coordinator can open Review desk > East review > Settings, switch Receiving from Paused to Active, return to Shipments, and send the same batch again; the service replaces the pending copy rather than creating a duplicate. Other failed statuses have no documented operator remedy.\n\nThe handover also says that East review is supposed to receive a second copy in a partner's archive, but nobody has supplied an archive address, a way to inspect it, or a recovery procedure for that copy. Don't present this uncertainty as proof that the partner copy succeeded or failed.",
+  "assertions": [
+    "The directions specify Evening East and Destination = East review, then direct the coordinator to inspect Review desk > East review > Incoming for the receiving copy.",
+    "Success requires the Evening East row to show Status = Ready and Shipments = 24; the green Request accepted toast is not treated as delivery confirmation.",
+    "Recovery for Status = Destination paused uses East review's Settings to change Receiving from Paused to Active and resend the batch, without presenting that recovery as applicable to every failure.",
+    "The response does not invent a partner archive address, inspection control, expected receipt, or remedy; it keeps the partner-copy outcome explicitly unverified.",
+    "The response is written as directions the coordinator can use, rather than commentary about writing the directions."
+  ]
+}

@@ -1,0 +1,9 @@
+Approve a four-week pilot of a shared equipment-return desk at West Office, starting 6 May. Operations would lend two staff members for the Tuesday and Thursday sessions, 10 a.m.–2 p.m., covering eight hours each week. Please approve the allocation by 26 April so IT can schedule training.
+
+Returns currently pass through reception desks at three offices and wait for IT collection when someone is available. Last month's internal count recorded 46 returns, including 18 that stayed at reception for more than two working days. Seven employees contacted reception twice to check whether their return had been recorded. These counts identify a reason to test a more consistent intake process, although they do not measure all returns across the company.
+
+The pilot would use the existing ground-floor service counter and locked cabinet, whose availability the West Office manager has confirmed. Reception managers have agreed to direct employees there during desk hours. Employees could continue using reception on other days and at other offices.
+
+IT would supply an intake checklist and provide one hour of training before launch. During each session, staff would match the employee's name to the return request, record the asset tag and issue a receipt, then secure the equipment in the cabinet. IT would collect it after each session and confirm receipt in the asset register by the next working day. No new equipment or software is requested.
+
+The pilot would target at least 90% of returns being registered by the next working day, with no equipment left outside the locked cabinet overnight. Staff would record their time after every session. There is no staff-time baseline, so the pilot cannot establish time savings against current practice. After week four, Operations and IT would review the results and recommend stopping, adjusting or extending the arrangement.

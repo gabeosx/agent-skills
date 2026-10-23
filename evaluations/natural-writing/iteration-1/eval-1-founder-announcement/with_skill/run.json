@@ -1,0 +1,18 @@
+{
+  "started_at": "2026-10-23T20:41:42Z",
+  "finished_at": "2026-10-23T20:42:18Z",
+  "model": null,
+  "tokens": null,
+  "session_charge": null,
+  "files": [
+    "/Users/gabe/agent-skills/evaluations/natural-writing/iteration-1/eval-1-founder-announcement/with_skill/outputs/output.md",
+    "/Users/gabe/agent-skills/evaluations/natural-writing/iteration-1/eval-2-uncertain-study/with_skill/outputs/output.md",
+    "/Users/gabe/agent-skills/evaluations/natural-writing/iteration-1/eval-3-source-poor-copy/with_skill/outputs/output.md",
+    "/Users/gabe/agent-skills/evaluations/natural-writing/iteration-1/eval-4-technical-distinction/with_skill/outputs/output.md",
+    "/Users/gabe/agent-skills/evaluations/natural-writing/iteration-1/eval-5-voice-sample-email/with_skill/outputs/output.md",
+    "/Users/gabe/agent-skills/evaluations/natural-writing/iteration-1/eval-6-already-good-control/with_skill/outputs/output.md",
+    "/Users/gabe/agent-skills/evaluations/natural-writing/iteration-1/eval-7-required-checklist/with_skill/outputs/output.md",
+    "/Users/gabe/agent-skills/evaluations/natural-writing/iteration-1/eval-8-argument-not-filler/with_skill/outputs/output.md"
+  ],
+  "note": "First-attempt batch actor; all eight prompts executed once in listed order using frozen v1 instructions."
+}

@@ -1,0 +1,44 @@
+{
+  "expectations": [
+    {
+      "text": "The normal path covers power, Rooms and the intended room, Add sensor and code scanning, then Run sample; it does not make fault recovery part of every installation.",
+      "passed": true,
+      "evidence": "Steps 1\u20134 cover supplied-cable wall power, Rooms and intended room, Add sensor and square-code scanning, then Run sample when its name appears. Recovery stays in the conditional troubleshooting section."
+    },
+    {
+      "text": "The response identifies the room's Activity screen and Result = Received with Samples = 1 as the successful setup check.",
+      "passed": true,
+      "evidence": "Step 5 names that room\u2019s Activity screen and exact Result = Received / Samples = 1 success values."
+    },
+    {
+      "text": "Any included pairing reset remains conditional on Already paired, uses the six-second Pair-button hold, and is not required for a normally connecting new sensor.",
+      "passed": true,
+      "evidence": "The Already paired bullet specifies a six-second recessed Pair-button hold until flashing blue, then rescanning, and states that normally connecting new sensors need no reset."
+    },
+    {
+      "text": "Any included cable reseating, different outlet, room move, hub-distance change, or replacement cable is tied to its corresponding source symptom or visible damage, without inventing a universal prerequisite.",
+      "passed": true,
+      "evidence": "The dark-light bullet conditions reseating/another outlet on 20-second darkness and replacement on visible damage; wrong room and Sensor offline have their corresponding room-move and hub-distance actions."
+    },
+    {
+      "text": "The output is a short guide for the colleague, using only the supplied controls and product facts.",
+      "passed": true,
+      "evidence": "The short five-step guide and four troubleshooting bullets use only the supplied controls and product facts."
+    }
+  ],
+  "summary": {
+    "passed": 5,
+    "failed": 0,
+    "total": 5,
+    "pass_rate": 1.0
+  },
+  "blind_review": "reviews/confirmation/603.json",
+  "output_sha256": "1502b791b1f57383c7bee2892236965da89a73da7a3215a53074c6501ebd1851",
+  "scores": {
+    "usefulness": 5,
+    "fidelity": 5,
+    "naturalness": 5
+  },
+  "critical": [],
+  "substantive": []
+}

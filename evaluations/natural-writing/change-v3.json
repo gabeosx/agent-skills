@@ -1,0 +1,16 @@
+{
+  "candidate": "v3",
+  "reason": "v2 blind review found sparse copy too literal and repetitive, losing to a supported feature implication. The candidate won the local argument case; six ties and no fidelity failures.",
+  "evidence": [
+    "blind/iteration-2/review.json",
+    "iteration-2/eval-3-source-poor-copy/with_skill/outputs/output.md"
+  ],
+  "change": "Explain direct implications of known features while distinguishing them from unsupported measured or subjective benefits. Illustrative example uses a removable tray, unrelated to test products.",
+  "retry_purpose": "Rerun all 8 development prompts and a fresh baseline after material change; confirmation still unused.",
+  "timestamp": "2026-10-23T20:50:13.469235+00:00",
+  "sha256": {
+    "evaluations/natural-writing/snapshots/v3/instructions.md": "704915f8c740186a43215e26bf59ee7483e3142429759722bea31228b6d9b491",
+    "evaluations/natural-writing/snapshots/v3/references/pattern-catalog.md": "b0d6aa59dabd6793dec6aefc4b9404d377e32696817e9cc2c251a6edcd4acd45",
+    "evaluations/natural-writing/snapshots/v3/references/research-notes.md": "aa0fa139a4f28eaddb50ffa8b41fdb5f13070cfc1c5c1d5cf4b76f02def33ca9"
+  }
+}

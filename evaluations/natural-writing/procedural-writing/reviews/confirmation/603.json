@@ -1,0 +1,122 @@
+{
+  "id": 603,
+  "labels": {
+    "A": {
+      "expectations": [
+        {
+          "text": "The normal path covers power, Rooms and the intended room, Add sensor and code scanning, then Run sample; it does not make fault recovery part of every installation.",
+          "passed": true,
+          "evidence": "Steps 1–3 cover supplied-cable wall power, Rooms/intended room, Add sensor, back-code scan, then Run sample after the name appears. Recovery is under If something goes wrong."
+        },
+        {
+          "text": "The response identifies the room's Activity screen and Result = Received with Samples = 1 as the successful setup check.",
+          "passed": true,
+          "evidence": "Step 4 identifies that room’s Activity screen with Result = Received and Samples = 1 as readiness confirmation."
+        },
+        {
+          "text": "Any included pairing reset remains conditional on Already paired, uses the six-second Pair-button hold, and is not required for a normally connecting new sensor.",
+          "passed": true,
+          "evidence": "The reset bullet is conditional on Already paired and specifies the recessed Pair button for six seconds until flashing blue; a final sentence says a normally connecting new sensor needs no reset."
+        },
+        {
+          "text": "Any included cable reseating, different outlet, room move, hub-distance change, or replacement cable is tied to its corresponding source symptom or visible damage, without inventing a universal prerequisite.",
+          "passed": true,
+          "evidence": "Each troubleshooting bullet matches its source symptom: dark after 20 seconds, wrong room, or Sensor offline. Replacement is limited to visible cable damage."
+        },
+        {
+          "text": "The output is a short guide for the colleague, using only the supplied controls and product facts.",
+          "passed": true,
+          "evidence": "The concise four-step guide and four conditional recovery bullets use only supplied controls and facts."
+        }
+      ],
+      "scores": {
+        "usefulness": 5,
+        "fidelity": 5,
+        "naturalness": 5
+      },
+      "critical": [],
+      "substantive": [],
+      "minor": []
+    },
+    "B": {
+      "expectations": [
+        {
+          "text": "The normal path covers power, Rooms and the intended room, Add sensor and code scanning, then Run sample; it does not make fault recovery part of every installation.",
+          "passed": true,
+          "evidence": "Steps 1–4 cover wall power with supplied cable, Rooms and intended room, Add sensor and back-code scanning, and Run sample after its name appears. Fault actions are under Only if you run into a problem."
+        },
+        {
+          "text": "The response identifies the room's Activity screen and Result = Received with Samples = 1 as the successful setup check.",
+          "passed": true,
+          "evidence": "Step 5 checks that room’s Activity for Result = Received and Samples = 1 before ordinary use."
+        },
+        {
+          "text": "Any included pairing reset remains conditional on Already paired, uses the six-second Pair-button hold, and is not required for a normally connecting new sensor.",
+          "passed": true,
+          "evidence": "The Already paired bullet alone invokes the recessed Pair button for six seconds until flashing blue, then rescanning. The final paragraph excludes resetting a normally connecting new sensor."
+        },
+        {
+          "text": "Any included cable reseating, different outlet, room move, hub-distance change, or replacement cable is tied to its corresponding source symptom or visible damage, without inventing a universal prerequisite.",
+          "passed": true,
+          "evidence": "Darkness after 20 seconds triggers reseating and another outlet; wrong room triggers Move to room; Sensor offline triggers moving closer to the hub. Replacement is allowed only for visible cable damage."
+        },
+        {
+          "text": "The output is a short guide for the colleague, using only the supplied controls and product facts.",
+          "passed": true,
+          "evidence": "The short numbered setup and conditional troubleshooting use the exact supplied controls and product facts."
+        }
+      ],
+      "scores": {
+        "usefulness": 5,
+        "fidelity": 5,
+        "naturalness": 5
+      },
+      "critical": [],
+      "substantive": [],
+      "minor": []
+    },
+    "C": {
+      "expectations": [
+        {
+          "text": "The normal path covers power, Rooms and the intended room, Add sensor and code scanning, then Run sample; it does not make fault recovery part of every installation.",
+          "passed": true,
+          "evidence": "Steps 1–4 cover supplied-cable wall power, Rooms and intended room, Add sensor and square-code scanning, then Run sample when its name appears. Recovery stays in the conditional troubleshooting section."
+        },
+        {
+          "text": "The response identifies the room's Activity screen and Result = Received with Samples = 1 as the successful setup check.",
+          "passed": true,
+          "evidence": "Step 5 names that room’s Activity screen and exact Result = Received / Samples = 1 success values."
+        },
+        {
+          "text": "Any included pairing reset remains conditional on Already paired, uses the six-second Pair-button hold, and is not required for a normally connecting new sensor.",
+          "passed": true,
+          "evidence": "The Already paired bullet specifies a six-second recessed Pair-button hold until flashing blue, then rescanning, and states that normally connecting new sensors need no reset."
+        },
+        {
+          "text": "Any included cable reseating, different outlet, room move, hub-distance change, or replacement cable is tied to its corresponding source symptom or visible damage, without inventing a universal prerequisite.",
+          "passed": true,
+          "evidence": "The dark-light bullet conditions reseating/another outlet on 20-second darkness and replacement on visible damage; wrong room and Sensor offline have their corresponding room-move and hub-distance actions."
+        },
+        {
+          "text": "The output is a short guide for the colleague, using only the supplied controls and product facts.",
+          "passed": true,
+          "evidence": "The short five-step guide and four troubleshooting bullets use only the supplied controls and product facts."
+        }
+      ],
+      "scores": {
+        "usefulness": 5,
+        "fidelity": 5,
+        "naturalness": 5
+      },
+      "critical": [],
+      "substantive": [],
+      "minor": []
+    }
+  },
+  "preferred": [
+    "A",
+    "B",
+    "C"
+  ],
+  "reason": "All three preserve the source prerequisites, observable success checks, conditional remedies, and stated limits. Their organization differs slightly, but each is fully usable and faithful; no consequential unsupported claim or omission warrants a preference."
+}

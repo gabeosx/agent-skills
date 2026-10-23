@@ -1,0 +1,12 @@
+{
+  "id": 501,
+  "name": "receiving-cost",
+  "prompt": "Write a short receiving guide for new operators of the fictional Brindle inventory app using these notes and verified behavior. Return only the guide. Rough note: Enter stock, check units and cost, resolve any problems, post receipt. Verified behavior: Items > select item > Receive existing stock contains Quantity and Cost (per stock unit). The item Flour uses grams as its stock unit. A supplier sack contains 6 kg and costs $72 total. Convert the sack to the stock unit when entering both fields. Blank cost is stored as zero. Before Post, the operator can correct either field directly. Once posted there is no edit or undo; give the receipt ID to the inventory lead for an audited correction. The posted row is visible in Items > select item > History with quantity, stock unit, unit cost and receipt ID. There is no cost-unit selector.",
+  "files": [],
+  "expected_output": "Usable, faithful prose that satisfies the task without invented details.",
+  "assertions": [
+    "The guide names the receiving location and enters 6000 grams and $0.012 per gram, with cost per stock unit distinguished from total sack cost.",
+    "The check has observable fields and expected values, with correction before Post and a warning that blank cost becomes zero.",
+    "After posting, it uses the History receipt ID and inventory lead for audited correction; it invents neither an undo nor a cost-unit selector."
+  ]
+}

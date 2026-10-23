@@ -1,0 +1,76 @@
+{
+  "validated_at": "2026-10-23T21:41:09.713689+00:00",
+  "status": "passed",
+  "skill": "natural-writing",
+  "version": "1.0.0",
+  "version_reason": "Same uncommitted prepared initial release; repository policy keeps one intentional increment.",
+  "final_snapshot": "candidate-2",
+  "final_instructions_sha256": "c4d45ba75f35605677a0d095944630a56cb9168b2eac6cd68c0cd553047d3486",
+  "structural_validator": {
+    "status": "passed; result reused on identical final instruction/reference fingerprint",
+    "command": "uv run --cache-dir /private/tmp/natural-writing-editorial-uv-cache --with pyyaml python .agents/skills/skill-creator/scripts/quick_validate.py skills/natural-writing",
+    "runtime_dependency": "No dependency for the skill; temporary PyYAML used for required validator only"
+  },
+  "checks": {
+    "python3 .agents/scripts/validate_release_contract.py": {
+      "status": "passed",
+      "output": "Release contract valid relative to HEAD.\nAffected skills: natural-writing\nRepository-level files covered: 748"
+    },
+    "git diff --check": {
+      "status": "passed",
+      "output": "No whitespace errors."
+    }
+  },
+  "coverage": {
+    "final_cases": 18,
+    "passed_assertions": 85,
+    "total_assertions": 85,
+    "exact_checks": 22,
+    "total_new_outputs": 60,
+    "history_positive_controls": 5,
+    "earlier_writing_controls": 4
+  },
+  "other_checks": [
+    "Independent semantic reviews with no final candidate critical failures or substantive defects",
+    "All frozen baseline/candidate/task/rubric/harness hashes unchanged",
+    "All reviewed bytes equal actual outputs; failure rows retained",
+    "All canonical skill/report links resolve and JSON parses",
+    "Evaluator Python parses; frozen checkers qualified on positive and deliberately invalid controls before outcomes",
+    "Candidate-2 equality to current canonical source verified",
+    "No instruction edit after confirmation feedback"
+  ],
+  "routing": {
+    "matched": 21,
+    "total": 22,
+    "mismatches": [
+      {
+        "expected": {
+          "id": 8,
+          "query": "Review this already-good paragraph for actual errors only; do not change my punctuation for style.",
+          "should_trigger": true,
+          "reason": "Restrained editing is in scope"
+        },
+        "actual": {
+          "id": 8,
+          "should_trigger": false,
+          "reason": "This is a narrow check for actual errors in a paragraph, with stylistic editing expressly restricted. It does not ask for naturalness, voice work, or substantial reader-facing composition."
+        }
+      }
+    ],
+    "method": "Independent description interpretation; not actual host auto-selection"
+  },
+  "cleanup": {
+    "removed": "/private/tmp/natural-writing-editorial-uv-cache",
+    "retained": "All snapshots, tasks, outputs, failures, reviews and audit records",
+    "background_resources": "None created",
+    "preexisting_work": "Pre-existing untracked .agents/skills/ and skills-lock.json preserved"
+  },
+  "limitations": [
+    "No human preference validation",
+    "Source packets rather than actual long coding-session context",
+    "Only English exercised by this follow-up",
+    "Exact model build, generation latency, tokens and session charge unavailable",
+    "Host automatic routing not exercised; one description-only proofreading ambiguity"
+  ],
+  "committed_or_published": false
+}

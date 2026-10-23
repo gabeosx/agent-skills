@@ -1,0 +1,107 @@
+{
+  "skill_name": "natural-writing",
+  "evals": [
+    {
+      "id": 501,
+      "name": "receiving-cost",
+      "prompt": "Write a short receiving guide for new operators of the fictional Brindle inventory app using these notes and verified behavior. Return only the guide. Rough note: Enter stock, check units and cost, resolve any problems, post receipt. Verified behavior: Items > select item > Receive existing stock contains Quantity and Cost (per stock unit). The item Flour uses grams as its stock unit. A supplier sack contains 6 kg and costs $72 total. Convert the sack to the stock unit when entering both fields. Blank cost is stored as zero. Before Post, the operator can correct either field directly. Once posted there is no edit or undo; give the receipt ID to the inventory lead for an audited correction. The posted row is visible in Items > select item > History with quantity, stock unit, unit cost and receipt ID. There is no cost-unit selector.",
+      "files": [],
+      "expected_output": "Usable, faithful prose that satisfies the task without invented details.",
+      "assertions": [
+        "The guide names the receiving location and enters 6000 grams and $0.012 per gram, with cost per stock unit distinguished from total sack cost.",
+        "The check has observable fields and expected values, with correction before Post and a warning that blank cost becomes zero.",
+        "After posting, it uses the History receipt ID and inventory lead for audited correction; it invents neither an undo nor a cost-unit selector."
+      ]
+    },
+    {
+      "id": 502,
+      "name": "migration-coverage",
+      "prompt": "Rewrite this fictional Brindle migration page into a concise useful guide. Use current evidence to resolve stale text; return only the guide, no editing commentary. Original: Before migration, export a backup and confirm the destination workspace name on the Apply screen. Applying cannot be undone. CSV import creates opening quantities, not past transactions. Opening quantities do not retain source lot labels or expiry dates. Later receipts do not retroactively identify those opening units. Keep the source records for recalls and expiry tracking of opening stock. Old restriction: comments cannot be imported. Choose CSV under Import, preview the item and quantity rows, then Apply. Current evidence confirms every statement except the comments restriction: comments are now imported in the Comment column. No other behavior has changed.",
+      "files": [],
+      "expected_output": "Usable, faithful prose that satisfies the task without invented details.",
+      "assertions": [
+        "It preserves backup, destination confirmation and irreversible Apply warning near the action.",
+        "It preserves missing past transactions AND the distinct lot-label and expiry-date loss for opening quantities.",
+        "It preserves that later receipts cannot retroactively identify opening units and says to keep source records for recalls/expiry tracking.",
+        "It uses the current Comment-column support rather than retaining the obsolete comments restriction and keeps the supported CSV preview/apply path."
+      ]
+    },
+    {
+      "id": 503,
+      "name": "conditional-recovery",
+      "prompt": "Turn these messy fictional Larch shop-connector notes into an onboarding page. Return only the page. Verified source: First Connections > Add shop, authorize the desired shop, then Import products. Next open Connections > Products and review Mapping status. A Mapped row is ready; do not remap it. Only an Unmatched row needs Link item and selection of the corresponding inventory item. If no inventory item exists, ask the inventory lead to create it before linking that row. Product import does not start order sync: press Start sync after all rows are mapped. Only if Connections > Account shows the wrong shop, Disconnect and authorize the correct shop, then reimport. Only if sync status is Authorization expired, select Reauthorize; this is not a routine setup step. Old notes currently mix disconnecting, relinking every row and reauthorizing into the numbered setup list.",
+      "files": [],
+      "expected_output": "Usable, faithful prose that satisfies the task without invented details.",
+      "assertions": [
+        "The normal sequence is authorize, import, review mappings, Start sync after all mapped; import alone does not start sync.",
+        "It gives Mapping status location, Mapped/Unmatched conditions, and Link item or inventory-lead remedy only for Unmatched rows.",
+        "Disconnect/reimport and Reauthorize are clearly conditional on wrong shop and Authorization expired respectively, not universal prerequisites."
+      ]
+    },
+    {
+      "id": 504,
+      "name": "coverage-audit",
+      "prompt": "Review this fictional Cedar task-import rewrite against its original and current evidence. Give only consequential fixes and replacement wording; no full rewrite. Original: Back up the destination and confirm the workspace on Apply. Apply cannot be undone. A matching TaskCode overwrites the existing task fields. Comments, attachments and archived tasks cannot be imported. Draft: Select CSV under Import, preview the rows, and press Apply. Comments are supported. Import history is limited. Current evidence: Comment-column import now works. Attachments and archived tasks remain unsupported. TaskCode matching still overwrites existing fields, Apply remains irreversible, and backup plus destination confirmation are still prerequisites. Do not rely on any behavior outside this evidence.",
+      "files": [],
+      "expected_output": "Usable, faithful prose that satisfies the task without invented details.",
+      "assertions": [
+        "The review restores backup, workspace confirmation and irreversible Apply warning.",
+        "It restores matching TaskCode overwrite behavior rather than accepting a generic history warning as equivalent.",
+        "It names both unsupported attachments and archived tasks without restoring the stale comments restriction.",
+        "It supplies actionable replacement wording and does not invent new UI or mechanisms."
+      ]
+    },
+    {
+      "id": 505,
+      "name": "literary-control",
+      "prompt": "Proofread only for spelling errors. If there are none, return the passage unchanged, without quotation marks or commentary.\n\nBy six, the garden had gone blue. My father kept digging\u2014slowly, as if the potatoes might object. We ate late; nobody mentioned the clock.",
+      "files": [],
+      "expected_output": "Usable, faithful prose that satisfies the task without invented details.",
+      "assertions": [
+        "It returns the passage exactly, preserving punctuation, wording, and paragraph without procedural additions or commentary."
+      ]
+    },
+    {
+      "id": 601,
+      "name": "Manifest delivery handover",
+      "prompt": "Write directions for a new evening coordinator to send tonight's shipment manifest through the fictional Alder Dispatch service. Use only these source facts, and make the directions usable without a trainer present.\n\nThe coordinator starts on Shipments, selects the batch named Evening East, and clicks Send manifest. Tonight's batch contains 24 shipments. The send dialog has a Destination field, which must be East review, and a Send button. A green 'Request accepted' toast means only that the request entered the queue. The receiving team's copy is visible in Review desk > East review > Incoming. Its row should be named Evening East, have Status = Ready, and show Shipments = 24. If that row says Status = Destination paused, the coordinator can open Review desk > East review > Settings, switch Receiving from Paused to Active, return to Shipments, and send the same batch again; the service replaces the pending copy rather than creating a duplicate. Other failed statuses have no documented operator remedy.\n\nThe handover also says that East review is supposed to receive a second copy in a partner's archive, but nobody has supplied an archive address, a way to inspect it, or a recovery procedure for that copy. Don't present this uncertainty as proof that the partner copy succeeded or failed.",
+      "expected_output": "A usable operational handover that connects sending the batch to inspecting the receiving copy, includes the exact success values and the documented paused-destination recovery, and states the limits of what can be checked about the partner archive.",
+      "files": [],
+      "assertions": [
+        "The directions specify Evening East and Destination = East review, then direct the coordinator to inspect Review desk > East review > Incoming for the receiving copy.",
+        "Success requires the Evening East row to show Status = Ready and Shipments = 24; the green Request accepted toast is not treated as delivery confirmation.",
+        "Recovery for Status = Destination paused uses East review's Settings to change Receiving from Paused to Active and resend the batch, without presenting that recovery as applicable to every failure.",
+        "The response does not invent a partner archive address, inspection control, expected receipt, or remedy; it keeps the partner-copy outcome explicitly unverified.",
+        "The response is written as directions the coordinator can use, rather than commentary about writing the directions."
+      ]
+    },
+    {
+      "id": 602,
+      "name": "Replace an outdated export article",
+      "prompt": "Rewrite the following fictional Cove Ledger wiki article substantially for today's release. Produce the replacement article itself for staff who export monthly records; choose the organization that makes it easiest to use.\n\nOld article:\n'Before you export, close every other Cove Ledger tab and erase your saved sign-in. This is necessary every time: the exporter can otherwise borrow the account from another open tab. Sign back in, go to Records, pick a month, and press Export. Do not assume the downloaded package is a complete archive. It contains record text and attachment filenames, but never the attachment files themselves. Save those files separately if you need them later. The exporter will show a job in the export area. Wait until it finishes. A queued job can take a while, so leave the browser open and do not start again merely because the download has not arrived. Once it has finished, keep the package somewhere the monthly review team can find it. Ask your lead if you are unsure which account you used.'\n\nCurrent release facts:\nThe account-borrowing defect is fixed. Exports are now tied to the account shown in the top-right account label, independently of other tabs and saved sign-ins. Records has Month and Export controls. Export opens a job in Exports > Recent; its Account and Month fields identify what is being exported. When Status becomes Complete, the job's Download package button becomes available. Closing the browser does not stop the job; staff can return to that same page later. An existing queued or running job should be resumed from Recent, not submitted again. The package still omits attachment files. The review team's agreed destination for packages and separately saved attachments is the shared folder Monthly review, in a subfolder named for the selected month. No other product behavior has changed.",
+      "expected_output": "A substantially rewritten, current wiki article that gives a coherent export workflow, uses current account and job evidence, removes superseded precautions, and preserves the consequential attachment limitation and duplicate-job precaution.",
+      "files": [],
+      "assertions": [
+        "The replacement preserves the fact that packages contain attachment filenames but omit the attachment files, and explains that needed attachments must be saved separately.",
+        "The article does not require closing other tabs or erasing saved sign-ins before export; it uses the current account label and the job's Account and Month fields to establish the selected export context.",
+        "The workflow identifies Exports > Recent, Status = Complete, and Download package, and says existing queued or running jobs should be resumed rather than resubmitted.",
+        "The article allows staff to close the browser and return later, and identifies Monthly review's month-named subfolder as the destination for packages and separate attachments.",
+        "The output is a replacement staff article with materially revised organization or wording, rather than a lightly edited copy, a change log, or a discussion of the rewrite."
+      ]
+    },
+    {
+      "id": 603,
+      "name": "Room sensor quick start",
+      "prompt": "Write a short getting-started guide for a colleague installing a fictional Plover Room sensor. They have a new sensor, its supplied cable, and the Plover app, and have not reported any fault. Here are the complete product notes.\n\nPlug the sensor into a wall outlet with the supplied cable. The light normally turns blue within 20 seconds. In the app, open Rooms, choose the intended room, tap Add sensor, and scan the square code on the back of the sensor. When its name appears in that room, tap Run sample. A successful sample appears on that room's Activity screen as Result = Received with Samples = 1. The sensor is then ready for ordinary use.\n\nSupport notes: If the light is still dark after 20 seconds, reseat both cable ends and try another wall outlet. If scanning the code produces 'Already paired', hold the recessed Pair button for six seconds until the light flashes blue, then scan again; this removes an old pairing. If the sensor appears in the wrong room, open that sensor's menu and choose Move to room. If Run sample shows 'Sensor offline', move the sensor closer to the room's hub and run the sample again. There is no need to reset a normally connecting new sensor. The supplied cable is sufficient; a replacement cable is only needed if it is visibly damaged. Don't add product controls or requirements beyond these notes.",
+      "expected_output": "A concise setup guide that makes the normal installation easy to follow, gives the observable sample result, and keeps recovery actions conditional on their stated symptoms.",
+      "files": [],
+      "assertions": [
+        "The normal path covers power, Rooms and the intended room, Add sensor and code scanning, then Run sample; it does not make fault recovery part of every installation.",
+        "The response identifies the room's Activity screen and Result = Received with Samples = 1 as the successful setup check.",
+        "Any included pairing reset remains conditional on Already paired, uses the six-second Pair-button hold, and is not required for a normally connecting new sensor.",
+        "Any included cable reseating, different outlet, room move, hub-distance change, or replacement cable is tied to its corresponding source symptom or visible damage, without inventing a universal prerequisite.",
+        "The output is a short guide for the colleague, using only the supplied controls and product facts."
+      ]
+    }
+  ]
+}

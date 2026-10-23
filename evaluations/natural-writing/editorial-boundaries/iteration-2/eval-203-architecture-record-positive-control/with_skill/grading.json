@@ -1,0 +1,44 @@
+{
+  "expectations": [
+    {
+      "text": "Preserves 72-hour offline requirement, at most 2 GB, and one-writer context.",
+      "passed": true,
+      "evidence": "“without connectivity for up to 72 hours”; “at most 2 GB on one laptop”; “one writer process.”"
+    },
+    {
+      "text": "Records all three considered alternatives with reasons for rejecting remote service and JSON and selecting SQLite.",
+      "passed": true,
+      "evidence": "“remote search service cannot meet the offline requirement”; JSON “rebuilding indexes for every search”; SQLite “local indexed queries without a separate service.”"
+    },
+    {
+      "text": "Preserves transactional batch-import protection and the one-writer limitation without promising concurrent writes.",
+      "passed": true,
+      "evidence": "“Use transactions to prevent partial commits of import batches”; “Only one writer is supported.”"
+    },
+    {
+      "text": "Keeps closed-app backups, unimplemented live backup, and both revisit triggers; omits meeting joke and editing-history note; at most 240 words.",
+      "passed": true,
+      "evidence": "“Backups are copied while the app is closed; live backup has not been implemented”; “multiple writers” and “beyond 2 GB” are both revisit triggers. No joke/editing history. 138 whitespace-delimited words."
+    }
+  ],
+  "summary": {
+    "passed": 4,
+    "failed": 0,
+    "total": 4,
+    "pass_rate": 1.0
+  },
+  "scores": {
+    "fidelity": 5,
+    "directness_and_selectivity": 5,
+    "specificity": 5,
+    "voice_and_genre": 5,
+    "cadence_and_rhetoric": 5,
+    "structure": 5,
+    "edit_restraint": 5,
+    "reader_relevance": 5
+  },
+  "critical_failures": [],
+  "review_method": "Independent single blind agent review; not human feedback",
+  "review_source": "blind/iteration-2/review.json",
+  "output_sha256": "257f2c28088795b33ef34d29ff40e7ff46766888b3154bbfcb736e7b62a24762"
+}

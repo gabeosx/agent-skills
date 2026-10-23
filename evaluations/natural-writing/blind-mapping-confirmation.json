@@ -1,0 +1,26 @@
+{
+  "101": {
+    "A": "with_skill",
+    "B": "without_skill"
+  },
+  "102": {
+    "A": "with_skill",
+    "B": "without_skill"
+  },
+  "103": {
+    "A": "with_skill",
+    "B": "without_skill"
+  },
+  "104": {
+    "A": "without_skill",
+    "B": "with_skill"
+  },
+  "105": {
+    "A": "without_skill",
+    "B": "with_skill"
+  },
+  "106": {
+    "A": "with_skill",
+    "B": "without_skill"
+  }
+}

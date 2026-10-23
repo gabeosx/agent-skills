@@ -1,0 +1,44 @@
+{
+  "expectations": [
+    {
+      "text": "Explicitly maps old endpoint to destination_url and states old key rejection in 2.0; retains both exact identifiers.",
+      "passed": true,
+      "evidence": "“Replace `endpoint` with `destination_url`. Version 2.0 rejects the old field.” The preceding exact mapping makes the rejected field unambiguous."
+    },
+    {
+      "text": "Requires PACKETLINE_TOKEN environment variable and removing the API key from configuration; preserves relevant motivation.",
+      "passed": true,
+      "evidence": "“Move your API key from the configuration file into the `PACKETLINE_TOKEN` environment variable, then remove it from the file.” Preserves motivation: “deliberately prevents new API keys from being saved in configuration files.”"
+    },
+    {
+      "text": "Explains 1.x queue compatibility on import but irreversible-to-1.x format upgrade and no automatic downgrade.",
+      "passed": true,
+      "evidence": "“Version 2.0 can read 1.x queue files, but importing them upgrades their format. Version 1.x cannot read the upgraded files, and there is no automatic downgrade.”"
+    },
+    {
+      "text": "Requires stopped-process directory copy before first import and stopping 2.0/restoring that copy before 1.x rollback; omits target and unshipped dotfile alternatives; at most 220 words.",
+      "passed": true,
+      "evidence": "“Stop Packetline and copy the queue directory before the first import into 2.0.” Rollback: “Stop Packetline 2.0. Restore the pre-import queue directory copy before launching 1.x.” No target/dotfile alternative appears. 111 words is below 220."
+    }
+  ],
+  "summary": {
+    "passed": 4,
+    "failed": 0,
+    "total": 4,
+    "pass_rate": 1.0
+  },
+  "scores": {
+    "fidelity": 5,
+    "directness_and_selectivity": 5,
+    "specificity": 5,
+    "voice_and_genre": 5,
+    "cadence_and_rhetoric": 5,
+    "structure": 5,
+    "edit_restraint": 5,
+    "reader_relevance": 5
+  },
+  "critical_failures": [],
+  "review_method": "Independent single blind agent review; not human feedback",
+  "review_source": "blind/iteration-1/review.json",
+  "output_sha256": "90648971c508ce390a1702459f1931fe7528bc154e59ef33cfc5313a66895971"
+}
