@@ -6,6 +6,8 @@ All notable skill changes are recorded in this file. Each skill is versioned ind
 
 ### Repository
 
+- Restore emoji headings and skill-directory links in the root README catalog, preserving the updated descriptions and installation guidance.
+
 - Verify Natural Writing 1.0.0 installation from published GitHub commit `ac8173c` with skills CLI 1.7.4 into a disposable Codex project. All installed files match the published source; remote discovery finds seven active skills and excludes archived Jev. Preserve both installation runs, the corrected ignored-metadata comparison, and the unsupported `--list --json` attempt under `evaluations/natural-writing/repository-docs/`.
 
 - Preserve the retained unified-diff evidence verbatim, with a whitespace-check exception scoped to that artifact's required context-line spaces.

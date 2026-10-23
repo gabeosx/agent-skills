@@ -32,19 +32,37 @@ ln -s "$PWD/skills/natural-writing" /path/to/agent/skills/natural-writing
 
 ## Choose a skill
 
-| Skill | Use it for |
-| --- | --- |
-| [Natural Writing](skills/natural-writing/SKILL.md) | Drafting, editing, and reviewing prose with fewer generic AI writing habits. Preserves facts, uncertainty, voice, and useful detail; selects content for the reader; makes procedural checks actionable. Includes contextual examples and [comparison studies](evaluations/natural-writing/procedural-writing/REPORT.md). It does not judge authorship or promise detector evasion. |
-| [Benchmark Improvement Loop](skills/benchmark-improvement-loop/SKILL.md) | Adding benchmarks and improving skills through comparable trials, independent outcome checks, separate development and confirmation sets, and recorded costs and failures. Repository agent instructions route benchmark work here. |
-| [Apple Container Skill](skills/apple-container-skill/README.md) | Running and troubleshooting Apple's `container` CLI on Apple silicon macOS: images, registries, networks, volumes, Container Machines, SSH forwarding, and experimental local Kubernetes. Guidance covers release differences and security fixes through 1.5.0. |
-| [DevContainer Helper](skills/devcontainer-helper/SKILL.md) | Designing and repairing Dev Containers and GitHub Codespaces: architecture, LTS images and Features, lockfiles, authentication, Docker access, prebuilds, WSL compatibility, and runtime validation. |
-| [UX Designer](skills/ux-designer/SKILL.md) | Applying Refactoring UI principles to hierarchy, spacing, typography, responsive layouts, data-heavy interfaces, components, and design tokens. |
-| [GitHub Scrum Flow](skills/github-scrum-flow/SKILL.md) | Coordinating tracks, backlog items, GitHub issues, and branches through a PR-first Issue ↔ Track ↔ Branch workflow. |
-| [MacWhisper](skills/macwhisper/README.md) | Listing and searching local transcriptions, fetching diarized transcripts with filtering, and tracking processed sessions. Includes UTC time windows for calendar lookup. Requires macOS, MacWhisper, Node.js, and `sqlite3`. |
+### ✍️ [Natural Writing](./skills/natural-writing)
+
+Drafting, editing, and reviewing prose with fewer generic AI writing habits. Preserves facts, uncertainty, voice, and useful detail; selects content for the reader; makes procedural checks actionable. Includes contextual examples and [comparison studies](evaluations/natural-writing/procedural-writing/REPORT.md). It does not judge authorship or promise detector evasion.
+
+### 🧪 [Benchmark Improvement Loop](./skills/benchmark-improvement-loop)
+
+Adding benchmarks and improving skills through comparable trials, independent outcome checks, separate development and confirmation sets, and recorded costs and failures. Repository agent instructions route benchmark work here.
+
+### 🍎 [Apple Container Skill](./skills/apple-container-skill)
+
+Running and troubleshooting Apple's `container` CLI on Apple silicon macOS: images, registries, networks, volumes, Container Machines, SSH forwarding, and experimental local Kubernetes. Guidance covers release differences and security fixes through 1.5.0.
+
+### 🛠️ [DevContainer Helper](./skills/devcontainer-helper)
+
+Designing and repairing Dev Containers and GitHub Codespaces: architecture, LTS images and Features, lockfiles, authentication, Docker access, prebuilds, WSL compatibility, and runtime validation.
+
+### 🎨 [UX Designer](./skills/ux-designer)
+
+Applying Refactoring UI principles to hierarchy, spacing, typography, responsive layouts, data-heavy interfaces, components, and design tokens.
+
+### 🔄 [GitHub Scrum Flow](./skills/github-scrum-flow)
+
+Coordinating tracks, backlog items, GitHub issues, and branches through a PR-first Issue ↔ Track ↔ Branch workflow.
+
+### 🎙️ [MacWhisper](./skills/macwhisper)
+
+Listing and searching local transcriptions, fetching diarized transcripts with filtering, and tracking processed sessions. Includes UTC time windows for calendar lookup. Requires macOS, MacWhisper, Node.js, and `sqlite3`.
 
 ## Archived research
 
-[Agent Browser Jev](skills/agent-browser-jev/README.md) was retired on October 2, 2026. Its research report, evidence register, historical source, costs, failed experiments, and final NO-GO decisions remain available. The archive has no public `SKILL.md` and is excluded from installation discovery. Existing copies, old commits, tags, and forks remain available independently.
+[Agent Browser Jev](./skills/agent-browser-jev) was retired on October 2, 2026. Its research report, evidence register, historical source, costs, failed experiments, and final NO-GO decisions remain available. The archive has no public `SKILL.md` and is excluded from installation discovery. Existing copies, old commits, tags, and forks remain available independently.
 
 ## Versions and releases
 
