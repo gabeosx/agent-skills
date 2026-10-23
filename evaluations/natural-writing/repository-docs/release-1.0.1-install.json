@@ -1,0 +1,29 @@
+{
+  "verified_at": "2026-10-23T23:40:17.486260+00:00",
+  "source_commit": "bcd9936b1b07055239a522c687763c4334795b01",
+  "skill_version": "1.0.1",
+  "cli_version": "1.7.4",
+  "node_version": "v26.12.1",
+  "install": "GitHub owner/repo source, natural-writing selected, Codex project scope, exit0",
+  "file_count": 14,
+  "readme_present": true,
+  "tracked_files_byte_identical": true,
+  "sha256": {
+    "README.md": "d19b4ee0568ebc30ee5d26a322e605909fb7a2082aa5eee0e30e57c0af4f1b50",
+    "SKILL.md": "004be60ff9a970e09d4342c9c7c22a7cd5054d7935c500f01b4afe0b75230297",
+    "evals/editorial-boundaries.json": "9771e29a410b507a75e186e01664a157f2bff8d26c79def09c1aa1473b2150a5",
+    "evals/editorial-rubric.md": "71860f035b7fdd293f410d6d88d3c2dbd62ae95dff8856a50eb8321f5fd40a5c",
+    "evals/editorial-trigger-evals.json": "5a81fd18dce448122b2f240f770b23b3d57e5904ee438b314f5cea89fa80173d",
+    "evals/evals.json": "a044384da8518f19606de11a4575300e68f3e618c75ff291b4a990eaeb560af4",
+    "evals/procedural-rubric.md": "7621286e3c46dd1a879fe01b1c3d386157aa8212a61fa77c8e6cb1fc7874ea02",
+    "evals/procedural-writing.json": "ad158676a8b873080e0c64a0edbce323d1a3b9c9d83966a0441184abb7291f3a",
+    "evals/rubric.md": "0ea959e7051c1be8a18d9b2f6335f72ef4435c692cb1d2c3ab50acb53aeb19b2",
+    "evals/trigger-evals.json": "c4925610fdbd32e5df9d54b814cedf97f0aa9af7b14490d3cf30ed4aafb87b36",
+    "references/editorial-judgment.md": "15dba9484cdfb8a8fb1fa70e71ff89a0ca6ef872d88b37f3cfc6c93582536e41",
+    "references/pattern-catalog.md": "743e15e888b90bdc1b8a34909c600b23b397a808489b56764c766b3b0f0b541c",
+    "references/procedural-writing.md": "35f7ef31687f0067442a6bff17981f5caf063ce7a1b8e6d906c47c7c21d2d313",
+    "references/research-notes.md": "00a5523c1635fca55b1ad9ce6fbd45b5b0e97b75cbbe6cbb6e0bf55d202486d0"
+  },
+  "behavior": "Instructions unchanged except metadata version, as recorded in missing-readmes-validation.json. No new behavioral result claimed.",
+  "cleanup": "Removed only the three named task-owned install/npm/Python validation directories, after successful comparison. Release notes temporary file retained until publication."
+}

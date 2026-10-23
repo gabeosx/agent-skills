@@ -6,7 +6,7 @@ All notable skill changes are recorded in this file. Each skill is versioned ind
 
 ### Repository
 
-- Complete the skill-directory landing pages: all seven active skills now have human-facing READMEs. Keep directory links and emoji headings in the root catalog. Publish Natural Writing with a skill-specific tag and GitHub Release.
+- Complete the skill-directory landing pages: all seven active skills now have human-facing READMEs. Keep directory links and emoji headings in the root catalog. Publish Natural Writing with a skill-specific tag and GitHub Release. Verify the 1.0.1 GitHub installation includes its README and matches all 14 tracked skill files; retain the readback and remove only task-owned validation resources.
 
 - Restore emoji headings and skill-directory links in the root README catalog, preserving the updated descriptions and installation guidance.
 
