@@ -1,0 +1,209 @@
+{
+  "tasks": {
+    "h3": {
+      "outputs": {
+        "ui-d6a40a": {
+          "dimensions": {
+            "A": {
+              "score": 17,
+              "rationale": "The full date, count, and legend appear together above the grid. The phone agenda puts times before titles, and the desktop success state keeps the selected booking in view beside its details.",
+              "strengths": [
+                "Room names sit directly over their lanes, and the full 9:00 AM–1:00 PM axis is visible at 1440 px.",
+                "At 390 px, fixed time, title, and status columns make it easy to scan the two 9:00 AM bookings in room order."
+              ],
+              "defects": [
+                "At 834 px, the badge shares the title row and forces Volunteer Orientation onto two lines despite open space beneath it.",
+                "The large heading and stacked hours take up space above the date controls and grid on tablet."
+              ],
+              "opportunity": "Give the tentative card title a full-width first line at tablet widths by placing the badge on the metadata line."
+            },
+            "B": {
+              "score": 12,
+              "rationale": "The serif heading and compact sans-serif booking titles give the screen a clear typographic hierarchy. The readable time text appears comparatively small alongside the titles and large grid cards.",
+              "strengths": [
+                "Room headers and booking titles remain distinct at 834 px.",
+                "The phone agenda aligns the start and end times down the left and keeps even the longest booking title readable."
+              ],
+              "defects": [
+                "The phone repeats AM or PM on two lines for most bookings, increasing the work of reading a time range.",
+                "Grid times and the status legend are visually small beside the room headers."
+              ],
+              "opportunity": "Give time ranges more typographic weight and retain a stable alignment for their digits."
+            },
+            "C": {
+              "score": 16,
+              "rationale": "Plum, lavender, and warm amber form a restrained palette. Hour and quarter-hour rules are quiet, and the result panel aligns with the top of the schedule.",
+              "strengths": [
+                "A dashed edge, amber fill, and explicit badge make tentative blocks stand out on desktop and tablet.",
+                "The dark plum outline marks the moved selection while the adjacent green message confirms the outcome in words."
+              ],
+              "defects": [
+                "The desktop toolbar separates the date controls and filter by almost the full schedule width, making them feel loosely related.",
+                "The axis places the 9:00 AM label inside the first interval while later hour labels sit on the corresponding rules."
+              ],
+              "opportunity": "Align the first hour label to the start of the grid using the same convention as subsequent ticks."
+            },
+            "D": {
+              "score": 17,
+              "rationale": "The waveform mark and serif title give the station an identity while the grid, agenda, and details use an appropriately quiet treatment for daily coordination.",
+              "strengths": [
+                "The waveform, dark plum masthead, and plum buttons give all three screen sizes a recognizable identity.",
+                "Tentative amber and confirmed lavender carry through from the grid to the agenda and detail badge."
+              ],
+              "defects": [
+                "On the phone, the heading and space around it take up a sizable share of the first screen before the agenda begins."
+              ],
+              "opportunity": "Compress the phone heading area while keeping the serif title and station masthead."
+            },
+            "E": {
+              "score": 10,
+              "rationale": "The grid and chronological agenda preserve the task at their intended widths. The scripted conflict recovery, persistent filter, and phone cancel flows pass. The browser audit flags the booking buttons across every viewport.",
+              "strengths": [
+                "At 390 px, both date controls and the filter fit above the agenda, with room and status visible on each booking.",
+                "The success screenshot shows Signal Check still selected in Edit Booth and gives a written confirmation in its details."
+              ],
+              "defects": [
+                "Axe reports a serious visible-label and accessible-name mismatch on all eight booking buttons at desktop, tablet, and mobile.",
+                "The button's explicit name uses a compressed time range while the phone shows the meridiem on each endpoint, exemplifying a visible and spoken label inconsistency."
+              ],
+              "opportunity": "Build each booking button's accessible name from its displayed label content, then verify keyboard and voice activation."
+            },
+            "F": {
+              "score": 7,
+              "rationale": "Card placement, state treatment, and layout remain coherent across the screenshots. Browser evidence establishes native controls and consistent visible booking counts, with a remaining semantic naming defect.",
+              "strengths": [
+                "No measured horizontal overflow at 1440, 834, or 390 px.",
+                "Calendar placement and the selected detail panel agree after the move, while the scripted native select and cancel flow work on the phone."
+              ],
+              "defects": [
+                "The audit also leaves manual checks for contrast and the legend's ARIA label at desktop and tablet sizes.",
+                "The packet provides no captures of the live conflict form or the phone details and move form, so their layout and focus behavior remain unverified."
+              ],
+              "opportunity": "Resolve the legend's accessible labeling and verify contrast and focus in the open form states."
+            }
+          },
+          "total": 79,
+          "visual_problems": [
+            "The tablet tentative badge forces Volunteer Orientation onto two lines.",
+            "Desktop and tablet devote substantial vertical space to the masthead and heading before the first booking.",
+            "The 9:00 AM axis label uses a different alignment from the later hour labels."
+          ],
+          "effective_decisions": [
+            "Grouping the full date, booking count, and legend above the schedule puts context at the point of use.",
+            "The mobile agenda aligns time, title and room, and status in stable columns.",
+            "The desktop side panel preserves the grid and the selected outline shows the booking's new location."
+          ],
+          "blockers": [
+            "Serious accessibility violation reported for every booking button at all three widths. The accessible names fail to include the displayed labels as required."
+          ]
+        },
+        "ui-8e858c": {
+          "dimensions": {
+            "A": {
+              "score": 17,
+              "rationale": "A compact heading and toolbar bring the schedule above the fold on desktop and tablet. Room lanes and bookings are easy to scan, and the phone fits all eight bookings in the initial view.",
+              "strengths": [
+                "The three room columns begin high on the screen, with a clear reading order from room headers to the top-left title and time on each card.",
+                "The phone shows all eight bookings in chronological order, with the two 9:00 AM sessions ordered by room."
+              ],
+              "defects": [
+                "The booking count and status legend sit beneath the entire desktop and tablet grid, away from the date controls and initial entries.",
+                "On the phone, room appears above title on the left while time appears on the right below status, requiring more eye travel to scan by start time."
+              ],
+              "opportunity": "Move the count and legend closer to the top of the grid so the status key is available before scanning bookings."
+            },
+            "B": {
+              "score": 13,
+              "rationale": "A consistent sans-serif family creates a clear distinction from page title to room labels, booking titles, and times. The wider title line avoids wrapping Volunteer Orientation at 834 px.",
+              "strengths": [
+                "Strong card titles and lighter time ranges are easy to distinguish on both grid widths.",
+                "Single-line mobile ranges align along the right edge and preserve the full AM–PM transition for Midday Rotation."
+              ],
+              "defects": [
+                "The page title's very heavy weight and tight spacing are more pronounced than the rest of the restrained interface.",
+                "The small Tentative label in the grid is visually weaker than the title and time it qualifies."
+              ],
+              "opportunity": "Increase the prominence of the compact Tentative label without reducing the title's usable line length."
+            },
+            "C": {
+              "score": 17,
+              "rationale": "Muted green and warm amber clearly separate booking states, with stronger hour rules and quiet quarter-hour subdivisions. Rectangular cards make their placement legible.",
+              "strengths": [
+                "The grid uses consistent insets and visually clear differences between hour and quarter-hour rules.",
+                "Desktop details sit on their own surface, aligned with the grid, with the success message grouped near the resulting room."
+              ],
+              "defects": [
+                "The isolated hollow markers beside every room heading add visual detail without conveying a room state.",
+                "The legend stays at the far right of the page after the details panel narrows the grid, weakening its visual association with the schedule."
+              ],
+              "opportunity": "Keep the legend aligned to the grid when details are open."
+            },
+            "D": {
+              "score": 17,
+              "rationale": "Forest green, warm neutrals, and the waveform station mark give a coherent identity to a compact internal tool. The same card surfaces carry from calendar to agenda.",
+              "strengths": [
+                "The masthead colors and small waveform icon establish a consistent station identity across all viewports.",
+                "Phone cards reuse the grid's green and amber surfaces and left accents, with status written out on each row."
+              ],
+              "defects": [
+                "Hollow indicators recur before room names, next to tentative status, and inside the filter with different meanings."
+              ],
+              "opportunity": "Reserve status markers for booking status and give the filter its own clear state indicator."
+            },
+            "E": {
+              "score": 10,
+              "rationale": "Dates and filtering remain reachable, and the scripted move and cancel interactions pass. A serious booking-name mismatch reported by the audit affects the primary controls at all three widths.",
+              "strengths": [
+                "The phone shows title, room, time, and status for every booking without sideways scrolling.",
+                "The desktop success state keeps the selected card visible and shows the new room, host, status, and written confirmation in the side panel."
+              ],
+              "defects": [
+                "Axe reports a serious visible-label and accessible-name mismatch on all eight booking controls at each width.",
+                "The filter uses a small empty square that reads as a checkbox. The supplied tablet capture ends with filtering off, so the visual treatment of its active state cannot be verified."
+              ],
+              "opportunity": "Make the booking button names follow their displayed content and verify activation by keyboard and voice."
+            },
+            "F": {
+              "score": 8,
+              "rationale": "Grid, agenda, and adjacent details show consistent styles with no measured horizontal overflow or runtime errors. The native booking buttons use explicit names that omit portions of their visible labels.",
+              "strengths": [
+                "At 834 px the grid retains all three lanes and keeps the full fixture titles visible without horizontal overflow.",
+                "The moved card retains its selection and remains at 10:00–11:00 AM in the new lane, matching the panel's room and time."
+              ],
+              "defects": [
+                "The accessible names override the visible text order on the booking buttons.",
+                "The live conflict form and the phone details and move form have no captures, leaving their layout and focus behavior unverified."
+              ],
+              "opportunity": "Verify focus and label behavior in the detail and move states across keyboard and screen widths."
+            }
+          },
+          "total": 82,
+          "visual_problems": [
+            "The count and status legend are detached from the date controls below the full grid.",
+            "The mobile layout places the time below the status on the opposite side from the title.",
+            "Small hollow symbols near room headings and status convey inconsistent meanings."
+          ],
+          "effective_decisions": [
+            "Compact header spacing and readable tablet cards expose more of the schedule early.",
+            "Tentative and confirmed surfaces stay visually consistent between the grid and agenda.",
+            "Time ranges fit a single line on the phone, and all eight bookings appear in the initial view."
+          ],
+          "blockers": [
+            "Serious accessibility violation reported for every booking button at all three widths. The accessible names fail to include the displayed labels as required."
+          ]
+        }
+      },
+      "pairs": [
+        {
+          "ids": [
+            "ui-8e858c",
+            "ui-d6a40a"
+          ],
+          "preference": "ui-8e858c",
+          "confidence": "medium",
+          "rationale": "The green interface brings the grid into view earlier, keeps Volunteer Orientation on one line at tablet width, and fits all eight complete phone rows and their count within the viewport. The plum interface gives the date, count, and legend a stronger grouping and puts time first on the phone. Both complete the scripted workflows and share the serious booking-label violation."
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Olfacto Studio | Wholesale fragrance intelligence</title>
+<style>
+:root{color-scheme:light;--paper:#f7f4eb;--ink:#272b22;--moss:#414835;--muted:#626252;--rule:#d9d4c5;--gold:#edb87b;--sans:Arial,Helvetica,sans-serif;--serif:Georgia,'Times New Roman',serif}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 var(--sans)}button,input{font:inherit}button{cursor:pointer}a{color:inherit}h1,h2,p{margin:0}button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid #85622e;outline-offset:4px}::selection{background:#e1c99d}
+.shell{width:min(1280px,calc(100% - 112px));margin-inline:auto}
+.mast{height:78px;border-bottom:1px solid var(--rule);display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.wordmark{font:27px/1 var(--serif);letter-spacing:-.055em;display:flex;align-items:center;gap:10px;white-space:nowrap}
+.mark{width:32px;height:32px;border:1px solid #4d523f;border-radius:50%;display:grid;place-items:center}
+.mark::before{content:"";width:13px;height:21px;border:1px solid #4d523f;border-radius:50%;transform:rotate(42deg);grid-area:1/1}
+.mark::after{content:"";width:13px;height:21px;border:1px solid #4d523f;border-radius:50%;transform:rotate(-42deg);grid-area:1/1}
+.eyebrow{font:700 10px/1.4 var(--sans);letter-spacing:.165em;text-transform:uppercase}
+.mast .eyebrow{color:var(--muted)}
+.hero{display:grid;grid-template-columns:1.12fr 1fr;gap:clamp(30px,5vw,78px);align-items:center;padding-block:48px}
+.hero .eyebrow{color:#745832;margin-bottom:14px}
+h1{font:400 clamp(43px,5.3vw,80px)/.99 var(--serif);letter-spacing:-.05em;text-wrap:balance}
+h1 em{display:block;font-weight:400}
+.summary{max-width:470px;color:var(--muted);margin-top:23px;font-size:16px}
+.actions{display:flex;align-items:center;flex-wrap:wrap;gap:22px;margin-top:25px}
+.primary{border:1px solid var(--ink);background:var(--ink);color:#fffaf0;min-height:49px;padding:0 18px;display:inline-flex;gap:23px;align-items:center;justify-content:center;font-weight:700;font-size:14px;border-radius:3px}
+.primary:hover{background:#434936}
+.direction{font-size:17px;font-weight:400;line-height:1}
+.sample-link{display:inline-flex;align-items:center;gap:9px;min-height:44px;text-underline-offset:5px;font-size:14px;font-weight:700}
+.sample-link:hover{color:#785228}
+.proof{display:grid;grid-template-columns:1.6fr .9fr 1fr;margin-top:30px;border-top:1px solid var(--rule);padding-top:14px}
+.proof div{padding-right:8px;line-height:1.4}
+.proof div+div{padding-left:16px;border-left:1px solid var(--rule)}
+.proof strong{font:400 24px/1.12 var(--serif);letter-spacing:-.035em;display:block}
+.proof span{font-size:11px;color:var(--muted);display:block;margin-top:5px}
+.visual{background:#2a3024;color:#e4d5b5;position:relative;min-width:0;height:100%;min-height:372px;overflow:hidden;isolation:isolate;border-radius:3px}
+.visual canvas{position:absolute;inset:0;width:100%;height:100%;z-index:-1}
+.visual::after{position:absolute;content:"";inset:16px;border:1px solid #eee3c432;pointer-events:none;z-index:-1}
+.visual-cross{width:27px;height:27px;position:absolute;top:23px;right:23px;border:1px solid #d8c8a654;border-radius:50%}
+.visual-cross::before,.visual-cross::after{content:"";position:absolute;inset:12px 4px auto;height:1px;background:#d8c8a686}.visual-cross::after{transform:rotate(90deg)}
+.sample{padding:28px 0 48px;border-top:1px solid #bcb4a0;scroll-margin-top:12px}
+.sample-head{display:flex;align-items:end;justify-content:space-between;gap:12px;margin-bottom:16px}
+.sample h2{font:400 38px/1.08 var(--serif);letter-spacing:-.055em}
+table{border-collapse:collapse;width:100%;table-layout:fixed;text-align:left}
+thead{background:#eeeadf}
+thead th{color:#5e5c4b;font-size:10px;letter-spacing:.115em;text-transform:uppercase;font-weight:700;padding:8px 12px}
+th:first-child{width:44%}th:last-child,td:last-child{text-align:right}
+tbody tr{border-bottom:1px solid var(--rule)}
+tbody th,tbody td{padding:10px 12px;font-size:14px}
+tbody th{font:400 21px/1.2 var(--serif);letter-spacing:-.025em}
+.swatch{width:9px;height:9px;border-radius:50%;display:inline-block;margin-right:14px;vertical-align:2px;background:var(--swatch)}
+tbody td:last-child{font-variant-numeric:tabular-nums;color:#454638;font-weight:700}
+dialog{border:0;background:var(--paper);color:var(--ink);padding:30px;width:min(470px,calc(100% - 30px));max-height:calc(100% - 30px);border-radius:5px;box-shadow:0 25px 80px #16181065}
+dialog::backdrop{background:#202219a6;backdrop-filter:blur(3px)}
+dialog h2{margin:12px 48px 12px 0;font:400 37px/1.04 var(--serif);letter-spacing:-.04em;text-wrap:balance}
+dialog p{color:var(--muted);font-size:14px}
+.close{position:absolute;right:14px;top:14px;width:44px;height:44px;border:1px solid var(--rule);border-radius:3px;background:transparent;color:var(--ink);font-size:25px;line-height:1}
+.close:hover{background:#eeeadf}
+.field{margin-top:21px}.field label{display:block;font-weight:700;font-size:14px;margin-bottom:6px}
+.field input{width:100%;background:#fffdfa;color:var(--ink);border:1px solid #8b8877;border-radius:3px;padding:11px 12px}
+.field input[aria-invalid=true]{border-color:#9c3124}
+.field .error{color:#9c3124;margin-top:6px}
+dialog .primary{margin-top:20px}
+[hidden]{display:none!important}
+@media(max-width:1000px){.shell{width:calc(100% - 72px)}.hero{gap:30px;padding-block:39px}.visual{min-height:335px}h1{font-size:clamp(39px,5.55vw,56px)}.proof div+div{padding-left:12px}.summary{margin-top:18px}}
+@media(max-width:660px){.shell{width:calc(100% - 36px)}.mast{height:61px}.wordmark{font-size:23px}.mark{width:28px;height:28px}.mast .eyebrow{font-size:9px;text-align:right}.hero{display:flex;flex-direction:column;align-items:stretch;gap:21px;padding-block:28px 22px}.hero .eyebrow{margin-bottom:12px}h1{font-size:clamp(37px,11.02vw,59px);text-wrap:initial}.summary{margin-top:15px;font-size:15px}.actions{margin-top:16px;column-gap:16px;row-gap:2px}.primary{gap:12px;min-height:45px;padding-inline:13px}.proof{margin-top:20px;padding-top:11px}.proof strong{font-size:21px}.proof span{margin-top:2px}.visual{min-height:124px;height:124px}.visual::after{inset:8px}.visual-cross{top:12px;right:12px}.sample{padding:20px 0 32px}.sample-head{align-items:start;flex-direction:column;gap:3px;margin-bottom:12px}.sample h2{font-size:31px}thead th{font-size:9px;padding:6px}tbody th,tbody td{padding:11px 6px;font-size:12px}tbody th{font-size:17px}th:first-child{width:41%}th:nth-child(2){width:31%}.swatch{width:6px;height:6px;margin-right:5px}dialog h2{font-size:32px;margin-right:38px}}
+@media(prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+</style>
+</head>
+<body>
+<div class="shell">
+<header class="mast">
+  <div class="wordmark"><span class="mark" aria-hidden="true"></span>Olfacto Studio</div>
+  <span class="eyebrow">Wholesale intelligence</span>
+</header>
+<main>
+  <section class="hero" aria-labelledby="hero-title">
+    <div>
+      <p class="eyebrow">For independent perfume retailers</p>
+      <h1 id="hero-title">Build an assortment <em>with a point of view.</em></h1>
+      <p class="summary">Compare how new fragrance collections fit your assortment before you commit to buy.</p>
+      <div class="actions">
+        <button class="primary" data-testid="request" type="button">Request preview <span class="direction" aria-hidden="true">↗</span></button>
+        <a class="sample-link" data-testid="sample-link" href="#collection-sample">Explore the sample <span class="direction" aria-hidden="true">↓</span></a>
+      </div>
+      <div class="proof" aria-label="Coverage">
+        <div><strong>480</strong><span>Independent fragrance houses</span></div>
+        <div><strong>32</strong><span>Markets</span></div>
+        <div><strong>Weekly</strong><span>Data updates</span></div>
+      </div>
+    </div>
+    <div class="visual" aria-hidden="true">
+      <canvas></canvas><span class="visual-cross"></span>
+    </div>
+  </section>
+
+  <section class="sample" id="collection-sample" data-testid="sample" aria-labelledby="sample-title" tabindex="-1">
+    <div class="sample-head">
+      <h2 id="sample-title">Collection sample</h2>
+    </div>
+    <table aria-labelledby="sample-title">
+      <thead><tr><th scope="col">Collection</th><th scope="col">Scent family</th><th scope="col">Suggested retail</th></tr></thead>
+      <tbody>
+        <tr><th scope="row"><span class="swatch" style="--swatch:#69734f" aria-hidden="true"></span>Resin Library</th><td>Woods &amp; resins</td><td>$92–128</td></tr>
+        <tr><th scope="row"><span class="swatch" style="--swatch:#829797" aria-hidden="true"></span>Drift Notes</th><td>Marine &amp; mineral</td><td>$86–120</td></tr>
+        <tr><th scope="row"><span class="swatch" style="--swatch:#ab6a3e" aria-hidden="true"></span>Aftergold</th><td>Amber &amp; spice</td><td>$110–160</td></tr>
+      </tbody>
+    </table>
+  </section>
+</main>
+</div>
+<dialog aria-labelledby="dialog-title">
+  <button class="close" data-testid="close" type="button" aria-label="Close preview form">×</button>
+  <h2 id="dialog-title">Request a wholesale preview</h2>
+  <form novalidate>
+    <p>Enter your work email to request a closer look at the Olfacto Studio collection data.</p>
+    <div class="field">
+      <label for="work-email">Work email</label>
+      <input data-testid="email" id="work-email" name="email" type="email" autocomplete="email" required autofocus>
+      <p id="email-error" data-testid="email-error" class="error" role="alert" hidden>Enter a valid work email address.</p>
+    </div>
+    <button class="primary" data-testid="submit" type="submit">Request preview <span aria-hidden="true">↗</span></button>
+  </form>
+  <p data-testid="success" role="status" hidden></p>
+</dialog>
+<script>
+const dialog = document.querySelector('dialog');
+const request = document.querySelector('[data-testid="request"]');
+const form = dialog.querySelector('form');
+const email = dialog.querySelector('input');
+const error = document.getElementById('email-error');
+const confirmation = dialog.querySelector('[data-testid="success"]');
+const title = document.getElementById('dialog-title');
+const close = dialog.querySelector('button');
+request.addEventListener('click', () => {
+  form.reset();
+  form.hidden = false;
+  confirmation.hidden = true;
+  error.hidden = true;
+  email.removeAttribute('aria-invalid');
+  email.removeAttribute('aria-describedby');
+  title.textContent = 'Request a wholesale preview';
+  dialog.showModal();
+  email.focus();
+});
+close.addEventListener('click', () => dialog.close());
+form.addEventListener('submit', event => {
+  event.preventDefault();
+  const address = email.value.trim();
+  if (!email.validity.valid) {
+    error.hidden = false;
+    email.setAttribute('aria-invalid', 'true');
+    email.setAttribute('aria-describedby', 'email-error');
+    email.focus();
+    return;
+  }
+  form.hidden = true;
+  title.textContent = 'Preview requested';
+  confirmation.textContent = 'Preview requested for ' + address + '.';
+  confirmation.hidden = false;
+  close.focus();
+});
+
+const canvas = document.querySelector('canvas');
+function paintLandscape() {
+  const {clientWidth: width, clientHeight: height} = canvas;
+  const ratio = window.devicePixelRatio;
+  canvas.width = width * ratio;
+  canvas.height = height * ratio;
+  const ctx = canvas.getContext('2d');
+  ctx.scale(ratio, ratio);
+  const field = ctx.createLinearGradient(0, 0, width, height);
+  field.addColorStop(0, '#20281f');
+  field.addColorStop(.56, '#323923');
+  field.addColorStop(1, '#553a2a');
+  ctx.fillStyle = field;
+  ctx.fillRect(0, 0, width, height);
+  const scale = Math.max(width / 500, height / 350);
+
+  function contourField(originX, originY, tint, stretch, phase, radiusMax) {
+    ctx.save();
+    ctx.translate(originX, originY);
+    ctx.rotate(phase);
+    ctx.scale(scale, scale * stretch);
+    const halo = ctx.createRadialGradient(0, 0, 10, 0, 0, radiusMax);
+    halo.addColorStop(0, 'rgba(' + tint + ',.36)');
+    halo.addColorStop(1, 'rgba(' + tint + ',0)');
+    ctx.fillStyle = halo;
+    ctx.fillRect(-radiusMax, -radiusMax, radiusMax * 2, radiusMax * 2);
+    for (let line = 0; line < 31; line += 1) {
+      const radius = 5 + line * radiusMax / 30;
+      ctx.beginPath();
+      for (let segment = 0; segment <= 144; segment += 1) {
+        const a = segment / 144 * Math.PI * 2;
+        const wave = 1 + .19 * Math.cos(a * 3 + phase + line * .024)
+          + .12 * Math.sin(a * 2 + line * .055) + .06 * Math.sin(a * 6 - line * .09);
+        const x = radius * wave * Math.cos(a) + line * 1.45;
+        const y = radius * wave * Math.sin(a) - line * 1.7;
+        if (segment === 0) ctx.moveTo(x, y);
+        else ctx.lineTo(x, y);
+      }
+      ctx.closePath();
+      ctx.strokeStyle = 'rgba(' + tint + ',' + (.35 + .15 * Math.cos(line * .13)) + ')';
+      ctx.lineWidth = line % 5 === 0 ? 1.15 : .65;
+      ctx.stroke();
+    }
+    ctx.restore();
+  }
+  contourField(width * .24, height * .31, '181,187,122', .7, -.61, 167);
+  contourField(width * .74, height * .64, '241,169,106', .79, .48, 178);
+  ctx.fillStyle = '#ecddab36';
+  for (let i = 0; i < 1650; i += 1) {
+    const x = (Math.sin(i * 113.97) * 42377.1 % 1 + 1) % 1;
+    const y = (Math.sin(i * 725.89) * 17831.7 % 1 + 1) % 1;
+    ctx.fillRect(x * width, y * height, .6, .6);
+  }
+}
+new ResizeObserver(paintLandscape).observe(canvas);
+</script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+{
+  "name": "ux-designer-browser-benchmark",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "qualify": "node qualify.mjs"
+  },
+  "dependencies": {
+    "axe-core": "4.14.1",
+    "playwright": "1.65.1"
+  }
+}

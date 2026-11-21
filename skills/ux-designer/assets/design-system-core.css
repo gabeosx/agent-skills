@@ -1,20 +1,4 @@
-/* 
-  Refactoring UI Core Design Tokens
-  Enforces the logic-based system for spacing and typography.
-*/
-
-/* 
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap'); 
-  Uncomment above if online. Otherwise, falls back to system stack below.
-*/
-
-/* Global Reset & Box Sizing */
-*, *::before, *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
+/* Optional UX prototype tokens. Customize for the product and test the resulting pairs. */
 :root {
   /* Spacing Scale (px) */
   --space-2: 2px;
@@ -29,15 +13,16 @@
   --space-96: 96px;
   --space-128: 128px;
 
-  /* Typography Scale (px) */
-  --text-xs: 12px;
-  --text-sm: 14px;
-  --text-base: 16px;
-  --text-lg: 18px;
-  --text-xl: 20px;
-  --text-2xl: 24px;
-  --text-3xl: 30px;
-  --text-4xl: 36px;
+  /* Typography */
+  --font-ui: system-ui, -apple-system, "Segoe UI", sans-serif;
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.25rem;
 
   /* Radius Scale */
   --radius-sm: 2px;
@@ -75,23 +60,28 @@
 
   /* Semantic Aliases */
   --color-text-primary: var(--color-gray-900);
-  --color-text-secondary: var(--color-gray-500);
-  --color-text-tertiary: var(--color-gray-400);
-  
+  --color-text-secondary: var(--color-gray-600);
+  --color-text-tertiary: #606b7b;
+
   --color-bg-canvas: var(--color-gray-50);
   --color-bg-surface: #FFFFFF;
   --color-bg-subtle: var(--color-gray-100);
 
   --color-border-subtle: var(--color-gray-200);
   --color-border-default: var(--color-gray-300);
+  --color-border-control: var(--color-gray-500);
+  --color-focus: var(--color-brand-600);
 
   --color-primary: var(--color-brand-600);
   --color-primary-hover: var(--color-brand-700);
   --color-on-primary: #FFFFFF;
 
-  --color-danger: #ef4444;
-  --color-success: #10b981;
-  --color-warning: #f59e0b;
+  --color-danger: #991b1b;
+  --color-danger-bg: #fef2f2;
+  --color-success: #166534;
+  --color-success-bg: #f0fdf4;
+  --color-warning: #854d0e;
+  --color-warning-bg: #fefce8;
 
   /* Elevation (Two-part Shadows) */
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
@@ -100,21 +90,18 @@
   --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
 
-/* Base resets based on Refactoring UI principles */
-body {
+/* Apply explicitly to a prototype region. Normalizing margins is left to the site. */
+:where(.ux-prototype, .ux-prototype *, .ux-prototype *::before, .ux-prototype *::after) {
+  box-sizing: border-box;
+}
+
+:where(.ux-prototype) {
   background-color: var(--color-bg-canvas);
   color: var(--color-text-primary);
-  /* Robust System Font Stack */
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  -webkit-font-smoothing: antialiased;
+  font-family: var(--font-ui);
 }
 
-h1, h2, h3 {
-  font-weight: 700;
-  line-height: 1.2;
-}
-
-p {
-  line-height: 1.5;
-  max-width: 65ch; /* Limit line length for readability */
+:where(.ux-prototype .ux-prose) {
+  max-inline-size: 65ch;
+  line-height: 1.55;
 }

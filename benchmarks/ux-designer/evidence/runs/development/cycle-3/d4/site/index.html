@@ -1,0 +1,494 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Request an inspection · Fieldmark</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #f8f6ef;
+      --ink: #232f27;
+      --subtle: #535d53;
+      --line: #d8dbd1;
+      --forest: #285340;
+      --forest-dark: #204332;
+      --rail: #e7eee2;
+      --field: #fff;
+      --field-border: #8e988c;
+      --error: #a52b18;
+      --error-surface: #fff7f4;
+      --focus: #4d7b5f;
+      font-family: "Avenir Next", Avenir, system-ui, sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+    }
+
+    * { box-sizing: border-box; }
+    body { margin: 0; min-width: 0; }
+    input, select, textarea, button { font: inherit; }
+    [hidden] { display: none !important; }
+    :focus-visible { outline: 3px solid var(--focus); outline-offset: 4px; }
+
+    .masthead { border-bottom: 1px solid #d7dbd0; background: #fdfcf7; }
+    .masthead-inner, main { width: min(1040px, calc(100% - 80px)); margin-inline: auto; }
+    .masthead-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 70px;
+      gap: 12px;
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 21px;
+      letter-spacing: -.045em;
+      font-weight: 760;
+    }
+    .brand-mark {
+      position: relative;
+      width: 27px;
+      height: 27px;
+      border-radius: 6px;
+      background: var(--forest);
+    }
+    .brand-mark::before {
+      content: "";
+      position: absolute;
+      inset: 7px;
+      border-left: 2px solid #e6f3e3;
+      border-top: 2px solid #e6f3e3;
+    }
+    .brand-mark::after {
+      content: "";
+      position: absolute;
+      top: 12px;
+      left: 8px;
+      width: 9px;
+      height: 2px;
+      background: #e6f3e3;
+    }
+    .context {
+      font-size: 12px;
+      font-weight: 650;
+      color: var(--subtle);
+      letter-spacing: .035em;
+      text-align: right;
+    }
+
+    main { padding-block: 48px 52px; }
+    .intro { margin: 0 0 28px; }
+    h1, h2 { font-family: Charter, Georgia, serif; font-weight: 400; letter-spacing: -.037em; }
+    h1 { font-size: clamp(2.25rem, 5vw, 4rem); line-height: 1.04; margin: 0 0 10px; }
+    .intro p { margin: 0; font-size: 16px; color: var(--subtle); line-height: 1.55; }
+
+    .flow {
+      display: grid;
+      grid-template-columns: 280px minmax(0, 1fr);
+      background: #fefdf9;
+      border: 1px solid #d1d8cb;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 7px 20px #344a2e0a;
+    }
+    .rail {
+      padding: 30px 24px;
+      min-width: 0;
+      position: relative;
+      overflow: hidden;
+      background: var(--rail);
+      border-right: 1px solid #d8e0d3;
+    }
+
+    .steps { position: relative; margin: 0; padding: 0; list-style: none; z-index: 1; }
+    .steps li {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      padding: 9px 10px;
+      min-height: 48px;
+      position: relative;
+      color: #506050;
+      font-size: 14px;
+      font-weight: 610;
+    }
+    .steps li + li { margin-top: 9px; }
+    .steps li[aria-current="step"] {
+      border-radius: 8px;
+      background: #d6e5d5;
+      color: var(--forest-dark);
+      font-weight: 750;
+    }
+    .steps li::after {
+      content: "";
+      position: absolute;
+      left: 23px;
+      bottom: -9px;
+      width: 1px;
+      height: 9px;
+      background: #9fae9d;
+    }
+    .steps li:last-child::after { display: none; }
+    .step-number {
+      display: grid;
+      place-items: center;
+      border: 1px solid #889989;
+      border-radius: 100%;
+      min-width: 28px;
+      height: 28px;
+      line-height: 1;
+      font-size: 12px;
+      font-weight: 740;
+    }
+    [aria-current="step"] .step-number { color: #fff; background: var(--forest); border-color: var(--forest); }
+    .is-complete .step-number { border-color: #4b725c; color: var(--forest-dark); background: #f2f7ed; font-size: 14px; }
+    .plan {
+      position: absolute;
+      height: 217px;
+      width: 255px;
+      bottom: -12px;
+      left: -20px;
+      pointer-events: none;
+      color: #a7bca6;
+      background:
+        linear-gradient(0deg, #b6c6b240 1px, transparent 1px) 0 0 / 20px 20px,
+        linear-gradient(90deg, #b6c6b240 1px, transparent 1px) 0 0 / 20px 20px;
+      mask-image: linear-gradient(0deg, #000 74%, transparent);
+      opacity: .85;
+    }
+    .plan span { position: absolute; border: 1px solid currentColor; }
+    .plan span:nth-child(1) { inset: 27px 49px 37px 32px; border-width: 2px; }
+    .plan span:nth-child(2) { left: 32px; width: 119px; bottom: 36px; height: 65px; }
+    .plan span:nth-child(3) { left: 150px; width: 55px; bottom: 36px; height: 92px; }
+    .plan span:nth-child(4) { left: 61px; width: 57px; top: 43px; height: 43px; border-radius: 0 0 43px 0; }
+    .plan span:nth-child(5) { width: 50px; height: 50px; border-radius: 50%; right: 23px; top: 60px; border-style: dashed; }
+    .plan span:nth-child(6) { left: 18px; right: 20px; bottom: 18px; border-width: 1px 0 0; }
+
+    .stage { padding: 36px clamp(32px, 5vw, 72px) 32px; min-height: 410px; }
+    .stage section { max-width: 520px; margin-inline: auto; }
+    .step-counter {
+      margin: 0 0 8px;
+      font-size: 12px;
+      font-weight: 740;
+      letter-spacing: .06em;
+      color: var(--forest);
+      text-transform: uppercase;
+    }
+    h2 { margin: 0 0 22px; font-size: clamp(1.8rem, 3.5vw, 2.65rem); line-height: 1.08; }
+    #review-title, #success-title { margin-bottom: 8px; }
+    .hint { margin: 0 0 15px; color: var(--subtle); font-size: 14px; line-height: 1.5; }
+
+    .field { margin: 0 0 18px; }
+    .field label { display: inline-flex; flex-wrap: wrap; gap: 7px; align-items: baseline; font-size: 14px; font-weight: 730; margin-bottom: 7px; }
+    .field label small { color: var(--subtle); font-size: 12px; font-weight: 550; }
+    .field input, .field select, .field textarea {
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 13px;
+      border: 1px solid var(--field-border);
+      border-radius: 7px;
+      background: var(--field);
+      color: var(--ink);
+      font-size: 16px;
+      line-height: 1.45;
+    }
+    .field textarea { resize: vertical; min-height: 92px; }
+    .field :is(input, textarea)::placeholder { color: #677065; opacity: 1; }
+    .field select:invalid { color: #596459; }
+    .field select option { color: var(--ink); }
+    .field-select { position: relative; }
+    .field-select::after {
+      content: "";
+      pointer-events: none;
+      right: 16px;
+      top: 17px;
+      width: 8px;
+      height: 8px;
+      border-right: 2px solid var(--forest);
+      border-bottom: 2px solid var(--forest);
+      transform: rotate(45deg);
+      position: absolute;
+    }
+    .field select { appearance: none; padding-right: 42px; }
+    .field [aria-invalid="true"] { border-color: var(--error); background: var(--error-surface); }
+    .field [aria-invalid="true"]:focus-visible { outline-color: var(--error); }
+    .error { color: var(--error); display: flex; align-items: baseline; gap: 6px; margin: 7px 0 0; font-size: 13px; font-weight: 650; }
+    .error::before {
+      content: "!";
+      border: 1px solid currentColor;
+      border-radius: 100%;
+      width: 13px;
+      line-height: 13px;
+      text-align: center;
+      flex: none;
+      font-size: 10px;
+    }
+    .actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      margin-top: 24px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+    }
+    .actions button {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 44px;
+      padding: 0 16px;
+      font-size: 14px;
+      font-weight: 720;
+      border-radius: 7px;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .primary { gap: 13px; margin-left: auto; border: 1px solid var(--forest); background: var(--forest); color: #fff; }
+    .primary:hover { background: var(--forest-dark); }
+    .secondary { gap: 9px; border: 1px solid #a6b0a2; background: transparent; color: var(--forest-dark); }
+    .secondary:hover { background: var(--rail); }
+    .actions button span { font-size: 17px; line-height: 1; }
+
+    .review-data { margin: 3px 0 0; }
+    .review-data > div { display: grid; grid-template-columns: minmax(112px, .42fr) minmax(0, 1fr); gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--line); }
+    .review-data > div:last-child { border-bottom: 0; }
+    .review-data dt { color: var(--subtle); font-size: 13px; font-weight: 680; }
+    .review-data dd { margin: 0; font-size: 15px; font-weight: 650; overflow-wrap: anywhere; white-space: pre-wrap; }
+    .success-icon { display: grid; place-items: center; width: 48px; height: 48px; color: var(--forest); background: var(--rail); border-radius: 100%; margin: 0 0 18px; }
+    .success-icon::after { content: ""; width: 15px; height: 8px; border-left: 3px solid; border-bottom: 3px solid; transform: rotate(-45deg) translate(1px,-2px); }
+    .success-copy { line-height: 1.5; margin: 0 0 22px; font-size: 15px; color: var(--subtle); overflow-wrap: anywhere; }
+    .reference { display: inline-grid; gap: 3px; padding: 12px 16px; margin: 0; border: 1px solid #c8d7c6; border-radius: 8px; background: #f1f5ec; }
+    .reference dt { color: var(--subtle); font-size: 12px; font-weight: 700; }
+    .reference dd { margin: 0; color: var(--forest-dark); font: 700 19px/1.2 ui-monospace, SFMono-Regular, monospace; }
+
+    @media (max-width: 950px) {
+      .masthead-inner, main { width: calc(100% - 56px); }
+      .flow { grid-template-columns: 225px minmax(0, 1fr); }
+      .rail { padding: 28px 17px; }
+    }
+    @media (max-width: 670px) {
+      .masthead-inner, main { width: calc(100% - 32px); }
+      .masthead-inner { min-height: 56px; }
+      main { padding-block: 27px 30px; }
+      .intro { margin-bottom: 20px; }
+      .intro p { font-size: 14px; }
+      .flow { grid-template-columns: minmax(0, 1fr); border-radius: 12px; }
+      .rail { padding: 6px 8px; border-right: 0; border-bottom: 1px solid #d8e0d3; }
+      .plan { display: none; }
+      .steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2px; }
+      .steps li, .steps li + li { margin-top: 0; }
+      .steps li { padding: 6px; gap: 5px; min-height: 36px; font-size: 12px; justify-content: center; }
+      .steps li::after { display: none; }
+      .step-number { min-width: 22px; height: 22px; font-size: 10px; }
+      .is-complete .step-number { font-size: 12px; }
+      .stage { padding: 21px 17px 20px; min-height: 0; }
+      .actions { margin-top: 19px; padding-top: 14px; }
+    }
+    @media (max-width: 360px) {
+      .steps li { font-size: 11px; gap: 4px; padding-inline: 2px; }
+      .stage { padding-inline: 13px; }
+      .review-data > div { grid-template-columns: 100px minmax(0, 1fr); }
+    }
+  </style>
+</head>
+<body>
+  <header class="masthead">
+    <div class="masthead-inner">
+      <div class="brand"><span class="brand-mark" aria-hidden="true"></span>Fieldmark</div>
+      <span class="context">Facilities operations</span>
+    </div>
+  </header>
+  <main>
+    <div class="intro">
+      <h1>Request an inspection</h1>
+      <p>Arrange a contractor inspection for one location.</p>
+    </div>
+
+    <div class="flow">
+      <nav class="rail" aria-label="Request progress">
+        <ol class="steps">
+          <li aria-current="step"><span class="step-number" aria-hidden="true">1</span> Site details</li>
+          <li><span class="step-number" aria-hidden="true">2</span> Inspection</li>
+          <li><span class="step-number" aria-hidden="true">3</span> Review</li>
+        </ol>
+        <div class="plan" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+      </nav>
+
+      <form class="stage" novalidate>
+        <section id="site-step" aria-labelledby="site-title">
+          <p class="step-counter">Step 1 of 3</p>
+          <h2 id="site-title" tabindex="-1">Site details</h2>
+
+          <div class="field">
+            <label for="site-name">Site name <small aria-hidden="true">Required</small></label>
+            <input id="site-name" data-testid="site-name" type="text" required aria-describedby="site-error">
+            <p class="error" id="site-error" role="alert" hidden></p>
+          </div>
+
+          <div class="field">
+            <label for="email">Contact email <small aria-hidden="true">Required</small></label>
+            <input id="email" data-testid="email" name="email" type="email" autocomplete="email" required aria-describedby="email-error">
+            <p class="error" id="email-error" data-testid="email-error" role="alert" hidden></p>
+          </div>
+
+          <div class="actions">
+            <button class="primary" type="submit" data-testid="next">Continue <span aria-hidden="true">→</span></button>
+          </div>
+        </section>
+
+        <section id="inspection-step" aria-labelledby="inspection-title" hidden>
+          <p class="step-counter">Step 2 of 3</p>
+          <h2 id="inspection-title" tabindex="-1">Inspection</h2>
+
+          <div class="field">
+            <label for="system">Property system <small aria-hidden="true">Required</small></label>
+            <div class="field-select">
+              <select id="system" data-testid="system" required aria-describedby="system-error">
+                <option value="">Select a property system</option>
+                <option value="electrical">Electrical</option>
+                <option value="hvac">HVAC</option>
+              </select>
+            </div>
+            <p class="error" id="system-error" role="alert" hidden></p>
+          </div>
+
+          <div class="field">
+            <label for="notes">Access notes <small>Optional</small></label>
+            <textarea id="notes" data-testid="notes" rows="3" placeholder="Check-in desk, entrance, or access hours"></textarea>
+          </div>
+
+          <div class="actions">
+            <button class="secondary" type="button" data-testid="back"><span aria-hidden="true">←</span> Back</button>
+            <button class="primary" type="submit" data-testid="next">Continue <span aria-hidden="true">→</span></button>
+          </div>
+        </section>
+
+        <section id="review-step" aria-labelledby="review-title" data-testid="review" hidden>
+          <p class="step-counter">Step 3 of 3</p>
+          <h2 id="review-title" tabindex="-1">Review request</h2>
+          <p class="hint">Check your details before submitting.</p>
+
+          <dl class="review-data">
+            <div><dt>Site name</dt><dd id="review-site"></dd></div>
+            <div><dt>Contact email</dt><dd id="review-email"></dd></div>
+            <div><dt>Property system</dt><dd id="review-system"></dd></div>
+            <div id="review-notes-row"><dt>Access notes</dt><dd id="review-notes"></dd></div>
+          </dl>
+
+          <div class="actions">
+            <button class="secondary" type="button" data-testid="back"><span aria-hidden="true">←</span> Back</button>
+            <button class="primary" type="submit" data-testid="confirm">Confirm request <span aria-hidden="true">→</span></button>
+          </div>
+        </section>
+
+        <section id="success-step" aria-labelledby="success-title" data-testid="success" hidden>
+          <span class="success-icon" aria-hidden="true"></span>
+          <h2 id="success-title" tabindex="-1">Inspection requested</h2>
+          <p class="success-copy">Your request for <strong id="success-site"></strong> has been recorded.</p>
+          <dl class="reference"><dt>Request reference</dt><dd>FM-2047</dd></dl>
+        </section>
+      </form>
+    </div>
+  </main>
+
+  <script>
+    const form = document.querySelector('.stage');
+    const panels = Array.from(form.querySelectorAll('section'));
+    const progress = Array.from(document.querySelectorAll('.steps li'));
+    const site = document.querySelector('#site-name');
+    const email = document.querySelector('#email');
+    const system = document.querySelector('#system');
+    const notes = document.querySelector('#notes');
+    const initialHooks = new Map(Array.from(form.querySelectorAll('button[data-testid="next"], button[data-testid="back"]'), button => [button, button.dataset.testid]));
+    let step = 0;
+
+    function showStep(index, focus = true) {
+      step = index;
+      panels.forEach((panel, position) => { panel.hidden = position !== index; });
+      progress.forEach((indicator, position) => {
+        const complete = index > position;
+        indicator.classList.toggle('is-complete', complete);
+        const number = indicator.querySelector('.step-number');
+        number.textContent = complete ? '✓' : position + 1;
+        indicator.setAttribute('aria-label', indicator.textContent.trim().replace(/^[\d✓]\s*/, '') + (complete ? ', completed' : ''));
+        if (position === index) {
+          indicator.setAttribute('aria-current', 'step');
+        } else {
+          indicator.removeAttribute('aria-current');
+        }
+      });
+      for (const [button, hook] of initialHooks) {
+        if (button.closest('section') === panels[index]) {
+          button.dataset.testid = hook;
+        } else {
+          delete button.dataset.testid;
+        }
+      }
+      if (focus) panels[index].querySelector('h2').focus();
+    }
+
+    function errorMessage(field) {
+      if (field === site && !site.value.trim()) return 'Enter a site name.';
+      if (field === email && email.validity.valueMissing) return 'Enter a contact email.';
+      if (field === email && email.validity.typeMismatch) return 'Enter a valid email address, such as name@example.com.';
+      if (field === system && !system.value) return 'Select a property system.';
+      return '';
+    }
+
+    function updateError(field) {
+      const message = errorMessage(field);
+      const error = document.getElementById(field.getAttribute('aria-describedby'));
+      error.hidden = !message;
+      error.textContent = message;
+      if (message) {
+        field.setAttribute('aria-invalid', 'true');
+      } else {
+        field.removeAttribute('aria-invalid');
+      }
+      return Boolean(message);
+    }
+
+    function validate(fields) {
+      const invalid = fields.filter(updateError);
+      invalid[0]?.focus();
+      return invalid.length === 0;
+    }
+
+    function fillReview() {
+      document.querySelector('#review-site').textContent = site.value.trim();
+      document.querySelector('#review-email').textContent = email.value.trim();
+      document.querySelector('#review-system').textContent = system.selectedOptions[0].textContent;
+      const accessNotes = notes.value.trim();
+      document.querySelector('#review-notes').textContent = accessNotes;
+      document.querySelector('#review-notes-row').hidden = !accessNotes;
+    }
+
+    for (const field of [site, email, system]) {
+      field.addEventListener('input', () => {
+        if (field.hasAttribute('aria-invalid')) updateError(field);
+      });
+    }
+    for (const [button, hook] of initialHooks) {
+      if (hook === 'back') button.addEventListener('click', () => showStep(step - 1));
+    }
+
+    form.addEventListener('submit', event => {
+      event.preventDefault();
+      if (step === 0 && validate([site, email])) {
+        showStep(1);
+      } else if (step === 1 && validate([system])) {
+        fillReview();
+        showStep(2);
+      } else if (step === 2 && event.submitter === form.querySelector('[data-testid="confirm"]')) {
+        document.querySelector('#success-site').textContent = site.value.trim();
+        showStep(3);
+      }
+    });
+
+    showStep(0, false);
+  </script>
+</body>
+</html>

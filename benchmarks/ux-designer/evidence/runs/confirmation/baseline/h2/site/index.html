@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Blood Orange pouch | Switchyard Pantry</title>
+  <link rel="stylesheet" href="design-system-core.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="job-header">
+    <div class="identity">
+      <span class="tracks" aria-hidden="true"></span>
+      <p>Switchyard<br>Pantry</p>
+    </div>
+    <div class="job">
+      <h1>Blood Orange pouch</h1>
+      <p><span class="job-code">SP-0264</span> <span aria-hidden="true">·</span> Front <span aria-hidden="true">·</span> 120 × 180 mm</p>
+    </div>
+  </header>
+
+  <main class="workspace">
+    <section class="viewer" aria-label="Packaging artwork">
+      <div class="toolbar">
+        <div class="version">
+          <label for="version-select">Proof version</label>
+          <span class="select-wrap">
+            <select id="version-select" data-testid="version-select">
+              <option value="v3">Version 3</option>
+              <option value="v2">Version 2</option>
+            </select>
+          </span>
+          <p data-testid="version-meta" id="version-meta" aria-live="polite">Current proof · November 19, 2026</p>
+        </div>
+        <button type="button" class="toggle" data-testid="pins-toggle" aria-pressed="true">
+          <span class="toggle-track" aria-hidden="true"></span> Show pins
+        </button>
+      </div>
+
+      <div class="stage">
+        <figure class="proof">
+          <img src="artwork/proof-v3.svg" width="520" height="620" alt="Blood Orange pouch, Version 3" data-testid="proof-image">
+          <button type="button" class="pin pin-1" data-testid="pin-1" aria-label="Pin 1, Leaf contrast" aria-pressed="false">1</button>
+          <button type="button" class="pin pin-2" data-testid="pin-2" aria-label="Pin 2, Net weight" aria-pressed="false">2</button>
+        </figure>
+      </div>
+    </section>
+
+    <aside class="review" aria-labelledby="review-title">
+      <div class="review-head">
+        <h2 id="review-title">Proof review</h2>
+        <span class="review-status" data-testid="review-status" role="status" tabindex="-1">In review</span>
+      </div>
+      <section class="notes" aria-labelledby="notes-title">
+        <div class="notes-head">
+          <h3 id="notes-title" tabindex="-1">Proof notes</h3>
+          <p id="notes-count">2 open</p>
+        </div>
+        <ul id="note-list">
+          <li>
+            <button type="button" class="note" data-testid="note-1" aria-pressed="false">
+              <span class="note-number" aria-hidden="true">1</span>
+              <span><strong>Leaf contrast</strong><span class="note-author">Inez Park</span></span>
+              <span class="chevron" aria-hidden="true"></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="note" data-testid="note-2" aria-pressed="false">
+              <span class="note-number" aria-hidden="true">2</span>
+              <span><strong>Net weight</strong><span class="note-author">Devin Cole</span></span>
+              <span class="chevron" aria-hidden="true"></span>
+            </button>
+          </li>
+        </ul>
+        <p class="notes-empty" data-testid="notes-empty" hidden>No open notes on this version.</p>
+        <section class="thread" data-testid="active-note" aria-labelledby="thread-title" hidden>
+          <button type="button" class="back" data-testid="back-to-notes"><span aria-hidden="true">←</span> Back to notes</button>
+          <h3 id="thread-title" tabindex="-1"></h3>
+          <div class="comment">
+            <p class="comment-author" id="thread-author"></p>
+            <p id="thread-message"></p>
+          </div>
+          <div id="replies" aria-live="polite"></div>
+          <form id="reply-form">
+            <label for="reply-input">Reply</label>
+            <textarea id="reply-input" data-testid="reply-input" rows="2" placeholder="Add a reply" required></textarea>
+            <button type="submit" class="button secondary" data-testid="post-reply" disabled>Post reply</button>
+          </form>
+        </section>
+      </section>
+      <div class="review-actions" id="review-actions">
+        <button type="button" class="button approve" data-testid="approve-proof">Approve proof <span aria-hidden="true">→</span></button>
+      </div>
+    </aside>
+  </main>
+
+  <dialog data-testid="approval-dialog" aria-labelledby="approval-title" aria-describedby="approval-description">
+    <div class="dialog-body">
+      <h2 id="approval-title">Approve this proof?</h2>
+      <p id="approval-description">Approve the Blood Orange pouch front for job <strong>SP-0264</strong>, <strong>Version 3</strong>.</p>
+      <form method="dialog" class="dialog-actions">
+        <button value="cancel" class="button secondary" data-testid="cancel-approval" autofocus>Cancel</button>
+        <button value="confirm" class="button danger" data-testid="confirm-approval">Confirm approval</button>
+      </form>
+    </div>
+  </dialog>
+</body>
+</html>

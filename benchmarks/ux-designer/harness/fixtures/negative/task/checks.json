@@ -1,0 +1,15 @@
+{
+  "scenarios": [
+    {
+      "name": "Detect false completion and retain screenshot",
+      "width": 390,
+      "capture": true,
+      "steps": [
+        { "action": "visible", "id": "change" },
+        { "action": "click", "id": "change" },
+        { "action": "text", "id": "status", "value": "Correct result" },
+        { "action": "hidden", "id": "status" }
+      ]
+    }
+  ]
+}

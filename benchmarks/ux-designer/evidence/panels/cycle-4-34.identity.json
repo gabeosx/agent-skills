@@ -1,0 +1,62 @@
+{
+  "set": "development",
+  "trial_arm": "cycle-4",
+  "comparator": "cycle-2",
+  "random_seed": 137767119466313687453996544899081134621,
+  "tasks": {
+    "d3": {
+      "baseline": "ui-600783",
+      "cycle-4": "ui-a97fbc",
+      "cycle-2": "ui-ecc23a"
+    },
+    "d4": {
+      "cycle-4": "ui-330277",
+      "baseline": "ui-e04d5b",
+      "cycle-2": "ui-2736b3"
+    }
+  },
+  "review_order": {
+    "d3": {
+      "outputs_in_review_order": [
+        "ui-600783",
+        "ui-a97fbc",
+        "ui-ecc23a"
+      ],
+      "pairs": [
+        [
+          "ui-ecc23a",
+          "ui-600783"
+        ],
+        [
+          "ui-ecc23a",
+          "ui-a97fbc"
+        ],
+        [
+          "ui-a97fbc",
+          "ui-600783"
+        ]
+      ]
+    },
+    "d4": {
+      "outputs_in_review_order": [
+        "ui-330277",
+        "ui-e04d5b",
+        "ui-2736b3"
+      ],
+      "pairs": [
+        [
+          "ui-2736b3",
+          "ui-e04d5b"
+        ],
+        [
+          "ui-330277",
+          "ui-e04d5b"
+        ],
+        [
+          "ui-330277",
+          "ui-2736b3"
+        ]
+      ]
+    }
+  }
+}

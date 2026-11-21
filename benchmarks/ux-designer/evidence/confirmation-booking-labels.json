@@ -1,0 +1,20 @@
+{
+  "method": "Supplemental source and rendered accessibility name readback, no mutations",
+  "browser": "159.0.8154.6",
+  "matches": {
+    "baseline": {
+      "report_sha256": "9789190d0c6855d13b4c52b212c8a0a1565e90fe6e292f6c54620044fa1aab3e",
+      "width": 390,
+      "visible_text": "10:00 AM\n– 11:00 AM\nSignal Check\nStudio A\nConfirmed",
+      "aria_label": "Signal Check, Studio A, 10:00–11:00 AM, Confirmed",
+      "aria_snapshot": "- button \"Signal Check, Studio A, 10:00–11:00 AM, Confirmed\": 10:00 AM – 11:00 AM Signal Check Studio A Confirmed"
+    },
+    "cycle-2": {
+      "report_sha256": "784cd5732a48856dc47e5a879fce5f81e6d692e73604450e3ef82e563733f641",
+      "width": 390,
+      "visible_text": "Studio A\nSignal Check\n10:00–11:00 AM\nConfirmed",
+      "aria_label": "Signal Check, Studio A, 10:00–11:00 AM, Confirmed",
+      "aria_snapshot": "- button \"Signal Check, Studio A, 10:00–11:00 AM, Confirmed\": Studio A Signal Check 10:00–11:00 AM Confirmed"
+    }
+  }
+}

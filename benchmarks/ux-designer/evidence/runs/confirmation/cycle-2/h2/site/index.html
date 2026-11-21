@@ -1,0 +1,397 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Blood Orange pouch proof | Switchyard Pantry</title>
+<style>
+  :root {
+    color-scheme: light;
+    --header: #191e22;
+    --toolbar: #262d32;
+    --canvas: #20262b;
+    --canvas-line: #3c454b;
+    --cream: #f7f3ea;
+    --ink: #292d30;
+    --muted: #5b5c57;
+    --line: #dcd4c6;
+    --paper: #fffaf0;
+    --rust: #803d27;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--canvas); color: var(--ink); font: 1rem/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+  button, select, textarea { font: inherit; }
+  button { cursor: pointer; }
+  button:focus-visible, select:focus-visible, textarea:focus-visible { outline: 3px solid #b65c38; outline-offset: 3px; }
+  [hidden] { display: none !important; }
+  svg { display: block; }
+  h1, h2, h3, p { margin: 0; }
+  .job-header { min-height: 88px; padding: 14px 30px; display: flex; align-items: center; justify-content: space-between; gap: 16px; background: var(--header); color: #fff9ee; border-bottom: 1px solid #3d4448; }
+  .job-main { display: flex; align-items: center; gap: 13px; min-width: 0; }
+  .brand-symbol { width: 43px; height: 43px; display: grid; place-items: center; color: #ecc591; border: 1px solid #786852; border-radius: 8px; flex: none; }
+  .brand { color: #d3c4ad; font-size: .69rem; font-weight: 670; text-transform: uppercase; letter-spacing: .145em; }
+  h1 { font-size: clamp(1.32rem, 2.5vw, 1.83rem); line-height: 1.08; font-weight: 640; letter-spacing: -.04em; margin-top: 4px; }
+  .job-facts { padding: 0; margin: 0; display: flex; min-width: max-content; }
+  .job-facts div { padding: 1px 18px; border-left: 1px solid #41464a; }
+  .job-facts div:last-child { padding-right: 0; }
+  .job-facts dt { color: #c1c6c8; font-size: .7rem; }
+  .job-facts dd { margin: 3px 0 0; color: #f3e7d6; font: 600 .82rem/1.2 ui-monospace, Menlo, Consolas, monospace; }
+  .workspace { min-height: calc(100svh - 88px); display: grid; grid-template-columns: minmax(0, 1fr) clamp(310px, 30.3vw, 436px); }
+  .viewer { display: flex; flex-direction: column; min-width: 0; color: #ede9e3; }
+  .toolbar { display: flex; min-height: 64px; flex-wrap: wrap; align-items: center; gap: 8px 16px; padding: 10px 30px; background: var(--toolbar); border-bottom: 1px solid #444c51; }
+  .version { display: flex; align-items: center; gap: 8px; }
+  .version label { font-size: .79rem; color: #e3ded4; font-weight: 600; }
+  .version select { min-height: 36px; border: 1px solid #70767a; border-radius: 6px; padding: 5px 9px; background: #333a3f; color: #fff8ee; font-size: .81rem; color-scheme: dark; }
+  .version-meta { color: #c7c9c9; font-size: .78rem; }
+  .pins-toggle { display: flex; align-items: center; gap: 7px; min-height: 36px; margin-left: auto; border: 1px solid #717679; border-radius: 6px; padding: 5px 8px; background: #292f34; color: #f5f2ec; font-size: .8rem; white-space: nowrap; }
+  .pins-toggle:hover { background: #425057; }
+  .pins-toggle[aria-pressed="true"] { background: #e7ca9c; border-color: #e7ca9c; color: #352717; }
+  .viewer :focus-visible { outline-color: #f9d49b; }
+  .stage {
+    flex: 1; min-height: 550px; display: grid; align-content: center; justify-items: center; padding: 30px 24px;
+    background-color: var(--canvas);
+    background-image: radial-gradient(ellipse at 48% 44%, #41474a 0%, #232a2e50 70%), radial-gradient(circle, #7d888d65 1px, transparent 1.2px);
+    background-size: 100% 100%, 18px 18px;
+  }
+  .evidence { width: min(calc(100% - 64px), 512px, max(364px, calc((100svh - 236px) * .8387))); margin: 0; position: relative; }
+  .proof { width: 100%; aspect-ratio: 520 / 620; position: relative; }
+  .proof img { display: block; width: 100%; height: 100%; filter: drop-shadow(0 12px 18px #0007); }
+  .proof::before { content: ""; position: absolute; inset: 0; opacity: .65; pointer-events: none; background:
+    linear-gradient(#a6aeb2,#a6aeb2) top left/15px 1px, linear-gradient(#a6aeb2,#a6aeb2) top left/1px 15px,
+    linear-gradient(#a6aeb2,#a6aeb2) top right/15px 1px, linear-gradient(#a6aeb2,#a6aeb2) top right/1px 15px,
+    linear-gradient(#a6aeb2,#a6aeb2) bottom left/15px 1px, linear-gradient(#a6aeb2,#a6aeb2) bottom left/1px 15px,
+    linear-gradient(#a6aeb2,#a6aeb2) bottom right/15px 1px, linear-gradient(#a6aeb2,#a6aeb2) bottom right/1px 15px;
+    background-repeat: no-repeat;
+  }
+  .pin {
+    position: absolute; z-index: 1; top: var(--y); left: var(--x); translate: -50% -50%; display: grid; place-items: center;
+    width: 38px; height: 38px; padding: 0; border: 2px solid #fff4dc; border-radius: 50%; color: #fffaf0; background: #282e32;
+    box-shadow: 0 2px 8px #1d1c15a8; font: 700 .9rem/1 ui-monospace, Menlo, Consolas, monospace;
+  }
+  .pin:hover { background: #434d52; }
+  .pin[aria-pressed="true"] { color: #39241d; background: #fff0d5; border-color: #5d2e20; box-shadow: 0 0 0 3px #fff0d5; }
+  .canvas-caption { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 11px 30px; border-top: 1px solid #444c51; min-height: 46px; background: var(--toolbar); color: #d8d7d0; font-size: .77rem; }
+  .canvas-caption span:last-child { font-family: ui-monospace, Menlo, Consolas, monospace; }
+  .review { display: flex; flex-direction: column; min-width: 0; background: var(--cream); border-left: 1px solid #0e1316; }
+  .review-head { padding: 26px 25px 22px; border-bottom: 1px solid var(--line); }
+  .review-head h2 { font-size: 1.57rem; letter-spacing: -.045em; font-weight: 660; margin-bottom: 9px; line-height: 1.1; }
+  .status { width: fit-content; display: flex; align-items: center; gap: 7px; padding: 4px 9px; border-radius: 4px; background: #ede2cc; color: #614423; font-size: .78rem; font-weight: 680; }
+  .status::before { content: ""; width: 6px; height: 6px; border: 1px solid currentColor; border-radius: 50%; }
+  .status.approved { background: #e0ebdb; color: #36533c; }
+  .status.approved::before { background: currentColor; }
+  .notes-body { padding: 22px 25px; }
+  .notes-title { display: flex; justify-content: space-between; gap: 10px; align-items: baseline; padding-bottom: 9px; }
+  .notes-title h3 { font-size: .96rem; font-weight: 690; }
+  .notes-title span { color: var(--muted); font-size: .78rem; }
+  .notes-list { padding: 0; margin: 0; list-style: none; border-block: 1px solid var(--line); }
+  .notes-list li + li { border-top: 1px solid var(--line); }
+  .note-row { border: 0; background: transparent; padding: 12px 6px; min-height: 67px; width: 100%; display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; color: var(--ink); gap: 11px; text-align: left; }
+  .note-row:hover { background: #efe8da; }
+  .note-row[aria-pressed="true"] { background: #efe0cc; box-shadow: inset 3px 0 #9f5033; }
+  .note-number { width: 29px; height: 29px; display: grid; place-items: center; color: #704629; border: 1px solid #c5ae8f; border-radius: 50%; background: #f9eedc; font: 700 .76rem/1 ui-monospace, Menlo, Consolas, monospace; }
+  .note-row[aria-pressed="true"] .note-number { background: #713922; color: #fff6e8; border-color: #713922; }
+  .note-title, .note-author { display: block; }
+  .note-title { font-size: .975rem; line-height: 1.25; font-weight: 670; }
+  .note-author { font-size: .79rem; line-height: 1.3; color: var(--muted); margin-top: 3px; }
+  .note-row svg { color: #716456; }
+  .notes-empty { border-top: 1px solid var(--line); padding-top: 14px; color: var(--muted); line-height: 1.45; font-size: .91rem; }
+  .thread { margin-top: 17px; padding-top: 1px; scroll-margin-top: 14px; }
+  .back { display: flex; align-items: center; gap: 7px; width: fit-content; min-height: 40px; padding: 3px 6px; margin-left: -6px; color: var(--rust); border: 0; background: none; font-size: .79rem; font-weight: 670; }
+  .back:hover { text-decoration: underline; }
+  .thread-card { padding: 13px; background: var(--paper); border: 1px solid var(--line); border-radius: 8px; }
+  .thread h3 { font-size: 1.12rem; letter-spacing: -.025em; line-height: 1.2; }
+  .thread .note-author { margin-top: 4px; }
+  .message { margin-top: 10px; font-size: .9rem; overflow-wrap: anywhere; }
+  .enter-reply { margin-top: 13px; }
+  .enter-reply label { display: block; font-size: .79rem; font-weight: 670; margin-bottom: 5px; }
+  textarea { width: 100%; min-height: 58px; resize: vertical; padding: 7px 9px; color: var(--ink); background: var(--paper); border: 1px solid #98968e; border-radius: 6px; font-size: .9rem; display: block; }
+  .reply-list { display: grid; gap: 7px; margin-top: 8px; }
+  .reply { padding: 9px 12px; background: #eee8db; border-radius: 6px; font-size: .86rem; overflow-wrap: anywhere; }
+  .reply p { white-space: pre-wrap; }
+  .reply strong { font-size: .77rem; color: #57534b; }
+  .primary, .secondary { display: inline-flex; gap: 8px; justify-content: center; align-items: center; min-height: 44px; padding: 8px 13px; border-radius: 6px; font-size: .86rem; font-weight: 680; }
+  .primary { background: #2b363b; border: 1px solid #2b363b; color: #fff8eb; }
+  .primary:hover { background: #46565e; }
+  .secondary { color: var(--ink); background: var(--paper); border: 1px solid #a79c8b; }
+  .secondary:hover { background: #eee5d4; }
+  .enter-reply button { margin-top: 8px; }
+  .review-footer { margin-top: auto; display: flex; padding: 16px 25px; border-top: 1px solid var(--line); background: #f0eadf; }
+  .review-footer button { width: 100%; }
+  dialog { width: min(440px, calc(100% - 32px)); max-height: calc(100% - 32px); padding: 24px; color: var(--ink); background: var(--cream); border: 1px solid #bcaf9c; border-radius: 11px; box-shadow: 0 18px 60px #0008; }
+  dialog::backdrop { background: #0a1015b5; }
+  dialog h2 { font-size: 1.38rem; line-height: 1.15; letter-spacing: -.035em; margin-bottom: 9px; }
+  dialog p { font-size: .94rem; }
+  .dialog-actions { display: flex; justify-content: flex-end; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+  @media (max-width: 1030px) {
+    .toolbar, .canvas-caption { padding-inline: 18px; }
+    .toolbar { gap: 7px 10px; }
+    .evidence { width: min(calc(100% - 25px), 512px, max(350px, calc((100svh - 236px) * .8387))); }
+    .review-head, .notes-body, .review-footer { padding-inline: 18px; }
+  }
+  @media (min-width: 691px) and (max-width: 940px) {
+    .version-meta { order: 3; flex-basis: 100%; }
+  }
+  @media (max-width: 690px) {
+    .job-header { flex-wrap: wrap; min-height: 0; gap: 9px; padding: 12px 15px; }
+    .job-main { gap: 9px; }
+    .brand-symbol { width: 34px; height: 34px; }
+    .brand-symbol svg { width: 20px; height: 20px; }
+    .job-facts { margin-left: 43px; }
+    .job-facts div { padding-inline: 10px; display: flex; gap: 5px; align-items: baseline; }
+    .job-facts div:first-child { padding-left: 0; border-left: 0; }
+    .job-facts dd { font-size: .72rem; margin-top: 0; }
+    .workspace { min-height: 0; grid-template-columns: minmax(0, 1fr); }
+    .toolbar { padding: 7px 14px; }
+    .version-meta { order: 3; flex-basis: 100%; }
+    .version select, .pins-toggle { min-height: 44px; }
+    .stage { padding: 17px 12px; min-height: 0; }
+    .evidence { width: min(100%, 470px); }
+    .pin { width: 44px; height: 44px; }
+    .canvas-caption { padding: 8px 14px; min-height: 38px; }
+    .review { border-left: 0; }
+    .review-head { padding-top: 20px; padding-bottom: 16px; }
+    .notes-body { padding-top: 15px; padding-bottom: 18px; }
+    .back { min-height: 44px; }
+  }
+</style>
+</head>
+<body>
+<svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" aria-hidden="true" style="position:absolute">
+  <symbol id="brand-icon" viewBox="0 0 24 24"><path d="M5 17V7m7 12V5m7 12V7M5 14c4 0 6-6 14-6M5 16c6 0 8 0 14-5" fill="none" stroke="currentColor" stroke-width="1.45" stroke-linecap="round"/></symbol>
+  <symbol id="pin-icon" viewBox="0 0 24 24"><path d="M19 10c0 5-7 10-7 10s-7-5-7-10a7 7 0 1 1 14 0Z" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="10" r="2.3" fill="none" stroke="currentColor" stroke-width="1.7"/></symbol>
+  <symbol id="arrow" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="check" viewBox="0 0 24 24"><path d="m5 12 4 4 10-10" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</svg>
+<header class="job-header">
+  <div class="job-main">
+    <div class="brand-symbol"><svg width="24" height="24" aria-hidden="true"><use href="#brand-icon"/></svg></div>
+    <div>
+      <p class="brand">Switchyard Pantry</p>
+      <h1>Blood Orange pouch</h1>
+    </div>
+  </div>
+  <dl class="job-facts">
+    <div><dt>Job</dt><dd>SP-0264</dd></div>
+    <div><dt>Panel</dt><dd>Front</dd></div>
+  </dl>
+</header>
+<main class="workspace">
+  <section class="viewer" aria-label="Proof viewer">
+    <div class="toolbar">
+      <div class="version">
+        <label for="version">Proof version</label>
+        <select id="version" data-testid="version-select">
+          <option value="v3">Version 3</option>
+          <option value="v2">Version 2</option>
+        </select>
+      </div>
+      <p class="version-meta" data-testid="version-meta" role="status">Current proof · November 19, 2026</p>
+      <button class="pins-toggle" type="button" aria-pressed="true" aria-controls="proof-pins" data-testid="pins-toggle">
+        <svg width="15" height="15" aria-hidden="true"><use href="#pin-icon"/></svg>Show pins
+      </button>
+    </div>
+    <div class="stage">
+      <figure class="evidence">
+        <div class="proof">
+          <img src="artwork/proof-v3.svg" width="520" height="620" alt="Blood Orange pouch, Version 3" data-testid="proof-image">
+          <div id="proof-pins">
+            <button class="pin" style="--x: 68%; --y: 39%;" type="button" data-testid="pin-1" aria-label="Pin 1, Leaf contrast" aria-pressed="false" aria-controls="thread">1</button>
+            <button class="pin" style="--x: 58%; --y: 84%;" type="button" data-testid="pin-2" aria-label="Pin 2, Net weight" aria-pressed="false" aria-controls="thread">2</button>
+          </div>
+        </div>
+      </figure>
+    </div>
+    <div class="canvas-caption"><span>Front artwork</span><span>120 × 180 mm</span></div>
+  </section>
+  <aside class="review" aria-labelledby="review-heading">
+    <div class="review-head">
+      <h2 id="review-heading">Proof review</h2>
+      <p class="status" tabindex="-1" role="status" data-testid="review-status">In review</p>
+    </div>
+    <div class="notes-body">
+      <div class="notes-title"><h3>Proof notes</h3><span id="notes-count">2 open notes</span></div>
+      <ul class="notes-list" id="notes-list">
+        <li><button class="note-row" type="button" data-testid="note-1" aria-pressed="false" aria-controls="thread">
+          <span class="note-number" aria-hidden="true">1</span>
+          <span><span class="note-title">Leaf contrast</span><span class="note-author">Inez Park</span></span>
+          <svg width="16" height="16" aria-hidden="true"><use href="#arrow"/></svg>
+        </button></li>
+        <li><button class="note-row" type="button" data-testid="note-2" aria-pressed="false" aria-controls="thread">
+          <span class="note-number" aria-hidden="true">2</span>
+          <span><span class="note-title">Net weight</span><span class="note-author">Devin Cole</span></span>
+          <svg width="16" height="16" aria-hidden="true"><use href="#arrow"/></svg>
+        </button></li>
+      </ul>
+      <p class="notes-empty" data-testid="notes-empty" hidden>No open notes on this version.</p>
+      <section class="thread" id="thread" data-testid="active-note" aria-labelledby="active-title" hidden>
+        <button class="back" type="button" data-testid="back-to-notes">
+          <svg width="15" height="15" aria-hidden="true" style="rotate:180deg"><use href="#arrow"/></svg>Back to notes
+        </button>
+        <div class="thread-card">
+          <h3 id="active-title" tabindex="-1"></h3>
+          <p class="note-author" id="active-author"></p>
+          <p class="message" id="message"></p>
+        </div>
+        <div class="reply-list" id="replies" aria-live="polite" hidden></div>
+        <form class="enter-reply" id="reply-form">
+          <label for="reply">Reply</label>
+          <textarea id="reply" data-testid="reply-input" rows="2" required></textarea>
+          <button class="secondary" type="submit" data-testid="post-reply">Post reply</button>
+        </form>
+      </section>
+    </div>
+    <div class="review-footer" id="approval-action">
+      <button class="primary" type="button" data-testid="approve-proof" aria-haspopup="dialog">
+        <svg aria-hidden="true" width="16" height="16"><use href="#check"/></svg>Approve proof
+      </button>
+    </div>
+  </aside>
+</main>
+<dialog data-testid="approval-dialog" aria-labelledby="dialog-title" aria-describedby="dialog-description">
+  <h2 id="dialog-title">Approve proof?</h2>
+  <p id="dialog-description">Approve Version 3 of the Blood Orange pouch for job <strong>SP-0264</strong>.</p>
+  <div class="dialog-actions">
+    <button class="secondary" type="button" data-testid="cancel-approval" autofocus>Cancel</button>
+    <button class="primary" type="button" data-testid="confirm-approval">Confirm approval</button>
+  </div>
+</dialog>
+<script>
+  const byTest = id => document.querySelector(`[data-testid="${id}"]`);
+  const versionSelect = byTest('version-select');
+  const versionMeta = byTest('version-meta');
+  const proofImage = byTest('proof-image');
+  const pinsToggle = byTest('pins-toggle');
+  const proofPins = document.querySelector('#proof-pins');
+  const notesList = document.querySelector('#notes-list');
+  const notesCount = document.querySelector('#notes-count');
+  const notesEmpty = byTest('notes-empty');
+  const thread = byTest('active-note');
+  const title = document.querySelector('#active-title');
+  const author = document.querySelector('#active-author');
+  const message = document.querySelector('#message');
+  const replies = document.querySelector('#replies');
+  const replyForm = document.querySelector('#reply-form');
+  const reply = byTest('reply-input');
+  const approvalAction = document.querySelector('#approval-action');
+  const approveButton = byTest('approve-proof');
+  const dialog = byTest('approval-dialog');
+  const reviewStatus = byTest('review-status');
+  const mobile = matchMedia('(max-width: 690px)');
+  const versions = {
+    v3: { number: 3, meta: 'Current proof · November 19, 2026' },
+    v2: { number: 2, meta: 'Earlier proof · November 17, 2026' }
+  };
+  const notes = [
+    { number: 1, title: 'Leaf contrast', author: 'Inez Park', message: 'Check the leaf against the orange field on matte stock.', replies: [], draft: '' },
+    { number: 2, title: 'Net weight', author: 'Devin Cole', message: 'Keep the revised 60 g line centered under DRIED SLICES.', replies: [], draft: '' }
+  ];
+  let showPins = true;
+  let activeNote = null;
+  let approved = false;
+
+  function isCurrent() {
+    return versionSelect.value === 'v3';
+  }
+
+  function renderPins() {
+    pinsToggle.setAttribute('aria-pressed', String(showPins));
+    proofPins.hidden = !isCurrent() || !showPins;
+  }
+
+  function renderApproval() {
+    reviewStatus.textContent = approved ? 'Approved' : 'In review';
+    reviewStatus.classList.toggle('approved', approved);
+    approvalAction.hidden = !isCurrent() || approved;
+  }
+
+  function renderReplies() {
+    replies.hidden = activeNote.replies.length === 0;
+    replies.replaceChildren();
+    for (const text of activeNote.replies) {
+      const entry = document.createElement('div');
+      entry.className = 'reply';
+      const name = document.createElement('strong');
+      name.textContent = 'You';
+      const body = document.createElement('p');
+      body.textContent = text;
+      entry.append(name, body);
+      replies.append(entry);
+    }
+  }
+
+  function openNote(note) {
+    activeNote = note;
+    for (const entry of notes) {
+      const pressed = String(note === entry);
+      byTest(`pin-${entry.number}`).setAttribute('aria-pressed', pressed);
+      byTest(`note-${entry.number}`).setAttribute('aria-pressed', pressed);
+    }
+    thread.hidden = !note;
+    if (!note) return;
+    title.textContent = note.title;
+    author.textContent = note.author;
+    message.textContent = note.message;
+    reply.value = note.draft;
+    reply.setCustomValidity('');
+    renderReplies();
+    title.focus({ preventScroll: mobile.matches });
+    if (mobile.matches) thread.scrollIntoView({ block: 'start' });
+  }
+
+  function renderVersion() {
+    const version = versions[versionSelect.value];
+    proofImage.src = `artwork/proof-v${version.number}.svg`;
+    proofImage.alt = `Blood Orange pouch, Version ${version.number}`;
+    versionMeta.textContent = version.meta;
+    notesList.hidden = !isCurrent();
+    notesCount.hidden = !isCurrent();
+    notesEmpty.hidden = isCurrent();
+    openNote(null);
+    renderPins();
+    renderApproval();
+  }
+
+  for (const note of notes) {
+    byTest(`pin-${note.number}`).addEventListener('click', () => openNote(note));
+    byTest(`note-${note.number}`).addEventListener('click', () => openNote(note));
+  }
+  byTest('back-to-notes').addEventListener('click', () => {
+    const note = activeNote;
+    openNote(null);
+    byTest(`note-${note.number}`).focus();
+  });
+  reply.addEventListener('input', () => {
+    activeNote.draft = reply.value;
+    reply.setCustomValidity('');
+  });
+  replyForm.addEventListener('submit', event => {
+    event.preventDefault();
+    const text = reply.value.trim();
+    if (!text) {
+      reply.setCustomValidity('Enter a reply before posting.');
+      reply.reportValidity();
+      return;
+    }
+    activeNote.replies.push(text);
+    activeNote.draft = '';
+    reply.value = '';
+    renderReplies();
+    reply.focus();
+  });
+  versionSelect.addEventListener('change', renderVersion);
+  pinsToggle.addEventListener('click', () => {
+    showPins = !showPins;
+    renderPins();
+  });
+  approveButton.addEventListener('click', () => dialog.showModal());
+  byTest('cancel-approval').addEventListener('click', () => dialog.close());
+  byTest('confirm-approval').addEventListener('click', () => {
+    approved = true;
+    dialog.close();
+    renderApproval();
+    reviewStatus.focus();
+  });
+  renderVersion();
+</script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+{
+  "actor": "5f0d",
+  "model": "inherited Codex",
+  "started": "2026-11-21T18:59:41+00:00",
+  "actor_collected_at": "2026-11-21T19:06:11+00:00",
+  "attempt": 1,
+  "brief": "briefs/d6/brief.md",
+  "brief_sha256": "5e6b80e641aaf3b8e8b9e95b0171315231b834e71e6844b977fba63ce8d198f0",
+  "checks_sha256": "ce726855e121f16d1f2fec700ed998340cee916e535b3a4b6429c3b0234c1bae",
+  "starter_files": {},
+  "skill_sha256": "92359a8886f08df494ee290af4cd23c63bc457d5df70e00ad577955f840de1be",
+  "source": {
+    "docs.js": "03ba1fd82a9dd1f3fbc7b688af49b58dfc1332f4ad5237678a004579b0b8bf35",
+    "index.html": "bde1aacbfb3f23568d3caa03321f9e88e542cde6148223eb297487e024c11a40",
+    "styles.css": "a9b7936d4045479652828b62bab22e68fd66cddf803b56d4c0343f7afe59306b"
+  },
+  "actor_result": "Both complete. Agent reports visual and behavior checks at all three widths, filter contents, review for all stops, mobile navigation, equipment disclosure, focus restoration, and procedure anchor.",
+  "usage": null,
+  "charge": null
+}

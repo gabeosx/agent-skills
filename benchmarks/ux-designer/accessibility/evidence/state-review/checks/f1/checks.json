@@ -1,0 +1,137 @@
+{
+  "scenarios": [
+    {
+      "name": "Desktop coordinator reviews two reports in succession",
+      "width": 1440,
+      "steps": [
+        {
+          "action": "visible",
+          "id": "handover-report-t214"
+        },
+        {
+          "action": "visible",
+          "id": "handover-report-t219"
+        },
+        {
+          "action": "visible",
+          "id": "handover-report-t224"
+        },
+        {
+          "action": "text",
+          "id": "handover-detail-id",
+          "value": "T-214"
+        },
+        {
+          "action": "click",
+          "id": "handover-report-t219"
+        },
+        {
+          "action": "text",
+          "id": "handover-detail-location",
+          "value": "Quay Loop"
+        },
+        {
+          "action": "text",
+          "id": "handover-detail-next",
+          "value": "Confirm the replacement display cycles through all destinations."
+        },
+        {
+          "action": "click",
+          "id": "handover-report-t224"
+        },
+        {
+          "action": "text",
+          "id": "handover-detail-id",
+          "value": "T-224"
+        },
+        {
+          "action": "text",
+          "id": "handover-detail-crew",
+          "value": "Fleet maintenance team"
+        }
+      ],
+      "capture": true
+    },
+    {
+      "name": "Tablet coordinator changes selection with the keyboard",
+      "width": 834,
+      "steps": [
+        {
+          "action": "press",
+          "id": "handover-report-t224",
+          "value": "Enter"
+        },
+        {
+          "action": "text",
+          "id": "handover-detail-location",
+          "value": "Cedar Depot"
+        },
+        {
+          "action": "text",
+          "id": "handover-detail-next",
+          "value": "Review the door sensor history before releasing the tram."
+        },
+        {
+          "action": "press",
+          "id": "handover-report-t214",
+          "value": "Space"
+        },
+        {
+          "action": "text",
+          "id": "handover-detail-crew",
+          "value": "Wayside team"
+        },
+        {
+          "action": "text",
+          "id": "handover-detail-next",
+          "value": "Check the signal lamp during the next service gap."
+        }
+      ],
+      "capture": true
+    },
+    {
+      "name": "Mobile coordinator opens and revisits a report",
+      "width": 390,
+      "steps": [
+        {
+          "action": "click",
+          "id": "handover-report-t219"
+        },
+        {
+          "action": "text",
+          "id": "handover-detail-id",
+          "value": "T-219"
+        },
+        {
+          "action": "text",
+          "id": "handover-detail-crew",
+          "value": "Passenger information team"
+        },
+        {
+          "action": "click",
+          "id": "handover-report-t214"
+        },
+        {
+          "action": "text",
+          "id": "handover-detail-location",
+          "value": "Alder Junction"
+        },
+        {
+          "action": "click",
+          "id": "handover-report-t219"
+        },
+        {
+          "action": "text",
+          "id": "handover-detail-next",
+          "value": "Confirm the replacement display cycles through all destinations."
+        },
+        {
+          "action": "count",
+          "id": "handover-detail-id",
+          "count": 1
+        }
+      ],
+      "capture": true
+    }
+  ]
+}

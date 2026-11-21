@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Loan disposition | Carrick Museum</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="loan.js" defer></script>
+</head>
+<body>
+  <header class="masthead">
+    <div class="shell masthead-inner">
+      <div class="identity">
+        <span class="monogram" aria-hidden="true">C</span>
+        <span>Carrick Museum</span>
+      </div>
+      <span class="department">Collections &amp; Loans</span>
+    </div>
+  </header>
+  <main class="shell">
+    <section class="loan" aria-labelledby="artwork">
+      <div>
+        <p class="eyebrow">Incoming loan review</p>
+        <h1 id="artwork">Blue Tide, <span>1976</span></h1>
+      </div>
+      <dl class="provenance">
+        <div><dt>Loan ID</dt><dd class="identifier">CM-L018</dd></div>
+        <div><dt>Lender</dt><dd>West March Print Archive</dd></div>
+      </dl>
+    </section>
+
+    <section class="finding" aria-labelledby="intake-finding">
+      <span class="finding-icon" aria-hidden="true">!</span>
+      <div>
+        <h2 id="intake-finding">Intake finding</h2>
+        <p>The transit case humidity log is missing its final reading.</p>
+      </div>
+    </section>
+
+    <section class="decisions" aria-labelledby="decisions">
+      <h2 id="decisions" class="section-title">Choose a disposition</h2>
+      <div class="options">
+        <button class="option" type="button" data-testid="loan-option-approve" data-choice="approve" aria-pressed="true">
+          <span class="option-heading"><span class="option-title">Approve installation</span><span class="selection" aria-hidden="true"></span></span>
+          <span class="details">
+            <span class="option-row"><span class="row-label">Handling</span><span>Release to the gallery</span></span>
+            <span class="option-row"><span class="row-label">Follow-up</span><span>None</span></span>
+          </span>
+        </button>
+        <button class="option" type="button" data-testid="loan-option-update" data-choice="update" aria-pressed="false">
+          <span class="option-heading"><span class="option-title">Request a condition update</span><span class="selection" aria-hidden="true"></span></span>
+          <span class="details">
+            <span class="option-row"><span class="row-label">Handling</span><span>Keep in the intake area</span></span>
+            <span class="option-row"><span class="row-label">Follow-up</span><span>Registrar review</span></span>
+          </span>
+        </button>
+        <button class="option" type="button" data-testid="loan-option-hold" data-choice="hold" aria-pressed="false">
+          <span class="option-heading"><span class="option-title">Place loan on hold</span><span class="selection" aria-hidden="true"></span></span>
+          <span class="details">
+            <span class="option-row"><span class="row-label">Handling</span><span>Move to secure storage</span></span>
+            <span class="option-row"><span class="row-label">Follow-up</span><span>Supervisor review</span></span>
+          </span>
+        </button>
+      </div>
+    </section>
+
+    <section class="review" aria-labelledby="review">
+      <div class="review-choice">
+        <h2 id="review" class="section-title">Review decision</h2>
+        <div class="current" aria-live="polite">
+          <p class="eyebrow">Current choice</p>
+          <p data-testid="loan-current-choice">Approve installation</p>
+        </div>
+      </div>
+      <form id="record-form" novalidate>
+        <div class="note-heading">
+          <label for="registrar-note">Registrar note</label>
+          <span id="note-rule">Optional for this decision</span>
+        </div>
+        <textarea rows="3" id="registrar-note" data-testid="loan-registrar-note" aria-describedby="note-rule"></textarea>
+        <p id="note-error" class="note-error" data-testid="loan-note-error" hidden>Enter a registrar note to record this decision.</p>
+        <div class="record-row">
+          <button type="submit" class="record" data-testid="loan-record-decision">Record decision <span aria-hidden="true">→</span></button>
+        </div>
+        <div class="feedback" role="status">
+          <div id="receipt" class="receipt" hidden>
+            <span class="receipt-icon" aria-hidden="true">✓</span>
+            <div class="receipt-body">
+              <p data-testid="loan-confirmation"></p>
+              <div id="recorded-note-group" hidden>
+                <p class="recorded-label">Registrar note</p>
+                <p data-testid="loan-recorded-note"></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </section>
+  </main>
+</body>
+</html>

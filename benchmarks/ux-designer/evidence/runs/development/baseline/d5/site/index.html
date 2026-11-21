@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shift queue | Harborline Dispatch</title>
+  <link rel="stylesheet" href="design-system-core.css">
+  <link rel="stylesheet" href="style.css">
+  <script defer src="queue.js"></script>
+</head>
+<body>
+  <header class="masthead">
+    <div class="shell masthead-inner">
+      <div class="brand"><span class="brand-mark" aria-hidden="true"></span>Harborline</div>
+      <span class="product">Dispatch</span>
+    </div>
+  </header>
+  <main class="shell">
+    <header class="intro">
+      <p class="district">East district</p>
+      <h1>Shift queue</h1>
+      <p class="shift-details">Tuesday <span aria-hidden="true">·</span> 3 scheduled stops</p>
+    </header>
+
+    <section class="queue" aria-labelledby="stops-title">
+      <div class="queue-toolbar">
+        <div class="queue-heading">
+          <h2 id="stops-title">Stops</h2>
+          <p class="filter-status" id="filter-status" role="status">Showing all 3 stops</p>
+        </div>
+        <button class="filter" type="button" data-testid="late-only" aria-pressed="false" aria-controls="stops">
+          <span class="switch-track" aria-hidden="true"></span>
+          Late only
+        </button>
+      </div>
+
+      <div class="column-headings columns" aria-hidden="true">
+        <span>Stop</span><span>ETA</span><span>Delay</span><span>Review status</span><span></span>
+      </div>
+      <div class="stops" id="stops" data-testid="stops">
+        <article class="stop columns" data-late="true" aria-labelledby="riverfront-name">
+          <div class="destination">
+            <h3 id="riverfront-name">Riverfront Market</h3>
+            <p>Wilmington</p>
+          </div>
+          <p class="eta"><span class="eta-label">ETA</span> <time datetime="10:40">10:40</time></p>
+          <p class="delay"><span class="delay-marker" aria-hidden="true"></span>24 min late</p>
+          <div class="review">
+            <span data-review-state data-testid="riverfront-state" role="status">Needs review</span>
+            <button class="acknowledge" type="button" data-testid="riverfront-review" aria-label="Acknowledge Riverfront Market">Acknowledge</button>
+          </div>
+        </article>
+        <article class="stop columns" data-late="false" data-testid="oak" aria-labelledby="oak-name">
+          <div class="destination">
+            <h3 id="oak-name">Oak Street Co-op</h3>
+            <p>Newark</p>
+          </div>
+          <p class="eta"><span class="eta-label">ETA</span> <time datetime="11:10">11:10</time></p>
+          <p class="delay"><span class="delay-marker" aria-hidden="true"></span>On time</p>
+          <div class="review">
+            <span data-review-state role="status">Needs review</span>
+            <button class="acknowledge" type="button" aria-label="Acknowledge Oak Street Co-op">Acknowledge</button>
+          </div>
+        </article>
+        <article class="stop columns" data-late="true" aria-labelledby="north-pier-name">
+          <div class="destination">
+            <h3 id="north-pier-name">North Pier Supplies</h3>
+            <p>New Castle</p>
+          </div>
+          <p class="eta"><span class="eta-label">ETA</span> <time datetime="11:25">11:25</time></p>
+          <p class="delay"><span class="delay-marker" aria-hidden="true"></span>11 min late</p>
+          <div class="review">
+            <span data-review-state role="status">Needs review</span>
+            <button class="acknowledge" type="button" aria-label="Acknowledge North Pier Supplies">Acknowledge</button>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

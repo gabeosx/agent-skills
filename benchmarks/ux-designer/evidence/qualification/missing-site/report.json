@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "status": "incomplete",
+  "browser": null,
+  "config": {
+    "node": "v26.13.0",
+    "platform": "darwin",
+    "architecture": "arm64",
+    "playwright": "1.65.1",
+    "axe": "4.14.1",
+    "axeTags": [
+      "wcag2a",
+      "wcag2aa",
+      "wcag21a",
+      "wcag21aa",
+      "wcag22a",
+      "wcag22aa"
+    ],
+    "context": {
+      "colorScheme": "light",
+      "deviceScaleFactor": 1,
+      "locale": "en-US",
+      "reducedMotion": "reduce",
+      "serviceWorkers": "block",
+      "timezoneId": "UTC"
+    },
+    "viewports": {
+      "desktop": {
+        "width": 1440,
+        "height": 1000
+      },
+      "tablet": {
+        "width": 834,
+        "height": 1112
+      },
+      "mobile": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    "timeoutsMs": {
+      "navigation": 10000,
+      "step": 2500,
+      "capture": 10000,
+      "accessibility": 10000
+    },
+    "network": "localhost-static-origin-only"
+  },
+  "source": {},
+  "timing": {
+    "startedAt": "2026-11-21T18:38:00.326Z",
+    "completedAt": "2026-11-21T18:38:00.327Z",
+    "elapsedMs": 1
+  },
+  "viewports": [],
+  "scenarios": [],
+  "criticalFailures": [],
+  "runnerErrors": [
+    {
+      "phase": "source",
+      "kind": "missing-artifact",
+      "error": "ENOENT: no such file or directory, stat '/private/tmp/gabes-ux-designer-campaign/benchmarks/ux-designer/harness/fixtures/absent/site/index.html'"
+    }
+  ]
+}

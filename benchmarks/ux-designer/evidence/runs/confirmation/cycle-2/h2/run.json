@@ -1,0 +1,23 @@
+{
+  "actor": "42ba",
+  "model": "inherited Codex",
+  "started": "2026-11-21T19:38:46+00:00",
+  "actor_collected_at": "2026-11-21T19:46:51+00:00",
+  "attempt": 1,
+  "brief": "briefs/h2/brief.md",
+  "brief_sha256": "21c8da7f9940cffa070c35ccd45738489ccb51ac54295418637a9e4fafb1f667",
+  "checks_sha256": "9f5e0e834d0cf7d43691ed82790b94215f2e290867a1a0e6f5a36c2e46269990",
+  "starter_files": {
+    "artwork/proof-v2.svg": "b0f153ec54c946a9e0b178d160f6285c255e529e4f62a5c8d9e19335f0e6e9c8",
+    "artwork/proof-v3.svg": "0d4cb53e66cc70402a348b11992766b18726028e3c3092d0a6f263d7fdfe8aa5"
+  },
+  "skill_sha256": "92359a8886f08df494ee290af4cd23c63bc457d5df70e00ad577955f840de1be",
+  "source": {
+    "artwork/proof-v2.svg": "b0f153ec54c946a9e0b178d160f6285c255e529e4f62a5c8d9e19335f0e6e9c8",
+    "artwork/proof-v3.svg": "0d4cb53e66cc70402a348b11992766b18726028e3c3092d0a6f263d7fdfe8aa5",
+    "index.html": "6365dd33c18a2277a6811d4edae2c380755d403d12ae1dcbbad3610fba6184fb"
+  },
+  "actor_result": "Both complete. Agent reports visual and interaction checks at all three widths, search and report state, exact pin position, replies, version and pin state, cancelling and approving with keyboard checks.",
+  "usage": null,
+  "charge": null
+}

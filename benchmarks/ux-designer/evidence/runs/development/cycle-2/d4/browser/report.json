@@ -1,0 +1,573 @@
+{
+  "schemaVersion": 1,
+  "status": "passed",
+  "browser": {
+    "version": "159.0.8154.6",
+    "source": "playwright",
+    "executablePath": "/Users/gabe/Library/Caches/ms-playwright/chromium-1255/chrome-mac-arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing",
+    "headless": true,
+    "args": [
+      "--disable-quic",
+      "--force-webrtc-ip-handling-policy=disable_non_proxied_udp",
+      "--host-resolver-rules=MAP * ~NOTFOUND, EXCLUDE 127.0.0.1",
+      "--no-proxy-server"
+    ]
+  },
+  "config": {
+    "node": "v26.13.0",
+    "platform": "darwin",
+    "architecture": "arm64",
+    "playwright": "1.65.1",
+    "axe": "4.14.1",
+    "axeTags": [
+      "wcag2a",
+      "wcag2aa",
+      "wcag21a",
+      "wcag21aa",
+      "wcag22a",
+      "wcag22aa"
+    ],
+    "context": {
+      "colorScheme": "light",
+      "deviceScaleFactor": 1,
+      "locale": "en-US",
+      "reducedMotion": "reduce",
+      "serviceWorkers": "block",
+      "timezoneId": "UTC"
+    },
+    "viewports": {
+      "desktop": {
+        "width": 1440,
+        "height": 1000
+      },
+      "tablet": {
+        "width": 834,
+        "height": 1112
+      },
+      "mobile": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    "timeoutsMs": {
+      "navigation": 10000,
+      "step": 2500,
+      "capture": 10000,
+      "accessibility": 10000
+    },
+    "network": "localhost-static-origin-only"
+  },
+  "source": {
+    "checksSha256": "6e147ab3ae41cea81de050e2d5bce5e17d33e3896566979453757be0297a7df0",
+    "site": {
+      "sha256": "a2985102086d7557c75ac2d46f2b83cdb62d7bfbf43885ec0b32d4c30c8991ed",
+      "files": [
+        {
+          "path": "index.html",
+          "sha256": "2a582378821e6328c27f449b966ff0c3e71ebcb842d8ae91464194adeff23ed0"
+        },
+        {
+          "path": "request.js",
+          "sha256": "37d6f5f95f57d451fc3d9961c42803031bf8605a46ed4973b569b568f46978bf"
+        },
+        {
+          "path": "styles.css",
+          "sha256": "4a2f961331340b9f485589e9498787404342d9063a0b4555ce1346a4e620f50e"
+        }
+      ]
+    },
+    "harness": {
+      "sha256": "6c881823017ece00658aa02b1817a074668453398b4905f0208e23ef5bcda8d1",
+      "files": [
+        {
+          "path": "capture.mjs",
+          "sha256": "92bc6c8b9c97e64bd0dbcc746c6505f0ed30e9ecaba15ba32a35d1348afaf77e"
+        },
+        {
+          "path": "package-lock.json",
+          "sha256": "9e166f03feded2ba877c95cbbb4bce6b15453e267c7bf4a69a384ec2a3e1fbc1"
+        },
+        {
+          "path": "package.json",
+          "sha256": "e53398841d514c8588ddfad5569cc1f7aed5d67a6f7b71f4ab05a70cfca4817b"
+        }
+      ]
+    }
+  },
+  "timing": {
+    "startedAt": "2026-11-21T19:06:54.177Z",
+    "completedAt": "2026-11-21T19:06:55.924Z",
+    "elapsedMs": 1747
+  },
+  "viewports": [
+    {
+      "name": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "status": "passed",
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "screenshot": {
+        "path": "desktop.png",
+        "bytes": 73854,
+        "sha256": "23fccdfed487190727a5b18c673028dda15f13854e4b4fbc6d2b2f5bab84a895"
+      },
+      "layout": {
+        "clientWidth": 1440,
+        "scrollWidth": 1440,
+        "bodyScrollWidth": 1440,
+        "horizontalOverflow": false
+      },
+      "accessibility": {
+        "status": "no-violations",
+        "counts": {
+          "passes": 21,
+          "violations": 0,
+          "incomplete": 1,
+          "inapplicable": 43
+        },
+        "violations": [],
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "tags": [
+              "cat.color",
+              "wcag2aa",
+              "wcag143",
+              "TTv5",
+              "TT13.c",
+              "EN-301-549",
+              "EN-9.1.4.3",
+              "ACT",
+              "RGAAv4",
+              "RGAA-3.2.1"
+            ],
+            "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+            "help": "Elements must meet minimum color contrast ratio thresholds",
+            "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+            "nodes": [
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "messageKey": "nonBmp"
+                    },
+                    "relatedNodes": [],
+                    "impact": "serious",
+                    "message": "Element content contains only non-text characters"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<span aria-hidden=\"true\">→</span>",
+                "target": [
+                  "button[data-testid=\"next\"] > span[aria-hidden=\"true\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "tablet",
+      "viewport": {
+        "width": 834,
+        "height": 1112
+      },
+      "status": "passed",
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "screenshot": {
+        "path": "tablet.png",
+        "bytes": 65168,
+        "sha256": "1425a4e76253bf9357c16902eccc1e94b57325bcf43b1472e177a084a3a91fc1"
+      },
+      "layout": {
+        "clientWidth": 834,
+        "scrollWidth": 834,
+        "bodyScrollWidth": 834,
+        "horizontalOverflow": false
+      },
+      "accessibility": {
+        "status": "no-violations",
+        "counts": {
+          "passes": 21,
+          "violations": 0,
+          "incomplete": 1,
+          "inapplicable": 43
+        },
+        "violations": [],
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "tags": [
+              "cat.color",
+              "wcag2aa",
+              "wcag143",
+              "TTv5",
+              "TT13.c",
+              "EN-301-549",
+              "EN-9.1.4.3",
+              "ACT",
+              "RGAAv4",
+              "RGAA-3.2.1"
+            ],
+            "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+            "help": "Elements must meet minimum color contrast ratio thresholds",
+            "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+            "nodes": [
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "messageKey": "nonBmp"
+                    },
+                    "relatedNodes": [],
+                    "impact": "serious",
+                    "message": "Element content contains only non-text characters"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<span aria-hidden=\"true\">→</span>",
+                "target": [
+                  "button[data-testid=\"next\"] > span[aria-hidden=\"true\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "status": "passed",
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "screenshot": {
+        "path": "mobile.png",
+        "bytes": 39692,
+        "sha256": "b4df0e1fc43c13830f4c78fc53d67449ca8081dffb1d5ed4cd964ac32990a29f"
+      },
+      "layout": {
+        "clientWidth": 390,
+        "scrollWidth": 390,
+        "bodyScrollWidth": 390,
+        "horizontalOverflow": false
+      },
+      "accessibility": {
+        "status": "no-violations",
+        "counts": {
+          "passes": 21,
+          "violations": 0,
+          "incomplete": 1,
+          "inapplicable": 43
+        },
+        "violations": [],
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "tags": [
+              "cat.color",
+              "wcag2aa",
+              "wcag143",
+              "TTv5",
+              "TT13.c",
+              "EN-301-549",
+              "EN-9.1.4.3",
+              "ACT",
+              "RGAAv4",
+              "RGAA-3.2.1"
+            ],
+            "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+            "help": "Elements must meet minimum color contrast ratio thresholds",
+            "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+            "nodes": [
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "messageKey": "nonBmp"
+                    },
+                    "relatedNodes": [],
+                    "impact": "serious",
+                    "message": "Element content contains only non-text characters"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<span aria-hidden=\"true\">→</span>",
+                "target": [
+                  "button[data-testid=\"next\"] > span[aria-hidden=\"true\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "scenarios": [
+    {
+      "name": "mobile validation",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "captureRequested": true,
+      "status": "passed",
+      "steps": [
+        {
+          "index": 1,
+          "expected": {
+            "action": "fill",
+            "id": "site-name",
+            "value": "Harbor Annex"
+          },
+          "status": "passed",
+          "elapsedMs": 16
+        },
+        {
+          "index": 2,
+          "expected": {
+            "action": "fill",
+            "id": "email",
+            "value": "oops"
+          },
+          "status": "passed",
+          "elapsedMs": 3
+        },
+        {
+          "index": 3,
+          "expected": {
+            "action": "click",
+            "id": "next"
+          },
+          "status": "passed",
+          "elapsedMs": 38
+        },
+        {
+          "index": 4,
+          "expected": {
+            "action": "visible",
+            "id": "email-error"
+          },
+          "status": "passed",
+          "elapsedMs": 1
+        }
+      ],
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "screenshot": {
+        "path": "scenario-01-mobile-validation.png",
+        "bytes": 40236,
+        "sha256": "6e7be22cd10763c7a1c11c580e093bf91ca14f97c6b8cca240792d8f8b13dbfb"
+      },
+      "unrunSteps": 0
+    },
+    {
+      "name": "full request",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "captureRequested": true,
+      "status": "passed",
+      "steps": [
+        {
+          "index": 1,
+          "expected": {
+            "action": "fill",
+            "id": "site-name",
+            "value": "Harbor Annex"
+          },
+          "status": "passed",
+          "elapsedMs": 17
+        },
+        {
+          "index": 2,
+          "expected": {
+            "action": "fill",
+            "id": "email",
+            "value": "ops@example.test"
+          },
+          "status": "passed",
+          "elapsedMs": 3
+        },
+        {
+          "index": 3,
+          "expected": {
+            "action": "click",
+            "id": "next"
+          },
+          "status": "passed",
+          "elapsedMs": 34
+        },
+        {
+          "index": 4,
+          "expected": {
+            "action": "select",
+            "id": "system",
+            "value": "hvac"
+          },
+          "status": "passed",
+          "actual": [
+            "hvac"
+          ],
+          "elapsedMs": 2
+        },
+        {
+          "index": 5,
+          "expected": {
+            "action": "fill",
+            "id": "notes",
+            "value": "Use loading bay"
+          },
+          "status": "passed",
+          "elapsedMs": 2
+        },
+        {
+          "index": 6,
+          "expected": {
+            "action": "click",
+            "id": "back"
+          },
+          "status": "passed",
+          "elapsedMs": 32
+        },
+        {
+          "index": 7,
+          "expected": {
+            "action": "click",
+            "id": "next"
+          },
+          "status": "passed",
+          "elapsedMs": 30
+        },
+        {
+          "index": 8,
+          "expected": {
+            "action": "click",
+            "id": "next"
+          },
+          "status": "passed",
+          "elapsedMs": 34
+        },
+        {
+          "index": 9,
+          "expected": {
+            "action": "text",
+            "id": "review",
+            "value": "Harbor Annex"
+          },
+          "status": "passed",
+          "actual": "Review request Check the details before confirming. Site name Harbor Annex Contact email ops@example.test Property system HVAC Access notes Use loading bay",
+          "elapsedMs": 7
+        },
+        {
+          "index": 10,
+          "expected": {
+            "action": "text",
+            "id": "review",
+            "value": "ops@example.test"
+          },
+          "status": "passed",
+          "actual": "Review request Check the details before confirming. Site name Harbor Annex Contact email ops@example.test Property system HVAC Access notes Use loading bay",
+          "elapsedMs": 1
+        },
+        {
+          "index": 11,
+          "expected": {
+            "action": "text",
+            "id": "review",
+            "value": "HVAC"
+          },
+          "status": "passed",
+          "actual": "Review request Check the details before confirming. Site name Harbor Annex Contact email ops@example.test Property system HVAC Access notes Use loading bay",
+          "elapsedMs": 1
+        },
+        {
+          "index": 12,
+          "expected": {
+            "action": "text",
+            "id": "review",
+            "value": "Use loading bay"
+          },
+          "status": "passed",
+          "actual": "Review request Check the details before confirming. Site name Harbor Annex Contact email ops@example.test Property system HVAC Access notes Use loading bay",
+          "elapsedMs": 0
+        },
+        {
+          "index": 13,
+          "expected": {
+            "action": "click",
+            "id": "confirm"
+          },
+          "status": "passed",
+          "elapsedMs": 26
+        },
+        {
+          "index": 14,
+          "expected": {
+            "action": "text",
+            "id": "success",
+            "value": "Inspection requested"
+          },
+          "status": "passed",
+          "actual": "✓ Inspection requested Your request for Harbor Annex is complete. Request reference FM-2047",
+          "elapsedMs": 1
+        },
+        {
+          "index": 15,
+          "expected": {
+            "action": "text",
+            "id": "success",
+            "value": "FM-2047"
+          },
+          "status": "passed",
+          "actual": "✓ Inspection requested Your request for Harbor Annex is complete. Request reference FM-2047",
+          "elapsedMs": 1
+        }
+      ],
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "screenshot": {
+        "path": "scenario-02-full-request.png",
+        "bytes": 67921,
+        "sha256": "dc588ef47e52b0b5a39189d7cb39af6f448be128ad9ee046d3d632a730c57e1f"
+      },
+      "unrunSteps": 0
+    }
+  ],
+  "criticalFailures": [],
+  "runnerErrors": []
+}

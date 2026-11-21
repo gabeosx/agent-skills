@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Studio bookings | Bridgeglass Community Radio</title>
+  <link rel="stylesheet" href="design-system-core.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="schedule.js" defer></script>
+</head>
+<body>
+  <header class="masthead">
+    <div class="masthead-inner">
+      <span class="station-mark" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
+      <span class="station-name">Bridgeglass Community Radio</span>
+    </div>
+  </header>
+  <main class="page">
+    <div class="page-heading">
+      <h1>Studio bookings</h1>
+      <p>9:00 AM–1:00 PM <span aria-hidden="true">·</span> Local time</p>
+    </div>
+
+    <div class="schedule-controls">
+      <div class="date-strip" role="group" aria-label="Schedule date">
+        <button type="button" data-testid="day-tue" data-day="tue" aria-pressed="true">Tue, Nov 24</button>
+        <button type="button" data-testid="day-wed" data-day="wed" aria-pressed="false">Wed, Nov 25</button>
+      </div>
+      <button class="filter-button" type="button" data-testid="tentative-only" aria-pressed="false">
+        <span class="filter-icon" aria-hidden="true"><i></i><i></i><i></i></span>
+        Tentative only
+      </button>
+    </div>
+
+    <div class="workspace">
+      <section class="schedule" aria-labelledby="schedule-heading">
+        <header class="schedule-heading">
+          <div class="schedule-summary">
+            <h2 id="schedule-heading"></h2>
+            <p id="booking-count" aria-live="polite"></p>
+          </div>
+          <div class="legend" aria-label="Booking status legend">
+            <span><i class="legend-confirmed" aria-hidden="true"></i>Confirmed</span>
+            <span><i class="legend-tentative" aria-hidden="true"></i>Tentative</span>
+          </div>
+        </header>
+
+        <div class="room-head schedule-columns" aria-hidden="true">
+          <span class="axis-heading">Time</span>
+          <span class="room-heading">Studio A</span>
+          <span class="room-heading">Studio B</span>
+          <span class="room-heading">Edit Booth</span>
+        </div>
+
+        <div class="timeline">
+          <div class="timeline-guide schedule-columns" aria-hidden="true">
+            <div class="hour-axis">
+              <span>9:00 <small>AM</small></span>
+              <span>10:00 <small>AM</small></span>
+              <span>11:00 <small>AM</small></span>
+              <span>12:00 <small>PM</small></span>
+              <span>1:00 <small>PM</small></span>
+            </div>
+            <div class="room-guide"></div>
+            <div class="room-guide"></div>
+            <div class="room-guide"></div>
+          </div>
+          <div class="booking-track schedule-columns" id="bookings"></div>
+          <p class="empty-message" id="empty-message" hidden></p>
+        </div>
+      </section>
+
+      <section class="details" data-testid="booking-details" role="region" aria-labelledby="detail-title" hidden>
+        <header class="detail-header">
+          <div>
+            <span class="status-chip" id="detail-status"></span>
+            <h2 id="detail-title" tabindex="-1"></h2>
+          </div>
+          <button class="icon-button" type="button" data-testid="close-details" aria-label="Close details">
+            <span class="close-icon" aria-hidden="true"></span>
+          </button>
+        </header>
+        <dl class="detail-fields">
+          <dt>Room</dt><dd id="detail-room"></dd>
+          <dt>Time</dt><dd id="detail-time"></dd>
+          <dt>Host</dt><dd id="detail-host"></dd>
+        </dl>
+
+        <div class="detail-actions">
+          <p class="feedback success" data-testid="move-success" role="status" hidden></p>
+          <button type="button" class="primary-button" data-testid="move-booking">Move booking</button>
+          <form data-testid="move-form" hidden>
+            <label for="destination-room">Destination room</label>
+            <div class="select-wrap">
+              <select id="destination-room" data-testid="destination-room">
+                <option value="studio-a">Studio A</option>
+                <option value="studio-b">Studio B</option>
+                <option value="edit-booth">Edit Booth</option>
+              </select>
+            </div>
+            <p class="feedback conflict" data-testid="move-conflict" role="alert" hidden></p>
+            <div class="form-actions">
+              <button type="submit" class="primary-button" data-testid="save-move">Save move</button>
+              <button type="button" class="secondary-button" data-testid="cancel-move">Cancel</button>
+            </div>
+          </form>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <template id="booking-template">
+    <div class="booking" data-testid="booking">
+      <button type="button" class="booking-card" aria-pressed="false">
+        <span class="booking-time">
+          <span class="booking-grid-time"></span>
+          <span class="booking-agenda-time"><span></span><span></span></span>
+        </span>
+        <span class="booking-title"></span>
+        <span class="booking-room"></span>
+        <span class="status-chip booking-status"></span>
+      </button>
+    </div>
+  </template>
+</body>
+</html>

@@ -1,0 +1,18 @@
+{
+  "actor": "e51c",
+  "model": "inherited Codex",
+  "started": "2026-11-21T18:59:41+00:00",
+  "actor_collected_at": "2026-11-21T19:06:36+00:00",
+  "attempt": 1,
+  "brief": "briefs/d1/brief.md",
+  "brief_sha256": "9d36b5aeecfd282a180454f4c1596514015271119d0d669b801176187fdd4ce3",
+  "checks_sha256": "ef3a2748f88b69b5fc55b75c4746786bba21a4d95f81f090a462d68f7fca844a",
+  "starter_files": {},
+  "skill_sha256": "92359a8886f08df494ee290af4cd23c63bc457d5df70e00ad577955f840de1be",
+  "source": {
+    "index.html": "c83e40eeb00843748e460e625badd364bdd15a66643dbd6cb1f1bb008cd00f86"
+  },
+  "actor_result": "Both complete. Agent reports browser interactions, unique hooks, visual checks, mobile dialogs and no overflow at all three widths.",
+  "usage": null,
+  "charge": null
+}

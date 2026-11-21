@@ -1,0 +1,501 @@
+{
+  "schemaVersion": 1,
+  "status": "passed",
+  "browser": {
+    "version": "159.0.8154.6",
+    "source": "playwright",
+    "executablePath": "/Users/gabe/Library/Caches/ms-playwright/chromium-1255/chrome-mac-arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing",
+    "headless": true,
+    "args": [
+      "--disable-quic",
+      "--force-webrtc-ip-handling-policy=disable_non_proxied_udp",
+      "--host-resolver-rules=MAP * ~NOTFOUND, EXCLUDE 127.0.0.1",
+      "--no-proxy-server"
+    ]
+  },
+  "config": {
+    "node": "v26.13.0",
+    "platform": "darwin",
+    "architecture": "arm64",
+    "playwright": "1.65.1",
+    "axe": "4.14.1",
+    "axeTags": [
+      "wcag2a",
+      "wcag2aa",
+      "wcag21a",
+      "wcag21aa",
+      "wcag22a",
+      "wcag22aa"
+    ],
+    "context": {
+      "colorScheme": "light",
+      "deviceScaleFactor": 1,
+      "locale": "en-US",
+      "reducedMotion": "reduce",
+      "serviceWorkers": "block",
+      "timezoneId": "UTC"
+    },
+    "viewports": {
+      "desktop": {
+        "width": 1440,
+        "height": 1000
+      },
+      "tablet": {
+        "width": 834,
+        "height": 1112
+      },
+      "mobile": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    "timeoutsMs": {
+      "navigation": 10000,
+      "step": 2500,
+      "capture": 10000,
+      "accessibility": 10000
+    },
+    "network": "localhost-static-origin-only"
+  },
+  "source": {
+    "checksSha256": "e94ae9092535c4cd350ac4a88d21a641b93ea05df2ffd006a8c7cad190385f42",
+    "site": {
+      "sha256": "66eabff536a7786cdcd4e5c67cda0efb8694a033977b7669ebe967a82b5f7c8a",
+      "files": [
+        {
+          "path": "index.html",
+          "sha256": "fdd5313db061231e982465f46d5df00742ee4ca0e2ee62ed13240e322f0dcb77"
+        }
+      ]
+    },
+    "harness": {
+      "sha256": "6c881823017ece00658aa02b1817a074668453398b4905f0208e23ef5bcda8d1",
+      "files": [
+        {
+          "path": "capture.mjs",
+          "sha256": "92bc6c8b9c97e64bd0dbcc746c6505f0ed30e9ecaba15ba32a35d1348afaf77e"
+        },
+        {
+          "path": "package-lock.json",
+          "sha256": "9e166f03feded2ba877c95cbbb4bce6b15453e267c7bf4a69a384ec2a3e1fbc1"
+        },
+        {
+          "path": "package.json",
+          "sha256": "e53398841d514c8588ddfad5569cc1f7aed5d67a6f7b71f4ab05a70cfca4817b"
+        }
+      ]
+    }
+  },
+  "timing": {
+    "startedAt": "2026-11-21T19:19:28.150Z",
+    "completedAt": "2026-11-21T19:19:29.898Z",
+    "elapsedMs": 1749
+  },
+  "viewports": [
+    {
+      "name": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "status": "passed",
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "screenshot": {
+        "path": "desktop.png",
+        "bytes": 69237,
+        "sha256": "3f95b360c06515fb2f499c4ee35f13d71e03ebac107a2c5f9a69898bafcafe84"
+      },
+      "layout": {
+        "clientWidth": 1440,
+        "scrollWidth": 1440,
+        "bodyScrollWidth": 1440,
+        "horizontalOverflow": false
+      },
+      "accessibility": {
+        "status": "no-violations",
+        "counts": {
+          "passes": 22,
+          "violations": 0,
+          "incomplete": 0,
+          "inapplicable": 42
+        },
+        "violations": [],
+        "incomplete": []
+      }
+    },
+    {
+      "name": "tablet",
+      "viewport": {
+        "width": 834,
+        "height": 1112
+      },
+      "status": "passed",
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "screenshot": {
+        "path": "tablet.png",
+        "bytes": 63763,
+        "sha256": "abc241e0de3f70e087fe7ffd5c7824675f526be96df7a47b61ef2cc6f409e086"
+      },
+      "layout": {
+        "clientWidth": 834,
+        "scrollWidth": 834,
+        "bodyScrollWidth": 834,
+        "horizontalOverflow": false
+      },
+      "accessibility": {
+        "status": "no-violations",
+        "counts": {
+          "passes": 22,
+          "violations": 0,
+          "incomplete": 0,
+          "inapplicable": 42
+        },
+        "violations": [],
+        "incomplete": []
+      }
+    },
+    {
+      "name": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "status": "passed",
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "screenshot": {
+        "path": "mobile.png",
+        "bytes": 53555,
+        "sha256": "5a8dee7f5557d3cc0175c4b2c9a687909f3d647a6fd98f48b5ce048a88810045"
+      },
+      "layout": {
+        "clientWidth": 390,
+        "scrollWidth": 390,
+        "bodyScrollWidth": 390,
+        "horizontalOverflow": false
+      },
+      "accessibility": {
+        "status": "no-violations",
+        "counts": {
+          "passes": 22,
+          "violations": 0,
+          "incomplete": 1,
+          "inapplicable": 42
+        },
+        "violations": [],
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "tags": [
+              "cat.color",
+              "wcag2aa",
+              "wcag143",
+              "TTv5",
+              "TT13.c",
+              "EN-301-549",
+              "EN-9.1.4.3",
+              "ACT",
+              "RGAAv4",
+              "RGAA-3.2.1"
+            ],
+            "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+            "help": "Elements must meet minimum color contrast ratio thresholds",
+            "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+            "nodes": [
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "fontSize": "10.5pt (14px)",
+                      "fontWeight": "normal",
+                      "messageKey": "pseudoContent",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<article class=\"stop\" data-late=\"true\" aria-labelledby=\"riverfront\">",
+                        "target": [
+                          "article[aria-labelledby=\"riverfront\"]"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined due to a pseudo element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<span class=\"eta-label\">ETA </span>",
+                "target": [
+                  "article[aria-labelledby=\"riverfront\"] > .schedule > .eta > .eta-label"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "fontSize": "10.5pt (14px)",
+                      "fontWeight": "normal",
+                      "messageKey": "pseudoContent",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<article class=\"stop\" data-late=\"true\" aria-labelledby=\"riverfront\">",
+                        "target": [
+                          "article[aria-labelledby=\"riverfront\"]"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined due to a pseudo element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<time datetime=\"10:40\">10:40</time>",
+                "target": [
+                  "time[datetime=\"10:40\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "fontSize": "10.5pt (14px)",
+                      "fontWeight": "normal",
+                      "messageKey": "pseudoContent",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<article class=\"stop\" data-late=\"true\" aria-labelledby=\"north\">",
+                        "target": [
+                          "article[aria-labelledby=\"north\"]"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined due to a pseudo element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<span class=\"eta-label\">ETA </span>",
+                "target": [
+                  "article[aria-labelledby=\"north\"] > .schedule > .eta > .eta-label"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "fontSize": "10.5pt (14px)",
+                      "fontWeight": "normal",
+                      "messageKey": "pseudoContent",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<article class=\"stop\" data-late=\"true\" aria-labelledby=\"north\">",
+                        "target": [
+                          "article[aria-labelledby=\"north\"]"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined due to a pseudo element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<time datetime=\"11:25\">11:25</time>",
+                "target": [
+                  "time[datetime=\"11:25\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "scenarios": [
+    {
+      "name": "filter and acknowledge",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "captureRequested": true,
+      "status": "passed",
+      "steps": [
+        {
+          "index": 1,
+          "expected": {
+            "action": "click",
+            "id": "late-only"
+          },
+          "status": "passed",
+          "elapsedMs": 36
+        },
+        {
+          "index": 2,
+          "expected": {
+            "action": "attribute",
+            "id": "late-only",
+            "value": "true",
+            "name": "aria-pressed"
+          },
+          "status": "passed",
+          "actual": "true",
+          "elapsedMs": 6
+        },
+        {
+          "index": 3,
+          "expected": {
+            "action": "hidden",
+            "id": "oak"
+          },
+          "status": "passed",
+          "elapsedMs": 1
+        },
+        {
+          "index": 4,
+          "expected": {
+            "action": "click",
+            "id": "riverfront-review"
+          },
+          "status": "passed",
+          "elapsedMs": 28
+        },
+        {
+          "index": 5,
+          "expected": {
+            "action": "text",
+            "id": "riverfront-state",
+            "value": "Reviewed"
+          },
+          "status": "passed",
+          "actual": "Reviewed",
+          "elapsedMs": 1
+        },
+        {
+          "index": 6,
+          "expected": {
+            "action": "text",
+            "id": "stops",
+            "value": "24 min late"
+          },
+          "status": "passed",
+          "actual": "Riverfront Market Wilmington ETA 10:40 24 min late Reviewed Acknowledge North Pier Supplies New Castle ETA 11:25 11 min late Needs review Acknowledge",
+          "elapsedMs": 1
+        }
+      ],
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "screenshot": {
+        "path": "scenario-01-filter-and-acknowledge.png",
+        "bytes": 44357,
+        "sha256": "e79633d45c5af261736ee083ac9eb4b6813a9bdf151683c2a6c84c92e6cf5734"
+      },
+      "unrunSteps": 0
+    },
+    {
+      "name": "filter resets",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "captureRequested": true,
+      "status": "passed",
+      "steps": [
+        {
+          "index": 1,
+          "expected": {
+            "action": "click",
+            "id": "late-only"
+          },
+          "status": "passed",
+          "elapsedMs": 49
+        },
+        {
+          "index": 2,
+          "expected": {
+            "action": "click",
+            "id": "late-only"
+          },
+          "status": "passed",
+          "elapsedMs": 37
+        },
+        {
+          "index": 3,
+          "expected": {
+            "action": "attribute",
+            "id": "late-only",
+            "value": "false",
+            "name": "aria-pressed"
+          },
+          "status": "passed",
+          "actual": "false",
+          "elapsedMs": 7
+        },
+        {
+          "index": 4,
+          "expected": {
+            "action": "text",
+            "id": "stops",
+            "value": "Oak Street Co-op"
+          },
+          "status": "passed",
+          "actual": "Riverfront Market Wilmington ETA 10:40 24 min late Needs review Acknowledge Oak Street Co-op Newark ETA 11:10 On time Needs review Acknowledge North Pier Supplies New Castle ETA 11:25 11 min late Needs review Acknowledge",
+          "elapsedMs": 1
+        },
+        {
+          "index": 5,
+          "expected": {
+            "action": "visible",
+            "id": "oak"
+          },
+          "status": "passed",
+          "elapsedMs": 1
+        }
+      ],
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "screenshot": {
+        "path": "scenario-02-filter-resets.png",
+        "bytes": 69262,
+        "sha256": "f3b5dc808bc0d3cfd42a249ee94b640a6191b03aca32d23305ad5bc9bbf5a106"
+      },
+      "unrunSteps": 0
+    }
+  ],
+  "criticalFailures": [],
+  "runnerErrors": []
+}

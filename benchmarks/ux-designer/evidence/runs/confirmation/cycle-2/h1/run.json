@@ -1,0 +1,18 @@
+{
+  "actor": "42ba",
+  "model": "inherited Codex",
+  "started": "2026-11-21T19:38:46+00:00",
+  "actor_collected_at": "2026-11-21T19:46:51+00:00",
+  "attempt": 1,
+  "brief": "briefs/h1/brief.md",
+  "brief_sha256": "4f14c1becfd48d0bcbd438f57496b0afc32e0422f9fa35335b1311b545380d09",
+  "checks_sha256": "3fefaf001da796335287499d78aa1e9424845991ff9bc937aaa009edcff9ac36",
+  "starter_files": {},
+  "skill_sha256": "92359a8886f08df494ee290af4cd23c63bc457d5df70e00ad577955f840de1be",
+  "source": {
+    "index.html": "d058874b71c6671ee403e3602e8c6795d8800410c337dc23a068239461a3b46b"
+  },
+  "actor_result": "Both complete. Agent reports visual and interaction checks at all three widths, search and report state, exact pin position, replies, version and pin state, cancelling and approving with keyboard checks.",
+  "usage": null,
+  "charge": null
+}

@@ -1,0 +1,20 @@
+{
+  "actor": "a6f8",
+  "model": "inherited Codex",
+  "started": "2026-11-21T19:25:12+00:00",
+  "actor_collected_at": "2026-11-21T19:32:42+00:00",
+  "attempt": 1,
+  "brief": "briefs/d5/brief.md",
+  "brief_sha256": "1f78fe7acfb9fa1c9f840b7855c11dca0b387e2b14105e8a1d1e3b21720e3e58",
+  "checks_sha256": "e94ae9092535c4cd350ac4a88d21a641b93ea05df2ffd006a8c7cad190385f42",
+  "starter_files": {
+    "index.html": "1f62c3baf411b08940e52609baf9f709b2407876276671c8275b2f1f4733a262"
+  },
+  "skill_sha256": "2bfbd6b5a822c7458fa659df08caf8b876364c35555ff31abfeb065d9844d8d5",
+  "source": {
+    "index.html": "0896675dcaf81ae2efcc13af9aa488671119217a4a1a576a88ad4bae442949e9"
+  },
+  "actor_result": "Both complete. Agent reports Chromium checks for filter, all acknowledgements, mobile menu, equipment, all context dialogs, focus return and procedure anchors, plus overflow.",
+  "usage": null,
+  "charge": null
+}

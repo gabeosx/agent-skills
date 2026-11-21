@@ -1,2 +1,7 @@
 # Preserve required context-line spaces in the retained unified diff artifact.
 evaluations/natural-writing/editorial-boundaries/final-source.diff -whitespace
+
+# Retain exact browser benchmark inputs for the source hash audit.
+benchmarks/ux-designer/evidence/runs/*/baseline/*/site/design-system-core.css whitespace=-blank-at-eol
+benchmarks/ux-designer/evidence/runs/development/cycle-3/d5/site/index.html whitespace=-blank-at-eol
+benchmarks/ux-designer/evidence/runs/development/cycle-3/d6/site/index.html whitespace=-blank-at-eol

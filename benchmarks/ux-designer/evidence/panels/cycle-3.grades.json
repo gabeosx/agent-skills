@@ -1,0 +1,1863 @@
+{
+  "tasks": {
+    "d1": {
+      "outputs": {
+        "ui-c3bb0e": {
+          "dimensions": {
+            "A": {
+              "score": 18,
+              "rationale": "The 1440 hero, action pair, proof strip and sample form a clear progression, with bolder collection names and prices for shopping.",
+              "strengths": [
+                "Headline and primary action dominate the first view.",
+                "Separate full-width proof and sample sections make the data easy to find."
+              ],
+              "defects": [
+                "At 390 px the third headline line and tall illustration push the first sample row below the initial viewport."
+              ],
+              "opportunity": "Shorten the mobile image block enough to show an actual sample row earlier."
+            },
+            "B": {
+              "score": 13,
+              "rationale": "Expressive italic serif balances the practical sans serif labels, although the small-screen table forces avoidable wraps.",
+              "strengths": [
+                "Prominent serif collection names and bold right-aligned prices separate the two key scan targets."
+              ],
+              "defects": [
+                "At 390 px Resin Library and each scent family wrap despite adequate space in the retail column."
+              ],
+              "opportunity": "Redistribute mobile column widths and reduce the width reserved by the swatches."
+            },
+            "C": {
+              "score": 17,
+              "rationale": "Cream, dark green and muted bottle colors create a coordinated system, with a visually heavy sample treatment on narrow screens.",
+              "strengths": [
+                "Thin rules organize the proof and rows, while the textured swatches repeat the warm, blue and amber bottle palette."
+              ],
+              "defects": [
+                "At 390 px the shaded table header and textured swatches crowd the text.",
+                "At 834 px the finished sample is followed by a large empty field."
+              ],
+              "opportunity": "Reduce the mobile swatches and header height while keeping the color associations."
+            },
+            "D": {
+              "score": 19,
+              "rationale": "The three labeled bottles connect the fragrance identity directly to the actual buying evidence.",
+              "strengths": [
+                "The curved still life, display type and forest CTA feel specific to premium fragrance.",
+                "The rows use the same product-color associations as the illustration."
+              ],
+              "defects": [
+                "A decorative Collection sample label repeats the upcoming section heading, particularly noticeably on mobile."
+              ],
+              "opportunity": "Let the labeled bottles carry the illustration without the repeated caption."
+            },
+            "E": {
+              "score": 13,
+              "rationale": "Both actions appear early at 390 px, all sample data remain readable, and the invalid state is clearly visible.",
+              "strengths": [
+                "The sample link is underlined, the mobile error is adjacent to Work email, and the browser confirms submitted email and dismissal."
+              ],
+              "defects": [
+                "At 390 px the 44 px close button is icon-only and the sample requires vertical scrolling."
+              ],
+              "opportunity": "Expose some sample data earlier in the mobile reading order."
+            },
+            "F": {
+              "score": 8,
+              "rationale": "The table and proof structures keep their alignment at all widths, with no measured horizontal overflow or page errors.",
+              "strengths": [
+                "Reachable labels and repeated row patterns hold up at 390, 834 and 1440 px.",
+                "The illustrated figure is marked decorative in the browser evidence."
+              ],
+              "defects": [
+                "The invalid-input capture shows competing red and brown outlines on the same field."
+              ],
+              "opportunity": "Define a focused invalid style with a single visually coherent focus treatment."
+            }
+          },
+          "total": 88,
+          "visual_problems": [
+            "The mobile sample starts late below a three-line hero and 200 px illustration.",
+            "Mobile table columns wrap the first name and every scent family.",
+            "The invalid field uses two visibly different rings."
+          ],
+          "effective_decisions": [
+            "The still life names all three sample products.",
+            "Swatches visually link the sample rows to their bottles.",
+            "A bold, right-aligned price column supports fast comparison."
+          ],
+          "blockers": [],
+          "automation_limitations": [
+            "Conversion and dismissal are supported by text assertions only. The tablet sample was already within the viewport, so the capture cannot establish the scroll position.",
+            "Axe could not resolve decorative artwork and arrow contrast."
+          ]
+        },
+        "ui-eb5b56": {
+          "dimensions": {
+            "A": {
+              "score": 19,
+              "rationale": "The headline, actions and proof progress tightly into the sample, which fits in the first 390 × 844 view.",
+              "strengths": [
+                "Proof sits immediately beneath the actions at all widths.",
+                "The mobile art compresses to a short divider so the entire sample stays visible."
+              ],
+              "defects": [
+                "On desktop the proof strip is contained by the left hero column and reads as tertiary to the large abstract panel."
+              ],
+              "opportunity": "Give the proof figures a little more visual weight within the compact layout."
+            },
+            "B": {
+              "score": 13,
+              "rationale": "The two-line display headline and price alignment are strong, with dense mobile support type at the small end.",
+              "strengths": [
+                "Desktop and mobile collection names remain on one line.",
+                "Right-aligned bold prices and serif row names are easy to distinguish."
+              ],
+              "defects": [
+                "Mobile table headings and proof captions are tiny, and Suggested retail wraps."
+              ],
+              "opportunity": "Increase small label sizes while trimming tracking and rebalancing column allocation."
+            },
+            "C": {
+              "score": 18,
+              "rationale": "An olive-to-copper contour panel, fine rules and a quiet cream background create a balanced composition.",
+              "strengths": [
+                "Artwork scales down to a horizontal band on mobile.",
+                "The mobile dialog has even insets and a backdrop that covers the complete view."
+              ],
+              "defects": [
+                "The broad tablet gap below the sample feels abrupt, and the generously blurred backdrop is more pronounced than the page's thin rules."
+              ],
+              "opportunity": "Keep the backdrop separation with a lighter blur that fits the quieter page surfaces."
+            },
+            "D": {
+              "score": 16,
+              "rationale": "The typography and paper-like palette fit a premium retailer, while the dominant contour motif has no direct connection to the sample products.",
+              "strengths": [
+                "The understated wordmark, serif hierarchy and warm data labels establish a coherent editorial identity."
+              ],
+              "defects": [
+                "The large contour graphic and its small crosshair are fairly generic signals for a fragrance intelligence product."
+              ],
+              "opportunity": "Connect the contour motif to the sample's three scent families through the illustration or its color system."
+            },
+            "E": {
+              "score": 14,
+              "rationale": "The underlined sample link, primary CTA, visible price evidence and focused validation state are all immediately available on mobile.",
+              "strengths": [
+                "At 390 px every row remains visible and readable in the initial capture.",
+                "The error state gives the input a visible focus ring and keeps a prominent close control."
+              ],
+              "defects": [
+                "The longer modal heading wraps to two lines above a short form, and the close action is icon-only visually."
+              ],
+              "opportunity": "Use a more compact heading treatment so the form remains comfortable at shorter viewport heights."
+            },
+            "F": {
+              "score": 8,
+              "rationale": "The same table hierarchy and controls retain their structure across widths, with one unresolved proof-strip ARIA check.",
+              "strengths": [
+                "No browser layout overflow or page errors were observed.",
+                "The compact header and sample align to the same edges across the three rendered widths."
+              ],
+              "defects": [
+                "Axe flags the proof strip for manual review of its ARIA attribute."
+              ],
+              "opportunity": "Verify proof grouping semantics and expose the block with native landmark or list markup where appropriate."
+            }
+          },
+          "total": 88,
+          "visual_problems": [
+            "The dominant contour graphic does little to identify the three collections.",
+            "Mobile proof captions and letter-spaced table labels are small.",
+            "Desktop proof numbers recede beneath the much darker artwork."
+          ],
+          "effective_decisions": [
+            "The entire mobile sample fits within the first 844 px.",
+            "The compact proof strip sits alongside the conversion path.",
+            "The error dialog gives the field, validation text and close control distinct positions."
+          ],
+          "blockers": [],
+          "automation_limitations": [
+            "Conversion and dismissal are supported by text assertions only. The tablet sample was already within the viewport, so the capture cannot establish the scroll position.",
+            "Axe left the proof-strip ARIA and decorative arrow contrast checks incomplete."
+          ]
+        },
+        "ui-ea77fa": {
+          "dimensions": {
+            "A": {
+              "score": 18,
+              "rationale": "Hero, full-width proof band and explanatory sample sidebar support an intentional desktop and tablet reading order.",
+              "strengths": [
+                "The short explanation gives the sample an immediate buyer use case.",
+                "At 390 px the split sample stacks while preserving all three columns."
+              ],
+              "defects": [
+                "On mobile the 240 px artwork and repeated sample eyebrow push the table below the fold."
+              ],
+              "opportunity": "Compress the mobile hero artwork and remove one heading level from the sample introduction."
+            },
+            "B": {
+              "score": 14,
+              "rationale": "The refined serif, green italic emphasis and compact tabular sans serif give each reading task a distinct type treatment.",
+              "strengths": [
+                "The proposition holds to two readable lines on mobile.",
+                "The mobile table keeps every value and title on one line with clear alignment."
+              ],
+              "defects": [
+                "The small, tracked masthead wraps into two tiny lines on mobile and is much less readable than the wordmark."
+              ],
+              "opportunity": "Shorten and slightly enlarge the mobile masthead descriptor."
+            },
+            "C": {
+              "score": 19,
+              "rationale": "Olive linework, fine borders and a muted proof background establish a consistent scale with restrained visual weight.",
+              "strengths": [
+                "The bottle sits inside a carefully framed tonal panel.",
+                "Tablet and desktop margins, proof band and split sample share convincing alignment."
+              ],
+              "defects": [
+                "The dark bottom edge of the mobile dialog is heavier than the fine rules elsewhere."
+              ],
+              "opportunity": "Match the dialog separation to the subtle rule and shadow language of the overview."
+            },
+            "D": {
+              "score": 19,
+              "rationale": "The branded perfume rendering and collection index combine premium fragrance cues with practical evidence.",
+              "strengths": [
+                "The bottle, contour field and olive typography form a distinctive identity.",
+                "The sample description speaks to assortment fit and uses no invented endorsements."
+              ],
+              "defects": [
+                "The hero bottle carries the platform name, so it does not help map the pictured scent to any of the three rows."
+              ],
+              "opportunity": "Add a restrained link between the image and the three sample families."
+            },
+            "E": {
+              "score": 13,
+              "rationale": "The conversion remains prominent on mobile and the invalid state is readable, with weaker default cues on two secondary actions.",
+              "strengths": [
+                "The focused error field, inline message and full-width submit button give a clear recovery path.",
+                "The browser confirms submission shows the email and the form dismisses."
+              ],
+              "defects": [
+                "Explore the sample lacks the resting underline used after interaction, and the dialog close icon lacks a visible boundary."
+              ],
+              "opportunity": "Give the sample link a persistent underline and the close control a clearer hit-area cue."
+            },
+            "F": {
+              "score": 8,
+              "rationale": "A coherent responsive table and repeatable type system hold across widths, with no horizontal overflow or browser errors.",
+              "strengths": [
+                "Proof and row values survive the breakpoint intact, and lines and alignments remain consistent."
+              ],
+              "defects": [
+                "The mobile invalid state places the error very close to the two competing field outlines."
+              ],
+              "opportunity": "Use a consistent spacing and border pattern for focused invalid fields."
+            }
+          },
+          "total": 91,
+          "visual_problems": [
+            "Mobile sample rows start below the first viewport.",
+            "The mobile masthead descriptor is very small and wraps.",
+            "The sample action's resting state and the close icon have weak visual affordances."
+          ],
+          "effective_decisions": [
+            "Branded bottle and tonal contour work tie the page to fragrance.",
+            "A full-width tinted proof band reads as a single group.",
+            "The sample pairs a buyer-oriented explanation with a table that preserves all values on mobile."
+          ],
+          "blockers": [],
+          "automation_limitations": [
+            "Conversion and dismissal are supported by text assertions only. The tablet sample was already within the viewport, so the capture cannot establish the scroll position.",
+            "Axe could not resolve decorative bottle-label and arrow contrast."
+          ]
+        }
+      },
+      "pairs": [
+        {
+          "ids": [
+            "ui-eb5b56",
+            "ui-ea77fa"
+          ],
+          "preference": "ui-ea77fa",
+          "confidence": "medium",
+          "rationale": "The branded perfume artwork and split evidence section are more specific to the brief, and the mobile table retains more readable supporting text. The other keeps the sample above the fold on mobile."
+        },
+        {
+          "ids": [
+            "ui-ea77fa",
+            "ui-c3bb0e"
+          ],
+          "preference": "ui-ea77fa",
+          "confidence": "medium",
+          "rationale": "The measured typography, proof band and single-line mobile rows form the more resolved system. The other makes the tighter visual connection between specific collection rows and illustrated bottles."
+        },
+        {
+          "ids": [
+            "ui-c3bb0e",
+            "ui-eb5b56"
+          ],
+          "preference": "tie",
+          "confidence": "medium",
+          "rationale": "The bottle composition and matched swatches give the sample a stronger fragrance identity, while the contour layout keeps the complete evidence above the fold and avoids row wraps. Both deliver the same conversion and sample flows."
+        }
+      ]
+    },
+    "d2": {
+      "outputs": {
+        "ui-1cab2b": {
+          "dimensions": {
+            "A": {
+              "score": 19,
+              "rationale": "Margin KPIs lead into a paired trend and department view at 1440 and 834 px, keeping the evidence and next action in sight together.",
+              "strengths": [
+                "The trend and table fit side by side even at 834 px.",
+                "The department heading reports the two rows needing investigation."
+              ],
+              "defects": [
+                "At 390 px the long filter label area and 53 px rows put the fourth department below the fold."
+              ],
+              "opportunity": "Tighten the mobile department card header and row spacing slightly."
+            },
+            "B": {
+              "score": 14,
+              "rationale": "The assertive sans serif makes KPIs and margins easy to find, and each of the seven plotted percentages remains legible.",
+              "strengths": [
+                "Aligned sales and bold margin values support comparison.",
+                "Week and percentage labels survive at 390 px."
+              ],
+              "defects": [
+                "The overview title's very tight letter spacing becomes conspicuous on mobile."
+              ],
+              "opportunity": "Loosen the mobile title tracking while preserving the one-line fit."
+            },
+            "C": {
+              "score": 18,
+              "rationale": "Quiet surfaces, mint focus and rust urgency establish a well-balanced dashboard with consistent card and table alignment.",
+              "strengths": [
+                "Latest-week rust and the status chip palette support attention without relying on hue alone.",
+                "The 7-day plot dims prior weeks and shades the latest marker."
+              ],
+              "defects": [
+                "The paired tablet cards use most of their available width and leave little breathing room around the table controls."
+              ],
+              "opportunity": "Free a little space in the tablet toolbar by shortening the status select's resting label."
+            },
+            "D": {
+              "score": 18,
+              "rationale": "The cart mark, mint palette and task-specific focus communicate a practical grocery pricing tool.",
+              "strengths": [
+                "The proportion of data to navigation chrome is appropriate at all widths.",
+                "The Produce detail uses the same status and metric treatment as the overview."
+              ],
+              "defects": [
+                "The small icons in the KPI cards do not carry additional information and compete for mobile space."
+              ],
+              "opportunity": "Simplify the KPI icons on narrow screens and reserve space for labels."
+            },
+            "E": {
+              "score": 14,
+              "rationale": "Both selects, a chart text disclosure, action-marked Produce row and an explicit return path are easy to locate.",
+              "strengths": [
+                "The mobile capture presents Produce margin, sales, status and Supplier costs with a labeled Back to overview button.",
+                "Browser actions confirm period switching, filtering to Produce and Bakery, and reset plus return."
+              ],
+              "defects": [
+                "Produce uses color and an arrow for discoverability, without the persistent underline seen in another interface."
+              ],
+              "opportunity": "Underline Produce or make its detail action visually explicit on the whole row."
+            },
+            "F": {
+              "score": 9,
+              "rationale": "Repeated KPI, detail and status treatments remain coherent across breakpoints, and the browser evidence shows measurable layout integrity.",
+              "strengths": [
+                "No horizontal overflow or page errors are reported.",
+                "The disclosure gives a separate entry to the chart values and the native selects expose the required choices."
+              ],
+              "defects": [
+                "The browser marks the abbreviated change badge's ARIA treatment and SVG contrast for manual inspection."
+              ],
+              "opportunity": "Ensure the badge announces the direction and percentage-point unit using plain text."
+            }
+          },
+          "total": 92,
+          "visual_problems": [
+            "At 390 px the display heading is tracked very tightly.",
+            "The tablet department filter feels squeezed beside the title.",
+            "The mobile department header and row heights put Bakery below the initial viewport."
+          ],
+          "effective_decisions": [
+            "The department table and plot fit side by side on desktop and tablet.",
+            "The 7-day plot highlights the final segment and keeps every historical value visible.",
+            "The mobile detail brings the selected margin, supplier context and explicit return together."
+          ],
+          "blockers": [],
+          "automation_limitations": [
+            "The weekly-values disclosure was not captured expanded. Axe left the change badge ARIA and several SVG and select contrast checks incomplete."
+          ]
+        },
+        "ui-539999": {
+          "dimensions": {
+            "A": {
+              "score": 16,
+              "rationale": "The analytic sequence is clear, but a persistent sidebar and stacked panels delay the department evidence.",
+              "strengths": [
+                "Title and reporting period clearly introduce the shared time scope.",
+                "KPI cards remain in a single row at 390 px."
+              ],
+              "defects": [
+                "A 160 px tablet sidebar holds only one navigation item.",
+                "On mobile, the separate workspace eyebrow, period row and tall trend make the table start near the bottom of the initial view."
+              ],
+              "opportunity": "Recover vertical space on mobile by folding the reporting controls into the heading area."
+            },
+            "B": {
+              "score": 12,
+              "rationale": "KPI values and standard table rows scan reasonably well, but the chart's axis and the mobile header are comparatively compressed.",
+              "strengths": [
+                "Clear weight changes distinguish row names and KPI values.",
+                "The detail margin value gets ample size and space."
+              ],
+              "defects": [
+                "On desktop and tablet only the latest point has its exact value annotated.",
+                "The 390 px Margin and 7-day status headers almost touch."
+              ],
+              "opportunity": "Add compact point labels where space permits and provide a wider gutter after mobile margins."
+            },
+            "C": {
+              "score": 16,
+              "rationale": "White cards, fine lines and soft status pills are orderly, with a disproportionately large dark navigation region at wider widths.",
+              "strengths": [
+                "The mint highlight groups KPI and detail margin values.",
+                "Separate area fill, latest segment and shaded band mark the 7-day chart state."
+              ],
+              "defects": [
+                "The sidebar is the visually heaviest shape at desktop and tablet despite containing only Overview."
+              ],
+              "opportunity": "Use a shallower desktop and tablet navigation treatment to give more area to the analysis."
+            },
+            "D": {
+              "score": 16,
+              "rationale": "The palette and pricing vocabulary are appropriate, while the single-item workspace shell and repeated eyebrow add generic dashboard chrome.",
+              "strengths": [
+                "Trend, filters and badges stay stylistically consistent from overview to detail."
+              ],
+              "defects": [
+                "The full viewport Overview rail and Pricing workspace label add little to this one-workflow screen."
+              ],
+              "opportunity": "Center BrightCart's identity on the margin investigation and simplify the surrounding shell."
+            },
+            "E": {
+              "score": 14,
+              "rationale": "Labeled controls and a visible chart disclosure support the workflow, and the detailed return button is clear.",
+              "strengths": [
+                "Default mobile rows preserve all four fields without horizontal scroll.",
+                "Browser steps confirm 7-day figures, both Investigate rows, Produce drilldown and reset."
+              ],
+              "defects": [
+                "Mobile omits alternating week labels from the plot and makes users open Weekly values to see most exact data."
+              ],
+              "opportunity": "Keep the complete text equivalent accessible and expose more exact values in the plot when there is room."
+            },
+            "F": {
+              "score": 9,
+              "rationale": "The navigation adapts to a top row on mobile while coherent primitives carry through the data and detail views.",
+              "strengths": [
+                "Browser reports no page errors, horizontal overflow, axe violations or incomplete checks.",
+                "The scenario captures show layout and card shapes remaining stable when values and filters change."
+              ],
+              "defects": [
+                "The one-item navigation consumes significant tablet width even though the same header can provide it on mobile."
+              ],
+              "opportunity": "Reuse the compact top navigation treatment at tablet widths."
+            }
+          },
+          "total": 83,
+          "visual_problems": [
+            "The single-entry rail consumes substantial desktop and tablet area.",
+            "Only the latest data point has a percentage annotation in the plot.",
+            "The mobile table starts low and its two right-hand headings sit unusually close together."
+          ],
+          "effective_decisions": [
+            "The weekly-values disclosure is visible directly beneath the plot.",
+            "The 7-day state uses muted dashed history and a distinct latest segment.",
+            "The Produce detail makes the period, margin and return easy to spot."
+          ],
+          "blockers": [],
+          "automation_limitations": [
+            "The weekly-values disclosure was not captured expanded, and filter reset plus return are verified through browser checks without state screenshots."
+          ]
+        },
+        "ui-143ac5": {
+          "dimensions": {
+            "A": {
+              "score": 18,
+              "rationale": "A compact KPI strip, full-width dark trend and simple table make a fast top-to-bottom reading order.",
+              "strengths": [
+                "At 390 px the chart and nearly the entire table fit in the first viewport.",
+                "Collocating the latest-week callout with the plot keeps the change contextual."
+              ],
+              "defects": [
+                "The dark chart draws the strongest attention even though the user's decision is which department to investigate."
+              ],
+              "opportunity": "Use the table subtitle to surface the number of departments to investigate."
+            },
+            "B": {
+              "score": 14,
+              "rationale": "Large, crisp KPIs and consistently aligned table figures anchor a compact text system.",
+              "strengths": [
+                "All seven percentages remain visible even on mobile.",
+                "The 390 px stacked sales label and value remain associated with the department name."
+              ],
+              "defects": [
+                "The chart's mobile axis and week labels are very small."
+              ],
+              "opportunity": "Reallocate a little chart space to increase the week and axis label sizes."
+            },
+            "C": {
+              "score": 19,
+              "rationale": "The forest panel and lime data emphasis create distinction, with disciplined alignment and subdued table statuses.",
+              "strengths": [
+                "The chart extends the palette of the header and brand mark.",
+                "The compact connected KPI cards and finely ruled rows reduce extra visual boundaries."
+              ],
+              "defects": [
+                "Muted history and axis labels sit close in value to the dark plot background in the 7-day state."
+              ],
+              "opportunity": "Lighten the contextual labels and earlier marks while maintaining the emphasis on Week 7."
+            },
+            "D": {
+              "score": 18,
+              "rationale": "The chart-led, forest-green system gives BrightCart a recognizable identity while keeping the task compact.",
+              "strengths": [
+                "The prominent decline callout speaks directly to pricing attention.",
+                "The mobile chart and detail retain the same compact, purposeful visual language."
+              ],
+              "defects": [
+                "The detail shifts to an icon-only dismissal that does not echo the overview navigation wording."
+              ],
+              "opportunity": "Carry a text-labeled return action into the detail design."
+            },
+            "E": {
+              "score": 13,
+              "rationale": "Period and filter controls are discoverable and the visible 390 px drilldown provides the expected margin and supplier context.",
+              "strengths": [
+                "Produce is underlined with a supplementary arrow.",
+                "All required department data persist at 390 px, and browser checks confirm filter reset and return."
+              ],
+              "defects": [
+                "The chart provides inline values and a narrative latest-week delta but has no visible series-level text disclosure.",
+                "The detail dismissal is represented by an X alone."
+              ],
+              "opportunity": "Expose the seven exact percentages in an adjacent expandable text list alongside the current labels."
+            },
+            "F": {
+              "score": 8,
+              "rationale": "The connected KPI strip and responsive table form a coherent set of patterns, with some chart semantics still unresolved in the packet.",
+              "strengths": [
+                "Browser evidence exposes all seven percentage strings as HTML text and reports no horizontal overflow or page errors.",
+                "The mobile rows preserve sales by nesting them below each department name."
+              ],
+              "defects": [
+                "Axe could not establish chart value contrast, and the evidence does not establish how the individual weeks and values are associated for assistive technology."
+              ],
+              "opportunity": "Expose each week and its magnitude as a clearly associated text pair."
+            }
+          },
+          "total": 90,
+          "visual_problems": [
+            "The dark chart dominates the table at desktop and tablet.",
+            "Mobile chart axis and week labels are small.",
+            "The Produce detail return is represented by an X alone."
+          ],
+          "effective_decisions": [
+            "Sales tuck under department names at 390 px, preserving all data without squeezing four columns.",
+            "The underlined Produce action is easy to distinguish.",
+            "The latest-week callout spells out the percentage-point change and keeps past weeks in context."
+          ],
+          "blockers": [],
+          "automation_limitations": [
+            "Chart label contrast is unresolved in axe; inspect the chart's accessible name or adjacent text summary for a programmatically associated seven-week equivalent. Filter reset plus return are verified through browser checks without state screenshots."
+          ]
+        }
+      },
+      "pairs": [
+        {
+          "ids": [
+            "ui-143ac5",
+            "ui-539999"
+          ],
+          "preference": "ui-143ac5",
+          "confidence": "high",
+          "rationale": "The compact layout preserves every data field with cleaner mobile spacing, while all seven plot values are visible at once. The rail in ui-539999 spends valuable tablet width on a single item, though its text disclosure and labeled return are useful."
+        },
+        {
+          "ids": [
+            "ui-1cab2b",
+            "ui-539999"
+          ],
+          "preference": "ui-1cab2b",
+          "confidence": "high",
+          "rationale": "A side-by-side trend and table make the investigation faster on desktop and tablet. The seven direct chart labels and action-focused department subtitle give a more useful mobile overview too."
+        },
+        {
+          "ids": [
+            "ui-143ac5",
+            "ui-1cab2b"
+          ],
+          "preference": "ui-1cab2b",
+          "confidence": "medium",
+          "rationale": "The paired chart and departments, explicit percent-series disclosure and labeled return better support the pricing workflow. The dark-chart interface is more compact on mobile and has a more distinctive visual identity."
+        }
+      ]
+    },
+    "d3": {
+      "outputs": {
+        "ui-09e4ff": {
+          "dimensions": {
+            "A": {
+              "score": 18,
+              "rationale": "The compact heading, controls and header row lead directly to the comparison at each width.",
+              "strengths": [
+                "At desktop and tablet all eight rows follow a single card toolbar.",
+                "Price, throughput and warranty are easy to spot in the grid."
+              ],
+              "defects": [
+                "The mobile toolbar uses three lines before the first model row."
+              ],
+              "opportunity": "Group the mobile count and scroll cue on one line so the specifications arrive sooner."
+            },
+            "B": {
+              "score": 14,
+              "rationale": "Serif display type creates a clear entry point, while right-aligned numeric values and a consistent sans serif keep the table readable.",
+              "strengths": [
+                "The complete Operating noise label fits on one line at 390 px.",
+                "Price and time values line up down their respective columns."
+              ],
+              "defects": [
+                "Some extra-bold labels, especially the brand and model headers, look dense next to the light headline."
+              ],
+              "opportunity": "Use a slightly lighter model weight while retaining its size advantage."
+            },
+            "C": {
+              "score": 18,
+              "rationale": "Muted greens and thin dividers establish clean separation with little competition for the actual measurements.",
+              "strengths": [
+                "Alternating rows and vertical rules make values easy to follow across desktop columns.",
+                "Small analyzer pictograms stay beside names at tablet and disappear on mobile."
+              ],
+              "defects": [
+                "At 390 px the right edge reads as a complete Birch column, so the offscreen column is visually understated."
+              ],
+              "opportunity": "Show a narrow edge fade or other continuous cue when more columns are available."
+            },
+            "D": {
+              "score": 17,
+              "rationale": "The instrument glyphs, earthy palette and modest header make a coherent lab tool.",
+              "strengths": [
+                "The icons add a product cue without consuming a separate image row.",
+                "The two-model tablet state keeps the same visual language."
+              ],
+              "defects": [
+                "The three tiny illustrations look similar enough that model names do most of the work."
+              ],
+              "opportunity": "Make the model icons more distinguishable at their current size or use a single shared symbol."
+            },
+            "E": {
+              "score": 13,
+              "rationale": "Both filter states are legible, the 390 px view names horizontal scrolling, and the browser confirms filtering and reset.",
+              "strengths": [
+                "Hide Alder A2 describes the action clearly and has distinct on and off states.",
+                "The mobile reset returns three models and all eight rows in the browser evidence."
+              ],
+              "defects": [
+                "Cedar starts offscreen, and the scroll cue is small and at the far right of the toolbar."
+              ],
+              "opportunity": "Place a stronger scroll cue next to the model headers."
+            },
+            "F": {
+              "score": 8,
+              "rationale": "The comparison grid, labels and toolbar stay aligned through reset and filtering, with no page overflow or reported axe findings at the measured widths.",
+              "strengths": [
+                "The extracted comparison text includes the caption and all source values after reset.",
+                "The compact two-model tablet state retains the same column and row logic."
+              ],
+              "defects": [
+                "The small-screen reset image shows the leftmost columns only, leaving row-header persistence during horizontal scrolling unverified."
+              ],
+              "opportunity": "Check keyboard scrolling and verify that the row headers stay in view when reaching Cedar."
+            }
+          },
+          "total": 88,
+          "visual_problems": [
+            "The mobile toolbar occupies three lines.",
+            "Cedar sits just beyond what looks like a finished right edge.",
+            "The heaviest model and brand weights draw more ink than surrounding labels."
+          ],
+          "effective_decisions": [
+            "Emphasis on price, throughput and warranty matches the decision.",
+            "Subtle striping and a column grid guide lateral reading.",
+            "Compact pictograms are omitted at 390 px to protect useful table space."
+          ],
+          "blockers": []
+        },
+        "ui-c951c1": {
+          "dimensions": {
+            "A": {
+              "score": 16,
+              "rationale": "The compact page title and count lead into the data, though the illustration row competes with the specification rows.",
+              "strengths": [
+                "A narrow top area leaves the full grid visible at 834 px.",
+                "The 390 px count, scroll cue and controls sit together."
+              ],
+              "defects": [
+                "The analyzer art keeps a tall header even when the filtered state contains just two rows."
+              ],
+              "opportunity": "Reduce the product image height in the comparison header, particularly in the two-row state."
+            },
+            "B": {
+              "score": 11,
+              "rationale": "Specifications stay legible, but the very heavy, tightly spaced display face is used in several dense locations.",
+              "strengths": [
+                "Every row name including Operating noise fits at 390 px.",
+                "Column values consistently share a left alignment."
+              ],
+              "defects": [
+                "The desktop title letters nearly touch, and model names, prices and warranty text all use a similarly dense face.",
+                "Left-aligned prices provide a weaker numerical edge than the right-aligned columns elsewhere in the packet."
+              ],
+              "opportunity": "Reserve the heaviest face for branding and use clearer tabular numerals for the data."
+            },
+            "C": {
+              "score": 17,
+              "rationale": "The cool neutral card and teal top bar are well balanced, with subtle row striping and clear column divisions.",
+              "strengths": [
+                "The product drawings use consistent scale and distinct casing colors at 834 px.",
+                "The table's borders are visible without dominating the data."
+              ],
+              "defects": [
+                "At 390 px the clipping edge crosses the Birch illustration abruptly."
+              ],
+              "opportunity": "Give the scroll edge a clearer visual transition and shorten the illustration area."
+            },
+            "D": {
+              "score": 18,
+              "rationale": "Instrument drawings, a signal-like brand mark and coordinated technical colors create a recognizable product family.",
+              "strengths": [
+                "Three casing treatments help distinguish models.",
+                "The cool palette carries coherently through both tablet states."
+              ],
+              "defects": [
+                "The oversized art and unusually heavy type push the header toward a catalog presentation."
+              ],
+              "opportunity": "Keep distinctive illustrations but reduce their prominence against the decision data."
+            },
+            "E": {
+              "score": 12,
+              "rationale": "The browser confirms correct filtering and reset, with a mobile scroll cue and a conspicuous reset button.",
+              "strengths": [
+                "The tablet filtered image preserves Birch and Cedar with the right price and warranty values.",
+                "All top controls remain visible together at 390 px."
+              ],
+              "defects": [
+                "At 390 px a partial Birch illustration gives an overflow clue, but the dense toolbar can take a moment to parse.",
+                "The available exercise does not show reaching the final column by keyboard."
+              ],
+              "opportunity": "Keep the compact toolbar while making the scroll container's keyboard focus and extra columns obvious."
+            },
+            "F": {
+              "score": 7,
+              "rationale": "The same table and controls hold together across widths and interaction states, with no page overflow reported.",
+              "strengths": [
+                "Extracted mobile reset text reproduces the full source table.",
+                "The filtered layout redistributes space without losing either remaining model heading."
+              ],
+              "defects": [
+                "The table capture set omits a horizontally scrolled state, and extracted text provides no direct evidence of row-header scope."
+              ],
+              "opportunity": "Verify scoped row and column headers and capture the table scrolled to Cedar."
+            }
+          },
+          "total": 81,
+          "visual_problems": [
+            "The heavy display face crowds the title, model labels and emphasized values.",
+            "The illustrated header is taller than the two data rows in the filtered view.",
+            "The mobile clipping edge cuts through the Birch illustration."
+          ],
+          "effective_decisions": [
+            "The compact mobile toolbar locates actions beside the count and scroll cue.",
+            "Model drawings differentiate the equipment consistently.",
+            "Column divisions and row striping hold together after filtering."
+          ],
+          "blockers": []
+        },
+        "ui-92aca8": {
+          "dimensions": {
+            "A": {
+              "score": 14,
+              "rationale": "The banner establishes context clearly, but the hero and stacked card header delay the data, particularly on mobile.",
+              "strengths": [
+                "The standalone Specifications heading and count give the tool a clear starting point.",
+                "The filtered count explicitly identifies differing specifications."
+              ],
+              "defects": [
+                "At 390 px the first numeric row starts around 590 px down the page.",
+                "At 834 px the longer filtered count moves the controls to a new row."
+              ],
+              "opportunity": "Compress the banner at narrow widths and reserve a stable slot for count and controls at tablet width."
+            },
+            "B": {
+              "score": 13,
+              "rationale": "The straightforward sans serif is readable and right-aligned figures line up cleanly across model columns.",
+              "strengths": [
+                "Model headings and full numeric units remain legible at tablet and desktop.",
+                "The page title scales to a clear two-line heading at 390 px."
+              ],
+              "defects": [
+                "Operating noise wraps in the narrow row-header column.",
+                "Price gets stronger visual emphasis than throughput and warranty."
+              ],
+              "opportunity": "Use a little more row-header width and give high-throughput tradeoffs clearer type emphasis."
+            },
+            "C": {
+              "score": 15,
+              "rationale": "The teal shell and white grid have a calm instrument-console palette, with some avoidable visual competition.",
+              "strengths": [
+                "Restrained table striping separates the eight rows.",
+                "A filled teal switch distinctly marks the on state."
+              ],
+              "defects": [
+                "Contour lines cross the tablet headline and subtitle area.",
+                "At 390 px the tall opening and separate reset and scroll rows stretch the upper half."
+              ],
+              "opportunity": "Move the contour motif clear of the tablet text and compress the mobile toolbar."
+            },
+            "D": {
+              "score": 17,
+              "rationale": "A dark teal instrument palette, product glyphs and contour motif create a consistent topical identity.",
+              "strengths": [
+                "Icons differentiate the three model headers without using large product images.",
+                "The banner motif is omitted in the narrow composition."
+              ],
+              "defects": [
+                "The large marketing-style banner carries more visual weight than the comparison in the initial mobile view."
+              ],
+              "opportunity": "Carry the identity in a smaller banner or through the table's own header."
+            },
+            "E": {
+              "score": 12,
+              "rationale": "Filtering and reset pass, and the narrow view gives scrolling an explicit full-width cue.",
+              "strengths": [
+                "The filtered tablet image shows the correct surviving columns and rows.",
+                "Hide Alder A2 and Reset comparison have direct action labels."
+              ],
+              "defects": [
+                "On mobile the hint is prominent, but all data starts after several stacked control bands.",
+                "The capture shows no right edge continuation in the initial Birch column."
+              ],
+              "opportunity": "Bring the controls and table closer together and cue additional columns at the clipping edge."
+            },
+            "F": {
+              "score": 7,
+              "rationale": "The same table data and controls persist across widths and reset with no page overflow in the browser report.",
+              "strengths": [
+                "A caption appears in the extracted comparison text.",
+                "The 390 px reset capture keeps the full labels and units for the visible models."
+              ],
+              "defects": [
+                "Wrapping changes toolbar placement at the same tablet width after filtering.",
+                "The browser could not resolve the desktop and tablet reset button contrast automatically because of a reported overlap."
+              ],
+              "opportunity": "Stabilize the toolbar at 834 px and verify reset contrast and mobile scroll focus."
+            }
+          },
+          "total": 78,
+          "visual_problems": [
+            "The tablet contour illustration crosses behind headline text.",
+            "The first value is pushed to about 590 px on mobile.",
+            "The tablet filter state wraps the toolbar to a new line."
+          ],
+          "effective_decisions": [
+            "Right-aligned prices and measurements aid comparison.",
+            "The mobile scrolling hint gets a dedicated readable band.",
+            "The filtered count explains that the remaining specifications differ."
+          ],
+          "blockers": []
+        }
+      },
+      "pairs": [
+        {
+          "ids": [
+            "ui-c951c1",
+            "ui-09e4ff"
+          ],
+          "preference": "ui-09e4ff",
+          "confidence": "high",
+          "rationale": "Its smaller model glyphs and lighter data typography put price, throughput and warranty first. At 390 px both visible models and all row labels fit cleanly within the grid."
+        },
+        {
+          "ids": [
+            "ui-c951c1",
+            "ui-92aca8"
+          ],
+          "preference": "ui-c951c1",
+          "confidence": "medium",
+          "rationale": "It reaches the first value roughly 190 px sooner on mobile and keeps the tablet toolbar in place when filtering. The other output has cleaner numerals, but its banner and stacked controls demand more scrolling."
+        },
+        {
+          "ids": [
+            "ui-92aca8",
+            "ui-09e4ff"
+          ],
+          "preference": "ui-09e4ff",
+          "confidence": "high",
+          "rationale": "The compact table and consistent toolbar prioritize the comparison across widths. Its mobile rows keep full labels on one line and its tablet heading stays clear of decorative graphics."
+        }
+      ]
+    },
+    "d4": {
+      "outputs": {
+        "ui-428833": {
+          "dimensions": {
+            "A": {
+              "score": 18,
+              "rationale": "The page purpose, progress, form and primary action have an immediately clear reading order at all three widths.",
+              "strengths": [
+                "At 390 px the numbered progress rail converts into an evenly spaced horizontal stepper.",
+                "The desktop success card gives the confirmation and reference their own focal area."
+              ],
+              "defects": [
+                "On mobile, the invalid email message and permanent help each wrap, lengthening the form."
+              ],
+              "opportunity": "Bring the format guidance and email help together in the error state."
+            },
+            "B": {
+              "score": 14,
+              "rationale": "The restrained serif page title and quieter sans-serif form create a useful division between page context and interaction.",
+              "strengths": [
+                "The desktop and mobile titles remain clear at their different scales.",
+                "Required text is close to each field label, and the reference code has a distinct, readable treatment."
+              ],
+              "defects": [
+                "At 390 px the smallest step labels carry much of the progress information."
+              ],
+              "opportunity": "Give the mobile inactive step labels a little more size or weight."
+            },
+            "C": {
+              "score": 18,
+              "rationale": "Pale olive, dark green and white keep attention on the work, with a clear red validation accent.",
+              "strengths": [
+                "The progress rail and form footer meet cleanly at desktop and tablet.",
+                "The mobile Continue button spans the form, balancing the single-column inputs."
+              ],
+              "defects": [
+                "The double red outline around the invalid mobile field is visually heavy."
+              ],
+              "opportunity": "Clarify focus and validation with a lighter, visibly distinct pair of treatments."
+            },
+            "D": {
+              "score": 17,
+              "rationale": "Warm neutrals, a small schematic and facilities typography form a measured identity.",
+              "strengths": [
+                "The diagram has low visual contrast and does not get in the way of progress.",
+                "The green button, progress marker and success accent form a consistent palette."
+              ],
+              "defects": [
+                "The success page swaps the progress layout for a generic centered card, losing part of the flow's visual context."
+              ],
+              "opportunity": "Retain a small completion cue that relates back to the numbered progress pattern."
+            },
+            "E": {
+              "score": 13,
+              "rationale": "The required labels, full-width mobile action and inline correction make the first step easy to use, and the supplied workflow reaches success.",
+              "strengths": [
+                "The bad email remains editable with a visible format example, populated site name and the first step active.",
+                "The browser verifies the desktop return to site details, preserved data in review, and FM-2047."
+              ],
+              "defects": [
+                "Email guidance competes with the immediately adjacent correction when validation is active.",
+                "The success capture confirms submission without identifying Harbor Annex."
+              ],
+              "opportunity": "Repeat the submitted site in the confirmation to disambiguate the request."
+            },
+            "F": {
+              "score": 8,
+              "rationale": "The form, responsive stepper and outcome use consistent card and input styling, with no horizontal overflow at all three measured widths.",
+              "strengths": [
+                "The flow report confirms that all four review values survive the tested Back sequence.",
+                "The invalid field expands the card and leaves Continue visible."
+              ],
+              "defects": [
+                "Automated contrast checking could not resolve the step numbers because of a pseudo-element background, or the 390 px Review label."
+              ],
+              "opportunity": "Verify focus order, step-label contrast and announcement of field errors and success."
+            }
+          },
+          "total": 88,
+          "visual_problems": [
+            "The mobile email help and validation text both wrap below the same input.",
+            "The focused red email outline has a heavy double edge.",
+            "The final card removes the earlier progress treatment."
+          ],
+          "effective_decisions": [
+            "Inline required labels stay close to the labels they qualify.",
+            "The mobile Continue button is full width.",
+            "The narrow validation message provides a concrete email format."
+          ],
+          "blockers": []
+        },
+        "ui-30f685": {
+          "dimensions": {
+            "A": {
+              "score": 17,
+              "rationale": "The navy progress area and white form create a strong split, with a short mobile path from progress to fields.",
+              "strengths": [
+                "At 390 px the first action comes soon after the two inputs.",
+                "The desktop success state keeps the steps and puts the outcome and reference in the form area."
+              ],
+              "defects": [
+                "A sizeable blank area remains below Continue at desktop and tablet.",
+                "The Site details instruction largely restates the labels directly below it."
+              ],
+              "opportunity": "Tighten the desktop and tablet panel height around the active content."
+            },
+            "B": {
+              "score": 12,
+              "rationale": "Large headings are clear, but the very heavy face recurs in small controls and competes with more useful content.",
+              "strengths": [
+                "The field entry type is open and easy to read at 390 px.",
+                "The placeholder formats and dark form text are distinct in the mobile state."
+              ],
+              "defects": [
+                "Heavy progress labels and the compact reference lettering look dense.",
+                "The small Required labels sit far across desktop fields from their names."
+              ],
+              "opportunity": "Use one step lighter for small labels and place Required next to the field names."
+            },
+            "C": {
+              "score": 16,
+              "rationale": "The navy and lime palette separates progress from the form clearly, though the two-panel composition is visually weighted to the left.",
+              "strengths": [
+                "The lime active step and completion check make state easy to pick out.",
+                "The background grid remains contained in the desktop and tablet progress panel."
+              ],
+              "defects": [
+                "On desktop and tablet the large navy sidebar and shadow do more visual work than the two-field form needs.",
+                "The email error frame mixes blue and red rings in a tight space."
+              ],
+              "opportunity": "Reduce the panel's minimum height and refine the focused invalid state."
+            },
+            "D": {
+              "score": 18,
+              "rationale": "The navy panel, lime mark and lightly drawn schematic feel specific to a facilities service and survive the mobile reflow.",
+              "strengths": [
+                "Brand mark and step accents use the same distinctive color pairing.",
+                "The desktop success page retains the same progress shell and marks each step complete."
+              ],
+              "defects": [
+                "The top-right Facilities services label adds a secondary focus to the already complete brand and request header."
+              ],
+              "opportunity": "Let the wordmark and request title carry the mobile header."
+            },
+            "E": {
+              "score": 12,
+              "rationale": "Mobile validation leaves the invalid field and Continue visible, and the browser confirms return, review and submission.",
+              "strengths": [
+                "The email error adds a text line and icon directly under the field.",
+                "The original site is named in the final success panel."
+              ],
+              "defects": [
+                "The validation message says to enter a valid email without repeating the format hint that disappeared when the invalid value was typed.",
+                "At wider widths the Required tags are physically separated from their labels."
+              ],
+              "opportunity": "Include an email example in the visible error message."
+            },
+            "F": {
+              "score": 8,
+              "rationale": "The shared request frame adapts from a sidebar to a top panel and remains intact after submission without reported page overflow.",
+              "strengths": [
+                "The browser successfully selects the native HVAC option and verifies all four review values after Back.",
+                "The mobile error adds space under the field without moving the progress or labels out of view."
+              ],
+              "defects": [
+                "The report leaves the decorative Continue arrow's contrast check incomplete, and the transition focus behavior was not exercised."
+              ],
+              "opportunity": "Check the keyboard path through validation, step changes and success."
+            }
+          },
+          "total": 83,
+          "visual_problems": [
+            "The large navy panel and card height leave excess space on desktop and tablet.",
+            "Required sits on the far edge of each input label row.",
+            "Small bold text and the double blue-red email outline are visually dense."
+          ],
+          "effective_decisions": [
+            "Mobile progress and fields fit in a compact card.",
+            "Lime clearly identifies current and completed states.",
+            "The success card preserves progress and repeats the submitted site."
+          ],
+          "blockers": []
+        },
+        "ui-762223": {
+          "dimensions": {
+            "A": {
+              "score": 18,
+              "rationale": "The form has a clear sequence from overall request through progress, active step, inputs and Continue.",
+              "strengths": [
+                "The active step has both a highlight in the rail and an explicit Step 1 of 3 label in the form.",
+                "At 390 px the validation message and primary action fit in the same visible card."
+              ],
+              "defects": [
+                "Step 1 of 3 repeats the immediately preceding mobile progress signal.",
+                "The desktop confirmation has considerable empty space below the reference."
+              ],
+              "opportunity": "Remove the duplicate progress cue at narrow widths if the accessible equivalent remains clear."
+            },
+            "B": {
+              "score": 13,
+              "rationale": "The serif headings make page and section levels distinct, with clear entered values in a quieter body face.",
+              "strengths": [
+                "At tablet width the step title scales down and labels remain aligned to the inputs.",
+                "The reference is visually separated with a compact, code-like type treatment."
+              ],
+              "defects": [
+                "The small labels, error copy and Continue use an especially heavy face.",
+                "The heading and the section title are close in visual treatment on mobile."
+              ],
+              "opportunity": "Lighten small functional text and keep the top heading visually dominant."
+            },
+            "C": {
+              "score": 18,
+              "rationale": "Soft greens and cream separate the progress and form zones while retaining a clear action color.",
+              "strengths": [
+                "The current step has both an active number and a tinted background.",
+                "The floor plan stays behind quiet space at desktop and is absent from the narrow progress bar."
+              ],
+              "defects": [
+                "The red outline around the focused mobile email field comes close to the label above it."
+              ],
+              "opportunity": "Add a little vertical room for the email focus outline."
+            },
+            "D": {
+              "score": 19,
+              "rationale": "The floor-plan schematic, colored progress rail and typography make an understated, recognizable Fieldmark identity.",
+              "strengths": [
+                "The same shell and three checkmarks make the successful outcome feel continuous.",
+                "The illustration evokes site work without occupying the form area."
+              ],
+              "defects": [
+                "At 390 px Facilities operations competes slightly with the wordmark."
+              ],
+              "opportunity": "Keep the brand mark and move or suppress the ancillary descriptor in the narrow header."
+            },
+            "E": {
+              "score": 14,
+              "rationale": "The prominent current step, direct required labels and format example support correction, with a successful tested return and submission.",
+              "strengths": [
+                "The invalid-email capture keeps Harbor Annex, shows the correction directly below the field and leaves Continue visible.",
+                "Confirmation names Harbor Annex and makes FM-2047 easy to pick out."
+              ],
+              "defects": [
+                "The narrow Continue button remains right-aligned with less tap width than the form.",
+                "Keyboard progression and success announcement remain to be confirmed."
+              ],
+              "opportunity": "Use the available mobile width for the primary action."
+            },
+            "F": {
+              "score": 8,
+              "rationale": "The panel and progress component keep their structure from initial entry through success and reflow cleanly at all three widths.",
+              "strengths": [
+                "The browser checks the HVAC native select, persistence across the tested Back sequence and all four review values.",
+                "The form's invalid state expands within the existing card without clipping."
+              ],
+              "defects": [
+                "The supplied automation leaves the decorative arrow contrast incomplete and does not exercise review-to-edit focus or missing-system validation."
+              ],
+              "opportunity": "Verify keyboard focus and announcements across transitions, including the unselected property system."
+            }
+          },
+          "total": 90,
+          "visual_problems": [
+            "The narrow view repeats the current step in the rail and heading area.",
+            "Small labels, error copy and the primary action are very heavy.",
+            "The desktop confirmation leaves a large blank area below the reference."
+          ],
+          "effective_decisions": [
+            "The current step combines number, label and background.",
+            "The mobile error shows an immediately usable correction example.",
+            "The success state completes the stepper, names the site and highlights the reference."
+          ],
+          "blockers": []
+        }
+      },
+      "pairs": [
+        {
+          "ids": [
+            "ui-762223",
+            "ui-428833"
+          ],
+          "preference": "ui-762223",
+          "confidence": "medium",
+          "rationale": "Its compact mobile stepper and error treatment keep the action close, and completed progress plus the site name improve confirmation. The other entry has lighter small text and a wider mobile action."
+        },
+        {
+          "ids": [
+            "ui-30f685",
+            "ui-428833"
+          ],
+          "preference": "ui-428833",
+          "confidence": "medium",
+          "rationale": "Its labels, required markers and email guidance are easier to scan as one unit, while the short, quieter desktop card better fits a two-field step. The navy entry has stronger confirmation continuity and more compact initial mobile content."
+        },
+        {
+          "ids": [
+            "ui-30f685",
+            "ui-762223"
+          ],
+          "preference": "ui-762223",
+          "confidence": "high",
+          "rationale": "It uses a smaller desktop area, puts required information alongside the inputs and supplies an example in the actual error. Both preserve completed progress and identify the submitted site on success."
+        }
+      ]
+    },
+    "d5": {
+      "outputs": {
+        "ui-022b7d": {
+          "dimensions": {
+            "A": {
+              "score": 17,
+              "rationale": "The title, stop list and filter are easy to locate. Phone rows group each stage clearly but use much of the first screen.",
+              "strengths": [
+                "Stop names, ETAs and delays align across the desktop and tablet.",
+                "Phone rows pair ETA and delay and put review beneath a divider."
+              ],
+              "defects": [
+                "The header and queue summary both give the stop count.",
+                "On the phone, the third action lands near the bottom of the first screen."
+              ],
+              "opportunity": "Reduce the heading and row padding while retaining the two mobile groupings."
+            },
+            "B": {
+              "score": 13,
+              "rationale": "The heavy geometric face establishes a strong hierarchy and makes the ETA figures easy to find.",
+              "strengths": [
+                "City names use a lighter weight than stop names.",
+                "ETA numerals stand out at all three widths."
+              ],
+              "defects": [
+                "Tiny, heavily tracked uppercase desktop column labels feel denser than the body.",
+                "On mobile the heading, card title and stop names all use a heavy weight."
+              ],
+              "opportunity": "Give utility labels a little more size and less weight."
+            },
+            "C": {
+              "score": 17,
+              "rationale": "Dark teal, cream and rust give the queue a coherent palette, and the active filter stands out immediately.",
+              "strengths": [
+                "Late rows use rust labels and an aligned leading marker.",
+                "The dark fill clearly separates the active toggle from the off state."
+              ],
+              "defects": [
+                "Mobile inner separators and outer row borders create a double rhythm.",
+                "The tablet review status and action have little breathing room compared with the stop column."
+              ],
+              "opportunity": "Tighten the mobile spacing and rebalance the tablet review area."
+            },
+            "D": {
+              "score": 18,
+              "rationale": "The masthead and warm palette give Harborline a recognizable identity while keeping exception colors meaningful.",
+              "strengths": [
+                "The compact stripe mark repeats across widths.",
+                "Teal indicates controls and rust consistently denotes late stops."
+              ],
+              "defects": [
+                "Repeated lateness cues and very heavy text make the queue somewhat more styled than the underlying task requires."
+              ],
+              "opportunity": "Reserve the heaviest weight for the page title and primary row labels."
+            },
+            "E": {
+              "score": 14,
+              "rationale": "The filter is obvious in both states and all three stops retain visible 44 px-tall mobile actions.",
+              "strengths": [
+                "The active capture shows two late stops and Riverfront still reads 24 min late after review.",
+                "Reset visibly restores Oak Street. The runner reports no overflow or automated accessibility violations."
+              ],
+              "defects": [
+                "Once reviewed, the disabled button retains the same Acknowledge wording as actionable rows."
+              ],
+              "opportunity": "Give the completed button an unambiguous completion label or replace its visual affordance with a status."
+            },
+            "F": {
+              "score": 8,
+              "rationale": "Repeated row and state patterns hold together across the three captures. The runner confirms the filter exposes its pressed state.",
+              "strengths": [
+                "Content and alignment survive the card transformation.",
+                "The completed row retains the layout and location of the active control."
+              ],
+              "defects": [
+                "At desktop and tablet, the unlabeled action column reads as part of the Review heading.",
+                "The packet does not expose the result source or keyboard traversal."
+              ],
+              "opportunity": "Make the desktop action grouping explicit and confirm focus behavior."
+            }
+          },
+          "total": 87,
+          "visual_problems": [
+            "Repeated stop counts reduce the prominence of the late total.",
+            "The tall phone rows carry two levels of divider.",
+            "The review text and button crowd together at 834 px."
+          ],
+          "effective_decisions": [
+            "Use a filled active toggle and explicit filtered count.",
+            "Group city beneath stop name and align ETA figures.",
+            "Make lateness persist visibly beside the green Reviewed state."
+          ],
+          "blockers": [],
+          "automation_limitations": [
+            "Only Riverfront acknowledgement was exercised by the supplied scenarios. Keyboard operation is not captured."
+          ]
+        },
+        "ui-36de44": {
+          "dimensions": {
+            "A": {
+              "score": 19,
+              "rationale": "The summary surfaces open-shift counts and the mobile grid brings the delay and ETA onto the first two lines of each stop.",
+              "strengths": [
+                "Desktop and tablet use a labeled Action column.",
+                "All three mobile buttons fit with substantially more room beneath the queue than the other outputs."
+              ],
+              "defects": [
+                "The queue subtitle and headline statistic repeat the total in the unfiltered state."
+              ],
+              "opportunity": "Use the queue subtitle principally to explain the current filter."
+            },
+            "B": {
+              "score": 13,
+              "rationale": "The condensed, bold headings distinguish the screen from the smaller operational labels without crowding the rows.",
+              "strengths": [
+                "ETA figures align consistently in the desktop and tablet columns.",
+                "The mobile time uses a heavier numeral weight to separate it from ETA."
+              ],
+              "defects": [
+                "On tablet the light-weight city and review labels recede next to the dark names and status badges."
+              ],
+              "opportunity": "Strengthen secondary label contrast and preserve the clear numeric emphasis."
+            },
+            "C": {
+              "score": 18,
+              "rationale": "Navy, pale blue and rust organize the queue, with a restrained rail that makes late rows easy to locate.",
+              "strengths": [
+                "The card and masthead share clean left edges.",
+                "The lateness rail remains visible when a row changes to Reviewed."
+              ],
+              "defects": [
+                "The rail and pill dot both encode lateness.",
+                "Tablet and desktop leave a broad gap between the title and metrics."
+              ],
+              "opportunity": "Keep the late rail, and simplify the redundant pill decoration."
+            },
+            "D": {
+              "score": 18,
+              "rationale": "The striped mark, teal actions and exception cues make a coherent dispatch UI across breakpoints.",
+              "strengths": [
+                "The three counts behave as a shift summary, including the update to 1 Reviewed.",
+                "Switch, badges and card have the same treatment at each width."
+              ],
+              "defects": [
+                "The single underline below desktop metrics feels disconnected from the rest of the queue rules."
+              ],
+              "opportunity": "Integrate the summary strip more tightly with the card or headline grid."
+            },
+            "E": {
+              "score": 14,
+              "rationale": "The compact phone rows are easy to act on and the captured filtered state communicates both selection and completion.",
+              "strengths": [
+                "The selected toggle changes track and background and the subtitle names the two late stops.",
+                "Riverfront shows Reviewed and keeps its delay with a visibly inactive action."
+              ],
+              "defects": [
+                "The inactive button still says Acknowledge after review.",
+                "Automated mobile contrast was inconclusive for the late rows' ETA text."
+              ],
+              "opportunity": "Verify the computed contrast for mobile ETA and clarify the completed action label."
+            },
+            "F": {
+              "score": 9,
+              "rationale": "Repeated rows, stable state footprints and a clear small-screen reflow show strong layout integrity. The report exposes named article elements and time elements.",
+              "strengths": [
+                "The desktop grid remains intact at 834 px.",
+                "All viewports and both browser scenarios run without errors or overflow."
+              ],
+              "defects": [
+                "The pseudo-element in the late article prevents automatic contrast evaluation for some mobile text."
+              ],
+              "opportunity": "Verify the late indicator layer and ETA contrast together."
+            }
+          },
+          "total": 91,
+          "visual_problems": [
+            "The repeated total competes slightly with the filter status.",
+            "The summary underline feels detached from the queue.",
+            "The muted action button retains Acknowledge after review."
+          ],
+          "effective_decisions": [
+            "Pair a live reviewed count with row-level feedback.",
+            "Align the late badge and ETA at the top right of each phone row.",
+            "Preserve a separate action column through tablet width."
+          ],
+          "blockers": [],
+          "automation_limitations": [
+            "The mobile accessibility scan could not compute ETA label and value contrast on the two late rows because of the article pseudo-element. Only Riverfront acknowledgement was exercised and keyboard operation is not captured."
+          ]
+        },
+        "ui-4afd48": {
+          "dimensions": {
+            "A": {
+              "score": 17,
+              "rationale": "The centered stop card is easy to follow on wide screens, with a roomier three-band stack on phones.",
+              "strengths": [
+                "Names, city, ETA and delay stay legible at 834 px.",
+                "Status and acknowledgement remain paired in each mobile row."
+              ],
+              "defects": [
+                "The district, headline and metadata occupy three separate bands before the queue.",
+                "Mobile delay badges sit one band below the names, slowing an exception scan."
+              ],
+              "opportunity": "Bring ETA and delay closer to the stop name on mobile."
+            },
+            "B": {
+              "score": 13,
+              "rationale": "Weight and size give the ETA figures, names and page title clear roles.",
+              "strengths": [
+                "Tracked headings distinguish column labels from values.",
+                "Stop names and city labels read cleanly at 390 px."
+              ],
+              "defects": [
+                "Mobile ETA labels and pending states are lighter than the rest of the row.",
+                "The uppercased district has a strong typographic voice relative to its supporting role."
+              ],
+              "opportunity": "Pull back the district label and give phone status labels more emphasis."
+            },
+            "C": {
+              "score": 17,
+              "rationale": "Muted blue, rust and green produce a tidy and readable enterprise palette.",
+              "strengths": [
+                "Light row dividers and restrained shadow give the card a clean edge.",
+                "Board widths and gutters feel consistent between desktop and tablet."
+              ],
+              "defects": [
+                "The mobile ETA and delay bands leave wide gaps.",
+                "The card's blue-gray labels and margins make review status visually quiet."
+              ],
+              "opportunity": "Compact the horizontal and vertical spacing around mobile status."
+            },
+            "D": {
+              "score": 16,
+              "rationale": "The navy masthead, blue outline controls and restrained state badges are consistent and appropriate.",
+              "strengths": [
+                "A distinct mark anchors the masthead.",
+                "State colors carry through the filtered and unfiltered screens."
+              ],
+              "defects": [
+                "The large pale surface and generic table treatments make the identity depend mainly on the masthead."
+              ],
+              "opportunity": "Carry a restrained Harborline visual detail into the queue summary."
+            },
+            "E": {
+              "score": 14,
+              "rationale": "The filter and review actions are easy to find and the captures show the full core workflow.",
+              "strengths": [
+                "The active thumb and helper text show that two late stops are displayed.",
+                "Riverfront remains at 24 min late after review, and reset restores all three rows."
+              ],
+              "defects": [
+                "The disabled action still uses the active action wording.",
+                "The roomy phone rows place the third action close to the viewport edge."
+              ],
+              "opportunity": "Compact the phone list and clarify the final control state."
+            },
+            "F": {
+              "score": 8,
+              "rationale": "The row system adapts cleanly and the runner confirms the pressed state, no viewport overflow and no automated accessibility violations.",
+              "strengths": [
+                "The filtered card preserves the spacing and alignment of the full list.",
+                "The button and state placements repeat from row to row."
+              ],
+              "defects": [
+                "The action column has no visible header label on desktop or tablet.",
+                "The packet does not expose the result source or keyboard traversal."
+              ],
+              "opportunity": "Label the action column and confirm accessible control naming and focus."
+            }
+          },
+          "total": 85,
+          "visual_problems": [
+            "The queue starts below three separate context lines.",
+            "The mobile rows spread related details across three bands.",
+            "Wide-screen actions have no column label."
+          ],
+          "effective_decisions": [
+            "Center the wide-view board and keep its columns aligned at 834 px.",
+            "Use visible words alongside the delay and review icons.",
+            "Preserve action placement and row information across filtering."
+          ],
+          "blockers": [],
+          "automation_limitations": [
+            "Only Riverfront acknowledgement was exercised by the supplied scenarios. Keyboard operation is not captured."
+          ]
+        }
+      },
+      "pairs": [
+        {
+          "ids": [
+            "ui-4afd48",
+            "ui-022b7d"
+          ],
+          "preference": "ui-022b7d",
+          "confidence": "medium",
+          "rationale": "The cream and teal treatment has a more recognizable identity, its solid active filter is easier to spot, and the mobile divider clearly groups the review controls. Both have roomy mobile rows."
+        },
+        {
+          "ids": [
+            "ui-4afd48",
+            "ui-36de44"
+          ],
+          "preference": "ui-36de44",
+          "confidence": "high",
+          "rationale": "The upper-right delay and ETA grouping brings all mobile actions substantially higher, and the reviewed total gives a useful shift-level signal. Desktop also labels the action column."
+        },
+        {
+          "ids": [
+            "ui-36de44",
+            "ui-022b7d"
+          ],
+          "preference": "ui-36de44",
+          "confidence": "medium",
+          "rationale": "The compact phone cards and live reviewed summary do more for fast dispatch scanning. The warm palette and darker active toggle make ui-022b7d a close visual alternative."
+        }
+      ]
+    },
+    "d6": {
+      "outputs": {
+        "ui-8ee596": {
+          "dimensions": {
+            "A": {
+              "score": 18,
+              "rationale": "The safety notice comes before the numbered procedure, and the browse tree, prose and outline are distinct on desktop.",
+              "strengths": [
+                "All three procedure steps and the stop-and-notify instruction are visible in the desktop and tablet captures.",
+                "The mobile outline is grouped into one compact inset after the warning."
+              ],
+              "defects": [
+                "The very large mobile title and three-line summary push the first step below the midpoint of the initial viewport.",
+                "The expanded navigation covers the title, safety notice and outline on the phone."
+              ],
+              "opportunity": "Trim the title stack and give the open menu a more explicit dismissal affordance."
+            },
+            "B": {
+              "score": 14,
+              "rationale": "Serif headings and relaxed sans-serif prose establish a clear manual-like type hierarchy.",
+              "strengths": [
+                "The section titles are visibly distinct from the body and numbered markers.",
+                "The desktop article has a readable measure and the phone body preserves comfortable line height."
+              ],
+              "defects": [
+                "The desktop hero title is disproportionately large beside the thin outline links.",
+                "The heaviest small text, especially menu and current page labels, has a dense appearance."
+              ],
+              "opportunity": "Ease the heaviest utility weights while keeping the serif headings."
+            },
+            "C": {
+              "score": 18,
+              "rationale": "Warm paper tones, dark green and a single amber notice give the interface balance and keep attention on the safety exception.",
+              "strengths": [
+                "The tinted desktop navigation rail separates browsing from reading.",
+                "Borders, dividers and circular markers form a coherent three-step rhythm."
+              ],
+              "defects": [
+                "The phone menu boundary crosses the first step heading when open.",
+                "The desktop outline's fine links are comparatively low-emphasis."
+              ],
+              "opportunity": "Underpin desktop links with a consistent affordance and keep the open-menu boundary clear of text."
+            },
+            "D": {
+              "score": 19,
+              "rationale": "The green masthead, line mark, editorial heading face and cream field create a recognizable technical-manual identity.",
+              "strengths": [
+                "The numbered procedure and warning retain their styling across all widths.",
+                "The visual character stays focused on work instructions."
+              ],
+              "defects": [
+                "The dense black weight in the brand and outline labels slightly interrupts the otherwise restrained palette and type."
+              ],
+              "opportunity": "Reduce the density of small utility labels without losing the distinctive title treatment."
+            },
+            "E": {
+              "score": 13,
+              "rationale": "Equipment expands on mobile, and the tablet Verify flow capture clearly marks both the link and the destination.",
+              "strengths": [
+                "The menu control is visible in the phone masthead and open categories have generous row height.",
+                "The selected sidebar entry and bold stop-and-notify instruction are easy to locate."
+              ],
+              "defects": [
+                "The open menu retains the hamburger icon and Docs menu label despite obscuring the safety notice.",
+                "Desktop outline entries drop the visible underline used at smaller widths."
+              ],
+              "opportunity": "Show a close state on the phone menu and use a persistent visual link cue on desktop."
+            },
+            "F": {
+              "score": 9,
+              "rationale": "The layout keeps the reading column intact while moving the same outline in-line on narrower screens, and browser checks report no overflow or automated violations.",
+              "strengths": [
+                "The clicked tablet outline link and step marker receive matching active state styling.",
+                "Equipment exposes aria-expanded and reveals both expected child links in the supplied scenario."
+              ],
+              "defects": [
+                "The open mobile overlay crosses the first step heading, and focus behavior is not in the packet."
+              ],
+              "opportunity": "Check focus and dismissal behavior for the mobile menu while keeping the successful tablet target feedback."
+            }
+          },
+          "total": 91,
+          "visual_problems": [
+            "The heading, summary and callout push the first phone step past the midpoint of the viewport.",
+            "The expanded phone menu covers the warning and cuts across a heading.",
+            "Desktop outline links lose the underline shown at smaller widths."
+          ],
+          "effective_decisions": [
+            "Use a distinct serif and sans-serif hierarchy with a warm manual palette.",
+            "Give the warning a clear amber treatment above all procedure steps.",
+            "Highlight both the clicked outline item and its step marker."
+          ],
+          "blockers": [],
+          "automation_limitations": [
+            "The supplied scenarios did not open supporting article links or exercise keyboard navigation. The tablet target was already visible before clicking, so successful visibility alone does not demonstrate anchor scrolling from off-screen."
+          ]
+        },
+        "ui-3ba4ae": {
+          "dimensions": {
+            "A": {
+              "score": 18,
+              "rationale": "The short summary, compact warning and small inline outline reach the procedure quickly, especially on the phone.",
+              "strengths": [
+                "Desktop article, left tree and right outline form a clear three-column reading order.",
+                "The phone Verify flow heading appears earlier than in either of the other captured layouts."
+              ],
+              "defects": [
+                "Service documentation is repeated in the desktop masthead and navigation.",
+                "The opened phone menu covers the warning and first step."
+              ],
+              "opportunity": "Remove the duplicate navigation label and make the open menu's relationship to the article explicit."
+            },
+            "B": {
+              "score": 13,
+              "rationale": "A compact system of dark sans-serif headings and blue links reads cleanly at every width.",
+              "strengths": [
+                "Body text wraps into comfortable lines, with a bold final direction.",
+                "Step numbers, titles and prose are distinguishable at small sizes."
+              ],
+              "defects": [
+                "The title and step headings use a tight, heavy style, especially in the mobile capture.",
+                "The desktop title visually dominates the short summary and procedure."
+              ],
+              "opportunity": "Loosen heading tracking slightly and scale the hero more gently."
+            },
+            "C": {
+              "score": 17,
+              "rationale": "Neutral surfaces and fine rules make the content feel open, with blue for links and amber for the warning.",
+              "strengths": [
+                "The selected blue navigation item and nesting rule make hierarchy evident.",
+                "The outline can be recognized reliably by the visible underlines at all widths."
+              ],
+              "defects": [
+                "The white masthead and full-height pale sidebar provide limited separation from the reading pane.",
+                "The expanded phone panel fills most of the upper viewport before the article reappears."
+              ],
+              "opportunity": "Give the browse rail a restrained, distinct surface and tighten the open phone menu."
+            },
+            "D": {
+              "score": 16,
+              "rationale": "The squared blue mark and step badges are consistent and practical for technical documentation.",
+              "strengths": [
+                "Blue consistently links navigation and step markers.",
+                "Compact layouts and the plain warning are appropriate for the field workflow."
+              ],
+              "defects": [
+                "The article carries little Atlas Works character beyond the blue accents and masthead mark."
+              ],
+              "opportunity": "Carry one brand detail into the article's supporting elements while keeping the dense layout."
+            },
+            "E": {
+              "score": 13,
+              "rationale": "Both scenarios pass and the underlined outline stays discoverable. The mobile browse state makes the hierarchy visible.",
+              "strengths": [
+                "Equipment visibly expands and the selected procedure is clearly marked.",
+                "The concise phone layout puts more of the procedure above the fold before the menu opens."
+              ],
+              "defects": [
+                "An open menu still reads Docs menu with a hamburger icon.",
+                "The tablet click tones the link but gives the destination heading no clear visual highlight."
+              ],
+              "opportunity": "Make the close affordance explicit and add a target indication to the selected procedure section."
+            },
+            "F": {
+              "score": 8,
+              "rationale": "The article and navigation reflow without overflow, and repeatable section and current-page treatments are visible.",
+              "strengths": [
+                "The runner confirmed the equipment state and found no automated accessibility violations.",
+                "Sidebar nesting and square step badges remain consistent across captured sizes."
+              ],
+              "defects": [
+                "The menu overlay obscures safety content while open.",
+                "The targeted tablet section looks essentially unchanged after activation."
+              ],
+              "opportunity": "Define explicit navigation-open and anchor-target state treatments within the component patterns."
+            }
+          },
+          "total": 85,
+          "visual_problems": [
+            "The expanded phone menu obscures the warning and first step.",
+            "The tight heavy headings make the mobile typography feel compressed.",
+            "The tablet target heading receives no obvious change after clicking Verify flow."
+          ],
+          "effective_decisions": [
+            "Bring the first step up with a compact warning and in-line outline.",
+            "Underline outline links consistently at all widths.",
+            "Keep the stop-and-notify direction bold in a separate paragraph."
+          ],
+          "blockers": [],
+          "automation_limitations": [
+            "The supplied scenarios did not open supporting article links or exercise keyboard navigation. The tablet target was already visible before clicking, so successful visibility alone does not demonstrate anchor scrolling from off-screen."
+          ]
+        },
+        "ui-44fdde": {
+          "dimensions": {
+            "A": {
+              "score": 17,
+              "rationale": "The warning, in-page outline and numbered steps read in a useful order, with a particularly clear top-of-article structure on desktop.",
+              "strengths": [
+                "Desktop shows both navigation rails beside a readable article.",
+                "The tablet and phone use a tinted in-page card after the warning."
+              ],
+              "defects": [
+                "On mobile the warning and outline take more vertical room, so Verify flow begins close to the bottom of the initial viewport.",
+                "The open mobile menu pushes the article and warning substantially down."
+              ],
+              "opportunity": "Reduce mobile gaps around the warning and outline while keeping all three links visible."
+            },
+            "B": {
+              "score": 13,
+              "rationale": "The compact sans-serif heading system, roomy prose and clear warning label fit an operational guide.",
+              "strengths": [
+                "The desktop and tablet summary is a single readable line.",
+                "The stronger final instruction is easy to pick out in every capture."
+              ],
+              "defects": [
+                "The phone first heading and article title appear quite tightly tracked.",
+                "Desktop outline links have a similar muted treatment to prose."
+              ],
+              "opportunity": "Ease tracking in the smallest headings and give desktop links greater typographic distinction."
+            },
+            "C": {
+              "score": 18,
+              "rationale": "The masthead, sage surfaces, yellow warning and fine neutral separators form a balanced, restrained system.",
+              "strengths": [
+                "The warning's left stripe and icon are prominent without crowding the text.",
+                "The expanded phone navigation is a bordered in-flow card, with the rest of the article intact below it."
+              ],
+              "defects": [
+                "The warning and muted green outline create two stacked panels with generous padding on mobile.",
+                "The desktop outline looks notably lighter than the main and left columns."
+              ],
+              "opportunity": "Tighten mobile panel padding and strengthen the desktop outline affordances."
+            },
+            "D": {
+              "score": 18,
+              "rationale": "Consistent green accents, a precise masthead and uniform numbered rows establish a calm facilities-docs identity.",
+              "strengths": [
+                "The sage current row, outline card and number markers use related colors.",
+                "The amber notice is reserved for the safety instruction."
+              ],
+              "defects": [
+                "The branding is strongest in the masthead; the article headings are conventional."
+              ],
+              "opportunity": "Preserve the restrained identity and carry a small, consistent link treatment into both outlines."
+            },
+            "E": {
+              "score": 14,
+              "rationale": "The opened mobile menu visibly switches to a close icon, and both the equipment and tablet outline scenarios pass.",
+              "strengths": [
+                "All three section anchors remain shown on the phone.",
+                "The navigation panel stays in the page flow and the title and warning remain intact beneath it."
+              ],
+              "defects": [
+                "Desktop outline items lack the underlined affordance used on tablet and phone.",
+                "Clicked Verify flow darkens in the tablet outline but the target step itself shows little visible feedback."
+              ],
+              "opportunity": "Indicate the targeted step on jump and make the desktop outline's link affordance consistent."
+            },
+            "F": {
+              "score": 8,
+              "rationale": "Shared spacing, state badges and navigation patterns hold across viewport changes without horizontal overflow.",
+              "strengths": [
+                "The runner confirms the mobile Equipment expanded state and reports no automated accessibility violations.",
+                "The phone open and closed menu states show an explicit change in icon and a clean reflow."
+              ],
+              "defects": [
+                "The tablet target and outline do not share a clear selected treatment.",
+                "The packet does not expose source or keyboard focus handling."
+              ],
+              "opportunity": "Unify outline selection and section target styling and verify focus after a jump."
+            }
+          },
+          "total": 88,
+          "visual_problems": [
+            "The expanded phone menu adds more than 450 px above the article.",
+            "The warning and outline each use generous phone padding, pushing later steps down.",
+            "Desktop outline links are subdued and lose their underline."
+          ],
+          "effective_decisions": [
+            "Use a close icon and an in-flow panel for the opened mobile menu.",
+            "Reserve a conspicuous amber callout for safety.",
+            "Keep desktop reading measure and preserve the outline with a compact tablet reflow."
+          ],
+          "blockers": [],
+          "automation_limitations": [
+            "The supplied scenarios did not open supporting article links or exercise keyboard navigation. The tablet target was already visible before clicking, so successful visibility alone does not demonstrate anchor scrolling from off-screen."
+          ]
+        }
+      },
+      "pairs": [
+        {
+          "ids": [
+            "ui-44fdde",
+            "ui-8ee596"
+          ],
+          "preference": "ui-8ee596",
+          "confidence": "medium",
+          "rationale": "The serif hierarchy and warmer palette create a more recognizable manual, and clicking the tablet outline visibly marks the destination as well as the link. ui-44fdde gives the open phone menu a clearer close icon."
+        },
+        {
+          "ids": [
+            "ui-3ba4ae",
+            "ui-8ee596"
+          ],
+          "preference": "ui-8ee596",
+          "confidence": "medium",
+          "rationale": "The warm surfaces and serif headings make a more coherent manual, with clearer feedback after using the tablet outline. ui-3ba4ae has consistently underlined links and fits more of the procedure in the initial mobile viewport."
+        },
+        {
+          "ids": [
+            "ui-44fdde",
+            "ui-3ba4ae"
+          ],
+          "preference": "ui-44fdde",
+          "confidence": "medium",
+          "rationale": "The in-flow phone menu, visible close icon and stronger safety treatment provide a clearer open state and preserve the article beneath it. ui-3ba4ae has the more compact phone reading layout and clearer desktop link affordances."
+        }
+      ]
+    }
+  }
+}

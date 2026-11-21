@@ -1,0 +1,1180 @@
+{
+  "schemaVersion": 1,
+  "status": "failed",
+  "browser": {
+    "version": "159.0.8154.6",
+    "source": "playwright",
+    "executablePath": "/Users/gabe/Library/Caches/ms-playwright/chromium-1255/chrome-mac-arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing",
+    "headless": true,
+    "args": [
+      "--disable-quic",
+      "--force-webrtc-ip-handling-policy=disable_non_proxied_udp",
+      "--host-resolver-rules=MAP * ~NOTFOUND, EXCLUDE 127.0.0.1",
+      "--no-proxy-server"
+    ]
+  },
+  "config": {
+    "node": "v26.13.0",
+    "platform": "darwin",
+    "architecture": "arm64",
+    "playwright": "1.65.1",
+    "axe": "4.14.1",
+    "axeTags": [
+      "wcag2a",
+      "wcag2aa",
+      "wcag21a",
+      "wcag21aa",
+      "wcag22a",
+      "wcag22aa"
+    ],
+    "context": {
+      "colorScheme": "light",
+      "deviceScaleFactor": 1,
+      "locale": "en-US",
+      "reducedMotion": "reduce",
+      "serviceWorkers": "block",
+      "timezoneId": "UTC"
+    },
+    "viewports": {
+      "desktop": {
+        "width": 1440,
+        "height": 1000
+      },
+      "tablet": {
+        "width": 834,
+        "height": 1112
+      },
+      "mobile": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    "timeoutsMs": {
+      "navigation": 10000,
+      "step": 2500,
+      "capture": 10000,
+      "accessibility": 10000
+    },
+    "network": "localhost-static-origin-only"
+  },
+  "source": {
+    "checksSha256": "3fa4e2841d5d1bb39d9a0256eca47436f3db8868e7b80f9d9d413b8ec1a84dea",
+    "site": {
+      "sha256": "623d602624ba858668849577be0beaa3633941e8eb0251bd2aa2bfd02552b0cb",
+      "files": [
+        {
+          "path": "index.html",
+          "sha256": "6e0b619a2c49c1195cc374a1c9a7a41686ceb026991a767d9bc0f71a20b85405"
+        }
+      ]
+    },
+    "harness": {
+      "sha256": "6c881823017ece00658aa02b1817a074668453398b4905f0208e23ef5bcda8d1",
+      "files": [
+        {
+          "path": "capture.mjs",
+          "sha256": "92bc6c8b9c97e64bd0dbcc746c6505f0ed30e9ecaba15ba32a35d1348afaf77e"
+        },
+        {
+          "path": "package-lock.json",
+          "sha256": "9e166f03feded2ba877c95cbbb4bce6b15453e267c7bf4a69a384ec2a3e1fbc1"
+        },
+        {
+          "path": "package.json",
+          "sha256": "e53398841d514c8588ddfad5569cc1f7aed5d67a6f7b71f4ab05a70cfca4817b"
+        }
+      ]
+    }
+  },
+  "timing": {
+    "startedAt": "2026-11-21T19:52:15.027Z",
+    "completedAt": "2026-11-21T19:52:17.487Z",
+    "elapsedMs": 2460
+  },
+  "viewports": [
+    {
+      "name": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "status": "failed",
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "screenshot": {
+        "path": "desktop.png",
+        "bytes": 74092,
+        "sha256": "5c86c2c7318c53d3548e7836c7ec941dec702ad9910c375a17d0c08cc6860b21"
+      },
+      "layout": {
+        "clientWidth": 1440,
+        "scrollWidth": 1440,
+        "bodyScrollWidth": 1440,
+        "horizontalOverflow": false
+      },
+      "accessibility": {
+        "status": "violations",
+        "counts": {
+          "passes": 20,
+          "violations": 1,
+          "incomplete": 0,
+          "inapplicable": 43
+        },
+        "violations": [
+          {
+            "id": "label-content-name-mismatch",
+            "impact": "serious",
+            "tags": [
+              "cat.semantics",
+              "wcag21a",
+              "wcag253",
+              "EN-301-549",
+              "EN-9.2.5.3",
+              "RGAAv4",
+              "RGAA-6.1.5"
+            ],
+            "description": "Ensure that elements labelled through their content must have their visible text as part of their accessible name",
+            "help": "Elements must have their visible text as part of their accessible name",
+            "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/label-content-name-mismatch?application=axeAPI",
+            "nodes": [
+              {
+                "any": [
+                  {
+                    "id": "label-content-name-mismatch",
+                    "data": null,
+                    "relatedNodes": [],
+                    "impact": "serious",
+                    "message": "Text inside the element is not included in the accessible name"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<button type=\"button\" class=\"booking\" data-testid=\"booking-morning-mix\" aria-controls=\"booking-details\" aria-expanded=\"false\" aria-label=\"Morning Mix, Studio A, 9:00–9:45 AM, Confirmed\">",
+                "target": [
+                  "button[data-testid=\"booking-morning-mix\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+              },
+              {
+                "any": [
+                  {
+                    "id": "label-content-name-mismatch",
+                    "data": null,
+                    "relatedNodes": [],
+                    "impact": "serious",
+                    "message": "Text inside the element is not included in the accessible name"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<button type=\"button\" class=\"booking is-tentative\" data-testid=\"booking-field-notes\" aria-controls=\"booking-details\" aria-expanded=\"false\" aria-label=\"Field Notes, Studio B, 9:00–10:00 AM, Tentative\">",
+                "target": [
+                  "button[data-testid=\"booking-field-notes\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+              },
+              {
+                "any": [
+                  {
+                    "id": "label-content-name-mismatch",
+                    "data": null,
+                    "relatedNodes": [],
+                    "impact": "serious",
+                    "message": "Text inside the element is not included in the accessible name"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<button type=\"button\" class=\"booking\" data-testid=\"booking-tape-transfer\" aria-controls=\"booking-details\" aria-expanded=\"false\" aria-label=\"Tape Transfer, Edit Booth, 9:30–10:00 AM, Confirmed\">",
+                "target": [
+                  "button[data-testid=\"booking-tape-transfer\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+              },
+              {
+                "any": [
+                  {
+                    "id": "label-content-name-mismatch",
+                    "data": null,
+                    "relatedNodes": [],
+                    "impact": "serious",
+                    "message": "Text inside the element is not included in the accessible name"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<button type=\"button\" class=\"booking\" data-testid=\"booking-signal-check\" aria-controls=\"booking-details\" aria-expanded=\"false\" aria-label=\"Signal Check, Studio A, 10:00–11:00 AM, Confirmed\">",
+                "target": [
+                  "button[data-testid=\"booking-signal-check\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+              },
+              {
+                "any": [
+                  {
+                    "id": "label-content-name-mismatch",
+                    "data": null,
+                    "relatedNodes": [],
+                    "impact": "serious",
+                    "message": "Text inside the element is not included in the accessible name"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<button type=\"button\" class=\"booking\" data-testid=\"booking-studio-coaching\" aria-controls=\"booking-details\" aria-expanded=\"false\" aria-label=\"Studio Coaching, Studio B, 10:30–11:15 AM, Confirmed\">",
+                "target": [
+                  "button[data-testid=\"booking-studio-coaching\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+              },
+              {
+                "any": [
+                  {
+                    "id": "label-content-name-mismatch",
+                    "data": null,
+                    "relatedNodes": [],
+                    "impact": "serious",
+                    "message": "Text inside the element is not included in the accessible name"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<button type=\"button\" class=\"booking\" data-testid=\"booking-promo-edit\" aria-controls=\"booking-details\" aria-expanded=\"false\" aria-label=\"Promo Edit, Edit Booth, 11:00–11:45 AM, Confirmed\">",
+                "target": [
+                  "button[data-testid=\"booking-promo-edit\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+              },
+              {
+                "any": [
+                  {
+                    "id": "label-content-name-mismatch",
+                    "data": null,
+                    "relatedNodes": [],
+                    "impact": "serious",
+                    "message": "Text inside the element is not included in the accessible name"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<button type=\"button\" class=\"booking\" data-testid=\"booking-midday-rotation\" aria-controls=\"booking-details\" aria-expanded=\"false\" aria-label=\"Midday Rotation, Studio A, 11:30 AM–12:30 PM, Confirmed\">",
+                "target": [
+                  "button[data-testid=\"booking-midday-rotation\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+              },
+              {
+                "any": [
+                  {
+                    "id": "label-content-name-mismatch",
+                    "data": null,
+                    "relatedNodes": [],
+                    "impact": "serious",
+                    "message": "Text inside the element is not included in the accessible name"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<button type=\"button\" class=\"booking is-tentative\" data-testid=\"booking-volunteer-orientation\" aria-controls=\"booking-details\" aria-expanded=\"false\" aria-label=\"Volunteer Orientation, Studio B, 12:00–12:45 PM, Tentative\">",
+                "target": [
+                  "button[data-testid=\"booking-volunteer-orientation\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+              }
+            ]
+          }
+        ],
+        "incomplete": []
+      }
+    },
+    {
+      "name": "tablet",
+      "viewport": {
+        "width": 834,
+        "height": 1112
+      },
+      "status": "failed",
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "screenshot": {
+        "path": "tablet.png",
+        "bytes": 69442,
+        "sha256": "741f5dda8e9ad1567123bb0198ab1dd6cd8b21f06c5962afa36dfb06a18cf848"
+      },
+      "layout": {
+        "clientWidth": 834,
+        "scrollWidth": 834,
+        "bodyScrollWidth": 834,
+        "horizontalOverflow": false
+      },
+      "accessibility": {
+        "status": "violations",
+        "counts": {
+          "passes": 20,
+          "violations": 1,
+          "incomplete": 0,
+          "inapplicable": 43
+        },
+        "violations": [
+          {
+            "id": "label-content-name-mismatch",
+            "impact": "serious",
+            "tags": [
+              "cat.semantics",
+              "wcag21a",
+              "wcag253",
+              "EN-301-549",
+              "EN-9.2.5.3",
+              "RGAAv4",
+              "RGAA-6.1.5"
+            ],
+            "description": "Ensure that elements labelled through their content must have their visible text as part of their accessible name",
+            "help": "Elements must have their visible text as part of their accessible name",
+            "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/label-content-name-mismatch?application=axeAPI",
+            "nodes": [
+              {
+                "any": [
+                  {
+                    "id": "label-content-name-mismatch",
+                    "data": null,
+                    "relatedNodes": [],
+                    "impact": "serious",
+                    "message": "Text inside the element is not included in the accessible name"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<button type=\"button\" class=\"booking\" data-testid=\"booking-morning-mix\" aria-controls=\"booking-details\" aria-expanded=\"false\" aria-label=\"Morning Mix, Studio A, 9:00–9:45 AM, Confirmed\">",
+                "target": [
+                  "button[data-testid=\"booking-morning-mix\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+              },
+              {
+                "any": [
+                  {
+                    "id": "label-content-name-mismatch",
+                    "data": null,
+                    "relatedNodes": [],
+                    "impact": "serious",
+                    "message": "Text inside the element is not included in the accessible name"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<button type=\"button\" class=\"booking is-tentative\" data-testid=\"booking-field-notes\" aria-controls=\"booking-details\" aria-expanded=\"false\" aria-label=\"Field Notes, Studio B, 9:00–10:00 AM, Tentative\">",
+                "target": [
+                  "button[data-testid=\"booking-field-notes\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+              },
+              {
+                "any": [
+                  {
+                    "id": "label-content-name-mismatch",
+                    "data": null,
+                    "relatedNodes": [],
+                    "impact": "serious",
+                    "message": "Text inside the element is not included in the accessible name"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<button type=\"button\" class=\"booking\" data-testid=\"booking-tape-transfer\" aria-controls=\"booking-details\" aria-expanded=\"false\" aria-label=\"Tape Transfer, Edit Booth, 9:30–10:00 AM, Confirmed\">",
+                "target": [
+                  "button[data-testid=\"booking-tape-transfer\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+              },
+              {
+                "any": [
+                  {
+                    "id": "label-content-name-mismatch",
+                    "data": null,
+                    "relatedNodes": [],
+                    "impact": "serious",
+                    "message": "Text inside the element is not included in the accessible name"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<button type=\"button\" class=\"booking\" data-testid=\"booking-signal-check\" aria-controls=\"booking-details\" aria-expanded=\"false\" aria-label=\"Signal Check, Studio A, 10:00–11:00 AM, Confirmed\">",
+                "target": [
+                  "button[data-testid=\"booking-signal-check\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+              },
+              {
+                "any": [
+                  {
+                    "id": "label-content-name-mismatch",
+                    "data": null,
+                    "relatedNodes": [],
+                    "impact": "serious",
+                    "message": "Text inside the element is not included in the accessible name"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<button type=\"button\" class=\"booking\" data-testid=\"booking-studio-coaching\" aria-controls=\"booking-details\" aria-expanded=\"false\" aria-label=\"Studio Coaching, Studio B, 10:30–11:15 AM, Confirmed\">",
+                "target": [
+                  "button[data-testid=\"booking-studio-coaching\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+              },
+              {
+                "any": [
+                  {
+                    "id": "label-content-name-mismatch",
+                    "data": null,
+                    "relatedNodes": [],
+                    "impact": "serious",
+                    "message": "Text inside the element is not included in the accessible name"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<button type=\"button\" class=\"booking\" data-testid=\"booking-promo-edit\" aria-controls=\"booking-details\" aria-expanded=\"false\" aria-label=\"Promo Edit, Edit Booth, 11:00–11:45 AM, Confirmed\">",
+                "target": [
+                  "button[data-testid=\"booking-promo-edit\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+              },
+              {
+                "any": [
+                  {
+                    "id": "label-content-name-mismatch",
+                    "data": null,
+                    "relatedNodes": [],
+                    "impact": "serious",
+                    "message": "Text inside the element is not included in the accessible name"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<button type=\"button\" class=\"booking\" data-testid=\"booking-midday-rotation\" aria-controls=\"booking-details\" aria-expanded=\"false\" aria-label=\"Midday Rotation, Studio A, 11:30 AM–12:30 PM, Confirmed\">",
+                "target": [
+                  "button[data-testid=\"booking-midday-rotation\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+              },
+              {
+                "any": [
+                  {
+                    "id": "label-content-name-mismatch",
+                    "data": null,
+                    "relatedNodes": [],
+                    "impact": "serious",
+                    "message": "Text inside the element is not included in the accessible name"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<button type=\"button\" class=\"booking is-tentative\" data-testid=\"booking-volunteer-orientation\" aria-controls=\"booking-details\" aria-expanded=\"false\" aria-label=\"Volunteer Orientation, Studio B, 12:00–12:45 PM, Tentative\">",
+                "target": [
+                  "button[data-testid=\"booking-volunteer-orientation\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+              }
+            ]
+          }
+        ],
+        "incomplete": []
+      }
+    },
+    {
+      "name": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "status": "failed",
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "screenshot": {
+        "path": "mobile.png",
+        "bytes": 69304,
+        "sha256": "8089e9961b9884f6fa3df050403e7a7371dd39bc42e43ae6ed55d9804824605a"
+      },
+      "layout": {
+        "clientWidth": 390,
+        "scrollWidth": 390,
+        "bodyScrollWidth": 390,
+        "horizontalOverflow": false
+      },
+      "accessibility": {
+        "status": "violations",
+        "counts": {
+          "passes": 20,
+          "violations": 1,
+          "incomplete": 0,
+          "inapplicable": 43
+        },
+        "violations": [
+          {
+            "id": "label-content-name-mismatch",
+            "impact": "serious",
+            "tags": [
+              "cat.semantics",
+              "wcag21a",
+              "wcag253",
+              "EN-301-549",
+              "EN-9.2.5.3",
+              "RGAAv4",
+              "RGAA-6.1.5"
+            ],
+            "description": "Ensure that elements labelled through their content must have their visible text as part of their accessible name",
+            "help": "Elements must have their visible text as part of their accessible name",
+            "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/label-content-name-mismatch?application=axeAPI",
+            "nodes": [
+              {
+                "any": [
+                  {
+                    "id": "label-content-name-mismatch",
+                    "data": null,
+                    "relatedNodes": [],
+                    "impact": "serious",
+                    "message": "Text inside the element is not included in the accessible name"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<button type=\"button\" class=\"booking\" data-testid=\"booking-morning-mix\" aria-controls=\"booking-details\" aria-expanded=\"false\" aria-label=\"Morning Mix, Studio A, 9:00–9:45 AM, Confirmed\">",
+                "target": [
+                  "button[data-testid=\"booking-morning-mix\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+              },
+              {
+                "any": [
+                  {
+                    "id": "label-content-name-mismatch",
+                    "data": null,
+                    "relatedNodes": [],
+                    "impact": "serious",
+                    "message": "Text inside the element is not included in the accessible name"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<button type=\"button\" class=\"booking is-tentative\" data-testid=\"booking-field-notes\" aria-controls=\"booking-details\" aria-expanded=\"false\" aria-label=\"Field Notes, Studio B, 9:00–10:00 AM, Tentative\">",
+                "target": [
+                  "button[data-testid=\"booking-field-notes\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+              },
+              {
+                "any": [
+                  {
+                    "id": "label-content-name-mismatch",
+                    "data": null,
+                    "relatedNodes": [],
+                    "impact": "serious",
+                    "message": "Text inside the element is not included in the accessible name"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<button type=\"button\" class=\"booking\" data-testid=\"booking-tape-transfer\" aria-controls=\"booking-details\" aria-expanded=\"false\" aria-label=\"Tape Transfer, Edit Booth, 9:30–10:00 AM, Confirmed\">",
+                "target": [
+                  "button[data-testid=\"booking-tape-transfer\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+              },
+              {
+                "any": [
+                  {
+                    "id": "label-content-name-mismatch",
+                    "data": null,
+                    "relatedNodes": [],
+                    "impact": "serious",
+                    "message": "Text inside the element is not included in the accessible name"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<button type=\"button\" class=\"booking\" data-testid=\"booking-signal-check\" aria-controls=\"booking-details\" aria-expanded=\"false\" aria-label=\"Signal Check, Studio A, 10:00–11:00 AM, Confirmed\">",
+                "target": [
+                  "button[data-testid=\"booking-signal-check\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+              },
+              {
+                "any": [
+                  {
+                    "id": "label-content-name-mismatch",
+                    "data": null,
+                    "relatedNodes": [],
+                    "impact": "serious",
+                    "message": "Text inside the element is not included in the accessible name"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<button type=\"button\" class=\"booking\" data-testid=\"booking-studio-coaching\" aria-controls=\"booking-details\" aria-expanded=\"false\" aria-label=\"Studio Coaching, Studio B, 10:30–11:15 AM, Confirmed\">",
+                "target": [
+                  "button[data-testid=\"booking-studio-coaching\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+              },
+              {
+                "any": [
+                  {
+                    "id": "label-content-name-mismatch",
+                    "data": null,
+                    "relatedNodes": [],
+                    "impact": "serious",
+                    "message": "Text inside the element is not included in the accessible name"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<button type=\"button\" class=\"booking\" data-testid=\"booking-promo-edit\" aria-controls=\"booking-details\" aria-expanded=\"false\" aria-label=\"Promo Edit, Edit Booth, 11:00–11:45 AM, Confirmed\">",
+                "target": [
+                  "button[data-testid=\"booking-promo-edit\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+              },
+              {
+                "any": [
+                  {
+                    "id": "label-content-name-mismatch",
+                    "data": null,
+                    "relatedNodes": [],
+                    "impact": "serious",
+                    "message": "Text inside the element is not included in the accessible name"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<button type=\"button\" class=\"booking\" data-testid=\"booking-midday-rotation\" aria-controls=\"booking-details\" aria-expanded=\"false\" aria-label=\"Midday Rotation, Studio A, 11:30 AM–12:30 PM, Confirmed\">",
+                "target": [
+                  "button[data-testid=\"booking-midday-rotation\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+              },
+              {
+                "any": [
+                  {
+                    "id": "label-content-name-mismatch",
+                    "data": null,
+                    "relatedNodes": [],
+                    "impact": "serious",
+                    "message": "Text inside the element is not included in the accessible name"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<button type=\"button\" class=\"booking is-tentative\" data-testid=\"booking-volunteer-orientation\" aria-controls=\"booking-details\" aria-expanded=\"false\" aria-label=\"Volunteer Orientation, Studio B, 12:00–12:45 PM, Tentative\">",
+                "target": [
+                  "button[data-testid=\"booking-volunteer-orientation\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+              }
+            ]
+          }
+        ],
+        "incomplete": []
+      }
+    }
+  ],
+  "scenarios": [
+    {
+      "name": "Recover from a room conflict",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "captureRequested": true,
+      "status": "passed",
+      "steps": [
+        {
+          "index": 1,
+          "expected": {
+            "action": "count",
+            "id": "booking",
+            "count": 8
+          },
+          "status": "passed",
+          "actual": 8,
+          "elapsedMs": 8
+        },
+        {
+          "index": 2,
+          "expected": {
+            "action": "click",
+            "id": "booking-signal-check"
+          },
+          "status": "passed",
+          "elapsedMs": 48
+        },
+        {
+          "index": 3,
+          "expected": {
+            "action": "text",
+            "id": "booking-details",
+            "value": "Studio A"
+          },
+          "status": "passed",
+          "actual": "Signal Check Room Studio A Time 10:00–11:00 AM Host Mara Ortiz Status Confirmed Move booking",
+          "elapsedMs": 29
+        },
+        {
+          "index": 4,
+          "expected": {
+            "action": "text",
+            "id": "booking-details",
+            "value": "Mara Ortiz"
+          },
+          "status": "passed",
+          "actual": "Signal Check Room Studio A Time 10:00–11:00 AM Host Mara Ortiz Status Confirmed Move booking",
+          "elapsedMs": 1
+        },
+        {
+          "index": 5,
+          "expected": {
+            "action": "click",
+            "id": "move-booking"
+          },
+          "status": "passed",
+          "elapsedMs": 28
+        },
+        {
+          "index": 6,
+          "expected": {
+            "action": "select",
+            "id": "destination-room",
+            "value": "studio-b"
+          },
+          "status": "passed",
+          "actual": [
+            "studio-b"
+          ],
+          "elapsedMs": 2
+        },
+        {
+          "index": 7,
+          "expected": {
+            "action": "click",
+            "id": "save-move"
+          },
+          "status": "passed",
+          "elapsedMs": 29
+        },
+        {
+          "index": 8,
+          "expected": {
+            "action": "text",
+            "id": "move-conflict",
+            "value": "Overlaps Studio Coaching in Studio B."
+          },
+          "status": "passed",
+          "actual": "Overlaps Studio Coaching in Studio B.",
+          "elapsedMs": 1
+        },
+        {
+          "index": 9,
+          "expected": {
+            "action": "text",
+            "id": "booking-details",
+            "value": "Studio A"
+          },
+          "status": "passed",
+          "actual": "Signal Check Room Studio A Time 10:00–11:00 AM Host Mara Ortiz Status Confirmed Destination room Studio A Studio B Edit Booth Overlaps Studio Coaching in Studio B. Save move Cancel",
+          "elapsedMs": 1
+        },
+        {
+          "index": 10,
+          "expected": {
+            "action": "select",
+            "id": "destination-room",
+            "value": "edit-booth"
+          },
+          "status": "passed",
+          "actual": [
+            "edit-booth"
+          ],
+          "elapsedMs": 1
+        },
+        {
+          "index": 11,
+          "expected": {
+            "action": "click",
+            "id": "save-move"
+          },
+          "status": "passed",
+          "elapsedMs": 31
+        },
+        {
+          "index": 12,
+          "expected": {
+            "action": "hidden",
+            "id": "move-form"
+          },
+          "status": "passed",
+          "elapsedMs": 1
+        },
+        {
+          "index": 13,
+          "expected": {
+            "action": "text",
+            "id": "move-success",
+            "value": "Booking moved to Edit Booth."
+          },
+          "status": "passed",
+          "actual": "Booking moved to Edit Booth.",
+          "elapsedMs": 1
+        },
+        {
+          "index": 14,
+          "expected": {
+            "action": "text",
+            "id": "booking-details",
+            "value": "Edit Booth"
+          },
+          "status": "passed",
+          "actual": "Signal Check Room Edit Booth Time 10:00–11:00 AM Host Mara Ortiz Status Confirmed Booking moved to Edit Booth. Move booking",
+          "elapsedMs": 1
+        },
+        {
+          "index": 15,
+          "expected": {
+            "action": "count",
+            "id": "booking",
+            "count": 8
+          },
+          "status": "passed",
+          "actual": 8,
+          "elapsedMs": 0
+        }
+      ],
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "screenshot": {
+        "path": "scenario-01-recover-from-a-room-conflict.png",
+        "bytes": 93980,
+        "sha256": "7b8d2c8ea407a5cb14d6ed86173de669b996f803d7090608782ce9402f81c762"
+      },
+      "unrunSteps": 0
+    },
+    {
+      "name": "Carry the tentative filter across dates",
+      "viewport": {
+        "width": 834,
+        "height": 1112
+      },
+      "captureRequested": true,
+      "status": "passed",
+      "steps": [
+        {
+          "index": 1,
+          "expected": {
+            "action": "click",
+            "id": "tentative-only"
+          },
+          "status": "passed",
+          "elapsedMs": 47
+        },
+        {
+          "index": 2,
+          "expected": {
+            "action": "attribute",
+            "id": "tentative-only",
+            "name": "aria-pressed",
+            "value": "true"
+          },
+          "status": "passed",
+          "actual": "true",
+          "elapsedMs": 6
+        },
+        {
+          "index": 3,
+          "expected": {
+            "action": "count",
+            "id": "booking",
+            "count": 2
+          },
+          "status": "passed",
+          "actual": 2,
+          "elapsedMs": 0
+        },
+        {
+          "index": 4,
+          "expected": {
+            "action": "visible",
+            "id": "booking-field-notes"
+          },
+          "status": "passed",
+          "elapsedMs": 1
+        },
+        {
+          "index": 5,
+          "expected": {
+            "action": "hidden",
+            "id": "booking-signal-check"
+          },
+          "status": "passed",
+          "elapsedMs": 0
+        },
+        {
+          "index": 6,
+          "expected": {
+            "action": "click",
+            "id": "day-wed"
+          },
+          "status": "passed",
+          "elapsedMs": 24
+        },
+        {
+          "index": 7,
+          "expected": {
+            "action": "attribute",
+            "id": "day-wed",
+            "name": "aria-pressed",
+            "value": "true"
+          },
+          "status": "passed",
+          "actual": "true",
+          "elapsedMs": 1
+        },
+        {
+          "index": 8,
+          "expected": {
+            "action": "count",
+            "id": "booking",
+            "count": 1
+          },
+          "status": "passed",
+          "actual": 1,
+          "elapsedMs": 0
+        },
+        {
+          "index": 9,
+          "expected": {
+            "action": "visible",
+            "id": "booking-show-prep"
+          },
+          "status": "passed",
+          "elapsedMs": 1
+        },
+        {
+          "index": 10,
+          "expected": {
+            "action": "click",
+            "id": "tentative-only"
+          },
+          "status": "passed",
+          "elapsedMs": 31
+        },
+        {
+          "index": 11,
+          "expected": {
+            "action": "count",
+            "id": "booking",
+            "count": 3
+          },
+          "status": "passed",
+          "actual": 3,
+          "elapsedMs": 0
+        },
+        {
+          "index": 12,
+          "expected": {
+            "action": "visible",
+            "id": "booking-interview-pickup"
+          },
+          "status": "passed",
+          "elapsedMs": 1
+        }
+      ],
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "screenshot": {
+        "path": "scenario-02-carry-the-tentative-filter-across-dates.png",
+        "bytes": 50585,
+        "sha256": "9f17d877c732e0f6ecff6f0d7d4b4901064cb226c9b96f3f70045821c6015c99"
+      },
+      "unrunSteps": 0
+    },
+    {
+      "name": "Inspect and leave phone booking details",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "captureRequested": false,
+      "status": "passed",
+      "steps": [
+        {
+          "index": 1,
+          "expected": {
+            "action": "click",
+            "id": "day-wed"
+          },
+          "status": "passed",
+          "elapsedMs": 48
+        },
+        {
+          "index": 2,
+          "expected": {
+            "action": "click",
+            "id": "booking-interview-pickup"
+          },
+          "status": "passed",
+          "elapsedMs": 43
+        },
+        {
+          "index": 3,
+          "expected": {
+            "action": "text",
+            "id": "booking-details",
+            "value": "Nina Flores"
+          },
+          "status": "passed",
+          "actual": "Interview Pickup Room Studio A Time 9:15–10:15 AM Host Nina Flores Status Confirmed Move booking",
+          "elapsedMs": 7
+        },
+        {
+          "index": 4,
+          "expected": {
+            "action": "text",
+            "id": "booking-details",
+            "value": "Confirmed"
+          },
+          "status": "passed",
+          "actual": "Interview Pickup Room Studio A Time 9:15–10:15 AM Host Nina Flores Status Confirmed Move booking",
+          "elapsedMs": 1
+        },
+        {
+          "index": 5,
+          "expected": {
+            "action": "click",
+            "id": "move-booking"
+          },
+          "status": "passed",
+          "elapsedMs": 33
+        },
+        {
+          "index": 6,
+          "expected": {
+            "action": "select",
+            "id": "destination-room",
+            "value": "studio-b"
+          },
+          "status": "passed",
+          "actual": [
+            "studio-b"
+          ],
+          "elapsedMs": 1
+        },
+        {
+          "index": 7,
+          "expected": {
+            "action": "click",
+            "id": "cancel-move"
+          },
+          "status": "passed",
+          "elapsedMs": 63
+        },
+        {
+          "index": 8,
+          "expected": {
+            "action": "hidden",
+            "id": "move-form"
+          },
+          "status": "passed",
+          "elapsedMs": 1
+        },
+        {
+          "index": 9,
+          "expected": {
+            "action": "text",
+            "id": "booking-details",
+            "value": "Studio A"
+          },
+          "status": "passed",
+          "actual": "Interview Pickup Room Studio A Time 9:15–10:15 AM Host Nina Flores Status Confirmed Move booking",
+          "elapsedMs": 1
+        },
+        {
+          "index": 10,
+          "expected": {
+            "action": "click",
+            "id": "close-details"
+          },
+          "status": "passed",
+          "elapsedMs": 33
+        },
+        {
+          "index": 11,
+          "expected": {
+            "action": "hidden",
+            "id": "booking-details"
+          },
+          "status": "passed",
+          "elapsedMs": 1
+        }
+      ],
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "unrunSteps": 0
+    }
+  ],
+  "criticalFailures": [
+    {
+      "viewport": "desktop",
+      "kind": "accessibility",
+      "rule": "label-content-name-mismatch",
+      "impact": "serious"
+    },
+    {
+      "viewport": "tablet",
+      "kind": "accessibility",
+      "rule": "label-content-name-mismatch",
+      "impact": "serious"
+    },
+    {
+      "viewport": "mobile",
+      "kind": "accessibility",
+      "rule": "label-content-name-mismatch",
+      "impact": "serious"
+    }
+  ],
+  "runnerErrors": []
+}

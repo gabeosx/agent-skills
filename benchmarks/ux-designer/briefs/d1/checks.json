@@ -1,0 +1,86 @@
+{
+  "scenarios": [
+    {
+      "name": "sample evidence",
+      "width": 834,
+      "steps": [
+        {
+          "action": "click",
+          "id": "sample-link"
+        },
+        {
+          "action": "visible",
+          "id": "sample"
+        },
+        {
+          "action": "text",
+          "id": "sample",
+          "value": "Resin Library"
+        }
+      ],
+      "capture": true
+    },
+    {
+      "name": "invalid email and dismissal",
+      "width": 390,
+      "steps": [
+        {
+          "action": "click",
+          "id": "request"
+        },
+        {
+          "action": "fill",
+          "id": "email",
+          "value": "bad"
+        },
+        {
+          "action": "click",
+          "id": "submit"
+        },
+        {
+          "action": "visible",
+          "id": "email-error"
+        }
+      ],
+      "capture": true
+    },
+    {
+      "name": "conversion",
+      "width": 1440,
+      "steps": [
+        {
+          "action": "click",
+          "id": "request"
+        },
+        {
+          "action": "fill",
+          "id": "email",
+          "value": "buyer@example.test"
+        },
+        {
+          "action": "click",
+          "id": "submit"
+        },
+        {
+          "action": "text",
+          "id": "success",
+          "value": "Preview requested"
+        },
+        {
+          "action": "text",
+          "id": "success",
+          "value": "buyer@example.test"
+        },
+        {
+          "action": "click",
+          "id": "close"
+        },
+        {
+          "action": "hidden",
+          "id": "success"
+        }
+      ],
+      "capture": false
+    }
+  ]
+}

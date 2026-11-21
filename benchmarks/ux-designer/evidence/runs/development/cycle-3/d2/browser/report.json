@@ -1,0 +1,2642 @@
+{
+  "schemaVersion": 1,
+  "status": "passed",
+  "browser": {
+    "version": "159.0.8154.6",
+    "source": "playwright",
+    "executablePath": "/Users/gabe/Library/Caches/ms-playwright/chromium-1255/chrome-mac-arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing",
+    "headless": true,
+    "args": [
+      "--disable-quic",
+      "--force-webrtc-ip-handling-policy=disable_non_proxied_udp",
+      "--host-resolver-rules=MAP * ~NOTFOUND, EXCLUDE 127.0.0.1",
+      "--no-proxy-server"
+    ]
+  },
+  "config": {
+    "node": "v26.13.0",
+    "platform": "darwin",
+    "architecture": "arm64",
+    "playwright": "1.65.1",
+    "axe": "4.14.1",
+    "axeTags": [
+      "wcag2a",
+      "wcag2aa",
+      "wcag21a",
+      "wcag21aa",
+      "wcag22a",
+      "wcag22aa"
+    ],
+    "context": {
+      "colorScheme": "light",
+      "deviceScaleFactor": 1,
+      "locale": "en-US",
+      "reducedMotion": "reduce",
+      "serviceWorkers": "block",
+      "timezoneId": "UTC"
+    },
+    "viewports": {
+      "desktop": {
+        "width": 1440,
+        "height": 1000
+      },
+      "tablet": {
+        "width": 834,
+        "height": 1112
+      },
+      "mobile": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    "timeoutsMs": {
+      "navigation": 10000,
+      "step": 2500,
+      "capture": 10000,
+      "accessibility": 10000
+    },
+    "network": "localhost-static-origin-only"
+  },
+  "source": {
+    "checksSha256": "bfc7a306d7933a98223d22cea766e4840810fe74d480cf4edd3f46e7ed402669",
+    "site": {
+      "sha256": "2f8f49cbde888d78c893e26007998298b4f33816d1a2dda02895b49820bb6b88",
+      "files": [
+        {
+          "path": "index.html",
+          "sha256": "1e5458bb7e9d523eae235b055006db7ce60bafbd909c426ca17307498bb13a2b"
+        }
+      ]
+    },
+    "harness": {
+      "sha256": "6c881823017ece00658aa02b1817a074668453398b4905f0208e23ef5bcda8d1",
+      "files": [
+        {
+          "path": "capture.mjs",
+          "sha256": "92bc6c8b9c97e64bd0dbcc746c6505f0ed30e9ecaba15ba32a35d1348afaf77e"
+        },
+        {
+          "path": "package-lock.json",
+          "sha256": "9e166f03feded2ba877c95cbbb4bce6b15453e267c7bf4a69a384ec2a3e1fbc1"
+        },
+        {
+          "path": "package.json",
+          "sha256": "e53398841d514c8588ddfad5569cc1f7aed5d67a6f7b71f4ab05a70cfca4817b"
+        }
+      ]
+    }
+  },
+  "timing": {
+    "startedAt": "2026-11-21T19:20:37.059Z",
+    "completedAt": "2026-11-21T19:20:39.121Z",
+    "elapsedMs": 2062
+  },
+  "viewports": [
+    {
+      "name": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "status": "passed",
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "screenshot": {
+        "path": "desktop.png",
+        "bytes": 110997,
+        "sha256": "b753fe09e1f708ae4dfd0570b81bb59271e6d2f3972af2c77078532415efa4b3"
+      },
+      "layout": {
+        "clientWidth": 1440,
+        "scrollWidth": 1440,
+        "bodyScrollWidth": 1440,
+        "horizontalOverflow": false
+      },
+      "accessibility": {
+        "status": "no-violations",
+        "counts": {
+          "passes": 27,
+          "violations": 0,
+          "incomplete": 2,
+          "inapplicable": 37
+        },
+        "violations": [],
+        "incomplete": [
+          {
+            "id": "aria-prohibited-attr",
+            "impact": "serious",
+            "tags": [
+              "cat.aria",
+              "wcag2a",
+              "wcag412",
+              "EN-301-549",
+              "EN-9.4.1.2",
+              "RGAAv4",
+              "RGAA-7.1.1"
+            ],
+            "description": "Ensure ARIA attributes are not prohibited for an element's role",
+            "help": "Elements must only use permitted ARIA attributes",
+            "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/aria-prohibited-attr?application=axeAPI",
+            "nodes": [
+              {
+                "any": [],
+                "all": [],
+                "none": [
+                  {
+                    "id": "aria-prohibited-attr",
+                    "data": {
+                      "role": null,
+                      "nodeName": "span",
+                      "messageKey": "noRoleSingular",
+                      "prohibited": [
+                        "aria-label"
+                      ]
+                    },
+                    "relatedNodes": [],
+                    "impact": "serious",
+                    "message": "aria-label attribute is not well supported on \"span\" elements with no valid role attribute."
+                  }
+                ],
+                "impact": "serious",
+                "html": "<span id=\"change\" class=\"delta\" aria-label=\"Down 2.7 percentage points\"><span aria-hidden=\"true\">↓</span> 2.7 pp</span>",
+                "target": [
+                  "#change"
+                ],
+                "failureSummary": "Fix all of the following:\n  aria-label attribute is not well supported on \"span\" elements with no valid role attribute."
+              }
+            ]
+          },
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "tags": [
+              "cat.color",
+              "wcag2aa",
+              "wcag143",
+              "TTv5",
+              "TT13.c",
+              "EN-301-549",
+              "EN-9.1.4.3",
+              "ACT",
+              "RGAAv4",
+              "RGAA-3.2.1"
+            ],
+            "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+            "help": "Elements must meet minimum color contrast ratio thresholds",
+            "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+            "nodes": [
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "10.2pt (13.6px)",
+                      "fontWeight": "bold",
+                      "messageKey": "bgImage",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<select id=\"period\" data-testid=\"period\">\n          <option value=\"30\" selected=\"\">Last 30 days</option>\n          <option value=\"7\">Last 7 days</option>\n        </select>",
+                        "target": [
+                          "#period"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined due to a background image"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<select id=\"period\" data-testid=\"period\">\n          <option value=\"30\" selected=\"\">Last 30 days</option>\n          <option value=\"7\">Last 7 days</option>\n        </select>",
+                "target": [
+                  "#period"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background image"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "messageKey": "nonBmp"
+                    },
+                    "relatedNodes": [],
+                    "impact": "serious",
+                    "message": "Element content contains only non-text characters"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<span aria-hidden=\"true\">↓</span>",
+                "target": [
+                  "#change > span[aria-hidden=\"true\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "8.3pt (11px)",
+                      "fontWeight": "normal",
+                      "messageKey": "imgNode",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<svg class=\"chart\" id=\"margin-chart\" role=\"img\" aria-labelledby=\"chart-title chart-description\" viewBox=\"0 0 646 245\">",
+                        "target": [
+                          "#margin-chart"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined because element contains an image node"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<text x=\"36\" y=\"41.66666666666666\" text-anchor=\"end\">26%</text>",
+                "target": [
+                  "text[y=\"41.66666666666666\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "8.3pt (11px)",
+                      "fontWeight": "normal",
+                      "messageKey": "imgNode",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<svg class=\"chart\" id=\"margin-chart\" role=\"img\" aria-labelledby=\"chart-title chart-description\" viewBox=\"0 0 646 245\">",
+                        "target": [
+                          "#margin-chart"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined because element contains an image node"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<text x=\"36\" y=\"87\" text-anchor=\"end\">25%</text>",
+                "target": [
+                  "text[y=\"87\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "8.3pt (11px)",
+                      "fontWeight": "normal",
+                      "messageKey": "imgNode",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<svg class=\"chart\" id=\"margin-chart\" role=\"img\" aria-labelledby=\"chart-title chart-description\" viewBox=\"0 0 646 245\">",
+                        "target": [
+                          "#margin-chart"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined because element contains an image node"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<text x=\"36\" y=\"132.33333333333331\" text-anchor=\"end\">24%</text>",
+                "target": [
+                  "text[y=\"132.33333333333331\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "8.3pt (11px)",
+                      "fontWeight": "normal",
+                      "messageKey": "imgNode",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<svg class=\"chart\" id=\"margin-chart\" role=\"img\" aria-labelledby=\"chart-title chart-description\" viewBox=\"0 0 646 245\">",
+                        "target": [
+                          "#margin-chart"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined because element contains an image node"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<text x=\"36\" y=\"177.66666666666666\" text-anchor=\"end\">23%</text>",
+                "target": [
+                  "text[y=\"177.66666666666666\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "8.3pt (11px)",
+                      "fontWeight": "normal",
+                      "messageKey": "imgNode",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<svg class=\"chart\" id=\"margin-chart\" role=\"img\" aria-labelledby=\"chart-title chart-description\" viewBox=\"0 0 646 245\">",
+                        "target": [
+                          "#margin-chart"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined because element contains an image node"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<text x=\"36\" y=\"223\" text-anchor=\"end\">22%</text>",
+                "target": [
+                  "text[y=\"223\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "8.3pt (11px)",
+                      "fontWeight": "normal",
+                      "messageKey": "bgOverlap",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined because it is overlapped by another element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<text x=\"42\" y=\"67.46666666666658\" text-anchor=\"middle\" class=\"point-text\">25.1%</text>",
+                "target": [
+                  "text[y=\"67.46666666666658\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "8.3pt (11px)",
+                      "fontWeight": "normal",
+                      "messageKey": "imgNode",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<svg class=\"chart\" id=\"margin-chart\" role=\"img\" aria-labelledby=\"chart-title chart-description\" viewBox=\"0 0 646 245\">",
+                        "target": [
+                          "#margin-chart"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined because element contains an image node"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<text x=\"42\" y=\"238\" text-anchor=\"middle\" class=\"\">Week 1</text>",
+                "target": [
+                  "text[x=\"42\"][y=\"238\"][text-anchor=\"middle\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "8.3pt (11px)",
+                      "fontWeight": "normal",
+                      "messageKey": "imgNode",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<svg class=\"chart\" id=\"margin-chart\" role=\"img\" aria-labelledby=\"chart-title chart-description\" viewBox=\"0 0 646 245\">",
+                        "target": [
+                          "#margin-chart"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined because element contains an image node"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<text x=\"138.16666666666669\" y=\"26.666666666666657\" text-anchor=\"middle\" class=\"point-text\">26.0%</text>",
+                "target": [
+                  "text[y=\"26.666666666666657\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "8.3pt (11px)",
+                      "fontWeight": "normal",
+                      "messageKey": "imgNode",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<svg class=\"chart\" id=\"margin-chart\" role=\"img\" aria-labelledby=\"chart-title chart-description\" viewBox=\"0 0 646 245\">",
+                        "target": [
+                          "#margin-chart"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined because element contains an image node"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<text x=\"138.16666666666669\" y=\"238\" text-anchor=\"middle\" class=\"\">Week 2</text>",
+                "target": [
+                  "text[x=\"138.16666666666669\"][y=\"238\"][text-anchor=\"middle\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "8.3pt (11px)",
+                      "fontWeight": "normal",
+                      "messageKey": "imgNode",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<svg class=\"chart\" id=\"margin-chart\" role=\"img\" aria-labelledby=\"chart-title chart-description\" viewBox=\"0 0 646 245\">",
+                        "target": [
+                          "#margin-chart"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined because element contains an image node"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<text x=\"234.33333333333334\" y=\"40.26666666666671\" text-anchor=\"middle\" class=\"point-text\">25.7%</text>",
+                "target": [
+                  "text[y=\"40.26666666666671\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "8.3pt (11px)",
+                      "fontWeight": "normal",
+                      "messageKey": "imgNode",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<svg class=\"chart\" id=\"margin-chart\" role=\"img\" aria-labelledby=\"chart-title chart-description\" viewBox=\"0 0 646 245\">",
+                        "target": [
+                          "#margin-chart"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined because element contains an image node"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<text x=\"234.33333333333334\" y=\"238\" text-anchor=\"middle\" class=\"\">Week 3</text>",
+                "target": [
+                  "text[x=\"234.33333333333334\"][y=\"238\"][text-anchor=\"middle\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "8.3pt (11px)",
+                      "fontWeight": "normal",
+                      "messageKey": "bgOverlap",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined because it is overlapped by another element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<text x=\"330.5\" y=\"76.53333333333342\" text-anchor=\"middle\" class=\"point-text\">24.9%</text>",
+                "target": [
+                  "text[y=\"76.53333333333342\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "8.3pt (11px)",
+                      "fontWeight": "normal",
+                      "messageKey": "imgNode",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<svg class=\"chart\" id=\"margin-chart\" role=\"img\" aria-labelledby=\"chart-title chart-description\" viewBox=\"0 0 646 245\">",
+                        "target": [
+                          "#margin-chart"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined because element contains an image node"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<text x=\"330.5\" y=\"238\" text-anchor=\"middle\" class=\"\">Week 4</text>",
+                "target": [
+                  "text[x=\"330.5\"][y=\"238\"][text-anchor=\"middle\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "8.3pt (11px)",
+                      "fontWeight": "normal",
+                      "messageKey": "bgOverlap",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined because it is overlapped by another element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<text x=\"426.6666666666667\" y=\"103.73333333333329\" text-anchor=\"middle\" class=\"point-text\">24.3%</text>",
+                "target": [
+                  "text[y=\"103.73333333333329\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "8.3pt (11px)",
+                      "fontWeight": "normal",
+                      "messageKey": "imgNode",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<svg class=\"chart\" id=\"margin-chart\" role=\"img\" aria-labelledby=\"chart-title chart-description\" viewBox=\"0 0 646 245\">",
+                        "target": [
+                          "#margin-chart"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined because element contains an image node"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<text x=\"426.6666666666667\" y=\"238\" text-anchor=\"middle\" class=\"\">Week 5</text>",
+                "target": [
+                  "text[x=\"426.6666666666667\"][y=\"238\"][text-anchor=\"middle\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "8.3pt (11px)",
+                      "fontWeight": "normal",
+                      "messageKey": "bgOverlap",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined because it is overlapped by another element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<text x=\"522.8333333333333\" y=\"126.39999999999998\" text-anchor=\"middle\" class=\"point-text\">23.8%</text>",
+                "target": [
+                  "text[y=\"126.39999999999998\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "8.3pt (11px)",
+                      "fontWeight": "normal",
+                      "messageKey": "imgNode",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<svg class=\"chart\" id=\"margin-chart\" role=\"img\" aria-labelledby=\"chart-title chart-description\" viewBox=\"0 0 646 245\">",
+                        "target": [
+                          "#margin-chart"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined because element contains an image node"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<text x=\"522.8333333333333\" y=\"238\" text-anchor=\"middle\" class=\"\">Week 6</text>",
+                "target": [
+                  "text[x=\"522.8333333333333\"][y=\"238\"][text-anchor=\"middle\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "8.3pt (11px)",
+                      "fontWeight": "bold",
+                      "messageKey": "imgNode",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<svg class=\"chart\" id=\"margin-chart\" role=\"img\" aria-labelledby=\"chart-title chart-description\" viewBox=\"0 0 646 245\">",
+                        "target": [
+                          "#margin-chart"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined because element contains an image node"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<text x=\"619\" y=\"189.86666666666673\" text-anchor=\"middle\" class=\"latest-text\">22.4%</text>",
+                "target": [
+                  "text[y=\"189.86666666666673\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "8.3pt (11px)",
+                      "fontWeight": "bold",
+                      "messageKey": "imgNode",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<svg class=\"chart\" id=\"margin-chart\" role=\"img\" aria-labelledby=\"chart-title chart-description\" viewBox=\"0 0 646 245\">",
+                        "target": [
+                          "#margin-chart"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined because element contains an image node"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<text x=\"619\" y=\"238\" text-anchor=\"middle\" class=\"latest-text\">Week 7</text>",
+                "target": [
+                  ".latest-text[x=\"619\"][y=\"238\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "10.2pt (13.6px)",
+                      "fontWeight": "bold",
+                      "messageKey": "bgImage",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<select id=\"status\" data-testid=\"status\">\n              <option value=\"all\" selected=\"\">All statuses</option>\n              <option value=\"investigate\">Investigate</option>\n            </select>",
+                        "target": [
+                          "#status"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined due to a background image"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<select id=\"status\" data-testid=\"status\">\n              <option value=\"all\" selected=\"\">All statuses</option>\n              <option value=\"investigate\">Investigate</option>\n            </select>",
+                "target": [
+                  "#status"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background image"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "tablet",
+      "viewport": {
+        "width": 834,
+        "height": 1112
+      },
+      "status": "passed",
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "screenshot": {
+        "path": "tablet.png",
+        "bytes": 97486,
+        "sha256": "52a1364291a38ca898f62a1c3ea3158a9046564e5d1488ed1a1f079102a56a70"
+      },
+      "layout": {
+        "clientWidth": 834,
+        "scrollWidth": 834,
+        "bodyScrollWidth": 834,
+        "horizontalOverflow": false
+      },
+      "accessibility": {
+        "status": "no-violations",
+        "counts": {
+          "passes": 27,
+          "violations": 0,
+          "incomplete": 2,
+          "inapplicable": 37
+        },
+        "violations": [],
+        "incomplete": [
+          {
+            "id": "aria-prohibited-attr",
+            "impact": "serious",
+            "tags": [
+              "cat.aria",
+              "wcag2a",
+              "wcag412",
+              "EN-301-549",
+              "EN-9.4.1.2",
+              "RGAAv4",
+              "RGAA-7.1.1"
+            ],
+            "description": "Ensure ARIA attributes are not prohibited for an element's role",
+            "help": "Elements must only use permitted ARIA attributes",
+            "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/aria-prohibited-attr?application=axeAPI",
+            "nodes": [
+              {
+                "any": [],
+                "all": [],
+                "none": [
+                  {
+                    "id": "aria-prohibited-attr",
+                    "data": {
+                      "role": null,
+                      "nodeName": "span",
+                      "messageKey": "noRoleSingular",
+                      "prohibited": [
+                        "aria-label"
+                      ]
+                    },
+                    "relatedNodes": [],
+                    "impact": "serious",
+                    "message": "aria-label attribute is not well supported on \"span\" elements with no valid role attribute."
+                  }
+                ],
+                "impact": "serious",
+                "html": "<span id=\"change\" class=\"delta\" aria-label=\"Down 2.7 percentage points\"><span aria-hidden=\"true\">↓</span> 2.7 pp</span>",
+                "target": [
+                  "#change"
+                ],
+                "failureSummary": "Fix all of the following:\n  aria-label attribute is not well supported on \"span\" elements with no valid role attribute."
+              }
+            ]
+          },
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "tags": [
+              "cat.color",
+              "wcag2aa",
+              "wcag143",
+              "TTv5",
+              "TT13.c",
+              "EN-301-549",
+              "EN-9.1.4.3",
+              "ACT",
+              "RGAAv4",
+              "RGAA-3.2.1"
+            ],
+            "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+            "help": "Elements must meet minimum color contrast ratio thresholds",
+            "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+            "nodes": [
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "10.2pt (13.6px)",
+                      "fontWeight": "bold",
+                      "messageKey": "bgImage",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<select id=\"period\" data-testid=\"period\">\n          <option value=\"30\" selected=\"\">Last 30 days</option>\n          <option value=\"7\">Last 7 days</option>\n        </select>",
+                        "target": [
+                          "#period"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined due to a background image"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<select id=\"period\" data-testid=\"period\">\n          <option value=\"30\" selected=\"\">Last 30 days</option>\n          <option value=\"7\">Last 7 days</option>\n        </select>",
+                "target": [
+                  "#period"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background image"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "messageKey": "nonBmp"
+                    },
+                    "relatedNodes": [],
+                    "impact": "serious",
+                    "message": "Element content contains only non-text characters"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<span aria-hidden=\"true\">↓</span>",
+                "target": [
+                  "#change > span[aria-hidden=\"true\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "8.3pt (11px)",
+                      "fontWeight": "normal",
+                      "messageKey": "imgNode",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<svg class=\"chart\" id=\"margin-chart\" role=\"img\" aria-labelledby=\"chart-title chart-description\" viewBox=\"0 0 358 245\">",
+                        "target": [
+                          "#margin-chart"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined because element contains an image node"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<text x=\"27\" y=\"41.66666666666666\" text-anchor=\"end\">26%</text>",
+                "target": [
+                  "text[y=\"41.66666666666666\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "8.3pt (11px)",
+                      "fontWeight": "normal",
+                      "messageKey": "imgNode",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<svg class=\"chart\" id=\"margin-chart\" role=\"img\" aria-labelledby=\"chart-title chart-description\" viewBox=\"0 0 358 245\">",
+                        "target": [
+                          "#margin-chart"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined because element contains an image node"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<text x=\"27\" y=\"87\" text-anchor=\"end\">25%</text>",
+                "target": [
+                  "text[y=\"87\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "8.3pt (11px)",
+                      "fontWeight": "normal",
+                      "messageKey": "imgNode",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<svg class=\"chart\" id=\"margin-chart\" role=\"img\" aria-labelledby=\"chart-title chart-description\" viewBox=\"0 0 358 245\">",
+                        "target": [
+                          "#margin-chart"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined because element contains an image node"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<text x=\"27\" y=\"132.33333333333331\" text-anchor=\"end\">24%</text>",
+                "target": [
+                  "text[y=\"132.33333333333331\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "8.3pt (11px)",
+                      "fontWeight": "normal",
+                      "messageKey": "imgNode",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<svg class=\"chart\" id=\"margin-chart\" role=\"img\" aria-labelledby=\"chart-title chart-description\" viewBox=\"0 0 358 245\">",
+                        "target": [
+                          "#margin-chart"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined because element contains an image node"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<text x=\"27\" y=\"177.66666666666666\" text-anchor=\"end\">23%</text>",
+                "target": [
+                  "text[y=\"177.66666666666666\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "8.3pt (11px)",
+                      "fontWeight": "normal",
+                      "messageKey": "imgNode",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<svg class=\"chart\" id=\"margin-chart\" role=\"img\" aria-labelledby=\"chart-title chart-description\" viewBox=\"0 0 358 245\">",
+                        "target": [
+                          "#margin-chart"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined because element contains an image node"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<text x=\"27\" y=\"223\" text-anchor=\"end\">22%</text>",
+                "target": [
+                  "text[y=\"223\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "8.3pt (11px)",
+                      "fontWeight": "normal",
+                      "messageKey": "bgOverlap",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined because it is overlapped by another element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<text x=\"33\" y=\"67.46666666666658\" text-anchor=\"middle\" class=\"point-text\">25.1%</text>",
+                "target": [
+                  "text[y=\"67.46666666666658\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "8.3pt (11px)",
+                      "fontWeight": "normal",
+                      "messageKey": "imgNode",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<svg class=\"chart\" id=\"margin-chart\" role=\"img\" aria-labelledby=\"chart-title chart-description\" viewBox=\"0 0 358 245\">",
+                        "target": [
+                          "#margin-chart"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined because element contains an image node"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<text x=\"33\" y=\"238\" text-anchor=\"middle\" class=\"\">W1</text>",
+                "target": [
+                  "text[x=\"33\"][y=\"238\"][text-anchor=\"middle\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "8.3pt (11px)",
+                      "fontWeight": "normal",
+                      "messageKey": "imgNode",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<svg class=\"chart\" id=\"margin-chart\" role=\"img\" aria-labelledby=\"chart-title chart-description\" viewBox=\"0 0 358 245\">",
+                        "target": [
+                          "#margin-chart"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined because element contains an image node"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<text x=\"82.66666666666666\" y=\"26.666666666666657\" text-anchor=\"middle\" class=\"point-text\">26.0%</text>",
+                "target": [
+                  "text[y=\"26.666666666666657\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "8.3pt (11px)",
+                      "fontWeight": "normal",
+                      "messageKey": "imgNode",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<svg class=\"chart\" id=\"margin-chart\" role=\"img\" aria-labelledby=\"chart-title chart-description\" viewBox=\"0 0 358 245\">",
+                        "target": [
+                          "#margin-chart"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined because element contains an image node"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<text x=\"82.66666666666666\" y=\"238\" text-anchor=\"middle\" class=\"\">W2</text>",
+                "target": [
+                  "text[x=\"82.66666666666666\"][y=\"238\"][text-anchor=\"middle\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "8.3pt (11px)",
+                      "fontWeight": "normal",
+                      "messageKey": "imgNode",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<svg class=\"chart\" id=\"margin-chart\" role=\"img\" aria-labelledby=\"chart-title chart-description\" viewBox=\"0 0 358 245\">",
+                        "target": [
+                          "#margin-chart"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined because element contains an image node"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<text x=\"132.33333333333331\" y=\"40.26666666666671\" text-anchor=\"middle\" class=\"point-text\">25.7%</text>",
+                "target": [
+                  "text[y=\"40.26666666666671\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "8.3pt (11px)",
+                      "fontWeight": "normal",
+                      "messageKey": "imgNode",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<svg class=\"chart\" id=\"margin-chart\" role=\"img\" aria-labelledby=\"chart-title chart-description\" viewBox=\"0 0 358 245\">",
+                        "target": [
+                          "#margin-chart"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined because element contains an image node"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<text x=\"132.33333333333331\" y=\"238\" text-anchor=\"middle\" class=\"\">W3</text>",
+                "target": [
+                  "text[x=\"132.33333333333331\"][y=\"238\"][text-anchor=\"middle\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "8.3pt (11px)",
+                      "fontWeight": "normal",
+                      "messageKey": "bgOverlap",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined because it is overlapped by another element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<text x=\"182\" y=\"76.53333333333342\" text-anchor=\"middle\" class=\"point-text\">24.9%</text>",
+                "target": [
+                  "text[y=\"76.53333333333342\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "8.3pt (11px)",
+                      "fontWeight": "normal",
+                      "messageKey": "imgNode",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<svg class=\"chart\" id=\"margin-chart\" role=\"img\" aria-labelledby=\"chart-title chart-description\" viewBox=\"0 0 358 245\">",
+                        "target": [
+                          "#margin-chart"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined because element contains an image node"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<text x=\"182\" y=\"238\" text-anchor=\"middle\" class=\"\">W4</text>",
+                "target": [
+                  "text[x=\"182\"][y=\"238\"][text-anchor=\"middle\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "8.3pt (11px)",
+                      "fontWeight": "normal",
+                      "messageKey": "bgOverlap",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined because it is overlapped by another element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<text x=\"231.66666666666666\" y=\"103.73333333333329\" text-anchor=\"middle\" class=\"point-text\">24.3%</text>",
+                "target": [
+                  "text[y=\"103.73333333333329\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "8.3pt (11px)",
+                      "fontWeight": "normal",
+                      "messageKey": "imgNode",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<svg class=\"chart\" id=\"margin-chart\" role=\"img\" aria-labelledby=\"chart-title chart-description\" viewBox=\"0 0 358 245\">",
+                        "target": [
+                          "#margin-chart"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined because element contains an image node"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<text x=\"231.66666666666666\" y=\"238\" text-anchor=\"middle\" class=\"\">W5</text>",
+                "target": [
+                  "text[x=\"231.66666666666666\"][y=\"238\"][text-anchor=\"middle\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "8.3pt (11px)",
+                      "fontWeight": "normal",
+                      "messageKey": "bgOverlap",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined because it is overlapped by another element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<text x=\"281.33333333333337\" y=\"126.39999999999998\" text-anchor=\"middle\" class=\"point-text\">23.8%</text>",
+                "target": [
+                  "text[y=\"126.39999999999998\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "8.3pt (11px)",
+                      "fontWeight": "normal",
+                      "messageKey": "imgNode",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<svg class=\"chart\" id=\"margin-chart\" role=\"img\" aria-labelledby=\"chart-title chart-description\" viewBox=\"0 0 358 245\">",
+                        "target": [
+                          "#margin-chart"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined because element contains an image node"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<text x=\"281.33333333333337\" y=\"238\" text-anchor=\"middle\" class=\"\">W6</text>",
+                "target": [
+                  "text[x=\"281.33333333333337\"][y=\"238\"][text-anchor=\"middle\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "8.3pt (11px)",
+                      "fontWeight": "bold",
+                      "messageKey": "imgNode",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<svg class=\"chart\" id=\"margin-chart\" role=\"img\" aria-labelledby=\"chart-title chart-description\" viewBox=\"0 0 358 245\">",
+                        "target": [
+                          "#margin-chart"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined because element contains an image node"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<text x=\"331\" y=\"189.86666666666673\" text-anchor=\"middle\" class=\"latest-text\">22.4%</text>",
+                "target": [
+                  "text[y=\"189.86666666666673\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "8.3pt (11px)",
+                      "fontWeight": "bold",
+                      "messageKey": "imgNode",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<svg class=\"chart\" id=\"margin-chart\" role=\"img\" aria-labelledby=\"chart-title chart-description\" viewBox=\"0 0 358 245\">",
+                        "target": [
+                          "#margin-chart"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined because element contains an image node"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<text x=\"331\" y=\"238\" text-anchor=\"middle\" class=\"latest-text\">W7</text>",
+                "target": [
+                  ".latest-text[x=\"331\"][y=\"238\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "10.2pt (13.6px)",
+                      "fontWeight": "bold",
+                      "messageKey": "bgImage",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<select id=\"status\" data-testid=\"status\">\n              <option value=\"all\" selected=\"\">All statuses</option>\n              <option value=\"investigate\">Investigate</option>\n            </select>",
+                        "target": [
+                          "#status"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined due to a background image"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<select id=\"status\" data-testid=\"status\">\n              <option value=\"all\" selected=\"\">All statuses</option>\n              <option value=\"investigate\">Investigate</option>\n            </select>",
+                "target": [
+                  "#status"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background image"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "status": "passed",
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "screenshot": {
+        "path": "mobile.png",
+        "bytes": 82167,
+        "sha256": "ca334777333d66b05cea00c92a88c10f3afbd265bd3f74bba26515b7904b2ff2"
+      },
+      "layout": {
+        "clientWidth": 390,
+        "scrollWidth": 390,
+        "bodyScrollWidth": 390,
+        "horizontalOverflow": false
+      },
+      "accessibility": {
+        "status": "no-violations",
+        "counts": {
+          "passes": 27,
+          "violations": 0,
+          "incomplete": 2,
+          "inapplicable": 37
+        },
+        "violations": [],
+        "incomplete": [
+          {
+            "id": "aria-prohibited-attr",
+            "impact": "serious",
+            "tags": [
+              "cat.aria",
+              "wcag2a",
+              "wcag412",
+              "EN-301-549",
+              "EN-9.4.1.2",
+              "RGAAv4",
+              "RGAA-7.1.1"
+            ],
+            "description": "Ensure ARIA attributes are not prohibited for an element's role",
+            "help": "Elements must only use permitted ARIA attributes",
+            "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/aria-prohibited-attr?application=axeAPI",
+            "nodes": [
+              {
+                "any": [],
+                "all": [],
+                "none": [
+                  {
+                    "id": "aria-prohibited-attr",
+                    "data": {
+                      "role": null,
+                      "nodeName": "span",
+                      "messageKey": "noRoleSingular",
+                      "prohibited": [
+                        "aria-label"
+                      ]
+                    },
+                    "relatedNodes": [],
+                    "impact": "serious",
+                    "message": "aria-label attribute is not well supported on \"span\" elements with no valid role attribute."
+                  }
+                ],
+                "impact": "serious",
+                "html": "<span id=\"change\" class=\"delta\" aria-label=\"Down 2.7 percentage points\"><span aria-hidden=\"true\">↓</span> 2.7 pp</span>",
+                "target": [
+                  "#change"
+                ],
+                "failureSummary": "Fix all of the following:\n  aria-label attribute is not well supported on \"span\" elements with no valid role attribute."
+              }
+            ]
+          },
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "tags": [
+              "cat.color",
+              "wcag2aa",
+              "wcag143",
+              "TTv5",
+              "TT13.c",
+              "EN-301-549",
+              "EN-9.1.4.3",
+              "ACT",
+              "RGAAv4",
+              "RGAA-3.2.1"
+            ],
+            "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+            "help": "Elements must meet minimum color contrast ratio thresholds",
+            "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+            "nodes": [
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "10.2pt (13.6px)",
+                      "fontWeight": "bold",
+                      "messageKey": "bgImage",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<select id=\"period\" data-testid=\"period\">\n          <option value=\"30\" selected=\"\">Last 30 days</option>\n          <option value=\"7\">Last 7 days</option>\n        </select>",
+                        "target": [
+                          "#period"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined due to a background image"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<select id=\"period\" data-testid=\"period\">\n          <option value=\"30\" selected=\"\">Last 30 days</option>\n          <option value=\"7\">Last 7 days</option>\n        </select>",
+                "target": [
+                  "#period"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background image"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "messageKey": "nonBmp"
+                    },
+                    "relatedNodes": [],
+                    "impact": "serious",
+                    "message": "Element content contains only non-text characters"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<span aria-hidden=\"true\">↓</span>",
+                "target": [
+                  "#change > span[aria-hidden=\"true\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "7.5pt (10px)",
+                      "fontWeight": "normal",
+                      "messageKey": "imgNode",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<svg class=\"chart\" id=\"margin-chart\" role=\"img\" aria-labelledby=\"chart-title chart-description\" viewBox=\"0 0 342 169\">",
+                        "target": [
+                          "#margin-chart"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined because element contains an image node"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<text x=\"27\" y=\"33.22222222222223\" text-anchor=\"end\">26%</text>",
+                "target": [
+                  "text[y=\"33.22222222222223\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "7.5pt (10px)",
+                      "fontWeight": "normal",
+                      "messageKey": "imgNode",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<svg class=\"chart\" id=\"margin-chart\" role=\"img\" aria-labelledby=\"chart-title chart-description\" viewBox=\"0 0 342 169\">",
+                        "target": [
+                          "#margin-chart"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined because element contains an image node"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<text x=\"27\" y=\"61.66666666666667\" text-anchor=\"end\">25%</text>",
+                "target": [
+                  "text[y=\"61.66666666666667\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "7.5pt (10px)",
+                      "fontWeight": "normal",
+                      "messageKey": "imgNode",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<svg class=\"chart\" id=\"margin-chart\" role=\"img\" aria-labelledby=\"chart-title chart-description\" viewBox=\"0 0 342 169\">",
+                        "target": [
+                          "#margin-chart"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined because element contains an image node"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<text x=\"27\" y=\"90.11111111111111\" text-anchor=\"end\">24%</text>",
+                "target": [
+                  "text[y=\"90.11111111111111\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "7.5pt (10px)",
+                      "fontWeight": "normal",
+                      "messageKey": "imgNode",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<svg class=\"chart\" id=\"margin-chart\" role=\"img\" aria-labelledby=\"chart-title chart-description\" viewBox=\"0 0 342 169\">",
+                        "target": [
+                          "#margin-chart"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined because element contains an image node"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<text x=\"27\" y=\"118.55555555555556\" text-anchor=\"end\">23%</text>",
+                "target": [
+                  "text[y=\"118.55555555555556\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "7.5pt (10px)",
+                      "fontWeight": "normal",
+                      "messageKey": "imgNode",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<svg class=\"chart\" id=\"margin-chart\" role=\"img\" aria-labelledby=\"chart-title chart-description\" viewBox=\"0 0 342 169\">",
+                        "target": [
+                          "#margin-chart"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined because element contains an image node"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<text x=\"27\" y=\"147\" text-anchor=\"end\">22%</text>",
+                "target": [
+                  "text[y=\"147\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "7.5pt (10px)",
+                      "fontWeight": "normal",
+                      "messageKey": "bgOverlap",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined because it is overlapped by another element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<text x=\"33\" y=\"43.82222222222218\" text-anchor=\"middle\" class=\"point-text\">25.1%</text>",
+                "target": [
+                  "text[y=\"43.82222222222218\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "7.5pt (10px)",
+                      "fontWeight": "normal",
+                      "messageKey": "imgNode",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<svg class=\"chart\" id=\"margin-chart\" role=\"img\" aria-labelledby=\"chart-title chart-description\" viewBox=\"0 0 342 169\">",
+                        "target": [
+                          "#margin-chart"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined because element contains an image node"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<text x=\"33\" y=\"162\" text-anchor=\"middle\" class=\"\">W1</text>",
+                "target": [
+                  "text[x=\"33\"][y=\"162\"][text-anchor=\"middle\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "7.5pt (10px)",
+                      "fontWeight": "normal",
+                      "messageKey": "imgNode",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<svg class=\"chart\" id=\"margin-chart\" role=\"img\" aria-labelledby=\"chart-title chart-description\" viewBox=\"0 0 342 169\">",
+                        "target": [
+                          "#margin-chart"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined because element contains an image node"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<text x=\"80\" y=\"18.22222222222223\" text-anchor=\"middle\" class=\"point-text\">26.0%</text>",
+                "target": [
+                  "text[y=\"18.22222222222223\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "7.5pt (10px)",
+                      "fontWeight": "normal",
+                      "messageKey": "imgNode",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<svg class=\"chart\" id=\"margin-chart\" role=\"img\" aria-labelledby=\"chart-title chart-description\" viewBox=\"0 0 342 169\">",
+                        "target": [
+                          "#margin-chart"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined because element contains an image node"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<text x=\"80\" y=\"162\" text-anchor=\"middle\" class=\"\">W2</text>",
+                "target": [
+                  "text[x=\"80\"][y=\"162\"][text-anchor=\"middle\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "7.5pt (10px)",
+                      "fontWeight": "normal",
+                      "messageKey": "imgNode",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<svg class=\"chart\" id=\"margin-chart\" role=\"img\" aria-labelledby=\"chart-title chart-description\" viewBox=\"0 0 342 169\">",
+                        "target": [
+                          "#margin-chart"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined because element contains an image node"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<text x=\"127\" y=\"26.755555555555574\" text-anchor=\"middle\" class=\"point-text\">25.7%</text>",
+                "target": [
+                  "text[y=\"26.755555555555574\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "7.5pt (10px)",
+                      "fontWeight": "normal",
+                      "messageKey": "imgNode",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<svg class=\"chart\" id=\"margin-chart\" role=\"img\" aria-labelledby=\"chart-title chart-description\" viewBox=\"0 0 342 169\">",
+                        "target": [
+                          "#margin-chart"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined because element contains an image node"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<text x=\"127\" y=\"162\" text-anchor=\"middle\" class=\"\">W3</text>",
+                "target": [
+                  "text[x=\"127\"][y=\"162\"][text-anchor=\"middle\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "7.5pt (10px)",
+                      "fontWeight": "normal",
+                      "messageKey": "bgOverlap",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined because it is overlapped by another element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<text x=\"174\" y=\"49.51111111111115\" text-anchor=\"middle\" class=\"point-text\">24.9%</text>",
+                "target": [
+                  "text[y=\"49.51111111111115\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "7.5pt (10px)",
+                      "fontWeight": "normal",
+                      "messageKey": "imgNode",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<svg class=\"chart\" id=\"margin-chart\" role=\"img\" aria-labelledby=\"chart-title chart-description\" viewBox=\"0 0 342 169\">",
+                        "target": [
+                          "#margin-chart"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined because element contains an image node"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<text x=\"174\" y=\"162\" text-anchor=\"middle\" class=\"\">W4</text>",
+                "target": [
+                  "text[x=\"174\"][y=\"162\"][text-anchor=\"middle\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "7.5pt (10px)",
+                      "fontWeight": "normal",
+                      "messageKey": "bgOverlap",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined because it is overlapped by another element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<text x=\"221\" y=\"66.57777777777775\" text-anchor=\"middle\" class=\"point-text\">24.3%</text>",
+                "target": [
+                  "text[y=\"66.57777777777775\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "7.5pt (10px)",
+                      "fontWeight": "normal",
+                      "messageKey": "imgNode",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<svg class=\"chart\" id=\"margin-chart\" role=\"img\" aria-labelledby=\"chart-title chart-description\" viewBox=\"0 0 342 169\">",
+                        "target": [
+                          "#margin-chart"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined because element contains an image node"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<text x=\"221\" y=\"162\" text-anchor=\"middle\" class=\"\">W5</text>",
+                "target": [
+                  "text[x=\"221\"][y=\"162\"][text-anchor=\"middle\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "7.5pt (10px)",
+                      "fontWeight": "normal",
+                      "messageKey": "bgOverlap",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined because it is overlapped by another element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<text x=\"268\" y=\"80.79999999999998\" text-anchor=\"middle\" class=\"point-text\">23.8%</text>",
+                "target": [
+                  "text[y=\"80.79999999999998\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "7.5pt (10px)",
+                      "fontWeight": "normal",
+                      "messageKey": "imgNode",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<svg class=\"chart\" id=\"margin-chart\" role=\"img\" aria-labelledby=\"chart-title chart-description\" viewBox=\"0 0 342 169\">",
+                        "target": [
+                          "#margin-chart"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined because element contains an image node"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<text x=\"268\" y=\"162\" text-anchor=\"middle\" class=\"\">W6</text>",
+                "target": [
+                  "text[x=\"268\"][y=\"162\"][text-anchor=\"middle\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "7.5pt (10px)",
+                      "fontWeight": "bold",
+                      "messageKey": "imgNode",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<svg class=\"chart\" id=\"margin-chart\" role=\"img\" aria-labelledby=\"chart-title chart-description\" viewBox=\"0 0 342 169\">",
+                        "target": [
+                          "#margin-chart"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined because element contains an image node"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<text x=\"315\" y=\"120.62222222222226\" text-anchor=\"middle\" class=\"latest-text\">22.4%</text>",
+                "target": [
+                  "text[y=\"120.62222222222226\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "7.5pt (10px)",
+                      "fontWeight": "bold",
+                      "messageKey": "imgNode",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<svg class=\"chart\" id=\"margin-chart\" role=\"img\" aria-labelledby=\"chart-title chart-description\" viewBox=\"0 0 342 169\">",
+                        "target": [
+                          "#margin-chart"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined because element contains an image node"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<text x=\"315\" y=\"162\" text-anchor=\"middle\" class=\"latest-text\">W7</text>",
+                "target": [
+                  ".latest-text[x=\"315\"][y=\"162\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "10.2pt (13.6px)",
+                      "fontWeight": "bold",
+                      "messageKey": "bgImage",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<select id=\"status\" data-testid=\"status\">\n              <option value=\"all\" selected=\"\">All statuses</option>\n              <option value=\"investigate\">Investigate</option>\n            </select>",
+                        "target": [
+                          "#status"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined due to a background image"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<select id=\"status\" data-testid=\"status\">\n              <option value=\"all\" selected=\"\">All statuses</option>\n              <option value=\"investigate\">Investigate</option>\n            </select>",
+                "target": [
+                  "#status"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background image"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "scenarios": [
+    {
+      "name": "period update",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "captureRequested": true,
+      "status": "passed",
+      "steps": [
+        {
+          "index": 1,
+          "expected": {
+            "action": "text",
+            "id": "revenue",
+            "value": "$1.28M"
+          },
+          "status": "passed",
+          "actual": "$1.28M",
+          "elapsedMs": 11
+        },
+        {
+          "index": 2,
+          "expected": {
+            "action": "select",
+            "id": "period",
+            "value": "7"
+          },
+          "status": "passed",
+          "actual": [
+            "7"
+          ],
+          "elapsedMs": 9
+        },
+        {
+          "index": 3,
+          "expected": {
+            "action": "text",
+            "id": "revenue",
+            "value": "$318K"
+          },
+          "status": "passed",
+          "actual": "$318K",
+          "elapsedMs": 1
+        },
+        {
+          "index": 4,
+          "expected": {
+            "action": "text",
+            "id": "margin",
+            "value": "22.4%"
+          },
+          "status": "passed",
+          "actual": "22.4%",
+          "elapsedMs": 1
+        },
+        {
+          "index": 5,
+          "expected": {
+            "action": "text",
+            "id": "rows",
+            "value": "$95K"
+          },
+          "status": "passed",
+          "actual": "Produce ↗ $95K 18.1% Investigate Grocery $130K 27.0% On track Frozen $54K 22.3% Watch Bakery $39K 19.4% Investigate",
+          "elapsedMs": 1
+        }
+      ],
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "screenshot": {
+        "path": "scenario-01-period-update.png",
+        "bytes": 107249,
+        "sha256": "bb8f4423ba4e98d7d72a5ba45fb190f1fcb434f9aa97c230fd8235e21c9e657a"
+      },
+      "unrunSteps": 0
+    },
+    {
+      "name": "filter and drilldown",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "captureRequested": true,
+      "status": "passed",
+      "steps": [
+        {
+          "index": 1,
+          "expected": {
+            "action": "select",
+            "id": "period",
+            "value": "7"
+          },
+          "status": "passed",
+          "actual": [
+            "7"
+          ],
+          "elapsedMs": 12
+        },
+        {
+          "index": 2,
+          "expected": {
+            "action": "select",
+            "id": "status",
+            "value": "investigate"
+          },
+          "status": "passed",
+          "actual": [
+            "investigate"
+          ],
+          "elapsedMs": 2
+        },
+        {
+          "index": 3,
+          "expected": {
+            "action": "text",
+            "id": "rows",
+            "value": "Bakery"
+          },
+          "status": "passed",
+          "actual": "Produce ↗ $95K 18.1% Investigate Bakery $39K 19.4% Investigate",
+          "elapsedMs": 8
+        },
+        {
+          "index": 4,
+          "expected": {
+            "action": "click",
+            "id": "produce"
+          },
+          "status": "passed",
+          "elapsedMs": 37
+        },
+        {
+          "index": 5,
+          "expected": {
+            "action": "text",
+            "id": "detail",
+            "value": "Supplier costs"
+          },
+          "status": "passed",
+          "actual": "← Back to overview Produce Investigate 7-day gross margin 18.1% 7-day sales $95K Supplier costs Check for supplier cost changes in the selected period and compare them with shelf prices.",
+          "elapsedMs": 1
+        },
+        {
+          "index": 6,
+          "expected": {
+            "action": "text",
+            "id": "detail",
+            "value": "18.1%"
+          },
+          "status": "passed",
+          "actual": "← Back to overview Produce Investigate 7-day gross margin 18.1% 7-day sales $95K Supplier costs Check for supplier cost changes in the selected period and compare them with shelf prices.",
+          "elapsedMs": 1
+        }
+      ],
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "screenshot": {
+        "path": "scenario-02-filter-and-drilldown.png",
+        "bytes": 75763,
+        "sha256": "2c2482931f5031a71e5e36bc2b304de1b95e9ba573ba76d0d53e75ca76eb063d"
+      },
+      "unrunSteps": 0
+    },
+    {
+      "name": "filter reset and return",
+      "viewport": {
+        "width": 834,
+        "height": 1112
+      },
+      "captureRequested": false,
+      "status": "passed",
+      "steps": [
+        {
+          "index": 1,
+          "expected": {
+            "action": "select",
+            "id": "status",
+            "value": "investigate"
+          },
+          "status": "passed",
+          "actual": [
+            "investigate"
+          ],
+          "elapsedMs": 12
+        },
+        {
+          "index": 2,
+          "expected": {
+            "action": "select",
+            "id": "status",
+            "value": "all"
+          },
+          "status": "passed",
+          "actual": [
+            "all"
+          ],
+          "elapsedMs": 2
+        },
+        {
+          "index": 3,
+          "expected": {
+            "action": "text",
+            "id": "rows",
+            "value": "Grocery"
+          },
+          "status": "passed",
+          "actual": "Produce ↗ $405K 20.2% Investigate Grocery $532K 28.1% On track Frozen $204K 25.2% Watch Bakery $139K 25.1% Investigate",
+          "elapsedMs": 7
+        },
+        {
+          "index": 4,
+          "expected": {
+            "action": "click",
+            "id": "produce"
+          },
+          "status": "passed",
+          "elapsedMs": 37
+        },
+        {
+          "index": 5,
+          "expected": {
+            "action": "click",
+            "id": "detail-close"
+          },
+          "status": "passed",
+          "elapsedMs": 38
+        },
+        {
+          "index": 6,
+          "expected": {
+            "action": "hidden",
+            "id": "detail"
+          },
+          "status": "passed",
+          "elapsedMs": 1
+        }
+      ],
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "unrunSteps": 0
+    }
+  ],
+  "criticalFailures": [],
+  "runnerErrors": []
+}

@@ -1,162 +1,26 @@
-# Design Templates & Schemas
+# Design handoff and prototyping
 
-## 1. Design Report Schema (The Data Model)
+Use sections that help the recipient implement or evaluate the requested work. For a full design spec, include:
 
-When analyzing a design request, structure your thinking using this schema:
+| Section | Useful detail |
+|---|---|
+| Design brief | Audience, core task, primary action, constraints and consequential assumptions |
+| Information architecture | Content and relationships, navigation and entry/exit points |
+| Visual system | Font and text roles, color and surface roles, spacing rhythm and visual emphasis |
+| Screen or flow | Content order, main component, responsive changes and how the next action stays reachable |
+| Components and states | Trigger, visible result, focus, keyboard behavior, data preservation and recovery where relevant |
+| Verification | Browser widths and states exercised, observed defects, unresolved decisions |
 
-### Design Brief
-- **Users:** Who is this for?
-- **Primary Goal:** What is the one thing they must achieve?
-- **Primary Action:** The specific button/interaction that fulfills the goal.
-- **Constraints:** Technical, Brand, or Platform limitations.
+For a critique, use a short list ordered by impact. For each defect name the visible element and state, the user consequence, the concrete correction and the condition that confirms it works.
 
-### Information Architecture
-- **Entities:** Key data objects (User, Product, Order) and their visible fields.
-- **Navigation:** How users move between screens.
-- **Routes:** List of distinct views.
+## Responsive layout starting points
 
-### Component Inventory
-Define reusable UI parts:
-- **Name:** Standard nomenclature (e.g., "UserCard").
-- **Purpose:** When to use it.
-- **States:** Default, Hover, Active, Disabled, Loading, Empty, Error.
-- **Variants:** Primary, Secondary, etc.
+- **Reading or form:** Constrain the body copy or field column. Let short labels, key actions and validation survive enlarged text and a narrow viewport.
+- **List and detail:** Align navigation and list item baselines. Use a flexible detail area and switch to sequential views when parallel panes stop fitting. Preserve selection and scroll context.
+- **Dashboard or table:** Size the work area to its data. Set a minimum useful column width and let diagrams or numeric grids adapt where the content needs it.
 
-### Visual System Specs
-- **Spacing:** The used scale.
-- **Typography:** The used sizes/weights.
-- **Color:** Token mapping.
+## Optional starter assets
 
-### Screen Specifications
-For each screen:
-- **Layout:** Zones (Header, Sidebar, Content).
-- **Hierarchy:** What catches the eye 1st, 2nd, 3rd.
-- **Responsive:** How it adapts to mobile.
-
----
-
-## 2. Response Template (Copy & Paste)
-
-Use this markdown structure for your final output. You MUST fill every section.
-
-```markdown
-# Design Spec: [Feature Name]
-
-## 1. Design Brief
-- **Users:** [Target Audience]
-- **Primary Goal:** [Main Objective]
-- **Primary Action:** [Label of main button]
-- **Constraints:** [Tech/Brand constraints]
-- **Assumptions:** [List any assumptions made if prompt was underspecified]
-
-## 2. Information Architecture
-- **Entities & Fields:**
-  - [Entity Name]: [Field 1], [Field 2]...
-- **Navigation Model:** [How users move here]
-- **Routes:** [List of URLs/Views]
-
-## 3. Visual System Summary
-*Refer to `assets/design-system-core.css` for full tokens.*
-- **Color Strategy:** [e.g., "Slate gray neutrals with Indigo primary actions"]
-- **Elevation Layering:** [How z-depth is used]
-
-## 4. Layout & Responsive Breakpoints
-| Breakpoint | Width | Layout Behavior |
-| :--- | :--- | :--- |
-| **Mobile** | < 640px | [e.g., Stacked single column, hidden sidebar] |
-| **Tablet** | 640px - 1024px | [e.g., 2-column, condensed nav] |
-| **Desktop** | > 1024px | [e.g., 3-column, full sidebar] |
-
-## 5. Component Inventory & State Matrix
-*Define the behavior of every interactive element.*
-
-| Component | State | Visual Change / Behavior |
-| :--- | :--- | :--- |
-| **[Name]** | Default | [Base appearance] |
-| | Hover | [e.g., darken bg 10%] |
-| | Active/Focus | [e.g., ring-2 ring-primary] |
-| | Disabled | [e.g., opacity-50, no pointer] |
-| | Loading | [e.g., internal spinner, fixed width] |
-| | Error | [e.g., red border, message below] |
-| | Empty | [e.g., "No items found" placeholder] |
-
-*(Repeat for all key components)*
-
-## 6. Screen Specifications
-### Screen: [Name]
-- **Purpose:** [What user does here]
-- **Layout Structure:** [Grid/Stack details]
-- **Key Hierarchy:**
-  1. [Element A]
-  2. [Element B]
-  3. [Element C]
-- **Detailed Layout Rules:**
-  - [Rule 1: e.g., "Card grid fills available space, min-width 300px"]
-  - [Rule 2]
-
-## 7. Implementation Handoff
-- [ ] **Tailwind Config:** Use `assets/tailwind.config.template.js` mapping.
-- [ ] **CSS Tokens:** Use `assets/design-system-core.css`.
-- **Assets Required:** [Icons, Images, Fonts]
-
-## 8. Accessibility & QA Rubric (Must Pass)
-- [ ] **Contrast:** All text meets WCAG AA (4.5:1).
-- [ ] **Touch Targets:** Interactive areas are at least 44x44px.
-- [ ] **Focus States:** Every interactive element has a visible `:focus` ring.
-- [ ] **Semantic HTML:** Buttons are `<button>`, Links are `<a>`.
-- [ ] **Labels:** Form inputs have visible labels or `aria-label`.
-- [ ] **Overflow:** Verified no horizontal scroll on Mobile (320px).
-- [ ] **State Check:** Error and Loading states defined for all forms/lists.
-```
-## 3. Standard Layout Patterns
-
-### A. Pro App (3-Pane)
-Use this for Email, SaaS, or Admin tools.
-**Structure:** Sidebar (Nav) | Master List (Search/Filter) | Detail View (Content).
-
-```css
-body { overflow: hidden; /* Prevent body scroll */ }
-
-.app-container {
-  display: grid;
-  grid-template-columns: 240px 320px 1fr; /* Fixed | Fixed | Fluid */
-  height: 100vh;
-  width: 100vw;
-}
-
-/* Individual Panes */
-.pane {
-  display: flex;
-  flex-direction: column;
-  overflow-y: auto; /* Independent scrolling */
-  border-right: 1px solid var(--color-border-subtle);
-}
-```
-
-### B. Dashboard Grid (12-Column)
-Use for Analytics or Home screens.
-
-```css
-.dashboard-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive */
-  gap: 24px;
-  padding: 32px;
-}
-
-/* Spanning Utilities */
-.col-span-2 { grid-column: span 2; }
-.col-span-full { grid-column: 1 / -1; }
-```
-
-### C. Centered Single Column
-Use for Settings, Profiles, or text-heavy pages.
-
-```css
-.container-sm {
-  max-width: 640px;
-  margin: 0 auto;
-  padding: 48px 24px;
-}
-```
-```
+- [CSS tokens](../assets/design-system-core.css) define an example palette and scale. Import or copy selected declarations. Apply `.ux-prototype` to the chosen root for opt-in canvas, font and box sizing, and `.ux-prose` to a reading column inside it. Set the page's own margin and component styles explicitly. Ordinary headings, paragraphs, and native control styles keep their existing defaults unless the product styles them.
+- [Tailwind v3 JavaScript template](../assets/tailwind.config.template.js) keeps the sample legacy mappings. Merge only needed fields with your project's config and keep the project's content paths. The example overrides several standard utility sizes. Existing users who rely on its numeric aliases can keep the mapping, while other projects can keep their own spacing scale.
+- [Tailwind v4 CSS template](../assets/tailwind-v4.template.css) uses CSS theme aliases with a prefix. Import it from the app's main stylesheet and adapt it to the current design system. For a v3 migration, v4 loads a legacy JavaScript config only through explicit `@config`. [Tailwind theme variables](https://tailwindcss.com/docs/theme), [v4 migration guide](https://tailwindcss.com/docs/upgrade-guide#using-a-javascript-config-file)

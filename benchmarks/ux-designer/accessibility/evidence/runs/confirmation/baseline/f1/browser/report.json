@@ -1,0 +1,504 @@
+{
+  "schemaVersion": 1,
+  "status": "passed",
+  "browser": {
+    "version": "159.0.8154.6",
+    "source": "playwright",
+    "executablePath": "/Users/gabe/Library/Caches/ms-playwright/chromium-1255/chrome-mac-arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing",
+    "headless": true,
+    "args": [
+      "--disable-quic",
+      "--force-webrtc-ip-handling-policy=disable_non_proxied_udp",
+      "--host-resolver-rules=MAP * ~NOTFOUND, EXCLUDE 127.0.0.1",
+      "--no-proxy-server"
+    ]
+  },
+  "config": {
+    "node": "v26.13.0",
+    "platform": "darwin",
+    "architecture": "arm64",
+    "playwright": "1.65.1",
+    "axe": "4.14.1",
+    "axeTags": [
+      "wcag2a",
+      "wcag2aa",
+      "wcag21a",
+      "wcag21aa",
+      "wcag22a",
+      "wcag22aa"
+    ],
+    "context": {
+      "colorScheme": "light",
+      "deviceScaleFactor": 1,
+      "locale": "en-US",
+      "reducedMotion": "reduce",
+      "serviceWorkers": "block",
+      "timezoneId": "UTC"
+    },
+    "viewports": {
+      "desktop": {
+        "width": 1440,
+        "height": 1000
+      },
+      "tablet": {
+        "width": 834,
+        "height": 1112
+      },
+      "mobile": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    "timeoutsMs": {
+      "navigation": 10000,
+      "step": 2500,
+      "capture": 10000,
+      "accessibility": 10000
+    },
+    "network": "localhost-static-origin-only"
+  },
+  "source": {
+    "checksSha256": "241c012be0681d2cee1fc472f2321dbbceee68ec63b921bd9da64748a7984732",
+    "site": {
+      "sha256": "60700300000b51f3edb567c35053adedb582b03610ccbc6940678db7fc12536b",
+      "files": [
+        {
+          "path": "handover.js",
+          "sha256": "0949bc4ea0749046c990497c4f318c8a5c3a1a0bd065cf177520f20871a04811"
+        },
+        {
+          "path": "index.html",
+          "sha256": "5a24e0bdc3da237719f0c61ee63b4079f90cd481913e69180d2300fbce44086e"
+        },
+        {
+          "path": "styles.css",
+          "sha256": "6fb4fe4e501c49a537bd988664800cff7ab02587d4c09e18f34420a79bf5de71"
+        }
+      ]
+    },
+    "harness": {
+      "sha256": "6c881823017ece00658aa02b1817a074668453398b4905f0208e23ef5bcda8d1",
+      "files": [
+        {
+          "path": "capture.mjs",
+          "sha256": "92bc6c8b9c97e64bd0dbcc746c6505f0ed30e9ecaba15ba32a35d1348afaf77e"
+        },
+        {
+          "path": "package-lock.json",
+          "sha256": "9e166f03feded2ba877c95cbbb4bce6b15453e267c7bf4a69a384ec2a3e1fbc1"
+        },
+        {
+          "path": "package.json",
+          "sha256": "e53398841d514c8588ddfad5569cc1f7aed5d67a6f7b71f4ab05a70cfca4817b"
+        }
+      ]
+    }
+  },
+  "timing": {
+    "startedAt": "2026-11-21T20:41:02.744Z",
+    "completedAt": "2026-11-21T20:41:04.738Z",
+    "elapsedMs": 1994
+  },
+  "viewports": [
+    {
+      "name": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "status": "passed",
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "screenshot": {
+        "path": "desktop.png",
+        "bytes": 89359,
+        "sha256": "6beb4068b4aaa294df3f3cb3926a5bb2fce98978a9934b88f38753c7b03678c6"
+      },
+      "layout": {
+        "clientWidth": 1440,
+        "scrollWidth": 1440,
+        "bodyScrollWidth": 1440,
+        "horizontalOverflow": false
+      },
+      "accessibility": {
+        "status": "no-violations",
+        "counts": {
+          "passes": 18,
+          "violations": 0,
+          "incomplete": 0,
+          "inapplicable": 46
+        },
+        "violations": [],
+        "incomplete": []
+      }
+    },
+    {
+      "name": "tablet",
+      "viewport": {
+        "width": 834,
+        "height": 1112
+      },
+      "status": "passed",
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "screenshot": {
+        "path": "tablet.png",
+        "bytes": 81792,
+        "sha256": "b4f5ea7fe850b3a761641331110da303617ee0cda68bae3b374de19ff5a70bcc"
+      },
+      "layout": {
+        "clientWidth": 834,
+        "scrollWidth": 834,
+        "bodyScrollWidth": 834,
+        "horizontalOverflow": false
+      },
+      "accessibility": {
+        "status": "no-violations",
+        "counts": {
+          "passes": 18,
+          "violations": 0,
+          "incomplete": 0,
+          "inapplicable": 46
+        },
+        "violations": [],
+        "incomplete": []
+      }
+    },
+    {
+      "name": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "status": "passed",
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "screenshot": {
+        "path": "mobile.png",
+        "bytes": 72742,
+        "sha256": "2717164110644062e599c70a118900d640ad3461bedcf40bea2a2c2f2e17bb32"
+      },
+      "layout": {
+        "clientWidth": 390,
+        "scrollWidth": 390,
+        "bodyScrollWidth": 390,
+        "horizontalOverflow": false
+      },
+      "accessibility": {
+        "status": "no-violations",
+        "counts": {
+          "passes": 18,
+          "violations": 0,
+          "incomplete": 0,
+          "inapplicable": 46
+        },
+        "violations": [],
+        "incomplete": []
+      }
+    }
+  ],
+  "scenarios": [
+    {
+      "name": "Desktop coordinator reviews two reports in succession",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "captureRequested": false,
+      "status": "passed",
+      "steps": [
+        {
+          "index": 1,
+          "expected": {
+            "action": "visible",
+            "id": "handover-report-t214"
+          },
+          "status": "passed",
+          "elapsedMs": 10
+        },
+        {
+          "index": 2,
+          "expected": {
+            "action": "visible",
+            "id": "handover-report-t219"
+          },
+          "status": "passed",
+          "elapsedMs": 1
+        },
+        {
+          "index": 3,
+          "expected": {
+            "action": "visible",
+            "id": "handover-report-t224"
+          },
+          "status": "passed",
+          "elapsedMs": 1
+        },
+        {
+          "index": 4,
+          "expected": {
+            "action": "text",
+            "id": "handover-detail-id",
+            "value": "T-214"
+          },
+          "status": "passed",
+          "actual": "T-214",
+          "elapsedMs": 7
+        },
+        {
+          "index": 5,
+          "expected": {
+            "action": "click",
+            "id": "handover-report-t219"
+          },
+          "status": "passed",
+          "elapsedMs": 26
+        },
+        {
+          "index": 6,
+          "expected": {
+            "action": "text",
+            "id": "handover-detail-location",
+            "value": "Quay Loop"
+          },
+          "status": "passed",
+          "actual": "Quay Loop",
+          "elapsedMs": 1
+        },
+        {
+          "index": 7,
+          "expected": {
+            "action": "text",
+            "id": "handover-detail-next",
+            "value": "Confirm the replacement display cycles through all destinations."
+          },
+          "status": "passed",
+          "actual": "Confirm the replacement display cycles through all destinations.",
+          "elapsedMs": 1
+        },
+        {
+          "index": 8,
+          "expected": {
+            "action": "click",
+            "id": "handover-report-t224"
+          },
+          "status": "passed",
+          "elapsedMs": 31
+        },
+        {
+          "index": 9,
+          "expected": {
+            "action": "text",
+            "id": "handover-detail-id",
+            "value": "T-224"
+          },
+          "status": "passed",
+          "actual": "T-224",
+          "elapsedMs": 1
+        },
+        {
+          "index": 10,
+          "expected": {
+            "action": "text",
+            "id": "handover-detail-crew",
+            "value": "Fleet maintenance team"
+          },
+          "status": "passed",
+          "actual": "Fleet maintenance team",
+          "elapsedMs": 1
+        }
+      ],
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "unrunSteps": 0
+    },
+    {
+      "name": "Tablet coordinator changes selection with the keyboard",
+      "viewport": {
+        "width": 834,
+        "height": 1112
+      },
+      "captureRequested": false,
+      "status": "passed",
+      "steps": [
+        {
+          "index": 1,
+          "expected": {
+            "action": "press",
+            "id": "handover-report-t224",
+            "value": "Enter"
+          },
+          "status": "passed",
+          "elapsedMs": 26
+        },
+        {
+          "index": 2,
+          "expected": {
+            "action": "text",
+            "id": "handover-detail-location",
+            "value": "Cedar Depot"
+          },
+          "status": "passed",
+          "actual": "Cedar Depot",
+          "elapsedMs": 8
+        },
+        {
+          "index": 3,
+          "expected": {
+            "action": "text",
+            "id": "handover-detail-next",
+            "value": "Review the door sensor history before releasing the tram."
+          },
+          "status": "passed",
+          "actual": "Review the door sensor history before releasing the tram.",
+          "elapsedMs": 1
+        },
+        {
+          "index": 4,
+          "expected": {
+            "action": "press",
+            "id": "handover-report-t214",
+            "value": "Space"
+          },
+          "status": "passed",
+          "elapsedMs": 3
+        },
+        {
+          "index": 5,
+          "expected": {
+            "action": "text",
+            "id": "handover-detail-crew",
+            "value": "Wayside team"
+          },
+          "status": "passed",
+          "actual": "Wayside team",
+          "elapsedMs": 1
+        },
+        {
+          "index": 6,
+          "expected": {
+            "action": "text",
+            "id": "handover-detail-next",
+            "value": "Check the signal lamp during the next service gap."
+          },
+          "status": "passed",
+          "actual": "Check the signal lamp during the next service gap.",
+          "elapsedMs": 1
+        }
+      ],
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "unrunSteps": 0
+    },
+    {
+      "name": "Mobile coordinator opens and revisits a report",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "captureRequested": false,
+      "status": "passed",
+      "steps": [
+        {
+          "index": 1,
+          "expected": {
+            "action": "click",
+            "id": "handover-report-t219"
+          },
+          "status": "passed",
+          "elapsedMs": 48
+        },
+        {
+          "index": 2,
+          "expected": {
+            "action": "text",
+            "id": "handover-detail-id",
+            "value": "T-219"
+          },
+          "status": "passed",
+          "actual": "T-219",
+          "elapsedMs": 7
+        },
+        {
+          "index": 3,
+          "expected": {
+            "action": "text",
+            "id": "handover-detail-crew",
+            "value": "Passenger information team"
+          },
+          "status": "passed",
+          "actual": "Passenger information team",
+          "elapsedMs": 1
+        },
+        {
+          "index": 4,
+          "expected": {
+            "action": "click",
+            "id": "handover-report-t214"
+          },
+          "status": "passed",
+          "elapsedMs": 30
+        },
+        {
+          "index": 5,
+          "expected": {
+            "action": "text",
+            "id": "handover-detail-location",
+            "value": "Alder Junction"
+          },
+          "status": "passed",
+          "actual": "Alder Junction",
+          "elapsedMs": 1
+        },
+        {
+          "index": 6,
+          "expected": {
+            "action": "click",
+            "id": "handover-report-t219"
+          },
+          "status": "passed",
+          "elapsedMs": 26
+        },
+        {
+          "index": 7,
+          "expected": {
+            "action": "text",
+            "id": "handover-detail-next",
+            "value": "Confirm the replacement display cycles through all destinations."
+          },
+          "status": "passed",
+          "actual": "Confirm the replacement display cycles through all destinations.",
+          "elapsedMs": 1
+        },
+        {
+          "index": 8,
+          "expected": {
+            "action": "count",
+            "id": "handover-detail-id",
+            "count": 1
+          },
+          "status": "passed",
+          "actual": 1,
+          "elapsedMs": 0
+        }
+      ],
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "unrunSteps": 0
+    }
+  ],
+  "criticalFailures": [],
+  "runnerErrors": []
+}

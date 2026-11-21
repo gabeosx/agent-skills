@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#132829">
+  <title>BrightCart — Margin overview</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="dashboard.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="shell topbar-inner">
+      <a href="./" class="brand" aria-label="BrightCart home"><span class="brand-icon" aria-hidden="true"><i></i><i></i><i></i></span> BrightCart</a>
+      <p class="product">Commercial intelligence</p>
+    </div>
+  </header>
+
+  <main class="shell">
+    <div class="overview">
+      <div>
+        <h1>Margin overview</h1>
+        <p>Track grocery performance and spot departments to investigate.</p>
+      </div>
+      <label class="control">Reporting period
+        <select data-testid="period">
+          <option value="30" selected>Last 30 days</option>
+          <option value="7">Last 7 days</option>
+        </select>
+      </label>
+    </div>
+
+    <section aria-label="Current performance">
+      <dl class="kpis" aria-live="polite">
+        <div class="kpi">
+          <dt><span class="kpi-symbol" aria-hidden="true">$</span> Sales</dt>
+          <dd data-testid="revenue">$1.28M</dd>
+        </div>
+        <div class="kpi kpi-margin">
+          <dt><span class="kpi-symbol" aria-hidden="true">%</span> Gross margin</dt>
+          <dd data-testid="margin">24.8%</dd>
+        </div>
+        <div class="kpi">
+          <dt><span class="kpi-symbol" aria-hidden="true"><i class="inventory-icon"></i></span> Stockout rate</dt>
+          <dd id="stockout">3.1%</dd>
+        </div>
+      </dl>
+    </section>
+
+    <section class="trend surface" aria-labelledby="trend-heading">
+      <div class="trend-main">
+        <div class="trend-title">
+          <h2 id="trend-heading">Weekly gross margin</h2>
+          <p id="chart-scope">Seven reported weeks</p>
+        </div>
+        <div class="chart">
+          <div class="scale" aria-hidden="true"><span>26%</span><span>24%</span><span>22%</span></div>
+          <div class="plot">
+            <div class="plot-visual" aria-hidden="true"><canvas id="chart"></canvas></div>
+            <ol class="weeks" id="weeks" aria-label="Gross margin by week, oldest first"></ol>
+          </div>
+        </div>
+      </div>
+      <aside class="trend-context" aria-label="Latest gross margin">
+        <p class="trend-label"><span></span> Latest week</p>
+        <p class="trend-value">22.4%</p>
+        <p class="change"><span aria-hidden="true">↘</span> <b>−1.4 pp</b> vs. prior week</p>
+        <p class="trend-caption">Lowest gross margin in seven weeks.</p>
+      </aside>
+    </section>
+
+    <section class="departments surface" aria-labelledby="departments-heading">
+      <div class="department-header">
+        <div>
+          <h2 id="departments-heading">Departments</h2>
+          <p id="row-count" role="status">4 departments</p>
+        </div>
+        <label class="control">7-day status
+          <select data-testid="status">
+            <option value="all" selected>All statuses</option>
+            <option value="investigate">Investigate</option>
+          </select>
+        </label>
+      </div>
+      <table>
+        <thead>
+          <tr><th scope="col">Department</th><th scope="col" class="sales-col">Sales</th><th scope="col">Gross margin</th><th scope="col">7-day status</th></tr>
+        </thead>
+        <tbody data-testid="rows"></tbody>
+      </table>
+    </section>
+  </main>
+
+  <dialog data-testid="detail" id="detail" aria-labelledby="detail-heading">
+    <div class="detail-header">
+      <button class="detail-close" data-testid="detail-close" type="button"><span aria-hidden="true">←</span> Back to overview</button>
+      <h2 id="detail-heading" tabindex="-1">Produce</h2>
+      <span class="status-pill investigate"><i></i>Investigate</span>
+    </div>
+    <div class="detail-body">
+      <dl class="detail-margin">
+        <dt id="detail-margin-label">30-day gross margin</dt>
+        <dd id="detail-margin-value">20.2%</dd>
+      </dl>
+      <h3>Supplier costs</h3>
+      <p>Compare recent supplier invoices with unit costs in your pricing file to see whether purchase costs are squeezing gross margin.</p>
+    </div>
+  </dialog>
+</body>
+</html>

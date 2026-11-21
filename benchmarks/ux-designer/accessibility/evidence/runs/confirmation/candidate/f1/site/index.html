@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shift handover | Northbank Tramway</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="handover.js" defer></script>
+</head>
+<body>
+  <header class="masthead">
+    <div class="shell masthead-inner">
+      <span class="tram-mark" aria-hidden="true"></span>
+      <span>Northbank Tramway</span>
+    </div>
+  </header>
+
+  <main class="shell">
+    <header class="page-heading">
+      <p class="eyebrow">Morning shift</p>
+      <h1>Shift handover</h1>
+    </header>
+
+    <div class="workspace">
+      <section class="queue" aria-labelledby="queue-heading">
+        <div class="section-heading">
+          <h2 id="queue-heading">Open fault reports</h2>
+          <span class="report-count">3 reports</span>
+        </div>
+        <div class="reports">
+          <button class="report" type="button" aria-pressed="true" data-testid="handover-report-t214" data-report="T-214">
+            <span class="report-main">
+              <span class="report-id">T-214</span>
+              <span class="report-location">Alder Junction</span>
+              <span class="report-fault">Signal lamp reported dim</span>
+            </span>
+            <span class="report-meta">
+              <span class="meta-row"><span class="meta-label">Logged</span><span class="time">06:40</span></span>
+              <span class="meta-row"><span class="meta-label">Status</span><span class="status due">Follow-up due</span></span>
+            </span>
+            <span class="selection-indicator" aria-hidden="true"></span>
+          </button>
+
+          <button class="report" type="button" aria-pressed="false" data-testid="handover-report-t219" data-report="T-219">
+            <span class="report-main">
+              <span class="report-id">T-219</span>
+              <span class="report-location">Quay Loop</span>
+              <span class="report-fault">Platform display froze</span>
+            </span>
+            <span class="report-meta">
+              <span class="meta-row"><span class="meta-label">Logged</span><span class="time">07:15</span></span>
+              <span class="meta-row"><span class="meta-label">Status</span><span class="status assigned">Assigned</span></span>
+            </span>
+            <span class="selection-indicator" aria-hidden="true"></span>
+          </button>
+
+          <button class="report" type="button" aria-pressed="false" data-testid="handover-report-t224" data-report="T-224">
+            <span class="report-main">
+              <span class="report-id">T-224</span>
+              <span class="report-location">Cedar Depot</span>
+              <span class="report-fault">Door sensor intermittent</span>
+            </span>
+            <span class="report-meta">
+              <span class="meta-row"><span class="meta-label">Logged</span><span class="time">08:05</span></span>
+              <span class="meta-row"><span class="meta-label">Status</span><span class="status ready">Ready to review</span></span>
+            </span>
+            <span class="selection-indicator" aria-hidden="true"></span>
+          </button>
+        </div>
+      </section>
+
+      <section class="detail" aria-labelledby="detail-heading">
+        <div class="section-heading">
+          <h2 id="detail-heading">Selected report</h2>
+        </div>
+        <div class="detail-card" aria-live="polite" aria-atomic="true">
+          <div class="detail-header">
+            <p class="detail-id" data-testid="handover-detail-id">T-214</p>
+            <h3 data-testid="handover-detail-location">Alder Junction</h3>
+          </div>
+          <dl class="handover-fields">
+            <div class="crew">
+              <dt><span class="field-icon crew-icon" aria-hidden="true"></span>Assigned crew</dt>
+              <dd data-testid="handover-detail-crew">Wayside team</dd>
+            </div>
+            <div class="next-action">
+              <dt><span class="field-icon next-icon" aria-hidden="true">→</span>Next action</dt>
+              <dd data-testid="handover-detail-next">Check the signal lamp during the next service gap.</dd>
+            </div>
+          </dl>
+        </div>
+      </section>
+    </div>
+  </main>
+</body>
+</html>

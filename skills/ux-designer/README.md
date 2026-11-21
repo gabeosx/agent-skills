@@ -1,6 +1,6 @@
 # 🎨 UX Designer
 
-Turn product requirements into interface specifications and implementation guidance using Refactoring UI principles. The skill covers visual hierarchy, reusable tokens, responsive layouts, component states, and dense tables and forms.
+Build, refine, critique or specify an interface using the feature-first design and visual systems of Adam Wathan and Steve Schoger. The skill applies those principles to marketing pages, product flows, data-heavy workspaces and responsive layouts. [Refactoring UI](https://refactoringui.com/)
 
 ## Install
 
@@ -8,30 +8,22 @@ Turn product requirements into interface specifications and implementation guida
 npx skills add gabeosx/agent-skills --skill ux-designer
 ```
 
-Choose your agent when prompted. See the [repository installation guide](../../README.md#install-a-skill) for CLI requirements and installation scope.
+Choose your agent when prompted. The [repository installation guide](../../README.md#install-a-skill) covers CLI requirements and installation scope.
 
 ## Use it
 
-Describe the people using the product, the task they need to complete, the primary action, and what counts as success. Include branding, platform, technical constraints, and any existing design system. If the goal, primary action, or success metric is unclear, the skill asks for clarification before producing a full design.
+Describe who uses the product, what they need to accomplish, and the existing brand or implementation constraints. Specify whether you want a working interface, critique, refinement or design handoff.
 
-For example:
+> Build a responsive inventory dashboard for warehouse leads. The primary task is finding items that need replenishment. Use our existing design system and cover loading, empty and error states.
 
-> Design an inventory dashboard for warehouse leads. The primary task is finding items that need replenishment. Use our existing tokens and cover mobile, tablet, loading, empty, and error states.
+> Review this form for visual hierarchy, keyboard operation and responsive wrapping. Point out what needs to change before implementation.
 
-> Review this form for hierarchy, numeric input precision, responsive wrapping, and destructive-action confirmation. Explain the changes needed for implementation.
+Start with the [skill instructions](SKILL.md). The [visual system](references/design-standards.md), [interaction patterns](references/interaction-patterns.md) and [design handoff](references/templates.md) provide details for the task. Browser verification needs a runnable interface and browser access.
 
-A full specification includes a design brief, information architecture, component inventory, visual system, screens and flows, state matrix, and accessibility and QA checks. Smaller requests can focus on a specific component or visual rule.
+## Prototyping and migration
 
-## Implementation and verification
+The CSS and framework assets are optional examples. Projects updating a direct import of the original CSS should apply `.ux-prototype` to the area meant to receive prototype styling, set intentional page and component styles, and check any overridden status colors. Version 2.0.0 scopes prototype styling and removes the universal margin and padding reset. Use the [asset integration guide](references/templates.md#optional-starter-assets) for CSS and Tailwind v3 or v4.
 
-The skill uses spacing, typography, elevation, and sizing systems rather than isolated style values. It keeps primary actions clear and specifies behavior at intermediate widths, not just mobile and desktop endpoints. It also covers native control semantics, readable disabled states, and explicit confirmation for high-risk actions.
+## Benchmark
 
-The bundled CSS tokens and Tailwind template support prototypes. A runnable build and browser access are needed for the prescribed visual checks: overflow, alignment, touch targets, intermediate breakpoints, and loading/error states. Installing the skill alone does not supply a rendering environment or establish that an interface has passed those checks.
-
-## References and assets
-
-- [Agent instructions](SKILL.md): workflow, state coverage, and quality checks.
-- [Tactical moves](references/tactical-moves.md): hierarchy and visual emphasis.
-- [Design standards](references/design-standards.md): tokens and component rules.
-- [Specification templates](references/templates.md): the full response structure.
-- [Core CSS](assets/design-system-core.css) and [Tailwind template](assets/tailwind.config.template.js): implementation starting points.
+The [browser benchmark](../../benchmarks/ux-designer/README.md) records the fixed briefs, independent design review rubric and rendered comparisons. The [accessible-name follow-up](../../benchmarks/ux-designer/accessibility/REPORT.md) covers the booking regression and two fresh blind comparisons.

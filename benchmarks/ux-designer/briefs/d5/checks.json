@@ -1,0 +1,69 @@
+{
+  "scenarios": [
+    {
+      "name": "filter and acknowledge",
+      "width": 390,
+      "steps": [
+        {
+          "action": "click",
+          "id": "late-only"
+        },
+        {
+          "action": "attribute",
+          "id": "late-only",
+          "value": "true",
+          "name": "aria-pressed"
+        },
+        {
+          "action": "hidden",
+          "id": "oak"
+        },
+        {
+          "action": "click",
+          "id": "riverfront-review"
+        },
+        {
+          "action": "text",
+          "id": "riverfront-state",
+          "value": "Reviewed"
+        },
+        {
+          "action": "text",
+          "id": "stops",
+          "value": "24 min late"
+        }
+      ],
+      "capture": true
+    },
+    {
+      "name": "filter resets",
+      "width": 1440,
+      "steps": [
+        {
+          "action": "click",
+          "id": "late-only"
+        },
+        {
+          "action": "click",
+          "id": "late-only"
+        },
+        {
+          "action": "attribute",
+          "id": "late-only",
+          "value": "false",
+          "name": "aria-pressed"
+        },
+        {
+          "action": "text",
+          "id": "stops",
+          "value": "Oak Street Co-op"
+        },
+        {
+          "action": "visible",
+          "id": "oak"
+        }
+      ],
+      "capture": true
+    }
+  ]
+}

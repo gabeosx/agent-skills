@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Request an inspection | Fieldmark</title>
+<link rel="stylesheet" href="styles.css">
+<script src="request.js" defer></script>
+</head>
+<body>
+<header class="masthead">
+  <div class="masthead-inner">
+    <div class="brand"><span class="brand-mark" aria-hidden="true"></span>Fieldmark</div>
+    <span class="workspace-label">Facilities</span>
+  </div>
+</header>
+
+<main class="page">
+  <div class="intro">
+    <h1>Request an inspection</h1>
+    <p>Book a contractor to inspect one location.</p>
+  </div>
+
+  <div class="request-layout">
+    <aside class="progress" aria-labelledby="progress-title">
+      <h2 id="progress-title">Request progress</h2>
+      <ol id="steps">
+        <li aria-current="step">
+          <span class="step-marker" aria-hidden="true">1</span>
+          <span class="step-label"><span class="visually-hidden step-status"></span>Site details</span>
+        </li>
+        <li>
+          <span class="step-marker" aria-hidden="true">2</span>
+          <span class="step-label"><span class="visually-hidden step-status"></span>Inspection</span>
+        </li>
+        <li>
+          <span class="step-marker" aria-hidden="true">3</span>
+          <span class="step-label"><span class="visually-hidden step-status"></span>Review</span>
+        </li>
+      </ol>
+    </aside>
+
+    <div class="request-card">
+      <form id="site-step" novalidate aria-labelledby="site-title">
+        <div class="card-body">
+          <h2 id="site-title" tabindex="-1">Site details</h2>
+          <p class="intro-note">Both fields are required.</p>
+          <div class="fields">
+            <div class="field">
+              <label for="site-name">Site name</label>
+              <input data-testid="site-name" id="site-name" name="site-name" required>
+              <p class="field-error" id="site-error" hidden>Enter the site name.</p>
+            </div>
+            <div class="field">
+              <label for="email">Contact email</label>
+              <input data-testid="email" id="email" name="email" type="email" autocomplete="email" required>
+              <p class="field-error" data-testid="email-error" id="email-error" hidden></p>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <button class="primary step-next" data-testid="next" type="submit">Continue <span aria-hidden="true">→</span></button>
+        </div>
+      </form>
+
+      <form id="inspection-step" novalidate aria-labelledby="inspection-title" hidden>
+        <div class="card-body">
+          <h2 id="inspection-title" tabindex="-1">Inspection</h2>
+          <p class="intro-note">Choose which system the contractor should inspect.</p>
+          <div class="fields">
+            <div class="field">
+              <label for="system">Property system <span class="field-qualifier">Required</span></label>
+              <select data-testid="system" id="system" name="system" required>
+                <option value="">Select a system</option>
+                <option value="electrical">Electrical</option>
+                <option value="hvac">HVAC</option>
+              </select>
+              <p class="field-error" id="system-error" hidden>Choose a property system.</p>
+            </div>
+            <div class="field">
+              <label for="notes">Access notes <span class="field-qualifier">Optional</span></label>
+              <textarea data-testid="notes" id="notes" name="notes" rows="3" placeholder="For example, where to enter or whom to call on arrival."></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <button class="secondary step-back" type="button"> <span aria-hidden="true">←</span> Back</button>
+          <button class="primary step-next" type="submit">Continue <span aria-hidden="true">→</span></button>
+        </div>
+      </form>
+
+      <section id="review-step" data-testid="review" aria-labelledby="review-title" hidden>
+        <div class="card-body">
+          <h2 id="review-title" tabindex="-1">Review request</h2>
+          <p class="intro-note">Check the details before you confirm.</p>
+          <dl class="review-details">
+            <div><dt>Site name</dt><dd id="review-site"></dd></div>
+            <div><dt>Contact email</dt><dd id="review-email"></dd></div>
+            <div><dt>Property system</dt><dd id="review-system"></dd></div>
+            <div id="review-notes-row"><dt>Access notes</dt><dd id="review-notes"></dd></div>
+          </dl>
+        </div>
+        <div class="card-footer">
+          <button class="secondary step-back" type="button"><span aria-hidden="true">←</span> Back</button>
+          <button class="primary" data-testid="confirm" type="button">Confirm request <span aria-hidden="true">→</span></button>
+        </div>
+      </section>
+
+      <section id="success-step" data-testid="success" aria-labelledby="success-title" hidden>
+        <div class="card-body success-body">
+          <span class="success-mark" aria-hidden="true"></span>
+          <h2 id="success-title" tabindex="-1">Inspection requested</h2>
+          <p class="intro-note" id="success-description"></p>
+          <div class="request-reference"><span>Request reference</span> <strong>FM-2047</strong></div>
+        </div>
+      </section>
+    </div>
+  </div>
+</main>
+</body>
+</html>

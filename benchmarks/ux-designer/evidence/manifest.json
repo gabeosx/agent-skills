@@ -1,0 +1,76 @@
+{
+  "started_at_utc": "2026-11-21T18:34:23Z",
+  "worktree_base": "539f73b0fb57211d7b2a597122a566b8c028c50d",
+  "original_checkout": "8903dbe2cd933511ec9c9115985ec678fd243c5c",
+  "baseline_version": "1.0.0",
+  "baseline_sha256": "ad92dafd139c78ea3b87e186b5a787186f291e6a0e2c846d555a021432f3e4be",
+  "development_fingerprint_file": "development.sha256",
+  "development_groups": [
+    [
+      "d1",
+      "d2"
+    ],
+    [
+      "d3",
+      "d4"
+    ],
+    [
+      "d5",
+      "d6"
+    ]
+  ],
+  "confirmation_ids": [
+    "h1",
+    "h2",
+    "h3"
+  ],
+  "case_types": [
+    "synthetic local positive tasks",
+    "runner-only positive and negative controls"
+  ],
+  "actor_runtime": "Fresh Codex collaboration agents with inherited model and settings; no per-arm override",
+  "browser_dimensions": [
+    [
+      1440,
+      1000
+    ],
+    [
+      834,
+      1112
+    ],
+    [
+      390,
+      844
+    ]
+  ],
+  "actor_isolation": "New scratch folders, identical actor prompt, task brief and original starter only, no post-dispatch implementation help",
+  "grading_isolation": "Fresh grading-only Codex agents per task group, given anonymous images, briefs and redacted functional results. Each grader sees all requested anonymous pairings for its tasks without earlier scores.",
+  "execution_scope": "Local worktree, local scratch files and bundled Codex subagents; no separate paid API or external publication",
+  "model_limits": "Default Codex subagent service limits; no intervention or extra task-specific time budget",
+  "infrastructure_retry": "Rerender the unchanged actor product after a proven runner failure, retaining prior evidence. Do not resample product failures.",
+  "confirmation_sealed_before_development_outcomes": {
+    "at_utc": "2026-11-21T18:36:01+00:00",
+    "manifest_sha256": "fdd33082c1297dfa29e67003eec8dbfe46ed92b677838d6a110ef3cf56f282cd",
+    "author": "isolated Codex reserve author",
+    "task_count": 3,
+    "scenario_count": 9
+  },
+  "host": {
+    "os": "macOS",
+    "architecture": "arm64",
+    "node": "26.13.0",
+    "python": "3.14.6"
+  },
+  "browser_preflight": {
+    "playwright": "1.65.1",
+    "axe": "4.14.1",
+    "chromium": "159.0.8154.6",
+    "qualification": "harness/qualification.json"
+  },
+  "baseline_checkout_note": "The starting worktree is the local origin/main snapshot containing the release policy. The UX skill tree differs from the original main checkout by the 1.0.0 metadata field only.",
+  "original_checkout_archive": {
+    "file": "snapshots/original-checkout.tar.gz",
+    "sha256": "02c5f0212be9cda429d09b19cf908f0958e42318195d2dba432043a46ffa47ae",
+    "role": "provenance only; the matching versioned worktree snapshot was the evaluated baseline"
+  }
+}

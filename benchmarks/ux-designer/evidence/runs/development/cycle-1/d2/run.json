@@ -1,0 +1,20 @@
+{
+  "actor": "41f2",
+  "model": "inherited Codex",
+  "started": "2026-11-21T18:47:57+00:00",
+  "actor_collected_at": "2026-11-21T18:55:53+00:00",
+  "attempt": 1,
+  "brief": "briefs/d2/brief.md",
+  "brief_sha256": "afa363f5d665a1aefdd6299b97d9c5fbe8b1f960e9842c1c630eda21d8f44882",
+  "checks_sha256": "bfc7a306d7933a98223d22cea766e4840810fe74d480cf4edd3f46e7ed402669",
+  "starter_files": {},
+  "skill_sha256": "c5356d49006b89e2025ebd2f52288ecad64f1b35187831c67fa4398a0588d041",
+  "source": {
+    "dashboard.js": "f5eb880d39f78500571bcfe225726071e0f2e80491cae25a1e85f4e4be085992",
+    "index.html": "a589949cb27c9734ff3bd3dcd1a5af90b785b55f8a33b74ee264ec5b17268edb",
+    "styles.css": "9526c7e154f3de2c5eabddd205fa8c4c2b868459af528e0a3d7130b32950b1d9"
+  },
+  "actor_result": "Both complete. Agent reports responsive Chromium interaction checks, focus restoration, local-only requests and no page width overflow. The dashboard intentionally hides Sales on mobile while retaining margin and status.",
+  "usage": null,
+  "charge": null
+}

@@ -1,0 +1,617 @@
+{
+  "tasks": {
+    "d1": {
+      "outputs": {
+        "ui-c3bb0e": {
+          "dimensions": {
+            "A": {
+              "score": 18,
+              "rationale": "The 1440 hero, action pair, proof strip and sample form a clear progression, with bolder collection names and prices for shopping.",
+              "strengths": [
+                "Headline and primary action dominate the first view.",
+                "Separate full-width proof and sample sections make the data easy to find."
+              ],
+              "defects": [
+                "At 390 px the third headline line and tall illustration push the first sample row below the initial viewport."
+              ],
+              "opportunity": "Shorten the mobile image block enough to show an actual sample row earlier."
+            },
+            "B": {
+              "score": 13,
+              "rationale": "Expressive italic serif balances the practical sans serif labels, although the small-screen table forces avoidable wraps.",
+              "strengths": [
+                "Prominent serif collection names and bold right-aligned prices separate the two key scan targets."
+              ],
+              "defects": [
+                "At 390 px Resin Library and each scent family wrap despite adequate space in the retail column."
+              ],
+              "opportunity": "Redistribute mobile column widths and reduce the width reserved by the swatches."
+            },
+            "C": {
+              "score": 17,
+              "rationale": "Cream, dark green and muted bottle colors create a coordinated system, with a visually heavy sample treatment on narrow screens.",
+              "strengths": [
+                "Thin rules organize the proof and rows, while the textured swatches repeat the warm, blue and amber bottle palette."
+              ],
+              "defects": [
+                "At 390 px the shaded table header and textured swatches crowd the text.",
+                "At 834 px the finished sample is followed by a large empty field."
+              ],
+              "opportunity": "Reduce the mobile swatches and header height while keeping the color associations."
+            },
+            "D": {
+              "score": 19,
+              "rationale": "The three labeled bottles connect the fragrance identity directly to the actual buying evidence.",
+              "strengths": [
+                "The curved still life, display type and forest CTA feel specific to premium fragrance.",
+                "The rows use the same product-color associations as the illustration."
+              ],
+              "defects": [
+                "A decorative Collection sample label repeats the upcoming section heading, particularly noticeably on mobile."
+              ],
+              "opportunity": "Let the labeled bottles carry the illustration without the repeated caption."
+            },
+            "E": {
+              "score": 13,
+              "rationale": "Both actions appear early at 390 px, all sample data remain readable, and the invalid state is clearly visible.",
+              "strengths": [
+                "The sample link is underlined, the mobile error is adjacent to Work email, and the browser confirms submitted email and dismissal."
+              ],
+              "defects": [
+                "At 390 px the 44 px close button is icon-only and the sample requires vertical scrolling."
+              ],
+              "opportunity": "Expose some sample data earlier in the mobile reading order."
+            },
+            "F": {
+              "score": 8,
+              "rationale": "The table and proof structures keep their alignment at all widths, with no measured horizontal overflow or page errors.",
+              "strengths": [
+                "Reachable labels and repeated row patterns hold up at 390, 834 and 1440 px.",
+                "The illustrated figure is marked decorative in the browser evidence."
+              ],
+              "defects": [
+                "The invalid-input capture shows competing red and brown outlines on the same field."
+              ],
+              "opportunity": "Define a focused invalid style with a single visually coherent focus treatment."
+            }
+          },
+          "total": 88,
+          "visual_problems": [
+            "The mobile sample starts late below a three-line hero and 200 px illustration.",
+            "Mobile table columns wrap the first name and every scent family.",
+            "The invalid field uses two visibly different rings."
+          ],
+          "effective_decisions": [
+            "The still life names all three sample products.",
+            "Swatches visually link the sample rows to their bottles.",
+            "A bold, right-aligned price column supports fast comparison."
+          ],
+          "blockers": [],
+          "automation_limitations": [
+            "Conversion and dismissal are supported by text assertions only. The tablet sample was already within the viewport, so the capture cannot establish the scroll position.",
+            "Axe could not resolve decorative artwork and arrow contrast."
+          ]
+        },
+        "ui-eb5b56": {
+          "dimensions": {
+            "A": {
+              "score": 19,
+              "rationale": "The headline, actions and proof progress tightly into the sample, which fits in the first 390 × 844 view.",
+              "strengths": [
+                "Proof sits immediately beneath the actions at all widths.",
+                "The mobile art compresses to a short divider so the entire sample stays visible."
+              ],
+              "defects": [
+                "On desktop the proof strip is contained by the left hero column and reads as tertiary to the large abstract panel."
+              ],
+              "opportunity": "Give the proof figures a little more visual weight within the compact layout."
+            },
+            "B": {
+              "score": 13,
+              "rationale": "The two-line display headline and price alignment are strong, with dense mobile support type at the small end.",
+              "strengths": [
+                "Desktop and mobile collection names remain on one line.",
+                "Right-aligned bold prices and serif row names are easy to distinguish."
+              ],
+              "defects": [
+                "Mobile table headings and proof captions are tiny, and Suggested retail wraps."
+              ],
+              "opportunity": "Increase small label sizes while trimming tracking and rebalancing column allocation."
+            },
+            "C": {
+              "score": 18,
+              "rationale": "An olive-to-copper contour panel, fine rules and a quiet cream background create a balanced composition.",
+              "strengths": [
+                "Artwork scales down to a horizontal band on mobile.",
+                "The mobile dialog has even insets and a backdrop that covers the complete view."
+              ],
+              "defects": [
+                "The broad tablet gap below the sample feels abrupt, and the generously blurred backdrop is more pronounced than the page's thin rules."
+              ],
+              "opportunity": "Keep the backdrop separation with a lighter blur that fits the quieter page surfaces."
+            },
+            "D": {
+              "score": 16,
+              "rationale": "The typography and paper-like palette fit a premium retailer, while the dominant contour motif has no direct connection to the sample products.",
+              "strengths": [
+                "The understated wordmark, serif hierarchy and warm data labels establish a coherent editorial identity."
+              ],
+              "defects": [
+                "The large contour graphic and its small crosshair are fairly generic signals for a fragrance intelligence product."
+              ],
+              "opportunity": "Connect the contour motif to the sample's three scent families through the illustration or its color system."
+            },
+            "E": {
+              "score": 14,
+              "rationale": "The underlined sample link, primary CTA, visible price evidence and focused validation state are all immediately available on mobile.",
+              "strengths": [
+                "At 390 px every row remains visible and readable in the initial capture.",
+                "The error state gives the input a visible focus ring and keeps a prominent close control."
+              ],
+              "defects": [
+                "The longer modal heading wraps to two lines above a short form, and the close action is icon-only visually."
+              ],
+              "opportunity": "Use a more compact heading treatment so the form remains comfortable at shorter viewport heights."
+            },
+            "F": {
+              "score": 8,
+              "rationale": "The same table hierarchy and controls retain their structure across widths, with one unresolved proof-strip ARIA check.",
+              "strengths": [
+                "No browser layout overflow or page errors were observed.",
+                "The compact header and sample align to the same edges across the three rendered widths."
+              ],
+              "defects": [
+                "Axe flags the proof strip for manual review of its ARIA attribute."
+              ],
+              "opportunity": "Verify proof grouping semantics and expose the block with native landmark or list markup where appropriate."
+            }
+          },
+          "total": 88,
+          "visual_problems": [
+            "The dominant contour graphic does little to identify the three collections.",
+            "Mobile proof captions and letter-spaced table labels are small.",
+            "Desktop proof numbers recede beneath the much darker artwork."
+          ],
+          "effective_decisions": [
+            "The entire mobile sample fits within the first 844 px.",
+            "The compact proof strip sits alongside the conversion path.",
+            "The error dialog gives the field, validation text and close control distinct positions."
+          ],
+          "blockers": [],
+          "automation_limitations": [
+            "Conversion and dismissal are supported by text assertions only. The tablet sample was already within the viewport, so the capture cannot establish the scroll position.",
+            "Axe left the proof-strip ARIA and decorative arrow contrast checks incomplete."
+          ]
+        },
+        "ui-ea77fa": {
+          "dimensions": {
+            "A": {
+              "score": 18,
+              "rationale": "Hero, full-width proof band and explanatory sample sidebar support an intentional desktop and tablet reading order.",
+              "strengths": [
+                "The short explanation gives the sample an immediate buyer use case.",
+                "At 390 px the split sample stacks while preserving all three columns."
+              ],
+              "defects": [
+                "On mobile the 240 px artwork and repeated sample eyebrow push the table below the fold."
+              ],
+              "opportunity": "Compress the mobile hero artwork and remove one heading level from the sample introduction."
+            },
+            "B": {
+              "score": 14,
+              "rationale": "The refined serif, green italic emphasis and compact tabular sans serif give each reading task a distinct type treatment.",
+              "strengths": [
+                "The proposition holds to two readable lines on mobile.",
+                "The mobile table keeps every value and title on one line with clear alignment."
+              ],
+              "defects": [
+                "The small, tracked masthead wraps into two tiny lines on mobile and is much less readable than the wordmark."
+              ],
+              "opportunity": "Shorten and slightly enlarge the mobile masthead descriptor."
+            },
+            "C": {
+              "score": 19,
+              "rationale": "Olive linework, fine borders and a muted proof background establish a consistent scale with restrained visual weight.",
+              "strengths": [
+                "The bottle sits inside a carefully framed tonal panel.",
+                "Tablet and desktop margins, proof band and split sample share convincing alignment."
+              ],
+              "defects": [
+                "The dark bottom edge of the mobile dialog is heavier than the fine rules elsewhere."
+              ],
+              "opportunity": "Match the dialog separation to the subtle rule and shadow language of the overview."
+            },
+            "D": {
+              "score": 19,
+              "rationale": "The branded perfume rendering and collection index combine premium fragrance cues with practical evidence.",
+              "strengths": [
+                "The bottle, contour field and olive typography form a distinctive identity.",
+                "The sample description speaks to assortment fit and uses no invented endorsements."
+              ],
+              "defects": [
+                "The hero bottle carries the platform name, so it does not help map the pictured scent to any of the three rows."
+              ],
+              "opportunity": "Add a restrained link between the image and the three sample families."
+            },
+            "E": {
+              "score": 13,
+              "rationale": "The conversion remains prominent on mobile and the invalid state is readable, with weaker default cues on two secondary actions.",
+              "strengths": [
+                "The focused error field, inline message and full-width submit button give a clear recovery path.",
+                "The browser confirms submission shows the email and the form dismisses."
+              ],
+              "defects": [
+                "Explore the sample lacks the resting underline used after interaction, and the dialog close icon lacks a visible boundary."
+              ],
+              "opportunity": "Give the sample link a persistent underline and the close control a clearer hit-area cue."
+            },
+            "F": {
+              "score": 8,
+              "rationale": "A coherent responsive table and repeatable type system hold across widths, with no horizontal overflow or browser errors.",
+              "strengths": [
+                "Proof and row values survive the breakpoint intact, and lines and alignments remain consistent."
+              ],
+              "defects": [
+                "The mobile invalid state places the error very close to the two competing field outlines."
+              ],
+              "opportunity": "Use a consistent spacing and border pattern for focused invalid fields."
+            }
+          },
+          "total": 91,
+          "visual_problems": [
+            "Mobile sample rows start below the first viewport.",
+            "The mobile masthead descriptor is very small and wraps.",
+            "The sample action's resting state and the close icon have weak visual affordances."
+          ],
+          "effective_decisions": [
+            "Branded bottle and tonal contour work tie the page to fragrance.",
+            "A full-width tinted proof band reads as a single group.",
+            "The sample pairs a buyer-oriented explanation with a table that preserves all values on mobile."
+          ],
+          "blockers": [],
+          "automation_limitations": [
+            "Conversion and dismissal are supported by text assertions only. The tablet sample was already within the viewport, so the capture cannot establish the scroll position.",
+            "Axe could not resolve decorative bottle-label and arrow contrast."
+          ]
+        }
+      },
+      "pairs": [
+        {
+          "ids": [
+            "ui-eb5b56",
+            "ui-ea77fa"
+          ],
+          "preference": "ui-ea77fa",
+          "confidence": "medium",
+          "rationale": "The branded perfume artwork and split evidence section are more specific to the brief, and the mobile table retains more readable supporting text. The other keeps the sample above the fold on mobile."
+        },
+        {
+          "ids": [
+            "ui-ea77fa",
+            "ui-c3bb0e"
+          ],
+          "preference": "ui-ea77fa",
+          "confidence": "medium",
+          "rationale": "The measured typography, proof band and single-line mobile rows form the more resolved system. The other makes the tighter visual connection between specific collection rows and illustrated bottles."
+        },
+        {
+          "ids": [
+            "ui-c3bb0e",
+            "ui-eb5b56"
+          ],
+          "preference": "tie",
+          "confidence": "medium",
+          "rationale": "The bottle composition and matched swatches give the sample a stronger fragrance identity, while the contour layout keeps the complete evidence above the fold and avoids row wraps. Both deliver the same conversion and sample flows."
+        }
+      ]
+    },
+    "d2": {
+      "outputs": {
+        "ui-1cab2b": {
+          "dimensions": {
+            "A": {
+              "score": 19,
+              "rationale": "Margin KPIs lead into a paired trend and department view at 1440 and 834 px, keeping the evidence and next action in sight together.",
+              "strengths": [
+                "The trend and table fit side by side even at 834 px.",
+                "The department heading reports the two rows needing investigation."
+              ],
+              "defects": [
+                "At 390 px the long filter label area and 53 px rows put the fourth department below the fold."
+              ],
+              "opportunity": "Tighten the mobile department card header and row spacing slightly."
+            },
+            "B": {
+              "score": 14,
+              "rationale": "The assertive sans serif makes KPIs and margins easy to find, and each of the seven plotted percentages remains legible.",
+              "strengths": [
+                "Aligned sales and bold margin values support comparison.",
+                "Week and percentage labels survive at 390 px."
+              ],
+              "defects": [
+                "The overview title's very tight letter spacing becomes conspicuous on mobile."
+              ],
+              "opportunity": "Loosen the mobile title tracking while preserving the one-line fit."
+            },
+            "C": {
+              "score": 18,
+              "rationale": "Quiet surfaces, mint focus and rust urgency establish a well-balanced dashboard with consistent card and table alignment.",
+              "strengths": [
+                "Latest-week rust and the status chip palette support attention without relying on hue alone.",
+                "The 7-day plot dims prior weeks and shades the latest marker."
+              ],
+              "defects": [
+                "The paired tablet cards use most of their available width and leave little breathing room around the table controls."
+              ],
+              "opportunity": "Free a little space in the tablet toolbar by shortening the status select's resting label."
+            },
+            "D": {
+              "score": 18,
+              "rationale": "The cart mark, mint palette and task-specific focus communicate a practical grocery pricing tool.",
+              "strengths": [
+                "The proportion of data to navigation chrome is appropriate at all widths.",
+                "The Produce detail uses the same status and metric treatment as the overview."
+              ],
+              "defects": [
+                "The small icons in the KPI cards do not carry additional information and compete for mobile space."
+              ],
+              "opportunity": "Simplify the KPI icons on narrow screens and reserve space for labels."
+            },
+            "E": {
+              "score": 14,
+              "rationale": "Both selects, a chart text disclosure, action-marked Produce row and an explicit return path are easy to locate.",
+              "strengths": [
+                "The mobile capture presents Produce margin, sales, status and Supplier costs with a labeled Back to overview button.",
+                "Browser actions confirm period switching, filtering to Produce and Bakery, and reset plus return."
+              ],
+              "defects": [
+                "Produce uses color and an arrow for discoverability, without the persistent underline seen in another interface."
+              ],
+              "opportunity": "Underline Produce or make its detail action visually explicit on the whole row."
+            },
+            "F": {
+              "score": 9,
+              "rationale": "Repeated KPI, detail and status treatments remain coherent across breakpoints, and the browser evidence shows measurable layout integrity.",
+              "strengths": [
+                "No horizontal overflow or page errors are reported.",
+                "The disclosure gives a separate entry to the chart values and the native selects expose the required choices."
+              ],
+              "defects": [
+                "The browser marks the abbreviated change badge's ARIA treatment and SVG contrast for manual inspection."
+              ],
+              "opportunity": "Ensure the badge announces the direction and percentage-point unit using plain text."
+            }
+          },
+          "total": 92,
+          "visual_problems": [
+            "At 390 px the display heading is tracked very tightly.",
+            "The tablet department filter feels squeezed beside the title.",
+            "The mobile department header and row heights put Bakery below the initial viewport."
+          ],
+          "effective_decisions": [
+            "The department table and plot fit side by side on desktop and tablet.",
+            "The 7-day plot highlights the final segment and keeps every historical value visible.",
+            "The mobile detail brings the selected margin, supplier context and explicit return together."
+          ],
+          "blockers": [],
+          "automation_limitations": [
+            "The weekly-values disclosure was not captured expanded. Axe left the change badge ARIA and several SVG and select contrast checks incomplete."
+          ]
+        },
+        "ui-539999": {
+          "dimensions": {
+            "A": {
+              "score": 16,
+              "rationale": "The analytic sequence is clear, but a persistent sidebar and stacked panels delay the department evidence.",
+              "strengths": [
+                "Title and reporting period clearly introduce the shared time scope.",
+                "KPI cards remain in a single row at 390 px."
+              ],
+              "defects": [
+                "A 160 px tablet sidebar holds only one navigation item.",
+                "On mobile, the separate workspace eyebrow, period row and tall trend make the table start near the bottom of the initial view."
+              ],
+              "opportunity": "Recover vertical space on mobile by folding the reporting controls into the heading area."
+            },
+            "B": {
+              "score": 12,
+              "rationale": "KPI values and standard table rows scan reasonably well, but the chart's axis and the mobile header are comparatively compressed.",
+              "strengths": [
+                "Clear weight changes distinguish row names and KPI values.",
+                "The detail margin value gets ample size and space."
+              ],
+              "defects": [
+                "On desktop and tablet only the latest point has its exact value annotated.",
+                "The 390 px Margin and 7-day status headers almost touch."
+              ],
+              "opportunity": "Add compact point labels where space permits and provide a wider gutter after mobile margins."
+            },
+            "C": {
+              "score": 16,
+              "rationale": "White cards, fine lines and soft status pills are orderly, with a disproportionately large dark navigation region at wider widths.",
+              "strengths": [
+                "The mint highlight groups KPI and detail margin values.",
+                "Separate area fill, latest segment and shaded band mark the 7-day chart state."
+              ],
+              "defects": [
+                "The sidebar is the visually heaviest shape at desktop and tablet despite containing only Overview."
+              ],
+              "opportunity": "Use a shallower desktop and tablet navigation treatment to give more area to the analysis."
+            },
+            "D": {
+              "score": 16,
+              "rationale": "The palette and pricing vocabulary are appropriate, while the single-item workspace shell and repeated eyebrow add generic dashboard chrome.",
+              "strengths": [
+                "Trend, filters and badges stay stylistically consistent from overview to detail."
+              ],
+              "defects": [
+                "The full viewport Overview rail and Pricing workspace label add little to this one-workflow screen."
+              ],
+              "opportunity": "Center BrightCart's identity on the margin investigation and simplify the surrounding shell."
+            },
+            "E": {
+              "score": 14,
+              "rationale": "Labeled controls and a visible chart disclosure support the workflow, and the detailed return button is clear.",
+              "strengths": [
+                "Default mobile rows preserve all four fields without horizontal scroll.",
+                "Browser steps confirm 7-day figures, both Investigate rows, Produce drilldown and reset."
+              ],
+              "defects": [
+                "Mobile omits alternating week labels from the plot and makes users open Weekly values to see most exact data."
+              ],
+              "opportunity": "Keep the complete text equivalent accessible and expose more exact values in the plot when there is room."
+            },
+            "F": {
+              "score": 9,
+              "rationale": "The navigation adapts to a top row on mobile while coherent primitives carry through the data and detail views.",
+              "strengths": [
+                "Browser reports no page errors, horizontal overflow, axe violations or incomplete checks.",
+                "The scenario captures show layout and card shapes remaining stable when values and filters change."
+              ],
+              "defects": [
+                "The one-item navigation consumes significant tablet width even though the same header can provide it on mobile."
+              ],
+              "opportunity": "Reuse the compact top navigation treatment at tablet widths."
+            }
+          },
+          "total": 83,
+          "visual_problems": [
+            "The single-entry rail consumes substantial desktop and tablet area.",
+            "Only the latest data point has a percentage annotation in the plot.",
+            "The mobile table starts low and its two right-hand headings sit unusually close together."
+          ],
+          "effective_decisions": [
+            "The weekly-values disclosure is visible directly beneath the plot.",
+            "The 7-day state uses muted dashed history and a distinct latest segment.",
+            "The Produce detail makes the period, margin and return easy to spot."
+          ],
+          "blockers": [],
+          "automation_limitations": [
+            "The weekly-values disclosure was not captured expanded, and filter reset plus return are verified through browser checks without state screenshots."
+          ]
+        },
+        "ui-143ac5": {
+          "dimensions": {
+            "A": {
+              "score": 18,
+              "rationale": "A compact KPI strip, full-width dark trend and simple table make a fast top-to-bottom reading order.",
+              "strengths": [
+                "At 390 px the chart and nearly the entire table fit in the first viewport.",
+                "Collocating the latest-week callout with the plot keeps the change contextual."
+              ],
+              "defects": [
+                "The dark chart draws the strongest attention even though the user's decision is which department to investigate."
+              ],
+              "opportunity": "Use the table subtitle to surface the number of departments to investigate."
+            },
+            "B": {
+              "score": 14,
+              "rationale": "Large, crisp KPIs and consistently aligned table figures anchor a compact text system.",
+              "strengths": [
+                "All seven percentages remain visible even on mobile.",
+                "The 390 px stacked sales label and value remain associated with the department name."
+              ],
+              "defects": [
+                "The chart's mobile axis and week labels are very small."
+              ],
+              "opportunity": "Reallocate a little chart space to increase the week and axis label sizes."
+            },
+            "C": {
+              "score": 19,
+              "rationale": "The forest panel and lime data emphasis create distinction, with disciplined alignment and subdued table statuses.",
+              "strengths": [
+                "The chart extends the palette of the header and brand mark.",
+                "The compact connected KPI cards and finely ruled rows reduce extra visual boundaries."
+              ],
+              "defects": [
+                "Muted history and axis labels sit close in value to the dark plot background in the 7-day state."
+              ],
+              "opportunity": "Lighten the contextual labels and earlier marks while maintaining the emphasis on Week 7."
+            },
+            "D": {
+              "score": 18,
+              "rationale": "The chart-led, forest-green system gives BrightCart a recognizable identity while keeping the task compact.",
+              "strengths": [
+                "The prominent decline callout speaks directly to pricing attention.",
+                "The mobile chart and detail retain the same compact, purposeful visual language."
+              ],
+              "defects": [
+                "The detail shifts to an icon-only dismissal that does not echo the overview navigation wording."
+              ],
+              "opportunity": "Carry a text-labeled return action into the detail design."
+            },
+            "E": {
+              "score": 13,
+              "rationale": "Period and filter controls are discoverable and the visible 390 px drilldown provides the expected margin and supplier context.",
+              "strengths": [
+                "Produce is underlined with a supplementary arrow.",
+                "All required department data persist at 390 px, and browser checks confirm filter reset and return."
+              ],
+              "defects": [
+                "The chart provides inline values and a narrative latest-week delta but has no visible series-level text disclosure.",
+                "The detail dismissal is represented by an X alone."
+              ],
+              "opportunity": "Expose the seven exact percentages in an adjacent expandable text list alongside the current labels."
+            },
+            "F": {
+              "score": 8,
+              "rationale": "The connected KPI strip and responsive table form a coherent set of patterns, with some chart semantics still unresolved in the packet.",
+              "strengths": [
+                "Browser evidence exposes all seven percentage strings as HTML text and reports no horizontal overflow or page errors.",
+                "The mobile rows preserve sales by nesting them below each department name."
+              ],
+              "defects": [
+                "Axe could not establish chart value contrast, and the evidence does not establish how the individual weeks and values are associated for assistive technology."
+              ],
+              "opportunity": "Expose each week and its magnitude as a clearly associated text pair."
+            }
+          },
+          "total": 90,
+          "visual_problems": [
+            "The dark chart dominates the table at desktop and tablet.",
+            "Mobile chart axis and week labels are small.",
+            "The Produce detail return is represented by an X alone."
+          ],
+          "effective_decisions": [
+            "Sales tuck under department names at 390 px, preserving all data without squeezing four columns.",
+            "The underlined Produce action is easy to distinguish.",
+            "The latest-week callout spells out the percentage-point change and keeps past weeks in context."
+          ],
+          "blockers": [],
+          "automation_limitations": [
+            "Chart label contrast is unresolved in axe; inspect the chart's accessible name or adjacent text summary for a programmatically associated seven-week equivalent. Filter reset plus return are verified through browser checks without state screenshots."
+          ]
+        }
+      },
+      "pairs": [
+        {
+          "ids": [
+            "ui-143ac5",
+            "ui-539999"
+          ],
+          "preference": "ui-143ac5",
+          "confidence": "high",
+          "rationale": "The compact layout preserves every data field with cleaner mobile spacing, while all seven plot values are visible at once. The rail in ui-539999 spends valuable tablet width on a single item, though its text disclosure and labeled return are useful."
+        },
+        {
+          "ids": [
+            "ui-1cab2b",
+            "ui-539999"
+          ],
+          "preference": "ui-1cab2b",
+          "confidence": "high",
+          "rationale": "A side-by-side trend and table make the investigation faster on desktop and tablet. The seven direct chart labels and action-focused department subtitle give a more useful mobile overview too."
+        },
+        {
+          "ids": [
+            "ui-143ac5",
+            "ui-1cab2b"
+          ],
+          "preference": "ui-1cab2b",
+          "confidence": "medium",
+          "rationale": "The paired chart and departments, explicit percent-series disclosure and labeled return better support the pricing workflow. The dark-chart interface is more compact on mobile and has a more distinctive visual identity."
+        }
+      ]
+    }
+  }
+}

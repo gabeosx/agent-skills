@@ -1,0 +1,1187 @@
+{
+  "schemaVersion": 1,
+  "status": "passed",
+  "browser": {
+    "version": "159.0.8154.6",
+    "source": "playwright",
+    "executablePath": "/Users/gabe/Library/Caches/ms-playwright/chromium-1255/chrome-mac-arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing",
+    "headless": true,
+    "args": [
+      "--disable-quic",
+      "--force-webrtc-ip-handling-policy=disable_non_proxied_udp",
+      "--host-resolver-rules=MAP * ~NOTFOUND, EXCLUDE 127.0.0.1",
+      "--no-proxy-server"
+    ]
+  },
+  "config": {
+    "node": "v26.13.0",
+    "platform": "darwin",
+    "architecture": "arm64",
+    "playwright": "1.65.1",
+    "axe": "4.14.1",
+    "axeTags": [
+      "wcag2a",
+      "wcag2aa",
+      "wcag21a",
+      "wcag21aa",
+      "wcag22a",
+      "wcag22aa"
+    ],
+    "context": {
+      "colorScheme": "light",
+      "deviceScaleFactor": 1,
+      "locale": "en-US",
+      "reducedMotion": "reduce",
+      "serviceWorkers": "block",
+      "timezoneId": "UTC"
+    },
+    "viewports": {
+      "desktop": {
+        "width": 1440,
+        "height": 1000
+      },
+      "tablet": {
+        "width": 834,
+        "height": 1112
+      },
+      "mobile": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    "timeoutsMs": {
+      "navigation": 10000,
+      "step": 2500,
+      "capture": 10000,
+      "accessibility": 10000
+    },
+    "network": "localhost-static-origin-only"
+  },
+  "source": {
+    "checksSha256": "bfc7a306d7933a98223d22cea766e4840810fe74d480cf4edd3f46e7ed402669",
+    "site": {
+      "sha256": "a83203a09eef3dd0f10fe394c46b1956c0e62ea7be6c96f3efb24732adc2e720",
+      "files": [
+        {
+          "path": "index.html",
+          "sha256": "82a455ac7842043579da5befc3a69878bac3f46134ca646c7c263c6143551433"
+        }
+      ]
+    },
+    "harness": {
+      "sha256": "6c881823017ece00658aa02b1817a074668453398b4905f0208e23ef5bcda8d1",
+      "files": [
+        {
+          "path": "capture.mjs",
+          "sha256": "92bc6c8b9c97e64bd0dbcc746c6505f0ed30e9ecaba15ba32a35d1348afaf77e"
+        },
+        {
+          "path": "package-lock.json",
+          "sha256": "9e166f03feded2ba877c95cbbb4bce6b15453e267c7bf4a69a384ec2a3e1fbc1"
+        },
+        {
+          "path": "package.json",
+          "sha256": "e53398841d514c8588ddfad5569cc1f7aed5d67a6f7b71f4ab05a70cfca4817b"
+        }
+      ]
+    }
+  },
+  "timing": {
+    "startedAt": "2026-11-21T19:06:51.618Z",
+    "completedAt": "2026-11-21T19:06:53.836Z",
+    "elapsedMs": 2218
+  },
+  "viewports": [
+    {
+      "name": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "status": "passed",
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "screenshot": {
+        "path": "desktop.png",
+        "bytes": 96597,
+        "sha256": "a81f7f7ed565abc65ad4b19d988f9739f6d953b2e3e7cb8b0e5e62feaa719d99"
+      },
+      "layout": {
+        "clientWidth": 1440,
+        "scrollWidth": 1440,
+        "bodyScrollWidth": 1440,
+        "horizontalOverflow": false
+      },
+      "accessibility": {
+        "status": "no-violations",
+        "counts": {
+          "passes": 25,
+          "violations": 0,
+          "incomplete": 1,
+          "inapplicable": 39
+        },
+        "violations": [],
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "tags": [
+              "cat.color",
+              "wcag2aa",
+              "wcag143",
+              "TTv5",
+              "TT13.c",
+              "EN-301-549",
+              "EN-9.1.4.3",
+              "ACT",
+              "RGAAv4",
+              "RGAA-3.2.1"
+            ],
+            "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+            "help": "Elements must meet minimum color contrast ratio thresholds",
+            "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+            "nodes": [
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "8.3pt (11px)",
+                      "fontWeight": "normal",
+                      "messageKey": "elmPartiallyObscured",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<span class=\"value\" style=\"left:60.285714285714285px;top:45.75199999999998px\">25.1%</span>",
+                        "target": [
+                          ".value:nth-child(1)"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined because it's partially obscured by another element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<span class=\"value\" style=\"left:60.285714285714285px;top:45.75199999999998px\">25.1%</span>",
+                "target": [
+                  ".value:nth-child(1)"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "8.3pt (11px)",
+                      "fontWeight": "normal",
+                      "messageKey": "elmPartiallyObscured",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<span class=\"value\" style=\"left:180.85714285714286px;top:34.16px\">26.0%</span>",
+                        "target": [
+                          ".value:nth-child(2)"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined because it's partially obscured by another element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<span class=\"value\" style=\"left:180.85714285714286px;top:34.16px\">26.0%</span>",
+                "target": [
+                  ".value:nth-child(2)"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "8.3pt (11px)",
+                      "fontWeight": "normal",
+                      "messageKey": "elmPartiallyObscured",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<span class=\"value\" style=\"left:301.42857142857144px;top:38.02400000000001px\">25.7%</span>",
+                        "target": [
+                          ".value:nth-child(3)"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined because it's partially obscured by another element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<span class=\"value\" style=\"left:301.42857142857144px;top:38.02400000000001px\">25.7%</span>",
+                "target": [
+                  ".value:nth-child(3)"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "8.3pt (11px)",
+                      "fontWeight": "normal",
+                      "messageKey": "elmPartiallyObscured",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<span class=\"value\" style=\"left:422px;top:48.328000000000024px\">24.9%</span>",
+                        "target": [
+                          ".value:nth-child(4)"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined because it's partially obscured by another element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<span class=\"value\" style=\"left:422px;top:48.328000000000024px\">24.9%</span>",
+                "target": [
+                  ".value:nth-child(4)"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "8.3pt (11px)",
+                      "fontWeight": "normal",
+                      "messageKey": "elmPartiallyObscured",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<span class=\"value\" style=\"left:542.5714285714286px;top:56.056px\">24.3%</span>",
+                        "target": [
+                          ".value:nth-child(5)"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined because it's partially obscured by another element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<span class=\"value\" style=\"left:542.5714285714286px;top:56.056px\">24.3%</span>",
+                "target": [
+                  ".value:nth-child(5)"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "8.3pt (11px)",
+                      "fontWeight": "normal",
+                      "messageKey": "elmPartiallyObscured",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<span class=\"value\" style=\"left:663.1428571428571px;top:62.495999999999995px\">23.8%</span>",
+                        "target": [
+                          ".value:nth-child(6)"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined because it's partially obscured by another element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<span class=\"value\" style=\"left:663.1428571428571px;top:62.495999999999995px\">23.8%</span>",
+                "target": [
+                  ".value:nth-child(6)"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "8.3pt (11px)",
+                      "fontWeight": "bold",
+                      "messageKey": "elmPartiallyObscured",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<span class=\"value latest\" style=\"left:783.7142857142857px;top:80.528px\">22.4%</span>",
+                        "target": [
+                          ".latest"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined because it's partially obscured by another element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<span class=\"value latest\" style=\"left:783.7142857142857px;top:80.528px\">22.4%</span>",
+                "target": [
+                  ".latest"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "tablet",
+      "viewport": {
+        "width": 834,
+        "height": 1112
+      },
+      "status": "passed",
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "screenshot": {
+        "path": "tablet.png",
+        "bytes": 86905,
+        "sha256": "684d1a2c123fdd21df07e23920d8a1813615be527d59422883012886bac53891"
+      },
+      "layout": {
+        "clientWidth": 834,
+        "scrollWidth": 834,
+        "bodyScrollWidth": 834,
+        "horizontalOverflow": false
+      },
+      "accessibility": {
+        "status": "no-violations",
+        "counts": {
+          "passes": 25,
+          "violations": 0,
+          "incomplete": 1,
+          "inapplicable": 39
+        },
+        "violations": [],
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "tags": [
+              "cat.color",
+              "wcag2aa",
+              "wcag143",
+              "TTv5",
+              "TT13.c",
+              "EN-301-549",
+              "EN-9.1.4.3",
+              "ACT",
+              "RGAAv4",
+              "RGAA-3.2.1"
+            ],
+            "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+            "help": "Elements must meet minimum color contrast ratio thresholds",
+            "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+            "nodes": [
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "8.3pt (11px)",
+                      "fontWeight": "normal",
+                      "messageKey": "elmPartiallyObscured",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<span class=\"value\" style=\"left:34.214285714285715px;top:45.75199999999998px\">25.1%</span>",
+                        "target": [
+                          ".value:nth-child(1)"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined because it's partially obscured by another element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<span class=\"value\" style=\"left:34.214285714285715px;top:45.75199999999998px\">25.1%</span>",
+                "target": [
+                  ".value:nth-child(1)"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "8.3pt (11px)",
+                      "fontWeight": "normal",
+                      "messageKey": "elmPartiallyObscured",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<span class=\"value\" style=\"left:102.64285714285714px;top:34.16px\">26.0%</span>",
+                        "target": [
+                          ".value:nth-child(2)"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined because it's partially obscured by another element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<span class=\"value\" style=\"left:102.64285714285714px;top:34.16px\">26.0%</span>",
+                "target": [
+                  ".value:nth-child(2)"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "8.3pt (11px)",
+                      "fontWeight": "normal",
+                      "messageKey": "elmPartiallyObscured",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<span class=\"value\" style=\"left:171.07142857142858px;top:38.02400000000001px\">25.7%</span>",
+                        "target": [
+                          ".value:nth-child(3)"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined because it's partially obscured by another element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<span class=\"value\" style=\"left:171.07142857142858px;top:38.02400000000001px\">25.7%</span>",
+                "target": [
+                  ".value:nth-child(3)"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "8.3pt (11px)",
+                      "fontWeight": "normal",
+                      "messageKey": "elmPartiallyObscured",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<span class=\"value\" style=\"left:239.5px;top:48.328000000000024px\">24.9%</span>",
+                        "target": [
+                          ".value:nth-child(4)"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined because it's partially obscured by another element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<span class=\"value\" style=\"left:239.5px;top:48.328000000000024px\">24.9%</span>",
+                "target": [
+                  ".value:nth-child(4)"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "8.3pt (11px)",
+                      "fontWeight": "normal",
+                      "messageKey": "elmPartiallyObscured",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<span class=\"value\" style=\"left:307.92857142857144px;top:56.056px\">24.3%</span>",
+                        "target": [
+                          ".value:nth-child(5)"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined because it's partially obscured by another element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<span class=\"value\" style=\"left:307.92857142857144px;top:56.056px\">24.3%</span>",
+                "target": [
+                  ".value:nth-child(5)"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "8.3pt (11px)",
+                      "fontWeight": "normal",
+                      "messageKey": "elmPartiallyObscured",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<span class=\"value\" style=\"left:376.35714285714283px;top:62.495999999999995px\">23.8%</span>",
+                        "target": [
+                          ".value:nth-child(6)"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined because it's partially obscured by another element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<span class=\"value\" style=\"left:376.35714285714283px;top:62.495999999999995px\">23.8%</span>",
+                "target": [
+                  ".value:nth-child(6)"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "8.3pt (11px)",
+                      "fontWeight": "bold",
+                      "messageKey": "elmPartiallyObscured",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<span class=\"value latest\" style=\"left:444.7857142857143px;top:80.528px\">22.4%</span>",
+                        "target": [
+                          ".latest"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined because it's partially obscured by another element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<span class=\"value latest\" style=\"left:444.7857142857143px;top:80.528px\">22.4%</span>",
+                "target": [
+                  ".latest"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "status": "passed",
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "screenshot": {
+        "path": "mobile.png",
+        "bytes": 72330,
+        "sha256": "d2776e118f748d9a75392e9af21b68560f6e52cea3f6aa9f0993bfd5af16a740"
+      },
+      "layout": {
+        "clientWidth": 390,
+        "scrollWidth": 390,
+        "bodyScrollWidth": 390,
+        "horizontalOverflow": false
+      },
+      "accessibility": {
+        "status": "no-violations",
+        "counts": {
+          "passes": 25,
+          "violations": 0,
+          "incomplete": 1,
+          "inapplicable": 39
+        },
+        "violations": [],
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "tags": [
+              "cat.color",
+              "wcag2aa",
+              "wcag143",
+              "TTv5",
+              "TT13.c",
+              "EN-301-549",
+              "EN-9.1.4.3",
+              "ACT",
+              "RGAAv4",
+              "RGAA-3.2.1"
+            ],
+            "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+            "help": "Elements must meet minimum color contrast ratio thresholds",
+            "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+            "nodes": [
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "6.8pt (9px)",
+                      "fontWeight": "normal",
+                      "messageKey": "elmPartiallyObscured",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<span class=\"value\" style=\"left:21.285714285714285px;top:40.03299999999999px\">25.1%</span>",
+                        "target": [
+                          ".value:nth-child(1)"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined because it's partially obscured by another element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<span class=\"value\" style=\"left:21.285714285714285px;top:40.03299999999999px\">25.1%</span>",
+                "target": [
+                  ".value:nth-child(1)"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "6.8pt (9px)",
+                      "fontWeight": "normal",
+                      "messageKey": "elmPartiallyObscured",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<span class=\"value\" style=\"left:63.857142857142854px;top:29.89px\">26.0%</span>",
+                        "target": [
+                          ".value:nth-child(2)"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined because it's partially obscured by another element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<span class=\"value\" style=\"left:63.857142857142854px;top:29.89px\">26.0%</span>",
+                "target": [
+                  ".value:nth-child(2)"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "6.8pt (9px)",
+                      "fontWeight": "normal",
+                      "messageKey": "elmPartiallyObscured",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<span class=\"value\" style=\"left:106.42857142857143px;top:33.27100000000001px\">25.7%</span>",
+                        "target": [
+                          ".value:nth-child(3)"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined because it's partially obscured by another element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<span class=\"value\" style=\"left:106.42857142857143px;top:33.27100000000001px\">25.7%</span>",
+                "target": [
+                  ".value:nth-child(3)"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "6.8pt (9px)",
+                      "fontWeight": "normal",
+                      "messageKey": "elmPartiallyObscured",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<span class=\"value\" style=\"left:149px;top:42.28700000000002px\">24.9%</span>",
+                        "target": [
+                          ".value:nth-child(4)"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined because it's partially obscured by another element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<span class=\"value\" style=\"left:149px;top:42.28700000000002px\">24.9%</span>",
+                "target": [
+                  ".value:nth-child(4)"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "6.8pt (9px)",
+                      "fontWeight": "normal",
+                      "messageKey": "elmPartiallyObscured",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<span class=\"value\" style=\"left:191.57142857142858px;top:49.04899999999999px\">24.3%</span>",
+                        "target": [
+                          ".value:nth-child(5)"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined because it's partially obscured by another element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<span class=\"value\" style=\"left:191.57142857142858px;top:49.04899999999999px\">24.3%</span>",
+                "target": [
+                  ".value:nth-child(5)"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "6.8pt (9px)",
+                      "fontWeight": "normal",
+                      "messageKey": "elmPartiallyObscured",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<span class=\"value\" style=\"left:234.14285714285714px;top:54.684px\">23.8%</span>",
+                        "target": [
+                          ".value:nth-child(6)"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined because it's partially obscured by another element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<span class=\"value\" style=\"left:234.14285714285714px;top:54.684px\">23.8%</span>",
+                "target": [
+                  ".value:nth-child(6)"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "6.8pt (9px)",
+                      "fontWeight": "bold",
+                      "messageKey": "elmPartiallyObscured",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<span class=\"value latest\" style=\"left:276.7142857142857px;top:70.462px\">22.4%</span>",
+                        "target": [
+                          ".latest"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined because it's partially obscured by another element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<span class=\"value latest\" style=\"left:276.7142857142857px;top:70.462px\">22.4%</span>",
+                "target": [
+                  ".latest"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "scenarios": [
+    {
+      "name": "period update",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "captureRequested": true,
+      "status": "passed",
+      "steps": [
+        {
+          "index": 1,
+          "expected": {
+            "action": "text",
+            "id": "revenue",
+            "value": "$1.28M"
+          },
+          "status": "passed",
+          "actual": "$1.28M",
+          "elapsedMs": 16
+        },
+        {
+          "index": 2,
+          "expected": {
+            "action": "select",
+            "id": "period",
+            "value": "7"
+          },
+          "status": "passed",
+          "actual": [
+            "7"
+          ],
+          "elapsedMs": 11
+        },
+        {
+          "index": 3,
+          "expected": {
+            "action": "text",
+            "id": "revenue",
+            "value": "$318K"
+          },
+          "status": "passed",
+          "actual": "$318K",
+          "elapsedMs": 1
+        },
+        {
+          "index": 4,
+          "expected": {
+            "action": "text",
+            "id": "margin",
+            "value": "22.4%"
+          },
+          "status": "passed",
+          "actual": "22.4%",
+          "elapsedMs": 1
+        },
+        {
+          "index": 5,
+          "expected": {
+            "action": "text",
+            "id": "rows",
+            "value": "$95K"
+          },
+          "status": "passed",
+          "actual": "Produce ↗ $95K 18.1% Investigate Grocery $130K 27.0% On track Frozen $54K 22.3% Watch Bakery $39K 19.4% Investigate",
+          "elapsedMs": 1
+        }
+      ],
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "screenshot": {
+        "path": "scenario-01-period-update.png",
+        "bytes": 96651,
+        "sha256": "92aa318265b310a29c4753a2e0378abbbf0a0b0fcf6faf4c2afa163c8357e369"
+      },
+      "unrunSteps": 0
+    },
+    {
+      "name": "filter and drilldown",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "captureRequested": true,
+      "status": "passed",
+      "steps": [
+        {
+          "index": 1,
+          "expected": {
+            "action": "select",
+            "id": "period",
+            "value": "7"
+          },
+          "status": "passed",
+          "actual": [
+            "7"
+          ],
+          "elapsedMs": 11
+        },
+        {
+          "index": 2,
+          "expected": {
+            "action": "select",
+            "id": "status",
+            "value": "investigate"
+          },
+          "status": "passed",
+          "actual": [
+            "investigate"
+          ],
+          "elapsedMs": 1
+        },
+        {
+          "index": 3,
+          "expected": {
+            "action": "text",
+            "id": "rows",
+            "value": "Bakery"
+          },
+          "status": "passed",
+          "actual": "Produce ↗ $95K sales 18.1% Investigate Bakery $39K sales 19.4% Investigate",
+          "elapsedMs": 6
+        },
+        {
+          "index": 4,
+          "expected": {
+            "action": "click",
+            "id": "produce"
+          },
+          "status": "passed",
+          "elapsedMs": 44
+        },
+        {
+          "index": 5,
+          "expected": {
+            "action": "text",
+            "id": "detail",
+            "value": "Supplier costs"
+          },
+          "status": "passed",
+          "actual": "Investigate × Produce 18.1% gross margin · Last 7 days Supplier costs Compare supplier costs in Produce with the selected period’s gross margin to investigate the decline.",
+          "elapsedMs": 1
+        },
+        {
+          "index": 6,
+          "expected": {
+            "action": "text",
+            "id": "detail",
+            "value": "18.1%"
+          },
+          "status": "passed",
+          "actual": "Investigate × Produce 18.1% gross margin · Last 7 days Supplier costs Compare supplier costs in Produce with the selected period’s gross margin to investigate the decline.",
+          "elapsedMs": 1
+        }
+      ],
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "screenshot": {
+        "path": "scenario-02-filter-and-drilldown.png",
+        "bytes": 77437,
+        "sha256": "b0f34a3669ab30ea56aa0eff06156705695c39b216380b054a57bcceaef622fe"
+      },
+      "unrunSteps": 0
+    },
+    {
+      "name": "filter reset and return",
+      "viewport": {
+        "width": 834,
+        "height": 1112
+      },
+      "captureRequested": false,
+      "status": "passed",
+      "steps": [
+        {
+          "index": 1,
+          "expected": {
+            "action": "select",
+            "id": "status",
+            "value": "investigate"
+          },
+          "status": "passed",
+          "actual": [
+            "investigate"
+          ],
+          "elapsedMs": 16
+        },
+        {
+          "index": 2,
+          "expected": {
+            "action": "select",
+            "id": "status",
+            "value": "all"
+          },
+          "status": "passed",
+          "actual": [
+            "all"
+          ],
+          "elapsedMs": 3
+        },
+        {
+          "index": 3,
+          "expected": {
+            "action": "text",
+            "id": "rows",
+            "value": "Grocery"
+          },
+          "status": "passed",
+          "actual": "Produce ↗ $405K 20.2% Investigate Grocery $532K 28.1% On track Frozen $204K 25.2% Watch Bakery $139K 25.1% Investigate",
+          "elapsedMs": 8
+        },
+        {
+          "index": 4,
+          "expected": {
+            "action": "click",
+            "id": "produce"
+          },
+          "status": "passed",
+          "elapsedMs": 26
+        },
+        {
+          "index": 5,
+          "expected": {
+            "action": "click",
+            "id": "detail-close"
+          },
+          "status": "passed",
+          "elapsedMs": 39
+        },
+        {
+          "index": 6,
+          "expected": {
+            "action": "hidden",
+            "id": "detail"
+          },
+          "status": "passed",
+          "elapsedMs": 2
+        }
+      ],
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "unrunSteps": 0
+    }
+  ],
+  "criticalFailures": [],
+  "runnerErrors": []
+}

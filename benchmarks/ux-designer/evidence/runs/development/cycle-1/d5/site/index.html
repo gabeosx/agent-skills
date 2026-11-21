@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#12262d">
+  <title>Harborline Dispatch</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="queue.js"></script>
+</head>
+<body>
+  <header class="masthead">
+    <div class="shell masthead-inner">
+      <div class="wordmark"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>Harborline</div>
+      <span class="product">Dispatch</span>
+    </div>
+  </header>
+  <main class="shell">
+    <section class="intro" aria-labelledby="page-title">
+      <div>
+        <h1 id="page-title">Shift queue</h1>
+        <p>Tuesday <span aria-hidden="true">·</span> East district <span aria-hidden="true">·</span> 3 scheduled stops</p>
+      </div>
+      <div class="overview">
+        <span class="overview-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+        <p><strong>2 of 3</strong> stops late</p>
+      </div>
+    </section>
+    <section class="queue" aria-labelledby="queue-title">
+      <div class="toolbar">
+        <div>
+          <h2 id="queue-title">Scheduled stops</h2>
+          <p class="results" id="results" role="status">Showing all 3 stops</p>
+        </div>
+        <button class="filter" data-testid="late-only" aria-pressed="false" aria-controls="stops">
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M6 12h12m-8 6h4"/></svg>
+          Late only
+          <span class="switch" aria-hidden="true"></span>
+        </button>
+      </div>
+      <div class="table-head stop-grid" aria-hidden="true">
+        <span>Stop</span><span>ETA</span><span>Delay</span><span>Review status</span>
+      </div>
+      <div id="stops" data-testid="stops">
+        <article class="stop-grid stop" data-late="true" aria-labelledby="riverfront">
+          <div class="destination"><h3 id="riverfront">Riverfront Market</h3><p>Wilmington</p></div>
+          <p class="arrival"><span class="eta-label">ETA</span> <time datetime="10:40">10:40</time></p>
+          <p class="delay"><span class="delay-badge"><span class="delay-dot" aria-hidden="true"></span>24 min late</span></p>
+          <p class="review-state" data-testid="riverfront-state" role="status">Needs review</p>
+          <button class="review" data-testid="riverfront-review" aria-describedby="riverfront">Acknowledge</button>
+        </article>
+        <article class="stop-grid stop" data-late="false" data-testid="oak" aria-labelledby="oak">
+          <div class="destination"><h3 id="oak">Oak Street Co-op</h3><p>Newark</p></div>
+          <p class="arrival"><span class="eta-label">ETA</span> <time datetime="11:10">11:10</time></p>
+          <p class="delay"><span class="delay-badge"><span class="delay-dot" aria-hidden="true"></span>On time</span></p>
+          <p class="review-state" role="status">Needs review</p>
+          <button class="review" aria-describedby="oak">Acknowledge</button>
+        </article>
+        <article class="stop-grid stop" data-late="true" aria-labelledby="north-pier">
+          <div class="destination"><h3 id="north-pier">North Pier Supplies</h3><p>New Castle</p></div>
+          <p class="arrival"><span class="eta-label">ETA</span> <time datetime="11:25">11:25</time></p>
+          <p class="delay"><span class="delay-badge"><span class="delay-dot" aria-hidden="true"></span>11 min late</span></p>
+          <p class="review-state" role="status">Needs review</p>
+          <button class="review" aria-describedby="north-pier">Acknowledge</button>
+        </article>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

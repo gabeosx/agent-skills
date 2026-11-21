@@ -1,0 +1,865 @@
+{
+  "schemaVersion": 1,
+  "status": "passed",
+  "browser": {
+    "version": "159.0.8154.6",
+    "source": "playwright",
+    "executablePath": "/Users/gabe/Library/Caches/ms-playwright/chromium-1255/chrome-mac-arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing",
+    "headless": true,
+    "args": [
+      "--disable-quic",
+      "--force-webrtc-ip-handling-policy=disable_non_proxied_udp",
+      "--host-resolver-rules=MAP * ~NOTFOUND, EXCLUDE 127.0.0.1",
+      "--no-proxy-server"
+    ]
+  },
+  "config": {
+    "node": "v26.13.0",
+    "platform": "darwin",
+    "architecture": "arm64",
+    "playwright": "1.65.1",
+    "axe": "4.14.1",
+    "axeTags": [
+      "wcag2a",
+      "wcag2aa",
+      "wcag21a",
+      "wcag21aa",
+      "wcag22a",
+      "wcag22aa"
+    ],
+    "context": {
+      "colorScheme": "light",
+      "deviceScaleFactor": 1,
+      "locale": "en-US",
+      "reducedMotion": "reduce",
+      "serviceWorkers": "block",
+      "timezoneId": "UTC"
+    },
+    "viewports": {
+      "desktop": {
+        "width": 1440,
+        "height": 1000
+      },
+      "tablet": {
+        "width": 834,
+        "height": 1112
+      },
+      "mobile": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    "timeoutsMs": {
+      "navigation": 10000,
+      "step": 2500,
+      "capture": 10000,
+      "accessibility": 10000
+    },
+    "network": "localhost-static-origin-only"
+  },
+  "source": {
+    "checksSha256": "9f5e0e834d0cf7d43691ed82790b94215f2e290867a1a0e6f5a36c2e46269990",
+    "site": {
+      "sha256": "9eec71c2c9e0635973a348375c1361beb0097df94237ae8a839c9bc37d7f0d45",
+      "files": [
+        {
+          "path": "artwork/proof-v2.svg",
+          "sha256": "b0f153ec54c946a9e0b178d160f6285c255e529e4f62a5c8d9e19335f0e6e9c8"
+        },
+        {
+          "path": "artwork/proof-v3.svg",
+          "sha256": "0d4cb53e66cc70402a348b11992766b18726028e3c3092d0a6f263d7fdfe8aa5"
+        },
+        {
+          "path": "index.html",
+          "sha256": "6365dd33c18a2277a6811d4edae2c380755d403d12ae1dcbbad3610fba6184fb"
+        }
+      ]
+    },
+    "harness": {
+      "sha256": "6c881823017ece00658aa02b1817a074668453398b4905f0208e23ef5bcda8d1",
+      "files": [
+        {
+          "path": "capture.mjs",
+          "sha256": "92bc6c8b9c97e64bd0dbcc746c6505f0ed30e9ecaba15ba32a35d1348afaf77e"
+        },
+        {
+          "path": "package-lock.json",
+          "sha256": "9e166f03feded2ba877c95cbbb4bce6b15453e267c7bf4a69a384ec2a3e1fbc1"
+        },
+        {
+          "path": "package.json",
+          "sha256": "e53398841d514c8588ddfad5569cc1f7aed5d67a6f7b71f4ab05a70cfca4817b"
+        }
+      ]
+    }
+  },
+  "timing": {
+    "startedAt": "2026-11-21T19:46:58.578Z",
+    "completedAt": "2026-11-21T19:47:01.031Z",
+    "elapsedMs": 2453
+  },
+  "viewports": [
+    {
+      "name": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "status": "passed",
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "screenshot": {
+        "path": "desktop.png",
+        "bytes": 287457,
+        "sha256": "e8f5fdaf3c56589639dcecbc65aa4bbc637c7b74e28aaae4a62a08ba812c0f3b"
+      },
+      "layout": {
+        "clientWidth": 1440,
+        "scrollWidth": 1440,
+        "bodyScrollWidth": 1440,
+        "horizontalOverflow": false
+      },
+      "accessibility": {
+        "status": "no-violations",
+        "counts": {
+          "passes": 28,
+          "violations": 0,
+          "incomplete": 1,
+          "inapplicable": 36
+        },
+        "violations": [],
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "tags": [
+              "cat.color",
+              "wcag2aa",
+              "wcag143",
+              "TTv5",
+              "TT13.c",
+              "EN-301-549",
+              "EN-9.1.4.3",
+              "ACT",
+              "RGAAv4",
+              "RGAA-3.2.1"
+            ],
+            "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+            "help": "Elements must meet minimum color contrast ratio thresholds",
+            "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+            "nodes": [
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "fontSize": "10.8pt (14.4px)",
+                      "fontWeight": "bold",
+                      "messageKey": "pseudoContent",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<div class=\"proof\">",
+                        "target": [
+                          ".proof"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined due to a pseudo element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<button class=\"pin\" style=\"--x: 68%; --y: 39%;\" type=\"button\" data-testid=\"pin-1\" aria-label=\"Pin 1, Leaf contrast\" aria-pressed=\"false\" aria-controls=\"thread\">1</button>",
+                "target": [
+                  "button[data-testid=\"pin-1\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "fontSize": "10.8pt (14.4px)",
+                      "fontWeight": "bold",
+                      "messageKey": "pseudoContent",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<div class=\"proof\">",
+                        "target": [
+                          ".proof"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined due to a pseudo element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<button class=\"pin\" style=\"--x: 58%; --y: 84%;\" type=\"button\" data-testid=\"pin-2\" aria-label=\"Pin 2, Net weight\" aria-pressed=\"false\" aria-controls=\"thread\">2</button>",
+                "target": [
+                  "button[data-testid=\"pin-2\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "tablet",
+      "viewport": {
+        "width": 834,
+        "height": 1112
+      },
+      "status": "passed",
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "screenshot": {
+        "path": "tablet.png",
+        "bytes": 239239,
+        "sha256": "1ad08ba138df3f89ed6fc21c91ecac689c16b1173ab6052709e80c2d871b4e81"
+      },
+      "layout": {
+        "clientWidth": 834,
+        "scrollWidth": 834,
+        "bodyScrollWidth": 834,
+        "horizontalOverflow": false
+      },
+      "accessibility": {
+        "status": "no-violations",
+        "counts": {
+          "passes": 28,
+          "violations": 0,
+          "incomplete": 1,
+          "inapplicable": 36
+        },
+        "violations": [],
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "tags": [
+              "cat.color",
+              "wcag2aa",
+              "wcag143",
+              "TTv5",
+              "TT13.c",
+              "EN-301-549",
+              "EN-9.1.4.3",
+              "ACT",
+              "RGAAv4",
+              "RGAA-3.2.1"
+            ],
+            "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+            "help": "Elements must meet minimum color contrast ratio thresholds",
+            "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+            "nodes": [
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "fontSize": "10.8pt (14.4px)",
+                      "fontWeight": "bold",
+                      "messageKey": "pseudoContent",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<div class=\"proof\">",
+                        "target": [
+                          ".proof"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined due to a pseudo element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<button class=\"pin\" style=\"--x: 68%; --y: 39%;\" type=\"button\" data-testid=\"pin-1\" aria-label=\"Pin 1, Leaf contrast\" aria-pressed=\"false\" aria-controls=\"thread\">1</button>",
+                "target": [
+                  "button[data-testid=\"pin-1\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "fontSize": "10.8pt (14.4px)",
+                      "fontWeight": "bold",
+                      "messageKey": "pseudoContent",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<div class=\"proof\">",
+                        "target": [
+                          ".proof"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined due to a pseudo element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<button class=\"pin\" style=\"--x: 58%; --y: 84%;\" type=\"button\" data-testid=\"pin-2\" aria-label=\"Pin 2, Net weight\" aria-pressed=\"false\" aria-controls=\"thread\">2</button>",
+                "target": [
+                  "button[data-testid=\"pin-2\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "status": "passed",
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "screenshot": {
+        "path": "mobile.png",
+        "bytes": 109293,
+        "sha256": "00c2b9ff3b2da940c1b0b1738ba3907520225324221a81b758936b2af1d847b1"
+      },
+      "layout": {
+        "clientWidth": 390,
+        "scrollWidth": 390,
+        "bodyScrollWidth": 390,
+        "horizontalOverflow": false
+      },
+      "accessibility": {
+        "status": "no-violations",
+        "counts": {
+          "passes": 28,
+          "violations": 0,
+          "incomplete": 1,
+          "inapplicable": 36
+        },
+        "violations": [],
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "tags": [
+              "cat.color",
+              "wcag2aa",
+              "wcag143",
+              "TTv5",
+              "TT13.c",
+              "EN-301-549",
+              "EN-9.1.4.3",
+              "ACT",
+              "RGAAv4",
+              "RGAA-3.2.1"
+            ],
+            "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+            "help": "Elements must meet minimum color contrast ratio thresholds",
+            "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+            "nodes": [
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "fontSize": "10.8pt (14.4px)",
+                      "fontWeight": "bold",
+                      "messageKey": "pseudoContent",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<div class=\"proof\">",
+                        "target": [
+                          ".proof"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined due to a pseudo element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<button class=\"pin\" style=\"--x: 68%; --y: 39%;\" type=\"button\" data-testid=\"pin-1\" aria-label=\"Pin 1, Leaf contrast\" aria-pressed=\"false\" aria-controls=\"thread\">1</button>",
+                "target": [
+                  "button[data-testid=\"pin-1\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "fontSize": "10.8pt (14.4px)",
+                      "fontWeight": "bold",
+                      "messageKey": "pseudoContent",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<div class=\"proof\">",
+                        "target": [
+                          ".proof"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined due to a pseudo element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<button class=\"pin\" style=\"--x: 58%; --y: 84%;\" type=\"button\" data-testid=\"pin-2\" aria-label=\"Pin 2, Net weight\" aria-pressed=\"false\" aria-controls=\"thread\">2</button>",
+                "target": [
+                  "button[data-testid=\"pin-2\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "scenarios": [
+    {
+      "name": "Switch proofs and preserve pin visibility",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "captureRequested": true,
+      "status": "passed",
+      "steps": [
+        {
+          "index": 1,
+          "expected": {
+            "action": "attribute",
+            "id": "proof-image",
+            "name": "alt",
+            "value": "Blood Orange pouch, Version 3"
+          },
+          "status": "passed",
+          "actual": "Blood Orange pouch, Version 3",
+          "elapsedMs": 11
+        },
+        {
+          "index": 2,
+          "expected": {
+            "action": "visible",
+            "id": "pin-1"
+          },
+          "status": "passed",
+          "elapsedMs": 9
+        },
+        {
+          "index": 3,
+          "expected": {
+            "action": "click",
+            "id": "pins-toggle"
+          },
+          "status": "passed",
+          "elapsedMs": 41
+        },
+        {
+          "index": 4,
+          "expected": {
+            "action": "attribute",
+            "id": "pins-toggle",
+            "name": "aria-pressed",
+            "value": "false"
+          },
+          "status": "passed",
+          "actual": "false",
+          "elapsedMs": 1
+        },
+        {
+          "index": 5,
+          "expected": {
+            "action": "hidden",
+            "id": "pin-1"
+          },
+          "status": "passed",
+          "elapsedMs": 2
+        },
+        {
+          "index": 6,
+          "expected": {
+            "action": "visible",
+            "id": "note-1"
+          },
+          "status": "passed",
+          "elapsedMs": 2
+        },
+        {
+          "index": 7,
+          "expected": {
+            "action": "select",
+            "id": "version-select",
+            "value": "v2"
+          },
+          "status": "passed",
+          "actual": [
+            "v2"
+          ],
+          "elapsedMs": 3
+        },
+        {
+          "index": 8,
+          "expected": {
+            "action": "attribute",
+            "id": "proof-image",
+            "name": "alt",
+            "value": "Blood Orange pouch, Version 2"
+          },
+          "status": "passed",
+          "actual": "Blood Orange pouch, Version 2",
+          "elapsedMs": 25
+        },
+        {
+          "index": 9,
+          "expected": {
+            "action": "text",
+            "id": "notes-empty",
+            "value": "No open notes on this version."
+          },
+          "status": "passed",
+          "actual": "No open notes on this version.",
+          "elapsedMs": 2
+        },
+        {
+          "index": 10,
+          "expected": {
+            "action": "hidden",
+            "id": "approve-proof"
+          },
+          "status": "passed",
+          "elapsedMs": 1
+        },
+        {
+          "index": 11,
+          "expected": {
+            "action": "select",
+            "id": "version-select",
+            "value": "v3"
+          },
+          "status": "passed",
+          "actual": [
+            "v3"
+          ],
+          "elapsedMs": 2
+        },
+        {
+          "index": 12,
+          "expected": {
+            "action": "hidden",
+            "id": "pin-1"
+          },
+          "status": "passed",
+          "elapsedMs": 1
+        },
+        {
+          "index": 13,
+          "expected": {
+            "action": "click",
+            "id": "pins-toggle"
+          },
+          "status": "passed",
+          "elapsedMs": 23
+        },
+        {
+          "index": 14,
+          "expected": {
+            "action": "visible",
+            "id": "pin-2"
+          },
+          "status": "passed",
+          "elapsedMs": 1
+        }
+      ],
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "screenshot": {
+        "path": "scenario-01-switch-proofs-and-preserve-pin-visibility.png",
+        "bytes": 287457,
+        "sha256": "e8f5fdaf3c56589639dcecbc65aa4bbc637c7b74e28aaae4a62a08ba812c0f3b"
+      },
+      "unrunSteps": 0
+    },
+    {
+      "name": "Confirm approval after cancelling once",
+      "viewport": {
+        "width": 834,
+        "height": 1112
+      },
+      "captureRequested": true,
+      "status": "passed",
+      "steps": [
+        {
+          "index": 1,
+          "expected": {
+            "action": "click",
+            "id": "approve-proof"
+          },
+          "status": "passed",
+          "elapsedMs": 42
+        },
+        {
+          "index": 2,
+          "expected": {
+            "action": "visible",
+            "id": "approval-dialog"
+          },
+          "status": "passed",
+          "elapsedMs": 1
+        },
+        {
+          "index": 3,
+          "expected": {
+            "action": "text",
+            "id": "approval-dialog",
+            "value": "SP-0264"
+          },
+          "status": "passed",
+          "actual": "Approve proof? Approve Version 3 of the Blood Orange pouch for job SP-0264. Cancel Confirm approval",
+          "elapsedMs": 6
+        },
+        {
+          "index": 4,
+          "expected": {
+            "action": "click",
+            "id": "cancel-approval"
+          },
+          "status": "passed",
+          "elapsedMs": 26
+        },
+        {
+          "index": 5,
+          "expected": {
+            "action": "hidden",
+            "id": "approval-dialog"
+          },
+          "status": "passed",
+          "elapsedMs": 1
+        },
+        {
+          "index": 6,
+          "expected": {
+            "action": "text",
+            "id": "review-status",
+            "value": "In review"
+          },
+          "status": "passed",
+          "actual": "In review",
+          "elapsedMs": 1
+        },
+        {
+          "index": 7,
+          "expected": {
+            "action": "click",
+            "id": "approve-proof"
+          },
+          "status": "passed",
+          "elapsedMs": 30
+        },
+        {
+          "index": 8,
+          "expected": {
+            "action": "click",
+            "id": "confirm-approval"
+          },
+          "status": "passed",
+          "elapsedMs": 234
+        },
+        {
+          "index": 9,
+          "expected": {
+            "action": "hidden",
+            "id": "approval-dialog"
+          },
+          "status": "passed",
+          "elapsedMs": 1
+        },
+        {
+          "index": 10,
+          "expected": {
+            "action": "text",
+            "id": "review-status",
+            "value": "Approved"
+          },
+          "status": "passed",
+          "actual": "Approved",
+          "elapsedMs": 1
+        },
+        {
+          "index": 11,
+          "expected": {
+            "action": "hidden",
+            "id": "approve-proof"
+          },
+          "status": "passed",
+          "elapsedMs": 1
+        }
+      ],
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "screenshot": {
+        "path": "scenario-02-confirm-approval-after-cancelling-once.png",
+        "bytes": 237315,
+        "sha256": "a1d5de2246fbd41183556910af38d1ec438a68255aec20daaea6047d654ee174"
+      },
+      "unrunSteps": 0
+    },
+    {
+      "name": "Reply from an artwork pin",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "captureRequested": true,
+      "status": "passed",
+      "steps": [
+        {
+          "index": 1,
+          "expected": {
+            "action": "click",
+            "id": "pin-2"
+          },
+          "status": "passed",
+          "elapsedMs": 37
+        },
+        {
+          "index": 2,
+          "expected": {
+            "action": "text",
+            "id": "active-note",
+            "value": "Devin Cole"
+          },
+          "status": "passed",
+          "actual": "Back to notes Net weight Devin Cole Keep the revised 60 g line centered under DRIED SLICES. Reply Post reply",
+          "elapsedMs": 6
+        },
+        {
+          "index": 3,
+          "expected": {
+            "action": "text",
+            "id": "active-note",
+            "value": "Keep the revised 60 g line centered under DRIED SLICES."
+          },
+          "status": "passed",
+          "actual": "Back to notes Net weight Devin Cole Keep the revised 60 g line centered under DRIED SLICES. Reply Post reply",
+          "elapsedMs": 1
+        },
+        {
+          "index": 4,
+          "expected": {
+            "action": "fill",
+            "id": "reply-input",
+            "value": "Checked against the approved dieline."
+          },
+          "status": "passed",
+          "elapsedMs": 2
+        },
+        {
+          "index": 5,
+          "expected": {
+            "action": "click",
+            "id": "post-reply"
+          },
+          "status": "passed",
+          "elapsedMs": 31
+        },
+        {
+          "index": 6,
+          "expected": {
+            "action": "text",
+            "id": "active-note",
+            "value": "Checked against the approved dieline."
+          },
+          "status": "passed",
+          "actual": "Back to notes Net weight Devin Cole Keep the revised 60 g line centered under DRIED SLICES. You Checked against the approved dieline. Reply Post reply",
+          "elapsedMs": 1
+        },
+        {
+          "index": 7,
+          "expected": {
+            "action": "click",
+            "id": "back-to-notes"
+          },
+          "status": "passed",
+          "elapsedMs": 23
+        },
+        {
+          "index": 8,
+          "expected": {
+            "action": "click",
+            "id": "note-1"
+          },
+          "status": "passed",
+          "elapsedMs": 36
+        },
+        {
+          "index": 9,
+          "expected": {
+            "action": "text",
+            "id": "active-note",
+            "value": "Leaf contrast"
+          },
+          "status": "passed",
+          "actual": "Back to notes Leaf contrast Inez Park Check the leaf against the orange field on matte stock. Reply Post reply",
+          "elapsedMs": 1
+        }
+      ],
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "screenshot": {
+        "path": "scenario-03-reply-from-an-artwork-pin.png",
+        "bytes": 122197,
+        "sha256": "5ad559a8a3d3a15780732fff814c1d0e6bc50da7b46ec28dcdbf5b108574041d"
+      },
+      "unrunSteps": 0
+    }
+  ],
+  "criticalFailures": [],
+  "runnerErrors": []
+}

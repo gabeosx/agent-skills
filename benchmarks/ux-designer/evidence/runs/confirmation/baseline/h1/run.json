@@ -1,0 +1,21 @@
+{
+  "actor": "c933",
+  "model": "inherited Codex",
+  "started": "2026-11-21T19:38:46+00:00",
+  "actor_collected_at": "2026-11-21T19:46:10+00:00",
+  "attempt": 1,
+  "brief": "briefs/h1/brief.md",
+  "brief_sha256": "4f14c1becfd48d0bcbd438f57496b0afc32e0422f9fa35335b1311b545380d09",
+  "checks_sha256": "3fefaf001da796335287499d78aa1e9424845991ff9bc937aaa009edcff9ac36",
+  "starter_files": {},
+  "skill_sha256": "ad92dafd139c78ea3b87e186b5a787186f291e6a0e2c846d555a021432f3e4be",
+  "source": {
+    "app.js": "5c72a3d4d1dbd91f61031d659a6bb272fb55d8278c9a06e98910e50a8cc1b40e",
+    "design-system-core.css": "2e1dc47164205b5aef1af967821ea7bcacb53e9b8ae556f6b20662c20544f188",
+    "index.html": "b9c64b2ec4ce32a2fbb14ca4efb008e73a80d765d8439626e3185401c1bb748a",
+    "style.css": "667ebcf3da788f1b93de3c10d9a91d990eda0b09e11bb27aa765c74a8c58e6e1"
+  },
+  "actor_result": "Both complete. Agent reports three-width interaction verification, proof pin placement and no horizontal overflow.",
+  "usage": null,
+  "charge": null
+}

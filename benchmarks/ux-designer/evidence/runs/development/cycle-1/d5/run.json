@@ -1,0 +1,22 @@
+{
+  "actor": "b57e",
+  "model": "inherited Codex",
+  "started": "2026-11-21T18:47:57+00:00",
+  "actor_collected_at": "2026-11-21T18:53:18+00:00",
+  "attempt": 1,
+  "brief": "briefs/d5/brief.md",
+  "brief_sha256": "1f78fe7acfb9fa1c9f840b7855c11dca0b387e2b14105e8a1d1e3b21720e3e58",
+  "checks_sha256": "e94ae9092535c4cd350ac4a88d21a641b93ea05df2ffd006a8c7cad190385f42",
+  "starter_files": {
+    "index.html": "1f62c3baf411b08940e52609baf9f709b2407876276671c8275b2f1f4733a262"
+  },
+  "skill_sha256": "c5356d49006b89e2025ebd2f52288ecad64f1b35187831c67fa4398a0588d041",
+  "source": {
+    "index.html": "7208e3789bfe2ec00ad5127c2a084c7d4ebdd0dd9289a4e10da03a22442710fc",
+    "queue.js": "f5711e04205721ecb4540c598d21e538ca47756616a0be6bfbd24c9e130d38ab",
+    "style.css": "41ab24dc01e9d7101389af1082f3812b359584a63e02c476d2564ee7ed99d5f6"
+  },
+  "actor_result": "Both complete. Agent reports verifying filter and acknowledgement, navigation disclosures, outline anchors, and dialog dismissal and focus at all three widths. Parent shared the same Chromium launch workaround as for the corresponding baseline actor.",
+  "usage": null,
+  "charge": null
+}

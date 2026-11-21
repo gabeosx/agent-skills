@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Loan review | Carrick Museum</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="loan-review.js" defer></script>
+</head>
+<body>
+  <header class="masthead">
+    <div class="shell masthead-inner">
+      <div class="brand"><span class="museum-mark" aria-hidden="true"><i></i></span>Carrick Museum</div>
+      <span class="page-name">Loan review</span>
+    </div>
+  </header>
+
+  <main class="shell">
+    <section class="intake" aria-labelledby="artwork-title">
+      <div class="artwork">
+        <p class="eyebrow">Incoming loan</p>
+        <h1 id="artwork-title">Blue Tide, 1976</h1>
+        <dl class="artwork-meta">
+          <div><dt>Loan ID</dt><dd class="loan-id">CM-L018</dd></div>
+          <div><dt>Lender</dt><dd>West March Print Archive</dd></div>
+        </dl>
+      </div>
+      <div class="finding">
+        <h2><span class="finding-icon" aria-hidden="true">!</span> Intake finding</h2>
+        <p>The transit case humidity log is missing its final reading.</p>
+      </div>
+    </section>
+
+    <section class="decisions" aria-labelledby="decisions-title">
+      <h2 id="decisions-title">Choose a disposition</h2>
+      <div class="options">
+        <button class="option" type="button" aria-pressed="true" data-testid="loan-option-approve">
+          <span class="option-heading"><span class="choice-title">Approve installation</span><span class="selector" aria-hidden="true"></span></span>
+          <span class="option-data">
+            <span class="option-row"><span>Handling</span><span>Release to the gallery</span></span>
+            <span class="option-row"><span>Follow-up</span><span>None</span></span>
+          </span>
+        </button>
+        <button class="option" type="button" aria-pressed="false" data-testid="loan-option-update">
+          <span class="option-heading"><span class="choice-title">Request a condition update</span><span class="selector" aria-hidden="true"></span></span>
+          <span class="option-data">
+            <span class="option-row"><span>Handling</span><span>Keep in the intake area</span></span>
+            <span class="option-row"><span>Follow-up</span><span>Registrar review</span></span>
+          </span>
+        </button>
+        <button class="option" type="button" aria-pressed="false" data-testid="loan-option-hold">
+          <span class="option-heading"><span class="choice-title">Place loan on hold</span><span class="selector" aria-hidden="true"></span></span>
+          <span class="option-data">
+            <span class="option-row"><span>Handling</span><span>Move to secure storage</span></span>
+            <span class="option-row"><span>Follow-up</span><span>Supervisor review</span></span>
+          </span>
+        </button>
+      </div>
+    </section>
+
+    <section class="review" aria-labelledby="review-title">
+      <div class="review-summary">
+        <h2 id="review-title">Review and record</h2>
+        <p class="current-label">Current choice</p>
+        <p class="current-choice" data-testid="loan-current-choice" aria-live="polite">Approve installation</p>
+      </div>
+      <form class="record-form" novalidate>
+        <div class="note-heading">
+          <label for="registrar-note">Registrar note</label>
+          <span id="note-rule">Optional</span>
+        </div>
+        <textarea id="registrar-note" data-testid="loan-registrar-note" aria-describedby="note-rule" rows="3"></textarea>
+        <p id="note-error" class="note-error" data-testid="loan-note-error" hidden>Enter a registrar note to record this decision.</p>
+        <button class="record-action" type="submit" data-testid="loan-record-decision">Record decision <span aria-hidden="true">→</span></button>
+        <div class="feedback" role="status">
+          <div class="receipt" hidden>
+            <p class="confirmation" data-testid="loan-confirmation"></p>
+            <div class="recorded" hidden>
+              <p class="recorded-label">Recorded note</p>
+              <p class="recorded-note" data-testid="loan-recorded-note"></p>
+            </div>
+          </div>
+        </div>
+      </form>
+    </section>
+  </main>
+</body>
+</html>

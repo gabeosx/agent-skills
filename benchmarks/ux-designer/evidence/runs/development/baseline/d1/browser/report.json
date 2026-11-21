@@ -1,0 +1,721 @@
+{
+  "schemaVersion": 1,
+  "status": "passed",
+  "browser": {
+    "version": "159.0.8154.6",
+    "source": "playwright",
+    "executablePath": "/Users/gabe/Library/Caches/ms-playwright/chromium-1255/chrome-mac-arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing",
+    "headless": true,
+    "args": [
+      "--disable-quic",
+      "--force-webrtc-ip-handling-policy=disable_non_proxied_udp",
+      "--host-resolver-rules=MAP * ~NOTFOUND, EXCLUDE 127.0.0.1",
+      "--no-proxy-server"
+    ]
+  },
+  "config": {
+    "node": "v26.13.0",
+    "platform": "darwin",
+    "architecture": "arm64",
+    "playwright": "1.65.1",
+    "axe": "4.14.1",
+    "axeTags": [
+      "wcag2a",
+      "wcag2aa",
+      "wcag21a",
+      "wcag21aa",
+      "wcag22a",
+      "wcag22aa"
+    ],
+    "context": {
+      "colorScheme": "light",
+      "deviceScaleFactor": 1,
+      "locale": "en-US",
+      "reducedMotion": "reduce",
+      "serviceWorkers": "block",
+      "timezoneId": "UTC"
+    },
+    "viewports": {
+      "desktop": {
+        "width": 1440,
+        "height": 1000
+      },
+      "tablet": {
+        "width": 834,
+        "height": 1112
+      },
+      "mobile": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    "timeoutsMs": {
+      "navigation": 10000,
+      "step": 2500,
+      "capture": 10000,
+      "accessibility": 10000
+    },
+    "network": "localhost-static-origin-only"
+  },
+  "source": {
+    "checksSha256": "ef3a2748f88b69b5fc55b75c4746786bba21a4d95f81f090a462d68f7fca844a",
+    "site": {
+      "sha256": "0b318c320eef95766719c3b01c3b2e30ff181d3a8c3ec5270673ae07bf46b80f",
+      "files": [
+        {
+          "path": "design-system-core.css",
+          "sha256": "2e1dc47164205b5aef1af967821ea7bcacb53e9b8ae556f6b20662c20544f188"
+        },
+        {
+          "path": "index.html",
+          "sha256": "8d7a6c879076b949ee8282e25ce56a1d0b8a21b71a40787a2a4b59f0112499da"
+        },
+        {
+          "path": "script.js",
+          "sha256": "4fb432571b27e45d99e9f42b875e9b83ea49d95104ebecd07118e9589b15c1aa"
+        },
+        {
+          "path": "style.css",
+          "sha256": "5e88e8564eb3762b50c5c8e28073046c91dcd85bb3f2e057315e92ffd4ad21df"
+        }
+      ]
+    },
+    "harness": {
+      "sha256": "6c881823017ece00658aa02b1817a074668453398b4905f0208e23ef5bcda8d1",
+      "files": [
+        {
+          "path": "capture.mjs",
+          "sha256": "92bc6c8b9c97e64bd0dbcc746c6505f0ed30e9ecaba15ba32a35d1348afaf77e"
+        },
+        {
+          "path": "package-lock.json",
+          "sha256": "9e166f03feded2ba877c95cbbb4bce6b15453e267c7bf4a69a384ec2a3e1fbc1"
+        },
+        {
+          "path": "package.json",
+          "sha256": "e53398841d514c8588ddfad5569cc1f7aed5d67a6f7b71f4ab05a70cfca4817b"
+        }
+      ]
+    }
+  },
+  "timing": {
+    "startedAt": "2026-11-21T18:41:53.981Z",
+    "completedAt": "2026-11-21T18:41:57.941Z",
+    "elapsedMs": 3960
+  },
+  "viewports": [
+    {
+      "name": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "status": "passed",
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "screenshot": {
+        "path": "desktop.png",
+        "bytes": 522471,
+        "sha256": "f09a42ee36a7615e66c113bbf1378de2c598ff5213e06d977e08c44e76d1ea5d"
+      },
+      "layout": {
+        "clientWidth": 1440,
+        "scrollWidth": 1440,
+        "bodyScrollWidth": 1440,
+        "horizontalOverflow": false
+      },
+      "accessibility": {
+        "status": "no-violations",
+        "counts": {
+          "passes": 23,
+          "violations": 0,
+          "incomplete": 1,
+          "inapplicable": 41
+        },
+        "violations": [],
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "tags": [
+              "cat.color",
+              "wcag2aa",
+              "wcag143",
+              "TTv5",
+              "TT13.c",
+              "EN-301-549",
+              "EN-9.1.4.3",
+              "ACT",
+              "RGAAv4",
+              "RGAA-3.2.1"
+            ],
+            "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+            "help": "Elements must meet minimum color contrast ratio thresholds",
+            "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+            "nodes": [
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "messageKey": "nonBmp"
+                    },
+                    "relatedNodes": [],
+                    "impact": "serious",
+                    "message": "Element content contains only non-text characters"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<span aria-hidden=\"true\">↓</span>",
+                "target": [
+                  ".sample-link > span[aria-hidden=\"true\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "fontSize": "22.5pt (30px)",
+                      "fontWeight": "normal",
+                      "messageKey": "pseudoContent",
+                      "expectedContrastRatio": "3:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<div class=\"glass\">\n            <div class=\"dip-tube\"></div>\n            <div class=\"bottle-label\"><span>Olfacto</span><small>STUDIO</small><i></i></div>\n          </div>",
+                        "target": [
+                          ".glass"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined due to a pseudo element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<span>Olfacto</span>",
+                "target": [
+                  ".bottle-label > span"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "fontSize": "6.0pt (8px)",
+                      "fontWeight": "bold",
+                      "messageKey": "pseudoContent",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<div class=\"glass\">\n            <div class=\"dip-tube\"></div>\n            <div class=\"bottle-label\"><span>Olfacto</span><small>STUDIO</small><i></i></div>\n          </div>",
+                        "target": [
+                          ".glass"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined due to a pseudo element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<small>STUDIO</small>",
+                "target": [
+                  "small"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "tablet",
+      "viewport": {
+        "width": 834,
+        "height": 1112
+      },
+      "status": "passed",
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "screenshot": {
+        "path": "tablet.png",
+        "bytes": 308293,
+        "sha256": "c27a1c59a2f034b5354cce1dae5666f229664fe20b2dcdea1b7cbcf8030a6f87"
+      },
+      "layout": {
+        "clientWidth": 834,
+        "scrollWidth": 834,
+        "bodyScrollWidth": 834,
+        "horizontalOverflow": false
+      },
+      "accessibility": {
+        "status": "no-violations",
+        "counts": {
+          "passes": 23,
+          "violations": 0,
+          "incomplete": 1,
+          "inapplicable": 41
+        },
+        "violations": [],
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "tags": [
+              "cat.color",
+              "wcag2aa",
+              "wcag143",
+              "TTv5",
+              "TT13.c",
+              "EN-301-549",
+              "EN-9.1.4.3",
+              "ACT",
+              "RGAAv4",
+              "RGAA-3.2.1"
+            ],
+            "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+            "help": "Elements must meet minimum color contrast ratio thresholds",
+            "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+            "nodes": [
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "messageKey": "nonBmp"
+                    },
+                    "relatedNodes": [],
+                    "impact": "serious",
+                    "message": "Element content contains only non-text characters"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<span aria-hidden=\"true\">↓</span>",
+                "target": [
+                  ".sample-link > span[aria-hidden=\"true\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "fontSize": "22.5pt (30px)",
+                      "fontWeight": "normal",
+                      "messageKey": "pseudoContent",
+                      "expectedContrastRatio": "3:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<div class=\"glass\">\n            <div class=\"dip-tube\"></div>\n            <div class=\"bottle-label\"><span>Olfacto</span><small>STUDIO</small><i></i></div>\n          </div>",
+                        "target": [
+                          ".glass"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined due to a pseudo element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<span>Olfacto</span>",
+                "target": [
+                  ".bottle-label > span"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "fontSize": "6.0pt (8px)",
+                      "fontWeight": "bold",
+                      "messageKey": "pseudoContent",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<div class=\"glass\">\n            <div class=\"dip-tube\"></div>\n            <div class=\"bottle-label\"><span>Olfacto</span><small>STUDIO</small><i></i></div>\n          </div>",
+                        "target": [
+                          ".glass"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined due to a pseudo element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<small>STUDIO</small>",
+                "target": [
+                  "small"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "status": "passed",
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "screenshot": {
+        "path": "mobile.png",
+        "bytes": 220323,
+        "sha256": "828dce6891ef058c81ff6fed1626ac9896e0a1693afe9c5281080107c3f5de16"
+      },
+      "layout": {
+        "clientWidth": 390,
+        "scrollWidth": 390,
+        "bodyScrollWidth": 390,
+        "horizontalOverflow": false
+      },
+      "accessibility": {
+        "status": "no-violations",
+        "counts": {
+          "passes": 23,
+          "violations": 0,
+          "incomplete": 1,
+          "inapplicable": 41
+        },
+        "violations": [],
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "tags": [
+              "cat.color",
+              "wcag2aa",
+              "wcag143",
+              "TTv5",
+              "TT13.c",
+              "EN-301-549",
+              "EN-9.1.4.3",
+              "ACT",
+              "RGAAv4",
+              "RGAA-3.2.1"
+            ],
+            "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+            "help": "Elements must meet minimum color contrast ratio thresholds",
+            "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+            "nodes": [
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "messageKey": "nonBmp"
+                    },
+                    "relatedNodes": [],
+                    "impact": "serious",
+                    "message": "Element content contains only non-text characters"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<span aria-hidden=\"true\">↓</span>",
+                "target": [
+                  ".sample-link > span[aria-hidden=\"true\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "fontSize": "22.5pt (30px)",
+                      "fontWeight": "normal",
+                      "messageKey": "pseudoContent",
+                      "expectedContrastRatio": "3:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<div class=\"glass\">\n            <div class=\"dip-tube\"></div>\n            <div class=\"bottle-label\"><span>Olfacto</span><small>STUDIO</small><i></i></div>\n          </div>",
+                        "target": [
+                          ".glass"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined due to a pseudo element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<span>Olfacto</span>",
+                "target": [
+                  ".bottle-label > span"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "fontSize": "6.0pt (8px)",
+                      "fontWeight": "bold",
+                      "messageKey": "pseudoContent",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<div class=\"glass\">\n            <div class=\"dip-tube\"></div>\n            <div class=\"bottle-label\"><span>Olfacto</span><small>STUDIO</small><i></i></div>\n          </div>",
+                        "target": [
+                          ".glass"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined due to a pseudo element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<small>STUDIO</small>",
+                "target": [
+                  "small"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "scenarios": [
+    {
+      "name": "sample evidence",
+      "viewport": {
+        "width": 834,
+        "height": 1112
+      },
+      "captureRequested": true,
+      "status": "passed",
+      "steps": [
+        {
+          "index": 1,
+          "expected": {
+            "action": "click",
+            "id": "sample-link"
+          },
+          "status": "passed",
+          "elapsedMs": 46
+        },
+        {
+          "index": 2,
+          "expected": {
+            "action": "visible",
+            "id": "sample"
+          },
+          "status": "passed",
+          "elapsedMs": 1
+        },
+        {
+          "index": 3,
+          "expected": {
+            "action": "text",
+            "id": "sample",
+            "value": "Resin Library"
+          },
+          "status": "passed",
+          "actual": "ASSORTMENT INDEX Collection sample See how scent families and price ranges fit alongside your current assortment. COLLECTION SCENT FAMILY SUGGESTED RETAIL Resin Library Woods & resins $92–128 Drift Notes Marine & mineral $86–120 Aftergold Amber & spice $110–160",
+          "elapsedMs": 7
+        }
+      ],
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "screenshot": {
+        "path": "scenario-01-sample-evidence.png",
+        "bytes": 308342,
+        "sha256": "eb9cfc3a66a665dea1ffd1f105a228c61f01d590ac1b27a9cf8489a0840de915"
+      },
+      "unrunSteps": 0
+    },
+    {
+      "name": "invalid email and dismissal",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "captureRequested": true,
+      "status": "passed",
+      "steps": [
+        {
+          "index": 1,
+          "expected": {
+            "action": "click",
+            "id": "request"
+          },
+          "status": "passed",
+          "elapsedMs": 37
+        },
+        {
+          "index": 2,
+          "expected": {
+            "action": "fill",
+            "id": "email",
+            "value": "bad"
+          },
+          "status": "passed",
+          "elapsedMs": 5
+        },
+        {
+          "index": 3,
+          "expected": {
+            "action": "click",
+            "id": "submit"
+          },
+          "status": "passed",
+          "elapsedMs": 44
+        },
+        {
+          "index": 4,
+          "expected": {
+            "action": "visible",
+            "id": "email-error"
+          },
+          "status": "passed",
+          "elapsedMs": 1
+        }
+      ],
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "screenshot": {
+        "path": "scenario-02-invalid-email-and-dismissal.png",
+        "bytes": 90178,
+        "sha256": "f6b8a75b47c3c656f54b9ba07149e2355b08666a185291bf706a586d4aa5795a"
+      },
+      "unrunSteps": 0
+    },
+    {
+      "name": "conversion",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "captureRequested": false,
+      "status": "passed",
+      "steps": [
+        {
+          "index": 1,
+          "expected": {
+            "action": "click",
+            "id": "request"
+          },
+          "status": "passed",
+          "elapsedMs": 44
+        },
+        {
+          "index": 2,
+          "expected": {
+            "action": "fill",
+            "id": "email",
+            "value": "buyer@example.test"
+          },
+          "status": "passed",
+          "elapsedMs": 2
+        },
+        {
+          "index": 3,
+          "expected": {
+            "action": "click",
+            "id": "submit"
+          },
+          "status": "passed",
+          "elapsedMs": 33
+        },
+        {
+          "index": 4,
+          "expected": {
+            "action": "text",
+            "id": "success",
+            "value": "Preview requested"
+          },
+          "status": "passed",
+          "actual": "✓ Preview requested Work email buyer@example.test",
+          "elapsedMs": 6
+        },
+        {
+          "index": 5,
+          "expected": {
+            "action": "text",
+            "id": "success",
+            "value": "buyer@example.test"
+          },
+          "status": "passed",
+          "actual": "✓ Preview requested Work email buyer@example.test",
+          "elapsedMs": 1
+        },
+        {
+          "index": 6,
+          "expected": {
+            "action": "click",
+            "id": "close"
+          },
+          "status": "passed",
+          "elapsedMs": 24
+        },
+        {
+          "index": 7,
+          "expected": {
+            "action": "hidden",
+            "id": "success"
+          },
+          "status": "passed",
+          "elapsedMs": 1
+        }
+      ],
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "unrunSteps": 0
+    }
+  ],
+  "criticalFailures": [],
+  "runnerErrors": []
+}

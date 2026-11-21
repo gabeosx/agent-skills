@@ -1,0 +1,106 @@
+{
+  "scenarios": [
+    {
+      "name": "period update",
+      "width": 1440,
+      "steps": [
+        {
+          "action": "text",
+          "id": "revenue",
+          "value": "$1.28M"
+        },
+        {
+          "action": "select",
+          "id": "period",
+          "value": "7"
+        },
+        {
+          "action": "text",
+          "id": "revenue",
+          "value": "$318K"
+        },
+        {
+          "action": "text",
+          "id": "margin",
+          "value": "22.4%"
+        },
+        {
+          "action": "text",
+          "id": "rows",
+          "value": "$95K"
+        }
+      ],
+      "capture": true
+    },
+    {
+      "name": "filter and drilldown",
+      "width": 390,
+      "steps": [
+        {
+          "action": "select",
+          "id": "period",
+          "value": "7"
+        },
+        {
+          "action": "select",
+          "id": "status",
+          "value": "investigate"
+        },
+        {
+          "action": "text",
+          "id": "rows",
+          "value": "Bakery"
+        },
+        {
+          "action": "click",
+          "id": "produce"
+        },
+        {
+          "action": "text",
+          "id": "detail",
+          "value": "Supplier costs"
+        },
+        {
+          "action": "text",
+          "id": "detail",
+          "value": "18.1%"
+        }
+      ],
+      "capture": true
+    },
+    {
+      "name": "filter reset and return",
+      "width": 834,
+      "steps": [
+        {
+          "action": "select",
+          "id": "status",
+          "value": "investigate"
+        },
+        {
+          "action": "select",
+          "id": "status",
+          "value": "all"
+        },
+        {
+          "action": "text",
+          "id": "rows",
+          "value": "Grocery"
+        },
+        {
+          "action": "click",
+          "id": "produce"
+        },
+        {
+          "action": "click",
+          "id": "detail-close"
+        },
+        {
+          "action": "hidden",
+          "id": "detail"
+        }
+      ],
+      "capture": false
+    }
+  ]
+}

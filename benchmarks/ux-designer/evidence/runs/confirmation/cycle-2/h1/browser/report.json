@@ -1,0 +1,552 @@
+{
+  "schemaVersion": 1,
+  "status": "passed",
+  "browser": {
+    "version": "159.0.8154.6",
+    "source": "playwright",
+    "executablePath": "/Users/gabe/Library/Caches/ms-playwright/chromium-1255/chrome-mac-arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing",
+    "headless": true,
+    "args": [
+      "--disable-quic",
+      "--force-webrtc-ip-handling-policy=disable_non_proxied_udp",
+      "--host-resolver-rules=MAP * ~NOTFOUND, EXCLUDE 127.0.0.1",
+      "--no-proxy-server"
+    ]
+  },
+  "config": {
+    "node": "v26.13.0",
+    "platform": "darwin",
+    "architecture": "arm64",
+    "playwright": "1.65.1",
+    "axe": "4.14.1",
+    "axeTags": [
+      "wcag2a",
+      "wcag2aa",
+      "wcag21a",
+      "wcag21aa",
+      "wcag22a",
+      "wcag22aa"
+    ],
+    "context": {
+      "colorScheme": "light",
+      "deviceScaleFactor": 1,
+      "locale": "en-US",
+      "reducedMotion": "reduce",
+      "serviceWorkers": "block",
+      "timezoneId": "UTC"
+    },
+    "viewports": {
+      "desktop": {
+        "width": 1440,
+        "height": 1000
+      },
+      "tablet": {
+        "width": 834,
+        "height": 1112
+      },
+      "mobile": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    "timeoutsMs": {
+      "navigation": 10000,
+      "step": 2500,
+      "capture": 10000,
+      "accessibility": 10000
+    },
+    "network": "localhost-static-origin-only"
+  },
+  "source": {
+    "checksSha256": "3fefaf001da796335287499d78aa1e9424845991ff9bc937aaa009edcff9ac36",
+    "site": {
+      "sha256": "d12aaeb6adceebbc8b59cfd513d72098751e6913adea5273df5db5e0d1be401e",
+      "files": [
+        {
+          "path": "index.html",
+          "sha256": "d058874b71c6671ee403e3602e8c6795d8800410c337dc23a068239461a3b46b"
+        }
+      ]
+    },
+    "harness": {
+      "sha256": "6c881823017ece00658aa02b1817a074668453398b4905f0208e23ef5bcda8d1",
+      "files": [
+        {
+          "path": "capture.mjs",
+          "sha256": "92bc6c8b9c97e64bd0dbcc746c6505f0ed30e9ecaba15ba32a35d1348afaf77e"
+        },
+        {
+          "path": "package-lock.json",
+          "sha256": "9e166f03feded2ba877c95cbbb4bce6b15453e267c7bf4a69a384ec2a3e1fbc1"
+        },
+        {
+          "path": "package.json",
+          "sha256": "e53398841d514c8588ddfad5569cc1f7aed5d67a6f7b71f4ab05a70cfca4817b"
+        }
+      ]
+    }
+  },
+  "timing": {
+    "startedAt": "2026-11-21T19:46:58.578Z",
+    "completedAt": "2026-11-21T19:47:00.644Z",
+    "elapsedMs": 2066
+  },
+  "viewports": [
+    {
+      "name": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "status": "passed",
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "screenshot": {
+        "path": "desktop.png",
+        "bytes": 142394,
+        "sha256": "fe397273221dddff3e20ab4ffb9a0ac565b711d4b2f56c3c364a62e1f8c7dc83"
+      },
+      "layout": {
+        "clientWidth": 1440,
+        "scrollWidth": 1440,
+        "bodyScrollWidth": 1440,
+        "horizontalOverflow": false
+      },
+      "accessibility": {
+        "status": "no-violations",
+        "counts": {
+          "passes": 24,
+          "violations": 0,
+          "incomplete": 0,
+          "inapplicable": 40
+        },
+        "violations": [],
+        "incomplete": []
+      }
+    },
+    {
+      "name": "tablet",
+      "viewport": {
+        "width": 834,
+        "height": 1112
+      },
+      "status": "passed",
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "screenshot": {
+        "path": "tablet.png",
+        "bytes": 138232,
+        "sha256": "e20c278f2d1be5b3332a707cbae195ed5fa2980236a4dd20dc10466b6da3bb49"
+      },
+      "layout": {
+        "clientWidth": 834,
+        "scrollWidth": 834,
+        "bodyScrollWidth": 834,
+        "horizontalOverflow": false
+      },
+      "accessibility": {
+        "status": "no-violations",
+        "counts": {
+          "passes": 24,
+          "violations": 0,
+          "incomplete": 0,
+          "inapplicable": 40
+        },
+        "violations": [],
+        "incomplete": []
+      }
+    },
+    {
+      "name": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "status": "passed",
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "screenshot": {
+        "path": "mobile.png",
+        "bytes": 96059,
+        "sha256": "7e3ac0e32bedf700fc2fe4603895ed5b33702069039d31ca9c9b704af971d610"
+      },
+      "layout": {
+        "clientWidth": 390,
+        "scrollWidth": 390,
+        "bodyScrollWidth": 390,
+        "horizontalOverflow": false
+      },
+      "accessibility": {
+        "status": "no-violations",
+        "counts": {
+          "passes": 24,
+          "violations": 0,
+          "incomplete": 0,
+          "inapplicable": 40
+        },
+        "violations": [],
+        "incomplete": []
+      }
+    }
+  ],
+  "scenarios": [
+    {
+      "name": "Look up a known outage",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "captureRequested": true,
+      "status": "passed",
+      "steps": [
+        {
+          "index": 1,
+          "expected": {
+            "action": "text",
+            "id": "result-count",
+            "value": "4"
+          },
+          "status": "passed",
+          "actual": "4 streetlights found",
+          "elapsedMs": 11
+        },
+        {
+          "index": 2,
+          "expected": {
+            "action": "fill",
+            "id": "pole-search",
+            "value": "HARBOR MARKET"
+          },
+          "status": "passed",
+          "elapsedMs": 10
+        },
+        {
+          "index": 3,
+          "expected": {
+            "action": "text",
+            "id": "result-count",
+            "value": "1"
+          },
+          "status": "passed",
+          "actual": "1 streetlight found",
+          "elapsedMs": 1
+        },
+        {
+          "index": 4,
+          "expected": {
+            "action": "hidden",
+            "id": "pole-BH-1042"
+          },
+          "status": "passed",
+          "elapsedMs": 1
+        },
+        {
+          "index": 5,
+          "expected": {
+            "action": "click",
+            "id": "pole-BH-1067"
+          },
+          "status": "passed",
+          "elapsedMs": 30
+        },
+        {
+          "index": 6,
+          "expected": {
+            "action": "attribute",
+            "id": "pole-BH-1067",
+            "name": "aria-pressed",
+            "value": "true"
+          },
+          "status": "passed",
+          "actual": "true",
+          "elapsedMs": 1
+        },
+        {
+          "index": 7,
+          "expected": {
+            "action": "text",
+            "id": "pole-detail",
+            "value": "Crew notified"
+          },
+          "status": "passed",
+          "actual": "BH-1067 76 Wren Avenue Outside Harbor Market Crew notified Report logged November 18, 2026 Reference SL-5826",
+          "elapsedMs": 1
+        },
+        {
+          "index": 8,
+          "expected": {
+            "action": "text",
+            "id": "pole-detail",
+            "value": "SL-5826"
+          },
+          "status": "passed",
+          "actual": "BH-1067 76 Wren Avenue Outside Harbor Market Crew notified Report logged November 18, 2026 Reference SL-5826",
+          "elapsedMs": 1
+        },
+        {
+          "index": 9,
+          "expected": {
+            "action": "hidden",
+            "id": "submit-report"
+          },
+          "status": "passed",
+          "elapsedMs": 0
+        }
+      ],
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "screenshot": {
+        "path": "scenario-01-look-up-a-known-outage.png",
+        "bytes": 120141,
+        "sha256": "461b5d690b462fa0382773f267582be009de1c8fe13e7219e941445e33f3c069"
+      },
+      "unrunSteps": 0
+    },
+    {
+      "name": "Recover from an empty search",
+      "viewport": {
+        "width": 834,
+        "height": 1112
+      },
+      "captureRequested": false,
+      "status": "passed",
+      "steps": [
+        {
+          "index": 1,
+          "expected": {
+            "action": "fill",
+            "id": "pole-search",
+            "value": "Bridge Road"
+          },
+          "status": "passed",
+          "elapsedMs": 13
+        },
+        {
+          "index": 2,
+          "expected": {
+            "action": "text",
+            "id": "no-results",
+            "value": "No streetlights match this search."
+          },
+          "status": "passed",
+          "actual": "No streetlights match this search.",
+          "elapsedMs": 7
+        },
+        {
+          "index": 3,
+          "expected": {
+            "action": "fill",
+            "id": "pole-search",
+            "value": ""
+          },
+          "status": "passed",
+          "elapsedMs": 3
+        },
+        {
+          "index": 4,
+          "expected": {
+            "action": "text",
+            "id": "result-count",
+            "value": "4"
+          },
+          "status": "passed",
+          "actual": "4 streetlights found",
+          "elapsedMs": 1
+        },
+        {
+          "index": 5,
+          "expected": {
+            "action": "hidden",
+            "id": "no-results"
+          },
+          "status": "passed",
+          "elapsedMs": 1
+        },
+        {
+          "index": 6,
+          "expected": {
+            "action": "click",
+            "id": "pole-BH-2079"
+          },
+          "status": "passed",
+          "elapsedMs": 33
+        },
+        {
+          "index": 7,
+          "expected": {
+            "action": "text",
+            "id": "pole-detail",
+            "value": "At the pedestrian crossing"
+          },
+          "status": "passed",
+          "actual": "BH-2079 61 Mariner Lane At the pedestrian crossing Issue type Light is out Light flickers Light stays on during the day Notes (optional) Submit report",
+          "elapsedMs": 1
+        },
+        {
+          "index": 8,
+          "expected": {
+            "action": "visible",
+            "id": "issue-type"
+          },
+          "status": "passed",
+          "elapsedMs": 1
+        }
+      ],
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "unrunSteps": 0
+    },
+    {
+      "name": "File and reset a report on a phone",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "captureRequested": false,
+      "status": "passed",
+      "steps": [
+        {
+          "index": 1,
+          "expected": {
+            "action": "fill",
+            "id": "pole-search",
+            "value": "2014"
+          },
+          "status": "passed",
+          "elapsedMs": 12
+        },
+        {
+          "index": 2,
+          "expected": {
+            "action": "click",
+            "id": "pole-BH-2014"
+          },
+          "status": "passed",
+          "elapsedMs": 30
+        },
+        {
+          "index": 3,
+          "expected": {
+            "action": "select",
+            "id": "issue-type",
+            "value": "flicker"
+          },
+          "status": "passed",
+          "actual": [
+            "flicker"
+          ],
+          "elapsedMs": 2
+        },
+        {
+          "index": 4,
+          "expected": {
+            "action": "fill",
+            "id": "report-notes",
+            "value": "It flickers every few seconds."
+          },
+          "status": "passed",
+          "elapsedMs": 2
+        },
+        {
+          "index": 5,
+          "expected": {
+            "action": "click",
+            "id": "submit-report"
+          },
+          "status": "passed",
+          "elapsedMs": 32
+        },
+        {
+          "index": 6,
+          "expected": {
+            "action": "text",
+            "id": "confirmation",
+            "value": "Report submitted"
+          },
+          "status": "passed",
+          "actual": "Report submitted Reference SL-5842 Pole code BH-2014 Issue Light flickers Report another light",
+          "elapsedMs": 6
+        },
+        {
+          "index": 7,
+          "expected": {
+            "action": "text",
+            "id": "confirmation",
+            "value": "BH-2014"
+          },
+          "status": "passed",
+          "actual": "Report submitted Reference SL-5842 Pole code BH-2014 Issue Light flickers Report another light",
+          "elapsedMs": 1
+        },
+        {
+          "index": 8,
+          "expected": {
+            "action": "text",
+            "id": "confirmation",
+            "value": "SL-5842"
+          },
+          "status": "passed",
+          "actual": "Report submitted Reference SL-5842 Pole code BH-2014 Issue Light flickers Report another light",
+          "elapsedMs": 0
+        },
+        {
+          "index": 9,
+          "expected": {
+            "action": "text",
+            "id": "confirmation",
+            "value": "Light flickers"
+          },
+          "status": "passed",
+          "actual": "Report submitted Reference SL-5842 Pole code BH-2014 Issue Light flickers Report another light",
+          "elapsedMs": 0
+        },
+        {
+          "index": 10,
+          "expected": {
+            "action": "click",
+            "id": "report-another"
+          },
+          "status": "passed",
+          "elapsedMs": 20
+        },
+        {
+          "index": 11,
+          "expected": {
+            "action": "hidden",
+            "id": "confirmation"
+          },
+          "status": "passed",
+          "elapsedMs": 1
+        },
+        {
+          "index": 12,
+          "expected": {
+            "action": "text",
+            "id": "result-count",
+            "value": "4"
+          },
+          "status": "passed",
+          "actual": "4 streetlights found",
+          "elapsedMs": 1
+        }
+      ],
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "unrunSteps": 0
+    }
+  ],
+  "criticalFailures": [],
+  "runnerErrors": []
+}

@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f4eb">
+  <title>Olfacto Studio — Wholesale fragrance intelligence</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #f7f4eb;
+      --white: #fffcf5;
+      --ink: #252820;
+      --soft: #53564b;
+      --edge: #d9d7ca;
+      --green: #344535;
+      --moss: #485846;
+      --serif: "Baskerville", "Iowan Old Style", Georgia, serif;
+      --sans: "Avenir Next", Avenir, system-ui, sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--paper); color: var(--ink); font: 500 16px/1.55 var(--sans); }
+    button, input { font: inherit; }
+    a { color: inherit; }
+    button { cursor: pointer; }
+    [hidden] { display: none !important; }
+    :focus-visible { outline: 2px solid #6a5326; outline-offset: 5px; }
+    .wrap { width: min(100% - 104px, 1296px); margin-inline: auto; }
+    .masthead { border-bottom: 1px solid var(--edge); }
+    .masthead .wrap { min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .brand { display: inline-flex; align-items: center; gap: 12px; font: 600 29px/1 var(--serif); letter-spacing: -.035em; white-space: nowrap; }
+    .logo {
+      position: relative; display: inline-block; width: 29px; height: 29px; border: 1px solid currentColor;
+      border-radius: 50%; transform: rotate(-34deg); color: var(--green);
+    }
+    .logo::before, .logo::after { content: ""; position: absolute; inset: 3px 8px; border: 1px solid currentColor; border-radius: 50%; }
+    .logo::after { inset: 8px 3px; }
+    .masthead-note { color: var(--soft); font-size: .72rem; letter-spacing: .13em; font-weight: 700; text-transform: uppercase; }
+
+    .hero { display: grid; grid-template-columns: 1.05fr 1fr; gap: clamp(24px, 4vw, 64px); align-items: center; padding-block: clamp(28px, 2.7vw, 40px); }
+    .eyebrow { margin: 0 0 18px; font-size: .72rem; line-height: 1.35; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--moss); }
+    h1, h2, p { margin-block: 0; }
+    h1 { font: 400 clamp(3.35rem, 6.3vw, 5.9rem)/.91 var(--serif); letter-spacing: -.055em; }
+    h1 em { display: inline-block; color: var(--moss); font-weight: 400; }
+    .lead { margin-top: 25px; max-width: 43ch; color: var(--soft); line-height: 1.65; }
+    .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 25px; margin-top: 25px; }
+    .primary {
+      display: inline-flex; gap: 13px; align-items: center; justify-content: space-between; padding: 12px 15px; min-height: 49px;
+      border: 1px solid var(--green); border-radius: 3px; background: var(--green); color: #fffefa; font-size: .9rem; font-weight: 650;
+      transition: background .16s ease;
+    }
+    .primary:hover { background: #263429; }
+    .secondary {
+      display: inline-flex; gap: 8px; align-items: center; min-height: 44px; color: var(--green); text-decoration: none;
+      font-size: .9rem; font-weight: 650;
+    }
+    .secondary .action-label { border-bottom: 1px solid #81907b; }
+    .secondary:hover .action-label { border-color: currentColor; }
+    .arrow { font: 400 1.32rem/1 system-ui, sans-serif; }
+
+    .still-life {
+      --warm: #f0d19d;
+      position: relative; isolation: isolate; overflow: hidden; container-type: inline-size; width: 100%; min-width: 0; min-height: 260px;
+      aspect-ratio: 1.53; border: 1px solid #a28364; margin: 0; border-radius: 140px 3px 3px 3px;
+      background:
+        radial-gradient(ellipse at 57% 42%, #e2c698 5%, #d4b58b 42%, #a77c56 100%);
+    }
+    .still-life::before {
+      content: ""; position: absolute; inset: -20% -4% -4% -20%; z-index: -2;
+      background: repeating-linear-gradient(109deg, transparent 0% 22%, #624b2a46 22.7% 29%, #65452a81 30% 32.5%, #86684646 34% 37%, transparent 38% 43%);
+      filter: blur(11px); opacity: .61; transform: skewX(-18deg);
+    }
+    .still-life::after {
+      content: ""; position: absolute; inset: 72% -8% -5%; z-index: -1; transform: rotate(-9deg);
+      background: linear-gradient(161deg, #bf9b6c 5%, #ccae80 48%, #a5835c 100%);
+      box-shadow: 0 -2px 12px #5b3b2463, inset 0 1px 1px #f4dab9a3;
+    }
+    .bottle {
+      position: absolute; display: grid; place-items: center; min-width: 0;
+      background:
+        linear-gradient(90deg, #ffffff38 2%, transparent 7% 85%, #f6e7bc3d 92%, #39240860 99%),
+        radial-gradient(ellipse at 33% 31%, var(--glass-light), var(--glass) 60%, var(--dark) 99%);
+      border: 1px solid #654b2c; border-bottom-color: #2b2215;
+      box-shadow: inset 0 2px 5px #fff6dc70, inset 0 -7px 8px #22160ca1, 2px 6px 8px #3f281c5e;
+    }
+    .bottle::before {
+      content: ""; position: absolute; bottom: 99%; left: 28%; width: 44%; height: 26%; border-radius: 15% 15% 5% 5%;
+      background: repeating-linear-gradient(90deg, transparent 0 4%, #ffffff10 5% 6%), linear-gradient(90deg, #32291d 1%, #5b4d37 26%, #372c1c 78%, #221b12);
+      box-shadow: inset 0 2px 1px #cabb9366, inset 0 -2px 1px #1f190d;
+    }
+    .bottle::after {
+      content: ""; position: absolute; left: 6%; right: -20%; bottom: -2%; height: 12%; z-index: -1;
+      background: #3d291b9c; transform-origin: bottom left; transform: skewX(-57deg); filter: blur(7px); border-radius: 50%;
+    }
+    .bottle-wood { width: 27%; height: 47%; left: 20%; bottom: 16%; z-index: 2; border-radius: 12% 12% 7% 7%; --glass-light: #9e713b; --glass: #714718; --dark: #282414; }
+    .bottle-marine { width: 22%; height: 46%; left: 44%; bottom: 25%; z-index: 1; border-radius: 30% 30% 15% 15% / 15% 15% 6% 6%; --glass-light: #8c9fa0; --glass: #4b6667; --dark: #293b39; }
+    .bottle-amber { width: 23%; height: 40%; left: 62%; bottom: 20%; z-index: 3; border-radius: 18% 18% 7% 7%; --glass-light: #bb742f; --glass: #9a4a1b; --dark: #4d2619; }
+    .bottle-marine::before { left: 32%; width: 36%; height: 19%; border-radius: 18% 18% 4% 4%; }
+    .bottle-amber::before { left: 24%; width: 52%; height: 23%; background: repeating-linear-gradient(90deg, transparent 0 4%, #ffffff1a 5% 6%), linear-gradient(90deg, #5c472c, #a78a5a, #594124); }
+    .bottle-label {
+      place-content: center; width: 78%; height: 44%; text-align: center; padding: 5%; display: grid; border: 1px solid #45332443;
+      background: #e4d7b6; color: #443726; font: 600 clamp(.4rem, 2.9cqw, 1.1rem)/1.05 var(--serif);
+      box-shadow: 0 1px 2px #3829115a; text-wrap: balance;
+    }
+    .bottle-marine .bottle-label { background: #d6d6bf; }
+    .bottle-amber .bottle-label { background: #e8caa0; }
+    .still-life-caption {
+      position: absolute; right: 4.6%; bottom: 4.4%; color: #352619; font-size: .63rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+    }
+
+    .proof { display: grid; grid-template-columns: repeat(3, 1fr); margin: 0; border-block: 1px solid var(--edge); }
+    .proof div { display: flex; flex-direction: column; justify-content: center; gap: 2px; padding: 14px clamp(8px, 3vw, 40px); }
+    .proof div + div { border-left: 1px solid var(--edge); }
+    .proof div:first-child { padding-left: 0; }
+    .proof dt { color: var(--soft); font-size: .82rem; }
+    .proof dd { order: -1; margin: 0; font: 500 clamp(1.65rem, 3vw, 2.25rem)/1 var(--serif); letter-spacing: -.02em; color: var(--green); }
+
+    .sample-zone { padding: 32px 0 54px; scroll-margin-top: 16px; }
+    .sample-head { margin-bottom: 16px; }
+    h2 { font: 400 clamp(2.15rem, 4.4vw, 3.5rem)/1.03 var(--serif); letter-spacing: -.042em; }
+    .assortment { width: 100%; border-collapse: collapse; text-align: left; font-variant-numeric: tabular-nums; }
+    .assortment thead { background: #eae8dc; }
+    .assortment th, .assortment td { padding: 11px 18px; }
+    .assortment thead th { color: var(--soft); font-size: .71rem; font-weight: 700; letter-spacing: .075em; text-transform: uppercase; }
+    .assortment tbody tr { border-bottom: 1px solid var(--edge); }
+    .collection { display: flex; align-items: center; gap: 13px; font: 600 1.46rem/1.1 var(--serif); }
+    .swatch { width: 38px; height: 32px; flex-shrink: 0; border-radius: 52% 52% 4px 4px; box-shadow: inset 0 0 0 1px #211c202b; }
+    .woods { background: repeating-linear-gradient(113deg, #3f3d2d 0 5px, #63533c 7px 9px, #4e4935 13px 15px); }
+    .marine { background: repeating-linear-gradient(169deg, #597070 0 5px, #81918b 10px 12px, #657c7c 14px 20px); }
+    .amber { background: linear-gradient(145deg, #d7a062, #a65e33 50%, #83442a); }
+    .assortment tbody td { color: var(--soft); font-size: .92rem; }
+    .assortment th:last-child, .assortment td:last-child { text-align: right; }
+    .assortment td:last-child { color: var(--ink); white-space: nowrap; font-weight: 650; }
+
+    dialog {
+      width: min(29rem, 100% - 32px); max-height: calc(100% - 32px); padding: 30px;
+      border: 1px solid var(--edge); border-radius: 8px; background: var(--white); color: var(--ink); box-shadow: 0 18px 75px #1b21192c;
+    }
+    dialog::backdrop { background: #232b20a0; }
+    .dialog-close {
+      position: absolute; right: 15px; top: 15px; display: grid; place-items: center; width: 44px; height: 44px;
+      border: 1px solid var(--edge); border-radius: 50%; background: transparent; color: var(--green); font: 400 1.65rem/1 system-ui, sans-serif;
+    }
+    .dialog-close:hover { background: #efeee6; }
+    .dialog-title { padding-right: 43px; font-size: 2.65rem; }
+    .dialog-copy { margin-top: 9px; color: var(--soft); }
+    .form-fields { display: grid; align-items: start; gap: 8px; margin-top: 22px; }
+    .form-fields label { font-size: .9rem; font-weight: 650; }
+    input {
+      width: 100%; min-height: 48px; padding: 8px 12px; border: 1px solid #989987; border-radius: 3px;
+      background: #fffefa; color: var(--ink);
+    }
+    input[aria-invalid="true"] { border-color: #8e3528; }
+    .form-error { color: #8e3528; font-size: .87rem; }
+    .form-fields .primary { justify-self: start; margin-top: 9px; }
+    .success p { overflow-wrap: anywhere; }
+
+    @media (max-width: 900px) {
+      .wrap { width: calc(100% - 64px); }
+      .hero { gap: 24px; }
+      .still-life { border-top-left-radius: 100px; }
+    }
+    @media (max-width: 670px) {
+      .wrap { width: calc(100% - 40px); }
+      .masthead .wrap { min-height: 59px; }
+      .brand { font-size: 26px; gap: 8px; }
+      .logo { width: 24px; height: 24px; }
+      .logo::before { inset: 3px 6px; }
+      .logo::after { inset: 6px 3px; }
+      .masthead-note { font-size: .66rem; letter-spacing: .07em; }
+      .hero { grid-template-columns: 1fr; gap: 23px; padding-block: 30px 22px; }
+      h1 { font-size: clamp(3.24rem, 12.8vw, 5.6rem); }
+      .eyebrow { margin-bottom: 14px; }
+      .lead { margin-top: 17px; }
+      .hero-actions { margin-top: 17px; gap: 9px 10px; }
+      .still-life { aspect-ratio: 1.75; min-height: 185px; border-top-left-radius: 72px; }
+      .proof div { padding: 11px 8px; }
+      .proof dt { font-size: .71rem; line-height: 1.3; }
+      .sample-zone { padding-top: 29px; }
+      .assortment th, .assortment td { padding: 11px 8px; }
+      .assortment thead th { font-size: .64rem; letter-spacing: .04em; }
+      .collection { font-size: 1.12rem; gap: 6px; }
+      .swatch { width: 16px; height: 19px; }
+      .assortment tbody td { font-size: .81rem; }
+      .dialog-title { font-size: 2.3rem; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="masthead">
+    <div class="wrap">
+      <span class="brand"><span class="logo" aria-hidden="true"></span>Olfacto Studio</span>
+      <span class="masthead-note">Wholesale</span>
+    </div>
+  </header>
+  <main>
+    <div class="wrap">
+      <section class="hero" aria-labelledby="proposition">
+        <div>
+          <p class="eyebrow">Fragrance intelligence for retailers</p>
+          <h1 id="proposition">Build an assortment with <em>a point of view.</em></h1>
+          <p class="lead">Compare scent families and retail ranges before you commit to a collection.</p>
+          <div class="hero-actions">
+            <button class="primary" type="button" data-testid="request" aria-haspopup="dialog">Request preview <span class="arrow" aria-hidden="true">↗</span></button>
+            <a class="secondary" href="#collection-sample" data-testid="sample-link"><span class="action-label">Explore the sample</span><span class="arrow" aria-hidden="true">↓</span></a>
+          </div>
+        </div>
+        <figure class="still-life" aria-hidden="true">
+          <div class="bottle bottle-wood"><span class="bottle-label">Resin<br>Library</span></div>
+          <div class="bottle bottle-marine"><span class="bottle-label">Drift<br>Notes</span></div>
+          <div class="bottle bottle-amber"><span class="bottle-label">Aftergold</span></div>
+          <span class="still-life-caption">Collection sample</span>
+        </figure>
+      </section>
+      <dl class="proof" aria-label="Platform coverage">
+        <div><dt>Independent fragrance houses</dt><dd>480</dd></div>
+        <div><dt>Markets</dt><dd>32</dd></div>
+        <div><dt>Data updates</dt><dd>Weekly</dd></div>
+      </dl>
+      <section class="sample-zone" id="collection-sample" data-testid="sample" tabindex="-1" aria-labelledby="sample-heading">
+        <div class="sample-head">
+          <h2 id="sample-heading">Collection sample</h2>
+        </div>
+        <table class="assortment" aria-labelledby="sample-heading">
+          <thead>
+            <tr><th scope="col">Collection</th><th scope="col">Scent family</th><th scope="col">Suggested retail</th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row"><span class="collection"><span class="swatch woods" aria-hidden="true"></span>Resin Library</span></th><td>Woods &amp; resins</td><td>$92–128</td></tr>
+            <tr><th scope="row"><span class="collection"><span class="swatch marine" aria-hidden="true"></span>Drift Notes</span></th><td>Marine &amp; mineral</td><td>$86–120</td></tr>
+            <tr><th scope="row"><span class="collection"><span class="swatch amber" aria-hidden="true"></span>Aftergold</span></th><td>Amber &amp; spice</td><td>$110–160</td></tr>
+          </tbody>
+        </table>
+      </section>
+    </div>
+  </main>
+  <dialog aria-labelledby="preview-form-title">
+    <button type="button" class="dialog-close" data-testid="close" aria-label="Close preview form">×</button>
+    <div id="preview-form">
+      <h2 class="dialog-title" id="preview-form-title">Request preview</h2>
+      <p class="dialog-copy">Enter your work email to request a wholesale preview.</p>
+      <form class="form-fields" novalidate>
+        <label for="work-email">Work email</label>
+        <input type="email" id="work-email" data-testid="email" name="email" autocomplete="email" required aria-describedby="work-email-error">
+        <p id="work-email-error" class="form-error" data-testid="email-error" role="alert" hidden>Enter a valid work email address.</p>
+        <button class="primary" type="submit" data-testid="submit">Submit request <span class="arrow" aria-hidden="true">↗</span></button>
+      </form>
+    </div>
+    <section class="success" data-testid="success" hidden>
+      <h2 class="dialog-title" id="preview-success-title" tabindex="-1">Preview requested</h2>
+      <p class="dialog-copy">Work email: <strong id="submitted-email"></strong></p>
+    </section>
+  </dialog>
+  <script>
+    const dialog = document.querySelector('dialog');
+    const openButton = document.querySelector('[data-testid="request"]');
+    const closeButton = document.querySelector('[data-testid="close"]');
+    const formView = document.querySelector('#preview-form');
+    const form = dialog.querySelector('form');
+    const email = document.querySelector('#work-email');
+    const error = document.querySelector('#work-email-error');
+    const success = document.querySelector('[data-testid="success"]');
+    const successTitle = document.querySelector('#preview-success-title');
+    const submittedEmail = document.querySelector('#submitted-email');
+
+    function showEmailError(visible) {
+      error.hidden = !visible;
+      if (visible) email.setAttribute('aria-invalid', 'true');
+      else email.removeAttribute('aria-invalid');
+    }
+
+    function validWorkEmail() {
+      return email.validity.valid && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value);
+    }
+
+    openButton.addEventListener('click', () => {
+      if (!success.hidden) {
+        form.reset();
+        success.hidden = true;
+        formView.hidden = false;
+        dialog.setAttribute('aria-labelledby', 'preview-form-title');
+      }
+      showEmailError(false);
+      dialog.showModal();
+      email.focus();
+    });
+
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      email.value = email.value.trim();
+      if (!validWorkEmail()) {
+        showEmailError(true);
+        email.focus();
+        return;
+      }
+      showEmailError(false);
+      submittedEmail.textContent = email.value;
+      dialog.setAttribute('aria-labelledby', 'preview-success-title');
+      formView.hidden = true;
+      success.hidden = false;
+      successTitle.focus();
+    });
+
+    email.addEventListener('input', () => {
+      if (validWorkEmail()) showEmailError(false);
+    });
+
+    closeButton.addEventListener('click', () => dialog.close());
+    dialog.addEventListener('close', () => openButton.focus());
+  </script>
+</body>
+</html>

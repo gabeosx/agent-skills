@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Restore prime | Atlas Works</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --background: #fdfcf9;
+      --paper: #fff;
+      --text: #20283a;
+      --muted: #555e6e;
+      --line: #e0e2e5;
+      --accent: #274b9b;
+      --accent-strong: #23439a;
+      --accent-light: #eaf0ff;
+      --warning-text: #573b11;
+      --warning-surface: #fff2d9;
+      --warning-border: #daa34a;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin: 0; background: var(--background); color: var(--text); line-height: 1.55; }
+    button { font: inherit; cursor: pointer; }
+    a { color: var(--accent); }
+    :focus-visible { outline: 3px solid #345db3; outline-offset: 3px; border-radius: 3px; }
+    [hidden] { display: none !important; }
+    .frame { width: min(1280px, calc(100% - 80px)); margin-inline: auto; }
+    .skip {
+      position: fixed; z-index: 5; inset: 8px auto auto 16px; transform: translateY(-200%);
+      background: var(--paper); border: 1px solid var(--line); padding: 10px 14px;
+    }
+    .skip:focus { transform: none; }
+
+    .topbar { position: sticky; top: 0; z-index: 2; background: var(--paper); border-bottom: 1px solid var(--line); }
+    .topbar-inner { display: flex; align-items: center; gap: 17px; min-height: 66px; }
+    .brand { display: flex; align-items: center; gap: 10px; font-size: 20px; font-weight: 750; letter-spacing: -.035em; white-space: nowrap; }
+    .brand-mark { position: relative; width: 31px; height: 31px; border-radius: 7px; background: var(--accent-strong); }
+    .brand-mark::before {
+      content: ""; position: absolute; inset: 6px; background: #fff;
+      clip-path: polygon(50% 0, 100% 95%, 77% 95%, 50% 42%, 24% 95%, 0 95%);
+    }
+    .brand-mark::after { content: ""; position: absolute; width: 9px; height: 2px; background: #fff; left: 11px; top: 22px; }
+    .service { border-left: 1px solid var(--line); padding-left: 17px; font-size: 14px; color: var(--muted); }
+    .menu-toggle {
+      display: none; align-items: center; gap: 7px; min-height: 44px; margin-left: auto; padding: 6px 10px; 
+      border: 1px solid #b8c3d9; border-radius: 7px; background: var(--paper); color: var(--accent);
+      font-size: 14px; font-weight: 700; white-space: nowrap;
+    }
+    .menu-toggle:hover, .menu-toggle[aria-expanded="true"] { background: var(--accent-light); }
+    .menu-icon { width: 14px; height: 10px; border-block: 1.5px solid currentColor; position: relative; }
+    .menu-icon::after { content: ""; position: absolute; inset: 3px 0 auto; border-top: 1.5px solid currentColor; }
+
+    .layout { display: grid; grid-template-columns: 211px minmax(0, 1fr); column-gap: 34px; min-height: calc(100vh - 67px); }
+    .side { border-right: 1px solid var(--line); }
+    .side-inner { position: sticky; top: 67px; padding: 40px 18px 36px 0; max-height: calc(100vh - 67px); overflow-y: auto; }
+    .nav-heading { margin: 0 0 12px 10px; color: var(--muted); font-size: 13px; font-weight: 700; }
+    .docs-nav ul, .outline ul { list-style: none; padding: 0; margin: 0; }
+    .docs-nav > ul > li + li { margin-top: 4px; }
+    .nav-control, .nav-label {
+      display: flex; align-items: center; justify-content: space-between; width: 100%; min-height: 39px; padding: 7px 10px;
+      border: 0; border-radius: 6px; color: var(--text); background: none; text-align: left; text-decoration: none;
+      font-size: 15px; font-weight: 680;
+    }
+    .nav-control:hover { background: #eef0f4; }
+    .nav-control[aria-expanded="true"] { color: var(--accent); }
+    .chevron { width: 8px; height: 8px; border: solid currentColor; border-width: 0 1.5px 1.5px 0; transform: rotate(45deg); margin: -4px 3px 0 7px; }
+    .nav-control[aria-expanded="true"] .chevron { transform: rotate(225deg); margin-top: 4px; }
+    .docs-nav .subnav { margin: 0 0 8px 10px; padding: 0 0 0 8px; border-left: 1px solid #d5d9e2; }
+    .subnav a {
+      display: block; position: relative; min-height: 36px; padding: 8px 9px; border-radius: 5px;
+      font-size: 14px; line-height: 1.42; color: var(--muted); text-decoration: none;
+    }
+    .subnav a:hover { background: #eef0f4; color: var(--text); }
+    .subnav a[aria-current="page"] { background: var(--accent-light); color: var(--accent-strong); font-weight: 700; }
+    .subnav a[aria-current="page"]::before { content: ""; position: absolute; inset: 7px auto 7px -9px; width: 2px; border-radius: 2px; background: var(--accent-strong); }
+
+    main { min-width: 0; padding: 47px 0 58px; }
+    .article-column { max-width: 665px; }
+    .category { margin: 0 0 8px; color: var(--accent); font-size: 13px; font-weight: 750; letter-spacing: .045em; }
+    h1 { margin: 0; font-size: clamp(44px, 5vw, 66px); font-weight: 750; line-height: 1.02; letter-spacing: -.055em; scroll-margin-top: 97px; }
+    .summary { margin: 13px 0 0; font-size: clamp(16px, 2vw, 19px); max-width: 57ch; color: var(--muted); text-wrap: pretty; }
+    .safety {
+      margin: 27px 0 0; display: flex; align-items: flex-start; gap: 12px;
+      padding: 15px 18px; background: var(--warning-surface); border: 1px solid #edce94; 
+      border-left: 4px solid var(--warning-border); border-radius: 7px; color: var(--warning-text);
+    }
+    .warning-icon {
+      background: var(--warning-text); color: var(--warning-surface); flex: 0 0 20px; height: 20px; margin-top: 2px;
+      border-radius: 50%; text-align: center; font-size: 14px; line-height: 20px; font-weight: 800;
+    }
+    .safety p { margin: 0; }
+    .safety-label { display: block; font-size: 13px; font-weight: 700; }
+    .safety strong { font-size: 17px; font-weight: 750; }
+
+    .outline { margin-top: 25px; border-bottom: 1px solid var(--line); padding-bottom: 12px; }
+    .outline-title { margin: 0 0 4px; font-size: 13px; font-weight: 750; }
+    .outline ul { display: flex; flex-wrap: wrap; column-gap: 17px; }
+    .outline a {
+      display: flex; align-items: center; min-height: 36px; width: fit-content; color: var(--accent);
+      font-size: 14px; text-decoration-color: #7993cc; text-underline-offset: 4px;
+    }
+    .outline a:hover { color: #142e6a; text-decoration-thickness: 2px; }
+    .steps { list-style: none; padding: 0; margin: 29px 0 0; counter-reset: step; }
+    .step { position: relative; padding: 0 0 22px 49px; counter-increment: step; }
+    .step + .step { padding-top: 21px; border-top: 1px solid var(--line); }
+    .step:last-child { padding-bottom: 0; }
+    .step::before {
+      content: counter(step); position: absolute; inset: 0 auto auto 0; display: grid; place-items: center; 
+      width: 32px; height: 32px; background: var(--accent-light); color: var(--accent-strong);
+      border-radius: 7px; font-size: 15px; font-weight: 750; font-variant-numeric: tabular-nums;
+    }
+    .step + .step::before { top: 21px; }
+    .step-title { margin: 0; font-size: clamp(22px, 2.8vw, 26px); line-height: 1.25; font-weight: 750; letter-spacing: -.035em; scroll-margin-top: 99px; }
+    .step p { color: #3c475b; margin: 7px 0 0; max-width: 62ch; font-size: 16px; text-wrap: pretty; }
+    .step strong { color: var(--text); font-weight: 700; }
+
+    .context {
+      width: min(450px, calc(100% - 32px)); max-height: calc(100% - 32px); border: 1px solid #c9d0df;
+      border-radius: 12px; background: var(--paper); color: var(--text); padding: 24px; box-shadow: 0 20px 60px #1a275040;
+    }
+    .context::backdrop { background: #1b274b66; }
+    .context-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 15px; }
+    .context h2 { margin: 5px 0 0; color: var(--text); font-size: 25px; letter-spacing: -.025em; line-height: 1.2; }
+    .context p { margin: 14px 0 0; color: var(--muted); }
+    .close-context { min-height: 44px; padding: 6px 11px; border-radius: 6px; border: 1px solid #a9b8d5; background: #f3f6ff; color: var(--accent); font-weight: 700; flex: none; }
+    .close-context:hover { background: var(--accent-light); }
+
+    @media (min-width: 1080px) {
+      .layout { --column-gap: clamp(32px, 4.1vw, 61px); grid-template-columns: 224px minmax(0, 1fr); column-gap: var(--column-gap); }
+      .side-inner { padding-right: 24px; padding-top: 47px; }
+      main { padding-top: 49px; }
+      .article-column { display: grid; grid-template-columns: minmax(0, 1fr) 170px; column-gap: var(--column-gap); max-width: none; }
+      .article-column > header, .safety, .steps { grid-column: 1; }
+      .outline {
+        grid-column: 2; grid-row: 1 / span 3; align-self: start; position: sticky; top: 119px;
+        margin: 0; padding: 0 0 0 17px; border-left: 1px solid var(--line); border-bottom: 0;
+      }
+      .outline ul { display: block; }
+      .outline a { min-height: 33px; }
+      .steps { margin-top: 32px; }
+    }
+
+    @media (max-width: 900px) {
+      .frame { width: calc(100% - 48px); }
+      .layout { grid-template-columns: 174px minmax(0, 1fr); column-gap: 26px; }
+      .side-inner { padding-right: 12px; }
+    }
+    @media (max-width: 700px) {
+      .frame { width: calc(100% - 32px); }
+      .topbar-inner { min-height: 60px; gap: 10px; }
+      .service { display: none; }
+      .menu-toggle { display: flex; }
+      .layout { display: block; }
+      .side {
+        position: fixed; inset: 61px 0 auto; z-index: 1; max-height: calc(100dvh - 61px); overflow-y: auto;
+        padding-inline: 16px; background: var(--paper); border: 0; border-bottom: 1px solid var(--line);
+        box-shadow: 0 9px 20px #252e4b1a;
+      }
+      .side[data-mobile-open="false"] { display: none; }
+      .side-inner { position: static; max-height: none; padding: 16px 0 19px; }
+      .nav-control, .nav-label { min-height: 44px; }
+      .subnav a { min-height: 44px; padding-block: 12px; }
+      main { padding: 30px 0 42px; }
+      h1 { font-size: clamp(37px, 11vw, 48px); scroll-margin-top: 83px; }
+      .summary { margin-top: 11px; }
+      .safety { margin-top: 20px; padding: 12px 13px; }
+      .outline { margin-top: 19px; padding-bottom: 9px; }
+      .outline ul { column-gap: 12px; }
+      .outline a { min-height: 44px; }
+      .steps { margin-top: 22px; }
+      .step { padding-left: 41px; padding-bottom: 18px; }
+      .step + .step { padding-top: 18px; }
+      .step + .step::before { top: 18px; }
+      .step::before { width: 29px; height: 29px; font-size: 14px; }
+      .step-title { scroll-margin-top: 81px; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#restore-prime">Skip to procedure</a>
+  <header class="topbar">
+    <div class="frame topbar-inner">
+      <div class="brand"><span class="brand-mark" aria-hidden="true"></span>Atlas Works</div>
+      <div class="service">Service documentation</div>
+      <button class="menu-toggle" type="button" data-testid="nav-toggle" aria-controls="docs-nav" aria-expanded="false">
+        <span class="menu-icon" aria-hidden="true"></span>Docs menu
+      </button>
+    </div>
+  </header>
+
+  <div class="frame layout">
+    <aside class="side" data-mobile-open="false">
+      <div class="side-inner">
+        <nav class="docs-nav" id="docs-nav" data-testid="docs-nav" aria-labelledby="docs-title">
+          <h2 class="nav-heading" id="docs-title">Service documentation</h2>
+          <ul>
+            <li><a class="nav-control" href="#start-here" data-topic="start-here">Start here</a></li>
+            <li>
+              <button class="nav-control" type="button" data-testid="equipment-toggle" aria-controls="equipment-links" aria-expanded="false">
+                Equipment<span class="chevron" aria-hidden="true"></span>
+              </button>
+              <ul class="subnav" id="equipment-links" data-testid="equipment-links" hidden>
+                <li><a href="#centrifugal-pump" data-topic="centrifugal-pump">Centrifugal pump</a></li>
+                <li><a href="#dosing-skid" data-topic="dosing-skid">Dosing skid</a></li>
+              </ul>
+            </li>
+            <li>
+              <span class="nav-label" id="procedures-label">Procedures</span>
+              <ul class="subnav" aria-labelledby="procedures-label">
+                <li><a href="#restore-prime" aria-current="page">Restore prime</a></li>
+                <li><a href="#replace-a-seal" data-topic="replace-a-seal">Replace a seal</a></li>
+                <li><a href="#check-flow" data-topic="check-flow">Check flow</a></li>
+              </ul>
+            </li>
+            <li><a class="nav-control" href="#troubleshooting" data-topic="troubleshooting">Troubleshooting</a></li>
+          </ul>
+        </nav>
+      </div>
+    </aside>
+
+    <main>
+      <article class="article-column" aria-labelledby="restore-prime">
+        <header>
+          <p class="category">Procedures</p>
+          <h1 id="restore-prime" tabindex="-1">Restore prime</h1>
+          <p class="summary">Refill the pump and confirm flow after a routine loss of prime.</p>
+        </header>
+
+        <aside class="safety" aria-label="Safety notice">
+          <span class="warning-icon" aria-hidden="true">!</span>
+          <p><span class="safety-label">Safety notice</span><strong>Do not run the pump dry.</strong></p>
+        </aside>
+
+        <nav class="outline" aria-label="On this page">
+          <h2 class="outline-title">On this page</h2>
+          <ul>
+            <li><a href="#isolate">Isolate the pump</a></li>
+            <li><a href="#refill">Refill the chamber</a></li>
+            <li><a href="#verify" data-testid="jump-verify">Verify flow</a></li>
+          </ul>
+        </nav>
+
+        <ol class="steps" role="list" aria-label="Restoring prime">
+          <li class="step">
+            <section aria-labelledby="isolate">
+              <h2 class="step-title" id="isolate" tabindex="-1">Isolate the pump</h2>
+              <p>Switch off the pump, apply your site’s lockout procedure, and verify zero energy before opening the fill port.</p>
+            </section>
+          </li>
+          <li class="step">
+            <section aria-labelledby="refill">
+              <h2 class="step-title" id="refill" tabindex="-1">Refill the chamber</h2>
+              <p>Open the fill port and add approved priming fluid until the chamber is full. Close the fill port.</p>
+            </section>
+          </li>
+          <li class="step">
+            <section aria-labelledby="verify">
+              <h2 class="step-title" id="verify" data-testid="verify" tabindex="-1">Verify flow</h2>
+              <p>Clear the work area, follow your site’s restart procedure, and confirm flow on the gauge.</p>
+              <p><strong>If flow does not recover, stop the pump and notify maintenance.</strong></p>
+            </section>
+          </li>
+        </ol>
+      </article>
+    </main>
+
+  </div>
+
+  <dialog class="context" id="topic-dialog" aria-labelledby="topic-title" aria-describedby="topic-content">
+    <div class="context-head">
+      <h2 id="topic-title"></h2>
+      <form method="dialog"><button class="close-context" autofocus>Close</button></form>
+    </div>
+    <p id="topic-content"></p>
+  </dialog>
+
+  <script>
+    const mobile = window.matchMedia('(max-width: 700px)');
+    const menu = document.querySelector('.menu-toggle');
+    const sidebar = document.querySelector('.side');
+    const equipment = document.querySelector('[data-testid="equipment-toggle"]');
+    const equipmentLinks = document.getElementById('equipment-links');
+    const dialog = document.getElementById('topic-dialog');
+
+    function setMenu(open) {
+      menu.setAttribute('aria-expanded', open);
+      sidebar.dataset.mobileOpen = open;
+    }
+
+    menu.addEventListener('click', () => setMenu(menu.getAttribute('aria-expanded') !== 'true'));
+    mobile.addEventListener('change', event => {
+      if (event.matches && sidebar.contains(document.activeElement)) menu.focus();
+      setMenu(false);
+    });
+    function dismissOutsideMenu(event) {
+      if (mobile.matches && !dialog.open && !menu.contains(event.target) && !sidebar.contains(event.target)) {
+        setMenu(false);
+      }
+    }
+    document.addEventListener('focusin', dismissOutsideMenu);
+    document.addEventListener('click', dismissOutsideMenu);
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && mobile.matches && sidebar.dataset.mobileOpen === 'true' && !dialog.open) {
+        setMenu(false);
+        menu.focus();
+      }
+    });
+
+    equipment.addEventListener('click', () => {
+      const expanded = equipment.getAttribute('aria-expanded') === 'true';
+      equipment.setAttribute('aria-expanded', !expanded);
+      equipmentLinks.hidden = expanded;
+    });
+
+    document.querySelector('[aria-current="page"]').addEventListener('click', () => {
+      if (mobile.matches) setMenu(false);
+    });
+
+    const topics = {
+      'start-here': 'Identify the pump at the work area and have the applicable site lockout and restart procedures ready. Confirm which priming fluid is approved for the equipment.',
+      'centrifugal-pump': 'Use the equipment manual to identify the fill port, approved priming fluid, and expected gauge reading for your centrifugal pump.',
+      'dosing-skid': 'Consult the skid’s equipment manual for its priming procedure and fluid handling requirements. Contact maintenance if the correct procedure is unclear.',
+      'replace-a-seal': 'Refer to the equipment manual for seal-specific service instructions. Ask maintenance to confirm the correct replacement for the pump model.',
+      'check-flow': 'Confirm the gauge reading against the expected operating range for the equipment. If flow did not recover after priming, stop the pump and notify maintenance.',
+      'troubleshooting': 'If the pump loses prime again or flow does not recover, stop the pump and notify maintenance. Record the pump identifier and the gauge reading if available.'
+    };
+
+    for (const link of document.querySelectorAll('[data-topic]')) {
+      link.addEventListener('click', event => {
+        event.preventDefault();
+        dialog.querySelector('h2').textContent = link.textContent;
+        dialog.querySelector('p').textContent = topics[link.dataset.topic];
+        dialog.showModal();
+      });
+    }
+  </script>
+</body>
+</html>

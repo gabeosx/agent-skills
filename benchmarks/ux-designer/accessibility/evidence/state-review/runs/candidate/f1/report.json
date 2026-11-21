@@ -1,0 +1,648 @@
+{
+  "schemaVersion": 1,
+  "status": "passed",
+  "browser": {
+    "version": "159.0.8154.6",
+    "source": "playwright",
+    "executablePath": "/Users/gabe/Library/Caches/ms-playwright/chromium-1255/chrome-mac-arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing",
+    "headless": true,
+    "args": [
+      "--disable-quic",
+      "--force-webrtc-ip-handling-policy=disable_non_proxied_udp",
+      "--host-resolver-rules=MAP * ~NOTFOUND, EXCLUDE 127.0.0.1",
+      "--no-proxy-server"
+    ]
+  },
+  "config": {
+    "node": "v26.13.0",
+    "platform": "darwin",
+    "architecture": "arm64",
+    "playwright": "1.65.1",
+    "axe": "4.14.1",
+    "axeTags": [
+      "wcag2a",
+      "wcag2aa",
+      "wcag21a",
+      "wcag21aa",
+      "wcag22a",
+      "wcag22aa"
+    ],
+    "context": {
+      "colorScheme": "light",
+      "deviceScaleFactor": 1,
+      "locale": "en-US",
+      "reducedMotion": "reduce",
+      "serviceWorkers": "block",
+      "timezoneId": "UTC"
+    },
+    "viewports": {
+      "desktop": {
+        "width": 1440,
+        "height": 1000
+      },
+      "tablet": {
+        "width": 834,
+        "height": 1112
+      },
+      "mobile": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    "timeoutsMs": {
+      "navigation": 10000,
+      "step": 2500,
+      "capture": 10000,
+      "accessibility": 10000
+    },
+    "network": "localhost-static-origin-only"
+  },
+  "source": {
+    "checksSha256": "eeff6ce90b876c19f5a4730a30d3261a32d945be6ceadc44badb90a23b6688ca",
+    "site": {
+      "sha256": "0df0e4402186c486ed8e9d113c8a00d1c5f999ad2bfcb6c5d7599b328a93218b",
+      "files": [
+        {
+          "path": "handover.js",
+          "sha256": "6c53c5f1618c533ba8cf8515e529b4b1a511417ad957509e1388314ac9738427"
+        },
+        {
+          "path": "index.html",
+          "sha256": "a0db927569fef6b461491a65328d96dfab11e8a9a2e0cdbd2738e91e4e18dbe9"
+        },
+        {
+          "path": "styles.css",
+          "sha256": "73b8ad4e60062ed4651770e2ce5792ab102b41aeb49f1f026cc6048a2552cdc9"
+        }
+      ]
+    },
+    "harness": {
+      "sha256": "6c881823017ece00658aa02b1817a074668453398b4905f0208e23ef5bcda8d1",
+      "files": [
+        {
+          "path": "capture.mjs",
+          "sha256": "92bc6c8b9c97e64bd0dbcc746c6505f0ed30e9ecaba15ba32a35d1348afaf77e"
+        },
+        {
+          "path": "package-lock.json",
+          "sha256": "9e166f03feded2ba877c95cbbb4bce6b15453e267c7bf4a69a384ec2a3e1fbc1"
+        },
+        {
+          "path": "package.json",
+          "sha256": "e53398841d514c8588ddfad5569cc1f7aed5d67a6f7b71f4ab05a70cfca4817b"
+        }
+      ]
+    }
+  },
+  "timing": {
+    "startedAt": "2026-11-21T20:44:56.531Z",
+    "completedAt": "2026-11-21T20:44:58.718Z",
+    "elapsedMs": 2187
+  },
+  "viewports": [
+    {
+      "name": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "status": "passed",
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "screenshot": {
+        "path": "desktop.png",
+        "bytes": 81570,
+        "sha256": "7abb3f71332dbd69368921f0d8c0a510e4d6b21b3cdc891678eddf1a0ec7963a"
+      },
+      "layout": {
+        "clientWidth": 1440,
+        "scrollWidth": 1440,
+        "bodyScrollWidth": 1440,
+        "horizontalOverflow": false
+      },
+      "accessibility": {
+        "status": "no-violations",
+        "counts": {
+          "passes": 18,
+          "violations": 0,
+          "incomplete": 1,
+          "inapplicable": 46
+        },
+        "violations": [],
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "tags": [
+              "cat.color",
+              "wcag2aa",
+              "wcag143",
+              "TTv5",
+              "TT13.c",
+              "EN-301-549",
+              "EN-9.1.4.3",
+              "ACT",
+              "RGAAv4",
+              "RGAA-3.2.1"
+            ],
+            "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+            "help": "Elements must meet minimum color contrast ratio thresholds",
+            "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+            "nodes": [
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "messageKey": "nonBmp"
+                    },
+                    "relatedNodes": [],
+                    "impact": "serious",
+                    "message": "Element content contains only non-text characters"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<span class=\"field-icon next-icon\" aria-hidden=\"true\">→</span>",
+                "target": [
+                  ".next-icon"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "tablet",
+      "viewport": {
+        "width": 834,
+        "height": 1112
+      },
+      "status": "passed",
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "screenshot": {
+        "path": "tablet.png",
+        "bytes": 74712,
+        "sha256": "656751b190b830b3be7ac31b0c5c8a9320af684efa3f2ebf2966265c9b45ca61"
+      },
+      "layout": {
+        "clientWidth": 834,
+        "scrollWidth": 834,
+        "bodyScrollWidth": 834,
+        "horizontalOverflow": false
+      },
+      "accessibility": {
+        "status": "no-violations",
+        "counts": {
+          "passes": 18,
+          "violations": 0,
+          "incomplete": 1,
+          "inapplicable": 46
+        },
+        "violations": [],
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "tags": [
+              "cat.color",
+              "wcag2aa",
+              "wcag143",
+              "TTv5",
+              "TT13.c",
+              "EN-301-549",
+              "EN-9.1.4.3",
+              "ACT",
+              "RGAAv4",
+              "RGAA-3.2.1"
+            ],
+            "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+            "help": "Elements must meet minimum color contrast ratio thresholds",
+            "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+            "nodes": [
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "messageKey": "nonBmp"
+                    },
+                    "relatedNodes": [],
+                    "impact": "serious",
+                    "message": "Element content contains only non-text characters"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<span class=\"field-icon next-icon\" aria-hidden=\"true\">→</span>",
+                "target": [
+                  ".next-icon"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "status": "passed",
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "screenshot": {
+        "path": "mobile.png",
+        "bytes": 68701,
+        "sha256": "7b00d480ec25453f1352749b01577ad35ef47e831c98a3908e13a8d25aeb1b04"
+      },
+      "layout": {
+        "clientWidth": 390,
+        "scrollWidth": 390,
+        "bodyScrollWidth": 390,
+        "horizontalOverflow": false
+      },
+      "accessibility": {
+        "status": "no-violations",
+        "counts": {
+          "passes": 18,
+          "violations": 0,
+          "incomplete": 1,
+          "inapplicable": 46
+        },
+        "violations": [],
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "tags": [
+              "cat.color",
+              "wcag2aa",
+              "wcag143",
+              "TTv5",
+              "TT13.c",
+              "EN-301-549",
+              "EN-9.1.4.3",
+              "ACT",
+              "RGAAv4",
+              "RGAA-3.2.1"
+            ],
+            "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+            "help": "Elements must meet minimum color contrast ratio thresholds",
+            "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+            "nodes": [
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "messageKey": "nonBmp"
+                    },
+                    "relatedNodes": [],
+                    "impact": "serious",
+                    "message": "Element content contains only non-text characters"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<span class=\"field-icon next-icon\" aria-hidden=\"true\">→</span>",
+                "target": [
+                  ".next-icon"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "scenarios": [
+    {
+      "name": "Desktop coordinator reviews two reports in succession",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "captureRequested": true,
+      "status": "passed",
+      "steps": [
+        {
+          "index": 1,
+          "expected": {
+            "action": "visible",
+            "id": "handover-report-t214"
+          },
+          "status": "passed",
+          "elapsedMs": 17
+        },
+        {
+          "index": 2,
+          "expected": {
+            "action": "visible",
+            "id": "handover-report-t219"
+          },
+          "status": "passed",
+          "elapsedMs": 2
+        },
+        {
+          "index": 3,
+          "expected": {
+            "action": "visible",
+            "id": "handover-report-t224"
+          },
+          "status": "passed",
+          "elapsedMs": 1
+        },
+        {
+          "index": 4,
+          "expected": {
+            "action": "text",
+            "id": "handover-detail-id",
+            "value": "T-214"
+          },
+          "status": "passed",
+          "actual": "T-214",
+          "elapsedMs": 8
+        },
+        {
+          "index": 5,
+          "expected": {
+            "action": "click",
+            "id": "handover-report-t219"
+          },
+          "status": "passed",
+          "elapsedMs": 31
+        },
+        {
+          "index": 6,
+          "expected": {
+            "action": "text",
+            "id": "handover-detail-location",
+            "value": "Quay Loop"
+          },
+          "status": "passed",
+          "actual": "Quay Loop",
+          "elapsedMs": 1
+        },
+        {
+          "index": 7,
+          "expected": {
+            "action": "text",
+            "id": "handover-detail-next",
+            "value": "Confirm the replacement display cycles through all destinations."
+          },
+          "status": "passed",
+          "actual": "Confirm the replacement display cycles through all destinations.",
+          "elapsedMs": 1
+        },
+        {
+          "index": 8,
+          "expected": {
+            "action": "click",
+            "id": "handover-report-t224"
+          },
+          "status": "passed",
+          "elapsedMs": 30
+        },
+        {
+          "index": 9,
+          "expected": {
+            "action": "text",
+            "id": "handover-detail-id",
+            "value": "T-224"
+          },
+          "status": "passed",
+          "actual": "T-224",
+          "elapsedMs": 1
+        },
+        {
+          "index": 10,
+          "expected": {
+            "action": "text",
+            "id": "handover-detail-crew",
+            "value": "Fleet maintenance team"
+          },
+          "status": "passed",
+          "actual": "Fleet maintenance team",
+          "elapsedMs": 1
+        }
+      ],
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "screenshot": {
+        "path": "scenario-01-desktop-coordinator-reviews-two-reports-in-succession.png",
+        "bytes": 82396,
+        "sha256": "66fdc0dfe73c69c7be26b52d2b17ead87efb81742549bb97d5349f4cfa4054c8"
+      },
+      "unrunSteps": 0
+    },
+    {
+      "name": "Tablet coordinator changes selection with the keyboard",
+      "viewport": {
+        "width": 834,
+        "height": 1112
+      },
+      "captureRequested": true,
+      "status": "passed",
+      "steps": [
+        {
+          "index": 1,
+          "expected": {
+            "action": "press",
+            "id": "handover-report-t224",
+            "value": "Enter"
+          },
+          "status": "passed",
+          "elapsedMs": 22
+        },
+        {
+          "index": 2,
+          "expected": {
+            "action": "text",
+            "id": "handover-detail-location",
+            "value": "Cedar Depot"
+          },
+          "status": "passed",
+          "actual": "Cedar Depot",
+          "elapsedMs": 7
+        },
+        {
+          "index": 3,
+          "expected": {
+            "action": "text",
+            "id": "handover-detail-next",
+            "value": "Review the door sensor history before releasing the tram."
+          },
+          "status": "passed",
+          "actual": "Review the door sensor history before releasing the tram.",
+          "elapsedMs": 1
+        },
+        {
+          "index": 4,
+          "expected": {
+            "action": "press",
+            "id": "handover-report-t214",
+            "value": "Space"
+          },
+          "status": "passed",
+          "elapsedMs": 2
+        },
+        {
+          "index": 5,
+          "expected": {
+            "action": "text",
+            "id": "handover-detail-crew",
+            "value": "Wayside team"
+          },
+          "status": "passed",
+          "actual": "Wayside team",
+          "elapsedMs": 1
+        },
+        {
+          "index": 6,
+          "expected": {
+            "action": "text",
+            "id": "handover-detail-next",
+            "value": "Check the signal lamp during the next service gap."
+          },
+          "status": "passed",
+          "actual": "Check the signal lamp during the next service gap.",
+          "elapsedMs": 1
+        }
+      ],
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "screenshot": {
+        "path": "scenario-02-tablet-coordinator-changes-selection-with-the-keyboard.png",
+        "bytes": 75578,
+        "sha256": "26020b2096908f9b0ffc7d8a9c64e9e68b46d2591afb5759e27c2403c27d7910"
+      },
+      "unrunSteps": 0
+    },
+    {
+      "name": "Mobile coordinator opens and revisits a report",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "captureRequested": true,
+      "status": "passed",
+      "steps": [
+        {
+          "index": 1,
+          "expected": {
+            "action": "click",
+            "id": "handover-report-t219"
+          },
+          "status": "passed",
+          "elapsedMs": 36
+        },
+        {
+          "index": 2,
+          "expected": {
+            "action": "text",
+            "id": "handover-detail-id",
+            "value": "T-219"
+          },
+          "status": "passed",
+          "actual": "T-219",
+          "elapsedMs": 7
+        },
+        {
+          "index": 3,
+          "expected": {
+            "action": "text",
+            "id": "handover-detail-crew",
+            "value": "Passenger information team"
+          },
+          "status": "passed",
+          "actual": "Passenger information team",
+          "elapsedMs": 1
+        },
+        {
+          "index": 4,
+          "expected": {
+            "action": "click",
+            "id": "handover-report-t214"
+          },
+          "status": "passed",
+          "elapsedMs": 28
+        },
+        {
+          "index": 5,
+          "expected": {
+            "action": "text",
+            "id": "handover-detail-location",
+            "value": "Alder Junction"
+          },
+          "status": "passed",
+          "actual": "Alder Junction",
+          "elapsedMs": 1
+        },
+        {
+          "index": 6,
+          "expected": {
+            "action": "click",
+            "id": "handover-report-t219"
+          },
+          "status": "passed",
+          "elapsedMs": 28
+        },
+        {
+          "index": 7,
+          "expected": {
+            "action": "text",
+            "id": "handover-detail-next",
+            "value": "Confirm the replacement display cycles through all destinations."
+          },
+          "status": "passed",
+          "actual": "Confirm the replacement display cycles through all destinations.",
+          "elapsedMs": 1
+        },
+        {
+          "index": 8,
+          "expected": {
+            "action": "count",
+            "id": "handover-detail-id",
+            "count": 1
+          },
+          "status": "passed",
+          "actual": 1,
+          "elapsedMs": 1
+        }
+      ],
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "screenshot": {
+        "path": "scenario-03-mobile-coordinator-opens-and-revisits-a-report.png",
+        "bytes": 70200,
+        "sha256": "f3bc21a82f2639bd8f33b7c2aa289a6f392dedf075e011db012b7ad24dd3e4c4"
+      },
+      "unrunSteps": 0
+    }
+  ],
+  "criticalFailures": [],
+  "runnerErrors": []
+}

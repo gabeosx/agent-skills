@@ -1,0 +1,59 @@
+{
+  "scenarios": [
+    {
+      "name": "Switch proofs and preserve pin visibility",
+      "width": 1440,
+      "steps": [
+        {"action": "attribute", "id": "proof-image", "name": "alt", "value": "Blood Orange pouch, Version 3"},
+        {"action": "visible", "id": "pin-1"},
+        {"action": "click", "id": "pins-toggle"},
+        {"action": "attribute", "id": "pins-toggle", "name": "aria-pressed", "value": "false"},
+        {"action": "hidden", "id": "pin-1"},
+        {"action": "visible", "id": "note-1"},
+        {"action": "select", "id": "version-select", "value": "v2"},
+        {"action": "attribute", "id": "proof-image", "name": "alt", "value": "Blood Orange pouch, Version 2"},
+        {"action": "text", "id": "notes-empty", "value": "No open notes on this version."},
+        {"action": "hidden", "id": "approve-proof"},
+        {"action": "select", "id": "version-select", "value": "v3"},
+        {"action": "hidden", "id": "pin-1"},
+        {"action": "click", "id": "pins-toggle"},
+        {"action": "visible", "id": "pin-2"}
+      ],
+      "capture": true
+    },
+    {
+      "name": "Confirm approval after cancelling once",
+      "width": 834,
+      "steps": [
+        {"action": "click", "id": "approve-proof"},
+        {"action": "visible", "id": "approval-dialog"},
+        {"action": "text", "id": "approval-dialog", "value": "SP-0264"},
+        {"action": "click", "id": "cancel-approval"},
+        {"action": "hidden", "id": "approval-dialog"},
+        {"action": "text", "id": "review-status", "value": "In review"},
+        {"action": "click", "id": "approve-proof"},
+        {"action": "click", "id": "confirm-approval"},
+        {"action": "hidden", "id": "approval-dialog"},
+        {"action": "text", "id": "review-status", "value": "Approved"},
+        {"action": "hidden", "id": "approve-proof"}
+      ],
+      "capture": true
+    },
+    {
+      "name": "Reply from an artwork pin",
+      "width": 390,
+      "steps": [
+        {"action": "click", "id": "pin-2"},
+        {"action": "text", "id": "active-note", "value": "Devin Cole"},
+        {"action": "text", "id": "active-note", "value": "Keep the revised 60 g line centered under DRIED SLICES."},
+        {"action": "fill", "id": "reply-input", "value": "Checked against the approved dieline."},
+        {"action": "click", "id": "post-reply"},
+        {"action": "text", "id": "active-note", "value": "Checked against the approved dieline."},
+        {"action": "click", "id": "back-to-notes"},
+        {"action": "click", "id": "note-1"},
+        {"action": "text", "id": "active-note", "value": "Leaf contrast"}
+      ],
+      "capture": true
+    }
+  ]
+}

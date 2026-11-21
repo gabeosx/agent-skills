@@ -1,0 +1,17 @@
+{
+  "intervention": "Removed the computed aria-label override. Existing visible contents provide the native name.",
+  "viewports": [
+    {
+      "width": 1440,
+      "screenshots_identical": true
+    },
+    {
+      "width": 834,
+      "screenshots_identical": true
+    },
+    {
+      "width": 390,
+      "screenshots_identical": true
+    }
+  ]
+}

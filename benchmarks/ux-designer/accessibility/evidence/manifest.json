@@ -1,0 +1,43 @@
+{
+  "frozen_at_utc": "2026-11-21T20:33:57+00:00",
+  "baseline": {
+    "version": "2.0.0",
+    "snapshot_sha256": "92359a8886f08df494ee290af4cd23c63bc457d5df70e00ad577955f840de1be"
+  },
+  "candidate": {
+    "version": "2.0.0",
+    "snapshot_sha256": "accaa3158a8a9c9ba6a6f457406c8f96024415d1d379f3dd0c699c51b570849a"
+  },
+  "development_regression": [
+    "h3"
+  ],
+  "fresh_confirmation": [
+    "f1",
+    "f2"
+  ],
+  "browser_harness_sha256": "92bc6c8b9c97e64bd0dbcc746c6505f0ed30e9ecaba15ba32a35d1348afaf77e",
+  "browser_package_lock_sha256": "9e166f03feded2ba877c95cbbb4bce6b15453e267c7bf4a69a384ec2a3e1fbc1",
+  "actor_prompt_sha256": "5cc4b6fc2542112b15a2f17af0c4b235643e08ca5993d43672a0cbe700cdfe5b",
+  "rubric_sha256": "12d4bd698f548797f0599498d70d1310341abe5ceb21d78e6ef7221b3af3e627",
+  "grader_prompt_sha256": "8e50297c1d7d41aa78b3be0764b09466516d8453aa28e58c9af5b2718d8ad522",
+  "actor_and_grader_runtime": "Fresh Codex subagents with inherited model; model revision, tokens and charges not exposed.",
+  "scope": "Local offline static sites, pinned Chromium and axe, no external services or publication.",
+  "acceptance": "Booking label regression clears at 1440/834/390. Fresh candidate clears functional and name gates and is at least as often preferred as the comparator across two blind pairs. Prior evidence and source remain preserved.",
+  "supplemental_name_check_sha256": "5adc39e19b53b02f5a584e7d1fe56220bbb723425deffdafc5505a75f8c1db79",
+  "fresh_brief_manifest_sha256": "792e012c5c8dfbfc8e1d0c0d22c4477375626e10de34aa9039dfea7dcebe10b1",
+  "known_task_manifest": {
+    "brief.md": "25eba75f88dafc8c19779dc55d47089aa49877912663e03b59dae5b381498aa5",
+    "checks.json": "3fa4e2841d5d1bb39d9a0256eca47436f3db8868e7b80f9d9d413b8ec1a84dea",
+    "name-hooks.json": "a776843ee87547b788e5bf5be3c7c944f76182a2e9950275f5e85cf1e3db543c"
+  },
+  "comparison_order": {
+    "baseline": [
+      "f1",
+      "f2"
+    ],
+    "candidate": [
+      "f2",
+      "f1"
+    ]
+  }
+}

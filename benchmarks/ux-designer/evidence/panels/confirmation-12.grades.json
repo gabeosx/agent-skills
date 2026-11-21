@@ -1,0 +1,362 @@
+{
+  "tasks": {
+    "h1": {
+      "outputs": {
+        "ui-888934": {
+          "dimensions": {
+            "A": {
+              "score": 18,
+              "rationale": "An address-led list and clear panel headers make the streetlight lookup scannable at all three widths.",
+              "strengths": [
+                "Desktop and tablet rows share a fixed status column; the known outage groups state, date and reference in one callout."
+              ],
+              "defects": [
+                "The extra reporting-status header and large empty report panel take space on mobile."
+              ],
+              "opportunity": "Compress the initial report panel on phones so more of it appears under the rows."
+            },
+            "B": {
+              "score": 13,
+              "rationale": "Serif display headings and sans-serif controls establish roles; heavier addresses and monospaced codes are easy to distinguish.",
+              "strengths": [
+                "The selected address and bold date/reference read clearly in the desktop outage capture."
+              ],
+              "defects": [
+                "Pole codes and badges get notably small on the phone, and the crossing landmark wraps into two lines."
+              ],
+              "opportunity": "Give codes and landmarks more mobile width by simplifying the row furniture."
+            },
+            "C": {
+              "score": 17,
+              "rationale": "The ivory and navy palette separates regions cleanly, with amber concentrated on active or reported states.",
+              "strengths": [
+                "The top-aligned and initially equal-height desktop cards have subtle separators, matching radii and restrained shadows."
+              ],
+              "defects": [
+                "On mobile the repeated icon tiles and chevrons narrow the address column; the East Basin badge is repeated in the intro."
+              ],
+              "opportunity": "Reduce the footprint of the mobile row icons and keep more space for location text."
+            },
+            "D": {
+              "score": 18,
+              "rationale": "A clear civic masthead and a modest schematic lamp form a distinctive and consistent utility identity.",
+              "strengths": [
+                "The illustrated lamp, municipal mark and amber report callout refer back to the service without overwhelming it."
+              ],
+              "defects": [
+                "The masthead service label and hero kicker repeat the service name at desktop and tablet."
+              ],
+              "opportunity": "Use one of those labels to foreground service-area information or remove the duplication."
+            },
+            "E": {
+              "score": 13,
+              "rationale": "The named search, whole-row targets and selected fill support the lookup. The test transcript verifies empty search recovery and mobile submission/reset.",
+              "strengths": [
+                "The selected Harbor Market row has an amber edge, and the right panel shows the existing reference with no submit action."
+              ],
+              "defects": [
+                "The initial mobile report region begins below all four rows, and the mobile task-form and acknowledgment have no visual capture."
+              ],
+              "opportunity": "Make the newly populated report region easy to reach immediately after a phone selection."
+            },
+            "F": {
+              "score": 8,
+              "rationale": "Repeated row and detail styles hold across three widths and the known-outage state; the browser records no overflow or initial accessibility violations.",
+              "strengths": [
+                "The transcript verifies the selected row has aria-pressed=true and the scenario controls respond at their intended widths."
+              ],
+              "defects": [
+                "Panel proportions change markedly between initial and filtered states; keyboard focus treatment is not pictured."
+              ],
+              "opportunity": "Verify focus visibility and continuity through selection, submission and reset."
+            }
+          },
+          "total": 87,
+          "visual_problems": [
+            "The mobile empty-state panel is tall.",
+            "Small code and status text must share the phone row with icon tiles and arrows.",
+            "Desktop and tablet repeat the service label and area context."
+          ],
+          "effective_decisions": [
+            "Desktop and tablet keep the status column aligned across all four rows.",
+            "The single-column phone hero leaves the heading clear of decoration.",
+            "The selected row and existing-report callout use the same amber family."
+          ],
+          "blockers": []
+        },
+        "ui-83d1d6": {
+          "dimensions": {
+            "A": {
+              "score": 16,
+              "rationale": "The service-area lead-in and distinct report surface give a clear reading order; status becomes detached from addresses at narrow widths.",
+              "strengths": [
+                "Four distinct hit areas, a result count and top-aligned report details are easy to find on desktop and tablet."
+              ],
+              "defects": [
+                "On tablet and mobile the badges sit beside the tiny code, above the principal address; the known outage date and reference sit far to the right of their labels."
+              ],
+              "opportunity": "Anchor reporting status to the address line and tighten the selected detail’s key/value spacing."
+            },
+            "B": {
+              "score": 12,
+              "rationale": "Serif title and strong sans-serif addresses are legible, but the pole codes are too subordinate for a search keyed to them.",
+              "strengths": [
+                "Lightly tracked service-area label and bold addresses give distinct reading levels."
+              ],
+              "defects": [
+                "Tiny codes and relatively light landmark text are visually weaker than the status badges, especially on narrow screens."
+              ],
+              "opportunity": "Raise the code size or weight slightly and give location text a little more emphasis on phones."
+            },
+            "C": {
+              "score": 15,
+              "rationale": "Warm paper, ink and pale green establish useful regions, but the lamp silhouette crosses the mobile headline.",
+              "strengths": [
+                "The sage report panel differentiates the work areas, and the amber note below them is restrained."
+              ],
+              "defects": [
+                "The mobile artwork crosses the word streetlight and its glow runs behind the intro; the glow reaches behind text at tablet too."
+              ],
+              "opportunity": "Reserve separate artwork space at narrower widths or omit the lamp below the tablet breakpoint."
+            },
+            "D": {
+              "score": 16,
+              "rationale": "The icon, typography and public-works masthead fit a municipal tool; the service-area kicker provides relevant context.",
+              "strengths": [
+                "The prominent East Basin label and restrained pole-code tip make the civic page feel specific to this task."
+              ],
+              "defects": [
+                "The masthead still repeats a service label on the narrowest frame, while hero decoration competes for that limited space."
+              ],
+              "opportunity": "Streamline the small-screen masthead and let its mark carry more of the identity."
+            },
+            "E": {
+              "score": 13,
+              "rationale": "Results are large targets with a distinct selected border; browser scenarios confirm known-report lookup, phone filing/reset and recovery from empty search.",
+              "strengths": [
+                "The chosen row is marked by an amber border and fill, and all status badges carry explicit text."
+              ],
+              "defects": [
+                "At 390 px the report card begins after the fold beneath the full list; the selected form and confirmation are not pictured."
+              ],
+              "opportunity": "Make the transition from a selected mobile row to its populated report panel more evident."
+            },
+            "F": {
+              "score": 8,
+              "rationale": "Rows and report states remain consistent across captures; the browser verifies no overflow, zero initial accessibility violations and the expected selected state.",
+              "strengths": [
+                "The four buttons reflow into two-line rows at tablet and mobile without cropping the text."
+              ],
+              "defects": [
+                "The decorative hero does not respect the text zone at smaller sizes, and keyboard focus was not captured."
+              ],
+              "opportunity": "Give the hero illustration its own breakpoint treatment and verify the figure stays clear of the heading at intermediate widths."
+            }
+          },
+          "total": 80,
+          "visual_problems": [
+            "The lamp graphic overlaps the mobile title.",
+            "Small codes sit beside visually stronger badges on stacked rows.",
+            "The known-outage labels and values are spaced farther apart than their text requires."
+          ],
+          "effective_decisions": [
+            "The sage report surface remains distinct from the search panel.",
+            "The address and landmark remain paired in every row.",
+            "The selected outline and tinted fill make the state clear in the Harbor Market capture."
+          ],
+          "blockers": []
+        }
+      },
+      "pairs": [
+        {
+          "ids": [
+            "ui-888934",
+            "ui-83d1d6"
+          ],
+          "preference": "ui-888934",
+          "confidence": "high",
+          "rationale": "Both pass the recorded workflows. ui-888934 keeps the phone heading clear, lets residents compare statuses down an aligned column, and groups the known-report date and reference more tightly."
+        }
+      ]
+    },
+    "h2": {
+      "outputs": {
+        "ui-b686a2": {
+          "dimensions": {
+            "A": {
+              "score": 17,
+              "rationale": "The framed and vertically centered proof dominates the desktop and tablet workspaces, with notes clearly separated in the right pane.",
+              "strengths": [
+                "The front artwork and dimensions share a narrow footer; note titles, authors and approval are easy to locate."
+              ],
+              "defects": [
+                "The stacked status header and artwork footer push the note list and open thread farther down on phones."
+              ],
+              "opportunity": "Bring the status up beside the review heading on phones and reclaim some height."
+            },
+            "B": {
+              "score": 12,
+              "rationale": "Bold headings and note titles establish scan order while mono job and size fields suit production metadata.",
+              "strengths": [
+                "The opened note’s author, title and message remain legible in the phone capture."
+              ],
+              "defects": [
+                "Small author text and size readout are subdued, and the tight, heavy review heading has disproportionate emphasis on mobile."
+              ],
+              "opportunity": "Rebalance type scale between section titles and operational metadata, especially at 390 px."
+            },
+            "C": {
+              "score": 18,
+              "rationale": "A continuous charcoal canvas, faint dot grid and registration corners create a balanced physical proof surface.",
+              "strengths": [
+                "At desktop and tablet the artwork is centered over the full available canvas; the amber controls and cream pane support the orange artwork."
+              ],
+              "defects": [
+                "The high-contrast pins occupy substantial portions of the artwork wordmark and weight line at 390 px."
+              ],
+              "opportunity": "Reduce the visible pin disks on phones while retaining their touchable hit areas."
+            },
+            "D": {
+              "score": 18,
+              "rationale": "The Switchyard mark, ink masthead, registration corners and dimensional readout create a coherent production-tool identity.",
+              "strengths": [
+                "The two review zones stay recognizably consistent on phone, tablet and desktop; amber selection in the note view matches the wider palette."
+              ],
+              "defects": [
+                "The filled amber Show pins button competes with the proof for attention, especially in the wrapped toolbar."
+              ],
+              "opportunity": "Give the pin button a quieter, visibly stateful treatment."
+            },
+            "E": {
+              "score": 12,
+              "rationale": "Large annotation targets, numbered rows and distinct selected styles support review. The scenarios verify switching, replying and approving.",
+              "strengths": [
+                "The phone thread screenshot highlights both the matching pin and note row; the approved tablet state removes the action and displays Approved."
+              ],
+              "defects": [
+                "The opened phone note sits below the still-visible list, and the packet does not capture the viewport immediately after a pin click or the open dialog."
+              ],
+              "opportunity": "Verify that pin activation brings the note into view without relying on subsequent scrolling, and check dialog fit on a phone."
+            },
+            "F": {
+              "score": 8,
+              "rationale": "The artwork and percentages track across all three sizes, with no recorded overflow or page errors. The visible selected and approved states fit the same system.",
+              "strengths": [
+                "The transcript verifies version image alt text and toggle pressed state; the phone detail retains the same type and border system."
+              ],
+              "defects": [
+                "Automated contrast was inconclusive for pin numerals due to pseudo-element backgrounds; keyboard focus and Escape behavior are unverified in the packet."
+              ],
+              "opportunity": "Manually check pin contrast and keyboard focus through the canvas, thread and dialog."
+            }
+          },
+          "total": 85,
+          "visual_problems": [
+            "Phone pins obscure parts of the wordmark and weight line.",
+            "The stacked review heading and status delay the mobile notes.",
+            "Show pins has strong amber emphasis for a secondary toolbar control."
+          ],
+          "effective_decisions": [
+            "Registration corners show the proof bounds and lend the canvas a production feel.",
+            "The approval state shifts to a green status without moving the artwork or notes.",
+            "The selected mobile pin and row change treatment together."
+          ],
+          "blockers": []
+        },
+        "ui-b12247": {
+          "dimensions": {
+            "A": {
+              "score": 18,
+              "rationale": "Compact job and review headers keep job metadata, status and notes close to the proof at every breakpoint.",
+              "strengths": [
+                "The desktop masthead keeps job, panel and size together; at 390 px the stacked review pane begins directly after the canvas."
+              ],
+              "defects": [
+                "On desktop and tablet the proof is centered within the dotted portion, leaving the overall left column visibly top-heavy."
+              ],
+              "opportunity": "Center the proof vertically within the entire available canvas when the review pane stretches to viewport height."
+            },
+            "B": {
+              "score": 13,
+              "rationale": "A well-spaced sans-serif hierarchy distinguishes the job name, control labels, note titles and thread text.",
+              "strengths": [
+                "The short job ID and dimensions stay legible together in the phone header, and the phone thread separates author and message well."
+              ],
+              "defects": [
+                "The small author line and note-number badges carry noticeably less weight than other text on tablet and mobile."
+              ],
+              "opportunity": "Lift the author text slightly in the note list without displacing the titles."
+            },
+            "C": {
+              "score": 17,
+              "rationale": "Muted green-black, ivory and soft green provide separation and leave the artwork as the dominant color.",
+              "strengths": [
+                "Selected pins and note cards echo one another; white space within cards and message blocks is even."
+              ],
+              "defects": [
+                "The dotted grid ends abruptly above a blank dark band on desktop and tablet, and phone pins still cover the net-weight line."
+              ],
+              "opportunity": "Carry a continuous canvas treatment to the bottom of the adjacent review pane."
+            },
+            "D": {
+              "score": 17,
+              "rationale": "The restrained paper-and-ink palette and compact badge system fit a small packaging team and form a consistent tool interface.",
+              "strengths": [
+                "The masthead wordmark, production metadata and pane treatments remain consistent from desktop to phone."
+              ],
+              "defects": [
+                "The large flat band below the dots makes the canvas feel divided, and the packaging mark is less identifiable once it drops out on mobile."
+              ],
+              "opportunity": "Refine the canvas edge so the viewing area reads as a single production surface."
+            },
+            "E": {
+              "score": 14,
+              "rationale": "A stateful switch, clear hit targets, matching selection styles and disabled empty-reply feedback make the tested workflows easy to follow.",
+              "strengths": [
+                "On mobile, the active numbered card, selected pin and labeled reply form remain easy to connect; tablet shows Approved and no approval action."
+              ],
+              "defects": [
+                "The open note is below the list on mobile; the full-page capture cannot verify auto-scroll on activation or confirm that the dialog fits 390 px."
+              ],
+              "opportunity": "Verify the scroll position immediately after pin activation and inspect the open approval dialog at phone width."
+            },
+            "F": {
+              "score": 8,
+              "rationale": "Artwork proportions and pin positions stay consistent as the toolbar wraps; browser checks confirm no overflow and the recorded flows pass.",
+              "strengths": [
+                "Version alt text and pressed state are verified by the scenario; headings, status and selected-card treatments stay consistent across captures."
+              ],
+              "defects": [
+                "The automated contrast check left the pin numerals and decorative approval arrow unresolved; keyboard focus and Escape behavior are unverified in the packet."
+              ],
+              "opportunity": "Check pin legibility manually and verify keyboard focus across the thread and dialog transitions."
+            }
+          },
+          "total": 87,
+          "visual_problems": [
+            "The canvas dots end abruptly before the desktop and tablet footer line.",
+            "The proof sits above the visual center of the full tablet column.",
+            "The mobile pins overlap artwork lettering."
+          ],
+          "effective_decisions": [
+            "The compact masthead keeps dimensions with the job at all widths.",
+            "The pin switch gives a clear visual indication of the setting.",
+            "The selected thread and pin use coordinated treatments, and the empty reply action visibly disables."
+          ],
+          "blockers": []
+        }
+      },
+      "pairs": [
+        {
+          "ids": [
+            "ui-b12247",
+            "ui-b686a2"
+          ],
+          "preference": "ui-b12247",
+          "confidence": "medium",
+          "rationale": "ui-b12247 uses the phone viewport more efficiently, groups job metadata, and makes the pin and reply controls easier to read as states. ui-b686a2 has the better-centered, more continuous canvas and a more distinctive proof surround."
+        }
+      ]
+    }
+  }
+}

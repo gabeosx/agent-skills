@@ -1,0 +1,626 @@
+{
+  "tasks": {
+    "d3": {
+      "outputs": {
+        "ui-600783": {
+          "dimensions": {
+            "A": {
+              "score": 16,
+              "rationale": "The title, controls and table read in order, but the 390 px hero and toolbar push the table header to about 500 px.",
+              "strengths": [
+                "Price uses strong weight and occupies the first row",
+                "The filtered count sits above the retained price and warranty"
+              ],
+              "defects": [
+                "Mobile reset needs a standalone row",
+                "Tablet filtering wraps the toolbar and moves the table down"
+              ],
+              "opportunity": "Keep the toolbar stable when the status copy changes."
+            },
+            "B": {
+              "score": 12,
+              "rationale": "Dark labels and right-aligned values scan cleanly, with a noticeable hierarchy between model names and values.",
+              "strengths": [
+                "The model headers and their data share one right edge",
+                "The price figures are easy to distinguish at all sizes"
+              ],
+              "defects": [
+                "The tracked uppercase mobile specification header takes nearly all available width",
+                "Operating noise wraps at 390 px"
+              ],
+              "opportunity": "Give the narrow label column slightly more room and use sentence case in the header."
+            },
+            "C": {
+              "score": 15,
+              "rationale": "The cool palette, aligned gutters and subtle stripes are coherent, but the tablet orbit crosses the headline and subtitle.",
+              "strengths": [
+                "Teal states match the surrounding interface",
+                "Fine horizontal rules separate values without heavy borders"
+              ],
+              "defects": [
+                "Orbit detail is behind text at 834 px",
+                "The mobile controls leave unused space beside Reset"
+              ],
+              "opportunity": "Contain the hero art outside the text block or suppress it at tablet width."
+            },
+            "D": {
+              "score": 16,
+              "rationale": "The teal laboratory identity and instrument illustrations give the comparison a clear domain, with a visually heavy landing-style hero.",
+              "strengths": [
+                "Brand, palette and hardware illustrations feel related",
+                "The domain copy refers directly to fragrance QA"
+              ],
+              "defects": [
+                "Repeated illustrative forms add limited distinction between models",
+                "The hero commands more attention than the comparison"
+              ],
+              "opportunity": "Reduce hero weight as the viewport narrows and let the data establish the character."
+            },
+            "E": {
+              "score": 13,
+              "rationale": "Both interactions passed, and the 390 px table stays scoped with a scroll hint and a separate label column.",
+              "strengths": [
+                "Two active switches remain visible in the filtered capture",
+                "Reset restores all values and labels according to the scenario"
+              ],
+              "defects": [
+                "Cedar is initially beyond the mobile edge",
+                "The filtered toolbar relocates at 834 px"
+              ],
+              "opportunity": "Keep filters anchored across states and add a stronger cue at the clipped edge."
+            },
+            "F": {
+              "score": 8,
+              "rationale": "The captioned table renders consistently and the checked scenarios complete without page errors or page-level overflow.",
+              "strengths": [
+                "All source strings and units are present in the reset evidence",
+                "The same striped table structure holds with either model count"
+              ],
+              "defects": [
+                "The contrast audit could not resolve the reset treatment or decorative glyphs",
+                "Nothing in the supplied captures verifies keyboard scrolling while horizontally shifted"
+              ],
+              "opportunity": "Verify keyboard access to the scroll region and contrast on the reset control."
+            }
+          },
+          "total": 80,
+          "visual_problems": [
+            "Tablet orbit overlaps hero text",
+            "Mobile table starts low after a tall intro and wrapped controls",
+            "Tablet control positions shift when the filters change"
+          ],
+          "effective_decisions": [
+            "Right-aligned model names and values",
+            "Live count distinguishes the filtered state",
+            "Visible mobile scroll instruction and separate label column"
+          ],
+          "blockers": []
+        },
+        "ui-a97fbc": {
+          "dimensions": {
+            "A": {
+              "score": 17,
+              "rationale": "The short introduction keeps the table comparatively high, and the toolbar stays in place as eight rows drop to two.",
+              "strengths": [
+                "Specifications and model count are grouped",
+                "The filtered footer says exactly how many of the original rows remain"
+              ],
+              "defects": [
+                "Tall illustrated table headers take space, especially on mobile",
+                "The mobile count and controls sit in separate bands from the scroll hint"
+              ],
+              "opportunity": "Reduce the mobile header illustrations to surface more of the matrix."
+            },
+            "B": {
+              "score": 13,
+              "rationale": "The serif title and sans interface text establish distinct roles, with aligned numbers and comfortable line spacing.",
+              "strengths": [
+                "Rows and model names have clearly tiered sizes",
+                "Numeric and duration values share clean right edges"
+              ],
+              "defects": [
+                "Bolding most numeric rows dilutes emphasis on the key tradeoffs",
+                "Sample volume and Operating noise wrap at 390 px"
+              ],
+              "opportunity": "Limit heavy weight to the numeric rows that most affect the choice."
+            },
+            "C": {
+              "score": 17,
+              "rationale": "A cream canvas, navy header and lavender rules are well composed, with evenly sized columns at 1440 and 834 px.",
+              "strengths": [
+                "Model illustrations have subtle distinct backplates",
+                "Grid lines and alternating fills remain legible together"
+              ],
+              "defects": [
+                "The mobile control cluster is tight around Reset",
+                "A sliver of the next column appears without enough content to identify it"
+              ],
+              "opportunity": "Make the scroll affordance read clearly at the cropped right edge."
+            },
+            "D": {
+              "score": 17,
+              "rationale": "The catalog-like typography and differentiated analyzer renders create a recognizable workspace with a measured enterprise tone.",
+              "strengths": [
+                "Navy and indigo connect brand and active controls",
+                "The three differentiated illustrations map cleanly to named models"
+              ],
+              "defects": [
+                "The top-right descriptor wraps into very small type on mobile",
+                "The instrument pictures occupy more area than their informational value warrants"
+              ],
+              "opportunity": "Keep the distinct models, but shrink the illustration treatment on smaller screens."
+            },
+            "E": {
+              "score": 13,
+              "rationale": "Mobile shows every control in one line, signals horizontal scrolling and restores the full comparison in the reset scenario.",
+              "strengths": [
+                "Positive Show Alder label corresponds to the on state initially",
+                "The filtered view keeps Birch and Cedar and reports two of eight rows"
+              ],
+              "defects": [
+                "The Reset text is a small-looking touch target on mobile",
+                "Cedar is beyond the initial viewport and the final table footer sits below 844 px"
+              ],
+              "opportunity": "Provide more breathing room around Reset without adding another full toolbar row."
+            },
+            "F": {
+              "score": 8,
+              "rationale": "The rendered column grid, native-looking state changes and status footer hold together through both tested interactions.",
+              "strengths": [
+                "All source rows and units are restored by reset",
+                "No page-level horizontal overflow or critical test failure was reported"
+              ],
+              "defects": [
+                "The reset and scroll glyph contrast checks were inconclusive",
+                "The browser packet does not document keyboard scrolling with the table shifted"
+              ],
+              "opportunity": "Check accessible names and keyboard interaction for the scoped table scroll and compact controls."
+            }
+          },
+          "total": 85,
+          "visual_problems": [
+            "Model illustration bands take up substantial header space",
+            "Mobile Reset is crowded by the second switch",
+            "A tiny portion of the third column is visible at the right edge"
+          ],
+          "effective_decisions": [
+            "Stable toolbar after filtering",
+            "Filtered footer gives a two-of-eight count",
+            "Distinct model illustrations and restrained grid"
+          ],
+          "blockers": []
+        },
+        "ui-ecc23a": {
+          "dimensions": {
+            "A": {
+              "score": 19,
+              "rationale": "A brief introduction and integrated toolbar lead straight to the table, with all eight row labels visible within the 390 by 844 capture.",
+              "strengths": [
+                "The mobile image-free header puts model names beside their columns",
+                "Price, throughput and warranty stand out consistently"
+              ],
+              "defects": [
+                "The filtered count says two specifications with the filter mode conveyed separately by the switch"
+              ],
+              "opportunity": "Name the filtered count as two differing specifications while preserving the single-row tablet layout."
+            },
+            "B": {
+              "score": 14,
+              "rationale": "The serif title gives the page character, and right-aligned tabular content stays crisp without breaking mobile row labels.",
+              "strengths": [
+                "Compact header typography keeps model names intact at 390 px",
+                "Weight choices mark three decision-critical numeric rows"
+              ],
+              "defects": [
+                "The scroll prompt is noticeably smaller than the nearby Reset link"
+              ],
+              "opportunity": "Give the mobile scroll prompt the same legibility as other toolbar text."
+            },
+            "C": {
+              "score": 18,
+              "rationale": "The warm ground and sage table treatments use restrained contrast and consistent spacing from desktop to mobile.",
+              "strengths": [
+                "Fine horizontal and vertical rules preserve cell alignment",
+                "Compact column headers and quiet zebra striping leave attention on data"
+              ],
+              "defects": [
+                "On mobile the next product is nearly invisible at the edge",
+                "At 1440 px, the wide specification column leaves a long gap between row labels and the first values."
+              ],
+              "opportunity": "Add a subtle edge treatment to reinforce that more columns are available."
+            },
+            "D": {
+              "score": 18,
+              "rationale": "Forest green, serif display type and restrained equipment icons establish a coherent identity appropriate to a work tool.",
+              "strengths": [
+                "The product icon treatment stays small and consistent",
+                "Removing icons on mobile preserves typography and grid identity"
+              ],
+              "defects": [
+                "The nearly identical desktop icons contribute little model differentiation"
+              ],
+              "opportunity": "Keep the table compact and simplify the hardware motifs where model names already suffice."
+            },
+            "E": {
+              "score": 14,
+              "rationale": "The controls, reset and narrow scroll affordance remain close to the matrix, and the checked workflow restores all eight rows.",
+              "strengths": [
+                "Switches visibly distinguish the tested active and inactive states",
+                "The complete set of row labels fits the mobile capture without wrapping"
+              ],
+              "defects": [
+                "On mobile the instruction is quiet and Cedar still requires a horizontal gesture"
+              ],
+              "opportunity": "Improve discoverability of the third column for touch and keyboard users."
+            },
+            "F": {
+              "score": 9,
+              "rationale": "A captioned table, stable toolbar and coherent row styles support the two tested states with no page-level overflow.",
+              "strengths": [
+                "The neutral audit reported zero violations and zero incomplete checks at all three widths",
+                "Both scenarios reproduce the correct model and row combinations"
+              ],
+              "defects": [
+                "The packet lacks a capture of the scrolled-right mobile table and its keyboard focus state"
+              ],
+              "opportunity": "Verify the mobile table’s keyboard scroll and retained row labels with the table shifted."
+            }
+          },
+          "total": 92,
+          "visual_problems": [
+            "The quiet mobile scroll hint is easy to miss",
+            "Third model has almost no visible edge cue",
+            "Filtered count alone does not explain why six rows are hidden"
+          ],
+          "effective_decisions": [
+            "All row labels and two model columns fit the 390 px capture",
+            "The toolbar does not move during tablet filtering",
+            "The serif title and quiet green grid create a distinct, restrained identity"
+          ],
+          "blockers": []
+        }
+      },
+      "pairs": [
+        {
+          "ids": [
+            "ui-ecc23a",
+            "ui-600783"
+          ],
+          "preference": "ui-ecc23a",
+          "confidence": "high",
+          "rationale": "It places the table much higher on mobile, keeps all row labels on one line, and holds the toolbar and headline clear at tablet width. Both reach the expected filtered data."
+        },
+        {
+          "ids": [
+            "ui-ecc23a",
+            "ui-a97fbc"
+          ],
+          "preference": "ui-ecc23a",
+          "confidence": "medium",
+          "rationale": "The compact header and selective numeric emphasis make the green layout quicker to scan, particularly at 390 px. The other version has a clearer scroll band and more explicit filtered row count."
+        },
+        {
+          "ids": [
+            "ui-a97fbc",
+            "ui-600783"
+          ],
+          "preference": "ui-a97fbc",
+          "confidence": "medium",
+          "rationale": "Its tablet controls stay anchored in the filtered state, and its mobile grid begins higher. The teal version gives Reset a more distinct button and stronger mobile hit area."
+        }
+      ]
+    },
+    "d4": {
+      "outputs": {
+        "ui-330277": {
+          "dimensions": {
+            "A": {
+              "score": 17,
+              "rationale": "The page title, step tracker, form and action have clear roles, with a compact reading order at 390 px.",
+              "strengths": [
+                "The success card keeps the same anchor as the form and shows three completed steps",
+                "The focused email error stays adjacent to the field"
+              ],
+              "defects": [
+                "The 1440 px oversized page title and detached progress rail draw attention away from the two-field form",
+                "The success reference is quieter than the surrounding heading and checkmark"
+              ],
+              "opportunity": "Give the reference its own stronger line in the success panel."
+            },
+            "B": {
+              "score": 13,
+              "rationale": "The serif display face and medium-weight sans controls create a clear typographic hierarchy at all three widths.",
+              "strengths": [
+                "Form headings, labels and input values are easy to distinguish",
+                "The mobile title fits on one line"
+              ],
+              "defects": [
+                "The uppercase progress caption feels visually louder than nearby step labels",
+                "The small inline reference is less immediately readable than its standalone treatment in the other versions"
+              ],
+              "opportunity": "Increase the prominence of FM-2047 while keeping the caption restrained."
+            },
+            "C": {
+              "score": 17,
+              "rationale": "Pine green, warm neutrals and soft green action areas are consistent across the form, error and completion states.",
+              "strengths": [
+                "Mobile toolbar and form share a clean left edge",
+                "The form footer separates the action using a quiet fill and rule"
+              ],
+              "defects": [
+                "At 1440 px the right-aligned form ends well before the title divider",
+                "The mobile double red border looks heavy around one field"
+              ],
+              "opportunity": "Align the desktop card more clearly with its outer grid edge and soften duplicate invalid outlines."
+            },
+            "D": {
+              "score": 17,
+              "rationale": "The green masthead, angular gold mark and serif title form a cohesive, restrained facilities identity.",
+              "strengths": [
+                "The brand palette carries into the completed-step checkmarks",
+                "The success copy confirms both Harbor Annex and HVAC"
+              ],
+              "defects": [
+                "The full-width dark header and the large editorial headline are heavier than the short task needs"
+              ],
+              "opportunity": "Scale the display title slightly down on desktop so the task panel gains emphasis."
+            },
+            "E": {
+              "score": 14,
+              "rationale": "All steps are legible on mobile, repair remains in place, and the flow confirms the correct site and system.",
+              "strengths": [
+                "The invalid-email message supplies a concrete format example",
+                "The site value is preserved at validation and the reviewed values survive the exercised back navigation"
+              ],
+              "defects": [
+                "Required status is stated jointly above the two fields instead of being repeated at each label",
+                "The success reference is a compact token that could be easier to spot"
+              ],
+              "opportunity": "Provide a stronger reference treatment and check that each required input exposes its status independently."
+            },
+            "F": {
+              "score": 8,
+              "rationale": "The progress and panel patterns stay consistent through the tested states, with no page-level overflow.",
+              "strengths": [
+                "The visible error focuses attention on the invalid control",
+                "The full-request browser trace contains all four review values and the expected success string"
+              ],
+              "defects": [
+                "The contrast audit could not assess the decorative Continue arrow",
+                "Keyboard sequence and success announcement behavior are not recorded"
+              ],
+              "opportunity": "Verify keyboard-only traversal and announcement of both invalid email and success."
+            }
+          },
+          "total": 86,
+          "visual_problems": [
+            "Desktop page title and detached tracker dominate the compact task",
+            "Success reference is small relative to the heading and status mark",
+            "The invalid field has a visually heavy double-red ring"
+          ],
+          "effective_decisions": [
+            "Progress remains visible through completion",
+            "The invalid email example shows how to correct the value",
+            "Success identifies both the tested location and property system"
+          ],
+          "blockers": []
+        },
+        "ui-e04d5b": {
+          "dimensions": {
+            "A": {
+              "score": 17,
+              "rationale": "The integrated shell gives the progress rail and form a clear relationship and keeps the primary action obvious at all widths.",
+              "strengths": [
+                "Mobile progress uses three equally spaced positions",
+                "The full-width action is unambiguous at 390 px"
+              ],
+              "defects": [
+                "The mobile validation state stacks remediation text and a second helper below the same field",
+                "The desktop success card becomes a wide panel containing only a tiny central stack"
+              ],
+              "opportunity": "Reduce duplicated text under the invalid field and size the success panel around its content."
+            },
+            "B": {
+              "score": 13,
+              "rationale": "The display serif contrasts well with the sans form typography, with readable field labels and a clear reference code.",
+              "strengths": [
+                "Required text stays next to its label across all widths",
+                "The success reference stands out as a large bold line"
+              ],
+              "defects": [
+                "Upcoming mobile step captions are comparatively small",
+                "The mobile validation state shows four lines of copy under one field"
+              ],
+              "opportunity": "Trim secondary text during validation to support a quicker scan."
+            },
+            "C": {
+              "score": 16,
+              "rationale": "Sage and ivory create a coherent work surface, with balanced panels at desktop and tablet.",
+              "strengths": [
+                "The light progress rail separates navigation from form without a heavy border",
+                "Footer and full-width mobile button align to the form inset"
+              ],
+              "defects": [
+                "The pale plan illustration consumes the lower rail without adding task information",
+                "The large desktop completion card leaves a lot of unused width"
+              ],
+              "opportunity": "Let the completion panel use a narrower measure so the reference feels anchored."
+            },
+            "D": {
+              "score": 17,
+              "rationale": "The geometric mark, low-key plan graphic and sage accents give Fieldmark a recognizable visual identity.",
+              "strengths": [
+                "The palette and heading weights carry from desktop to mobile",
+                "The plan motif recedes behind the progress function"
+              ],
+              "defects": [
+                "Completion removes the progress shell and omits the site and system context"
+              ],
+              "opportunity": "Carry at least the requested site into the completion view to retain context."
+            },
+            "E": {
+              "score": 14,
+              "rationale": "Clear required markers, a visible mobile step indicator and a usable validation state support the flow at 390 px.",
+              "strengths": [
+                "The email error gives a formatted example and stays within the viewport with Continue",
+                "The full-width action is easy to locate and the trace confirms the four reviewed values and FM-2047"
+              ],
+              "defects": [
+                "Keeping the email helper under the error dilutes the immediate corrective message",
+                "The success view drops the completed steps and request details such as the site"
+              ],
+              "opportunity": "Show the corrective message as the primary field help while the email is invalid."
+            },
+            "F": {
+              "score": 8,
+              "rationale": "The required-label pattern and responsive shell are consistent, and the audit output shows a programmatic current-step marker.",
+              "strengths": [
+                "No page overflow or scenario failure was reported",
+                "Validation keeps the prefilled-by-user site value and exposes the expected field error"
+              ],
+              "defects": [
+                "Pseudo-elements prevented the contrast tool from evaluating the step numbers and the mobile Review label",
+                "Keyboard sequence and live success announcement are not shown"
+              ],
+              "opportunity": "Check progress label contrast manually and verify focus after each step change."
+            }
+          },
+          "total": 85,
+          "visual_problems": [
+            "Invalid email is followed by both an error and generic help",
+            "The wide desktop success card has little contextual information",
+            "Mobile progress labels are comparatively small"
+          ],
+          "effective_decisions": [
+            "Required markers sit immediately beside both labels",
+            "The full-width mobile action is easy to locate",
+            "The reference uses large, dedicated type"
+          ],
+          "blockers": []
+        },
+        "ui-2736b3": {
+          "dimensions": {
+            "A": {
+              "score": 18,
+              "rationale": "The request title, progress and form are arranged in one shell that compresses cleanly into a single mobile panel.",
+              "strengths": [
+                "The validation error adds one line and the primary action stays in view",
+                "The success reference and completed steps are easy to locate in the same shell"
+              ],
+              "defects": [
+                "Desktop leaves a large area beneath the primary action",
+                "The dark title rail can compete with the success heading for initial attention"
+              ],
+              "opportunity": "Reduce unused panel height for short steps or match the visual emphasis of the rail to the current state."
+            },
+            "B": {
+              "score": 13,
+              "rationale": "A bold sans gives the product a recognizable voice, and form copy remains legible at 390 px.",
+              "strengths": [
+                "Success heading and reference code read distinctly from surrounding copy",
+                "The mobile title and all progress labels stay on one line"
+              ],
+              "defects": [
+                "The very heavy display weight makes the desktop rail text feel dense",
+                "Required markers at the far edge are visually separated from their labels"
+              ],
+              "opportunity": "Move each Required marker closer to its corresponding field label."
+            },
+            "C": {
+              "score": 18,
+              "rationale": "The navy progress area, lime status treatment and cool white form stay balanced across layouts.",
+              "strengths": [
+                "The muted blueprint detail remains confined to the desktop and tablet rail",
+                "Mobile content and footer share aligned edges with ample field spacing"
+              ],
+              "defects": [
+                "Desktop and tablet retain a large blank area below the form controls",
+                "The blue focus ring and red invalid stroke produce two simultaneous outlines"
+              ],
+              "opportunity": "Tighten the short-step shell and tune focus and error outlines as a coordinated state."
+            },
+            "D": {
+              "score": 18,
+              "rationale": "The bold corporate type, strong dark rail and subtle blueprint form a distinctive facilities interface with consistent states.",
+              "strengths": [
+                "Lime connects the current and completed steps to the success mark",
+                "The success view keeps the same title and progress layout while confirming Harbor Annex"
+              ],
+              "defects": [
+                "The large dark rail takes a substantial share of the tablet panel for three steps"
+              ],
+              "opportunity": "Narrow the tablet rail slightly while maintaining readable progress labels."
+            },
+            "E": {
+              "score": 14,
+              "rationale": "The mobile validation view preserves Harbor Annex, focuses the invalid email visually and keeps progress and action available.",
+              "strengths": [
+                "Placeholder examples demonstrate the expected inputs without pre-filling them",
+                "The browser trace retains HVAC and access notes through Back and reaches the expected reference"
+              ],
+              "defects": [
+                "The inline error says to enter a valid address without giving a format example in the invalid state",
+                "Required tags sit far from the labels at desktop width"
+              ],
+              "opportunity": "Include an example address directly in the validation message."
+            },
+            "F": {
+              "score": 8,
+              "rationale": "The same split shell, progress markers, fields and status treatment render cleanly across the captured states.",
+              "strengths": [
+                "The browser reports no violations or page overflow at the three tested widths",
+                "The completion capture and browser trace agree on the site and reference"
+              ],
+              "defects": [
+                "The Continue arrow contrast was inconclusive in automated checks",
+                "The packet does not capture keyboard navigation or success announcement"
+              ],
+              "opportunity": "Verify keyboard focus progression and programmatic announcement of the successful submit."
+            }
+          },
+          "total": 89,
+          "visual_problems": [
+            "The tablet form leaves substantial space below Continue",
+            "Required markers sit far from their labels on wide screens",
+            "The mobile invalid field combines blue and red outlines"
+          ],
+          "effective_decisions": [
+            "Strong progress state contrast with lime accents",
+            "Compact mobile validation leaves Continue visible",
+            "The success reference gets its own well-defined panel"
+          ],
+          "blockers": []
+        }
+      },
+      "pairs": [
+        {
+          "ids": [
+            "ui-2736b3",
+            "ui-e04d5b"
+          ],
+          "preference": "ui-2736b3",
+          "confidence": "medium",
+          "rationale": "The navy shell carries progress and the site into completion and keeps the mobile error compact. The sage version has better required-label proximity and a larger mobile button, but its oversized success view loses request context."
+        },
+        {
+          "ids": [
+            "ui-330277",
+            "ui-e04d5b"
+          ],
+          "preference": "ui-330277",
+          "confidence": "medium",
+          "rationale": "The detached green progress rail stays useful through completion and its confirmation names HVAC and Harbor Annex. The integrated sage version marks required fields more explicitly and gives the reference better typographic emphasis."
+        },
+        {
+          "ids": [
+            "ui-330277",
+            "ui-2736b3"
+          ],
+          "preference": "ui-2736b3",
+          "confidence": "medium",
+          "rationale": "The navy flow integrates progress more cleanly with its form, makes FM-2047 quicker to find and places the mobile action higher during validation. The green version supplies a better corrective example and repeats the selected system on success."
+        }
+      ]
+    }
+  }
+}

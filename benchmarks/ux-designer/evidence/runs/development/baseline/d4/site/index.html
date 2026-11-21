@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f6f0">
+  <title>Request an inspection | Fieldmark</title>
+  <link rel="stylesheet" href="design-system-core.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="masthead">
+    <div class="container masthead-inner">
+      <p class="wordmark"><span class="brand-mark" aria-hidden="true"><i></i><i></i></span>Fieldmark</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="page-heading">
+      <h1>Request a site inspection</h1>
+      <p>Book a contractor to inspect one facility.</p>
+    </div>
+
+    <div class="request-card">
+      <aside class="progress" aria-labelledby="progress-heading">
+        <h2 id="progress-heading">Request progress</h2>
+        <ol class="step-list">
+          <li aria-current="step">
+            <span class="step-index" aria-hidden="true"><span>1</span></span>
+            <span class="step-label">Site details</span>
+          </li>
+          <li>
+            <span class="step-index" aria-hidden="true"><span>2</span></span>
+            <span class="step-label">Inspection</span>
+          </li>
+          <li>
+            <span class="step-index" aria-hidden="true"><span>3</span></span>
+            <span class="step-label">Review</span>
+          </li>
+        </ol>
+        <div class="site-plan" aria-hidden="true">
+          <span class="plan-outer"></span><span class="plan-wing"></span><span class="plan-court"></span><span class="plan-trace"></span><span class="plan-point"></span>
+        </div>
+      </aside>
+
+      <form class="request-form" novalidate>
+        <section class="step-panel" aria-labelledby="site-title">
+          <h2 id="site-title" tabindex="-1">Site details</h2>
+
+          <div class="fields">
+            <div class="field">
+              <label for="site-name">Site name <span>Required</span></label>
+              <input id="site-name" data-testid="site-name" name="site-name" autocomplete="organization" required>
+              <p class="error" id="site-error" hidden role="alert"></p>
+            </div>
+            <div class="field">
+              <label for="email">Contact email <span>Required</span></label>
+              <input id="email" data-testid="email" type="email" name="email" autocomplete="email" spellcheck="false" aria-describedby="email-hint" required>
+              <p class="error" id="email-error" data-testid="email-error" hidden role="alert"></p>
+              <p class="field-hint" id="email-hint">Use an address where the contractor can reach you.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="step-panel" aria-labelledby="inspection-title" hidden>
+          <h2 id="inspection-title" tabindex="-1">Inspection</h2>
+
+          <div class="fields">
+            <div class="field">
+              <label for="system">Property system <span>Required</span></label>
+              <div class="select-wrap">
+                <select id="system" data-testid="system" name="system" required>
+                  <option value="">Select a system</option>
+                  <option value="electrical">Electrical</option>
+                  <option value="hvac">HVAC</option>
+                </select>
+              </div>
+              <p class="error" id="system-error" hidden role="alert"></p>
+            </div>
+            <div class="field">
+              <label for="notes">Access notes <span>Optional</span></label>
+              <textarea id="notes" data-testid="notes" name="notes" rows="3" aria-describedby="notes-hint"></textarea>
+              <p class="field-hint" id="notes-hint">Add access hours, entry instructions, or an on-site contact.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="step-panel" aria-labelledby="review-title" data-testid="review" hidden>
+          <h2 id="review-title" tabindex="-1">Review your request</h2>
+          <p class="step-intro">Check the details before submitting your request.</p>
+          <dl class="review-list">
+            <div><dt>Site name</dt><dd id="review-site"></dd></div>
+            <div><dt>Contact email</dt><dd id="review-email"></dd></div>
+            <div><dt>Property system</dt><dd id="review-system"></dd></div>
+            <div id="review-notes-row" hidden><dt>Access notes</dt><dd id="review-notes"></dd></div>
+          </dl>
+        </section>
+
+        <div class="form-actions">
+          <button class="back" type="button" data-testid="back" hidden><span aria-hidden="true">←</span> Back</button>
+          <button class="primary" type="submit" data-testid="next">Continue <span aria-hidden="true">→</span></button>
+          <button class="primary" type="submit" data-testid="confirm" hidden>Confirm request <span aria-hidden="true">→</span></button>
+        </div>
+      </form>
+
+      <section class="success" data-testid="success" aria-labelledby="success-title" hidden>
+        <span class="success-mark" aria-hidden="true">✓</span>
+        <h2 id="success-title" tabindex="-1">Inspection requested</h2>
+        <dl class="reference"><dt>Reference number</dt><dd>FM-2047</dd></dl>
+      </section>
+    </div>
+  </main>
+</body>
+</html>

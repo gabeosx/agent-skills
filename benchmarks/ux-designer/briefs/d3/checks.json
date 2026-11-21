@@ -1,0 +1,68 @@
+{
+  "scenarios": [
+    {
+      "name": "compare deviations",
+      "width": 834,
+      "steps": [
+        {
+          "action": "click",
+          "id": "differences"
+        },
+        {
+          "action": "visible",
+          "id": "throughput"
+        },
+        {
+          "action": "click",
+          "id": "alder"
+        },
+        {
+          "action": "hidden",
+          "id": "throughput"
+        },
+        {
+          "action": "visible",
+          "id": "warranty"
+        },
+        {
+          "action": "text",
+          "id": "comparison",
+          "value": "Unit price"
+        }
+      ],
+      "capture": true
+    },
+    {
+      "name": "mobile reset",
+      "width": 390,
+      "steps": [
+        {
+          "action": "click",
+          "id": "alder"
+        },
+        {
+          "action": "click",
+          "id": "differences"
+        },
+        {
+          "action": "hidden",
+          "id": "throughput"
+        },
+        {
+          "action": "click",
+          "id": "reset"
+        },
+        {
+          "action": "visible",
+          "id": "throughput"
+        },
+        {
+          "action": "text",
+          "id": "comparison",
+          "value": "Alder A2"
+        }
+      ],
+      "capture": true
+    }
+  ]
+}

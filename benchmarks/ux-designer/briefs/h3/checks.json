@@ -1,0 +1,62 @@
+{
+  "scenarios": [
+    {
+      "name": "Recover from a room conflict",
+      "width": 1440,
+      "steps": [
+        {"action": "count", "id": "booking", "count": 8},
+        {"action": "click", "id": "booking-signal-check"},
+        {"action": "text", "id": "booking-details", "value": "Studio A"},
+        {"action": "text", "id": "booking-details", "value": "Mara Ortiz"},
+        {"action": "click", "id": "move-booking"},
+        {"action": "select", "id": "destination-room", "value": "studio-b"},
+        {"action": "click", "id": "save-move"},
+        {"action": "text", "id": "move-conflict", "value": "Overlaps Studio Coaching in Studio B."},
+        {"action": "text", "id": "booking-details", "value": "Studio A"},
+        {"action": "select", "id": "destination-room", "value": "edit-booth"},
+        {"action": "click", "id": "save-move"},
+        {"action": "hidden", "id": "move-form"},
+        {"action": "text", "id": "move-success", "value": "Booking moved to Edit Booth."},
+        {"action": "text", "id": "booking-details", "value": "Edit Booth"},
+        {"action": "count", "id": "booking", "count": 8}
+      ],
+      "capture": true
+    },
+    {
+      "name": "Carry the tentative filter across dates",
+      "width": 834,
+      "steps": [
+        {"action": "click", "id": "tentative-only"},
+        {"action": "attribute", "id": "tentative-only", "name": "aria-pressed", "value": "true"},
+        {"action": "count", "id": "booking", "count": 2},
+        {"action": "visible", "id": "booking-field-notes"},
+        {"action": "hidden", "id": "booking-signal-check"},
+        {"action": "click", "id": "day-wed"},
+        {"action": "attribute", "id": "day-wed", "name": "aria-pressed", "value": "true"},
+        {"action": "count", "id": "booking", "count": 1},
+        {"action": "visible", "id": "booking-show-prep"},
+        {"action": "click", "id": "tentative-only"},
+        {"action": "count", "id": "booking", "count": 3},
+        {"action": "visible", "id": "booking-interview-pickup"}
+      ],
+      "capture": true
+    },
+    {
+      "name": "Inspect and leave phone booking details",
+      "width": 390,
+      "steps": [
+        {"action": "click", "id": "day-wed"},
+        {"action": "click", "id": "booking-interview-pickup"},
+        {"action": "text", "id": "booking-details", "value": "Nina Flores"},
+        {"action": "text", "id": "booking-details", "value": "Confirmed"},
+        {"action": "click", "id": "move-booking"},
+        {"action": "select", "id": "destination-room", "value": "studio-b"},
+        {"action": "click", "id": "cancel-move"},
+        {"action": "hidden", "id": "move-form"},
+        {"action": "text", "id": "booking-details", "value": "Studio A"},
+        {"action": "click", "id": "close-details"},
+        {"action": "hidden", "id": "booking-details"}
+      ]
+    }
+  ]
+}

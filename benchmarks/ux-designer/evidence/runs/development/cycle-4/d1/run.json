@@ -1,0 +1,18 @@
+{
+  "actor": "76e3",
+  "model": "inherited Codex",
+  "started": "2026-11-21T19:25:12+00:00",
+  "actor_collected_at": "2026-11-21T19:34:27+00:00",
+  "attempt": 1,
+  "brief": "briefs/d1/brief.md",
+  "brief_sha256": "9d36b5aeecfd282a180454f4c1596514015271119d0d669b801176187fdd4ce3",
+  "checks_sha256": "ef3a2748f88b69b5fc55b75c4746786bba21a4d95f81f090a462d68f7fca844a",
+  "starter_files": {},
+  "skill_sha256": "2bfbd6b5a822c7458fa659df08caf8b876364c35555ff31abfeb065d9844d8d5",
+  "source": {
+    "index.html": "d931aa6c742a26b67205ef78d4eaf2faf26077715d0c7ebf6bcb727aaf62e156"
+  },
+  "actor_result": "Both complete. Agent reports responsive Chromium checks for collection sample, preview validation and confirmation, margin trend, period switching, filtering and Produce detail.",
+  "usage": null,
+  "charge": null
+}

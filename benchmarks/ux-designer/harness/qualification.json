@@ -1,0 +1,40 @@
+{
+  "status": "qualified",
+  "qualifiedAt": "2026-11-21T18:38:00.331Z",
+  "runtimeSha256": "6c881823017ece00658aa02b1817a074668453398b4905f0208e23ef5bcda8d1",
+  "browser": {
+    "version": "159.0.8154.6",
+    "source": "playwright"
+  },
+  "config": {
+    "node": "v26.13.0",
+    "playwright": "1.65.1",
+    "axe": "4.14.1"
+  },
+  "cases": [
+    {
+      "name": "positive-first",
+      "exitCode": 0,
+      "status": "passed",
+      "reportSha256": "833c58f82e347c2b8350adb4c54ba45cdb4f56fcf88136a5c6438a8df10a5fec"
+    },
+    {
+      "name": "negative",
+      "exitCode": 1,
+      "status": "failed",
+      "reportSha256": "9e4fe31b365a3e6c08cc4003d642727b315aa2cae16eef6afb6d62894d13b266"
+    },
+    {
+      "name": "positive-after-negative",
+      "exitCode": 0,
+      "status": "passed",
+      "reportSha256": "f74691b9e5ca08aa50aecd3ce504ca73bb5fe2365fe69f92eaa2419b81aeac53"
+    },
+    {
+      "name": "missing-site",
+      "exitCode": 2,
+      "status": "incomplete",
+      "reportSha256": "11068b471b3f5dd0d0b38e2b43d2cc1049e798b62e72281e43d6baa217348ec2"
+    }
+  ]
+}

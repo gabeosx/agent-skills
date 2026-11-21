@@ -1,0 +1,449 @@
+{
+  "schemaVersion": 1,
+  "status": "passed",
+  "browser": {
+    "version": "159.0.8154.6",
+    "source": "playwright",
+    "executablePath": "/Users/gabe/Library/Caches/ms-playwright/chromium-1255/chrome-mac-arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing",
+    "headless": true,
+    "args": [
+      "--disable-quic",
+      "--force-webrtc-ip-handling-policy=disable_non_proxied_udp",
+      "--host-resolver-rules=MAP * ~NOTFOUND, EXCLUDE 127.0.0.1",
+      "--no-proxy-server"
+    ]
+  },
+  "config": {
+    "node": "v26.13.0",
+    "platform": "darwin",
+    "architecture": "arm64",
+    "playwright": "1.65.1",
+    "axe": "4.14.1",
+    "axeTags": [
+      "wcag2a",
+      "wcag2aa",
+      "wcag21a",
+      "wcag21aa",
+      "wcag22a",
+      "wcag22aa"
+    ],
+    "context": {
+      "colorScheme": "light",
+      "deviceScaleFactor": 1,
+      "locale": "en-US",
+      "reducedMotion": "reduce",
+      "serviceWorkers": "block",
+      "timezoneId": "UTC"
+    },
+    "viewports": {
+      "desktop": {
+        "width": 1440,
+        "height": 1000
+      },
+      "tablet": {
+        "width": 834,
+        "height": 1112
+      },
+      "mobile": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    "timeoutsMs": {
+      "navigation": 10000,
+      "step": 2500,
+      "capture": 10000,
+      "accessibility": 10000
+    },
+    "network": "localhost-static-origin-only"
+  },
+  "source": {
+    "checksSha256": "bfc7a306d7933a98223d22cea766e4840810fe74d480cf4edd3f46e7ed402669",
+    "site": {
+      "sha256": "9de75db650547a23a2870c6054bcc286010e8d97c40c701534b446fc8511342c",
+      "files": [
+        {
+          "path": "index.html",
+          "sha256": "d6cd9d5b99d32b8fc1efc13dc9930e3b47768041fa24a5da613b089ac289e4fe"
+        }
+      ]
+    },
+    "harness": {
+      "sha256": "6c881823017ece00658aa02b1817a074668453398b4905f0208e23ef5bcda8d1",
+      "files": [
+        {
+          "path": "capture.mjs",
+          "sha256": "92bc6c8b9c97e64bd0dbcc746c6505f0ed30e9ecaba15ba32a35d1348afaf77e"
+        },
+        {
+          "path": "package-lock.json",
+          "sha256": "9e166f03feded2ba877c95cbbb4bce6b15453e267c7bf4a69a384ec2a3e1fbc1"
+        },
+        {
+          "path": "package.json",
+          "sha256": "e53398841d514c8588ddfad5569cc1f7aed5d67a6f7b71f4ab05a70cfca4817b"
+        }
+      ]
+    }
+  },
+  "timing": {
+    "startedAt": "2026-11-21T19:34:36.531Z",
+    "completedAt": "2026-11-21T19:34:39.178Z",
+    "elapsedMs": 2648
+  },
+  "viewports": [
+    {
+      "name": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "status": "passed",
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "screenshot": {
+        "path": "desktop.png",
+        "bytes": 93699,
+        "sha256": "e430ee2881dfb5d9ec38d4e5af130ec6c1695aa6cf22ead507733add2da500ee"
+      },
+      "layout": {
+        "clientWidth": 1440,
+        "scrollWidth": 1440,
+        "bodyScrollWidth": 1440,
+        "horizontalOverflow": false
+      },
+      "accessibility": {
+        "status": "no-violations",
+        "counts": {
+          "passes": 27,
+          "violations": 0,
+          "incomplete": 0,
+          "inapplicable": 37
+        },
+        "violations": [],
+        "incomplete": []
+      }
+    },
+    {
+      "name": "tablet",
+      "viewport": {
+        "width": 834,
+        "height": 1112
+      },
+      "status": "passed",
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "screenshot": {
+        "path": "tablet.png",
+        "bytes": 80303,
+        "sha256": "73c17768374f92815493de329fa2e76f8304a5a35de9c0653aed717686e80c8e"
+      },
+      "layout": {
+        "clientWidth": 834,
+        "scrollWidth": 834,
+        "bodyScrollWidth": 834,
+        "horizontalOverflow": false
+      },
+      "accessibility": {
+        "status": "no-violations",
+        "counts": {
+          "passes": 27,
+          "violations": 0,
+          "incomplete": 0,
+          "inapplicable": 37
+        },
+        "violations": [],
+        "incomplete": []
+      }
+    },
+    {
+      "name": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "status": "passed",
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "screenshot": {
+        "path": "mobile.png",
+        "bytes": 67650,
+        "sha256": "7ad748873376eb108f54c1e616a3edd7e75802fcb70925db4e1f1c997b8d3df1"
+      },
+      "layout": {
+        "clientWidth": 390,
+        "scrollWidth": 390,
+        "bodyScrollWidth": 390,
+        "horizontalOverflow": false
+      },
+      "accessibility": {
+        "status": "no-violations",
+        "counts": {
+          "passes": 27,
+          "violations": 0,
+          "incomplete": 0,
+          "inapplicable": 37
+        },
+        "violations": [],
+        "incomplete": []
+      }
+    }
+  ],
+  "scenarios": [
+    {
+      "name": "period update",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "captureRequested": true,
+      "status": "passed",
+      "steps": [
+        {
+          "index": 1,
+          "expected": {
+            "action": "text",
+            "id": "revenue",
+            "value": "$1.28M"
+          },
+          "status": "passed",
+          "actual": "$1.28M",
+          "elapsedMs": 12
+        },
+        {
+          "index": 2,
+          "expected": {
+            "action": "select",
+            "id": "period",
+            "value": "7"
+          },
+          "status": "passed",
+          "actual": [
+            "7"
+          ],
+          "elapsedMs": 20
+        },
+        {
+          "index": 3,
+          "expected": {
+            "action": "text",
+            "id": "revenue",
+            "value": "$318K"
+          },
+          "status": "passed",
+          "actual": "$318K",
+          "elapsedMs": 2
+        },
+        {
+          "index": 4,
+          "expected": {
+            "action": "text",
+            "id": "margin",
+            "value": "22.4%"
+          },
+          "status": "passed",
+          "actual": "22.4%",
+          "elapsedMs": 1
+        },
+        {
+          "index": 5,
+          "expected": {
+            "action": "text",
+            "id": "rows",
+            "value": "$95K"
+          },
+          "status": "passed",
+          "actual": "Produce $95K 18.1% Investigate Grocery $130K 27.0% On track Frozen $54K 22.3% Watch Bakery $39K 19.4% Investigate",
+          "elapsedMs": 1
+        }
+      ],
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "screenshot": {
+        "path": "scenario-01-period-update.png",
+        "bytes": 94889,
+        "sha256": "1b1fcebd2eb51f78e7fc6ae1b7029105592c5e9a7399e2fcfaea61928962be5c"
+      },
+      "unrunSteps": 0
+    },
+    {
+      "name": "filter and drilldown",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "captureRequested": true,
+      "status": "passed",
+      "steps": [
+        {
+          "index": 1,
+          "expected": {
+            "action": "select",
+            "id": "period",
+            "value": "7"
+          },
+          "status": "passed",
+          "actual": [
+            "7"
+          ],
+          "elapsedMs": 20
+        },
+        {
+          "index": 2,
+          "expected": {
+            "action": "select",
+            "id": "status",
+            "value": "investigate"
+          },
+          "status": "passed",
+          "actual": [
+            "investigate"
+          ],
+          "elapsedMs": 2
+        },
+        {
+          "index": 3,
+          "expected": {
+            "action": "text",
+            "id": "rows",
+            "value": "Bakery"
+          },
+          "status": "passed",
+          "actual": "Produce $95K 18.1% Investigate Bakery $39K 19.4% Investigate",
+          "elapsedMs": 7
+        },
+        {
+          "index": 4,
+          "expected": {
+            "action": "click",
+            "id": "produce"
+          },
+          "status": "passed",
+          "elapsedMs": 30
+        },
+        {
+          "index": 5,
+          "expected": {
+            "action": "text",
+            "id": "detail",
+            "value": "Supplier costs"
+          },
+          "status": "passed",
+          "actual": "← Back to overview Produce Last 7 days Gross margin 18.1% Sales $95K Supplier costs Check whether supplier price changes contributed to the margin decline.",
+          "elapsedMs": 8
+        },
+        {
+          "index": 6,
+          "expected": {
+            "action": "text",
+            "id": "detail",
+            "value": "18.1%"
+          },
+          "status": "passed",
+          "actual": "← Back to overview Produce Last 7 days Gross margin 18.1% Sales $95K Supplier costs Check whether supplier price changes contributed to the margin decline.",
+          "elapsedMs": 25
+        }
+      ],
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "screenshot": {
+        "path": "scenario-02-filter-and-drilldown.png",
+        "bytes": 62378,
+        "sha256": "b099e25daa972a937aed76185b4cf7c453444358ff8f158750e041824e2a7109"
+      },
+      "unrunSteps": 0
+    },
+    {
+      "name": "filter reset and return",
+      "viewport": {
+        "width": 834,
+        "height": 1112
+      },
+      "captureRequested": false,
+      "status": "passed",
+      "steps": [
+        {
+          "index": 1,
+          "expected": {
+            "action": "select",
+            "id": "status",
+            "value": "investigate"
+          },
+          "status": "passed",
+          "actual": [
+            "investigate"
+          ],
+          "elapsedMs": 18
+        },
+        {
+          "index": 2,
+          "expected": {
+            "action": "select",
+            "id": "status",
+            "value": "all"
+          },
+          "status": "passed",
+          "actual": [
+            "all"
+          ],
+          "elapsedMs": 2
+        },
+        {
+          "index": 3,
+          "expected": {
+            "action": "text",
+            "id": "rows",
+            "value": "Grocery"
+          },
+          "status": "passed",
+          "actual": "Produce $405K 20.2% Investigate Grocery $532K 28.1% On track Frozen $204K 25.2% Watch Bakery $139K 25.1% Investigate",
+          "elapsedMs": 7
+        },
+        {
+          "index": 4,
+          "expected": {
+            "action": "click",
+            "id": "produce"
+          },
+          "status": "passed",
+          "elapsedMs": 41
+        },
+        {
+          "index": 5,
+          "expected": {
+            "action": "click",
+            "id": "detail-close"
+          },
+          "status": "passed",
+          "elapsedMs": 36
+        },
+        {
+          "index": 6,
+          "expected": {
+            "action": "hidden",
+            "id": "detail"
+          },
+          "status": "passed",
+          "elapsedMs": 1
+        }
+      ],
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "unrunSteps": 0
+    }
+  ],
+  "criticalFailures": [],
+  "runnerErrors": []
+}

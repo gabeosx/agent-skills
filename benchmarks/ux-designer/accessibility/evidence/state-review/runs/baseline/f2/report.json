@@ -1,0 +1,739 @@
+{
+  "schemaVersion": 1,
+  "status": "passed",
+  "browser": {
+    "version": "159.0.8154.6",
+    "source": "playwright",
+    "executablePath": "/Users/gabe/Library/Caches/ms-playwright/chromium-1255/chrome-mac-arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing",
+    "headless": true,
+    "args": [
+      "--disable-quic",
+      "--force-webrtc-ip-handling-policy=disable_non_proxied_udp",
+      "--host-resolver-rules=MAP * ~NOTFOUND, EXCLUDE 127.0.0.1",
+      "--no-proxy-server"
+    ]
+  },
+  "config": {
+    "node": "v26.13.0",
+    "platform": "darwin",
+    "architecture": "arm64",
+    "playwright": "1.65.1",
+    "axe": "4.14.1",
+    "axeTags": [
+      "wcag2a",
+      "wcag2aa",
+      "wcag21a",
+      "wcag21aa",
+      "wcag22a",
+      "wcag22aa"
+    ],
+    "context": {
+      "colorScheme": "light",
+      "deviceScaleFactor": 1,
+      "locale": "en-US",
+      "reducedMotion": "reduce",
+      "serviceWorkers": "block",
+      "timezoneId": "UTC"
+    },
+    "viewports": {
+      "desktop": {
+        "width": 1440,
+        "height": 1000
+      },
+      "tablet": {
+        "width": 834,
+        "height": 1112
+      },
+      "mobile": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    "timeoutsMs": {
+      "navigation": 10000,
+      "step": 2500,
+      "capture": 10000,
+      "accessibility": 10000
+    },
+    "network": "localhost-static-origin-only"
+  },
+  "source": {
+    "checksSha256": "02b6a9345603aacbb3c2a157d67ea288a80a10ecdee79953a85a5c7130a4a57f",
+    "site": {
+      "sha256": "2f4968672894eeb12fc059110b6d51b3189f69c87d6f75ee35a102e20289b436",
+      "files": [
+        {
+          "path": "index.html",
+          "sha256": "8073714bf7957b95135d997f985e13a674bc86f1de7441b962b9980e90cfbb3d"
+        },
+        {
+          "path": "loan-review.js",
+          "sha256": "3f3748e6e3029c68a29f317c533bae3116c3b05ab9cfc7a9a65e8fdcc0c9bf48"
+        },
+        {
+          "path": "styles.css",
+          "sha256": "489ef0476d9a1090d3b19ad795931c70a2a7cced03fbaed32231b0e4830e9ab0"
+        }
+      ]
+    },
+    "harness": {
+      "sha256": "6c881823017ece00658aa02b1817a074668453398b4905f0208e23ef5bcda8d1",
+      "files": [
+        {
+          "path": "capture.mjs",
+          "sha256": "92bc6c8b9c97e64bd0dbcc746c6505f0ed30e9ecaba15ba32a35d1348afaf77e"
+        },
+        {
+          "path": "package-lock.json",
+          "sha256": "9e166f03feded2ba877c95cbbb4bce6b15453e267c7bf4a69a384ec2a3e1fbc1"
+        },
+        {
+          "path": "package.json",
+          "sha256": "e53398841d514c8588ddfad5569cc1f7aed5d67a6f7b71f4ab05a70cfca4817b"
+        }
+      ]
+    }
+  },
+  "timing": {
+    "startedAt": "2026-11-21T20:44:58.985Z",
+    "completedAt": "2026-11-21T20:45:01.428Z",
+    "elapsedMs": 2443
+  },
+  "viewports": [
+    {
+      "name": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "status": "passed",
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "screenshot": {
+        "path": "desktop.png",
+        "bytes": 85036,
+        "sha256": "c193c08fbfc06d3d814468a0f90a58194a37581d063636518a99141b8661e5f3"
+      },
+      "layout": {
+        "clientWidth": 1440,
+        "scrollWidth": 1440,
+        "bodyScrollWidth": 1440,
+        "horizontalOverflow": false
+      },
+      "accessibility": {
+        "status": "no-violations",
+        "counts": {
+          "passes": 23,
+          "violations": 0,
+          "incomplete": 1,
+          "inapplicable": 41
+        },
+        "violations": [],
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "tags": [
+              "cat.color",
+              "wcag2aa",
+              "wcag143",
+              "TTv5",
+              "TT13.c",
+              "EN-301-549",
+              "EN-9.1.4.3",
+              "ACT",
+              "RGAAv4",
+              "RGAA-3.2.1"
+            ],
+            "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+            "help": "Elements must meet minimum color contrast ratio thresholds",
+            "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+            "nodes": [
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "messageKey": "nonBmp"
+                    },
+                    "relatedNodes": [],
+                    "impact": "serious",
+                    "message": "Element content contains only non-text characters"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<span aria-hidden=\"true\">→</span>",
+                "target": [
+                  ".record-action > span[aria-hidden=\"true\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "tablet",
+      "viewport": {
+        "width": 834,
+        "height": 1112
+      },
+      "status": "passed",
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "screenshot": {
+        "path": "tablet.png",
+        "bytes": 80088,
+        "sha256": "4822430be7a013fd0c9a70ea5f8bbb6bfe94daeca55d15fc85f228cdbfb18184"
+      },
+      "layout": {
+        "clientWidth": 834,
+        "scrollWidth": 834,
+        "bodyScrollWidth": 834,
+        "horizontalOverflow": false
+      },
+      "accessibility": {
+        "status": "no-violations",
+        "counts": {
+          "passes": 23,
+          "violations": 0,
+          "incomplete": 1,
+          "inapplicable": 41
+        },
+        "violations": [],
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "tags": [
+              "cat.color",
+              "wcag2aa",
+              "wcag143",
+              "TTv5",
+              "TT13.c",
+              "EN-301-549",
+              "EN-9.1.4.3",
+              "ACT",
+              "RGAAv4",
+              "RGAA-3.2.1"
+            ],
+            "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+            "help": "Elements must meet minimum color contrast ratio thresholds",
+            "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+            "nodes": [
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "messageKey": "nonBmp"
+                    },
+                    "relatedNodes": [],
+                    "impact": "serious",
+                    "message": "Element content contains only non-text characters"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<span aria-hidden=\"true\">→</span>",
+                "target": [
+                  ".record-action > span[aria-hidden=\"true\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "status": "passed",
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "screenshot": {
+        "path": "mobile.png",
+        "bytes": 74249,
+        "sha256": "37882ec26c7eb4ab0478bb6c3f68706815c54331fa02030fba2bc17487e54caa"
+      },
+      "layout": {
+        "clientWidth": 390,
+        "scrollWidth": 390,
+        "bodyScrollWidth": 390,
+        "horizontalOverflow": false
+      },
+      "accessibility": {
+        "status": "no-violations",
+        "counts": {
+          "passes": 23,
+          "violations": 0,
+          "incomplete": 1,
+          "inapplicable": 41
+        },
+        "violations": [],
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "tags": [
+              "cat.color",
+              "wcag2aa",
+              "wcag143",
+              "TTv5",
+              "TT13.c",
+              "EN-301-549",
+              "EN-9.1.4.3",
+              "ACT",
+              "RGAAv4",
+              "RGAA-3.2.1"
+            ],
+            "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+            "help": "Elements must meet minimum color contrast ratio thresholds",
+            "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+            "nodes": [
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "messageKey": "nonBmp"
+                    },
+                    "relatedNodes": [],
+                    "impact": "serious",
+                    "message": "Element content contains only non-text characters"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<span aria-hidden=\"true\">→</span>",
+                "target": [
+                  ".record-action > span[aria-hidden=\"true\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "scenarios": [
+    {
+      "name": "Desktop registrar approves installation without a note",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "captureRequested": true,
+      "status": "passed",
+      "steps": [
+        {
+          "index": 1,
+          "expected": {
+            "action": "visible",
+            "id": "loan-option-approve"
+          },
+          "status": "passed",
+          "elapsedMs": 13
+        },
+        {
+          "index": 2,
+          "expected": {
+            "action": "visible",
+            "id": "loan-option-update"
+          },
+          "status": "passed",
+          "elapsedMs": 2
+        },
+        {
+          "index": 3,
+          "expected": {
+            "action": "visible",
+            "id": "loan-option-hold"
+          },
+          "status": "passed",
+          "elapsedMs": 2
+        },
+        {
+          "index": 4,
+          "expected": {
+            "action": "text",
+            "id": "loan-current-choice",
+            "value": "Approve installation"
+          },
+          "status": "passed",
+          "actual": "Approve installation",
+          "elapsedMs": 9
+        },
+        {
+          "index": 5,
+          "expected": {
+            "action": "hidden",
+            "id": "loan-confirmation"
+          },
+          "status": "passed",
+          "elapsedMs": 2
+        },
+        {
+          "index": 6,
+          "expected": {
+            "action": "click",
+            "id": "loan-record-decision"
+          },
+          "status": "passed",
+          "elapsedMs": 18
+        },
+        {
+          "index": 7,
+          "expected": {
+            "action": "text",
+            "id": "loan-confirmation",
+            "value": "Installation approved"
+          },
+          "status": "passed",
+          "actual": "Installation approved",
+          "elapsedMs": 1
+        },
+        {
+          "index": 8,
+          "expected": {
+            "action": "hidden",
+            "id": "loan-recorded-note"
+          },
+          "status": "passed",
+          "elapsedMs": 2
+        }
+      ],
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "screenshot": {
+        "path": "scenario-01-desktop-registrar-approves-installation-without-a-note.png",
+        "bytes": 87656,
+        "sha256": "64bd0b818edd67a04708b0cef9d425089799b3e541f4253c5a013a3b363a2d86"
+      },
+      "unrunSteps": 0
+    },
+    {
+      "name": "Tablet registrar supplies the required condition note",
+      "viewport": {
+        "width": 834,
+        "height": 1112
+      },
+      "captureRequested": true,
+      "status": "passed",
+      "steps": [
+        {
+          "index": 1,
+          "expected": {
+            "action": "press",
+            "id": "loan-option-update",
+            "value": "Space"
+          },
+          "status": "passed",
+          "elapsedMs": 14
+        },
+        {
+          "index": 2,
+          "expected": {
+            "action": "text",
+            "id": "loan-current-choice",
+            "value": "Request a condition update"
+          },
+          "status": "passed",
+          "actual": "Request a condition update",
+          "elapsedMs": 8
+        },
+        {
+          "index": 3,
+          "expected": {
+            "action": "click",
+            "id": "loan-record-decision"
+          },
+          "status": "passed",
+          "elapsedMs": 28
+        },
+        {
+          "index": 4,
+          "expected": {
+            "action": "text",
+            "id": "loan-note-error",
+            "value": "Enter a registrar note to record this decision."
+          },
+          "status": "passed",
+          "actual": "Enter a registrar note to record this decision.",
+          "elapsedMs": 1
+        },
+        {
+          "index": 5,
+          "expected": {
+            "action": "hidden",
+            "id": "loan-confirmation"
+          },
+          "status": "passed",
+          "elapsedMs": 1
+        },
+        {
+          "index": 6,
+          "expected": {
+            "action": "fill",
+            "id": "loan-registrar-note",
+            "value": "Request the final reading from the lender."
+          },
+          "status": "passed",
+          "elapsedMs": 9
+        },
+        {
+          "index": 7,
+          "expected": {
+            "action": "click",
+            "id": "loan-record-decision"
+          },
+          "status": "passed",
+          "elapsedMs": 55
+        },
+        {
+          "index": 8,
+          "expected": {
+            "action": "text",
+            "id": "loan-confirmation",
+            "value": "Condition update requested"
+          },
+          "status": "passed",
+          "actual": "Condition update requested",
+          "elapsedMs": 1
+        },
+        {
+          "index": 9,
+          "expected": {
+            "action": "text",
+            "id": "loan-recorded-note",
+            "value": "Request the final reading from the lender."
+          },
+          "status": "passed",
+          "actual": "Request the final reading from the lender.",
+          "elapsedMs": 1
+        },
+        {
+          "index": 10,
+          "expected": {
+            "action": "hidden",
+            "id": "loan-note-error"
+          },
+          "status": "passed",
+          "elapsedMs": 1
+        }
+      ],
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "screenshot": {
+        "path": "scenario-02-tablet-registrar-supplies-the-required-condition-note.png",
+        "bytes": 93957,
+        "sha256": "57fe788feb7e6b0c18270ce82e00f80f313a7834692b8167759af14a04028781"
+      },
+      "unrunSteps": 0
+    },
+    {
+      "name": "Mobile registrar switches options and records a hold",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "captureRequested": true,
+      "status": "passed",
+      "steps": [
+        {
+          "index": 1,
+          "expected": {
+            "action": "click",
+            "id": "loan-option-update"
+          },
+          "status": "passed",
+          "elapsedMs": 41
+        },
+        {
+          "index": 2,
+          "expected": {
+            "action": "text",
+            "id": "loan-current-choice",
+            "value": "Request a condition update"
+          },
+          "status": "passed",
+          "actual": "Request a condition update",
+          "elapsedMs": 8
+        },
+        {
+          "index": 3,
+          "expected": {
+            "action": "click",
+            "id": "loan-option-hold"
+          },
+          "status": "passed",
+          "elapsedMs": 32
+        },
+        {
+          "index": 4,
+          "expected": {
+            "action": "text",
+            "id": "loan-current-choice",
+            "value": "Place loan on hold"
+          },
+          "status": "passed",
+          "actual": "Place loan on hold",
+          "elapsedMs": 1
+        },
+        {
+          "index": 5,
+          "expected": {
+            "action": "hidden",
+            "id": "loan-confirmation"
+          },
+          "status": "passed",
+          "elapsedMs": 1
+        },
+        {
+          "index": 6,
+          "expected": {
+            "action": "fill",
+            "id": "loan-registrar-note",
+            "value": "Keep the crate sealed until a supervisor reviews the log."
+          },
+          "status": "passed",
+          "elapsedMs": 4
+        },
+        {
+          "index": 7,
+          "expected": {
+            "action": "click",
+            "id": "loan-record-decision"
+          },
+          "status": "passed",
+          "elapsedMs": 35
+        },
+        {
+          "index": 8,
+          "expected": {
+            "action": "text",
+            "id": "loan-confirmation",
+            "value": "Loan placed on hold"
+          },
+          "status": "passed",
+          "actual": "Loan placed on hold",
+          "elapsedMs": 1
+        },
+        {
+          "index": 9,
+          "expected": {
+            "action": "text",
+            "id": "loan-recorded-note",
+            "value": "Keep the crate sealed until a supervisor reviews the log."
+          },
+          "status": "passed",
+          "actual": "Keep the crate sealed until a supervisor reviews the log.",
+          "elapsedMs": 1
+        }
+      ],
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "screenshot": {
+        "path": "scenario-03-mobile-registrar-switches-options-and-records-a-hold.png",
+        "bytes": 88437,
+        "sha256": "023791b5baceafb9fffc02bbda00f0c13382410697bd13737a33978e5669f7ca"
+      },
+      "unrunSteps": 0
+    },
+    {
+      "name": "Required note validation remains visible",
+      "viewport": {
+        "width": 834,
+        "height": 1112
+      },
+      "captureRequested": true,
+      "status": "passed",
+      "steps": [
+        {
+          "index": 1,
+          "expected": {
+            "action": "press",
+            "id": "loan-option-update",
+            "value": "Space"
+          },
+          "status": "passed",
+          "elapsedMs": 13
+        },
+        {
+          "index": 2,
+          "expected": {
+            "action": "text",
+            "id": "loan-current-choice",
+            "value": "Request a condition update"
+          },
+          "status": "passed",
+          "actual": "Request a condition update",
+          "elapsedMs": 7
+        },
+        {
+          "index": 3,
+          "expected": {
+            "action": "click",
+            "id": "loan-record-decision"
+          },
+          "status": "passed",
+          "elapsedMs": 26
+        },
+        {
+          "index": 4,
+          "expected": {
+            "action": "text",
+            "id": "loan-note-error",
+            "value": "Enter a registrar note to record this decision."
+          },
+          "status": "passed",
+          "actual": "Enter a registrar note to record this decision.",
+          "elapsedMs": 1
+        },
+        {
+          "index": 5,
+          "expected": {
+            "action": "hidden",
+            "id": "loan-confirmation"
+          },
+          "status": "passed",
+          "elapsedMs": 1
+        }
+      ],
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "screenshot": {
+        "path": "scenario-04-required-note-validation-remains-visible.png",
+        "bytes": 86600,
+        "sha256": "108c37662bcf5ed4985041096f67410b565c6aa102d3f261877e84d1c276a2ad"
+      },
+      "unrunSteps": 0
+    }
+  ],
+  "criticalFailures": [],
+  "runnerErrors": []
+}

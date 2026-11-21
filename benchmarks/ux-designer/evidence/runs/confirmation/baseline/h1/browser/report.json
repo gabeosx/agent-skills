@@ -1,0 +1,564 @@
+{
+  "schemaVersion": 1,
+  "status": "passed",
+  "browser": {
+    "version": "159.0.8154.6",
+    "source": "playwright",
+    "executablePath": "/Users/gabe/Library/Caches/ms-playwright/chromium-1255/chrome-mac-arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing",
+    "headless": true,
+    "args": [
+      "--disable-quic",
+      "--force-webrtc-ip-handling-policy=disable_non_proxied_udp",
+      "--host-resolver-rules=MAP * ~NOTFOUND, EXCLUDE 127.0.0.1",
+      "--no-proxy-server"
+    ]
+  },
+  "config": {
+    "node": "v26.13.0",
+    "platform": "darwin",
+    "architecture": "arm64",
+    "playwright": "1.65.1",
+    "axe": "4.14.1",
+    "axeTags": [
+      "wcag2a",
+      "wcag2aa",
+      "wcag21a",
+      "wcag21aa",
+      "wcag22a",
+      "wcag22aa"
+    ],
+    "context": {
+      "colorScheme": "light",
+      "deviceScaleFactor": 1,
+      "locale": "en-US",
+      "reducedMotion": "reduce",
+      "serviceWorkers": "block",
+      "timezoneId": "UTC"
+    },
+    "viewports": {
+      "desktop": {
+        "width": 1440,
+        "height": 1000
+      },
+      "tablet": {
+        "width": 834,
+        "height": 1112
+      },
+      "mobile": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    "timeoutsMs": {
+      "navigation": 10000,
+      "step": 2500,
+      "capture": 10000,
+      "accessibility": 10000
+    },
+    "network": "localhost-static-origin-only"
+  },
+  "source": {
+    "checksSha256": "3fefaf001da796335287499d78aa1e9424845991ff9bc937aaa009edcff9ac36",
+    "site": {
+      "sha256": "7b44b2116851525526666d00a3fb0d10080ba233e75f23cc501b979409469a6f",
+      "files": [
+        {
+          "path": "app.js",
+          "sha256": "5c72a3d4d1dbd91f61031d659a6bb272fb55d8278c9a06e98910e50a8cc1b40e"
+        },
+        {
+          "path": "design-system-core.css",
+          "sha256": "2e1dc47164205b5aef1af967821ea7bcacb53e9b8ae556f6b20662c20544f188"
+        },
+        {
+          "path": "index.html",
+          "sha256": "b9c64b2ec4ce32a2fbb14ca4efb008e73a80d765d8439626e3185401c1bb748a"
+        },
+        {
+          "path": "style.css",
+          "sha256": "667ebcf3da788f1b93de3c10d9a91d990eda0b09e11bb27aa765c74a8c58e6e1"
+        }
+      ]
+    },
+    "harness": {
+      "sha256": "6c881823017ece00658aa02b1817a074668453398b4905f0208e23ef5bcda8d1",
+      "files": [
+        {
+          "path": "capture.mjs",
+          "sha256": "92bc6c8b9c97e64bd0dbcc746c6505f0ed30e9ecaba15ba32a35d1348afaf77e"
+        },
+        {
+          "path": "package-lock.json",
+          "sha256": "9e166f03feded2ba877c95cbbb4bce6b15453e267c7bf4a69a384ec2a3e1fbc1"
+        },
+        {
+          "path": "package.json",
+          "sha256": "e53398841d514c8588ddfad5569cc1f7aed5d67a6f7b71f4ab05a70cfca4817b"
+        }
+      ]
+    }
+  },
+  "timing": {
+    "startedAt": "2026-11-21T19:46:17.692Z",
+    "completedAt": "2026-11-21T19:46:19.608Z",
+    "elapsedMs": 1916
+  },
+  "viewports": [
+    {
+      "name": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "status": "passed",
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "screenshot": {
+        "path": "desktop.png",
+        "bytes": 134475,
+        "sha256": "0d819e9616ba6e197e270a04731171ab85261b81362e16c24502696cea13ac09"
+      },
+      "layout": {
+        "clientWidth": 1440,
+        "scrollWidth": 1440,
+        "bodyScrollWidth": 1440,
+        "horizontalOverflow": false
+      },
+      "accessibility": {
+        "status": "no-violations",
+        "counts": {
+          "passes": 21,
+          "violations": 0,
+          "incomplete": 0,
+          "inapplicable": 43
+        },
+        "violations": [],
+        "incomplete": []
+      }
+    },
+    {
+      "name": "tablet",
+      "viewport": {
+        "width": 834,
+        "height": 1112
+      },
+      "status": "passed",
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "screenshot": {
+        "path": "tablet.png",
+        "bytes": 128369,
+        "sha256": "c41ca53ed4e0278e839ca21ebc8c09510a56a9e8d19347b8c7229da475ea6784"
+      },
+      "layout": {
+        "clientWidth": 834,
+        "scrollWidth": 834,
+        "bodyScrollWidth": 834,
+        "horizontalOverflow": false
+      },
+      "accessibility": {
+        "status": "no-violations",
+        "counts": {
+          "passes": 21,
+          "violations": 0,
+          "incomplete": 0,
+          "inapplicable": 43
+        },
+        "violations": [],
+        "incomplete": []
+      }
+    },
+    {
+      "name": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "status": "passed",
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "screenshot": {
+        "path": "mobile.png",
+        "bytes": 112573,
+        "sha256": "aaa15d2b9c738c70bbd2a9541ee998563b5f61a7530a19f06fb2a672902743a0"
+      },
+      "layout": {
+        "clientWidth": 390,
+        "scrollWidth": 390,
+        "bodyScrollWidth": 390,
+        "horizontalOverflow": false
+      },
+      "accessibility": {
+        "status": "no-violations",
+        "counts": {
+          "passes": 21,
+          "violations": 0,
+          "incomplete": 0,
+          "inapplicable": 43
+        },
+        "violations": [],
+        "incomplete": []
+      }
+    }
+  ],
+  "scenarios": [
+    {
+      "name": "Look up a known outage",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "captureRequested": true,
+      "status": "passed",
+      "steps": [
+        {
+          "index": 1,
+          "expected": {
+            "action": "text",
+            "id": "result-count",
+            "value": "4"
+          },
+          "status": "passed",
+          "actual": "4 streetlights found",
+          "elapsedMs": 12
+        },
+        {
+          "index": 2,
+          "expected": {
+            "action": "fill",
+            "id": "pole-search",
+            "value": "HARBOR MARKET"
+          },
+          "status": "passed",
+          "elapsedMs": 13
+        },
+        {
+          "index": 3,
+          "expected": {
+            "action": "text",
+            "id": "result-count",
+            "value": "1"
+          },
+          "status": "passed",
+          "actual": "1 streetlight found",
+          "elapsedMs": 2
+        },
+        {
+          "index": 4,
+          "expected": {
+            "action": "hidden",
+            "id": "pole-BH-1042"
+          },
+          "status": "passed",
+          "elapsedMs": 1
+        },
+        {
+          "index": 5,
+          "expected": {
+            "action": "click",
+            "id": "pole-BH-1067"
+          },
+          "status": "passed",
+          "elapsedMs": 40
+        },
+        {
+          "index": 6,
+          "expected": {
+            "action": "attribute",
+            "id": "pole-BH-1067",
+            "name": "aria-pressed",
+            "value": "true"
+          },
+          "status": "passed",
+          "actual": "true",
+          "elapsedMs": 1
+        },
+        {
+          "index": 7,
+          "expected": {
+            "action": "text",
+            "id": "pole-detail",
+            "value": "Crew notified"
+          },
+          "status": "passed",
+          "actual": "BH-1067 Crew notified 76 Wren Avenue Outside Harbor Market Logged November 18, 2026 Reference SL-5826",
+          "elapsedMs": 1
+        },
+        {
+          "index": 8,
+          "expected": {
+            "action": "text",
+            "id": "pole-detail",
+            "value": "SL-5826"
+          },
+          "status": "passed",
+          "actual": "BH-1067 Crew notified 76 Wren Avenue Outside Harbor Market Logged November 18, 2026 Reference SL-5826",
+          "elapsedMs": 1
+        },
+        {
+          "index": 9,
+          "expected": {
+            "action": "hidden",
+            "id": "submit-report"
+          },
+          "status": "passed",
+          "elapsedMs": 1
+        }
+      ],
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "screenshot": {
+        "path": "scenario-01-look-up-a-known-outage.png",
+        "bytes": 109306,
+        "sha256": "1625f20f8350f6f7a674c27a32aee52f60b8be0a9c9bf51079f05c512d0e3b44"
+      },
+      "unrunSteps": 0
+    },
+    {
+      "name": "Recover from an empty search",
+      "viewport": {
+        "width": 834,
+        "height": 1112
+      },
+      "captureRequested": false,
+      "status": "passed",
+      "steps": [
+        {
+          "index": 1,
+          "expected": {
+            "action": "fill",
+            "id": "pole-search",
+            "value": "Bridge Road"
+          },
+          "status": "passed",
+          "elapsedMs": 11
+        },
+        {
+          "index": 2,
+          "expected": {
+            "action": "text",
+            "id": "no-results",
+            "value": "No streetlights match this search."
+          },
+          "status": "passed",
+          "actual": "No streetlights match this search.",
+          "elapsedMs": 6
+        },
+        {
+          "index": 3,
+          "expected": {
+            "action": "fill",
+            "id": "pole-search",
+            "value": ""
+          },
+          "status": "passed",
+          "elapsedMs": 4
+        },
+        {
+          "index": 4,
+          "expected": {
+            "action": "text",
+            "id": "result-count",
+            "value": "4"
+          },
+          "status": "passed",
+          "actual": "4 streetlights found",
+          "elapsedMs": 1
+        },
+        {
+          "index": 5,
+          "expected": {
+            "action": "hidden",
+            "id": "no-results"
+          },
+          "status": "passed",
+          "elapsedMs": 1
+        },
+        {
+          "index": 6,
+          "expected": {
+            "action": "click",
+            "id": "pole-BH-2079"
+          },
+          "status": "passed",
+          "elapsedMs": 33
+        },
+        {
+          "index": 7,
+          "expected": {
+            "action": "text",
+            "id": "pole-detail",
+            "value": "At the pedestrian crossing"
+          },
+          "status": "passed",
+          "actual": "BH-2079 Available to report 61 Mariner Lane At the pedestrian crossing What’s the issue? Light is out Light flickers Light stays on during the day Notes (optional) Submit report →",
+          "elapsedMs": 1
+        },
+        {
+          "index": 8,
+          "expected": {
+            "action": "visible",
+            "id": "issue-type"
+          },
+          "status": "passed",
+          "elapsedMs": 1
+        }
+      ],
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "unrunSteps": 0
+    },
+    {
+      "name": "File and reset a report on a phone",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "captureRequested": false,
+      "status": "passed",
+      "steps": [
+        {
+          "index": 1,
+          "expected": {
+            "action": "fill",
+            "id": "pole-search",
+            "value": "2014"
+          },
+          "status": "passed",
+          "elapsedMs": 13
+        },
+        {
+          "index": 2,
+          "expected": {
+            "action": "click",
+            "id": "pole-BH-2014"
+          },
+          "status": "passed",
+          "elapsedMs": 33
+        },
+        {
+          "index": 3,
+          "expected": {
+            "action": "select",
+            "id": "issue-type",
+            "value": "flicker"
+          },
+          "status": "passed",
+          "actual": [
+            "flicker"
+          ],
+          "elapsedMs": 2
+        },
+        {
+          "index": 4,
+          "expected": {
+            "action": "fill",
+            "id": "report-notes",
+            "value": "It flickers every few seconds."
+          },
+          "status": "passed",
+          "elapsedMs": 2
+        },
+        {
+          "index": 5,
+          "expected": {
+            "action": "click",
+            "id": "submit-report"
+          },
+          "status": "passed",
+          "elapsedMs": 32
+        },
+        {
+          "index": 6,
+          "expected": {
+            "action": "text",
+            "id": "confirmation",
+            "value": "Report submitted"
+          },
+          "status": "passed",
+          "actual": "✓ Report submitted Reference SL-5842 Pole BH-2014 Issue Light flickers Report another light →",
+          "elapsedMs": 7
+        },
+        {
+          "index": 7,
+          "expected": {
+            "action": "text",
+            "id": "confirmation",
+            "value": "BH-2014"
+          },
+          "status": "passed",
+          "actual": "✓ Report submitted Reference SL-5842 Pole BH-2014 Issue Light flickers Report another light →",
+          "elapsedMs": 1
+        },
+        {
+          "index": 8,
+          "expected": {
+            "action": "text",
+            "id": "confirmation",
+            "value": "SL-5842"
+          },
+          "status": "passed",
+          "actual": "✓ Report submitted Reference SL-5842 Pole BH-2014 Issue Light flickers Report another light →",
+          "elapsedMs": 0
+        },
+        {
+          "index": 9,
+          "expected": {
+            "action": "text",
+            "id": "confirmation",
+            "value": "Light flickers"
+          },
+          "status": "passed",
+          "actual": "✓ Report submitted Reference SL-5842 Pole BH-2014 Issue Light flickers Report another light →",
+          "elapsedMs": 0
+        },
+        {
+          "index": 10,
+          "expected": {
+            "action": "click",
+            "id": "report-another"
+          },
+          "status": "passed",
+          "elapsedMs": 20
+        },
+        {
+          "index": 11,
+          "expected": {
+            "action": "hidden",
+            "id": "confirmation"
+          },
+          "status": "passed",
+          "elapsedMs": 1
+        },
+        {
+          "index": 12,
+          "expected": {
+            "action": "text",
+            "id": "result-count",
+            "value": "4"
+          },
+          "status": "passed",
+          "actual": "4 streetlights found",
+          "elapsedMs": 1
+        }
+      ],
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "unrunSteps": 0
+    }
+  ],
+  "criticalFailures": [],
+  "runnerErrors": []
+}

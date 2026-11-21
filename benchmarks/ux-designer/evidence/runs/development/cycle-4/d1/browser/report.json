@@ -1,0 +1,1825 @@
+{
+  "schemaVersion": 1,
+  "status": "passed",
+  "browser": {
+    "version": "159.0.8154.6",
+    "source": "playwright",
+    "executablePath": "/Users/gabe/Library/Caches/ms-playwright/chromium-1255/chrome-mac-arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing",
+    "headless": true,
+    "args": [
+      "--disable-quic",
+      "--force-webrtc-ip-handling-policy=disable_non_proxied_udp",
+      "--host-resolver-rules=MAP * ~NOTFOUND, EXCLUDE 127.0.0.1",
+      "--no-proxy-server"
+    ]
+  },
+  "config": {
+    "node": "v26.13.0",
+    "platform": "darwin",
+    "architecture": "arm64",
+    "playwright": "1.65.1",
+    "axe": "4.14.1",
+    "axeTags": [
+      "wcag2a",
+      "wcag2aa",
+      "wcag21a",
+      "wcag21aa",
+      "wcag22a",
+      "wcag22aa"
+    ],
+    "context": {
+      "colorScheme": "light",
+      "deviceScaleFactor": 1,
+      "locale": "en-US",
+      "reducedMotion": "reduce",
+      "serviceWorkers": "block",
+      "timezoneId": "UTC"
+    },
+    "viewports": {
+      "desktop": {
+        "width": 1440,
+        "height": 1000
+      },
+      "tablet": {
+        "width": 834,
+        "height": 1112
+      },
+      "mobile": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    "timeoutsMs": {
+      "navigation": 10000,
+      "step": 2500,
+      "capture": 10000,
+      "accessibility": 10000
+    },
+    "network": "localhost-static-origin-only"
+  },
+  "source": {
+    "checksSha256": "ef3a2748f88b69b5fc55b75c4746786bba21a4d95f81f090a462d68f7fca844a",
+    "site": {
+      "sha256": "ca5990d23578d09c873f10dfd545126abc9c96b4e1d6cc87dc54f8f28d4b464c",
+      "files": [
+        {
+          "path": "index.html",
+          "sha256": "d931aa6c742a26b67205ef78d4eaf2faf26077715d0c7ebf6bcb727aaf62e156"
+        }
+      ]
+    },
+    "harness": {
+      "sha256": "6c881823017ece00658aa02b1817a074668453398b4905f0208e23ef5bcda8d1",
+      "files": [
+        {
+          "path": "capture.mjs",
+          "sha256": "92bc6c8b9c97e64bd0dbcc746c6505f0ed30e9ecaba15ba32a35d1348afaf77e"
+        },
+        {
+          "path": "package-lock.json",
+          "sha256": "9e166f03feded2ba877c95cbbb4bce6b15453e267c7bf4a69a384ec2a3e1fbc1"
+        },
+        {
+          "path": "package.json",
+          "sha256": "e53398841d514c8588ddfad5569cc1f7aed5d67a6f7b71f4ab05a70cfca4817b"
+        }
+      ]
+    }
+  },
+  "timing": {
+    "startedAt": "2026-11-21T19:34:36.530Z",
+    "completedAt": "2026-11-21T19:34:39.322Z",
+    "elapsedMs": 2792
+  },
+  "viewports": [
+    {
+      "name": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "status": "passed",
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "screenshot": {
+        "path": "desktop.png",
+        "bytes": 157215,
+        "sha256": "c64b57295f8a8add4b622c26f540b58d0372bd5dde9abbd79b2b52fbe9b4121a"
+      },
+      "layout": {
+        "clientWidth": 1440,
+        "scrollWidth": 1440,
+        "bodyScrollWidth": 1440,
+        "horizontalOverflow": false
+      },
+      "accessibility": {
+        "status": "no-violations",
+        "counts": {
+          "passes": 22,
+          "violations": 0,
+          "incomplete": 1,
+          "inapplicable": 42
+        },
+        "violations": [],
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "tags": [
+              "cat.color",
+              "wcag2aa",
+              "wcag143",
+              "TTv5",
+              "TT13.c",
+              "EN-301-549",
+              "EN-9.1.4.3",
+              "ACT",
+              "RGAAv4",
+              "RGAA-3.2.1"
+            ],
+            "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+            "help": "Elements must meet minimum color contrast ratio thresholds",
+            "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+            "nodes": [
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "messageKey": "nonBmp"
+                    },
+                    "relatedNodes": [],
+                    "impact": "serious",
+                    "message": "Element content contains only non-text characters"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<span aria-hidden=\"true\">↓</span>",
+                "target": [
+                  "a > span[aria-hidden=\"true\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "fontSize": "7.5pt (10px)",
+                      "fontWeight": "bold",
+                      "messageKey": "pseudoContent",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<section class=\"sample\" id=\"sample\" data-testid=\"sample\" tabindex=\"-1\" aria-labelledby=\"sample-title\">",
+                        "target": [
+                          "#sample"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined due to a pseudo element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<span class=\"sample-kicker\">Inside the preview</span>",
+                "target": [
+                  ".sample-kicker"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "fontSize": "33.0pt (44px)",
+                      "fontWeight": "normal",
+                      "messageKey": "pseudoContent",
+                      "expectedContrastRatio": "3:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<section class=\"sample\" id=\"sample\" data-testid=\"sample\" tabindex=\"-1\" aria-labelledby=\"sample-title\">",
+                        "target": [
+                          "#sample"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined due to a pseudo element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<h2 id=\"sample-title\">Collection sample</h2>",
+                "target": [
+                  "#sample-title"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "fontSize": "8.3pt (11px)",
+                      "fontWeight": "normal",
+                      "messageKey": "pseudoContent",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<section class=\"sample\" id=\"sample\" data-testid=\"sample\" tabindex=\"-1\" aria-labelledby=\"sample-title\">",
+                        "target": [
+                          "#sample"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined due to a pseudo element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<th scope=\"col\">Collection</th>",
+                "target": [
+                  "th[scope=\"col\"]:nth-child(1)"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "fontSize": "8.3pt (11px)",
+                      "fontWeight": "normal",
+                      "messageKey": "pseudoContent",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<section class=\"sample\" id=\"sample\" data-testid=\"sample\" tabindex=\"-1\" aria-labelledby=\"sample-title\">",
+                        "target": [
+                          "#sample"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined due to a pseudo element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<th scope=\"col\">Scent family</th>",
+                "target": [
+                  "th[scope=\"col\"]:nth-child(2)"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "fontSize": "8.3pt (11px)",
+                      "fontWeight": "normal",
+                      "messageKey": "pseudoContent",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<section class=\"sample\" id=\"sample\" data-testid=\"sample\" tabindex=\"-1\" aria-labelledby=\"sample-title\">",
+                        "target": [
+                          "#sample"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined due to a pseudo element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<th scope=\"col\">Suggested retail</th>",
+                "target": [
+                  "th[scope=\"col\"]:nth-child(3)"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "fontSize": "15.8pt (21px)",
+                      "fontWeight": "normal",
+                      "messageKey": "pseudoContent",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<section class=\"sample\" id=\"sample\" data-testid=\"sample\" tabindex=\"-1\" aria-labelledby=\"sample-title\">",
+                        "target": [
+                          "#sample"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined due to a pseudo element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<span class=\"collection\"><span class=\"swatch resin\" aria-hidden=\"true\"></span>Resin Library</span>",
+                "target": [
+                  "tr:nth-child(1) > th[scope=\"row\"] > .collection"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "fontSize": "9.8pt (13px)",
+                      "fontWeight": "normal",
+                      "messageKey": "pseudoContent",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<section class=\"sample\" id=\"sample\" data-testid=\"sample\" tabindex=\"-1\" aria-labelledby=\"sample-title\">",
+                        "target": [
+                          "#sample"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined due to a pseudo element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<td>Woods &amp; resins</td>",
+                "target": [
+                  "tr:nth-child(1) > td:nth-child(2)"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "fontSize": "9.8pt (13px)",
+                      "fontWeight": "normal",
+                      "messageKey": "pseudoContent",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<section class=\"sample\" id=\"sample\" data-testid=\"sample\" tabindex=\"-1\" aria-labelledby=\"sample-title\">",
+                        "target": [
+                          "#sample"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined due to a pseudo element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<td>$92–128</td>",
+                "target": [
+                  "tr:nth-child(1) > td:nth-child(3)"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "fontSize": "15.8pt (21px)",
+                      "fontWeight": "normal",
+                      "messageKey": "pseudoContent",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<section class=\"sample\" id=\"sample\" data-testid=\"sample\" tabindex=\"-1\" aria-labelledby=\"sample-title\">",
+                        "target": [
+                          "#sample"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined due to a pseudo element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<span class=\"collection\"><span class=\"swatch drift\" aria-hidden=\"true\"></span>Drift Notes</span>",
+                "target": [
+                  "tr:nth-child(2) > th[scope=\"row\"] > .collection"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "fontSize": "9.8pt (13px)",
+                      "fontWeight": "normal",
+                      "messageKey": "pseudoContent",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<section class=\"sample\" id=\"sample\" data-testid=\"sample\" tabindex=\"-1\" aria-labelledby=\"sample-title\">",
+                        "target": [
+                          "#sample"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined due to a pseudo element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<td>Marine &amp; mineral</td>",
+                "target": [
+                  "tr:nth-child(2) > td:nth-child(2)"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "fontSize": "9.8pt (13px)",
+                      "fontWeight": "normal",
+                      "messageKey": "pseudoContent",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<section class=\"sample\" id=\"sample\" data-testid=\"sample\" tabindex=\"-1\" aria-labelledby=\"sample-title\">",
+                        "target": [
+                          "#sample"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined due to a pseudo element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<td>$86–120</td>",
+                "target": [
+                  "tr:nth-child(2) > td:nth-child(3)"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "fontSize": "15.8pt (21px)",
+                      "fontWeight": "normal",
+                      "messageKey": "pseudoContent",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<section class=\"sample\" id=\"sample\" data-testid=\"sample\" tabindex=\"-1\" aria-labelledby=\"sample-title\">",
+                        "target": [
+                          "#sample"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined due to a pseudo element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<span class=\"collection\"><span class=\"swatch amber\" aria-hidden=\"true\"></span>Aftergold</span>",
+                "target": [
+                  "tr:nth-child(3) > th[scope=\"row\"] > .collection"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "fontSize": "9.8pt (13px)",
+                      "fontWeight": "normal",
+                      "messageKey": "pseudoContent",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<section class=\"sample\" id=\"sample\" data-testid=\"sample\" tabindex=\"-1\" aria-labelledby=\"sample-title\">",
+                        "target": [
+                          "#sample"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined due to a pseudo element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<td>Amber &amp; spice</td>",
+                "target": [
+                  "tr:nth-child(3) > td:nth-child(2)"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "fontSize": "9.8pt (13px)",
+                      "fontWeight": "normal",
+                      "messageKey": "pseudoContent",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<section class=\"sample\" id=\"sample\" data-testid=\"sample\" tabindex=\"-1\" aria-labelledby=\"sample-title\">",
+                        "target": [
+                          "#sample"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined due to a pseudo element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<td>$110–160</td>",
+                "target": [
+                  "tr:nth-child(3) > td:nth-child(3)"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "tablet",
+      "viewport": {
+        "width": 834,
+        "height": 1112
+      },
+      "status": "passed",
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "screenshot": {
+        "path": "tablet.png",
+        "bytes": 115417,
+        "sha256": "8eba79ea3275893565b54a3857499dff1469d654993c62ce3cdcb3ce7296044a"
+      },
+      "layout": {
+        "clientWidth": 834,
+        "scrollWidth": 834,
+        "bodyScrollWidth": 834,
+        "horizontalOverflow": false
+      },
+      "accessibility": {
+        "status": "no-violations",
+        "counts": {
+          "passes": 22,
+          "violations": 0,
+          "incomplete": 1,
+          "inapplicable": 42
+        },
+        "violations": [],
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "tags": [
+              "cat.color",
+              "wcag2aa",
+              "wcag143",
+              "TTv5",
+              "TT13.c",
+              "EN-301-549",
+              "EN-9.1.4.3",
+              "ACT",
+              "RGAAv4",
+              "RGAA-3.2.1"
+            ],
+            "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+            "help": "Elements must meet minimum color contrast ratio thresholds",
+            "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+            "nodes": [
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "messageKey": "nonBmp"
+                    },
+                    "relatedNodes": [],
+                    "impact": "serious",
+                    "message": "Element content contains only non-text characters"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<span aria-hidden=\"true\">↓</span>",
+                "target": [
+                  "a > span[aria-hidden=\"true\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "fontSize": "7.5pt (10px)",
+                      "fontWeight": "bold",
+                      "messageKey": "pseudoContent",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<section class=\"sample\" id=\"sample\" data-testid=\"sample\" tabindex=\"-1\" aria-labelledby=\"sample-title\">",
+                        "target": [
+                          "#sample"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined due to a pseudo element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<span class=\"sample-kicker\">Inside the preview</span>",
+                "target": [
+                  ".sample-kicker"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "fontSize": "22.5pt (30px)",
+                      "fontWeight": "normal",
+                      "messageKey": "pseudoContent",
+                      "expectedContrastRatio": "3:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<section class=\"sample\" id=\"sample\" data-testid=\"sample\" tabindex=\"-1\" aria-labelledby=\"sample-title\">",
+                        "target": [
+                          "#sample"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined due to a pseudo element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<h2 id=\"sample-title\">Collection sample</h2>",
+                "target": [
+                  "#sample-title"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "fontSize": "8.3pt (11px)",
+                      "fontWeight": "normal",
+                      "messageKey": "pseudoContent",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<section class=\"sample\" id=\"sample\" data-testid=\"sample\" tabindex=\"-1\" aria-labelledby=\"sample-title\">",
+                        "target": [
+                          "#sample"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined due to a pseudo element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<th scope=\"col\">Collection</th>",
+                "target": [
+                  "th[scope=\"col\"]:nth-child(1)"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "fontSize": "8.3pt (11px)",
+                      "fontWeight": "normal",
+                      "messageKey": "pseudoContent",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<section class=\"sample\" id=\"sample\" data-testid=\"sample\" tabindex=\"-1\" aria-labelledby=\"sample-title\">",
+                        "target": [
+                          "#sample"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined due to a pseudo element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<th scope=\"col\">Scent family</th>",
+                "target": [
+                  "th[scope=\"col\"]:nth-child(2)"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "fontSize": "8.3pt (11px)",
+                      "fontWeight": "normal",
+                      "messageKey": "pseudoContent",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<section class=\"sample\" id=\"sample\" data-testid=\"sample\" tabindex=\"-1\" aria-labelledby=\"sample-title\">",
+                        "target": [
+                          "#sample"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined due to a pseudo element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<th scope=\"col\">Suggested retail</th>",
+                "target": [
+                  "th[scope=\"col\"]:nth-child(3)"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "fontSize": "12.0pt (16px)",
+                      "fontWeight": "normal",
+                      "messageKey": "pseudoContent",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<section class=\"sample\" id=\"sample\" data-testid=\"sample\" tabindex=\"-1\" aria-labelledby=\"sample-title\">",
+                        "target": [
+                          "#sample"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined due to a pseudo element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<span class=\"collection\"><span class=\"swatch resin\" aria-hidden=\"true\"></span>Resin Library</span>",
+                "target": [
+                  "tr:nth-child(1) > th[scope=\"row\"] > .collection"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "fontSize": "9.8pt (13px)",
+                      "fontWeight": "normal",
+                      "messageKey": "pseudoContent",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<section class=\"sample\" id=\"sample\" data-testid=\"sample\" tabindex=\"-1\" aria-labelledby=\"sample-title\">",
+                        "target": [
+                          "#sample"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined due to a pseudo element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<td>Woods &amp; resins</td>",
+                "target": [
+                  "tr:nth-child(1) > td:nth-child(2)"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "fontSize": "9.8pt (13px)",
+                      "fontWeight": "normal",
+                      "messageKey": "pseudoContent",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<section class=\"sample\" id=\"sample\" data-testid=\"sample\" tabindex=\"-1\" aria-labelledby=\"sample-title\">",
+                        "target": [
+                          "#sample"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined due to a pseudo element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<td>$92–128</td>",
+                "target": [
+                  "tr:nth-child(1) > td:nth-child(3)"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "fontSize": "12.0pt (16px)",
+                      "fontWeight": "normal",
+                      "messageKey": "pseudoContent",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<section class=\"sample\" id=\"sample\" data-testid=\"sample\" tabindex=\"-1\" aria-labelledby=\"sample-title\">",
+                        "target": [
+                          "#sample"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined due to a pseudo element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<span class=\"collection\"><span class=\"swatch drift\" aria-hidden=\"true\"></span>Drift Notes</span>",
+                "target": [
+                  "tr:nth-child(2) > th[scope=\"row\"] > .collection"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "fontSize": "9.8pt (13px)",
+                      "fontWeight": "normal",
+                      "messageKey": "pseudoContent",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<section class=\"sample\" id=\"sample\" data-testid=\"sample\" tabindex=\"-1\" aria-labelledby=\"sample-title\">",
+                        "target": [
+                          "#sample"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined due to a pseudo element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<td>Marine &amp; mineral</td>",
+                "target": [
+                  "tr:nth-child(2) > td:nth-child(2)"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "fontSize": "9.8pt (13px)",
+                      "fontWeight": "normal",
+                      "messageKey": "pseudoContent",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<section class=\"sample\" id=\"sample\" data-testid=\"sample\" tabindex=\"-1\" aria-labelledby=\"sample-title\">",
+                        "target": [
+                          "#sample"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined due to a pseudo element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<td>$86–120</td>",
+                "target": [
+                  "tr:nth-child(2) > td:nth-child(3)"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "fontSize": "12.0pt (16px)",
+                      "fontWeight": "normal",
+                      "messageKey": "pseudoContent",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<section class=\"sample\" id=\"sample\" data-testid=\"sample\" tabindex=\"-1\" aria-labelledby=\"sample-title\">",
+                        "target": [
+                          "#sample"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined due to a pseudo element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<span class=\"collection\"><span class=\"swatch amber\" aria-hidden=\"true\"></span>Aftergold</span>",
+                "target": [
+                  "tr:nth-child(3) > th[scope=\"row\"] > .collection"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "fontSize": "9.8pt (13px)",
+                      "fontWeight": "normal",
+                      "messageKey": "pseudoContent",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<section class=\"sample\" id=\"sample\" data-testid=\"sample\" tabindex=\"-1\" aria-labelledby=\"sample-title\">",
+                        "target": [
+                          "#sample"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined due to a pseudo element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<td>Amber &amp; spice</td>",
+                "target": [
+                  "tr:nth-child(3) > td:nth-child(2)"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "fontSize": "9.8pt (13px)",
+                      "fontWeight": "normal",
+                      "messageKey": "pseudoContent",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<section class=\"sample\" id=\"sample\" data-testid=\"sample\" tabindex=\"-1\" aria-labelledby=\"sample-title\">",
+                        "target": [
+                          "#sample"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined due to a pseudo element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<td>$110–160</td>",
+                "target": [
+                  "tr:nth-child(3) > td:nth-child(3)"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "status": "passed",
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "screenshot": {
+        "path": "mobile.png",
+        "bytes": 98775,
+        "sha256": "86a6c217dafe16a1241f98a0838cf22d867ff15d52dcb64ac7038bd7f013c0e3"
+      },
+      "layout": {
+        "clientWidth": 390,
+        "scrollWidth": 390,
+        "bodyScrollWidth": 390,
+        "horizontalOverflow": false
+      },
+      "accessibility": {
+        "status": "no-violations",
+        "counts": {
+          "passes": 22,
+          "violations": 0,
+          "incomplete": 1,
+          "inapplicable": 42
+        },
+        "violations": [],
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "tags": [
+              "cat.color",
+              "wcag2aa",
+              "wcag143",
+              "TTv5",
+              "TT13.c",
+              "EN-301-549",
+              "EN-9.1.4.3",
+              "ACT",
+              "RGAAv4",
+              "RGAA-3.2.1"
+            ],
+            "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+            "help": "Elements must meet minimum color contrast ratio thresholds",
+            "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+            "nodes": [
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "messageKey": "nonBmp"
+                    },
+                    "relatedNodes": [],
+                    "impact": "serious",
+                    "message": "Element content contains only non-text characters"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<span aria-hidden=\"true\">↓</span>",
+                "target": [
+                  "a > span[aria-hidden=\"true\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "fontSize": "7.5pt (10px)",
+                      "fontWeight": "bold",
+                      "messageKey": "pseudoContent",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<section class=\"sample\" id=\"sample\" data-testid=\"sample\" tabindex=\"-1\" aria-labelledby=\"sample-title\">",
+                        "target": [
+                          "#sample"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined due to a pseudo element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<span class=\"sample-kicker\">Inside the preview</span>",
+                "target": [
+                  ".sample-kicker"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "fontSize": "22.5pt (30px)",
+                      "fontWeight": "normal",
+                      "messageKey": "pseudoContent",
+                      "expectedContrastRatio": "3:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<section class=\"sample\" id=\"sample\" data-testid=\"sample\" tabindex=\"-1\" aria-labelledby=\"sample-title\">",
+                        "target": [
+                          "#sample"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined due to a pseudo element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<h2 id=\"sample-title\">Collection sample</h2>",
+                "target": [
+                  "#sample-title"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "fontSize": "8.3pt (11px)",
+                      "fontWeight": "normal",
+                      "messageKey": "pseudoContent",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<section class=\"sample\" id=\"sample\" data-testid=\"sample\" tabindex=\"-1\" aria-labelledby=\"sample-title\">",
+                        "target": [
+                          "#sample"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined due to a pseudo element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<th scope=\"col\">Collection</th>",
+                "target": [
+                  "th[scope=\"col\"]:nth-child(1)"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "fontSize": "8.3pt (11px)",
+                      "fontWeight": "normal",
+                      "messageKey": "pseudoContent",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<section class=\"sample\" id=\"sample\" data-testid=\"sample\" tabindex=\"-1\" aria-labelledby=\"sample-title\">",
+                        "target": [
+                          "#sample"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined due to a pseudo element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<th scope=\"col\">Scent family</th>",
+                "target": [
+                  "th[scope=\"col\"]:nth-child(2)"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "fontSize": "8.3pt (11px)",
+                      "fontWeight": "normal",
+                      "messageKey": "pseudoContent",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<section class=\"sample\" id=\"sample\" data-testid=\"sample\" tabindex=\"-1\" aria-labelledby=\"sample-title\">",
+                        "target": [
+                          "#sample"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined due to a pseudo element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<th scope=\"col\">Suggested retail</th>",
+                "target": [
+                  "th[scope=\"col\"]:nth-child(3)"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "fontSize": "12.0pt (16px)",
+                      "fontWeight": "normal",
+                      "messageKey": "pseudoContent",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<section class=\"sample\" id=\"sample\" data-testid=\"sample\" tabindex=\"-1\" aria-labelledby=\"sample-title\">",
+                        "target": [
+                          "#sample"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined due to a pseudo element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<span class=\"collection\"><span class=\"swatch resin\" aria-hidden=\"true\"></span>Resin Library</span>",
+                "target": [
+                  "tr:nth-child(1) > th[scope=\"row\"] > .collection"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "fontSize": "9.0pt (12px)",
+                      "fontWeight": "normal",
+                      "messageKey": "pseudoContent",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<section class=\"sample\" id=\"sample\" data-testid=\"sample\" tabindex=\"-1\" aria-labelledby=\"sample-title\">",
+                        "target": [
+                          "#sample"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined due to a pseudo element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<td>Woods &amp; resins</td>",
+                "target": [
+                  "tr:nth-child(1) > td:nth-child(2)"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "fontSize": "9.0pt (12px)",
+                      "fontWeight": "normal",
+                      "messageKey": "pseudoContent",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<section class=\"sample\" id=\"sample\" data-testid=\"sample\" tabindex=\"-1\" aria-labelledby=\"sample-title\">",
+                        "target": [
+                          "#sample"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined due to a pseudo element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<td>$92–128</td>",
+                "target": [
+                  "tr:nth-child(1) > td:nth-child(3)"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "fontSize": "12.0pt (16px)",
+                      "fontWeight": "normal",
+                      "messageKey": "pseudoContent",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<section class=\"sample\" id=\"sample\" data-testid=\"sample\" tabindex=\"-1\" aria-labelledby=\"sample-title\">",
+                        "target": [
+                          "#sample"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined due to a pseudo element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<span class=\"collection\"><span class=\"swatch drift\" aria-hidden=\"true\"></span>Drift Notes</span>",
+                "target": [
+                  "tr:nth-child(2) > th[scope=\"row\"] > .collection"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "fontSize": "9.0pt (12px)",
+                      "fontWeight": "normal",
+                      "messageKey": "pseudoContent",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<section class=\"sample\" id=\"sample\" data-testid=\"sample\" tabindex=\"-1\" aria-labelledby=\"sample-title\">",
+                        "target": [
+                          "#sample"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined due to a pseudo element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<td>Marine &amp; mineral</td>",
+                "target": [
+                  "tr:nth-child(2) > td:nth-child(2)"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "fontSize": "9.0pt (12px)",
+                      "fontWeight": "normal",
+                      "messageKey": "pseudoContent",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<section class=\"sample\" id=\"sample\" data-testid=\"sample\" tabindex=\"-1\" aria-labelledby=\"sample-title\">",
+                        "target": [
+                          "#sample"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined due to a pseudo element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<td>$86–120</td>",
+                "target": [
+                  "tr:nth-child(2) > td:nth-child(3)"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "fontSize": "12.0pt (16px)",
+                      "fontWeight": "normal",
+                      "messageKey": "pseudoContent",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<section class=\"sample\" id=\"sample\" data-testid=\"sample\" tabindex=\"-1\" aria-labelledby=\"sample-title\">",
+                        "target": [
+                          "#sample"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined due to a pseudo element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<span class=\"collection\"><span class=\"swatch amber\" aria-hidden=\"true\"></span>Aftergold</span>",
+                "target": [
+                  "tr:nth-child(3) > th[scope=\"row\"] > .collection"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "fontSize": "9.0pt (12px)",
+                      "fontWeight": "normal",
+                      "messageKey": "pseudoContent",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<section class=\"sample\" id=\"sample\" data-testid=\"sample\" tabindex=\"-1\" aria-labelledby=\"sample-title\">",
+                        "target": [
+                          "#sample"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined due to a pseudo element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<td>Amber &amp; spice</td>",
+                "target": [
+                  "tr:nth-child(3) > td:nth-child(2)"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "fontSize": "9.0pt (12px)",
+                      "fontWeight": "normal",
+                      "messageKey": "pseudoContent",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<section class=\"sample\" id=\"sample\" data-testid=\"sample\" tabindex=\"-1\" aria-labelledby=\"sample-title\">",
+                        "target": [
+                          "#sample"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined due to a pseudo element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<td>$110–160</td>",
+                "target": [
+                  "tr:nth-child(3) > td:nth-child(3)"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "scenarios": [
+    {
+      "name": "sample evidence",
+      "viewport": {
+        "width": 834,
+        "height": 1112
+      },
+      "captureRequested": true,
+      "status": "passed",
+      "steps": [
+        {
+          "index": 1,
+          "expected": {
+            "action": "click",
+            "id": "sample-link"
+          },
+          "status": "passed",
+          "elapsedMs": 73
+        },
+        {
+          "index": 2,
+          "expected": {
+            "action": "visible",
+            "id": "sample"
+          },
+          "status": "passed",
+          "elapsedMs": 6
+        },
+        {
+          "index": 3,
+          "expected": {
+            "action": "text",
+            "id": "sample",
+            "value": "Resin Library"
+          },
+          "status": "passed",
+          "actual": "INSIDE THE PREVIEW Collection sample Collection Scent family Suggested retail Resin Library Woods & resins $92–128 Drift Notes Marine & mineral $86–120 Aftergold Amber & spice $110–160",
+          "elapsedMs": 9
+        }
+      ],
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "screenshot": {
+        "path": "scenario-01-sample-evidence.png",
+        "bytes": 115362,
+        "sha256": "9680a58dd48ce57f2e5a54bbde9ed072fba34e3aa51d9b9b0ee7361485cfb7d4"
+      },
+      "unrunSteps": 0
+    },
+    {
+      "name": "invalid email and dismissal",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "captureRequested": true,
+      "status": "passed",
+      "steps": [
+        {
+          "index": 1,
+          "expected": {
+            "action": "click",
+            "id": "request"
+          },
+          "status": "passed",
+          "elapsedMs": 34
+        },
+        {
+          "index": 2,
+          "expected": {
+            "action": "fill",
+            "id": "email",
+            "value": "bad"
+          },
+          "status": "passed",
+          "elapsedMs": 6
+        },
+        {
+          "index": 3,
+          "expected": {
+            "action": "click",
+            "id": "submit"
+          },
+          "status": "passed",
+          "elapsedMs": 61
+        },
+        {
+          "index": 4,
+          "expected": {
+            "action": "visible",
+            "id": "email-error"
+          },
+          "status": "passed",
+          "elapsedMs": 1
+        }
+      ],
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "screenshot": {
+        "path": "scenario-02-invalid-email-and-dismissal.png",
+        "bytes": 81564,
+        "sha256": "0297fb11015410c7a1e6f155009fdbdbaaa30f7a5f269b9cdadd8235915c070a"
+      },
+      "unrunSteps": 0
+    },
+    {
+      "name": "conversion",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "captureRequested": false,
+      "status": "passed",
+      "steps": [
+        {
+          "index": 1,
+          "expected": {
+            "action": "click",
+            "id": "request"
+          },
+          "status": "passed",
+          "elapsedMs": 51
+        },
+        {
+          "index": 2,
+          "expected": {
+            "action": "fill",
+            "id": "email",
+            "value": "buyer@example.test"
+          },
+          "status": "passed",
+          "elapsedMs": 2
+        },
+        {
+          "index": 3,
+          "expected": {
+            "action": "click",
+            "id": "submit"
+          },
+          "status": "passed",
+          "elapsedMs": 49
+        },
+        {
+          "index": 4,
+          "expected": {
+            "action": "text",
+            "id": "success",
+            "value": "Preview requested"
+          },
+          "status": "passed",
+          "actual": "Preview requested Requested for buyer@example.test.",
+          "elapsedMs": 8
+        },
+        {
+          "index": 5,
+          "expected": {
+            "action": "text",
+            "id": "success",
+            "value": "buyer@example.test"
+          },
+          "status": "passed",
+          "actual": "Preview requested Requested for buyer@example.test.",
+          "elapsedMs": 1
+        },
+        {
+          "index": 6,
+          "expected": {
+            "action": "click",
+            "id": "close"
+          },
+          "status": "passed",
+          "elapsedMs": 23
+        },
+        {
+          "index": 7,
+          "expected": {
+            "action": "hidden",
+            "id": "success"
+          },
+          "status": "passed",
+          "elapsedMs": 1
+        }
+      ],
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "unrunSteps": 0
+    }
+  ],
+  "criticalFailures": [],
+  "runnerErrors": []
+}

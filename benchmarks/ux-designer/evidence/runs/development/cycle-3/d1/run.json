@@ -1,0 +1,18 @@
+{
+  "actor": "73d1",
+  "model": "inherited Codex",
+  "started": "2026-11-21T19:11:25+00:00",
+  "actor_collected_at": "2026-11-21T19:20:29+00:00",
+  "attempt": 1,
+  "brief": "briefs/d1/brief.md",
+  "brief_sha256": "9d36b5aeecfd282a180454f4c1596514015271119d0d669b801176187fdd4ce3",
+  "checks_sha256": "ef3a2748f88b69b5fc55b75c4746786bba21a4d95f81f090a462d68f7fca844a",
+  "starter_files": {},
+  "skill_sha256": "86ef09ed988210d523cb555fe9b722846d5a7990e103f8e31dcc39ef9908361b",
+  "source": {
+    "index.html": "5ea3bd8194d37a937309be09663819c963d850a93b1f5d4670b9959a2547c95d"
+  },
+  "actor_result": "Both complete. Agent reports all required interactions at all three widths, focus return, stable hooks and visual review of mobile sample, error and detail.",
+  "usage": null,
+  "charge": null
+}

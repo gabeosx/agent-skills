@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Compare analyzers · Sensory Bench</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --page: #f0f2ef;
+      --white: #fff;
+      --ink: #192b2b;
+      --secondary: #516262;
+      --line: #d9e0dc;
+      --panel: #e6ece8;
+      --deep: #1d3435;
+      --accent: #d7ee9a;
+      --focus: #397564;
+      font-family: "Avenir Next", Avenir, system-ui, sans-serif;
+      color: var(--ink);
+      background: var(--page);
+    }
+
+    * { box-sizing: border-box; }
+    body { margin: 0; }
+    button, input { font: inherit; }
+    [hidden] { display: none !important; }
+    :focus-visible { outline: 3px solid var(--focus); outline-offset: 4px; }
+
+    .masthead { background: var(--deep); color: #f7fbf5; }
+    .masthead-inner, main { width: min(1120px, calc(100% - 72px)); margin-inline: auto; }
+    .masthead-inner {
+      min-height: 64px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+    .brand { display: inline-flex; gap: 11px; align-items: center; font-size: 17px; font-weight: 750; letter-spacing: -.025em; }
+    .signal { display: flex; align-items: center; gap: 3px; padding: 8px; height: 32px; border: 1px solid #748787; border-radius: 50%; }
+    .signal span { display: block; width: 3px; background: var(--accent); border-radius: 2px; }
+    .signal span:nth-child(1), .signal span:nth-child(4) { height: 7px; }
+    .signal span:nth-child(2) { height: 14px; }
+    .signal span:nth-child(3) { height: 11px; }
+    .lab-context { font-size: 12px; font-weight: 600; letter-spacing: .04em; color: #d3e0da; }
+
+    main { margin-top: 34px; margin-bottom: 42px; }
+    h1 { font-size: clamp(2.15rem, 5vw, 3.35rem); letter-spacing: -.055em; line-height: 1.08; font-weight: 750; margin: 0 0 10px; }
+    .intro { margin: 0; color: var(--secondary); font-size: 16px; line-height: 1.55; }
+    .controls {
+      display: flex;
+      gap: 14px 24px;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 27px;
+      padding: 8px 0;
+      border-top: 1px solid #c7d1cc;
+    }
+    .scope-line { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+    .scope { color: var(--secondary); font-size: 13px; margin: 0; font-weight: 600; font-variant-numeric: tabular-nums; }
+    .actions { display: flex; gap: 8px 22px; align-items: center; flex-wrap: wrap; }
+    .toggle { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; cursor: pointer; font-size: 14px; font-weight: 650; }
+    .toggle input {
+      appearance: none;
+      width: 34px;
+      height: 20px;
+      background: #dce4df;
+      border: 1px solid #758980;
+      border-radius: 16px;
+      margin: 0;
+      position: relative;
+      cursor: pointer;
+      flex: none;
+    }
+    .toggle input::after {
+      content: "";
+      width: 12px;
+      height: 12px;
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      border-radius: 50%;
+      background: #52665c;
+    }
+    .toggle input:checked { background: #315b4e; border-color: #315b4e; }
+    .toggle input:checked::after { left: 17px; background: #fff; }
+    .toggle:hover input { box-shadow: 0 0 0 3px #dbe5de; }
+    .reset {
+      display: inline-flex;
+      gap: 6px;
+      align-items: center;
+      padding: 0 10px;
+      min-height: 40px;
+      border: 1px solid #bac9c0;
+      border-radius: 6px;
+      background: #f7f9f6;
+      color: var(--ink);
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .reset:hover { background: #e7eee9; }
+    .reset span { font: 18px/1 system-ui, sans-serif; }
+
+    .table-frame {
+      border: 1px solid #cad5cf;
+      border-radius: 12px;
+      overflow: hidden;
+      background: var(--white);
+      box-shadow: 0 3px 8px #293c3020;
+    }
+    .table-scroll { overflow-x: auto; scrollbar-color: #82968c #e5ebe7; }
+    .table-scroll:focus-visible { outline-offset: -3px; }
+    table { border-collapse: separate; border-spacing: 0; width: 100%; table-layout: fixed; font-variant-numeric: tabular-nums; }
+    th, td { padding: 0 22px; border-bottom: 1px solid var(--line); text-align: left; }
+    thead th { height: 134px; background: var(--panel); vertical-align: bottom; padding-bottom: 16px; }
+    thead th:first-child { width: 23%; }
+    th + th, td { border-left: 1px solid var(--line); }
+    .axis { color: #3c5150; font-size: 13px; font-weight: 750; }
+    .model { display: block; font-size: clamp(17px, 2vw, 22px); line-height: 1.16; font-weight: 750; letter-spacing: -.027em; }
+    tbody th, tbody td { height: 46px; font-size: 14px; }
+    tbody th { background: #f7f9f7; font-weight: 650; }
+    tbody td { color: #243536; font-weight: 560; }
+    tbody tr:nth-child(even) td { background: #fafcfb; }
+    tbody tr:nth-child(even) th { background: #f0f4f1; }
+    tbody tr:hover td { background: #eff6ed; }
+    tbody tr:hover th { background: #e9f1e8; }
+    tbody .tradeoff td { font-weight: 740; }
+    tbody .is-last-visible > * { border-bottom: 0; }
+    .scroll-note { display: none; color: var(--secondary); margin: 0; text-align: right; font-size: 12px; font-weight: 650; }
+
+    .instrument {
+      --case: #dce0d2;
+      --side: #a2ad9b;
+      --trim: #4c605a;
+      --readout: #d7ee9a;
+      position: relative;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      width: 108px;
+      height: 54px;
+      margin: 0 0 15px 8px;
+      padding: 11px 8px;
+      border: 1px solid #818d80;
+      border-radius: 4px 1px 3px 4px;
+      background: linear-gradient(160deg, #ffffff72, transparent 45%), var(--case);
+      box-shadow: 2px 5px 0 -2px #637166, 9px 9px 9px #263c3a33;
+      transform: skewY(-4deg);
+      isolation: isolate;
+    }
+    .instrument::before {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      height: 100%;
+      width: 10px;
+      top: -4px;
+      right: -10px;
+      border: 1px solid #818d80;
+      transform: skewY(-33deg);
+      border-radius: 0 3px 2px 0;
+      background: repeating-linear-gradient(to bottom, transparent 0 3px, #33463863 3px 4px) right 5px top 10px / 3px 18px no-repeat, var(--side);
+    }
+    .instrument::after {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      height: 7px;
+      top: -8px;
+      left: 3px;
+      right: -6px;
+      border: 1px solid #899587;
+      border-radius: 4px 2px 0 0;
+      transform: skewX(-49deg);
+      background: linear-gradient(90deg, #f3f5ee 60%, var(--case));
+    }
+    .instrument .sample {
+      width: 33px;
+      height: 27px;
+      border: 2px solid #3c504b;
+      border-radius: 3px;
+      background: linear-gradient(#2c3e3a, #536861);
+      box-shadow: 0 1px 1px #ffffffaa;
+      flex: none;
+    }
+    .instrument .sample::after {
+      content: "";
+      display: block;
+      width: 17px;
+      height: 3px;
+      border-radius: 2px;
+      margin: 17px auto 0;
+      background: #c3d3bf;
+    }
+    .instrument .screen {
+      width: 40px;
+      height: 20px;
+      flex: none;
+      border: 3px solid var(--trim);
+      border-radius: 3px;
+      background: linear-gradient(transparent 0 3px, #6b8376 3px 4px, transparent 4px 7px, #6b8376 7px 8px, transparent 8px) 4px center / 15px 11px no-repeat,
+        radial-gradient(circle, #456957 0 2px, transparent 2.5px) right 3px center / 8px 8px no-repeat, var(--readout);
+    }
+    .instrument.birch { --case: #bfcad0; --side: #879aa2; --readout: #a8d8db; }
+    .instrument.cedar { --case: #748b81; --side: #536c61; --readout: #d7ee9a; --trim: #344b42; }
+
+    @media (max-width: 850px) {
+      .masthead-inner, main { width: calc(100% - 48px); }
+      th, td { padding-inline: 17px; }
+      thead th:first-child { width: 26%; }
+    }
+    @media (max-width: 650px) {
+      .masthead-inner, main { width: calc(100% - 32px); }
+      .masthead-inner { min-height: 56px; }
+      main { margin-top: 27px; }
+      .controls { flex-direction: column; align-items: stretch; margin-top: 24px; gap: 0; padding: 9px 0 8px; }
+      .actions { gap: 0 12px; }
+      .toggle { font-size: 13px; }
+      .scope { font-size: 12px; }
+      .reset { margin-left: auto; min-height: 36px; }
+      .reset span { display: none; }
+      table { min-width: 540px; }
+      table.with-two { min-width: 350px; }
+      th, td { padding-inline: 13px; }
+      thead th { height: 118px; }
+      thead th:first-child { width: 132px; }
+      thead th:first-child, tbody th { position: sticky; left: 0; z-index: 2; box-shadow: 1px 0 0 #bfcfc5; }
+      tbody th, tbody td { height: 45px; font-size: 13px; }
+      .instrument { scale: .8; transform-origin: bottom left; margin: 0 0 11px 5px; }
+      .with-two .instrument { scale: .71; }
+      .scroll-note.is-overflowing { display: block; }
+    }
+    @media (max-width: 420px) {
+      .actions { justify-content: space-between; gap: 0 6px; }
+      .toggle { gap: 5px; }
+      .reset { padding-inline: 6px; margin-left: 0; }
+      .toggle input { width: 27px; height: 17px; }
+      .toggle input::after { width: 11px; height: 11px; top: 2px; left: 2px; }
+      .toggle input:checked::after { left: 12px; }
+    }
+    @media (max-width: 360px) {
+      .reset { margin-left: 0; }
+      .actions { justify-content: flex-start; gap: 0 14px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="masthead">
+    <div class="masthead-inner">
+      <div class="brand"><span class="signal" aria-hidden="true"><span></span><span></span><span></span><span></span></span>Sensory Bench</div>
+      <span class="lab-context">Fragrance QA</span>
+    </div>
+  </header>
+  <main>
+    <h1>Compare analyzers</h1>
+    <p class="intro">Compare benchtop models for high-throughput fragrance quality control.</p>
+
+    <div class="controls">
+      <div class="scope-line">
+        <p class="scope" id="spec-count" role="status">3 models · 8 specifications</p>
+        <p class="scroll-note" id="scroll-note">Scroll for more models <span aria-hidden="true">→</span></p>
+      </div>
+      <div class="actions" role="group" aria-label="Comparison options">
+        <label class="toggle"><input type="checkbox" data-testid="differences" id="different" aria-controls="comparison"> Differences only</label>
+        <label class="toggle"><input type="checkbox" data-testid="alder" id="include-alder" aria-controls="comparison" checked> Show Alder A2</label>
+        <button class="reset" type="button" data-testid="reset" aria-label="Reset comparison"><span aria-hidden="true">↺</span>Reset</button>
+      </div>
+    </div>
+
+    <div class="table-frame">
+      <div class="table-scroll" tabindex="0" role="region" aria-label="Analyzer specifications" aria-describedby="scroll-note">
+        <table id="comparison" data-testid="comparison" aria-label="Benchtop analyzer comparison">
+          <thead>
+            <tr>
+              <th class="axis" scope="col">Specification</th>
+              <th scope="col" data-model="alder">
+                <span aria-hidden="true" class="instrument"><span class="sample"></span><span class="screen"></span></span>
+                <span class="model">Alder A2</span>
+              </th>
+              <th scope="col">
+                <span aria-hidden="true" class="instrument birch"><span class="sample"></span><span class="screen"></span></span>
+                <span class="model">Birch X4</span>
+              </th>
+              <th scope="col">
+                <span aria-hidden="true" class="instrument cedar"><span class="sample"></span><span class="screen"></span></span>
+                <span class="model">Cedar Pro</span>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="tradeoff"><th scope="row">Unit price</th><td data-model="alder">$12,400</td><td>$16,900</td><td>$19,200</td></tr>
+            <tr data-testid="throughput"><th scope="row">Runs per hour</th><td data-model="alder">14</td><td>20</td><td>20</td></tr>
+            <tr><th scope="row">Sample volume</th><td data-model="alder">2 mL</td><td>1 mL</td><td>1 mL</td></tr>
+            <tr><th scope="row">Warm-up</th><td data-model="alder">12 min</td><td>10 min</td><td>10 min</td></tr>
+            <tr><th scope="row">Export</th><td data-model="alder">CSV</td><td>CSV + API</td><td>CSV + API</td></tr>
+            <tr class="tradeoff" data-testid="warranty"><th scope="row">Warranty</th><td data-model="alder">2 years</td><td>3 years</td><td>5 years</td></tr>
+            <tr><th scope="row">Calibration</th><td data-model="alder">Weekly</td><td>Daily</td><td>Daily</td></tr>
+            <tr><th scope="row">Operating noise</th><td data-model="alder">42 dBA</td><td>38 dBA</td><td>38 dBA</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+  <script>
+    const differences = document.querySelector('#different');
+    const alder = document.querySelector('#include-alder');
+    const table = document.querySelector('#comparison');
+    const scrollRegion = document.querySelector('.table-scroll');
+    const scrollNote = document.querySelector('#scroll-note');
+    const scope = document.querySelector('#spec-count');
+    const rows = Array.from(table.tBodies[0].rows);
+
+    function describeOverflow() {
+      const overflowing = scrollRegion.scrollWidth > scrollRegion.clientWidth;
+      scrollNote.classList.toggle('is-overflowing', overflowing);
+      scrollRegion.tabIndex = overflowing ? 0 : -1;
+      if (overflowing) {
+        scrollRegion.setAttribute('aria-describedby', 'scroll-note');
+      } else {
+        scrollRegion.removeAttribute('aria-describedby');
+      }
+    }
+
+    function updateComparison() {
+      table.querySelectorAll('[data-model="alder"]').forEach(cell => {
+        cell.hidden = !alder.checked;
+      });
+      table.classList.toggle('with-two', !alder.checked);
+
+      const visibleRows = rows.filter(row => {
+        const values = Array.from(row.querySelectorAll('td:not([hidden])'), cell => cell.textContent.trim());
+        row.hidden = differences.checked && new Set(values).size === 1;
+        row.classList.remove('is-last-visible');
+        return !row.hidden;
+      });
+      visibleRows.at(-1)?.classList.add('is-last-visible');
+      scope.textContent = (alder.checked ? '3' : '2') + ' models · ' + visibleRows.length + ' specifications';
+      describeOverflow();
+    }
+
+    differences.addEventListener('change', updateComparison);
+    alder.addEventListener('change', updateComparison);
+    document.querySelector('[data-testid="reset"]').addEventListener('click', () => {
+      alder.checked = true;
+      differences.checked = false;
+      scrollRegion.scrollLeft = 0;
+      updateComparison();
+    });
+    new ResizeObserver(describeOverflow).observe(scrollRegion);
+    updateComparison();
+  </script>
+</body>
+</html>

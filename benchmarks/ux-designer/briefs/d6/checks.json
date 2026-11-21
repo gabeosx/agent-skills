@@ -1,0 +1,54 @@
+{
+  "scenarios": [
+    {
+      "name": "mobile docs navigation",
+      "width": 390,
+      "steps": [
+        {
+          "action": "click",
+          "id": "nav-toggle"
+        },
+        {
+          "action": "visible",
+          "id": "docs-nav"
+        },
+        {
+          "action": "click",
+          "id": "equipment-toggle"
+        },
+        {
+          "action": "attribute",
+          "id": "equipment-toggle",
+          "value": "true",
+          "name": "aria-expanded"
+        },
+        {
+          "action": "text",
+          "id": "equipment-links",
+          "value": "Dosing skid"
+        }
+      ],
+      "capture": true
+    },
+    {
+      "name": "tablet outline",
+      "width": 834,
+      "steps": [
+        {
+          "action": "click",
+          "id": "jump-verify"
+        },
+        {
+          "action": "visible",
+          "id": "verify"
+        },
+        {
+          "action": "text",
+          "id": "verify",
+          "value": "Verify flow"
+        }
+      ],
+      "capture": true
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Deliberately broken fixture</title>
+    <style>
+      main { width: 1050px; }
+      button { width: 44px; height: 44px; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Deliberately broken fixture</h1>
+      <button data-testid="change"></button>
+      <p data-testid="status">Fixture still pending</p>
+    </main>
+    <script>
+      document.querySelector('button').addEventListener('click', () => {
+        document.querySelector('[data-testid=status]').textContent = 'Incorrect result';
+        throw new Error('Deliberate click failure');
+      });
+    </script>
+  </body>
+</html>

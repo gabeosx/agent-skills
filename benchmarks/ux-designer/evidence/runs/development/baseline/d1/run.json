@@ -1,0 +1,21 @@
+{
+  "actor": "146a",
+  "model": "inherited Codex",
+  "started": "2026-11-21T18:34:23Z",
+  "actor_collected_at": "2026-11-21T18:41:47+00:00",
+  "attempt": 1,
+  "brief": "briefs/d1/brief.md",
+  "brief_sha256": "9d36b5aeecfd282a180454f4c1596514015271119d0d669b801176187fdd4ce3",
+  "checks_sha256": "ef3a2748f88b69b5fc55b75c4746786bba21a4d95f81f090a462d68f7fca844a",
+  "starter_files": {},
+  "skill_sha256": "ad92dafd139c78ea3b87e186b5a787186f291e6a0e2c846d555a021432f3e4be",
+  "source": {
+    "design-system-core.css": "2e1dc47164205b5aef1af967821ea7bcacb53e9b8ae556f6b20662c20544f188",
+    "index.html": "8d7a6c879076b949ee8282e25ce56a1d0b8a21b71a40787a2a4b59f0112499da",
+    "script.js": "4fb432571b27e45d99e9f42b875e9b83ea49d95104ebecd07118e9589b15c1aa",
+    "style.css": "5e88e8564eb3762b50c5c8e28073046c91dcd85bb3f2e057315e92ffd4ad21df"
+  },
+  "actor_result": "Implemented both interfaces. Agent reports verifying preview, sample link, period selector, status filter and Produce detail in Chromium at 1440, 834 and 390 CSS px.",
+  "usage": null,
+  "charge": null
+}
