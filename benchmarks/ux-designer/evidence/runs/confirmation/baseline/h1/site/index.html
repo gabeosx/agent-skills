@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Report a streetlight outage | Briar Harbor Public Works</title>
+  <link rel="stylesheet" href="design-system-core.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="masthead">
+    <div class="wrap masthead-inner">
+      <div class="identity">
+        <span class="seal" aria-hidden="true"></span>
+        <p>Briar Harbor <span>Public Works</span></p>
+      </div>
+      <p class="department">Streetlight service</p>
+    </div>
+  </header>
+  <main class="wrap">
+    <section class="intro" aria-labelledby="page-title">
+      <div class="intro-content">
+        <p class="area"><span class="area-dot" aria-hidden="true"></span> East Basin service area</p>
+        <h1 id="page-title">Report a streetlight outage</h1>
+        <p class="intro-copy">Find a light on a public street, check if a crew already knows about it, and report the issue if needed.</p>
+      </div>
+      <div class="streetlight-scene" aria-hidden="true">
+        <span class="lamp-glow"></span>
+        <span class="lamp-post"></span>
+        <span class="lamp-head"></span>
+        <span class="lamp-base"></span>
+      </div>
+    </section>
+
+    <div class="workbench">
+      <section class="panel finder" aria-labelledby="finder-title">
+        <h2 id="finder-title">Find a streetlight</h2>
+        <label class="search-label" for="pole-search">Search by pole code, address, or landmark</label>
+        <div class="search-wrap">
+          <span class="search-icon" aria-hidden="true"></span>
+          <input type="search" data-testid="pole-search" id="pole-search" placeholder="e.g. BH-1042 or Wren Avenue" autocomplete="off">
+        </div>
+        <p class="count" data-testid="result-count" aria-live="polite"></p>
+        <ul class="results" id="results"></ul>
+        <p class="no-results" data-testid="no-results" hidden>No streetlights match this search.</p>
+      </section>
+
+      <section class="panel reporter" aria-labelledby="reporter-title">
+        <h2 id="reporter-title">Report details</h2>
+        <div id="report-content"></div>
+      </section>
+    </div>
+
+    <aside class="pole-tip" aria-label="Where to find the pole code">
+      <span class="tag-icon" aria-hidden="true"></span>
+      <p><strong>Looking for the pole code?</strong> It’s printed on a small tag facing the street.</p>
+    </aside>
+  </main>
+  <template id="idle-template">
+    <div class="idle">
+      <span class="idle-icon" aria-hidden="true"><span></span></span>
+      <h3>Select a streetlight</h3>
+      <p>Choose a pole from the search results to check its reporting status.</p>
+    </div>
+  </template>
+  <template id="report-form">
+    <form>
+      <div class="field">
+        <label for="issue-type">What’s the issue?</label>
+        <div class="select-wrap">
+          <select id="issue-type" data-testid="issue-type">
+            <option value="out">Light is out</option>
+            <option value="flicker">Light flickers</option>
+            <option value="daytime">Light stays on during the day</option>
+          </select>
+        </div>
+      </div>
+      <div class="field">
+        <label for="report-notes">Notes <span class="optional">(optional)</span></label>
+        <textarea id="report-notes" data-testid="report-notes" rows="3" placeholder="Add anything that could help the crew find the light."></textarea>
+      </div>
+      <button class="primary" type="submit" data-testid="submit-report">Submit report <span aria-hidden="true">→</span></button>
+    </form>
+  </template>
+</body>
+</html>

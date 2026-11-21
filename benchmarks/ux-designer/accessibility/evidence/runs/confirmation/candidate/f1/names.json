@@ -1,0 +1,83 @@
+{
+  "browser": "159.0.8154.6",
+  "hookSha256": "6addca23ad25f4d0292c4f282a67acdc673a86c4145c8c60f7839051ac53d7d5",
+  "method": "Playwright role/name match with the complete visible button text as an ordered substring, ignoring case and collapsed whitespace",
+  "viewports": [
+    {
+      "width": 1440,
+      "height": 1000,
+      "pass": true,
+      "controls": [
+        {
+          "hook": "handover-report-t214",
+          "visibleLabel": "T-214 Alder Junction Signal lamp reported dim Logged 06:40 Status Follow-up due",
+          "pass": true,
+          "ariaSnapshot": "- button \"T-214 Alder Junction Signal lamp reported dim Logged 06:40 Status Follow-up due\" [pressed]"
+        },
+        {
+          "hook": "handover-report-t219",
+          "visibleLabel": "T-219 Quay Loop Platform display froze Logged 07:15 Status Assigned",
+          "pass": true,
+          "ariaSnapshot": "- button \"T-219 Quay Loop Platform display froze Logged 07:15 Status Assigned\""
+        },
+        {
+          "hook": "handover-report-t224",
+          "visibleLabel": "T-224 Cedar Depot Door sensor intermittent Logged 08:05 Status Ready to review",
+          "pass": true,
+          "ariaSnapshot": "- button \"T-224 Cedar Depot Door sensor intermittent Logged 08:05 Status Ready to review\""
+        }
+      ]
+    },
+    {
+      "width": 834,
+      "height": 1112,
+      "pass": true,
+      "controls": [
+        {
+          "hook": "handover-report-t214",
+          "visibleLabel": "T-214 Alder Junction Signal lamp reported dim Logged 06:40 Status Follow-up due",
+          "pass": true,
+          "ariaSnapshot": "- button \"T-214 Alder Junction Signal lamp reported dim Logged 06:40 Status Follow-up due\" [pressed]"
+        },
+        {
+          "hook": "handover-report-t219",
+          "visibleLabel": "T-219 Quay Loop Platform display froze Logged 07:15 Status Assigned",
+          "pass": true,
+          "ariaSnapshot": "- button \"T-219 Quay Loop Platform display froze Logged 07:15 Status Assigned\""
+        },
+        {
+          "hook": "handover-report-t224",
+          "visibleLabel": "T-224 Cedar Depot Door sensor intermittent Logged 08:05 Status Ready to review",
+          "pass": true,
+          "ariaSnapshot": "- button \"T-224 Cedar Depot Door sensor intermittent Logged 08:05 Status Ready to review\""
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "pass": true,
+      "controls": [
+        {
+          "hook": "handover-report-t214",
+          "visibleLabel": "T-214 Alder Junction Signal lamp reported dim Logged 06:40 Status Follow-up due",
+          "pass": true,
+          "ariaSnapshot": "- button \"T-214 Alder Junction Signal lamp reported dim Logged 06:40 Status Follow-up due\" [pressed]"
+        },
+        {
+          "hook": "handover-report-t219",
+          "visibleLabel": "T-219 Quay Loop Platform display froze Logged 07:15 Status Assigned",
+          "pass": true,
+          "ariaSnapshot": "- button \"T-219 Quay Loop Platform display froze Logged 07:15 Status Assigned\""
+        },
+        {
+          "hook": "handover-report-t224",
+          "visibleLabel": "T-224 Cedar Depot Door sensor intermittent Logged 08:05 Status Ready to review",
+          "pass": true,
+          "ariaSnapshot": "- button \"T-224 Cedar Depot Door sensor intermittent Logged 08:05 Status Ready to review\""
+        }
+      ]
+    }
+  ],
+  "status": "passed"
+}

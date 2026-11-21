@@ -1,0 +1,498 @@
+{
+  "schemaVersion": 1,
+  "status": "passed",
+  "browser": {
+    "version": "159.0.8154.6",
+    "source": "playwright",
+    "executablePath": "/Users/gabe/Library/Caches/ms-playwright/chromium-1255/chrome-mac-arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing",
+    "headless": true,
+    "args": [
+      "--disable-quic",
+      "--force-webrtc-ip-handling-policy=disable_non_proxied_udp",
+      "--host-resolver-rules=MAP * ~NOTFOUND, EXCLUDE 127.0.0.1",
+      "--no-proxy-server"
+    ]
+  },
+  "config": {
+    "node": "v26.13.0",
+    "platform": "darwin",
+    "architecture": "arm64",
+    "playwright": "1.65.1",
+    "axe": "4.14.1",
+    "axeTags": [
+      "wcag2a",
+      "wcag2aa",
+      "wcag21a",
+      "wcag21aa",
+      "wcag22a",
+      "wcag22aa"
+    ],
+    "context": {
+      "colorScheme": "light",
+      "deviceScaleFactor": 1,
+      "locale": "en-US",
+      "reducedMotion": "reduce",
+      "serviceWorkers": "block",
+      "timezoneId": "UTC"
+    },
+    "viewports": {
+      "desktop": {
+        "width": 1440,
+        "height": 1000
+      },
+      "tablet": {
+        "width": 834,
+        "height": 1112
+      },
+      "mobile": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    "timeoutsMs": {
+      "navigation": 10000,
+      "step": 2500,
+      "capture": 10000,
+      "accessibility": 10000
+    },
+    "network": "localhost-static-origin-only"
+  },
+  "source": {
+    "checksSha256": "f7719a9b10b9dc6f25aef09d4cf6076037691d050cc4129c81f59c66b768449c",
+    "site": {
+      "sha256": "55465244005eb454f73f908793fb75b10d64c929aeb5b9a9ab1c2229e1982e65",
+      "files": [
+        {
+          "path": "index.html",
+          "sha256": "bf4a2f7f0fbf76e5fd9c990d98077eb37e790964427f3aeb765df10a249245e9"
+        },
+        {
+          "path": "workflow.js",
+          "sha256": "3109311482d810b3fa8b78e1d726a36ebd33db46db6001e63194e82c423cd3b6"
+        }
+      ]
+    },
+    "harness": {
+      "sha256": "6c881823017ece00658aa02b1817a074668453398b4905f0208e23ef5bcda8d1",
+      "files": [
+        {
+          "path": "capture.mjs",
+          "sha256": "92bc6c8b9c97e64bd0dbcc746c6505f0ed30e9ecaba15ba32a35d1348afaf77e"
+        },
+        {
+          "path": "package-lock.json",
+          "sha256": "9e166f03feded2ba877c95cbbb4bce6b15453e267c7bf4a69a384ec2a3e1fbc1"
+        },
+        {
+          "path": "package.json",
+          "sha256": "e53398841d514c8588ddfad5569cc1f7aed5d67a6f7b71f4ab05a70cfca4817b"
+        }
+      ]
+    }
+  },
+  "timing": {
+    "startedAt": "2026-11-21T18:37:58.721Z",
+    "completedAt": "2026-11-21T18:38:00.129Z",
+    "elapsedMs": 1408
+  },
+  "viewports": [
+    {
+      "name": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "status": "passed",
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [
+        {
+          "type": "fetch",
+          "url": "https://benchmark-fixture.invalid/probe"
+        }
+      ],
+      "localHttpErrors": [],
+      "screenshot": {
+        "path": "desktop.png",
+        "bytes": 25166,
+        "sha256": "ce8c01ceeffc846a6cbdc7f7e0c091e96e6689c96e163bc65f354995f9d29abd"
+      },
+      "layout": {
+        "clientWidth": 1440,
+        "scrollWidth": 1440,
+        "bodyScrollWidth": 1440,
+        "horizontalOverflow": false
+      },
+      "accessibility": {
+        "status": "no-violations",
+        "counts": {
+          "passes": 21,
+          "violations": 0,
+          "incomplete": 0,
+          "inapplicable": 43
+        },
+        "violations": [],
+        "incomplete": []
+      }
+    },
+    {
+      "name": "tablet",
+      "viewport": {
+        "width": 834,
+        "height": 1112
+      },
+      "status": "passed",
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [
+        {
+          "type": "fetch",
+          "url": "https://benchmark-fixture.invalid/probe"
+        }
+      ],
+      "localHttpErrors": [],
+      "screenshot": {
+        "path": "tablet.png",
+        "bytes": 23471,
+        "sha256": "4a019a2a36f776e5a69baa3f2d35ccf3064cb1468769def3d106212c91574304"
+      },
+      "layout": {
+        "clientWidth": 834,
+        "scrollWidth": 834,
+        "bodyScrollWidth": 834,
+        "horizontalOverflow": false
+      },
+      "accessibility": {
+        "status": "no-violations",
+        "counts": {
+          "passes": 21,
+          "violations": 0,
+          "incomplete": 0,
+          "inapplicable": 43
+        },
+        "violations": [],
+        "incomplete": []
+      }
+    },
+    {
+      "name": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "status": "passed",
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [
+        {
+          "type": "fetch",
+          "url": "https://benchmark-fixture.invalid/probe"
+        }
+      ],
+      "localHttpErrors": [],
+      "screenshot": {
+        "path": "mobile.png",
+        "bytes": 19989,
+        "sha256": "a4dfccb86bb7f5715600267c6d13238cf1e6ffe65e702bcb3409f40075af2ac8"
+      },
+      "layout": {
+        "clientWidth": 390,
+        "scrollWidth": 390,
+        "bodyScrollWidth": 390,
+        "horizontalOverflow": false
+      },
+      "accessibility": {
+        "status": "no-violations",
+        "counts": {
+          "passes": 21,
+          "violations": 0,
+          "incomplete": 0,
+          "inapplicable": 43
+        },
+        "violations": [],
+        "incomplete": []
+      }
+    }
+  ],
+  "scenarios": [
+    {
+      "name": "Write and restore through the rendered form",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "captureRequested": true,
+      "status": "passed",
+      "steps": [
+        {
+          "index": 1,
+          "expected": {
+            "action": "text",
+            "id": "initial-state",
+            "value": "No saved note. Session: null. Cookie: false."
+          },
+          "status": "passed",
+          "actual": "No saved note. Session: null. Cookie: false.",
+          "elapsedMs": 16
+        },
+        {
+          "index": 2,
+          "expected": {
+            "action": "count",
+            "id": "item",
+            "count": 0
+          },
+          "status": "passed",
+          "actual": 0,
+          "elapsedMs": 7
+        },
+        {
+          "index": 3,
+          "expected": {
+            "action": "hidden",
+            "id": "saved"
+          },
+          "status": "passed",
+          "elapsedMs": 2
+        },
+        {
+          "index": 4,
+          "expected": {
+            "action": "fill",
+            "id": "note",
+            "value": "Inspect inventory"
+          },
+          "status": "passed",
+          "elapsedMs": 3
+        },
+        {
+          "index": 5,
+          "expected": {
+            "action": "select",
+            "id": "priority",
+            "value": "urgent"
+          },
+          "status": "passed",
+          "actual": [
+            "urgent"
+          ],
+          "elapsedMs": 2
+        },
+        {
+          "index": 6,
+          "expected": {
+            "action": "click",
+            "id": "save"
+          },
+          "status": "passed",
+          "elapsedMs": 29
+        },
+        {
+          "index": 7,
+          "expected": {
+            "action": "visible",
+            "id": "saved"
+          },
+          "status": "passed",
+          "elapsedMs": 1
+        },
+        {
+          "index": 8,
+          "expected": {
+            "action": "text",
+            "id": "saved",
+            "value": "Saved Inspect inventory (urgent)"
+          },
+          "status": "passed",
+          "actual": "Saved Inspect inventory (urgent)",
+          "elapsedMs": 1
+        },
+        {
+          "index": 9,
+          "expected": {
+            "action": "count",
+            "id": "item",
+            "count": 1
+          },
+          "status": "passed",
+          "actual": 1,
+          "elapsedMs": 0
+        },
+        {
+          "index": 10,
+          "expected": {
+            "action": "click",
+            "id": "reload"
+          },
+          "status": "passed",
+          "elapsedMs": 47
+        },
+        {
+          "index": 11,
+          "expected": {
+            "action": "text",
+            "id": "initial-state",
+            "value": "Restored from local storage: Inspect inventory (urgent). Session: kept. Cookie: true."
+          },
+          "status": "passed",
+          "actual": "Restored from local storage: Inspect inventory (urgent). Session: kept. Cookie: true.",
+          "elapsedMs": 9
+        },
+        {
+          "index": 12,
+          "expected": {
+            "action": "count",
+            "id": "item",
+            "count": 1
+          },
+          "status": "passed",
+          "actual": 1,
+          "elapsedMs": 7
+        },
+        {
+          "index": 13,
+          "expected": {
+            "action": "text",
+            "id": "item",
+            "value": "Inspect inventory (urgent)"
+          },
+          "status": "passed",
+          "actual": "Inspect inventory (urgent)",
+          "elapsedMs": 1
+        }
+      ],
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [
+        {
+          "type": "fetch",
+          "url": "https://benchmark-fixture.invalid/probe"
+        },
+        {
+          "type": "fetch",
+          "url": "https://benchmark-fixture.invalid/probe"
+        }
+      ],
+      "localHttpErrors": [],
+      "screenshot": {
+        "path": "scenario-01-write-and-restore-through-the-rendered-form.png",
+        "bytes": 27026,
+        "sha256": "f7567beb2dcf050522928339268d406f694c66088ed763e9bf8fa661e5c9f49a"
+      },
+      "unrunSteps": 0
+    },
+    {
+      "name": "Clean browser context and keyboard help",
+      "viewport": {
+        "width": 834,
+        "height": 1112
+      },
+      "captureRequested": true,
+      "status": "passed",
+      "steps": [
+        {
+          "index": 1,
+          "expected": {
+            "action": "text",
+            "id": "root",
+            "value": "Fixture notes"
+          },
+          "status": "passed",
+          "actual": "Fixture notes No saved note. Session: null. Cookie: false. Note Priority Ordinary Urgent Save note Reload saved state Show help",
+          "elapsedMs": 12
+        },
+        {
+          "index": 2,
+          "expected": {
+            "action": "text",
+            "id": "initial-state",
+            "value": "No saved note. Session: null. Cookie: false."
+          },
+          "status": "passed",
+          "actual": "No saved note. Session: null. Cookie: false.",
+          "elapsedMs": 1
+        },
+        {
+          "index": 3,
+          "expected": {
+            "action": "count",
+            "id": "item",
+            "count": 0
+          },
+          "status": "passed",
+          "actual": 0,
+          "elapsedMs": 11
+        },
+        {
+          "index": 4,
+          "expected": {
+            "action": "hidden",
+            "id": "help"
+          },
+          "status": "passed",
+          "elapsedMs": 1
+        },
+        {
+          "index": 5,
+          "expected": {
+            "action": "attribute",
+            "id": "toggle",
+            "name": "aria-expanded",
+            "value": "false"
+          },
+          "status": "passed",
+          "actual": "false",
+          "elapsedMs": 1
+        },
+        {
+          "index": 6,
+          "expected": {
+            "action": "press",
+            "id": "toggle",
+            "value": "Enter"
+          },
+          "status": "passed",
+          "elapsedMs": 2
+        },
+        {
+          "index": 7,
+          "expected": {
+            "action": "visible",
+            "id": "help"
+          },
+          "status": "passed",
+          "elapsedMs": 1
+        },
+        {
+          "index": 8,
+          "expected": {
+            "action": "attribute",
+            "id": "toggle",
+            "name": "aria-expanded",
+            "value": "true"
+          },
+          "status": "passed",
+          "actual": "true",
+          "elapsedMs": 1
+        }
+      ],
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [
+        {
+          "type": "fetch",
+          "url": "https://benchmark-fixture.invalid/probe"
+        }
+      ],
+      "localHttpErrors": [],
+      "screenshot": {
+        "path": "scenario-02-clean-browser-context-and-keyboard-help.png",
+        "bytes": 26818,
+        "sha256": "44362dc4ecea7bb808ca3a45f661812374a633bcd83c6b7583aeb16c14cb1d91"
+      },
+      "unrunSteps": 0
+    }
+  ],
+  "criticalFailures": [],
+  "runnerErrors": []
+}

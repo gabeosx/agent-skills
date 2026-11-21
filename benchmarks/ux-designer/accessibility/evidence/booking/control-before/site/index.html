@@ -1,0 +1,867 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Studio bookings · Bridgeglass Community Radio</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #182b25;
+      --muted: #53645c;
+      --canvas: #f3f5ef;
+      --surface: #fffefa;
+      --line: #dce3d9;
+      --accent: #245b49;
+      --focus: #166757;
+      --confirmed-fill: #e0eee6;
+      --confirmed-line: #5b957e;
+      --tentative-fill: #fcf1d9;
+      --tentative-line: #b18336;
+      --tentative-ink: #754d15;
+      --axis-width: 84px;
+      --timeline-height: clamp(440px, calc(100svh - 359px), 560px);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 16px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    [hidden] { display: none !important; }
+    body { margin: 0; background: var(--canvas); color: var(--ink); }
+    h1, h2, p, dl, dd { margin: 0; }
+    button, select { font: inherit; color: inherit; }
+    button { cursor: pointer; }
+    :focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
+
+    .frame { width: min(1232px, calc(100% - 96px)); margin-inline: auto; }
+
+    .masthead {
+      background: #182e27;
+      color: #f1f6ec;
+      border-bottom: 1px solid #122721;
+    }
+    .station {
+      min-height: 65px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 15px;
+      font-weight: 650;
+      letter-spacing: .005em;
+    }
+    .station-mark {
+      width: 32px;
+      height: 32px;
+      border: 1px solid #61776a;
+      border-radius: 8px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 2px;
+      color: #cbe6b5;
+      background: #253e32;
+    }
+    .station-mark i {
+      width: 2px;
+      height: 10px;
+      background: currentColor;
+      border-radius: 2px;
+    }
+    .station-mark i:nth-child(2), .station-mark i:nth-child(4) { height: 15px; }
+    .station-mark i:nth-child(3) { height: 21px; }
+
+    main { padding-block: 32px 24px; }
+    .heading {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: end;
+    }
+    h1 {
+      font-size: clamp(2.15rem, 4.3vw, 3.25rem);
+      line-height: 1.03;
+      font-weight: 700;
+      letter-spacing: -.044em;
+    }
+    .schedule-hours {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding-bottom: 4px;
+      color: var(--muted);
+      font-size: .81rem;
+      white-space: nowrap;
+      font-variant-numeric: tabular-nums;
+    }
+    .clock {
+      flex: none;
+      position: relative;
+      width: 14px;
+      height: 14px;
+      border: 1.4px solid currentColor;
+      border-radius: 50%;
+    }
+    .clock::after {
+      content: "";
+      position: absolute;
+      width: 4px;
+      height: 5px;
+      top: 2px;
+      left: 5px;
+      border-left: 1px solid currentColor;
+      border-bottom: 1px solid currentColor;
+    }
+    .controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-block: 24px 14px;
+    }
+    .day-strip {
+      display: inline-flex;
+      gap: 3px;
+      padding: 3px;
+      border: 1px solid #dbe2d8;
+      border-radius: 9px;
+      background: #e8ede5;
+    }
+    .day, .filter {
+      border: 1px solid transparent;
+      border-radius: 6px;
+      min-height: 39px;
+      padding: 7px 15px;
+      white-space: nowrap;
+      font-size: .875rem;
+      font-weight: 620;
+      line-height: 1.2;
+    }
+    .day { background: transparent; color: #42564c; }
+    .day:hover { background: #f3f6ef; }
+    .day[aria-pressed="true"] {
+      background: var(--surface);
+      color: var(--accent);
+      border-color: #d4ded2;
+      box-shadow: 0 1px 2px #182e2710;
+    }
+    .filter {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 44px;
+      border-color: #d1dbd0;
+      border-radius: 8px;
+      background: var(--surface);
+    }
+    .filter:hover, .filter[aria-pressed="true"] { background: #e0eee6; border-color: #7da693; }
+    .filter-check {
+      width: 14px;
+      height: 14px;
+      border: 1.4px solid #60746a;
+      border-radius: 4px;
+      position: relative;
+      flex: none;
+    }
+    .filter[aria-pressed="true"] .filter-check { background: var(--accent); border-color: var(--accent); }
+    .filter[aria-pressed="true"] .filter-check::after {
+      content: "";
+      width: 7px;
+      height: 4px;
+      position: absolute;
+      left: 2px;
+      top: 3px;
+      border: solid #fff;
+      border-width: 0 0 1.5px 1.5px;
+      transform: rotate(-45deg);
+    }
+
+    .workspace {
+      display: grid;
+      align-items: start;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 16px;
+    }
+    .schedule {
+      min-width: 0;
+      border: 1px solid #d5dfd5;
+      border-radius: 13px;
+      background: var(--surface);
+      box-shadow: 0 2px 4px #1f392a08;
+    }
+    .grid-header {
+      display: grid;
+      grid-template-columns: var(--axis-width) repeat(3, minmax(0, 1fr));
+      min-height: 54px;
+      position: sticky;
+      top: 0;
+      z-index: 2;
+      background: #edf1e9;
+      border-radius: 12px 12px 0 0;
+      border-bottom: 1px solid #d5dfd5;
+    }
+    .grid-header > span {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 15px;
+      border-left: 1px solid var(--line);
+      font-size: .94rem;
+      font-weight: 670;
+      white-space: nowrap;
+    }
+    .grid-header .time-label {
+      border-left: 0;
+      color: var(--muted);
+      font-size: .75rem;
+      font-weight: 570;
+      padding-left: 15px;
+    }
+    .room-mark {
+      flex: none;
+      width: 5px;
+      height: 5px;
+      border: 1px solid #577163;
+      border-radius: 50%;
+    }
+    .timeline {
+      display: grid;
+      grid-template-columns: var(--axis-width) minmax(0, 1fr);
+      padding-bottom: 20px;
+    }
+    .axis, .slots { height: var(--timeline-height); position: relative; min-width: 0; }
+    .axis {
+      background: #fafbf6;
+      color: #52665b;
+      border-right: 1px solid var(--line);
+      box-shadow: 0 20px #fafbf6;
+      border-bottom-left-radius: 11px;
+    }
+    .axis span {
+      position: absolute;
+      top: var(--at);
+      left: 15px;
+      transform: translateY(-50%);
+      font-size: .75rem;
+      font-weight: 600;
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+    }
+    .axis span:first-child { transform: translateY(7px); }
+    .grid-lines, .cards {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .grid-lines {
+      background-image: repeating-linear-gradient(to bottom, transparent 0 calc(100% / 16 - 1px), #edf0e9 calc(100% / 16 - 1px) calc(100% / 16));
+    }
+    .grid-lines i { border-right: 1px solid var(--line); }
+    .grid-lines i:last-of-type { border-right: 0; }
+    .grid-lines b {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: var(--at);
+      border-top: 1px solid var(--line);
+    }
+    .booking-wrap {
+      position: absolute;
+      grid-column: var(--column) / span 1;
+      top: calc(var(--start) + 3px);
+      height: calc(var(--duration) - 6px);
+      inset-inline: 7px;
+      min-width: 0;
+    }
+    .booking {
+      height: 100%;
+      width: 100%;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      grid-template-areas: "title title" "time status";
+      align-content: start;
+      align-items: baseline;
+      column-gap: 4px;
+      row-gap: 3px;
+      padding: 7px 9px 6px;
+      text-align: left;
+      background: var(--confirmed-fill);
+      color: #1d4133;
+      border: 1px solid #bad4c5;
+      border-left: 3px solid var(--confirmed-line);
+      border-radius: 5px;
+      transition: background-color .12s, border-color .12s;
+    }
+    .booking.is-tentative {
+      background: var(--tentative-fill);
+      border-color: #dfc995;
+      border-left-color: var(--tentative-line);
+      color: #523b1d;
+    }
+    .booking:hover { background: #d0e6da; }
+    .booking.is-tentative:hover { background: #f8e8c5; }
+    .booking[aria-expanded="true"] { box-shadow: inset 0 0 0 1px #42745e; }
+    .booking.is-tentative[aria-expanded="true"] { box-shadow: inset 0 0 0 1px #9a7334; }
+    .booking:focus-visible { outline-offset: 0; }
+    .booking-title {
+      grid-area: title;
+      font-size: .875rem;
+      line-height: 1.2;
+      font-weight: 680;
+    }
+    .booking-time {
+      grid-area: time;
+      font-variant-numeric: tabular-nums;
+      font-size: .745rem;
+      line-height: 1.2;
+      white-space: nowrap;
+    }
+    .booking-room { grid-area: room; display: none; }
+    .booking-status {
+      grid-area: status;
+      display: none;
+      justify-self: end;
+      color: #265c47;
+      font-size: .6875rem;
+      font-weight: 650;
+      line-height: 1;
+      white-space: nowrap;
+    }
+    .booking.is-tentative .booking-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      color: var(--tentative-ink);
+    }
+    .booking-status::before {
+      content: "";
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: currentColor;
+    }
+    .is-tentative .booking-status::before {
+      background: transparent;
+      border: 1px solid currentColor;
+    }
+    .schedule-note {
+      display: flex;
+      gap: 17px;
+      align-items: center;
+      margin-top: 13px;
+      color: var(--muted);
+      font-size: .77rem;
+    }
+    .count { margin-right: auto; }
+    .legend { display: inline-flex; align-items: center; gap: 7px; }
+    .legend-swatch {
+      width: 10px;
+      height: 10px;
+      border-radius: 2px;
+      border: 1px solid var(--confirmed-line);
+      background: var(--confirmed-fill);
+    }
+    .legend-swatch.tentative { border-color: var(--tentative-line); background: var(--tentative-fill); }
+    .empty {
+      position: absolute;
+      top: 20px;
+      left: 12px;
+      right: 12px;
+      padding: 12px 15px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      color: var(--muted);
+      font-size: .875rem;
+    }
+
+    .details {
+      width: 100%;
+      max-height: calc(100svh - 36px);
+      overflow: auto;
+      padding: 21px;
+      border: 1px solid #cbd9cb;
+      border-radius: 13px;
+      background: var(--surface);
+      box-shadow: 0 4px 12px #1734270e;
+      scrollbar-width: thin;
+    }
+    .details-head {
+      display: flex;
+      align-items: start;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 19px;
+    }
+    .details h2 {
+      font-size: 1.5rem;
+      line-height: 1.13;
+      font-weight: 690;
+      letter-spacing: -.027em;
+      align-self: center;
+    }
+    .close {
+      flex: none;
+      position: relative;
+      width: 34px;
+      height: 34px;
+      background: #f3f6ef;
+      border-radius: 6px;
+      border: 1px solid var(--line);
+    }
+    .close::before, .close::after {
+      content: "";
+      position: absolute;
+      top: 15px;
+      left: 9px;
+      width: 14px;
+      height: 1.5px;
+      border-radius: 2px;
+      background: currentColor;
+      transform: rotate(45deg);
+    }
+    .close::after { transform: rotate(-45deg); }
+    .close:hover, .secondary:hover { background: #e6ede4; border-color: #bccfbe; }
+    .detail-fields { display: grid; gap: 11px; margin-bottom: 19px; }
+    .detail-fields > div { display: grid; grid-template-columns: 65px minmax(0, 1fr); align-items: baseline; gap: 8px; }
+    .detail-fields dt { font-size: .8125rem; color: var(--muted); }
+    .detail-fields dd { font-size: .875rem; font-weight: 600; font-variant-numeric: tabular-nums; }
+    .detail-status {
+      display: inline-block;
+      border-radius: 4px;
+      background: var(--confirmed-fill);
+      color: #265c47;
+      padding: 3px 6px;
+      font-size: .75rem;
+    }
+    .detail-status.is-tentative { background: var(--tentative-fill); color: var(--tentative-ink); }
+    .details-actions, .move-form { border-top: 1px solid var(--line); padding-top: 16px; }
+    .primary, .secondary {
+      min-height: 40px;
+      padding: 8px 12px;
+      border: 1px solid transparent;
+      border-radius: 6px;
+      font-size: .875rem;
+      font-weight: 660;
+    }
+    .primary { background: var(--accent); color: #fff; }
+    .primary:hover { background: #184b3a; }
+    .secondary { background: var(--surface); border-color: #d1dbd0; }
+    .move-form label {
+      display: block;
+      margin-bottom: 6px;
+      font-size: .84rem;
+      font-weight: 650;
+    }
+    .move-form select {
+      width: 100%;
+      min-height: 40px;
+      padding: 7px 8px;
+      border: 1px solid #a8bbae;
+      border-radius: 6px;
+      background: #fff;
+      font-size: .875rem;
+    }
+    .move-form select[aria-invalid="true"] { border-color: #a54c30; }
+    .form-actions { display: flex; gap: 8px; margin-top: 14px; }
+    .message {
+      padding: 8px 10px;
+      border-radius: 5px;
+      font-size: .81rem;
+      line-height: 1.4;
+    }
+    .message:empty { margin: 0; padding: 0; }
+    .conflict { margin-top: 8px; background: #fae9de; color: #7c3321; }
+    .success { margin-bottom: 15px; background: var(--confirmed-fill); color: #245641; }
+
+    @media (min-width: 1080px) {
+      .workspace:has(.details:not([hidden])) { grid-template-columns: minmax(0, 1fr) 309px; }
+      .details { position: sticky; top: 10px; }
+    }
+
+    @media (max-width: 1079px) {
+      .frame { width: calc(100% - 56px); }
+      .details {
+        position: fixed;
+        z-index: 4;
+        right: 28px;
+        top: 210px;
+        width: min(344px, calc(100% - 56px));
+        max-height: calc(100svh - 226px);
+        box-shadow: 0 10px 35px #17342730, 0 1px 5px #17342715;
+      }
+    }
+
+    @media (min-width: 651px) and (max-width: 760px) {
+      :root { --axis-width: 67px; }
+      .frame { width: calc(100% - 36px); }
+      .booking-wrap { inset-inline: 4px; }
+      .booking { padding-inline: 6px; }
+      .booking-status { font-size: .625rem; gap: 3px; }
+      .booking-time { font-size: .68rem; }
+    }
+
+    @media (min-width: 651px) and (max-height: 760px) {
+      :root { --timeline-height: clamp(430px, calc(100svh - 283px), 560px); }
+      .station { min-height: 56px; }
+      main { padding-top: 23px; }
+      h1 { font-size: clamp(2.15rem, 4.3vw, 2.75rem); }
+      .controls { margin-block: 16px 10px; }
+      .grid-header { min-height: 47px; }
+    }
+
+    @media (max-width: 650px) {
+      .frame { width: calc(100% - 32px); }
+      .station { min-height: 55px; font-size: .875rem; }
+      .station-mark { width: 28px; height: 28px; }
+      main { padding-block: 25px 20px; }
+      .heading { align-items: start; flex-direction: column; gap: 9px; }
+      h1 { font-size: 2.35rem; }
+      .schedule-hours { padding-bottom: 0; }
+      .controls { margin-block: 18px 14px; gap: 7px; }
+      .day, .filter { min-height: 44px; }
+      .day { padding-inline: 8px; }
+      .filter { padding-inline: 9px; gap: 6px; }
+      .day-strip { padding: 2px; gap: 1px; }
+      .workspace { display: block; }
+      .schedule { border: 0; background: transparent; box-shadow: none; }
+      .grid-header, .axis, .grid-lines { display: none; }
+      .timeline { display: block; padding-bottom: 0; }
+      .slots { height: auto; }
+      .cards { position: static; display: grid; grid-template-columns: minmax(0, 1fr); gap: 8px; }
+      .booking-wrap { grid-column: auto; position: static; height: auto; }
+      .booking {
+        grid-template-areas: "room status" "title time";
+        gap: 6px 10px;
+        padding: 11px 12px;
+        border-radius: 8px;
+      }
+      .booking-title { font-size: 1rem; }
+      .booking-time { justify-self: end; font-size: .81rem; }
+      .booking-room { display: block; font-size: .75rem; font-weight: 620; line-height: 1.2; }
+      .booking-status { display: inline-flex; align-items: center; gap: 5px; font-size: .75rem; }
+      .schedule-note { margin-top: 10px; }
+      .legend { display: none; }
+      .empty { position: static; }
+      .details {
+        top: auto;
+        bottom: max(10px, env(safe-area-inset-bottom));
+        right: 10px;
+        width: calc(100% - 20px);
+        max-height: min(72svh, calc(100svh - 20px));
+        padding: 16px;
+      }
+      .details-head, .detail-fields { margin-bottom: 13px; }
+      .detail-fields { gap: 8px; }
+      .close, .primary, .secondary, .move-form select { min-height: 44px; }
+      .close { width: 44px; }
+      .close::before, .close::after { top: 20px; left: 14px; }
+    }
+
+    @media (max-width: 365px) {
+      .frame { width: calc(100% - 24px); }
+      .day, .filter { font-size: .75rem; }
+    }
+  </style>
+</head>
+<body>
+  <header class="masthead">
+    <div class="station frame">
+      <span class="station-mark" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
+      <span>Bridgeglass Community Radio</span>
+    </div>
+  </header>
+
+  <main class="frame">
+    <div class="heading">
+      <h1>Studio bookings</h1>
+      <p class="schedule-hours"><span class="clock" aria-hidden="true"></span>9:00 AM–1:00 PM <span aria-hidden="true">·</span> Local time</p>
+    </div>
+
+    <div class="controls">
+      <div class="day-strip" role="group" aria-label="Schedule date">
+        <button type="button" class="day" data-testid="day-tue" data-day="tue" aria-pressed="true">Tue, Nov 24</button>
+        <button type="button" class="day" data-testid="day-wed" data-day="wed" aria-pressed="false">Wed, Nov 25</button>
+      </div>
+      <button type="button" class="filter" data-testid="tentative-only" aria-pressed="false">
+        <span class="filter-check" aria-hidden="true"></span>Tentative only
+      </button>
+    </div>
+
+    <div class="workspace">
+      <section class="schedule" aria-label="Studio schedule for Tuesday, November 24">
+        <div class="grid-header" aria-hidden="true">
+          <span class="time-label">TIME</span>
+          <span><i class="room-mark"></i>Studio A</span>
+          <span><i class="room-mark"></i>Studio B</span>
+          <span><i class="room-mark"></i>Edit Booth</span>
+        </div>
+        <div class="timeline">
+          <div class="axis" aria-hidden="true">
+            <span style="--at:0%">9:00 AM</span>
+            <span style="--at:25%">10:00 AM</span>
+            <span style="--at:50%">11:00 AM</span>
+            <span style="--at:75%">12:00 PM</span>
+            <span style="--at:100%">1:00 PM</span>
+          </div>
+          <div class="slots">
+            <div class="grid-lines" aria-hidden="true">
+              <i></i><i></i><i></i>
+              <b style="--at:25%"></b><b style="--at:50%"></b><b style="--at:75%"></b><b style="--at:100%"></b>
+            </div>
+            <div class="cards"></div>
+            <p class="empty" hidden>No tentative bookings for this day.</p>
+          </div>
+        </div>
+      </section>
+
+      <aside class="details" id="booking-details" data-testid="booking-details" role="region" aria-labelledby="details-title" hidden>
+        <div class="details-head">
+          <h2 id="details-title"></h2>
+          <button type="button" class="close" data-testid="close-details" aria-label="Close details"></button>
+        </div>
+        <dl class="detail-fields">
+          <div><dt>Room</dt><dd id="details-room"></dd></div>
+          <div><dt>Time</dt><dd id="details-time"></dd></div>
+          <div><dt>Host</dt><dd id="details-host"></dd></div>
+          <div><dt>Status</dt><dd><span class="detail-status" id="details-status"></span></dd></div>
+        </dl>
+        <p class="message success" data-testid="move-success" role="status"></p>
+        <div class="details-actions">
+          <button type="button" class="primary" data-testid="move-booking">Move booking</button>
+        </div>
+        <form class="move-form" data-testid="move-form" hidden>
+          <label for="destination-room">Destination room</label>
+          <select id="destination-room" data-testid="destination-room">
+            <option value="studio-a">Studio A</option>
+            <option value="studio-b">Studio B</option>
+            <option value="edit-booth">Edit Booth</option>
+          </select>
+          <p class="message conflict" id="move-conflict" data-testid="move-conflict" role="alert"></p>
+          <div class="form-actions">
+            <button type="submit" class="primary" data-testid="save-move">Save move</button>
+            <button type="button" class="secondary" data-testid="cancel-move">Cancel</button>
+          </div>
+        </form>
+      </aside>
+    </div>
+
+    <div class="schedule-note">
+      <span class="count" role="status"></span>
+      <span class="legend"><i class="legend-swatch" aria-hidden="true"></i>Confirmed</span>
+      <span class="legend"><i class="legend-swatch tentative" aria-hidden="true"></i>Tentative</span>
+    </div>
+  </main>
+
+  <script>
+    const rooms = new Map([
+      ['studio-a', 'Studio A'],
+      ['studio-b', 'Studio B'],
+      ['edit-booth', 'Edit Booth']
+    ]);
+    const roomOrder = [...rooms.keys()];
+    const dates = {
+      tue: 'Tuesday, November 24',
+      wed: 'Wednesday, November 25'
+    };
+    const bookings = [
+      ['tue', 'studio-a', 540, 585, 'Morning Mix', 'Leah Srivastava', 'Confirmed'],
+      ['tue', 'studio-a', 600, 660, 'Signal Check', 'Mara Ortiz', 'Confirmed'],
+      ['tue', 'studio-a', 690, 750, 'Midday Rotation', 'Minh Tran', 'Confirmed'],
+      ['tue', 'studio-b', 540, 600, 'Field Notes', 'Jonah Reed', 'Tentative'],
+      ['tue', 'studio-b', 630, 675, 'Studio Coaching', 'Elin Fischer', 'Confirmed'],
+      ['tue', 'studio-b', 720, 765, 'Volunteer Orientation', 'Eli Okafor', 'Tentative'],
+      ['tue', 'edit-booth', 570, 600, 'Tape Transfer', 'Robin Hale', 'Confirmed'],
+      ['tue', 'edit-booth', 660, 705, 'Promo Edit', 'Dalia Chen', 'Confirmed'],
+      ['wed', 'studio-a', 555, 615, 'Interview Pickup', 'Nina Flores', 'Confirmed'],
+      ['wed', 'studio-b', 600, 660, 'Show Prep', 'Samir Patel', 'Tentative'],
+      ['wed', 'edit-booth', 690, 750, 'Archive Cleanup', 'Robin Hale', 'Confirmed']
+    ].map(([day, room, start, end, title, host, status]) => ({
+      id: title.toLowerCase().replaceAll(' ', '-'), day, room, start, end, title, host, status
+    }));
+
+    const hook = (id) => document.querySelector('[data-testid="' + id + '"]');
+    const schedule = document.querySelector('.schedule');
+    const cards = document.querySelector('.cards');
+    const empty = document.querySelector('.empty');
+    const count = document.querySelector('.count');
+    const dayButtons = document.querySelectorAll('.day');
+    const filter = hook('tentative-only');
+    const details = hook('booking-details');
+    const close = hook('close-details');
+    const move = hook('move-booking');
+    const moveActions = document.querySelector('.details-actions');
+    const moveForm = hook('move-form');
+    const destination = hook('destination-room');
+    const conflict = hook('move-conflict');
+    const success = hook('move-success');
+    let day = 'tue';
+    let tentativeOnly = false;
+    let selected = null;
+
+    function timeText(start, end) {
+      const period = (minute) => minute < 720 ? 'AM' : 'PM';
+      const digits = (minute) => {
+        const hour = Math.floor(minute / 60) % 12 || 12;
+        return hour + ':' + String(minute % 60).padStart(2, '0');
+      };
+      const startPeriod = period(start) === period(end) ? '' : ' ' + period(start);
+      return digits(start) + startPeriod + '–' + digits(end) + ' ' + period(end);
+    }
+
+    function bookingCard(booking) {
+      const wrapper = document.createElement('div');
+      wrapper.className = 'booking-wrap';
+      wrapper.dataset.testid = 'booking';
+      wrapper.style.setProperty('--column', roomOrder.indexOf(booking.room) + 1);
+      wrapper.style.setProperty('--start', (booking.start - 540) / 240 * 100 + '%');
+      wrapper.style.setProperty('--duration', (booking.end - booking.start) / 240 * 100 + '%');
+
+      const card = document.createElement('button');
+      card.type = 'button';
+      card.classList.add('booking');
+      card.classList.toggle('is-tentative', booking.status === 'Tentative');
+      card.dataset.testid = 'booking-' + booking.id;
+      card.setAttribute('aria-controls', 'booking-details');
+      card.setAttribute('aria-expanded', String(selected === booking));
+      const time = timeText(booking.start, booking.end);
+      card.setAttribute('aria-label', [booking.title, rooms.get(booking.room), time, booking.status].join(', '));
+      for (const [field, value] of Object.entries({
+        room: rooms.get(booking.room), title: booking.title, time, status: booking.status
+      })) {
+        const text = document.createElement('span');
+        text.className = 'booking-' + field;
+        text.textContent = value;
+        card.append(text);
+      }
+      card.addEventListener('click', () => openDetails(booking));
+      wrapper.append(card);
+      return wrapper;
+    }
+
+    function renderSchedule() {
+      const visible = bookings.filter((booking) => booking.day === day &&
+        (!tentativeOnly || booking.status === 'Tentative'));
+      visible.sort((first, second) => first.start - second.start ||
+        roomOrder.indexOf(first.room) - roomOrder.indexOf(second.room));
+      cards.replaceChildren(...visible.map(bookingCard));
+      empty.hidden = visible.length !== 0;
+      const qualifier = tentativeOnly ? 'tentative ' : '';
+      count.textContent = visible.length + ' ' + qualifier + (visible.length === 1 ? 'booking' : 'bookings');
+      schedule.setAttribute('aria-label', 'Studio schedule for ' + dates[day]);
+      for (const button of dayButtons) {
+        button.setAttribute('aria-pressed', String(button.dataset.day === day));
+      }
+      filter.setAttribute('aria-pressed', String(tentativeOnly));
+    }
+
+    function syncSelection() {
+      for (const card of cards.querySelectorAll('.booking')) {
+        card.setAttribute('aria-expanded', String(card.dataset.testid === 'booking-' + selected?.id));
+      }
+    }
+
+    function renderDetails(booking) {
+      document.getElementById('details-title').textContent = booking.title;
+      document.getElementById('details-room').textContent = rooms.get(booking.room);
+      document.getElementById('details-time').textContent = timeText(booking.start, booking.end);
+      document.getElementById('details-host').textContent = booking.host;
+      const status = document.getElementById('details-status');
+      status.textContent = booking.status;
+      status.classList.toggle('is-tentative', booking.status === 'Tentative');
+    }
+
+    function clearConflict() {
+      conflict.textContent = '';
+      destination.removeAttribute('aria-invalid');
+      destination.removeAttribute('aria-describedby');
+    }
+
+    function endMove() {
+      moveForm.hidden = true;
+      moveActions.hidden = false;
+      clearConflict();
+    }
+
+    function openDetails(booking) {
+      selected = booking;
+      endMove();
+      success.textContent = '';
+      renderDetails(booking);
+      details.hidden = false;
+      syncSelection();
+      close.focus();
+    }
+
+    function closeDetails(restoreFocus = false) {
+      const previous = selected;
+      selected = null;
+      details.hidden = true;
+      endMove();
+      success.textContent = '';
+      syncSelection();
+      if (restoreFocus && previous) hook('booking-' + previous.id)?.focus();
+    }
+
+    for (const button of dayButtons) {
+      button.addEventListener('click', () => {
+        if (day === button.dataset.day) return;
+        day = button.dataset.day;
+        closeDetails();
+        renderSchedule();
+      });
+    }
+    filter.addEventListener('click', () => {
+      tentativeOnly = !tentativeOnly;
+      if (tentativeOnly && selected?.status === 'Confirmed') closeDetails();
+      renderSchedule();
+    });
+    close.addEventListener('click', () => closeDetails(true));
+    move.addEventListener('click', () => {
+      success.textContent = '';
+      destination.value = selected.room;
+      moveActions.hidden = true;
+      moveForm.hidden = false;
+      destination.focus();
+    });
+    hook('cancel-move').addEventListener('click', () => {
+      endMove();
+      move.focus();
+    });
+    destination.addEventListener('change', clearConflict);
+    moveForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const room = destination.value;
+      const overlap = bookings.find((booking) => booking !== selected &&
+        booking.day === day && booking.room === room &&
+        booking.start < selected.end && selected.start < booking.end);
+      if (overlap) {
+        conflict.textContent = 'Overlaps ' + overlap.title + ' in ' + rooms.get(room) + '.';
+        destination.setAttribute('aria-invalid', 'true');
+        destination.setAttribute('aria-describedby', 'move-conflict');
+        destination.focus();
+        return;
+      }
+      if (selected.room !== room) {
+        selected.room = room;
+        renderSchedule();
+        renderDetails(selected);
+        success.textContent = 'Booking moved to ' + rooms.get(room) + '.';
+      }
+      endMove();
+      move.focus();
+    });
+    document.addEventListener('keydown', (event) => {
+      if (event.key !== 'Escape' || details.hidden || event.defaultPrevented) return;
+      if (!moveForm.hidden && moveForm.contains(document.activeElement)) {
+        endMove();
+        move.focus();
+      } else {
+        closeDetails(true);
+      }
+    });
+
+    renderSchedule();
+  </script>
+</body>
+</html>

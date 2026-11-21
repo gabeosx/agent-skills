@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Margin overview | BrightCart</title>
+  <link rel="stylesheet" href="design-system-core.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="shell">
+    <aside class="rail" aria-label="BrightCart workspace">
+      <a href="./" class="brand"><span class="brand-icon" aria-hidden="true"><i></i><i></i><i></i></span>BrightCart</a>
+      <nav aria-label="Workspace"><a class="current" href="#main" aria-current="page"><span class="grid-icon" aria-hidden="true"></span> Overview</a></nav>
+      <div class="rail-caption">Commercial<br>intelligence</div>
+    </aside>
+    <main id="main" class="workspace">
+      <header class="heading">
+        <div>
+          <p class="context"><span></span> Pricing workspace</p>
+          <h1>Margin overview</h1>
+          <p class="subtitle">Track sales and stockouts, and see which departments need a closer look.</p>
+        </div>
+        <div class="select-group">
+          <label for="period">Reporting period</label>
+          <div class="select-wrap"><select id="period" data-testid="period"><option value="30">Last 30 days</option><option value="7">Last 7 days</option></select></div>
+        </div>
+      </header>
+      <section class="metrics" aria-label="Key metrics" aria-live="polite" aria-atomic="true">
+        <div class="metric">
+          <p>Sales</p>
+          <strong data-testid="revenue">$1.28M</strong>
+        </div>
+        <div class="metric standout">
+          <p>Gross margin</p>
+          <strong data-testid="margin">24.8%</strong>
+        </div>
+        <div class="metric">
+          <p>Stockout rate</p>
+          <strong id="stockout">3.1%</strong>
+        </div>
+      </section>
+      <section class="panel trend" aria-labelledby="trend-title">
+        <div class="panel-heading">
+          <div><h2 id="trend-title">Gross margin trend</h2><p id="trend-description">Weekly gross margin · oldest to latest</p></div>
+          <div class="change" id="change"><strong aria-hidden="true">↘</strong><span>Down 2.7 pp</span></div>
+        </div>
+        <figure>
+          <canvas id="chart" aria-hidden="true"></canvas>
+          <figcaption class="chart-footer">
+            <p class="chart-key"><span class="key-dot"></span><span>Latest week <strong>22.4%</strong></span></p>
+            <details>
+              <summary>Weekly values</summary>
+              <ol aria-label="Weekly gross margin, oldest to latest">
+                <li>Week 1 <strong>25.1%</strong></li><li>Week 2 <strong>26.0%</strong></li><li>Week 3 <strong>25.7%</strong></li><li>Week 4 <strong>24.9%</strong></li><li>Week 5 <strong>24.3%</strong></li><li>Week 6 <strong>23.8%</strong></li><li>Latest week <strong>22.4%</strong></li>
+              </ol>
+            </details>
+          </figcaption>
+        </figure>
+      </section>
+      <section class="panel departments" aria-labelledby="department-title">
+        <header class="panel-heading">
+          <div><h2 id="department-title">Departments</h2><p id="row-count" aria-live="polite">4 departments</p></div>
+          <div class="select-group status-select">
+            <label for="status">Status</label>
+            <div class="select-wrap"><select id="status" data-testid="status"><option value="all">All statuses</option><option value="investigate">Investigate</option></select></div>
+          </div>
+        </header>
+        <table aria-label="Department sales, margin and latest status">
+          <thead><tr><th scope="col">Department</th><th scope="col">Sales</th><th scope="col">Margin</th><th scope="col">7-day status</th></tr></thead>
+          <tbody data-testid="rows"></tbody>
+        </table>
+      </section>
+    </main>
+  </div>
+
+  <dialog data-testid="detail" aria-labelledby="detail-title">
+    <div class="detail-inner">
+      <p class="context"><span></span> Department detail</p>
+      <h2 id="detail-title">Produce</h2>
+      <p class="detail-period" id="detail-period">Last 30 days</p>
+      <div class="detail-stat"><span>Gross margin</span><strong id="detail-margin">20.2%</strong></div>
+      <div class="detail-topic"><h3>Supplier costs</h3><p>Review recent supplier invoices alongside selling prices to see where costs may be reducing Produce margins.</p></div>
+      <button class="back" type="button" data-testid="detail-close" autofocus><span aria-hidden="true">←</span> Back to overview</button>
+    </div>
+  </dialog>
+</body>
+</html>

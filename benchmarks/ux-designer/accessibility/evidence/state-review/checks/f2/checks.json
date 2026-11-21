@@ -1,0 +1,176 @@
+{
+  "scenarios": [
+    {
+      "name": "Desktop registrar approves installation without a note",
+      "width": 1440,
+      "steps": [
+        {
+          "action": "visible",
+          "id": "loan-option-approve"
+        },
+        {
+          "action": "visible",
+          "id": "loan-option-update"
+        },
+        {
+          "action": "visible",
+          "id": "loan-option-hold"
+        },
+        {
+          "action": "text",
+          "id": "loan-current-choice",
+          "value": "Approve installation"
+        },
+        {
+          "action": "hidden",
+          "id": "loan-confirmation"
+        },
+        {
+          "action": "click",
+          "id": "loan-record-decision"
+        },
+        {
+          "action": "text",
+          "id": "loan-confirmation",
+          "value": "Installation approved"
+        },
+        {
+          "action": "hidden",
+          "id": "loan-recorded-note"
+        }
+      ],
+      "capture": true
+    },
+    {
+      "name": "Tablet registrar supplies the required condition note",
+      "width": 834,
+      "steps": [
+        {
+          "action": "press",
+          "id": "loan-option-update",
+          "value": "Space"
+        },
+        {
+          "action": "text",
+          "id": "loan-current-choice",
+          "value": "Request a condition update"
+        },
+        {
+          "action": "click",
+          "id": "loan-record-decision"
+        },
+        {
+          "action": "text",
+          "id": "loan-note-error",
+          "value": "Enter a registrar note to record this decision."
+        },
+        {
+          "action": "hidden",
+          "id": "loan-confirmation"
+        },
+        {
+          "action": "fill",
+          "id": "loan-registrar-note",
+          "value": "Request the final reading from the lender."
+        },
+        {
+          "action": "click",
+          "id": "loan-record-decision"
+        },
+        {
+          "action": "text",
+          "id": "loan-confirmation",
+          "value": "Condition update requested"
+        },
+        {
+          "action": "text",
+          "id": "loan-recorded-note",
+          "value": "Request the final reading from the lender."
+        },
+        {
+          "action": "hidden",
+          "id": "loan-note-error"
+        }
+      ],
+      "capture": true
+    },
+    {
+      "name": "Mobile registrar switches options and records a hold",
+      "width": 390,
+      "steps": [
+        {
+          "action": "click",
+          "id": "loan-option-update"
+        },
+        {
+          "action": "text",
+          "id": "loan-current-choice",
+          "value": "Request a condition update"
+        },
+        {
+          "action": "click",
+          "id": "loan-option-hold"
+        },
+        {
+          "action": "text",
+          "id": "loan-current-choice",
+          "value": "Place loan on hold"
+        },
+        {
+          "action": "hidden",
+          "id": "loan-confirmation"
+        },
+        {
+          "action": "fill",
+          "id": "loan-registrar-note",
+          "value": "Keep the crate sealed until a supervisor reviews the log."
+        },
+        {
+          "action": "click",
+          "id": "loan-record-decision"
+        },
+        {
+          "action": "text",
+          "id": "loan-confirmation",
+          "value": "Loan placed on hold"
+        },
+        {
+          "action": "text",
+          "id": "loan-recorded-note",
+          "value": "Keep the crate sealed until a supervisor reviews the log."
+        }
+      ],
+      "capture": true
+    },
+    {
+      "name": "Required note validation remains visible",
+      "width": 834,
+      "capture": true,
+      "steps": [
+        {
+          "action": "press",
+          "id": "loan-option-update",
+          "value": "Space"
+        },
+        {
+          "action": "text",
+          "id": "loan-current-choice",
+          "value": "Request a condition update"
+        },
+        {
+          "action": "click",
+          "id": "loan-record-decision"
+        },
+        {
+          "action": "text",
+          "id": "loan-note-error",
+          "value": "Enter a registrar note to record this decision."
+        },
+        {
+          "action": "hidden",
+          "id": "loan-confirmation"
+        }
+      ]
+    }
+  ]
+}

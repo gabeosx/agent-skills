@@ -1,0 +1,42 @@
+{
+  "set": "confirmation",
+  "trial_arm": "candidate",
+  "comparator": "baseline",
+  "random_seed": 322412424559774556205454607178883518754,
+  "tasks": {
+    "f1": {
+      "baseline": "ui-fc5a2c",
+      "candidate": "ui-746c9a"
+    },
+    "f2": {
+      "baseline": "ui-ad9dd9",
+      "candidate": "ui-fac496"
+    }
+  },
+  "review_order": {
+    "f1": {
+      "outputs_in_review_order": [
+        "ui-fc5a2c",
+        "ui-746c9a"
+      ],
+      "pairs": [
+        [
+          "ui-fc5a2c",
+          "ui-746c9a"
+        ]
+      ]
+    },
+    "f2": {
+      "outputs_in_review_order": [
+        "ui-ad9dd9",
+        "ui-fac496"
+      ],
+      "pairs": [
+        [
+          "ui-ad9dd9",
+          "ui-fac496"
+        ]
+      ]
+    }
+  }
+}

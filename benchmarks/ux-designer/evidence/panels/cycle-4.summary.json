@@ -1,0 +1,431 @@
+{
+  "set": "development",
+  "candidate": "cycle-4",
+  "tasks": {
+    "d1": {
+      "cycle-4": {
+        "total": 88,
+        "blockers": [],
+        "browser": {
+          "status": "passed",
+          "elapsed_seconds": 2.79,
+          "accessibility": [],
+          "functional": [],
+          "failed_scenarios": [],
+          "critical_failures": []
+        }
+      },
+      "cycle-2": {
+        "total": 86,
+        "blockers": [],
+        "browser": {
+          "status": "passed",
+          "elapsed_seconds": 2.32,
+          "accessibility": [],
+          "functional": [],
+          "failed_scenarios": [],
+          "critical_failures": []
+        }
+      },
+      "baseline": {
+        "total": 84,
+        "blockers": [],
+        "browser": {
+          "status": "passed",
+          "elapsed_seconds": 3.96,
+          "accessibility": [],
+          "functional": [],
+          "failed_scenarios": [],
+          "critical_failures": []
+        }
+      }
+    },
+    "d2": {
+      "cycle-2": {
+        "total": 88,
+        "blockers": [],
+        "browser": {
+          "status": "passed",
+          "elapsed_seconds": 2.22,
+          "accessibility": [],
+          "functional": [],
+          "failed_scenarios": [],
+          "critical_failures": []
+        }
+      },
+      "baseline": {
+        "total": 83,
+        "blockers": [],
+        "browser": {
+          "status": "passed",
+          "elapsed_seconds": 2.73,
+          "accessibility": [],
+          "functional": [],
+          "failed_scenarios": [],
+          "critical_failures": []
+        }
+      },
+      "cycle-4": {
+        "total": 91,
+        "blockers": [],
+        "browser": {
+          "status": "passed",
+          "elapsed_seconds": 2.65,
+          "accessibility": [],
+          "functional": [],
+          "failed_scenarios": [],
+          "critical_failures": []
+        }
+      }
+    },
+    "d3": {
+      "baseline": {
+        "total": 80,
+        "blockers": [],
+        "browser": {
+          "status": "passed",
+          "elapsed_seconds": 2.83,
+          "accessibility": [],
+          "functional": [],
+          "failed_scenarios": [],
+          "critical_failures": []
+        }
+      },
+      "cycle-4": {
+        "total": 85,
+        "blockers": [],
+        "browser": {
+          "status": "passed",
+          "elapsed_seconds": 3.45,
+          "accessibility": [],
+          "functional": [],
+          "failed_scenarios": [],
+          "critical_failures": []
+        }
+      },
+      "cycle-2": {
+        "total": 92,
+        "blockers": [],
+        "browser": {
+          "status": "passed",
+          "elapsed_seconds": 1.89,
+          "accessibility": [],
+          "functional": [],
+          "failed_scenarios": [],
+          "critical_failures": []
+        }
+      }
+    },
+    "d4": {
+      "cycle-4": {
+        "total": 86,
+        "blockers": [],
+        "browser": {
+          "status": "passed",
+          "elapsed_seconds": 2.15,
+          "accessibility": [],
+          "functional": [],
+          "failed_scenarios": [],
+          "critical_failures": []
+        }
+      },
+      "baseline": {
+        "total": 85,
+        "blockers": [],
+        "browser": {
+          "status": "passed",
+          "elapsed_seconds": 2.92,
+          "accessibility": [],
+          "functional": [],
+          "failed_scenarios": [],
+          "critical_failures": []
+        }
+      },
+      "cycle-2": {
+        "total": 89,
+        "blockers": [],
+        "browser": {
+          "status": "passed",
+          "elapsed_seconds": 1.75,
+          "accessibility": [],
+          "functional": [],
+          "failed_scenarios": [],
+          "critical_failures": []
+        }
+      }
+    },
+    "d5": {
+      "cycle-4": {
+        "total": 90,
+        "blockers": [],
+        "browser": {
+          "status": "passed",
+          "elapsed_seconds": 1.63,
+          "accessibility": [],
+          "functional": [],
+          "failed_scenarios": [],
+          "critical_failures": []
+        }
+      },
+      "baseline": {
+        "total": 84,
+        "blockers": [],
+        "browser": {
+          "status": "passed",
+          "elapsed_seconds": 2.05,
+          "accessibility": [],
+          "functional": [],
+          "failed_scenarios": [],
+          "critical_failures": []
+        }
+      },
+      "cycle-2": {
+        "total": 89,
+        "blockers": [],
+        "browser": {
+          "status": "passed",
+          "elapsed_seconds": 2.77,
+          "accessibility": [],
+          "functional": [],
+          "failed_scenarios": [],
+          "critical_failures": []
+        }
+      }
+    },
+    "d6": {
+      "cycle-2": {
+        "total": 91,
+        "blockers": [],
+        "browser": {
+          "status": "passed",
+          "elapsed_seconds": 2.01,
+          "accessibility": [],
+          "functional": [],
+          "failed_scenarios": [],
+          "critical_failures": []
+        }
+      },
+      "baseline": {
+        "total": 83,
+        "blockers": [],
+        "browser": {
+          "status": "passed",
+          "elapsed_seconds": 2.01,
+          "accessibility": [],
+          "functional": [],
+          "failed_scenarios": [],
+          "critical_failures": []
+        }
+      },
+      "cycle-4": {
+        "total": 90,
+        "blockers": [],
+        "browser": {
+          "status": "passed",
+          "elapsed_seconds": 1.64,
+          "accessibility": [],
+          "functional": [],
+          "failed_scenarios": [],
+          "critical_failures": []
+        }
+      }
+    }
+  },
+  "against": {
+    "cycle-2": {
+      "candidate": {
+        "n": 6,
+        "mean": 88.33,
+        "median": 89.0,
+        "dimensions": {
+          "A": 18,
+          "B": 13.17,
+          "C": 17.67,
+          "D": 17.67,
+          "E": 13.5,
+          "F": 8.33
+        }
+      },
+      "opponent": {
+        "n": 6,
+        "mean": 89.17,
+        "median": 89.0,
+        "dimensions": {
+          "A": 17.83,
+          "B": 13.5,
+          "C": 17.83,
+          "D": 18,
+          "E": 13.67,
+          "F": 8.33
+        }
+      },
+      "browser_status": {
+        "cycle-4": {
+          "passed": 6
+        },
+        "cycle-2": {
+          "passed": 6
+        }
+      },
+      "functional_regressions": [],
+      "accessibility_regressions": [],
+      "new_grader_blocker_tasks": [],
+      "preference": {
+        "win": 3,
+        "loss": 3,
+        "tie": 0,
+        "missing": 0
+      },
+      "mean_delta": -0.83,
+      "dimension_deltas": {
+        "A": 0.17,
+        "B": -0.33,
+        "C": -0.17,
+        "D": -0.33,
+        "E": -0.17,
+        "F": 0
+      },
+      "by_task": {
+        "d1": {
+          "preference": "win",
+          "confidence": "medium",
+          "delta": 2
+        },
+        "d2": {
+          "preference": "win",
+          "confidence": "medium",
+          "delta": 3
+        },
+        "d3": {
+          "preference": "loss",
+          "confidence": "medium",
+          "delta": -7
+        },
+        "d4": {
+          "preference": "loss",
+          "confidence": "medium",
+          "delta": -3
+        },
+        "d5": {
+          "preference": "win",
+          "confidence": "medium",
+          "delta": 1
+        },
+        "d6": {
+          "preference": "loss",
+          "confidence": "low",
+          "delta": -1
+        }
+      }
+    },
+    "baseline": {
+      "candidate": {
+        "n": 6,
+        "mean": 88.33,
+        "median": 89.0,
+        "dimensions": {
+          "A": 18,
+          "B": 13.17,
+          "C": 17.67,
+          "D": 17.67,
+          "E": 13.5,
+          "F": 8.33
+        }
+      },
+      "opponent": {
+        "n": 6,
+        "mean": 83.17,
+        "median": 83.5,
+        "dimensions": {
+          "A": 16.5,
+          "B": 13,
+          "C": 16.17,
+          "D": 16.33,
+          "E": 13.17,
+          "F": 8
+        }
+      },
+      "browser_status": {
+        "cycle-4": {
+          "passed": 6
+        },
+        "baseline": {
+          "passed": 6
+        }
+      },
+      "functional_regressions": [],
+      "accessibility_regressions": [],
+      "new_grader_blocker_tasks": [],
+      "preference": {
+        "win": 6,
+        "loss": 0,
+        "tie": 0,
+        "missing": 0
+      },
+      "mean_delta": 5.17,
+      "dimension_deltas": {
+        "A": 1.5,
+        "B": 0.17,
+        "C": 1.5,
+        "D": 1.33,
+        "E": 0.33,
+        "F": 0.33
+      },
+      "by_task": {
+        "d1": {
+          "preference": "win",
+          "confidence": "high",
+          "delta": 4
+        },
+        "d2": {
+          "preference": "win",
+          "confidence": "high",
+          "delta": 8
+        },
+        "d3": {
+          "preference": "win",
+          "confidence": "medium",
+          "delta": 5
+        },
+        "d4": {
+          "preference": "win",
+          "confidence": "medium",
+          "delta": 1
+        },
+        "d5": {
+          "preference": "win",
+          "confidence": "medium",
+          "delta": 6
+        },
+        "d6": {
+          "preference": "win",
+          "confidence": "medium",
+          "delta": 7
+        }
+      }
+    }
+  },
+  "actor_timing": {
+    "cycle-4": {
+      "num_actor_groups": 3,
+      "mean_seconds_per_group": 470.7,
+      "total_actor_seconds": 1412,
+      "usage": null,
+      "charge": null
+    },
+    "cycle-2": {
+      "num_actor_groups": 3,
+      "mean_seconds_per_group": 405.3,
+      "total_actor_seconds": 1216,
+      "usage": null,
+      "charge": null
+    },
+    "baseline": {
+      "num_actor_groups": 3,
+      "mean_seconds_per_group": 421.7,
+      "total_actor_seconds": 1265,
+      "usage": null,
+      "charge": null
+    }
+  }
+}

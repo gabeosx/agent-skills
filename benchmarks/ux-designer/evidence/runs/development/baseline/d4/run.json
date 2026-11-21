@@ -1,0 +1,21 @@
+{
+  "actor": "2bc0",
+  "model": "inherited Codex",
+  "started": "2026-11-21T18:36:01+00:00",
+  "actor_collected_at": "2026-11-21T18:42:55+00:00",
+  "attempt": 1,
+  "brief": "briefs/d4/brief.md",
+  "brief_sha256": "a3080a3f9747777f7139b68553609ec37c19a609c345de68f511567aa5655717",
+  "checks_sha256": "6e147ab3ae41cea81de050e2d5bce5e17d33e3896566979453757be0297a7df0",
+  "starter_files": {},
+  "skill_sha256": "ad92dafd139c78ea3b87e186b5a787186f291e6a0e2c846d555a021432f3e4be",
+  "source": {
+    "app.js": "ddab1587f56dc33fe94a9be06282c8ffa52f7be41d1882412b25d5de9ee47065",
+    "design-system-core.css": "2e1dc47164205b5aef1af967821ea7bcacb53e9b8ae556f6b20662c20544f188",
+    "index.html": "25401986521f4d4294dd5633ef8fbc38773e37eb205975b1dbbe25ce5869420d",
+    "style.css": "8be037b92660b10c2581898ef8564e7258d6d5441e8a3e3e98b3a46eddef0336"
+  },
+  "actor_result": "Both complete. Agent reports Playwright interaction and horizontal-overflow checks at 1440, 834 and 390 CSS px and visual inspection including narrow email error.",
+  "usage": null,
+  "charge": null
+}

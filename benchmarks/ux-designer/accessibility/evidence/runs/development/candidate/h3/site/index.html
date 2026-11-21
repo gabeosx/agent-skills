@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#183b33">
+  <title>Studio bookings · Bridgeglass Community Radio</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="schedule.js" defer></script>
+</head>
+<body>
+  <header class="masthead">
+    <div class="page-width masthead-inner">
+      <div class="station">
+        <span class="station-mark" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
+        <span>Bridgeglass <span class="station-description">Community Radio</span></span>
+      </div>
+      <span class="time-zone">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5v5l3 1.75"/></svg>
+        All times local
+      </span>
+    </div>
+  </header>
+
+  <main class="page-width main">
+    <div class="page-title">
+      <p class="month">November 2026</p>
+      <h1>Studio bookings</h1>
+    </div>
+
+    <div class="schedule-controls">
+      <div class="dates" role="group" aria-label="Schedule date">
+        <button type="button" data-testid="day-tue" data-day="tue" aria-pressed="true">Tue, Nov 24</button>
+        <button type="button" data-testid="day-wed" data-day="wed" aria-pressed="false">Wed, Nov 25</button>
+      </div>
+      <button class="filter" type="button" data-testid="tentative-only" aria-pressed="false">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16l-6.1 7.1V19l-3.8-1.8v-4.1L4 6Z"/></svg>
+        Tentative only
+      </button>
+    </div>
+
+    <div class="workspace">
+      <section class="schedule" aria-labelledby="schedule-date">
+        <div class="schedule-topline">
+          <div class="schedule-heading">
+            <h2 id="schedule-date"></h2>
+            <span class="booking-count" role="status"></span>
+          </div>
+          <div class="legend" aria-label="Booking status legend">
+            <span><i aria-hidden="true"></i>Confirmed</span>
+            <span><i aria-hidden="true"></i>Tentative</span>
+          </div>
+        </div>
+        <div class="room-headings">
+          <span>Time</span>
+          <span>Studio A</span>
+          <span>Studio B</span>
+          <span>Edit Booth</span>
+        </div>
+        <div class="schedule-body">
+          <div class="hour-axis" aria-hidden="true"></div>
+          <div class="timeline">
+            <div class="grid-lines" aria-hidden="true"></div>
+            <ul class="booking-list" aria-label="Bookings"></ul>
+            <p class="empty-state" hidden>No bookings match this filter.</p>
+          </div>
+        </div>
+      </section>
+
+      <aside class="details" id="selected-booking" data-testid="booking-details" aria-labelledby="booking-title" hidden>
+        <div class="details-header">
+          <h2 id="booking-title"></h2>
+          <button type="button" class="close-details" data-testid="close-details" aria-label="Close booking details">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg>
+          </button>
+        </div>
+        <dl class="booking-fields">
+          <div><dt>Room</dt><dd id="booking-room"></dd></div>
+          <div><dt>Time</dt><dd id="booking-time"></dd></div>
+          <div><dt>Host</dt><dd id="booking-host"></dd></div>
+          <div><dt>Status</dt><dd><span class="status-pill" id="booking-status"></span></dd></div>
+        </dl>
+        <p class="move-success" data-testid="move-success" role="status" hidden></p>
+        <button type="button" class="action" data-testid="move-booking">Move booking</button>
+        <form class="move-form" data-testid="move-form" hidden>
+          <label for="destination-room">Destination room</label>
+          <select id="destination-room" data-testid="destination-room">
+            <option value="studio-a">Studio A</option>
+            <option value="studio-b">Studio B</option>
+            <option value="edit-booth">Edit Booth</option>
+          </select>
+          <p class="move-conflict" id="move-conflict" data-testid="move-conflict" role="alert" hidden></p>
+          <div class="form-actions">
+            <button type="submit" class="action" data-testid="save-move">Save move</button>
+            <button type="button" class="secondary-action" data-testid="cancel-move">Cancel</button>
+          </div>
+        </form>
+      </aside>
+    </div>
+  </main>
+</body>
+</html>

@@ -1,0 +1,173 @@
+{
+  "browser": "159.0.8154.6",
+  "hookSha256": "a776843ee87547b788e5bf5be3c7c944f76182a2e9950275f5e85cf1e3db543c",
+  "method": "Playwright role/name match with the complete visible button text as an ordered substring, ignoring case and collapsed whitespace",
+  "viewports": [
+    {
+      "width": 1440,
+      "height": 1000,
+      "pass": false,
+      "controls": [
+        {
+          "hook": "booking-morning-mix",
+          "visibleLabel": "Morning Mix 9:00–9:45 AM",
+          "pass": false,
+          "ariaSnapshot": "- button \"Morning Mix, Studio A, 9:00–9:45 AM, Confirmed\": Morning Mix 9:00–9:45 AM"
+        },
+        {
+          "hook": "booking-field-notes",
+          "visibleLabel": "Field Notes 9:00–10:00 AM Tentative",
+          "pass": false,
+          "ariaSnapshot": "- button \"Field Notes, Studio B, 9:00–10:00 AM, Tentative\": Field Notes 9:00–10:00 AM Tentative"
+        },
+        {
+          "hook": "booking-tape-transfer",
+          "visibleLabel": "Tape Transfer 9:30–10:00 AM",
+          "pass": false,
+          "ariaSnapshot": "- button \"Tape Transfer, Edit Booth, 9:30–10:00 AM, Confirmed\": Tape Transfer 9:30–10:00 AM"
+        },
+        {
+          "hook": "booking-signal-check",
+          "visibleLabel": "Signal Check 10:00–11:00 AM",
+          "pass": false,
+          "ariaSnapshot": "- button \"Signal Check, Studio A, 10:00–11:00 AM, Confirmed\": Signal Check 10:00–11:00 AM"
+        },
+        {
+          "hook": "booking-studio-coaching",
+          "visibleLabel": "Studio Coaching 10:30–11:15 AM",
+          "pass": false,
+          "ariaSnapshot": "- button \"Studio Coaching, Studio B, 10:30–11:15 AM, Confirmed\": Studio Coaching 10:30–11:15 AM"
+        },
+        {
+          "hook": "booking-promo-edit",
+          "visibleLabel": "Promo Edit 11:00–11:45 AM",
+          "pass": false,
+          "ariaSnapshot": "- button \"Promo Edit, Edit Booth, 11:00–11:45 AM, Confirmed\": Promo Edit 11:00–11:45 AM"
+        },
+        {
+          "hook": "booking-midday-rotation",
+          "visibleLabel": "Midday Rotation 11:30 AM–12:30 PM",
+          "pass": false,
+          "ariaSnapshot": "- button \"Midday Rotation, Studio A, 11:30 AM–12:30 PM, Confirmed\": Midday Rotation 11:30 AM–12:30 PM"
+        },
+        {
+          "hook": "booking-volunteer-orientation",
+          "visibleLabel": "Volunteer Orientation 12:00–12:45 PM Tentative",
+          "pass": false,
+          "ariaSnapshot": "- button \"Volunteer Orientation, Studio B, 12:00–12:45 PM, Tentative\": Volunteer Orientation 12:00–12:45 PM Tentative"
+        }
+      ]
+    },
+    {
+      "width": 834,
+      "height": 1112,
+      "pass": false,
+      "controls": [
+        {
+          "hook": "booking-morning-mix",
+          "visibleLabel": "Morning Mix 9:00–9:45 AM",
+          "pass": false,
+          "ariaSnapshot": "- button \"Morning Mix, Studio A, 9:00–9:45 AM, Confirmed\": Morning Mix 9:00–9:45 AM"
+        },
+        {
+          "hook": "booking-field-notes",
+          "visibleLabel": "Field Notes 9:00–10:00 AM Tentative",
+          "pass": false,
+          "ariaSnapshot": "- button \"Field Notes, Studio B, 9:00–10:00 AM, Tentative\": Field Notes 9:00–10:00 AM Tentative"
+        },
+        {
+          "hook": "booking-tape-transfer",
+          "visibleLabel": "Tape Transfer 9:30–10:00 AM",
+          "pass": false,
+          "ariaSnapshot": "- button \"Tape Transfer, Edit Booth, 9:30–10:00 AM, Confirmed\": Tape Transfer 9:30–10:00 AM"
+        },
+        {
+          "hook": "booking-signal-check",
+          "visibleLabel": "Signal Check 10:00–11:00 AM",
+          "pass": false,
+          "ariaSnapshot": "- button \"Signal Check, Studio A, 10:00–11:00 AM, Confirmed\": Signal Check 10:00–11:00 AM"
+        },
+        {
+          "hook": "booking-studio-coaching",
+          "visibleLabel": "Studio Coaching 10:30–11:15 AM",
+          "pass": false,
+          "ariaSnapshot": "- button \"Studio Coaching, Studio B, 10:30–11:15 AM, Confirmed\": Studio Coaching 10:30–11:15 AM"
+        },
+        {
+          "hook": "booking-promo-edit",
+          "visibleLabel": "Promo Edit 11:00–11:45 AM",
+          "pass": false,
+          "ariaSnapshot": "- button \"Promo Edit, Edit Booth, 11:00–11:45 AM, Confirmed\": Promo Edit 11:00–11:45 AM"
+        },
+        {
+          "hook": "booking-midday-rotation",
+          "visibleLabel": "Midday Rotation 11:30 AM–12:30 PM",
+          "pass": false,
+          "ariaSnapshot": "- button \"Midday Rotation, Studio A, 11:30 AM–12:30 PM, Confirmed\": Midday Rotation 11:30 AM–12:30 PM"
+        },
+        {
+          "hook": "booking-volunteer-orientation",
+          "visibleLabel": "Volunteer Orientation 12:00–12:45 PM Tentative",
+          "pass": false,
+          "ariaSnapshot": "- button \"Volunteer Orientation, Studio B, 12:00–12:45 PM, Tentative\": Volunteer Orientation 12:00–12:45 PM Tentative"
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "pass": false,
+      "controls": [
+        {
+          "hook": "booking-morning-mix",
+          "visibleLabel": "Studio A Morning Mix 9:00–9:45 AM Confirmed",
+          "pass": false,
+          "ariaSnapshot": "- button \"Morning Mix, Studio A, 9:00–9:45 AM, Confirmed\": Studio A Morning Mix 9:00–9:45 AM Confirmed"
+        },
+        {
+          "hook": "booking-field-notes",
+          "visibleLabel": "Studio B Field Notes 9:00–10:00 AM Tentative",
+          "pass": false,
+          "ariaSnapshot": "- button \"Field Notes, Studio B, 9:00–10:00 AM, Tentative\": Studio B Field Notes 9:00–10:00 AM Tentative"
+        },
+        {
+          "hook": "booking-tape-transfer",
+          "visibleLabel": "Edit Booth Tape Transfer 9:30–10:00 AM Confirmed",
+          "pass": false,
+          "ariaSnapshot": "- button \"Tape Transfer, Edit Booth, 9:30–10:00 AM, Confirmed\": Edit Booth Tape Transfer 9:30–10:00 AM Confirmed"
+        },
+        {
+          "hook": "booking-signal-check",
+          "visibleLabel": "Studio A Signal Check 10:00–11:00 AM Confirmed",
+          "pass": false,
+          "ariaSnapshot": "- button \"Signal Check, Studio A, 10:00–11:00 AM, Confirmed\": Studio A Signal Check 10:00–11:00 AM Confirmed"
+        },
+        {
+          "hook": "booking-studio-coaching",
+          "visibleLabel": "Studio B Studio Coaching 10:30–11:15 AM Confirmed",
+          "pass": false,
+          "ariaSnapshot": "- button \"Studio Coaching, Studio B, 10:30–11:15 AM, Confirmed\": Studio B Studio Coaching 10:30–11:15 AM Confirmed"
+        },
+        {
+          "hook": "booking-promo-edit",
+          "visibleLabel": "Edit Booth Promo Edit 11:00–11:45 AM Confirmed",
+          "pass": false,
+          "ariaSnapshot": "- button \"Promo Edit, Edit Booth, 11:00–11:45 AM, Confirmed\": Edit Booth Promo Edit 11:00–11:45 AM Confirmed"
+        },
+        {
+          "hook": "booking-midday-rotation",
+          "visibleLabel": "Studio A Midday Rotation 11:30 AM–12:30 PM Confirmed",
+          "pass": false,
+          "ariaSnapshot": "- button \"Midday Rotation, Studio A, 11:30 AM–12:30 PM, Confirmed\": Studio A Midday Rotation 11:30 AM–12:30 PM Confirmed"
+        },
+        {
+          "hook": "booking-volunteer-orientation",
+          "visibleLabel": "Studio B Volunteer Orientation 12:00–12:45 PM Tentative",
+          "pass": false,
+          "ariaSnapshot": "- button \"Volunteer Orientation, Studio B, 12:00–12:45 PM, Tentative\": Studio B Volunteer Orientation 12:00–12:45 PM Tentative"
+        }
+      ]
+    }
+  ],
+  "status": "failed"
+}

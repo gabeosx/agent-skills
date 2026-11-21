@@ -1,0 +1,566 @@
+{
+  "schemaVersion": 1,
+  "status": "failed",
+  "browser": {
+    "version": "159.0.8154.6",
+    "source": "playwright",
+    "executablePath": "/Users/gabe/Library/Caches/ms-playwright/chromium-1255/chrome-mac-arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing",
+    "headless": true,
+    "args": [
+      "--disable-quic",
+      "--force-webrtc-ip-handling-policy=disable_non_proxied_udp",
+      "--host-resolver-rules=MAP * ~NOTFOUND, EXCLUDE 127.0.0.1",
+      "--no-proxy-server"
+    ]
+  },
+  "config": {
+    "node": "v26.13.0",
+    "platform": "darwin",
+    "architecture": "arm64",
+    "playwright": "1.65.1",
+    "axe": "4.14.1",
+    "axeTags": [
+      "wcag2a",
+      "wcag2aa",
+      "wcag21a",
+      "wcag21aa",
+      "wcag22a",
+      "wcag22aa"
+    ],
+    "context": {
+      "colorScheme": "light",
+      "deviceScaleFactor": 1,
+      "locale": "en-US",
+      "reducedMotion": "reduce",
+      "serviceWorkers": "block",
+      "timezoneId": "UTC"
+    },
+    "viewports": {
+      "desktop": {
+        "width": 1440,
+        "height": 1000
+      },
+      "tablet": {
+        "width": 834,
+        "height": 1112
+      },
+      "mobile": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    "timeoutsMs": {
+      "navigation": 10000,
+      "step": 2500,
+      "capture": 10000,
+      "accessibility": 10000
+    },
+    "network": "localhost-static-origin-only"
+  },
+  "source": {
+    "checksSha256": "2d3e3a7bf8d4c07d4cbaa99aa9bd94c69c110e9a281197aa8847a7b76b8cb4f0",
+    "site": {
+      "sha256": "9b0bb180e16d0295a973443003e61bc8628b5f812c00f820d249b85393db363d",
+      "files": [
+        {
+          "path": "index.html",
+          "sha256": "9064edc373af1dd712a5bd97e7fc39278a52b97eda17c663a0bf7631c77a0134"
+        }
+      ]
+    },
+    "harness": {
+      "sha256": "6c881823017ece00658aa02b1817a074668453398b4905f0208e23ef5bcda8d1",
+      "files": [
+        {
+          "path": "capture.mjs",
+          "sha256": "92bc6c8b9c97e64bd0dbcc746c6505f0ed30e9ecaba15ba32a35d1348afaf77e"
+        },
+        {
+          "path": "package-lock.json",
+          "sha256": "9e166f03feded2ba877c95cbbb4bce6b15453e267c7bf4a69a384ec2a3e1fbc1"
+        },
+        {
+          "path": "package.json",
+          "sha256": "e53398841d514c8588ddfad5569cc1f7aed5d67a6f7b71f4ab05a70cfca4817b"
+        }
+      ]
+    }
+  },
+  "timing": {
+    "startedAt": "2026-11-21T18:37:54.968Z",
+    "completedAt": "2026-11-21T18:37:58.513Z",
+    "elapsedMs": 3545
+  },
+  "viewports": [
+    {
+      "name": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "status": "failed",
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "screenshot": {
+        "path": "desktop.png",
+        "bytes": 15705,
+        "sha256": "584f0ed3563c939bae7bfda10df313d59b8aa47bb000ccf91bb6a954d9d75934"
+      },
+      "layout": {
+        "clientWidth": 1440,
+        "scrollWidth": 1440,
+        "bodyScrollWidth": 1424,
+        "horizontalOverflow": false
+      },
+      "accessibility": {
+        "status": "violations",
+        "counts": {
+          "passes": 8,
+          "violations": 1,
+          "incomplete": 0,
+          "inapplicable": 55
+        },
+        "violations": [
+          {
+            "id": "button-name",
+            "impact": "critical",
+            "tags": [
+              "cat.name-role-value",
+              "wcag2a",
+              "wcag412",
+              "section508",
+              "section508.22.a",
+              "TTv5",
+              "TT6.a",
+              "EN-301-549",
+              "EN-9.4.1.2",
+              "ACT",
+              "RGAAv4",
+              "RGAA-11.9.1"
+            ],
+            "description": "Ensure buttons have discernible text",
+            "help": "Buttons must have discernible text",
+            "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/button-name?application=axeAPI",
+            "nodes": [
+              {
+                "any": [
+                  {
+                    "id": "button-has-visible-text",
+                    "data": null,
+                    "relatedNodes": [],
+                    "impact": "critical",
+                    "message": "Element does not have inner text that is visible to screen readers"
+                  },
+                  {
+                    "id": "aria-label",
+                    "data": null,
+                    "relatedNodes": [],
+                    "impact": "critical",
+                    "message": "aria-label attribute does not exist or is empty"
+                  },
+                  {
+                    "id": "aria-labelledby",
+                    "data": null,
+                    "relatedNodes": [],
+                    "impact": "critical",
+                    "message": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty"
+                  },
+                  {
+                    "id": "non-empty-title",
+                    "data": {
+                      "messageKey": "noAttr"
+                    },
+                    "relatedNodes": [],
+                    "impact": "critical",
+                    "message": "Element has no title attribute"
+                  },
+                  {
+                    "id": "implicit-label",
+                    "data": null,
+                    "relatedNodes": [],
+                    "impact": "critical",
+                    "message": "Element does not have an implicit (wrapped) <label>"
+                  },
+                  {
+                    "id": "explicit-label",
+                    "data": null,
+                    "relatedNodes": [],
+                    "impact": "critical",
+                    "message": "Element does not have an explicit <label>"
+                  },
+                  {
+                    "id": "presentational-role",
+                    "data": null,
+                    "relatedNodes": [],
+                    "impact": "critical",
+                    "message": "Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "critical",
+                "html": "<button data-testid=\"change\"></button>",
+                "target": [
+                  "button"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element does not have inner text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+              }
+            ]
+          }
+        ],
+        "incomplete": []
+      }
+    },
+    {
+      "name": "tablet",
+      "viewport": {
+        "width": 834,
+        "height": 1112
+      },
+      "status": "failed",
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "screenshot": {
+        "path": "tablet.png",
+        "bytes": 13882,
+        "sha256": "852e3622fdb726b2ec2f6425da2cef8ede772980ec94c72d91c2384e8085c64a"
+      },
+      "layout": {
+        "clientWidth": 834,
+        "scrollWidth": 1058,
+        "bodyScrollWidth": 1050,
+        "horizontalOverflow": true
+      },
+      "accessibility": {
+        "status": "violations",
+        "counts": {
+          "passes": 8,
+          "violations": 1,
+          "incomplete": 0,
+          "inapplicable": 55
+        },
+        "violations": [
+          {
+            "id": "button-name",
+            "impact": "critical",
+            "tags": [
+              "cat.name-role-value",
+              "wcag2a",
+              "wcag412",
+              "section508",
+              "section508.22.a",
+              "TTv5",
+              "TT6.a",
+              "EN-301-549",
+              "EN-9.4.1.2",
+              "ACT",
+              "RGAAv4",
+              "RGAA-11.9.1"
+            ],
+            "description": "Ensure buttons have discernible text",
+            "help": "Buttons must have discernible text",
+            "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/button-name?application=axeAPI",
+            "nodes": [
+              {
+                "any": [
+                  {
+                    "id": "button-has-visible-text",
+                    "data": null,
+                    "relatedNodes": [],
+                    "impact": "critical",
+                    "message": "Element does not have inner text that is visible to screen readers"
+                  },
+                  {
+                    "id": "aria-label",
+                    "data": null,
+                    "relatedNodes": [],
+                    "impact": "critical",
+                    "message": "aria-label attribute does not exist or is empty"
+                  },
+                  {
+                    "id": "aria-labelledby",
+                    "data": null,
+                    "relatedNodes": [],
+                    "impact": "critical",
+                    "message": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty"
+                  },
+                  {
+                    "id": "non-empty-title",
+                    "data": {
+                      "messageKey": "noAttr"
+                    },
+                    "relatedNodes": [],
+                    "impact": "critical",
+                    "message": "Element has no title attribute"
+                  },
+                  {
+                    "id": "implicit-label",
+                    "data": null,
+                    "relatedNodes": [],
+                    "impact": "critical",
+                    "message": "Element does not have an implicit (wrapped) <label>"
+                  },
+                  {
+                    "id": "explicit-label",
+                    "data": null,
+                    "relatedNodes": [],
+                    "impact": "critical",
+                    "message": "Element does not have an explicit <label>"
+                  },
+                  {
+                    "id": "presentational-role",
+                    "data": null,
+                    "relatedNodes": [],
+                    "impact": "critical",
+                    "message": "Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "critical",
+                "html": "<button data-testid=\"change\"></button>",
+                "target": [
+                  "button"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element does not have inner text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+              }
+            ]
+          }
+        ],
+        "incomplete": []
+      }
+    },
+    {
+      "name": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "status": "failed",
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "screenshot": {
+        "path": "mobile.png",
+        "bytes": 10948,
+        "sha256": "1541a876c42908d5e2e71c99f0c51072287d74e44c757ce476b6997fad4b3c38"
+      },
+      "layout": {
+        "clientWidth": 390,
+        "scrollWidth": 1058,
+        "bodyScrollWidth": 1050,
+        "horizontalOverflow": true
+      },
+      "accessibility": {
+        "status": "violations",
+        "counts": {
+          "passes": 8,
+          "violations": 1,
+          "incomplete": 0,
+          "inapplicable": 55
+        },
+        "violations": [
+          {
+            "id": "button-name",
+            "impact": "critical",
+            "tags": [
+              "cat.name-role-value",
+              "wcag2a",
+              "wcag412",
+              "section508",
+              "section508.22.a",
+              "TTv5",
+              "TT6.a",
+              "EN-301-549",
+              "EN-9.4.1.2",
+              "ACT",
+              "RGAAv4",
+              "RGAA-11.9.1"
+            ],
+            "description": "Ensure buttons have discernible text",
+            "help": "Buttons must have discernible text",
+            "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/button-name?application=axeAPI",
+            "nodes": [
+              {
+                "any": [
+                  {
+                    "id": "button-has-visible-text",
+                    "data": null,
+                    "relatedNodes": [],
+                    "impact": "critical",
+                    "message": "Element does not have inner text that is visible to screen readers"
+                  },
+                  {
+                    "id": "aria-label",
+                    "data": null,
+                    "relatedNodes": [],
+                    "impact": "critical",
+                    "message": "aria-label attribute does not exist or is empty"
+                  },
+                  {
+                    "id": "aria-labelledby",
+                    "data": null,
+                    "relatedNodes": [],
+                    "impact": "critical",
+                    "message": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty"
+                  },
+                  {
+                    "id": "non-empty-title",
+                    "data": {
+                      "messageKey": "noAttr"
+                    },
+                    "relatedNodes": [],
+                    "impact": "critical",
+                    "message": "Element has no title attribute"
+                  },
+                  {
+                    "id": "implicit-label",
+                    "data": null,
+                    "relatedNodes": [],
+                    "impact": "critical",
+                    "message": "Element does not have an implicit (wrapped) <label>"
+                  },
+                  {
+                    "id": "explicit-label",
+                    "data": null,
+                    "relatedNodes": [],
+                    "impact": "critical",
+                    "message": "Element does not have an explicit <label>"
+                  },
+                  {
+                    "id": "presentational-role",
+                    "data": null,
+                    "relatedNodes": [],
+                    "impact": "critical",
+                    "message": "Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "critical",
+                "html": "<button data-testid=\"change\"></button>",
+                "target": [
+                  "button"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element does not have inner text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+              }
+            ]
+          }
+        ],
+        "incomplete": []
+      }
+    }
+  ],
+  "scenarios": [
+    {
+      "name": "Detect false completion and retain screenshot",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "captureRequested": true,
+      "status": "failed",
+      "steps": [
+        {
+          "index": 1,
+          "expected": {
+            "action": "visible",
+            "id": "change"
+          },
+          "status": "passed",
+          "elapsedMs": 17
+        },
+        {
+          "index": 2,
+          "expected": {
+            "action": "click",
+            "id": "change"
+          },
+          "status": "passed",
+          "elapsedMs": 26
+        },
+        {
+          "index": 3,
+          "expected": {
+            "action": "text",
+            "id": "status",
+            "value": "Correct result"
+          },
+          "status": "failed",
+          "error": "Condition not met. Last observed value: \"Incorrect result\"",
+          "actual": "Incorrect result",
+          "elapsedMs": 2511
+        }
+      ],
+      "pageErrors": [
+        "Deliberate click failure"
+      ],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "screenshot": {
+        "path": "scenario-01-detect-false-completion-and-retain-screenshot.png",
+        "bytes": 10123,
+        "sha256": "3bd09e626fc1f176e897c240ee2a7621dc78a0ab1722218c40b2a99f35f4ba15"
+      },
+      "unrunSteps": 1
+    }
+  ],
+  "criticalFailures": [
+    {
+      "viewport": "desktop",
+      "kind": "accessibility",
+      "rule": "button-name",
+      "impact": "critical"
+    },
+    {
+      "viewport": "tablet",
+      "kind": "horizontal-overflow",
+      "layout": {
+        "clientWidth": 834,
+        "scrollWidth": 1058,
+        "bodyScrollWidth": 1050,
+        "horizontalOverflow": true
+      }
+    },
+    {
+      "viewport": "tablet",
+      "kind": "accessibility",
+      "rule": "button-name",
+      "impact": "critical"
+    },
+    {
+      "viewport": "mobile",
+      "kind": "horizontal-overflow",
+      "layout": {
+        "clientWidth": 390,
+        "scrollWidth": 1058,
+        "bodyScrollWidth": 1050,
+        "horizontalOverflow": true
+      }
+    },
+    {
+      "viewport": "mobile",
+      "kind": "accessibility",
+      "rule": "button-name",
+      "impact": "critical"
+    },
+    {
+      "scenario": "Detect false completion and retain screenshot",
+      "kind": "scenario-step",
+      "step": 3,
+      "error": "Condition not met. Last observed value: \"Incorrect result\""
+    },
+    {
+      "scenario": "Detect false completion and retain screenshot",
+      "kind": "page-error",
+      "error": "Deliberate click failure"
+    }
+  ],
+  "runnerErrors": []
+}

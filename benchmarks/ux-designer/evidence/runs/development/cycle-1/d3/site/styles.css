@@ -1,0 +1,147 @@
+:root {
+  color-scheme: light;
+  --canvas: #f4f3ec;
+  --surface: #fffefa;
+  --ink: #202a22;
+  --secondary: #4e5d50;
+  --green: #2b5139;
+  --line: #dce0d4;
+  --strong-line: #b8c4b5;
+  --table-head: #e5eae0;
+  --key-row: #eef2e9;
+  --focus: #386e44;
+  font-family: "Avenir Next", Avenir, system-ui, sans-serif;
+  font-size: 16px;
+  color: var(--ink);
+}
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--canvas); }
+button, input { font: inherit; }
+:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+.shell { width: min(1120px, calc(100% - 112px)); margin-inline: auto; }
+.masthead { border-bottom: 1px solid var(--line); background: var(--surface); }
+.masthead-inner { min-height: 70px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.brand { display: flex; align-items: center; gap: 11px; font-size: 1.0625rem; font-weight: 750; letter-spacing: -.03em; white-space: nowrap; }
+.brand-mark {
+  width: 32px;
+  height: 32px;
+  padding: 8px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 3px;
+  background: var(--green);
+  border-radius: 8px;
+}
+.brand-mark i { background: #d9e5cf; border-radius: 50%; }
+.brand-mark i:nth-child(2) { background: #9cbb94; }
+.practice { color: var(--secondary); font-weight: 650; font-size: .75rem; text-transform: uppercase; letter-spacing: .11em; }
+.intro { padding-block: 48px 31px; }
+h1, h2, p { margin: 0; }
+h1 { font-family: Georgia, serif; font-size: clamp(2.45rem, 4.4vw, 4rem); font-weight: 400; line-height: 1.07; letter-spacing: -.055em; }
+.intro p { color: var(--secondary); line-height: 1.6; margin-top: 12px; font-size: 1.0625rem; }
+
+.comparison {
+  background: var(--surface);
+  border: 1px solid var(--strong-line);
+  border-radius: 14px;
+  margin-bottom: 48px;
+  box-shadow: 0 2px 3px #273a2110, 0 9px 26px -21px #273a2159;
+}
+.toolbar { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px 24px; padding: 19px 24px; }
+.toolbar h2 { font-size: 1.1875rem; line-height: 1.28; font-weight: 730; letter-spacing: -.02em; }
+.count { font-size: .8125rem; color: var(--secondary); margin-top: 3px; }
+.toolbar-controls { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 22px; }
+.switch { display: inline-flex; gap: 8px; align-items: center; min-height: 44px; cursor: pointer; font-size: .875rem; font-weight: 650; white-space: nowrap; }
+.switch input {
+  appearance: none;
+  display: inline-grid;
+  align-items: center;
+  flex: 0 0 auto;
+  width: 34px;
+  height: 20px;
+  border: 1px solid #72806e;
+  border-radius: 20px;
+  background: #e4e8df;
+  margin: 0;
+  padding: 2px;
+  cursor: pointer;
+}
+.switch input::before {
+  content: "";
+  width: 14px;
+  height: 14px;
+  background: #60715e;
+  border-radius: 50%;
+}
+.switch input:checked { background: var(--green); border-color: var(--green); }
+.switch input:checked::before { justify-self: end; background: white; }
+.switch:hover span { color: var(--green); }
+.reset {
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+  min-height: 40px;
+  padding-inline: 11px;
+  border: 1px solid var(--strong-line);
+  border-radius: 7px;
+  background: var(--surface);
+  color: var(--green);
+  font-size: .875rem;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.reset:hover { background: var(--key-row); }
+.reset span { font-size: 1.24rem; line-height: 1; }
+
+.scroll-hint { display: none; font-size: .75rem; color: var(--secondary); }
+.table-region { overflow-x: auto; border-radius: 0 0 13px 13px; }
+.table-region:focus-visible { outline-offset: -3px; }
+table { width: 100%; min-width: 550px; border-collapse: separate; border-spacing: 0; table-layout: fixed; font-variant-numeric: tabular-nums; }
+[data-models="2"] table { min-width: 0; }
+th, td { border-top: 1px solid var(--line); }
+tr > :first-child { position: sticky; left: 0; z-index: 1; width: 29%; text-align: left; }
+tr > :nth-child(n+2) { border-left: 1px solid var(--line); }
+thead th { height: 70px; padding: 10px 24px; text-align: right; vertical-align: middle; color: #23382a; background: var(--table-head); border-top-color: var(--strong-line); border-left-color: #d0d9cc; }
+thead th:first-child { font-size: .75rem; text-transform: uppercase; letter-spacing: .09em; color: #435c48; }
+thead th:not(:first-child) { font-size: 1.1875rem; font-weight: 750; letter-spacing: -.025em; }
+tbody th, tbody td { height: 48px; padding: 9px 24px; text-align: right; font-size: .9375rem; line-height: 1.3; background: var(--surface); }
+tbody th { font-weight: 650; }
+tbody td { font-weight: 550; }
+.throughput th, .throughput td { background: var(--key-row); }
+.throughput th { box-shadow: inset 3px 0 var(--green); }
+.throughput td { color: #2f5038; font-weight: 750; }
+
+@media (max-width: 1023px) {
+  .shell { width: calc(100% - 64px); }
+}
+
+@media (max-width: 670px) {
+  .shell { width: calc(100% - 36px); }
+  .masthead-inner { min-height: 58px; }
+  .practice { font-size: .66rem; letter-spacing: .08em; }
+  .brand { font-size: 1rem; gap: 8px; }
+  .brand-mark { width: 28px; height: 28px; padding: 7px; }
+  .intro { padding-block: 30px 23px; }
+  h1 { letter-spacing: -.048em; }
+  .intro p { margin-top: 9px; font-size: .9375rem; line-height: 1.5; }
+  .toolbar { display: block; padding: 15px 13px 5px; }
+  .toolbar-controls { column-gap: 14px; margin-top: 8px; }
+  .switch, .reset { font-size: .8125rem; }
+  .reset { min-height: 36px; margin-bottom: 4px; }
+  table { min-width: 462px; }
+  thead th, tbody th, tbody td { padding-inline: 11px; }
+  thead th { height: 58px; }
+  thead th:not(:first-child) { font-size: 1rem; }
+  tbody th, tbody td { font-size: .875rem; }
+  tr > :first-child { width: 130px; }
+  [data-models="2"] tr > :first-child { width: 39%; }
+}
+@media (max-width: 499px) {
+  .scroll-hint:not([hidden]) { display: flex; padding: 5px 13px 8px; gap: 7px; align-items: baseline; }
+  .scroll-hint span { font-size: .9375rem; }
+  .table-region[data-models="3"] tr > :first-child { border-right: 1px solid #acb9aa; }
+  .table-region[data-models="3"] tr > :nth-child(2) { border-left: 0; }
+}

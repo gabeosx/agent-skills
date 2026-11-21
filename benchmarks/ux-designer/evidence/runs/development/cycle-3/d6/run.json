@@ -1,0 +1,18 @@
+{
+  "actor": "914c",
+  "model": "inherited Codex",
+  "started": "2026-11-21T19:11:26+00:00",
+  "actor_collected_at": "2026-11-21T19:19:21+00:00",
+  "attempt": 1,
+  "brief": "briefs/d6/brief.md",
+  "brief_sha256": "5e6b80e641aaf3b8e8b9e95b0171315231b834e71e6844b977fba63ce8d198f0",
+  "checks_sha256": "ce726855e121f16d1f2fec700ed998340cee916e535b3a4b6429c3b0234c1bae",
+  "starter_files": {},
+  "skill_sha256": "86ef09ed988210d523cb555fe9b722846d5a7990e103f8e31dcc39ef9908361b",
+  "source": {
+    "index.html": "1ed42ad9d7723dc31768f7f638900bf5812b3972fd50e785bf18ca19fb4e121b"
+  },
+  "actor_result": "Both complete. Agent reports final Chromium checks at all three widths, all dispatch acknowledgements and filter, anchors, six context panels, and mobile menu scroll preservation.",
+  "usage": null,
+  "charge": null
+}

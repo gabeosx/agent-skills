@@ -1,0 +1,48 @@
+{
+  "tasks": {
+    "f1": {
+      "outputs": {
+        "ui-fc5a2c": {
+          "observations": [
+            "At 1440 px, Cedar Depot replaces Alder Junction in the detail pane. The checkmark and leading stripe move to T-224, and the pane shows Fleet maintenance team and the door-sensor instruction. The green Ready to review badge blends into the selected green card more than it does on a white card, though the text stays readable.",
+            "The 834 px keyboard capture shows Alder Junction selected and focused. A clearly offset outline sits outside the card border, while the checkmark identifies selection.",
+            "At 390 px, Quay Loop becomes the sole detail, with Passenger information team on one line and the full destination-cycle instruction wrapped across three lines. The checked second card matches the visible report. The large detail banner pushes both handover fields below the initial 844 px viewport."
+          ],
+          "blockers": []
+        },
+        "ui-746c9a": {
+          "observations": [
+            "At 1440 px, the checkmark and leading stripe identify Cedar Depot, and the selected pane shows T-224, Fleet maintenance team and the correct door-sensor instruction. Ready to review remains distinct against the blue selection, and the action fits on one line in its inset.",
+            "The 834 px keyboard capture shows a clear offset blue focus ring around the selected Alder Junction card. The checkmark remains visible inside it and the handover text is readable.",
+            "At 390 px, the Quay Loop detail shows Passenger information team and the complete instruction in a two-line inset. The shorter banner places the next action higher on the page, though it still takes scrolling to reach from the initial viewport."
+          ],
+          "blockers": []
+        }
+      },
+      "pair_summary": "Both render the expected final selected report at every captured width. The tablet images show that keyboard focus remains visually distinguishable from selection when both are on Alder Junction. ui-746c9a presents the handover instruction more compactly, while ui-fc5a2c uses an empty circle on each unselected card to signal the interaction. The captures show final states and focus on a selected card. They do not isolate pointer hover, focus on an unselected card, or assistive-technology announcements."
+    },
+    "f2": {
+      "outputs": {
+        "ui-ad9dd9": {
+          "observations": [
+            "Desktop approval shows Installation approved in a pale-green banner directly below Record decision. The note field is blank, and the confirmation contains no note label or empty note row.",
+            "In the 834 px error capture, Request a condition update remains checked and appears as the current choice. Required is emphasized in red beside the label. The field has a blue focus ring and red border, with the exact error immediately below it. Record decision remains available and no confirmation is shown.",
+            "After correction on tablet, the error is gone and Condition update requested appears with a readable Recorded note label and the submitted text. The close spacing between the Follow-up labels and values is still visible above the review panel.",
+            "At 390 px, Place loan on hold remains checked and matches the current choice. The full-width button is followed by Loan placed on hold and the complete recorded note on two lines. The use of Recorded note helps distinguish the saved text from the still-filled editable field."
+          ],
+          "blockers": []
+        },
+        "ui-fac496": {
+          "observations": [
+            "Desktop approval shows Installation approved in a bordered green banner with a checkmark directly below Record decision. The confirmation omits a note row when the note is blank.",
+            "In the 834 px error capture, Request a condition update remains checked and appears as the current choice. The field remains visibly focused with a teal outline and a red inner border. Required for this decision sits by the field label, and the exact error is immediately below the textarea. The button remains available for retry and no confirmation is shown.",
+            "After correction on tablet, the error is gone and Condition update requested appears with a checkmark and the full submitted note. The narrower summary column wraps the current choice onto two lines while leaving the form and confirmation comfortably readable.",
+            "At 390 px, the hold selection and summary agree, and a bordered confirmation shows Loan placed on hold with a checkmark and the complete two-line note. The confirmation repeats the label Registrar note from the editable field, so the box and heading carry most of the distinction between the two copies."
+          ],
+          "blockers": []
+        }
+      },
+      "pair_summary": "Both show the expected confirmations, display only applicable notes, retain the selected disposition after an empty submission, and clear the error after correction. ui-ad9dd9 gives the required rule and error stronger typographic emphasis and labels the saved text Recorded note. ui-fac496 adds a checkmark to confirmations and spells out that the rule applies to the current decision. These captures cover tablet empty-note validation, desktop approval, tablet correction and mobile hold. They do not establish whitespace-only validation, decision-card hover or keyboard focus appearance, mobile error placement, or screen-reader announcements."
+    }
+  }
+}

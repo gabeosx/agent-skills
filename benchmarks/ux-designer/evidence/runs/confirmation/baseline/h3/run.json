@@ -1,0 +1,21 @@
+{
+  "actor": "03a5",
+  "model": "inherited Codex",
+  "started": "2026-11-21T19:38:46+00:00",
+  "actor_collected_at": "2026-11-21T19:45:30+00:00",
+  "attempt": 1,
+  "brief": "briefs/h3/brief.md",
+  "brief_sha256": "25eba75f88dafc8c19779dc55d47089aa49877912663e03b59dae5b381498aa5",
+  "checks_sha256": "3fa4e2841d5d1bb39d9a0256eca47436f3db8868e7b80f9d9d413b8ec1a84dea",
+  "starter_files": {},
+  "skill_sha256": "ad92dafd139c78ea3b87e186b5a787186f291e6a0e2c846d555a021432f3e4be",
+  "source": {
+    "design-system-core.css": "2e1dc47164205b5aef1af967821ea7bcacb53e9b8ae556f6b20662c20544f188",
+    "index.html": "7bf5c7799ed73089e576843dd94b22608a7d75ad4c10a395794db173f769989e",
+    "schedule.js": "f378efc0ab11ca1329f871895f1756ae9b78b06c5fe7cf7c0f6405534885cda5",
+    "style.css": "0d8bc73d44325711a7c31eed1c761781a95d3d58f4c4aa56fc435c0427584a6f"
+  },
+  "actor_result": "Complete. Agent reports Playwright checks for date, filter, details, conflict, cancel, valid boundary move, persistence, reset and keyboard at multiple widths.",
+  "usage": null,
+  "charge": null
+}

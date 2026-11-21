@@ -1,0 +1,42 @@
+{
+  "set": "development",
+  "trial_arm": "cycle-1",
+  "comparator": "baseline",
+  "random_seed": 143957706610241509633983312086604434804,
+  "tasks": {
+    "d1": {
+      "baseline": "ui-6fcc71",
+      "cycle-1": "ui-cc4c21"
+    },
+    "d2": {
+      "cycle-1": "ui-d3aee6",
+      "baseline": "ui-21c6d9"
+    }
+  },
+  "review_order": {
+    "d1": {
+      "outputs_in_review_order": [
+        "ui-6fcc71",
+        "ui-cc4c21"
+      ],
+      "pairs": [
+        [
+          "ui-cc4c21",
+          "ui-6fcc71"
+        ]
+      ]
+    },
+    "d2": {
+      "outputs_in_review_order": [
+        "ui-d3aee6",
+        "ui-21c6d9"
+      ],
+      "pairs": [
+        [
+          "ui-d3aee6",
+          "ui-21c6d9"
+        ]
+      ]
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "set": "confirmation",
+  "trial_arm": "cycle-2",
+  "comparator": "baseline",
+  "random_seed": 117382441085164132450461287978591063257,
+  "tasks": {
+    "h3": {
+      "baseline": "ui-d6a40a",
+      "cycle-2": "ui-8e858c"
+    }
+  },
+  "review_order": {
+    "h3": {
+      "outputs_in_review_order": [
+        "ui-d6a40a",
+        "ui-8e858c"
+      ],
+      "pairs": [
+        [
+          "ui-8e858c",
+          "ui-d6a40a"
+        ]
+      ]
+    }
+  }
+}

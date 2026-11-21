@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shift handover | Northbank Tramway</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="handover.js" defer></script>
+</head>
+<body>
+  <header class="masthead">
+    <div class="masthead-inner shell">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true"><i></i></span>
+        <span>Northbank <span class="brand-service">Tramway</span></span>
+      </div>
+      <span class="shift"><span aria-hidden="true"></span>Morning shift</span>
+    </div>
+  </header>
+
+  <main class="shell">
+    <h1>Shift handover</h1>
+    <div class="workspace">
+      <section class="queue" aria-labelledby="queue-title">
+        <div class="section-heading">
+          <h2 id="queue-title">Report queue</h2>
+          <span>3 open reports</span>
+        </div>
+        <div class="reports">
+          <button class="report" type="button" data-testid="handover-report-t214" aria-pressed="true">
+            <span class="report-top"><span class="code">T-214</span><span class="selector" aria-hidden="true"></span></span>
+            <span class="location">Alder Junction</span>
+            <span class="fault">Signal lamp reported dim</span>
+            <span class="report-meta">
+              <span class="meta-field"><span class="meta-label">Logged</span><time datetime="06:40">06:40</time></span>
+              <span class="meta-field"><span class="meta-label">Status</span><span class="status due">Follow-up due</span></span>
+            </span>
+          </button>
+          <button class="report" type="button" data-testid="handover-report-t219" aria-pressed="false">
+            <span class="report-top"><span class="code">T-219</span><span class="selector" aria-hidden="true"></span></span>
+            <span class="location">Quay Loop</span>
+            <span class="fault">Platform display froze</span>
+            <span class="report-meta">
+              <span class="meta-field"><span class="meta-label">Logged</span><time datetime="07:15">07:15</time></span>
+              <span class="meta-field"><span class="meta-label">Status</span><span class="status assigned">Assigned</span></span>
+            </span>
+          </button>
+          <button class="report" type="button" data-testid="handover-report-t224" aria-pressed="false">
+            <span class="report-top"><span class="code">T-224</span><span class="selector" aria-hidden="true"></span></span>
+            <span class="location">Cedar Depot</span>
+            <span class="fault">Door sensor intermittent</span>
+            <span class="report-meta">
+              <span class="meta-field"><span class="meta-label">Logged</span><time datetime="08:05">08:05</time></span>
+              <span class="meta-field"><span class="meta-label">Status</span><span class="status ready">Ready to review</span></span>
+            </span>
+          </button>
+        </div>
+      </section>
+
+      <section class="selected-report" aria-labelledby="detail-title">
+        <div class="section-heading"><h2 id="detail-title">Selected report</h2></div>
+        <div class="detail" aria-live="polite" aria-atomic="true">
+          <div class="detail-header">
+            <div class="route" aria-hidden="true"><i></i><i></i><i></i></div>
+            <p class="detail-code">Report <span data-testid="handover-detail-id">T-214</span></p>
+            <h3 data-testid="handover-detail-location">Alder Junction</h3>
+          </div>
+          <dl class="handover-fields">
+            <div class="handover-field">
+              <dt><span class="field-icon crew-icon" aria-hidden="true"></span>Assigned crew</dt>
+              <dd data-testid="handover-detail-crew">Wayside team</dd>
+            </div>
+            <div class="handover-field next-field">
+              <dt><span class="field-icon arrow-icon" aria-hidden="true">↗</span>Next action</dt>
+              <dd data-testid="handover-detail-next">Check the signal lamp during the next service gap.</dd>
+            </div>
+          </dl>
+        </div>
+      </section>
+    </div>
+  </main>
+</body>
+</html>

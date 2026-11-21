@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f8f3eb">
+<title>Olfacto Studio — Wholesale fragrance intelligence</title>
+<style>
+:root {
+  color-scheme: light;
+  --paper: #f8f3eb;
+  --ink: #291b1d;
+  --muted: #655453;
+  --rose: #612c3c;
+  --line: #dfd2c8;
+  --dark: #2e1921;
+  --light: #f8eae0;
+  --serif: Georgia, 'Times New Roman', serif;
+  --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 16px/1.55 var(--sans); }
+button, input { font: inherit; }
+button, a { -webkit-tap-highlight-color: transparent; }
+button { cursor: pointer; }
+[hidden] { display: none !important; }
+:focus-visible { outline: 2px solid #a3475f; outline-offset: 5px; }
+.shell { width: min(100% - 112px, 1264px); margin-inline: auto; }
+.masthead { border-bottom: 1px solid var(--line); }
+.masthead .shell { display: flex; align-items: center; justify-content: space-between; min-height: 84px; gap: 16px; }
+.brand { display: flex; align-items: center; gap: 12px; font: 27px/1 var(--serif); letter-spacing: -.035em; white-space: nowrap; }
+.brand-mark { width: 27px; height: 27px; border: 1px solid var(--rose); border-radius: 50%; display: grid; place-items: center; }
+.brand-mark::before, .brand-mark::after { content: ''; grid-area: 1/1; width: 13px; height: 19px; border: 1px solid var(--rose); border-radius: 60% 60% 55% 55%; transform: rotate(44deg); }
+.brand-mark::after { transform: rotate(-44deg); }
+.masthead-label { color: var(--muted); font-size: 13px; }
+.hero { display: grid; grid-template-columns: 1.02fr 1fr; align-items: center; gap: clamp(32px, 5.4vw, 80px); padding-block: clamp(58px, 7vw, 100px); }
+.eyebrow { display: flex; align-items: center; gap: 10px; margin: 0 0 24px; color: var(--rose); font-size: 11px; font-weight: 750; letter-spacing: .17em; text-transform: uppercase; }
+.eyebrow::before { content: ''; display: block; width: 23px; height: 1px; background: currentColor; }
+h1, h2, p { margin-top: 0; }
+h1 { margin-bottom: 25px; font: 400 clamp(48px, 4.95vw, 74px)/1.04 var(--serif); letter-spacing: -.055em; text-wrap: balance; }
+h1 em { color: var(--rose); font-weight: 400; }
+.intro p:not(.eyebrow) { max-width: 40ch; margin-bottom: 32px; color: var(--muted); font-size: 17px; }
+.actions { display: flex; align-items: center; gap: 23px; flex-wrap: wrap; }
+.primary { display: inline-flex; min-height: 52px; align-items: center; justify-content: center; gap: 24px; padding: 12px 19px; border: 1px solid transparent; border-radius: 3px; background: var(--rose); color: white; font-weight: 650; font-size: 14px; }
+.primary:hover { background: #46202b; }
+.primary span { font-size: 18px; line-height: 1; }
+.sample-link { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; color: var(--ink); font-size: 14px; font-weight: 650; text-decoration-line: underline; text-decoration-color: #ae8e91; text-underline-offset: 5px; }
+.sample-link:hover { color: var(--rose); text-decoration-color: currentColor; }
+.sample { position: relative; isolation: isolate; overflow: hidden; scroll-margin-top: 24px; padding: 32px; border: 1px solid #42222d; border-radius: 6px; background: var(--dark); color: var(--light); }
+.sample::before { position: absolute; z-index: -1; content: ''; pointer-events: none; inset: 0 0 auto auto; width: 48%; aspect-ratio: 1.4; background: repeating-radial-gradient(ellipse at 88% -24%, transparent 0 12px, #f8bed11f 12.5px 13.5px, transparent 14px 22px), radial-gradient(ellipse at 91% 0%, #704052, transparent 70%); mask-image: linear-gradient(to bottom left, #000, transparent 78%); }
+.sample-header { position: relative; margin-bottom: 24px; }
+.sample-kicker { display: block; margin-bottom: 8px; color: #e6b6ab; font-size: 10px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
+.sample h2 { margin-bottom: 0; font: 400 clamp(30px, 3.15vw, 44px)/1.05 var(--serif); letter-spacing: -.05em; }
+.sample table { width: 100%; position: relative; border-collapse: collapse; }
+.sample thead { color: #d4b8b7; font-size: 11px; }
+.sample th { font-weight: 600; }
+.sample thead th { padding: 0 0 9px; }
+.sample th, .sample td { text-align: left; }
+.sample tbody th, .sample tbody td { padding: 15px 0; border-top: 1px solid #f4d7d535; }
+.sample tbody td { color: #e5cfc9; font-size: 13px; }
+.sample th:first-child { padding-right: 10px; }
+.sample tbody th { white-space: nowrap; }
+.sample th:last-child, .sample td:last-child { padding-left: 8px; text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.sample tbody td:last-child { color: var(--light); font-weight: 650; }
+.collection { display: flex; align-items: center; gap: 12px; font: 400 clamp(16px, 1.5vw, 21px)/1.1 var(--serif); }
+.swatch { width: 36px; height: 40px; flex: 0 0 auto; border-radius: 2px; border: 1px solid #ffffff32; }
+.resin { background: repeating-radial-gradient(ellipse at 90% 8%, #dab68c45 0 1px, transparent 1px 5px), linear-gradient(145deg, #9b6846, #3f291c 79%); }
+.drift { background: repeating-radial-gradient(ellipse at 9% -30%, #ccede566 0 1px, transparent 1px 5px), linear-gradient(155deg, #82968d, #344952 71%); }
+.amber { background: repeating-radial-gradient(ellipse at 87% 92%, #f2be9369 0 1px, transparent 1px 5px), linear-gradient(159deg, #93626a, #6c374a 56%, #8b5552); }
+.proof { display: grid; grid-template-columns: repeat(3, 1fr); margin: 0; padding: 27px 0 38px; border-top: 1px solid var(--line); }
+.proof-item { display: grid; gap: 4px; padding-left: 32px; border-left: 1px solid var(--line); }
+.proof-item:first-child { padding-left: 0; border-left: 0; }
+.proof dt { grid-row: 2; margin: 0; color: var(--muted); font-size: 13px; }
+.proof dd { grid-row: 1; margin: 0; color: var(--rose); font: 400 33px/1.1 var(--serif); font-variant-numeric: lining-nums; letter-spacing: -.04em; }
+dialog { width: min(100% - 32px, 470px); max-height: calc(100% - 32px); padding: 34px; border: 1px solid var(--line); border-radius: 8px; background: var(--paper); color: var(--ink); box-shadow: 0 24px 80px #291b1d47; }
+dialog::backdrop { background: #23131994; }
+.dialog-heading { padding-right: 34px; margin-bottom: 12px; font: 400 37px/1.08 var(--serif); letter-spacing: -.05em; }
+dialog p { color: var(--muted); }
+.close { position: absolute; top: 16px; right: 16px; min-width: 44px; min-height: 44px; padding: 0; border: 0; border-radius: 50%; background: transparent; color: var(--ink); font: 27px/1 var(--sans); }
+.close:hover { background: #ecdfd7; }
+label { display: block; margin-block: 22px 6px; font-size: 14px; font-weight: 700; }
+input { width: 100%; padding: 11px 12px; min-height: 48px; border: 1px solid #ac9793; border-radius: 3px; background: #fffaf5; color: var(--ink); }
+input[aria-invalid="true"] { border-color: #9e2541; }
+.error { margin-block: 8px 0; color: #962442; font-size: 14px; }
+form .primary { margin-top: 23px; }
+.success p { margin-bottom: 0; overflow-wrap: anywhere; }
+@media (max-width: 1050px) {
+  .shell { width: min(100% - 72px, 1264px); }
+  .hero { gap: 32px; }
+  .sample { padding: 24px 20px; }
+  .collection { gap: 9px; }
+  .swatch { width: 27px; height: 34px; }
+}
+@media (max-width: 760px) {
+  .shell { width: min(100% - 40px, 540px); }
+  .masthead .shell { min-height: 65px; }
+  .hero { grid-template-columns: minmax(0, 1fr); gap: 38px; padding-block: 43px 29px; }
+  h1 { font-size: clamp(50px, 10.6vw, 70px); }
+  .intro p:not(.eyebrow) { font-size: 16px; margin-bottom: 24px; }
+  .proof { padding-block: 23px; }
+  .proof-item { padding-left: 14px; }
+  .proof dt { font-size: 12px; }
+  .proof dd { font-size: 28px; }
+}
+@media (max-width: 430px) {
+  .brand { font-size: 22px; gap: 8px; }
+  .brand-mark { width: 23px; height: 23px; }
+  .brand-mark::before, .brand-mark::after { width: 11px; height: 16px; }
+  .masthead-label { font-size: 11px; }
+  .eyebrow { margin-bottom: 17px; }
+  h1 { margin-bottom: 18px; font-size: clamp(42px, 12.3vw, 51px); }
+  .sample { padding: 22px 17px 13px; }
+  .sample-header { margin-bottom: 21px; }
+  .sample tbody th, .sample tbody td { padding-block: 13px; }
+  .collection { gap: 7px; }
+  .sample tbody td { font-size: 12px; }
+  .swatch { width: 22px; height: 29px; }
+  .actions { gap: 15px; }
+  .primary { gap: 15px; padding-inline: 14px; }
+  .sample-link { gap: 7px; }
+  dialog { padding: 25px; }
+  .dialog-heading { font-size: 32px; }
+}
+@media (max-width: 355px) {
+  .sample tbody th { white-space: normal; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
+</style>
+</head>
+<body>
+<header class="masthead">
+  <div class="shell">
+    <div class="brand"><span class="brand-mark" aria-hidden="true"></span>Olfacto Studio</div>
+    <span class="masthead-label">For independent retailers</span>
+  </div>
+</header>
+<main class="shell">
+  <div class="hero">
+    <section class="intro" aria-labelledby="proposition">
+      <p class="eyebrow">Fragrance intelligence</p>
+      <h1 id="proposition">Build an assortment <em>with a point of view.</em></h1>
+      <p>See how a new fragrance collection fits your shelves before you buy. Compare scent families and suggested retail prices with a wholesale preview.</p>
+      <div class="actions">
+        <button class="primary" type="button" data-testid="request" aria-haspopup="dialog">Request preview <span aria-hidden="true">↗</span></button>
+        <a class="sample-link" href="#sample" data-testid="sample-link">Explore the sample <span aria-hidden="true">↓</span></a>
+      </div>
+    </section>
+    <section class="sample" id="sample" data-testid="sample" tabindex="-1" aria-labelledby="sample-title">
+      <div class="sample-header">
+        <span class="sample-kicker">Inside the preview</span>
+        <h2 id="sample-title">Collection sample</h2>
+      </div>
+      <table aria-labelledby="sample-title">
+        <thead>
+          <tr><th scope="col">Collection</th><th scope="col">Scent family</th><th scope="col">Suggested retail</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row"><span class="collection"><span class="swatch resin" aria-hidden="true"></span>Resin Library</span></th><td>Woods &amp; resins</td><td>$92–128</td></tr>
+          <tr><th scope="row"><span class="collection"><span class="swatch drift" aria-hidden="true"></span>Drift Notes</span></th><td>Marine &amp; mineral</td><td>$86–120</td></tr>
+          <tr><th scope="row"><span class="collection"><span class="swatch amber" aria-hidden="true"></span>Aftergold</span></th><td>Amber &amp; spice</td><td>$110–160</td></tr>
+        </tbody>
+      </table>
+    </section>
+  </div>
+  <dl class="proof" aria-label="Olfacto Studio coverage">
+    <div class="proof-item"><dt>Independent fragrance houses</dt><dd>480</dd></div>
+    <div class="proof-item"><dt>Markets</dt><dd>32</dd></div>
+    <div class="proof-item"><dt>Data refresh</dt><dd>Updated weekly</dd></div>
+  </dl>
+</main>
+<dialog aria-labelledby="preview-title">
+  <button class="close" type="button" data-testid="close" aria-label="Close preview">×</button>
+  <div id="preview-content">
+    <h2 class="dialog-heading" id="preview-title">Request a wholesale preview</h2>
+    <p>Enter your work email to request access.</p>
+    <form novalidate>
+      <label for="work-email">Work email</label>
+      <input id="work-email" data-testid="email" name="email" type="email" autocomplete="email" required aria-describedby="email-error" autofocus>
+      <p class="error" id="email-error" data-testid="email-error" role="alert" hidden>Enter a valid work email address.</p>
+      <button class="primary" data-testid="submit" type="submit">Request preview <span aria-hidden="true">↗</span></button>
+    </form>
+  </div>
+  <div class="success" data-testid="success" hidden>
+    <h2 class="dialog-heading" id="success-title" tabindex="-1">Preview requested</h2>
+    <p>Requested for <strong id="requested-email"></strong>.</p>
+  </div>
+</dialog>
+<script>
+const request = document.querySelector('[data-testid="request"]');
+const dialog = document.querySelector('dialog');
+const form = dialog.querySelector('form');
+const input = form.elements.email;
+const error = document.querySelector('#email-error');
+const previewContent = document.querySelector('#preview-content');
+const success = document.querySelector('[data-testid="success"]');
+const successTitle = document.querySelector('#success-title');
+
+function clearError() {
+  input.removeAttribute('aria-invalid');
+  error.hidden = true;
+}
+
+request.addEventListener('click', () => {
+  if (!success.hidden) form.reset();
+  success.hidden = true;
+  previewContent.hidden = false;
+  dialog.setAttribute('aria-labelledby', 'preview-title');
+  clearError();
+  dialog.showModal();
+});
+dialog.querySelector('.close').addEventListener('click', () => dialog.close());
+dialog.addEventListener('close', () => request.focus());
+input.addEventListener('input', clearError);
+
+form.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const email = input.value.trim();
+  if (!input.validity.valid || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
+    input.setAttribute('aria-invalid', 'true');
+    error.hidden = false;
+    input.focus();
+    return;
+  }
+  document.querySelector('#requested-email').textContent = email;
+  previewContent.hidden = true;
+  success.hidden = false;
+  dialog.setAttribute('aria-labelledby', 'success-title');
+  successTitle.focus();
+});
+</script>
+</body>
+</html>

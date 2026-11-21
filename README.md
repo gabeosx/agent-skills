@@ -52,7 +52,7 @@ Designing and repairing Dev Containers and GitHub Codespaces: architecture, LTS 
 
 ### 🎨 [UX Designer](./skills/ux-designer)
 
-Applying Refactoring UI principles to hierarchy, spacing, typography, responsive layouts, data-heavy interfaces, components, and design tokens.
+Build, refine, critique and specify responsive interfaces using Refactoring UI principles. Use real content, visual hierarchy and browser checks for marketing pages, flows and dense workspaces. Includes optional CSS and Tailwind assets. [Interface benchmark](./benchmarks/ux-designer).
 
 ### 🔄 [GitHub Scrum Flow](./skills/github-scrum-flow)
 

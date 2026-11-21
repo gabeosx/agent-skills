@@ -1,0 +1,20 @@
+{
+  "actor": "6bc1",
+  "model": "inherited Codex",
+  "started": "2026-11-21T20:34:47+00:00",
+  "actor_collected_at": "2026-11-21T20:40:54+00:00",
+  "attempt": 1,
+  "brief": "briefs/f2/brief.md",
+  "brief_sha256": "2c703833ee4b674b75be4d1f78161095d5e0a0b915ab41e7c569d3abfa368d2b",
+  "checks_sha256": "caa6717d23d0af4c56645ee4c9034d819e29bc194e882d01d92331d61622de80",
+  "starter_files": {},
+  "skill_sha256": "92359a8886f08df494ee290af4cd23c63bc457d5df70e00ad577955f840de1be",
+  "source": {
+    "index.html": "8073714bf7957b95135d997f985e13a674bc86f1de7441b962b9980e90cfbb3d",
+    "loan-review.js": "3f3748e6e3029c68a29f317c533bae3116c3b05ab9cfc7a9a65e8fdcc0c9bf48",
+    "styles.css": "489ef0476d9a1090d3b19ad795931c70a2a7cced03fbaed32231b0e4830e9ab0"
+  },
+  "actor_result": "Complete. Actor reports local Chromium workflow and responsive checks at all three widths with no external requests or page overflow.",
+  "usage": null,
+  "charge": null
+}

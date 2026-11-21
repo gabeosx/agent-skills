@@ -1,0 +1,25 @@
+/* Tailwind v4 CSS entrypoint example. Adjust the relative asset path if copied. */
+@import "tailwindcss";
+@import "./design-system-core.css";
+
+@theme inline {
+  --font-ux-ui: var(--font-ui);
+  --color-ux-canvas: var(--color-bg-canvas);
+  --color-ux-surface: var(--color-bg-surface);
+  --color-ux-text: var(--color-text-primary);
+  --color-ux-muted: var(--color-text-secondary);
+  --color-ux-action: var(--color-primary);
+  --color-ux-action-hover: var(--color-primary-hover);
+  --color-ux-on-action: var(--color-on-primary);
+  --color-ux-control-border: var(--color-border-control);
+  --color-ux-focus: var(--color-focus);
+  --color-ux-danger: var(--color-danger);
+  --color-ux-danger-bg: var(--color-danger-bg);
+  --color-ux-success: var(--color-success);
+  --color-ux-success-bg: var(--color-success-bg);
+  --color-ux-warning: var(--color-warning);
+  --color-ux-warning-bg: var(--color-warning-bg);
+  --spacing-ux-compact: var(--space-8);
+  --spacing-ux-standard: var(--space-16);
+  --shadow-ux-raised: var(--shadow-md);
+}

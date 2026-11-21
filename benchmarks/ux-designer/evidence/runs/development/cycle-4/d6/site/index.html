@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Restore prime · Atlas Works</title>
+<style>
+  :root {
+    color-scheme: light;
+    --canvas: #fcfbf8;
+    --sidebar: #f4f3ee;
+    --ink: #263036;
+    --muted: #565f65;
+    --line: #dedfd7;
+    --accent: #234e78;
+    --accent-soft: #e9eff5;
+    --notice-ink: #642f13;
+    --notice-paper: #fcf0d9;
+    font: 16px/1.5 Avenir Next, Avenir, system-ui, sans-serif;
+    color: var(--ink);
+    background: var(--canvas);
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; }
+  button { font: inherit; }
+  button, a { touch-action: manipulation; }
+  a { color: var(--accent); }
+  :focus-visible { outline: 3px solid #376b9c; outline-offset: 4px; }
+  .skip {
+    z-index: 10; position: absolute; left: 12px; top: 10px; padding: 8px 12px;
+    transform: translateY(-140%); background: var(--canvas); border-radius: 4px;
+  }
+  .skip:focus { transform: translateY(0); }
+  [hidden] { display: none !important; }
+
+  .masthead { background: #242e3c; color: #fdf9ed; }
+  .masthead-inner {
+    width: min(1320px, calc(100% - 80px)); height: 68px; margin-inline: auto;
+    display: flex; align-items: center; gap: 16px;
+  }
+  .wordmark { display: flex; align-items: center; gap: 10px; font-weight: 650; letter-spacing: -.02em; white-space: nowrap; }
+  .mark { width: 30px; height: 30px; display: grid; place-items: center; border-radius: 6px; background: #f4ce92; color: #302e34; }
+  .mark i { width: 12px; height: 12px; transform: translateY(2px) rotate(45deg); border-style: solid; border-width: 2px 0 0 2px; position: relative; }
+  .mark i::after { content: ""; width: 8px; height: 8px; border: inherit; position: absolute; left: 2px; top: 2px; }
+  .product { border-left: 1px solid #657080; padding-left: 16px; color: #e0e1df; font-size: 13px; white-space: nowrap; }
+  .nav-toggle {
+    display: none; margin-left: auto; background: transparent; color: #fdf9ed; border: 1px solid #78818a;
+    border-radius: 6px; align-items: center; justify-content: center; gap: 8px; padding: 6px 10px; min-height: 44px;
+    white-space: nowrap; font-size: 13px; font-weight: 650; cursor: pointer;
+  }
+  .nav-toggle:hover, .nav-toggle[aria-expanded="true"] { background: #344355; }
+  .nav-toggle:focus-visible { outline-color: #f4ce92; }
+  .menu-icon { width: 13px; height: 8px; border-block: 1px solid; }
+  .nav-toggle[aria-expanded="true"] .menu-icon { border: 0; width: 13px; height: 13px; position: relative; }
+  .nav-toggle[aria-expanded="true"] .menu-icon::before, .nav-toggle[aria-expanded="true"] .menu-icon::after {
+    content: ""; position: absolute; width: 13px; height: 1px; background: currentColor; top: 6px; left: 0; transform: rotate(45deg);
+  }
+  .nav-toggle[aria-expanded="true"] .menu-icon::after { transform: rotate(-45deg); }
+
+  .page-layout { width: min(1320px, calc(100% - 80px)); margin-inline: auto; display: grid; grid-template-columns: 224px minmax(0, 1fr); gap: clamp(28px, 5vw, 76px); }
+  .docs-sidebar {
+    position: relative; min-height: calc(100svh - 68px); padding: 36px 20px 45px 0;
+    border-right: 1px solid var(--line); background: var(--sidebar);
+  }
+  .docs-sidebar::before { content: ""; position: absolute; top: 0; right: 100%; bottom: 0; width: max(40px, calc((100vw - 1320px) / 2)); background: var(--sidebar); }
+  .docs-nav { position: sticky; top: 24px; }
+  .nav-title { margin: 0 0 17px 10px; font-family: inherit; font-size: 12px; font-weight: 650; letter-spacing: .095em; text-transform: uppercase; color: #565e5e; }
+  .docs-nav ul { list-style: none; padding: 0; margin: 0; }
+  .docs-nav > ul > li + li { margin-top: 4px; }
+  .nav-link, .group-label {
+    display: flex; align-items: center; justify-content: space-between; gap: 8px;
+    width: 100%; padding: 7px 10px; min-height: 40px; border: 0; border-radius: 5px;
+    background: transparent; text-align: left; text-decoration: none; color: var(--ink);
+    font-weight: 680; font-size: 14px;
+  }
+  .nav-link { cursor: pointer; }
+  .nav-link:hover { background: #e9e9e3; color: var(--accent); }
+  .group-label { min-height: 35px; padding-bottom: 5px; }
+  .chevron { width: 7px; height: 7px; border: solid currentColor; border-width: 0 1px 1px 0; transform: rotate(-45deg); margin-right: 4px; }
+  [aria-expanded="true"] > .chevron { transform: translateY(-2px) rotate(45deg); }
+  .docs-nav .nav-children { border-left: 1px solid #c9cec9; margin: 2px 0 8px 10px; padding-left: 6px; }
+  .nav-children .nav-link { justify-content: flex-start; font-weight: 540; color: #4a555c; }
+  .nav-children [aria-current="page"] { color: #204c75; font-weight: 650; background: #e3eaf1; box-shadow: inset 2px 0 #376b96; }
+
+  main { min-width: 0; padding-block: 49px 68px; }
+  .document {
+    display: grid; grid-template-columns: minmax(0, 700px) minmax(150px, 175px);
+    grid-template-areas: "lead outline" "steps outline"; column-gap: clamp(25px, 4vw, 60px);
+  }
+  .article-lead { grid-area: lead; }
+  .category {
+    display: flex; align-items: center; gap: 9px; margin: 0 0 12px;
+    color: var(--accent); font-size: 12px; font-weight: 650; letter-spacing: .085em; text-transform: uppercase;
+  }
+  .category::before { content: ""; width: 17px; height: 2px; background: #a66d3d; }
+  h1, h2, .dialog-title { font-family: Georgia, "Times New Roman", serif; color: #252d35; font-weight: 600; }
+  h1 { margin: 0; font-size: clamp(3rem, 5vw, 4rem); line-height: 1.02; letter-spacing: -.052em; }
+  .summary { margin: 15px 0 23px; max-width: 60ch; color: #4d5963; font-size: 18px; line-height: 1.55; }
+  .notice {
+    display: flex; align-items: start; gap: 12px; margin: 0;
+    padding: 13px 15px; border: 1px solid #e9ce9e; border-left: 3px solid #b66932; border-radius: 7px;
+    background: var(--notice-paper); color: var(--notice-ink);
+  }
+  .notice-icon {
+    display: inline-grid; flex: 0 0 21px; width: 21px; height: 21px; margin-top: 2px;
+    place-items: center; border: 1.5px solid #975025; border-radius: 50%;
+    color: #824019; font: 740 14px/1 system-ui, sans-serif;
+  }
+  .notice-label { display: block; font-size: 12px; font-weight: 650; }
+  .notice p { margin: 1px 0 0; font-size: 17px; font-weight: 700; }
+
+  .outline {
+    grid-area: outline; position: sticky; top: 24px; align-self: start;
+    margin-top: 27px; border-left: 1px solid var(--line); padding-left: 17px;
+  }
+  .outline h2 {
+    margin: 0 0 8px; color: #475662; font-family: inherit; font-size: 12px;
+    font-weight: 650; letter-spacing: .08em; text-transform: uppercase;
+  }
+  .outline ul { list-style: none; margin: 0; padding: 0; }
+  .outline a { display: flex; align-items: center; min-height: 36px; font-size: 14px; line-height: 1.35; color: var(--accent); text-decoration: none; }
+  .outline a:hover { text-decoration: underline; text-underline-offset: 3px; }
+  .outline [aria-current="location"] { font-weight: 750; }
+  .outline [aria-current="location"]::before { content: ""; width: 6px; height: 6px; margin-right: 8px; border-radius: 50%; background: currentColor; }
+
+  .steps { grid-area: steps; margin: 0; padding: 0; list-style: none; counter-reset: procedure; }
+  .steps > li {
+    position: relative; display: grid; grid-template-columns: 38px minmax(0, 1fr); column-gap: 13px;
+    counter-increment: procedure; padding: 25px 0 24px; border-bottom: 1px solid var(--line);
+    scroll-margin-top: 20px;
+  }
+  .steps > li:first-child { margin-top: 8px; }
+  .steps > li::before {
+    content: counter(procedure, decimal-leading-zero); width: 36px; height: 34px; margin-top: 1px;
+    display: grid; place-items: center; border: 1px solid #d6e0ea; border-radius: 6px;
+    color: var(--accent); background: var(--accent-soft); font: 700 12px/1 ui-monospace, monospace;
+  }
+  .steps h2 { margin: 0 0 7px; font-size: clamp(1.65rem, 2.6vw, 2rem); line-height: 1.15; letter-spacing: -.035em; }
+  .steps p { max-width: 61ch; margin: 0; line-height: 1.6; color: #404d56; font-size: 16px; }
+  .steps p + p { margin-top: 10px; }
+  .steps strong { color: #2d3b47; }
+  .steps > li:target h2 { color: var(--accent); }
+  .steps > li:target::before { color: white; background: var(--accent); }
+
+  dialog {
+    width: min(465px, calc(100% - 32px)); max-height: calc(100% - 32px); padding: 0;
+    color: var(--ink); background: var(--canvas); border: 1px solid #c9d1d3; border-radius: 12px;
+    box-shadow: 0 14px 60px #1d273c42;
+  }
+  dialog::backdrop { background: #1f2d3b91; }
+  .dialog-content { padding: 24px; }
+  .dialog-title { margin: 0 0 8px; font-size: 29px; letter-spacing: -.03em; }
+  .dialog-description { margin: 0 0 21px; color: #46525c; }
+  .close-button {
+    min-height: 44px; padding: 7px 15px; border: 1px solid var(--accent); border-radius: 6px;
+    color: #fff; background: var(--accent); cursor: pointer; font-weight: 700;
+  }
+  .close-button:hover { background: #183d60; }
+
+  @media (max-width: 1050px) {
+    .masthead-inner, .page-layout { width: calc(100% - 56px); }
+    .page-layout { grid-template-columns: 184px minmax(0, 1fr); gap: 32px; }
+    .docs-sidebar { padding-right: 14px; }
+    .docs-sidebar::before { width: 28px; }
+    .document { grid-template-columns: minmax(0, 700px); grid-template-areas: "lead" "outline" "steps"; }
+    .outline { position: static; margin-top: 19px; padding: 8px 0 7px; border-left: 0; border-bottom: 1px solid var(--line); }
+    .outline h2 { margin-bottom: 0; }
+    .outline ul { display: flex; flex-wrap: wrap; gap: 0 17px; }
+    .outline a { min-height: 40px; text-decoration: underline; text-underline-offset: 3px; }
+    main { padding-top: 39px; }
+  }
+
+  @media (max-width: 650px) {
+    .masthead-inner, .page-layout { width: auto; padding-inline: 18px; }
+    .masthead-inner { height: 61px; gap: 10px; }
+    .mark { width: 27px; height: 27px; }
+    .product { display: none; }
+    .nav-toggle { display: flex; }
+    .page-layout { display: block; }
+    .docs-sidebar { display: none; min-height: auto; margin-inline: -18px; padding: 16px 18px 19px; border: 0; border-bottom: 1px solid var(--line); }
+    .docs-sidebar[data-open] { display: block; }
+    .docs-sidebar::before { display: none; }
+    .docs-nav { position: static; }
+    .nav-title { margin-bottom: 7px; }
+    .nav-link { min-height: 44px; }
+    main { padding-block: 28px 41px; }
+    h1 { font-size: clamp(2.5rem, 11.5vw, 3.3rem); }
+    .category { margin-bottom: 9px; }
+    .summary { margin-block: 12px 19px; font-size: 16px; }
+    .notice { padding: 11px 12px; }
+    .outline { margin-top: 14px; }
+    .outline ul { gap: 0 14px; }
+    .outline a { min-height: 44px; }
+    .steps > li { grid-template-columns: 31px minmax(0, 1fr); gap: 10px; padding-block: 19px 18px; }
+    .steps > li:first-child { margin-top: 0; }
+    .steps > li::before { width: 30px; height: 29px; }
+  }
+</style>
+</head>
+<body>
+  <a class="skip" href="#article-top">Skip to procedure</a>
+
+  <header class="masthead">
+    <div class="masthead-inner">
+      <div class="wordmark"><span class="mark" aria-hidden="true"><i></i></span> Atlas Works</div>
+      <div class="product">Service documentation</div>
+      <button class="nav-toggle" data-testid="nav-toggle" type="button" aria-expanded="false" aria-controls="docs-nav">
+        <span class="menu-icon" aria-hidden="true"></span> Browse docs
+      </button>
+    </div>
+  </header>
+
+  <div class="page-layout">
+    <aside class="docs-sidebar">
+      <nav id="docs-nav" class="docs-nav" data-testid="docs-nav" aria-labelledby="docs-title">
+        <h2 id="docs-title" class="nav-title">Documentation</h2>
+        <ul>
+          <li><button type="button" class="nav-link" data-context="start">Start here</button></li>
+          <li>
+            <button type="button" class="nav-link" data-testid="equipment-toggle" aria-expanded="false" aria-controls="equipment-links">
+              Equipment <span class="chevron" aria-hidden="true"></span>
+            </button>
+            <ul id="equipment-links" class="nav-children" data-testid="equipment-links" hidden>
+              <li><button type="button" class="nav-link" data-context="pump">Centrifugal pump</button></li>
+              <li><button type="button" class="nav-link" data-context="skid">Dosing skid</button></li>
+            </ul>
+          </li>
+          <li>
+            <div class="group-label">Procedures</div>
+            <ul class="nav-children">
+              <li><a class="nav-link" href="#article-top" aria-current="page">Restore prime</a></li>
+              <li><button type="button" class="nav-link" data-context="seal">Replace a seal</button></li>
+              <li><button type="button" class="nav-link" data-context="flow">Check flow</button></li>
+            </ul>
+          </li>
+          <li><button type="button" class="nav-link" data-context="troubleshooting">Troubleshooting</button></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main id="article-top" tabindex="-1">
+      <article class="document" aria-labelledby="article-title">
+        <header class="article-lead">
+          <p class="category">Procedures</p>
+          <h1 id="article-title">Restore prime</h1>
+          <p class="summary">Refill the chamber and confirm flow after a routine loss of prime.</p>
+          <aside class="notice" aria-labelledby="notice-label">
+            <span class="notice-icon" aria-hidden="true">!</span>
+            <div>
+              <strong id="notice-label" class="notice-label">Safety notice</strong>
+              <p>Do not run the pump dry.</p>
+            </div>
+          </aside>
+        </header>
+
+        <nav class="outline" aria-labelledby="outline-title">
+          <h2 id="outline-title">On this page</h2>
+          <ul>
+            <li><a href="#isolate">Isolate the pump</a></li>
+            <li><a href="#refill">Refill the chamber</a></li>
+            <li><a href="#verify" data-testid="jump-verify">Verify flow</a></li>
+          </ul>
+        </nav>
+
+        <ol class="steps" aria-label="Restore prime procedure">
+          <li id="isolate" tabindex="-1">
+            <div>
+              <h2>Isolate the pump</h2>
+              <p>Switch off the pump, apply your site’s lockout procedure, and verify zero energy before opening the fill port.</p>
+            </div>
+          </li>
+          <li id="refill" tabindex="-1">
+            <div>
+              <h2>Refill the chamber</h2>
+              <p>Open the fill port and add approved priming fluid until the chamber is full. Close the fill port.</p>
+            </div>
+          </li>
+          <li id="verify" data-testid="verify" tabindex="-1">
+            <div>
+              <h2>Verify flow</h2>
+              <p>Clear the work area, follow your site’s restart procedure, and confirm flow on the gauge.</p>
+              <p><strong>If flow does not recover, stop the pump and notify maintenance.</strong></p>
+            </div>
+          </li>
+        </ol>
+      </article>
+    </main>
+  </div>
+
+  <dialog aria-labelledby="context-title" aria-describedby="context-description">
+    <div class="dialog-content">
+      <h2 id="context-title" class="dialog-title"></h2>
+      <p id="context-description" class="dialog-description"></p>
+      <form method="dialog"><button type="submit" class="close-button" autofocus>Close</button></form>
+    </div>
+  </dialog>
+<script>
+  const navToggle = document.querySelector('.nav-toggle');
+  const docsSidebar = document.querySelector('.docs-sidebar');
+  const docsNav = document.querySelector('.docs-nav');
+  const mobileViewport = window.matchMedia('(max-width: 650px)');
+  const equipmentToggle = document.querySelector('[data-testid="equipment-toggle"]');
+  const equipmentLinks = document.querySelector('#equipment-links');
+  const outlineLinks = [...document.querySelectorAll('.outline a')];
+  const articleTop = document.querySelector('#article-top');
+  const contextPanel = document.querySelector('dialog');
+  const contextTitle = document.querySelector('#context-title');
+  const contextDescription = document.querySelector('#context-description');
+  const descriptions = {
+    start: 'Use the equipment and procedure lists to find the task for your pump. Keep your site’s lockout and restart procedures on hand.',
+    pump: 'Use the pump’s equipment label to identify the unit and consult its site records for the approved priming fluid and gauge information.',
+    skid: 'Dosing skids have equipment-specific service instructions. Check the skid’s equipment label and site records before selecting a procedure.',
+    seal: 'Seal replacement depends on the pump model and installed seal. Give maintenance the equipment ID and any observed leaks.',
+    flow: 'Compare the indicated flow with the expected range in your site operating instructions. If flow does not recover after priming, stop the pump and notify maintenance.',
+    troubleshooting: 'If the pump still loses prime or flow fails to recover, stop the pump and report the equipment ID and gauge reading to maintenance.'
+  };
+
+  function setNavOpen(open) {
+    navToggle.setAttribute('aria-expanded', String(open));
+    docsSidebar.toggleAttribute('data-open', open);
+  }
+
+  navToggle.addEventListener('click', () => setNavOpen(navToggle.getAttribute('aria-expanded') === 'false'));
+
+  equipmentToggle.addEventListener('click', () => {
+    equipmentLinks.hidden = !equipmentLinks.hidden;
+    equipmentToggle.setAttribute('aria-expanded', String(!equipmentLinks.hidden));
+  });
+
+  docsNav.querySelector('[aria-current="page"]').addEventListener('click', () => {
+    if (mobileViewport.matches) {
+      setNavOpen(false);
+      articleTop.focus({ preventScroll: true });
+    }
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && mobileViewport.matches && docsSidebar.hasAttribute('data-open') && !contextPanel.open) {
+      setNavOpen(false);
+      navToggle.focus();
+    }
+  });
+
+  function markOutlineLink() {
+    for (const link of outlineLinks) {
+      if (link.hash === window.location.hash) {
+        link.setAttribute('aria-current', 'location');
+      } else {
+        link.removeAttribute('aria-current');
+      }
+    }
+  }
+
+  window.addEventListener('hashchange', markOutlineLink);
+  markOutlineLink();
+
+  for (const trigger of docsNav.querySelectorAll('[data-context]')) {
+    trigger.addEventListener('click', () => {
+      contextTitle.textContent = trigger.textContent.trim();
+      contextDescription.textContent = descriptions[trigger.dataset.context];
+      contextPanel.showModal();
+    });
+  }
+
+  contextPanel.addEventListener('click', (event) => {
+    if (event.target === contextPanel) contextPanel.close();
+  });
+</script>
+</body>
+</html>

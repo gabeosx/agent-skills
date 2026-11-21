@@ -6,6 +6,8 @@ All notable skill changes are recorded in this file. Each skill is versioned ind
 
 ### Repository
 
+- Add an offline UX Designer benchmark with fixed briefs, pinned browser verification, and blind independent grading. Preserve all tested skill snapshots and browser evidence. Add a booking label regression and two blind comparisons for rich controls.
+
 - Complete the skill-directory landing pages: all seven active skills now have human-facing READMEs. Keep directory links and emoji headings in the root catalog. Publish Natural Writing with a skill-specific tag and GitHub Release. Verify the 1.0.1 GitHub installation includes its README and matches all 14 tracked skill files; retain the readback and remove only task-owned validation resources.
 
 - Restore emoji headings and skill-directory links in the root README catalog, preserving the updated descriptions and installation guidance.
@@ -41,6 +43,20 @@ All notable skill changes are recorded in this file. Each skill is versioned ind
 
 - Added canonical agent instructions and a dependency-free release-contract validator requiring every affected skill change to include an independent Semantic Version increment, a matching root changelog entry, relevant validation, and scoped cleanup evidence.
 - Required repository-only changes to be recorded without inventing unrelated skill version bumps, and documented the definition of done and release-tagging workflow.
+
+## ux-designer 2.0.0 - 2026-11-21
+
+### Changed
+
+- Preserve visible control labels in computed accessible names, with guidance for text-rich buttons and responsive name checks.
+- Start from the feature and its actual content, choose suitable art direction, and inspect the working interface at multiple widths. Match build, refinement, critique or specification work to the requested outcome.
+- Replace fixed layout and typography prescriptions with task-shaped density, semantic design roles and conditional references for tables, navigation, forms and visual polish.
+- Scope optional prototype CSS to `.ux-prototype` and remove its global margin, padding, heading and paragraph defaults. Projects that directly link to the old asset should opt in explicitly and apply their own page and component styles.
+- Update sample text, status, control and focus color pairs. Keep the Tailwind v3 asset path and add an optional v4 CSS theme example.
+
+### Validation
+
+- Verify booking accessible names at 1440, 834 and 390 CSS px. The repair and independent rebuild each pass all 24 name checks. In the two fresh blind comparisons, the patched revision is preferred on both tasks. Both versions pass the scripted workflows and name checks.
 
 ## natural-writing 1.0.1 - 2026-10-23
 

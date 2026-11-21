@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Olfacto Studio | Fragrance intelligence for retailers</title>
+  <meta name="description" content="Compare independent fragrance collections before committing to your next buy.">
+  <link rel="stylesheet" href="design-system-core.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="masthead frame">
+    <a class="wordmark" href="./" aria-label="Olfacto Studio home"><span class="mark" aria-hidden="true"><i></i><i></i><i></i></span>Olfacto Studio</a>
+    <span class="masthead-caption">Fragrance intelligence <span aria-hidden="true">/</span> Wholesale</span>
+  </header>
+  <main class="frame">
+    <section class="hero" aria-labelledby="proposition">
+      <div class="hero-copy">
+        <p class="eyebrow"><span></span> For independent perfume retailers</p>
+        <h1 id="proposition">Build an assortment with a <em>point of view.</em></h1>
+        <p class="intro">Compare scent families and retail ranges across independent fragrance collections before committing to your next buy.</p>
+        <div class="actions">
+          <button class="button primary" type="button" data-testid="request">Request preview <span aria-hidden="true">↗</span></button>
+          <a class="button sample-link" href="#sample" data-testid="sample-link">Explore the sample <span aria-hidden="true">↓</span></a>
+        </div>
+      </div>
+      <div class="artwork" aria-hidden="true">
+        <canvas></canvas>
+        <div class="art-frame"><i></i><i></i><i></i><i></i></div>
+        <div class="bottle">
+          <div class="cap"></div>
+          <div class="neck"></div>
+          <div class="glass">
+            <div class="dip-tube"></div>
+            <div class="bottle-label"><span>Olfacto</span><small>STUDIO</small><i></i></div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <dl class="proof" aria-label="Platform coverage">
+      <div><dt>Independent fragrance houses</dt><dd>480</dd></div>
+      <div><dt>Markets</dt><dd>32</dd></div>
+      <div><dt>Index updates</dt><dd>Weekly</dd></div>
+    </dl>
+    <section class="sample" id="sample" tabindex="-1" data-testid="sample" aria-labelledby="sample-title">
+      <div class="sample-intro">
+        <p class="eyebrow"><span></span> Assortment index</p>
+        <h2 id="sample-title">Collection sample</h2>
+        <p>See how scent families and price ranges fit alongside your current assortment.</p>
+      </div>
+      <table>
+        <thead><tr><th scope="col">Collection</th><th scope="col">Scent family</th><th scope="col">Suggested retail</th></tr></thead>
+        <tbody>
+          <tr><th scope="row"><span class="swatch resin" aria-hidden="true"></span>Resin Library</th><td>Woods &amp; resins</td><td>$92–128</td></tr>
+          <tr><th scope="row"><span class="swatch drift" aria-hidden="true"></span>Drift Notes</th><td>Marine &amp; mineral</td><td>$86–120</td></tr>
+          <tr><th scope="row"><span class="swatch amber" aria-hidden="true"></span>Aftergold</th><td>Amber &amp; spice</td><td>$110–160</td></tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+  <footer class="frame footer"><span>Olfacto Studio</span><span>Fragrance intelligence for independent retail</span></footer>
+  <dialog id="preview" aria-labelledby="preview-title">
+    <div class="dialog-inner">
+      <button class="close" type="button" data-testid="close" aria-label="Close preview form">×</button>
+      <div id="request-fields">
+        <p class="eyebrow"><span></span> Olfacto Studio</p>
+        <h2 id="preview-title">Request a wholesale preview</h2>
+        <p class="dialog-description">Enter your work email to request a look at the wholesale index.</p>
+        <form novalidate>
+          <label for="email">Work email</label>
+          <input type="email" id="email" data-testid="email" name="email" autocomplete="email" placeholder="you@yourshop.com" aria-describedby="email-error" required autofocus>
+          <div class="feedback"><p id="email-error" data-testid="email-error" role="alert" hidden>Enter a valid work email address.</p></div>
+          <button class="button primary" type="submit" data-testid="submit">Request preview <span aria-hidden="true">↗</span></button>
+        </form>
+      </div>
+      <div data-testid="success" id="success" hidden aria-live="polite">
+        <div class="success-mark" aria-hidden="true">✓</div>
+        <h2 id="success-title" tabindex="-1">Preview requested</h2>
+        <p class="dialog-description">Work email <strong id="submitted-email"></strong></p>
+      </div>
+    </div>
+  </dialog>
+</body>
+</html>

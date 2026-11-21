@@ -1,0 +1,887 @@
+{
+  "schemaVersion": 1,
+  "status": "passed",
+  "browser": {
+    "version": "159.0.8154.6",
+    "source": "playwright",
+    "executablePath": "/Users/gabe/Library/Caches/ms-playwright/chromium-1255/chrome-mac-arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing",
+    "headless": true,
+    "args": [
+      "--disable-quic",
+      "--force-webrtc-ip-handling-policy=disable_non_proxied_udp",
+      "--host-resolver-rules=MAP * ~NOTFOUND, EXCLUDE 127.0.0.1",
+      "--no-proxy-server"
+    ]
+  },
+  "config": {
+    "node": "v26.13.0",
+    "platform": "darwin",
+    "architecture": "arm64",
+    "playwright": "1.65.1",
+    "axe": "4.14.1",
+    "axeTags": [
+      "wcag2a",
+      "wcag2aa",
+      "wcag21a",
+      "wcag21aa",
+      "wcag22a",
+      "wcag22aa"
+    ],
+    "context": {
+      "colorScheme": "light",
+      "deviceScaleFactor": 1,
+      "locale": "en-US",
+      "reducedMotion": "reduce",
+      "serviceWorkers": "block",
+      "timezoneId": "UTC"
+    },
+    "viewports": {
+      "desktop": {
+        "width": 1440,
+        "height": 1000
+      },
+      "tablet": {
+        "width": 834,
+        "height": 1112
+      },
+      "mobile": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    "timeoutsMs": {
+      "navigation": 10000,
+      "step": 2500,
+      "capture": 10000,
+      "accessibility": 10000
+    },
+    "network": "localhost-static-origin-only"
+  },
+  "source": {
+    "checksSha256": "6e147ab3ae41cea81de050e2d5bce5e17d33e3896566979453757be0297a7df0",
+    "site": {
+      "sha256": "6309737d8bd361e0b490f4ddbc2f834cb3363856835625d3a3bb0eb05a3e8c9e",
+      "files": [
+        {
+          "path": "app.js",
+          "sha256": "ddab1587f56dc33fe94a9be06282c8ffa52f7be41d1882412b25d5de9ee47065"
+        },
+        {
+          "path": "design-system-core.css",
+          "sha256": "2e1dc47164205b5aef1af967821ea7bcacb53e9b8ae556f6b20662c20544f188"
+        },
+        {
+          "path": "index.html",
+          "sha256": "25401986521f4d4294dd5633ef8fbc38773e37eb205975b1dbbe25ce5869420d"
+        },
+        {
+          "path": "style.css",
+          "sha256": "8be037b92660b10c2581898ef8564e7258d6d5441e8a3e3e98b3a46eddef0336"
+        }
+      ]
+    },
+    "harness": {
+      "sha256": "6c881823017ece00658aa02b1817a074668453398b4905f0208e23ef5bcda8d1",
+      "files": [
+        {
+          "path": "capture.mjs",
+          "sha256": "92bc6c8b9c97e64bd0dbcc746c6505f0ed30e9ecaba15ba32a35d1348afaf77e"
+        },
+        {
+          "path": "package-lock.json",
+          "sha256": "9e166f03feded2ba877c95cbbb4bce6b15453e267c7bf4a69a384ec2a3e1fbc1"
+        },
+        {
+          "path": "package.json",
+          "sha256": "e53398841d514c8588ddfad5569cc1f7aed5d67a6f7b71f4ab05a70cfca4817b"
+        }
+      ]
+    }
+  },
+  "timing": {
+    "startedAt": "2026-11-21T18:43:01.061Z",
+    "completedAt": "2026-11-21T18:43:03.983Z",
+    "elapsedMs": 2923
+  },
+  "viewports": [
+    {
+      "name": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "status": "passed",
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "screenshot": {
+        "path": "desktop.png",
+        "bytes": 55546,
+        "sha256": "c43258821b1f43921b72bf13bd540e23f5f40e9675a1504796c32d48984506e9"
+      },
+      "layout": {
+        "clientWidth": 1440,
+        "scrollWidth": 1440,
+        "bodyScrollWidth": 1440,
+        "horizontalOverflow": false
+      },
+      "accessibility": {
+        "status": "no-violations",
+        "counts": {
+          "passes": 21,
+          "violations": 0,
+          "incomplete": 1,
+          "inapplicable": 43
+        },
+        "violations": [],
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "tags": [
+              "cat.color",
+              "wcag2aa",
+              "wcag143",
+              "TTv5",
+              "TT13.c",
+              "EN-301-549",
+              "EN-9.1.4.3",
+              "ACT",
+              "RGAAv4",
+              "RGAA-3.2.1"
+            ],
+            "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+            "help": "Elements must meet minimum color contrast ratio thresholds",
+            "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+            "nodes": [
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "fontSize": "9.0pt (12px)",
+                      "fontWeight": "bold",
+                      "messageKey": "pseudoContent",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<ol class=\"step-list\">",
+                        "target": [
+                          "ol"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined due to a pseudo element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<span>1</span>",
+                "target": [
+                  "li[aria-current=\"step\"] > .step-index[aria-hidden=\"true\"] > span"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "fontSize": "9.0pt (12px)",
+                      "fontWeight": "normal",
+                      "messageKey": "pseudoContent",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<ol class=\"step-list\">",
+                        "target": [
+                          "ol"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined due to a pseudo element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<span>2</span>",
+                "target": [
+                  "li:nth-child(2) > .step-index[aria-hidden=\"true\"] > span"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "fontSize": "9.0pt (12px)",
+                      "fontWeight": "normal",
+                      "messageKey": "pseudoContent",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<ol class=\"step-list\">",
+                        "target": [
+                          "ol"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined due to a pseudo element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<span>3</span>",
+                "target": [
+                  "li:nth-child(3) > .step-index[aria-hidden=\"true\"] > span"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "messageKey": "nonBmp"
+                    },
+                    "relatedNodes": [],
+                    "impact": "serious",
+                    "message": "Element content contains only non-text characters"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<span aria-hidden=\"true\">→</span>",
+                "target": [
+                  "button[data-testid=\"next\"] > span[aria-hidden=\"true\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "tablet",
+      "viewport": {
+        "width": 834,
+        "height": 1112
+      },
+      "status": "passed",
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "screenshot": {
+        "path": "tablet.png",
+        "bytes": 52358,
+        "sha256": "ff84ab378d6d9809aada96ecbce20a4cb2ca0b646686f4ec8a5d279b18dbd6a8"
+      },
+      "layout": {
+        "clientWidth": 834,
+        "scrollWidth": 834,
+        "bodyScrollWidth": 834,
+        "horizontalOverflow": false
+      },
+      "accessibility": {
+        "status": "no-violations",
+        "counts": {
+          "passes": 21,
+          "violations": 0,
+          "incomplete": 1,
+          "inapplicable": 43
+        },
+        "violations": [],
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "tags": [
+              "cat.color",
+              "wcag2aa",
+              "wcag143",
+              "TTv5",
+              "TT13.c",
+              "EN-301-549",
+              "EN-9.1.4.3",
+              "ACT",
+              "RGAAv4",
+              "RGAA-3.2.1"
+            ],
+            "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+            "help": "Elements must meet minimum color contrast ratio thresholds",
+            "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+            "nodes": [
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "fontSize": "9.0pt (12px)",
+                      "fontWeight": "bold",
+                      "messageKey": "pseudoContent",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<ol class=\"step-list\">",
+                        "target": [
+                          "ol"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined due to a pseudo element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<span>1</span>",
+                "target": [
+                  "li[aria-current=\"step\"] > .step-index[aria-hidden=\"true\"] > span"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "fontSize": "9.0pt (12px)",
+                      "fontWeight": "normal",
+                      "messageKey": "pseudoContent",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<ol class=\"step-list\">",
+                        "target": [
+                          "ol"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined due to a pseudo element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<span>2</span>",
+                "target": [
+                  "li:nth-child(2) > .step-index[aria-hidden=\"true\"] > span"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "fontSize": "9.0pt (12px)",
+                      "fontWeight": "normal",
+                      "messageKey": "pseudoContent",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<ol class=\"step-list\">",
+                        "target": [
+                          "ol"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined due to a pseudo element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<span>3</span>",
+                "target": [
+                  "li:nth-child(3) > .step-index[aria-hidden=\"true\"] > span"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "messageKey": "nonBmp"
+                    },
+                    "relatedNodes": [],
+                    "impact": "serious",
+                    "message": "Element content contains only non-text characters"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<span aria-hidden=\"true\">→</span>",
+                "target": [
+                  "button[data-testid=\"next\"] > span[aria-hidden=\"true\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "status": "passed",
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "screenshot": {
+        "path": "mobile.png",
+        "bytes": 37549,
+        "sha256": "0b85788d6e3ee51e81dd24a2d008fdc95821acc997263300b11e67b218a75d02"
+      },
+      "layout": {
+        "clientWidth": 390,
+        "scrollWidth": 390,
+        "bodyScrollWidth": 390,
+        "horizontalOverflow": false
+      },
+      "accessibility": {
+        "status": "no-violations",
+        "counts": {
+          "passes": 21,
+          "violations": 0,
+          "incomplete": 1,
+          "inapplicable": 43
+        },
+        "violations": [],
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "tags": [
+              "cat.color",
+              "wcag2aa",
+              "wcag143",
+              "TTv5",
+              "TT13.c",
+              "EN-301-549",
+              "EN-9.1.4.3",
+              "ACT",
+              "RGAAv4",
+              "RGAA-3.2.1"
+            ],
+            "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+            "help": "Elements must meet minimum color contrast ratio thresholds",
+            "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+            "nodes": [
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "fontSize": "9.0pt (12px)",
+                      "fontWeight": "bold",
+                      "messageKey": "pseudoContent",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<ol class=\"step-list\">",
+                        "target": [
+                          "ol"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined due to a pseudo element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<span>1</span>",
+                "target": [
+                  "li[aria-current=\"step\"] > .step-index[aria-hidden=\"true\"] > span"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "fontSize": "9.0pt (12px)",
+                      "fontWeight": "normal",
+                      "messageKey": "pseudoContent",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<ol class=\"step-list\">",
+                        "target": [
+                          "ol"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined due to a pseudo element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<span>2</span>",
+                "target": [
+                  "li:nth-child(2) > .step-index[aria-hidden=\"true\"] > span"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "fontSize": "9.0pt (12px)",
+                      "fontWeight": "normal",
+                      "messageKey": "pseudoContent",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<ol class=\"step-list\">",
+                        "target": [
+                          "ol"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined due to a pseudo element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<span>3</span>",
+                "target": [
+                  "li:nth-child(3) > .step-index[aria-hidden=\"true\"] > span"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "fontSize": "9.0pt (12px)",
+                      "fontWeight": "normal",
+                      "messageKey": "pseudoContent",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<ol class=\"step-list\">",
+                        "target": [
+                          "ol"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined due to a pseudo element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<span class=\"step-label\">Review</span>",
+                "target": [
+                  "li:nth-child(3) > .step-label"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "messageKey": "nonBmp"
+                    },
+                    "relatedNodes": [],
+                    "impact": "serious",
+                    "message": "Element content contains only non-text characters"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<span aria-hidden=\"true\">→</span>",
+                "target": [
+                  "button[data-testid=\"next\"] > span[aria-hidden=\"true\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "scenarios": [
+    {
+      "name": "mobile validation",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "captureRequested": true,
+      "status": "passed",
+      "steps": [
+        {
+          "index": 1,
+          "expected": {
+            "action": "fill",
+            "id": "site-name",
+            "value": "Harbor Annex"
+          },
+          "status": "passed",
+          "elapsedMs": 23
+        },
+        {
+          "index": 2,
+          "expected": {
+            "action": "fill",
+            "id": "email",
+            "value": "oops"
+          },
+          "status": "passed",
+          "elapsedMs": 14
+        },
+        {
+          "index": 3,
+          "expected": {
+            "action": "click",
+            "id": "next"
+          },
+          "status": "passed",
+          "elapsedMs": 43
+        },
+        {
+          "index": 4,
+          "expected": {
+            "action": "visible",
+            "id": "email-error"
+          },
+          "status": "passed",
+          "elapsedMs": 2
+        }
+      ],
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "screenshot": {
+        "path": "scenario-01-mobile-validation.png",
+        "bytes": 46646,
+        "sha256": "a5a7813000efdb81bb273be892701c569091a76802b5e183067fe520f86acff9"
+      },
+      "unrunSteps": 0
+    },
+    {
+      "name": "full request",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "captureRequested": true,
+      "status": "passed",
+      "steps": [
+        {
+          "index": 1,
+          "expected": {
+            "action": "fill",
+            "id": "site-name",
+            "value": "Harbor Annex"
+          },
+          "status": "passed",
+          "elapsedMs": 15
+        },
+        {
+          "index": 2,
+          "expected": {
+            "action": "fill",
+            "id": "email",
+            "value": "ops@example.test"
+          },
+          "status": "passed",
+          "elapsedMs": 3
+        },
+        {
+          "index": 3,
+          "expected": {
+            "action": "click",
+            "id": "next"
+          },
+          "status": "passed",
+          "elapsedMs": 35
+        },
+        {
+          "index": 4,
+          "expected": {
+            "action": "select",
+            "id": "system",
+            "value": "hvac"
+          },
+          "status": "passed",
+          "actual": [
+            "hvac"
+          ],
+          "elapsedMs": 7
+        },
+        {
+          "index": 5,
+          "expected": {
+            "action": "fill",
+            "id": "notes",
+            "value": "Use loading bay"
+          },
+          "status": "passed",
+          "elapsedMs": 42
+        },
+        {
+          "index": 6,
+          "expected": {
+            "action": "click",
+            "id": "back"
+          },
+          "status": "passed",
+          "elapsedMs": 32
+        },
+        {
+          "index": 7,
+          "expected": {
+            "action": "click",
+            "id": "next"
+          },
+          "status": "passed",
+          "elapsedMs": 32
+        },
+        {
+          "index": 8,
+          "expected": {
+            "action": "click",
+            "id": "next"
+          },
+          "status": "passed",
+          "elapsedMs": 35
+        },
+        {
+          "index": 9,
+          "expected": {
+            "action": "text",
+            "id": "review",
+            "value": "Harbor Annex"
+          },
+          "status": "passed",
+          "actual": "Review your request Check the details before submitting your request. Site name Harbor Annex Contact email ops@example.test Property system HVAC Access notes Use loading bay",
+          "elapsedMs": 7
+        },
+        {
+          "index": 10,
+          "expected": {
+            "action": "text",
+            "id": "review",
+            "value": "ops@example.test"
+          },
+          "status": "passed",
+          "actual": "Review your request Check the details before submitting your request. Site name Harbor Annex Contact email ops@example.test Property system HVAC Access notes Use loading bay",
+          "elapsedMs": 1
+        },
+        {
+          "index": 11,
+          "expected": {
+            "action": "text",
+            "id": "review",
+            "value": "HVAC"
+          },
+          "status": "passed",
+          "actual": "Review your request Check the details before submitting your request. Site name Harbor Annex Contact email ops@example.test Property system HVAC Access notes Use loading bay",
+          "elapsedMs": 1
+        },
+        {
+          "index": 12,
+          "expected": {
+            "action": "text",
+            "id": "review",
+            "value": "Use loading bay"
+          },
+          "status": "passed",
+          "actual": "Review your request Check the details before submitting your request. Site name Harbor Annex Contact email ops@example.test Property system HVAC Access notes Use loading bay",
+          "elapsedMs": 0
+        },
+        {
+          "index": 13,
+          "expected": {
+            "action": "click",
+            "id": "confirm"
+          },
+          "status": "passed",
+          "elapsedMs": 24
+        },
+        {
+          "index": 14,
+          "expected": {
+            "action": "text",
+            "id": "success",
+            "value": "Inspection requested"
+          },
+          "status": "passed",
+          "actual": "✓ Inspection requested Reference number FM-2047",
+          "elapsedMs": 1
+        },
+        {
+          "index": 15,
+          "expected": {
+            "action": "text",
+            "id": "success",
+            "value": "FM-2047"
+          },
+          "status": "passed",
+          "actual": "✓ Inspection requested Reference number FM-2047",
+          "elapsedMs": 1
+        }
+      ],
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "screenshot": {
+        "path": "scenario-02-full-request.png",
+        "bytes": 38609,
+        "sha256": "7e281026b28cfa7c3c4e4d980d625956048aed572f09fb13c40060360b87bb18"
+      },
+      "unrunSteps": 0
+    }
+  ],
+  "criticalFailures": [],
+  "runnerErrors": []
+}

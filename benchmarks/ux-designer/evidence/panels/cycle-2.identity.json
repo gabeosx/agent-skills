@@ -1,0 +1,170 @@
+{
+  "tasks": {
+    "d1": {
+      "cycle-2": "ui-88701b",
+      "cycle-1": "ui-9bc8ab",
+      "baseline": "ui-bc9db5"
+    },
+    "d2": {
+      "cycle-2": "ui-bebe08",
+      "baseline": "ui-c5092e",
+      "cycle-1": "ui-578f65"
+    },
+    "d3": {
+      "cycle-1": "ui-fae666",
+      "baseline": "ui-43bcf2",
+      "cycle-2": "ui-bb7de2"
+    },
+    "d4": {
+      "cycle-2": "ui-e1df93",
+      "baseline": "ui-84c60a",
+      "cycle-1": "ui-6b18be"
+    },
+    "d5": {
+      "cycle-1": "ui-c2a90b",
+      "cycle-2": "ui-94e54e",
+      "baseline": "ui-311d89"
+    },
+    "d6": {
+      "cycle-1": "ui-eb4aed",
+      "baseline": "ui-ce29bb",
+      "cycle-2": "ui-0068d0"
+    }
+  },
+  "review_order": {
+    "d1": {
+      "outputs_in_review_order": [
+        "ui-88701b",
+        "ui-9bc8ab",
+        "ui-bc9db5"
+      ],
+      "pairs": [
+        [
+          "ui-9bc8ab",
+          "ui-88701b"
+        ],
+        [
+          "ui-bc9db5",
+          "ui-9bc8ab"
+        ],
+        [
+          "ui-bc9db5",
+          "ui-88701b"
+        ]
+      ]
+    },
+    "d2": {
+      "outputs_in_review_order": [
+        "ui-bebe08",
+        "ui-c5092e",
+        "ui-578f65"
+      ],
+      "pairs": [
+        [
+          "ui-578f65",
+          "ui-c5092e"
+        ],
+        [
+          "ui-bebe08",
+          "ui-578f65"
+        ],
+        [
+          "ui-bebe08",
+          "ui-c5092e"
+        ]
+      ]
+    },
+    "d3": {
+      "outputs_in_review_order": [
+        "ui-fae666",
+        "ui-43bcf2",
+        "ui-bb7de2"
+      ],
+      "pairs": [
+        [
+          "ui-fae666",
+          "ui-43bcf2"
+        ],
+        [
+          "ui-43bcf2",
+          "ui-bb7de2"
+        ],
+        [
+          "ui-fae666",
+          "ui-bb7de2"
+        ]
+      ]
+    },
+    "d4": {
+      "outputs_in_review_order": [
+        "ui-e1df93",
+        "ui-84c60a",
+        "ui-6b18be"
+      ],
+      "pairs": [
+        [
+          "ui-6b18be",
+          "ui-e1df93"
+        ],
+        [
+          "ui-e1df93",
+          "ui-84c60a"
+        ],
+        [
+          "ui-6b18be",
+          "ui-84c60a"
+        ]
+      ]
+    },
+    "d5": {
+      "outputs_in_review_order": [
+        "ui-c2a90b",
+        "ui-94e54e",
+        "ui-311d89"
+      ],
+      "pairs": [
+        [
+          "ui-94e54e",
+          "ui-311d89"
+        ],
+        [
+          "ui-c2a90b",
+          "ui-311d89"
+        ],
+        [
+          "ui-94e54e",
+          "ui-c2a90b"
+        ]
+      ]
+    },
+    "d6": {
+      "outputs_in_review_order": [
+        "ui-eb4aed",
+        "ui-ce29bb",
+        "ui-0068d0"
+      ],
+      "pairs": [
+        [
+          "ui-0068d0",
+          "ui-ce29bb"
+        ],
+        [
+          "ui-eb4aed",
+          "ui-0068d0"
+        ],
+        [
+          "ui-ce29bb",
+          "ui-eb4aed"
+        ]
+      ]
+    }
+  },
+  "shards": [
+    "cycle-2-12",
+    "cycle-2-34",
+    "cycle-2-56"
+  ],
+  "set": "development",
+  "trial_arm": "cycle-2",
+  "comparator": "cycle-1"
+}

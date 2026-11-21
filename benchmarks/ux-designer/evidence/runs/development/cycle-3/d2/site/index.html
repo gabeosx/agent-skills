@@ -1,0 +1,397 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#142d2b">
+  <title>BrightCart — Commercial overview</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --canvas: #eff3ef;
+      --surface: #fff;
+      --ink: #17312c;
+      --muted: #52645c;
+      --line: #dbe5df;
+      --green: #145d4b;
+      --mint: #e6f3ed;
+      --orange: #a14328;
+      --orange-pale: #faebe4;
+      --font: system-ui, sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin: 0; background: var(--canvas); color: var(--ink); font: 500 16px/1.5 var(--font); }
+    h1, h2, h3, p, figure { margin: 0; }
+    button, select { font: inherit; color: inherit; }
+    button, select, summary { cursor: pointer; }
+    :focus-visible { outline: 2px solid #156658; outline-offset: 3px; }
+    .shell { width: min(100% - 88px, 1336px); margin-inline: auto; }
+    .masthead { background: #142d2b; color: #f2fbf7; }
+    .masthead .shell { min-height: 64px; display: flex; justify-content: space-between; align-items: center; gap: 15px; }
+    .brand { display: inline-flex; align-items: center; gap: 10px; font-size: 1.38rem; font-weight: 800; letter-spacing: -.035em; }
+    .brand-icon { width: 31px; height: 31px; padding: 5px; border-radius: 8px; background: #b5e9cd; color: #194438; }
+    .masthead-label { font-size: .77rem; font-weight: 650; color: #d3e4dc; }
+
+    main { padding-block: 31px 42px; }
+    .overview { display: flex; justify-content: space-between; align-items: end; gap: 18px; margin: 0 0 22px; }
+    h1 { font-size: clamp(2rem, 4vw, 3.15rem); line-height: .99; letter-spacing: -.055em; font-weight: 770; }
+    .lead { margin-top: 10px; color: var(--muted); font-size: .95rem; }
+    .control { display: grid; gap: 4px; font-size: .74rem; line-height: 1.15; color: var(--muted); font-weight: 750; }
+    .control select {
+      min-height: 42px; padding: 7px 33px 7px 12px; appearance: none; min-width: 140px;
+      border: 1px solid #b8cbbf; border-radius: 7px; background: var(--surface); color: var(--ink);
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='m1 1 5 5 5-5' fill='none' stroke='%23436555' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: right 11px center; font-size: .85rem; font-weight: 720;
+    }
+    .control select:hover { border-color: #658b76; }
+
+    .kpis { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin: 0 0 20px; }
+    .kpi { min-width: 0; display: grid; gap: 7px; padding: 16px 19px 17px; border: 1px solid var(--line); border-radius: 11px; background: var(--surface); }
+    .kpi dt { display: flex; align-items: center; justify-content: space-between; gap: 5px; font-size: .85rem; color: var(--muted); font-weight: 700; }
+    .kpi dt svg { width: 18px; height: 18px; color: var(--green); }
+    .kpi dd { margin: 0; font-size: clamp(1.65rem, 4vw, 2.52rem); font-weight: 740; font-variant-numeric: tabular-nums; line-height: 1; letter-spacing: -.06em; }
+    .kpi.focus { background: var(--mint); border-color: #a9cdbb; }
+    .kpi.focus dd { color: #125241; }
+
+    .working-grid { display: grid; grid-template-columns: minmax(0, 1.06fr) minmax(0, 1fr); gap: 18px; align-items: start; }
+    .panel { min-width: 0; border: 1px solid var(--line); border-radius: 11px; background: var(--surface); }
+    .panel-head { display: flex; justify-content: space-between; align-items: start; gap: 14px; padding: 18px 19px 13px; }
+    .panel h2, dialog h2 { font-size: 1.48rem; line-height: 1.12; font-weight: 760; letter-spacing: -.046em; }
+    .panel-head p { margin-top: 5px; color: var(--muted); font-size: .8rem; }
+    .delta {
+      display: inline-flex; gap: 4px; align-items: center; padding: 5px 8px;
+      color: #8f361f; background: var(--orange-pale); border-radius: 5px; font-size: .8rem; font-weight: 780; white-space: nowrap;
+    }
+    .chart { display: block; width: calc(100% - 30px); height: 245px; margin: 0 15px 4px; overflow: visible; }
+    .chart text { fill: var(--muted); font-family: var(--font); font-weight: 650; font-size: 11px; }
+    .chart .point-text { fill: var(--ink); font-size: 11px; }
+    .chart .prior { fill: #5b6c63; }
+    .chart .latest-text { fill: #88361f; font-weight: 800; }
+    .series { border-top: 1px solid var(--line); padding: 8px 19px 10px; font-size: .8rem; color: var(--muted); }
+    .series summary { width: fit-content; min-height: 28px; line-height: 28px; font-weight: 720; color: var(--green); }
+    .series ol { display: grid; grid-template-columns: repeat(auto-fit, minmax(95px, 1fr)); gap: 5px 10px; list-style: none; padding: 0; margin: 4px 0 8px; }
+    .series li { display: flex; justify-content: space-between; gap: 5px; padding: 4px 6px; background: #edf4f0; border-radius: 4px; white-space: nowrap; font-variant-numeric: tabular-nums; }
+    .series li:last-child { background: var(--orange-pale); color: #88361f; }
+
+    .dept-head { align-items: end; }
+    .dept-head .control select { min-width: 132px; }
+    .departments table { width: 100%; border-collapse: collapse; text-align: left; font-variant-numeric: tabular-nums; }
+    .departments th, .departments td { padding: 12px 8px; }
+    .departments th:first-child { padding-left: 19px; }
+    .departments th:last-child, .departments td:last-child { padding-right: 19px; }
+    .departments thead th {
+      background: #edf4f0; border-block: 1px solid var(--line); color: var(--muted);
+      font-size: .71rem; font-weight: 780; white-space: nowrap;
+    }
+    .departments tbody th, .departments tbody td { border-bottom: 1px solid var(--line); font-size: .88rem; }
+    .departments tbody th { font-weight: 750; }
+    .departments .numeric { text-align: right; }
+    .departments th.status-col, .departments td:last-child { text-align: right; }
+    .departments tbody tr:hover { background: #f8faf8; }
+    .row-action {
+      background: transparent; border: 0; padding: 0; min-height: 30px; display: inline-flex; align-items: center;
+      gap: 4px; color: var(--green); text-align: left; font-weight: 800;
+    }
+    .row-action:hover { text-decoration: underline; }
+    .row-action span { font-size: .96rem; }
+    .tag {
+      display: inline-flex; align-items: center; gap: 5px; padding: 4px 7px; border-radius: 5px;
+      background: var(--mint); color: #155440; font-size: .72rem; font-weight: 760; white-space: nowrap;
+    }
+    .tag::before { content: ""; width: 5px; height: 5px; flex: none; border-radius: 50%; background: currentColor; }
+    .tag.investigate { background: var(--orange-pale); color: #8f361f; }
+    .tag.watch { background: #f8efd7; color: #755015; }
+    .table-foot { padding: 10px 19px; color: var(--muted); font-size: .76rem; }
+
+    dialog {
+      width: min(100% - 28px, 465px); max-height: calc(100% - 28px); padding: 23px; color: var(--ink); background: var(--surface);
+      border: 1px solid var(--line); border-radius: 12px; box-shadow: 0 18px 74px #132c294b;
+    }
+    dialog::backdrop { background: #152d2baa; }
+    .return-button {
+      display: inline-flex; align-items: center; gap: 7px; min-height: 42px; padding: 6px 11px;
+      background: #eef5f1; color: var(--green); border: 1px solid var(--line); border-radius: 6px; font-size: .84rem; font-weight: 750;
+    }
+    .return-button:hover { background: #dfeee6; }
+    .detail-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-block: 18px 12px; }
+    .detail-head h2 { font-size: 2rem; }
+    .detail-metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 0 0 15px; }
+    .detail-metrics div { padding: 12px; border-radius: 7px; background: var(--mint); }
+    .detail-metrics dt { font-size: .76rem; font-weight: 750; color: var(--muted); }
+    .detail-metrics dd { margin: 1px 0 0; font-size: 1.65rem; font-weight: 800; letter-spacing: -.05em; }
+    .supplier { padding: 13px 0 1px; border-top: 1px solid var(--line); }
+    .supplier h3 { margin-bottom: 3px; font-size: 1.03rem; }
+    .supplier p { color: var(--muted); font-size: .88rem; }
+
+    @media (max-width: 1060px) {
+      .shell { width: calc(100% - 64px); }
+      .working-grid { gap: 13px; }
+      .panel-head { padding-inline: 13px; }
+      .departments th, .departments td { padding-inline: 5px; }
+      .departments th:first-child { padding-left: 13px; }
+      .departments th:last-child, .departments td:last-child { padding-right: 13px; }
+    }
+    @media (max-width: 780px) {
+      .working-grid { grid-template-columns: minmax(0, 1fr); }
+      .chart { height: 208px; }
+    }
+    @media (max-width: 540px) {
+      .shell { width: calc(100% - 32px); }
+      .masthead .shell { min-height: 52px; }
+      .brand { font-size: 1.24rem; }
+      .brand-icon { width: 27px; height: 27px; }
+      .masthead-label { font-size: .72rem; }
+      main { padding-block: 22px 25px; }
+      .overview { align-items: start; flex-direction: column; margin-bottom: 14px; gap: 13px; }
+      .lead { font-size: .87rem; margin-top: 7px; }
+      .overview .control { display: flex; align-items: center; gap: 9px; }
+      .control select { min-height: 44px; }
+      .kpis { gap: 7px; margin-bottom: 13px; }
+      .kpi { padding: 10px 7px 12px; gap: 5px; }
+      .kpi dt { font-size: .68rem; line-height: 1.25; }
+      .kpi dt svg { width: 14px; height: 14px; flex: none; }
+      .kpi dd { font-size: clamp(1.3rem, 5.8vw, 1.7rem); }
+      .working-grid { gap: 13px; }
+      .panel-head { padding: 13px 10px 10px; gap: 8px; }
+      .panel h2 { font-size: 1.22rem; }
+      .panel-head p { font-size: .73rem; }
+      .delta { font-size: .73rem; }
+      .chart { width: calc(100% - 14px); margin-inline: 7px; height: 169px; }
+      .chart text, .chart .point-text { font-size: 10px; }
+      .series { padding-inline: 10px; }
+      .dept-head .control select { min-width: 106px; padding-left: 7px; }
+      .departments th, .departments td { padding: 9px 4px; }
+      .departments th:first-child { padding-left: 10px; }
+      .departments th:last-child, .departments td:last-child { padding-right: 10px; }
+      .departments tbody th, .departments tbody td { font-size: .8rem; }
+      .row-action { min-height: 44px; }
+      .tag { padding-inline: 5px; font-size: .68rem; }
+      .table-foot { padding-inline: 10px; }
+    }
+    @media (max-width: 350px) {
+      .kpi dt svg { display: none; }
+      .departments th.sales, .departments td.sales { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="masthead">
+    <div class="shell">
+      <span class="brand">
+        <svg class="brand-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 7h2l2.2 9.5h10.4L20 9H6M9.5 12.7l2.4 1.8 4.2-3.1M9 20h.1m7.8 0h.1"/>
+        </svg>
+        BrightCart
+      </span>
+      <span class="masthead-label">Commercial intelligence</span>
+    </div>
+  </header>
+  <main class="shell">
+    <div class="overview">
+      <div>
+        <h1>Commercial overview</h1>
+        <p class="lead">Track margin pressure by department.</p>
+      </div>
+      <label class="control" for="period">Period
+        <select id="period" data-testid="period">
+          <option value="30" selected>Last 30 days</option>
+          <option value="7">Last 7 days</option>
+        </select>
+      </label>
+    </div>
+    <dl class="kpis" aria-label="Commercial KPIs">
+      <div class="kpi">
+        <dt>Sales <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 19h18M6 15v-3m6 3V8m6 7V4"/></svg></dt>
+        <dd data-testid="revenue" id="revenue">$1.28M</dd>
+      </div>
+      <div class="kpi focus">
+        <dt>Gross margin <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="m5 19 14-14"/><circle cx="7.2" cy="7.2" r="2.7"/><circle cx="16.8" cy="16.8" r="2.7"/></svg></dt>
+        <dd data-testid="margin" id="margin">24.8%</dd>
+      </div>
+      <div class="kpi">
+        <dt>Stockout rate <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m4 7 8-4 8 4v10l-8 4-8-4zm0 0 8 4 8-4m-8 4v10"/></svg></dt>
+        <dd id="stockout">3.1%</dd>
+      </div>
+    </dl>
+    <div class="working-grid">
+      <section class="panel trend" aria-labelledby="trend-title">
+        <div class="panel-head trend-head">
+          <div>
+            <h2 id="trend-title">Gross margin trend</h2>
+            <p id="trend-context">Weekly gross margin, oldest to latest</p>
+          </div>
+          <span id="change" class="delta"><span aria-hidden="true">↓</span> 2.7 pp</span>
+        </div>
+        <figure>
+          <svg class="chart" id="margin-chart" role="img" aria-labelledby="chart-title chart-description">
+            <title id="chart-title">Weekly gross margin percentages</title>
+            <desc id="chart-description">Gross margin fell from 25.1% to 22.4%, a decline of 2.7 percentage points across seven weeks.</desc>
+          </svg>
+          <details class="series">
+            <summary>Weekly margin values</summary>
+            <ol id="series-values"></ol>
+          </details>
+        </figure>
+      </section>
+      <section class="panel departments" id="departments" aria-labelledby="departments-title">
+        <div class="panel-head dept-head">
+          <div>
+            <h2 id="departments-title">Departments</h2>
+            <p id="department-summary" role="status">2 departments to investigate</p>
+          </div>
+          <label class="control" for="status">Status
+            <select id="status" data-testid="status">
+              <option value="all" selected>All statuses</option>
+              <option value="investigate">Investigate</option>
+            </select>
+          </label>
+        </div>
+        <table aria-label="Department sales and margins">
+          <thead>
+            <tr><th scope="col">Department</th><th scope="col" class="numeric sales">Sales</th><th scope="col" class="numeric">Margin</th><th scope="col" class="status-col">7-day status</th></tr>
+          </thead>
+          <tbody data-testid="rows"></tbody>
+        </table>
+        <p class="table-foot" id="table-scope">Sales and margins reflect the last 30 days.</p>
+      </section>
+    </div>
+  </main>
+  <dialog data-testid="detail" aria-labelledby="detail-title">
+    <button type="button" class="return-button" data-testid="detail-close"><span aria-hidden="true">←</span> Back to overview</button>
+    <div class="detail-head"><h2 id="detail-title">Produce</h2><span class="tag investigate">Investigate</span></div>
+    <dl class="detail-metrics">
+      <div><dt id="detail-margin-label">30-day gross margin</dt><dd id="detail-margin"></dd></div>
+      <div><dt id="detail-sales-label">30-day sales</dt><dd id="detail-sales"></dd></div>
+    </dl>
+    <section class="supplier" aria-labelledby="supplier-title">
+      <h3 id="supplier-title">Supplier costs</h3>
+      <p>Check for supplier cost changes in the selected period and compare them with shelf prices.</p>
+    </section>
+  </dialog>
+  <script>
+    const periods = {
+      30: { sales: '$1.28M', margin: '24.8%', stockout: '3.1%' },
+      7: { sales: '$318K', margin: '22.4%', stockout: '4.2%' }
+    };
+    const departments = [
+      { name: 'Produce', 30: ['$405K', '20.2%'], 7: ['$95K', '18.1%'], status: 'Investigate' },
+      { name: 'Grocery', 30: ['$532K', '28.1%'], 7: ['$130K', '27.0%'], status: 'On track' },
+      { name: 'Frozen', 30: ['$204K', '25.2%'], 7: ['$54K', '22.3%'], status: 'Watch' },
+      { name: 'Bakery', 30: ['$139K', '25.1%'], 7: ['$39K', '19.4%'], status: 'Investigate' }
+    ];
+    const series = [25.1, 26.0, 25.7, 24.9, 24.3, 23.8, 22.4];
+    const period = document.querySelector('#period');
+    const statusFilter = document.querySelector('#status');
+    const rows = document.querySelector('[data-testid="rows"]');
+    const chart = document.querySelector('#margin-chart');
+    const detail = document.querySelector('dialog');
+    const detailClose = detail.querySelector('button');
+
+    document.querySelector('#series-values').innerHTML = series.map((value, index) =>
+      '<li><span>Week ' + (index + 1) + '</span><strong>' + value.toFixed(1) + '%</strong></li>'
+    ).join('');
+
+    function renderChart() {
+      const width = chart.clientWidth;
+      const height = chart.clientHeight;
+      const left = width < 450 ? 33 : 42;
+      const right = width - 27;
+      const top = 15;
+      const base = height - 26;
+      const sevenDays = period.value === '7';
+      const x = (index) => left + (right - left) * index / (series.length - 1);
+      const y = (value) => base - (value - 22) * (base - top) / 4.5;
+      const positions = series.map((value, index) => [x(index), y(value)]);
+      const latestIndex = positions.length - 1;
+      const line = 'M' + positions.map((point) => point.join(',')).join(' L');
+      const latestSegment = 'M' + positions.slice(-2).map((point) => point.join(',')).join(' L');
+      const area = line + ' L' + right + ',' + base + ' L' + left + ',' + base + ' Z';
+      const ticks = [26, 25, 24, 23, 22];
+
+      const grid = ticks.map((tick) =>
+        '<line x1="' + left + '" x2="' + (width - 9) + '" y1="' + y(tick) + '" y2="' + y(tick) + '" stroke="#deebe3"/>' +
+        '<text x="' + (left - 6) + '" y="' + (y(tick) + 4) + '" text-anchor="end">' + tick + '%</text>'
+      ).join('');
+      const points = positions.map(([px, py], index) => {
+        const latest = index === latestIndex;
+        const stroke = latest ? '#a14328' : sevenDays ? '#748d80' : '#18755e';
+        const labelClass = latest ? 'latest-text' : sevenDays ? 'point-text prior' : 'point-text';
+        const week = (width < 450 ? 'W' : 'Week ') + (index + 1);
+        return '<circle cx="' + px + '" cy="' + py + '" r="' + (latest ? 5 : 3.5) + '" fill="' + (latest ? stroke : '#fff') + '" stroke="' + stroke + '" stroke-width="2"/>' +
+          '<text x="' + px + '" y="' + (py - 11) + '" text-anchor="middle" class="' + labelClass + '">' + series[index].toFixed(1) + '%</text>' +
+          '<text x="' + px + '" y="' + (height - 7) + '" text-anchor="middle" class="' + (latest ? 'latest-text' : '') + '">' + week + '</text>';
+      }).join('');
+
+      const description = sevenDays
+        ? 'Latest week 22.4%, down 1.4 percentage points from the previous week at 23.8%. Six earlier weeks provide context.'
+        : 'Gross margin fell from 25.1% to 22.4%, a decline of 2.7 percentage points across seven weeks.';
+
+      chart.setAttribute('viewBox', '0 0 ' + width + ' ' + height);
+      chart.innerHTML =
+        '<title id="chart-title">Weekly gross margin percentages</title><desc id="chart-description">' + description + '</desc>' +
+        '<defs><linearGradient id="margin-area" x2="0%" y2="100%"><stop stop-color="#b8e0cc" stop-opacity=".78"/><stop offset="100%" stop-color="#eef7f1" stop-opacity=".6"/></linearGradient></defs>' +
+        (sevenDays ? '<rect x="' + (right - 16) + '" y="' + (top - 1) + '" width="32" height="' + (base - top + 2) + '" rx="5" fill="#faebe4"/>' : '') +
+        grid +
+        (sevenDays ? '' : '<path d="' + area + '" fill="url(#margin-area)"/>') +
+        '<path d="' + line + '" fill="none" stroke="' + (sevenDays ? '#748d80' : '#18755e') + '" stroke-width="2.5" stroke-linejoin="round"/>' +
+        (sevenDays ? '<path d="' + latestSegment + '" fill="none" stroke="#a14328" stroke-width="3" stroke-linecap="round"/>' : '') +
+        points;
+    }
+
+    function renderRows() {
+      const selectedDepartments = statusFilter.value === 'investigate'
+        ? departments.filter((department) => department.status === 'Investigate')
+        : departments;
+      rows.innerHTML = selectedDepartments.map((department) => {
+        const [sales, margin] = department[period.value];
+        const isProduce = department.name === 'Produce';
+        const name = isProduce
+          ? '<button class="row-action" type="button" data-testid="produce" aria-haspopup="dialog">Produce <span aria-hidden="true">↗</span></button>'
+          : department.name;
+        const statusClass = department.status.toLowerCase().replace(' ', '-');
+        return '<tr><th scope="row">' + name + '</th><td class="numeric sales">' + sales +
+          '</td><td class="numeric"><strong>' + margin + '</strong></td><td><span class="tag ' + statusClass + '">' +
+          department.status + '</span></td></tr>';
+      }).join('');
+
+      document.querySelector('#department-summary').textContent = statusFilter.value === 'investigate'
+        ? 'Showing 2 departments to investigate'
+        : '2 departments to investigate';
+      document.querySelector('#table-scope').textContent = 'Sales and margins reflect the last ' + period.value + ' days.';
+    }
+
+    function renderPeriod() {
+      const selected = periods[period.value];
+      const sevenDays = period.value === '7';
+      document.querySelector('#revenue').textContent = selected.sales;
+      document.querySelector('#margin').textContent = selected.margin;
+      document.querySelector('#stockout').textContent = selected.stockout;
+      document.querySelector('#trend-context').textContent = sevenDays
+        ? 'Latest week vs. the previous week'
+        : 'Weekly gross margin, oldest to latest';
+      const change = document.querySelector('#change');
+      change.innerHTML = '<span aria-hidden="true">↓</span> ' + (sevenDays ? '1.4' : '2.7') + ' pp';
+      change.setAttribute('aria-label', sevenDays ? 'Down 1.4 percentage points' : 'Down 2.7 percentage points');
+      renderChart();
+      renderRows();
+    }
+
+    rows.addEventListener('click', (event) => {
+      if (!event.target.closest('[data-testid="produce"]')) return;
+      const [sales, margin] = departments[0][period.value];
+      document.querySelector('#detail-margin-label').textContent = period.value + '-day gross margin';
+      document.querySelector('#detail-sales-label').textContent = period.value + '-day sales';
+      document.querySelector('#detail-margin').textContent = margin;
+      document.querySelector('#detail-sales').textContent = sales;
+      detail.showModal();
+      detailClose.focus();
+    });
+    detailClose.addEventListener('click', () => detail.close());
+    detail.addEventListener('close', () => rows.querySelector('[data-testid="produce"]').focus());
+    period.addEventListener('change', renderPeriod);
+    statusFilter.addEventListener('change', renderRows);
+    new ResizeObserver(renderChart).observe(chart);
+    renderPeriod();
+  </script>
+</body>
+</html>

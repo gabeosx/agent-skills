@@ -1,0 +1,21 @@
+{
+  "actor": "a9ef",
+  "model": "inherited Codex",
+  "started": "2026-11-21T18:38:54+00:00",
+  "actor_collected_at": "2026-11-21T18:45:40+00:00",
+  "attempt": 1,
+  "brief": "briefs/d6/brief.md",
+  "brief_sha256": "5e6b80e641aaf3b8e8b9e95b0171315231b834e71e6844b977fba63ce8d198f0",
+  "checks_sha256": "ce726855e121f16d1f2fec700ed998340cee916e535b3a4b6429c3b0234c1bae",
+  "starter_files": {},
+  "skill_sha256": "ad92dafd139c78ea3b87e186b5a787186f291e6a0e2c846d555a021432f3e4be",
+  "source": {
+    "design-system-core.css": "2e1dc47164205b5aef1af967821ea7bcacb53e9b8ae556f6b20662c20544f188",
+    "docs.js": "abd19f8869fdede5ea4e54155911d9f351bbeba6b81cee68fa37fbb92c271c2f",
+    "index.html": "defa3d61309dfe654203bacdfc2403b4515727efd82fdfb9d497a073a66174ac",
+    "style.css": "cf902a07963716f9d573ed707f3710c2c3e145c6fefbe009f11852bd78b4ef9f"
+  },
+  "actor_result": "Both complete. Agent reports visual inspection and responsive interaction checks for filter, review, navigation, anchors, dialogs and Escape. Parent shared the Chromium launch workaround during actor self-verification.",
+  "usage": null,
+  "charge": null
+}

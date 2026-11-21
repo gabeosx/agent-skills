@@ -1,0 +1,411 @@
+{
+  "tasks": {
+    "d5": {
+      "outputs": {
+        "ui-d7886f": {
+          "dimensions": {
+            "A": {
+              "score": 16,
+              "rationale": "A clear heading and table-like grid establish a sensible reading order, with a roomy three-line record pattern at 390 px.",
+              "strengths": [
+                "Stop names and cities share a strong left anchor at 1440 and 834 px",
+                "ETA, delay, review state and action repeat in a stable order on mobile"
+              ],
+              "defects": [
+                "The district eyebrow and separate date line put the first stop 309 px down at 390 px",
+                "Late rows have no cue in the stop-name column"
+              ],
+              "opportunity": "Move the delay cue closer to the stop name on mobile to speed up scanning."
+            },
+            "B": {
+              "score": 13,
+              "rationale": "The sans-serif hierarchy keeps names and times clear, with a tight title and smaller supporting data.",
+              "strengths": [
+                "Bold ETA numerals read cleanly in aligned columns",
+                "City and review text stay legible at 390 px"
+              ],
+              "defects": [
+                "Spaced uppercase district and column labels compete for emphasis",
+                "The heavyweight Shift queue title is tightly tracked relative to the softer UI type"
+              ],
+              "opportunity": "Reserve tracked uppercase for the table headers and bring the district into the shift metadata."
+            },
+            "C": {
+              "score": 17,
+              "rationale": "Cool neutrals and mild separators support the queue, while warm delay and green on-time badges carry meaning.",
+              "strengths": [
+                "Badge fills and dot colors distinguish states without obscuring text",
+                "Desktop and tablet rows have clean separator and column alignment"
+              ],
+              "defects": [
+                "Large blank spans separate the desktop stop names from the ETAs",
+                "Mobile vertical padding makes each stop noticeably tall"
+              ],
+              "opportunity": "Reduce row height and reserve the extra space for clear separation around touch controls."
+            },
+            "D": {
+              "score": 16,
+              "rationale": "The navy masthead, repeated blue outlined actions and restrained status colors read as a dispatch tool.",
+              "strengths": [
+                "Masthead and brand mark carry consistently across all three widths",
+                "The queue avoids extraneous navigation and the card system suits operations work"
+              ],
+              "defects": [
+                "The oversized district/title block adds prominence to context already secondary to the queue",
+                "Reviewed retains a disabled control still labeled Acknowledge"
+              ],
+              "opportunity": "Make the completed action state more purposeful by removing the redundant verb while preserving alignment."
+            },
+            "E": {
+              "score": 13,
+              "rationale": "Both scenarios pass and all required data stays visible, with a modest visual distinction between the focused off state and on state.",
+              "strengths": [
+                "The status line explicitly changes from all 3 stops to 2 late stops",
+                "Riverfront remains visible and 24 minutes late after acknowledgement, and the desktop reset restores Oak Street"
+              ],
+              "defects": [
+                "Both the desktop reset control and active mobile control use a light blue fill, leaving the thumb and count to distinguish the states"
+              ],
+              "opportunity": "Give the active filter a stronger persistent treatment distinct from focus or hover."
+            },
+            "F": {
+              "score": 8,
+              "rationale": "Rows stay aligned across breakpoints and updates preserve layout, with no reported overflow, page errors or automated violations.",
+              "strengths": [
+                "The repeated status and action proportions carry into the 390 px layout",
+                "The tested filter uses aria-pressed and hides Oak without an empty row"
+              ],
+              "defects": [
+                "The desktop button column has no visible header"
+              ],
+              "opportunity": "Verify programmatic header and action associations and make the action column explicit."
+            }
+          },
+          "total": 83,
+          "visual_problems": [
+            "The mobile stop records consume about 174 px each",
+            "Delay cues are distant from names on mobile",
+            "Focused-off and active filter surfaces look similar"
+          ],
+          "effective_decisions": [
+            "Steel-blue neutral shell leaves attention for lateness badges",
+            "ETA remains explicitly labeled after the mobile grid stacks",
+            "Reviewed appears with a green check and text while delay stays unchanged"
+          ],
+          "blockers": []
+        },
+        "ui-a399b1": {
+          "dimensions": {
+            "A": {
+              "score": 18,
+              "rationale": "Strong row anchors, a useful late-stop total and compact mobile records make the queue quick to scan.",
+              "strengths": [
+                "Late pills sit next to mobile stop names",
+                "All three 390 px records and actions fit comfortably in the capture",
+                "Desktop and tablet columns give consistent scan positions"
+              ],
+              "defects": [
+                "The 1440 px heading is large for the small queue",
+                "At 390 px the late summary occupies its own line above a second count"
+              ],
+              "opportunity": "Bring the small-screen lateness summary into the queue heading area to shorten the path to the first action."
+            },
+            "B": {
+              "score": 13,
+              "rationale": "Rounded display type creates a recognisable hierarchy and the names and ETAs remain legible throughout.",
+              "strengths": [
+                "Strong stop-name weights help identification at 390 and 834 px",
+                "The bold aligned times are easy to pick out against city and review text"
+              ],
+              "defects": [
+                "Title, row names, buttons and delay text all use similarly heavy emphasis",
+                "The mobile ETA label is notably smaller than adjacent field text"
+              ],
+              "opportunity": "Reduce weight on repeated actions and widen the distinction between primary data and controls."
+            },
+            "C": {
+              "score": 18,
+              "rationale": "Teal, pale gray and restrained rust provide a balanced grid, with an unmistakably filled filter state.",
+              "strengths": [
+                "Slim rust row-edge accents help flag exceptions at every width",
+                "The desktop container and tablet grid share clean spacing and alignment"
+              ],
+              "defects": [
+                "The late count graphic, rust rail and rust badge repeat the same cue at three levels",
+                "The off-state filter icon disappears at 390 px while the switch graphic remains"
+              ],
+              "opportunity": "Keep the late accents on the rows and simplify the aggregate summary marker."
+            },
+            "D": {
+              "score": 18,
+              "rationale": "A distinct teal identity and focused exception cues suit a busy dispatch shift.",
+              "strengths": [
+                "Wordmark, switch and button ink form a consistent visual system",
+                "The lateness summary adds immediate operational context without navigation"
+              ],
+              "defects": [
+                "The extra-heavy heading takes more visual priority than the dispatch workflow requires",
+                "The disabled Acknowledge label duplicates the completed status in the reviewed row"
+              ],
+              "opportunity": "Soften the heading scale and make the reviewed row treatment carry the completed action by itself."
+            },
+            "E": {
+              "score": 14,
+              "rationale": "High-contrast active styling and compact touch layouts make the two demonstrated workflows easy to follow.",
+              "strengths": [
+                "The mobile active control is dark teal and the count changes to 2 late stops",
+                "The Reviewed state is textual and the 24-minute badge stays visible",
+                "The desktop reset restores all rows and aria-pressed returns to false"
+              ],
+              "defects": [
+                "After Riverfront shows Reviewed, the disabled button still reads Acknowledge"
+              ],
+              "opportunity": "Make completed acknowledgement visually distinct as a finished action while preserving the row height."
+            },
+            "F": {
+              "score": 8,
+              "rationale": "Aligned records survive responsive reflow and filtering, with semantic time elements visible in the browser evidence.",
+              "strengths": [
+                "The audit output shows named stop articles and machine-readable times",
+                "No overflow or page errors appear at the three widths"
+              ],
+              "defects": [
+                "Desktop columns have no visible action heading"
+              ],
+              "opportunity": "Verify that the desktop field headings and repeated actions expose their stop context programmatically."
+            }
+          },
+          "total": 89,
+          "visual_problems": [
+            "Display title and repeated controls are both very bold",
+            "The late summary and row cues repeat emphasis",
+            "The reviewed row keeps a disabled Acknowledge label"
+          ],
+          "effective_decisions": [
+            "Lateness badges align with names on compact mobile rows",
+            "Slim exception rails aid desktop scanning",
+            "The active Late only toggle uses a distinct solid fill"
+          ],
+          "blockers": []
+        }
+      },
+      "pairs": [
+        {
+          "ids": [
+            "ui-a399b1",
+            "ui-d7886f"
+          ],
+          "preference": "ui-a399b1",
+          "confidence": "medium",
+          "rationale": "The 390 px name-and-delay alignment and shorter records speed up scanning, and the dark filled filter communicates its active state more clearly. Both interfaces preserve the queue data and pass the observed workflows. The mobile ETA contrast check for ui-a399b1 was inconclusive because of the late-row pseudo-element."
+        }
+      ]
+    },
+    "d6": {
+      "outputs": {
+        "ui-68cd6e": {
+          "dimensions": {
+            "A": {
+              "score": 18,
+              "rationale": "The desktop three-column composition centers a readable article, and the warning leads into a numbered procedure at every width.",
+              "strengths": [
+                "Desktop keeps the docs tree, article and outline visible side by side",
+                "The tablet moves the outline inline while retaining the docs tree",
+                "The mobile safety callout and section links precede the procedure"
+              ],
+              "defects": [
+                "The mobile warning and boxed outline push the first step heading to about 512 px",
+                "Opening the 390 px menu moves the safety callout to about 709 px"
+              ],
+              "opportunity": "Tighten the vertical spacing around the mobile outline while preserving the warning's prominence."
+            },
+            "B": {
+              "score": 14,
+              "rationale": "A restrained title scale, clear sectional weights and relaxed body leading suit procedural reading.",
+              "strengths": [
+                "The 1440 px paragraphs wrap at a comfortable measure",
+                "Mobile body text stays readable with comfortable leading",
+                "The entire recovery contingency receives bold emphasis"
+              ],
+              "defects": [
+                "Desktop outline text looks visually close to secondary prose",
+                "At 390 px the numbered gutter reduces the available text width"
+              ],
+              "opportunity": "Increase the visual distinction of desktop outline links and pull mobile step text a few pixels left."
+            },
+            "C": {
+              "score": 18,
+              "rationale": "A calm green-gray palette sets off the amber warning, with measured separation between sections.",
+              "strengths": [
+                "Amber border, surface and alert icon make the safety block immediately recognizable",
+                "Section rules, circular step numbers and sidebar rules align cleanly"
+              ],
+              "defects": [
+                "The desktop right outline is visually slight beside the left tree",
+                "The mobile outline's shaded block adds a second prominent module directly under the warning"
+              ],
+              "opportunity": "Use a lighter outline container on mobile and a stronger link treatment on desktop."
+            },
+            "D": {
+              "score": 18,
+              "rationale": "The forest masthead and muted operational palette give Atlas Works a coherent, practical service manual identity.",
+              "strengths": [
+                "Pale green current-article, step and outline treatments relate across layouts",
+                "The extra isolation sentence connects the warning to the actual procedure"
+              ],
+              "defects": [
+                "On desktop the Procedures breadcrumb and the category repeat near the article",
+                "Start here and Troubleshooting look more like group labels than navigable entries"
+              ],
+              "opportunity": "Give top-level destinations a visible affordance that distinguishes them from category headings."
+            },
+            "E": {
+              "score": 13,
+              "rationale": "The mobile browser scenario opens the docs navigation and Equipment list, and the tablet scenario reaches the Verify flow target.",
+              "strengths": [
+                "Mobile outlines expose all three section links without opening the docs menu",
+                "Current article highlighting, chevrons and underlines signal navigation states",
+                "No automated violations or overflow were reported at the three widths"
+              ],
+              "defects": [
+                "The tablet capture after clicking Verify flow only shows a subtle link color change and no visible target emphasis"
+              ],
+              "opportunity": "Add a clearer selected outline and destination state after a jump, especially when the full article already fits."
+            },
+            "F": {
+              "score": 8,
+              "rationale": "The shell reflows consistently and the tested branch exposes aria-expanded, with no reported layout or runtime failures.",
+              "strengths": [
+                "Number badges, section rules and article selection render consistently at each width",
+                "The inline outline appears in the same place in the reading order on tablet and mobile"
+              ],
+              "defects": [
+                "The post-jump screenshot does not show focus at the destination"
+              ],
+              "opportunity": "Verify keyboard operation and focus restoration for the docs menu, jumps and supporting panels."
+            }
+          },
+          "total": 89,
+          "visual_problems": [
+            "The mobile first step sits below two sizable callouts",
+            "Desktop outline links have a quiet affordance",
+            "The tablet jump has very subtle visible feedback"
+          ],
+          "effective_decisions": [
+            "Tablet keeps the docs tree while moving the outline inline",
+            "Amber notice includes a concise isolation instruction",
+            "Numbered stages and the bold contingency support procedural scanning"
+          ],
+          "blockers": []
+        },
+        "ui-6ba9d4": {
+          "dimensions": {
+            "A": {
+              "score": 18,
+              "rationale": "The desktop separates browsing from reading, while a compact warning and outline bring procedure action higher on 390 px.",
+              "strengths": [
+                "The full desktop sidebar makes the four-category structure easy to locate",
+                "Mobile reaches the first instruction above 500 px",
+                "A compact numbered sequence and bold stop action support skimming"
+              ],
+              "defects": [
+                "The desktop article title consumes disproportionate emphasis",
+                "At 834 px the docs tree requires an extra menu action even though the capture leaves wide margins"
+              ],
+              "opportunity": "Reduce title size at 1440 px and consider retaining a slim tablet navigation rail."
+            },
+            "B": {
+              "score": 12,
+              "rationale": "Paragraph size and leading are readable, but especially tight tracking in the display type makes repeated headings feel pressed together.",
+              "strengths": [
+                "Body lines at 1440 px remain a workable length",
+                "The action in the Verify flow contingency gets a precise bold cue"
+              ],
+              "defects": [
+                "Restore and prime nearly touch at 1440 and 390 px",
+                "The mobile inline outline uses noticeably smaller type than the procedure text",
+                "The desktop and tablet refill paragraph ends in an isolated port."
+              ],
+              "opportunity": "Loosen the title and section-heading tracking and slightly adjust the prose measure to improve wraps."
+            },
+            "C": {
+              "score": 18,
+              "rationale": "A quiet sidebar and bright reading area separate context from procedure, while amber is reserved for the safety notice.",
+              "strengths": [
+                "Rounded-square step markers and current-page fills form a consistent visual language",
+                "The thin amber outline and left rail make the warning easy to identify",
+                "The full-height desktop sidebar clearly defines the navigation region"
+              ],
+              "defects": [
+                "The large desktop gutter between sidebar and article makes the composition feel pulled apart",
+                "The mobile outline's small links and hairlines give it less presence than the surrounding modules"
+              ],
+              "opportunity": "Narrow the desktop gutter and enlarge the mobile outline links without adding much height."
+            },
+            "D": {
+              "score": 18,
+              "rationale": "A light, muted utility shell and green state accents give the documentation a consistent institutional character.",
+              "strengths": [
+                "The documentation sidebar and expanded mobile menu use a matching tinted surface",
+                "The article stays centered on the procedure and uses amber specifically for safety"
+              ],
+              "defects": [
+                "The tightly packed wordmark and article title put display styling ahead of immediate recognition",
+                "The tracked Documentation label repeats the masthead context at desktop"
+              ],
+              "opportunity": "Keep the green identity and give the display lettering more space."
+            },
+            "E": {
+              "score": 13,
+              "rationale": "The supplied checks show that the mobile menu and equipment disclosure open and that the tablet outline reaches Verify flow.",
+              "strengths": [
+                "The mobile Docs menu has a visible open state and Equipment gets an expanded surface",
+                "Clicking Verify flow shifts the tablet outline's bold active treatment to that link",
+                "No automated violations or overflow were reported"
+              ],
+              "defects": [
+                "Mobile outline links are small and close together despite being the main shortcut to the procedure sections"
+              ],
+              "opportunity": "Verify the supporting destinations and provide more generous hit areas for the 390 px outline."
+            },
+            "F": {
+              "score": 8,
+              "rationale": "Repeated nav rows and section geometry are consistent, and the tested disclosure state is exposed programmatically.",
+              "strengths": [
+                "The 390 and 834 px layouts keep the same reading sequence after the sidebar moves to the menu",
+                "The Equipment toggle reports aria-expanded and the screenshots show both children"
+              ],
+              "defects": [
+                "Changing the inline outline active link slightly shifts neighboring link positions"
+              ],
+              "opportunity": "Use a selected-link treatment that preserves the inline link widths, and verify keyboard focus through menu and supporting panel use."
+            }
+          },
+          "total": 87,
+          "visual_problems": [
+            "Restore prime letterspacing nearly joins the words",
+            "The desktop sidebar and article have a wide intervening gutter",
+            "The mobile outline links are small"
+          ],
+          "effective_decisions": [
+            "Compact amber callout puts procedural steps higher on mobile",
+            "Desktop sidebar and right outline provide separate navigation scopes",
+            "The tablet outline clearly changes its active link after the jump"
+          ],
+          "blockers": []
+        }
+      },
+      "pairs": [
+        {
+          "ids": [
+            "ui-68cd6e",
+            "ui-6ba9d4"
+          ],
+          "preference": "ui-68cd6e",
+          "confidence": "low",
+          "rationale": "The retained tablet hierarchy, more comfortably spaced title, and warning with isolation context tip the comparison. The other rendition starts the procedure sooner on mobile and gives the outline a clearer selected state. The packet shows no supporting article panel after activation for either output."
+        }
+      ]
+    }
+  }
+}

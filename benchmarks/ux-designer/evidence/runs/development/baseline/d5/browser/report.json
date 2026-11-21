@@ -1,0 +1,367 @@
+{
+  "schemaVersion": 1,
+  "status": "passed",
+  "browser": {
+    "version": "159.0.8154.6",
+    "source": "playwright",
+    "executablePath": "/Users/gabe/Library/Caches/ms-playwright/chromium-1255/chrome-mac-arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing",
+    "headless": true,
+    "args": [
+      "--disable-quic",
+      "--force-webrtc-ip-handling-policy=disable_non_proxied_udp",
+      "--host-resolver-rules=MAP * ~NOTFOUND, EXCLUDE 127.0.0.1",
+      "--no-proxy-server"
+    ]
+  },
+  "config": {
+    "node": "v26.13.0",
+    "platform": "darwin",
+    "architecture": "arm64",
+    "playwright": "1.65.1",
+    "axe": "4.14.1",
+    "axeTags": [
+      "wcag2a",
+      "wcag2aa",
+      "wcag21a",
+      "wcag21aa",
+      "wcag22a",
+      "wcag22aa"
+    ],
+    "context": {
+      "colorScheme": "light",
+      "deviceScaleFactor": 1,
+      "locale": "en-US",
+      "reducedMotion": "reduce",
+      "serviceWorkers": "block",
+      "timezoneId": "UTC"
+    },
+    "viewports": {
+      "desktop": {
+        "width": 1440,
+        "height": 1000
+      },
+      "tablet": {
+        "width": 834,
+        "height": 1112
+      },
+      "mobile": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    "timeoutsMs": {
+      "navigation": 10000,
+      "step": 2500,
+      "capture": 10000,
+      "accessibility": 10000
+    },
+    "network": "localhost-static-origin-only"
+  },
+  "source": {
+    "checksSha256": "e94ae9092535c4cd350ac4a88d21a641b93ea05df2ffd006a8c7cad190385f42",
+    "site": {
+      "sha256": "d2c7087ae0f3500ac5f957ad885ac203fd6dc88250883ae3fde7754124f27c84",
+      "files": [
+        {
+          "path": "design-system-core.css",
+          "sha256": "2e1dc47164205b5aef1af967821ea7bcacb53e9b8ae556f6b20662c20544f188"
+        },
+        {
+          "path": "index.html",
+          "sha256": "fb5611f478b38d2a9a5bfe78e5b285cc574e09e8b69a68679ea9682c76c56c37"
+        },
+        {
+          "path": "queue.js",
+          "sha256": "0fbd7e0afc07dea8cfb423ec5929d30eabf4fdb7a7c600816533653e5e8a34fd"
+        },
+        {
+          "path": "style.css",
+          "sha256": "e161b88a9e17bd72cf7181d968a07a352eec8dca4a428284394a9ccc0d7ec3ba"
+        }
+      ]
+    },
+    "harness": {
+      "sha256": "6c881823017ece00658aa02b1817a074668453398b4905f0208e23ef5bcda8d1",
+      "files": [
+        {
+          "path": "capture.mjs",
+          "sha256": "92bc6c8b9c97e64bd0dbcc746c6505f0ed30e9ecaba15ba32a35d1348afaf77e"
+        },
+        {
+          "path": "package-lock.json",
+          "sha256": "9e166f03feded2ba877c95cbbb4bce6b15453e267c7bf4a69a384ec2a3e1fbc1"
+        },
+        {
+          "path": "package.json",
+          "sha256": "e53398841d514c8588ddfad5569cc1f7aed5d67a6f7b71f4ab05a70cfca4817b"
+        }
+      ]
+    }
+  },
+  "timing": {
+    "startedAt": "2026-11-21T18:45:46.211Z",
+    "completedAt": "2026-11-21T18:45:48.261Z",
+    "elapsedMs": 2050
+  },
+  "viewports": [
+    {
+      "name": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "status": "passed",
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "screenshot": {
+        "path": "desktop.png",
+        "bytes": 63891,
+        "sha256": "a91249088f0c57d6e3158b34d249d55d63589812ac09b58225e91637d6ad62e7"
+      },
+      "layout": {
+        "clientWidth": 1440,
+        "scrollWidth": 1440,
+        "bodyScrollWidth": 1440,
+        "horizontalOverflow": false
+      },
+      "accessibility": {
+        "status": "no-violations",
+        "counts": {
+          "passes": 20,
+          "violations": 0,
+          "incomplete": 0,
+          "inapplicable": 44
+        },
+        "violations": [],
+        "incomplete": []
+      }
+    },
+    {
+      "name": "tablet",
+      "viewport": {
+        "width": 834,
+        "height": 1112
+      },
+      "status": "passed",
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "screenshot": {
+        "path": "tablet.png",
+        "bytes": 59375,
+        "sha256": "0e4d25c1ff104408132fded93f597586f366088d6e660af867db34573c56348b"
+      },
+      "layout": {
+        "clientWidth": 834,
+        "scrollWidth": 834,
+        "bodyScrollWidth": 834,
+        "horizontalOverflow": false
+      },
+      "accessibility": {
+        "status": "no-violations",
+        "counts": {
+          "passes": 20,
+          "violations": 0,
+          "incomplete": 0,
+          "inapplicable": 44
+        },
+        "violations": [],
+        "incomplete": []
+      }
+    },
+    {
+      "name": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "status": "passed",
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "screenshot": {
+        "path": "mobile.png",
+        "bytes": 51451,
+        "sha256": "b1a9f1e5e58f98d3f9da00eb324bd7ed32c7937af43778e81d8699260faf0945"
+      },
+      "layout": {
+        "clientWidth": 390,
+        "scrollWidth": 390,
+        "bodyScrollWidth": 390,
+        "horizontalOverflow": false
+      },
+      "accessibility": {
+        "status": "no-violations",
+        "counts": {
+          "passes": 20,
+          "violations": 0,
+          "incomplete": 0,
+          "inapplicable": 44
+        },
+        "violations": [],
+        "incomplete": []
+      }
+    }
+  ],
+  "scenarios": [
+    {
+      "name": "filter and acknowledge",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "captureRequested": true,
+      "status": "passed",
+      "steps": [
+        {
+          "index": 1,
+          "expected": {
+            "action": "click",
+            "id": "late-only"
+          },
+          "status": "passed",
+          "elapsedMs": 46
+        },
+        {
+          "index": 2,
+          "expected": {
+            "action": "attribute",
+            "id": "late-only",
+            "value": "true",
+            "name": "aria-pressed"
+          },
+          "status": "passed",
+          "actual": "true",
+          "elapsedMs": 7
+        },
+        {
+          "index": 3,
+          "expected": {
+            "action": "hidden",
+            "id": "oak"
+          },
+          "status": "passed",
+          "elapsedMs": 1
+        },
+        {
+          "index": 4,
+          "expected": {
+            "action": "click",
+            "id": "riverfront-review"
+          },
+          "status": "passed",
+          "elapsedMs": 29
+        },
+        {
+          "index": 5,
+          "expected": {
+            "action": "text",
+            "id": "riverfront-state",
+            "value": "Reviewed"
+          },
+          "status": "passed",
+          "actual": "Reviewed",
+          "elapsedMs": 1
+        },
+        {
+          "index": 6,
+          "expected": {
+            "action": "text",
+            "id": "stops",
+            "value": "24 min late"
+          },
+          "status": "passed",
+          "actual": "Riverfront Market Wilmington ETA 10:40 24 min late Reviewed Acknowledge North Pier Supplies New Castle ETA 11:25 11 min late Needs review Acknowledge",
+          "elapsedMs": 1
+        }
+      ],
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "screenshot": {
+        "path": "scenario-01-filter-and-acknowledge.png",
+        "bytes": 41841,
+        "sha256": "2cf92cf3b4debf513e85d41704a567ec1f13c90041216806ff4b62887246cf03"
+      },
+      "unrunSteps": 0
+    },
+    {
+      "name": "filter resets",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "captureRequested": true,
+      "status": "passed",
+      "steps": [
+        {
+          "index": 1,
+          "expected": {
+            "action": "click",
+            "id": "late-only"
+          },
+          "status": "passed",
+          "elapsedMs": 26
+        },
+        {
+          "index": 2,
+          "expected": {
+            "action": "click",
+            "id": "late-only"
+          },
+          "status": "passed",
+          "elapsedMs": 35
+        },
+        {
+          "index": 3,
+          "expected": {
+            "action": "attribute",
+            "id": "late-only",
+            "value": "false",
+            "name": "aria-pressed"
+          },
+          "status": "passed",
+          "actual": "false",
+          "elapsedMs": 7
+        },
+        {
+          "index": 4,
+          "expected": {
+            "action": "text",
+            "id": "stops",
+            "value": "Oak Street Co-op"
+          },
+          "status": "passed",
+          "actual": "Riverfront Market Wilmington ETA 10:40 24 min late Needs review Acknowledge Oak Street Co-op Newark ETA 11:10 On time Needs review Acknowledge North Pier Supplies New Castle ETA 11:25 11 min late Needs review Acknowledge",
+          "elapsedMs": 1
+        },
+        {
+          "index": 5,
+          "expected": {
+            "action": "visible",
+            "id": "oak"
+          },
+          "status": "passed",
+          "elapsedMs": 1
+        }
+      ],
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "screenshot": {
+        "path": "scenario-02-filter-resets.png",
+        "bytes": 63899,
+        "sha256": "70845dfd6b87196320ef3336be74b9c720bcf57bd030fb58805060723d4e11c0"
+      },
+      "unrunSteps": 0
+    }
+  ],
+  "criticalFailures": [],
+  "runnerErrors": []
+}

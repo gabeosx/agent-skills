@@ -1,0 +1,20 @@
+{
+  "actor": "28e5",
+  "model": "inherited Codex",
+  "started": "2026-11-21T20:34:47+00:00",
+  "actor_collected_at": "2026-11-21T20:40:09+00:00",
+  "attempt": 1,
+  "brief": "briefs/f1/brief.md",
+  "brief_sha256": "5f508708751bd7d6fcf30b6b4b028588fcc7bacd261d217448d6e42040a5f048",
+  "checks_sha256": "241c012be0681d2cee1fc472f2321dbbceee68ec63b921bd9da64748a7984732",
+  "starter_files": {},
+  "skill_sha256": "accaa3158a8a9c9ba6a6f457406c8f96024415d1d379f3dd0c699c51b570849a",
+  "source": {
+    "handover.js": "6c53c5f1618c533ba8cf8515e529b4b1a511417ad957509e1388314ac9738427",
+    "index.html": "a0db927569fef6b461491a65328d96dfab11e8a9a2e0cdbd2738e91e4e18dbe9",
+    "styles.css": "73b8ad4e60062ed4651770e2ce5792ab102b41aeb49f1f026cc6048a2552cdc9"
+  },
+  "actor_result": "Complete. Actor reports browser verification of computed names, responsive layout, native keyboard actions, required-note validation and all record/selection flows.",
+  "usage": null,
+  "charge": null
+}

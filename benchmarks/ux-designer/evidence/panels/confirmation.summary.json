@@ -1,0 +1,221 @@
+{
+  "set": "confirmation",
+  "candidate": "cycle-2",
+  "tasks": {
+    "h1": {
+      "cycle-2": {
+        "total": 87,
+        "blockers": [],
+        "browser": {
+          "status": "passed",
+          "elapsed_seconds": 2.07,
+          "accessibility": [],
+          "functional": [],
+          "failed_scenarios": [],
+          "critical_failures": []
+        }
+      },
+      "baseline": {
+        "total": 80,
+        "blockers": [],
+        "browser": {
+          "status": "passed",
+          "elapsed_seconds": 1.92,
+          "accessibility": [],
+          "functional": [],
+          "failed_scenarios": [],
+          "critical_failures": []
+        }
+      }
+    },
+    "h2": {
+      "cycle-2": {
+        "total": 85,
+        "blockers": [],
+        "browser": {
+          "status": "passed",
+          "elapsed_seconds": 2.45,
+          "accessibility": [],
+          "functional": [],
+          "failed_scenarios": [],
+          "critical_failures": []
+        }
+      },
+      "baseline": {
+        "total": 87,
+        "blockers": [],
+        "browser": {
+          "status": "passed",
+          "elapsed_seconds": 2.65,
+          "accessibility": [],
+          "functional": [],
+          "failed_scenarios": [],
+          "critical_failures": []
+        }
+      }
+    },
+    "h3": {
+      "baseline": {
+        "total": 79,
+        "blockers": [
+          "Serious accessibility violation reported for every booking button at all three widths. The accessible names fail to include the displayed labels as required."
+        ],
+        "browser": {
+          "status": "failed",
+          "elapsed_seconds": 2.44,
+          "accessibility": [
+            "label-content-name-mismatch"
+          ],
+          "functional": [],
+          "failed_scenarios": [],
+          "critical_failures": [
+            {
+              "viewport": "desktop",
+              "kind": "accessibility",
+              "rule": "label-content-name-mismatch",
+              "impact": "serious"
+            },
+            {
+              "viewport": "tablet",
+              "kind": "accessibility",
+              "rule": "label-content-name-mismatch",
+              "impact": "serious"
+            },
+            {
+              "viewport": "mobile",
+              "kind": "accessibility",
+              "rule": "label-content-name-mismatch",
+              "impact": "serious"
+            }
+          ]
+        }
+      },
+      "cycle-2": {
+        "total": 82,
+        "blockers": [
+          "Serious accessibility violation reported for every booking button at all three widths. The accessible names fail to include the displayed labels as required."
+        ],
+        "browser": {
+          "status": "failed",
+          "elapsed_seconds": 2.46,
+          "accessibility": [
+            "label-content-name-mismatch"
+          ],
+          "functional": [],
+          "failed_scenarios": [],
+          "critical_failures": [
+            {
+              "viewport": "desktop",
+              "kind": "accessibility",
+              "rule": "label-content-name-mismatch",
+              "impact": "serious"
+            },
+            {
+              "viewport": "tablet",
+              "kind": "accessibility",
+              "rule": "label-content-name-mismatch",
+              "impact": "serious"
+            },
+            {
+              "viewport": "mobile",
+              "kind": "accessibility",
+              "rule": "label-content-name-mismatch",
+              "impact": "serious"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "against": {
+    "baseline": {
+      "candidate": {
+        "n": 3,
+        "mean": 84.67,
+        "median": 85,
+        "dimensions": {
+          "A": 17.33,
+          "B": 12.67,
+          "C": 17.33,
+          "D": 17.67,
+          "E": 11.67,
+          "F": 8
+        }
+      },
+      "opponent": {
+        "n": 3,
+        "mean": 82,
+        "median": 80,
+        "dimensions": {
+          "A": 17,
+          "B": 12.33,
+          "C": 16,
+          "D": 16.67,
+          "E": 12.33,
+          "F": 7.67
+        }
+      },
+      "browser_status": {
+        "cycle-2": {
+          "passed": 2,
+          "failed": 1
+        },
+        "baseline": {
+          "passed": 2,
+          "failed": 1
+        }
+      },
+      "functional_regressions": [],
+      "accessibility_regressions": [],
+      "new_grader_blocker_tasks": [],
+      "preference": {
+        "win": 2,
+        "loss": 1,
+        "tie": 0,
+        "missing": 0
+      },
+      "mean_delta": 2.67,
+      "dimension_deltas": {
+        "A": 0.33,
+        "B": 0.33,
+        "C": 1.33,
+        "D": 1,
+        "E": -0.67,
+        "F": 0.33
+      },
+      "by_task": {
+        "h1": {
+          "preference": "win",
+          "confidence": "high",
+          "delta": 7
+        },
+        "h2": {
+          "preference": "loss",
+          "confidence": "medium",
+          "delta": -2
+        },
+        "h3": {
+          "preference": "win",
+          "confidence": "medium",
+          "delta": 3
+        }
+      }
+    }
+  },
+  "actor_timing": {
+    "cycle-2": {
+      "num_actor_groups": 2,
+      "mean_seconds_per_group": 441.5,
+      "total_actor_seconds": 883,
+      "usage": null,
+      "charge": null
+    },
+    "baseline": {
+      "num_actor_groups": 2,
+      "mean_seconds_per_group": 424,
+      "total_actor_seconds": 848,
+      "usage": null,
+      "charge": null
+    }
+  }
+}

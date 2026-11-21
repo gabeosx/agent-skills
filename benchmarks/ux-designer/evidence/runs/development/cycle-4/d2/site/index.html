@@ -1,0 +1,381 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#14342b">
+<title>BrightCart — Margin overview</title>
+<style>
+:root {
+  color-scheme: light;
+  --surface: #fff;
+  --page: #f5f6f1;
+  --ink: #192d26;
+  --muted: #51645a;
+  --accent: #22634e;
+  --line: #dce4dc;
+  --header: #14342b;
+  --danger: #8d3427;
+  --danger-bg: #faeee8;
+  --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; }
+body { margin: 0; background: var(--page); color: var(--ink); font: 15px/1.5 var(--font); }
+button, select { font: inherit; }
+button, select { cursor: pointer; }
+:focus-visible { outline: 2px solid #267654; outline-offset: 4px; }
+h1, h2, h3, p, dl { margin: 0; }
+.shell { width: min(100% - 96px, 1248px); margin-inline: auto; }
+.masthead { background: var(--header); color: #f0f8eb; }
+.masthead .shell { display: flex; align-items: center; min-height: 62px; gap: 18px; }
+.brand { display: inline-flex; align-items: center; gap: 10px; font-size: 19px; font-weight: 760; letter-spacing: -.035em; }
+.brand-mark { width: 27px; height: 27px; display: grid; grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(2, 1fr); gap: 2px; padding: 6px; border-radius: 7px; background: #c6e6a5; transform: rotate(-5deg); }
+.brand-mark i { border-radius: 3px; background: #214d36; }
+.brand-mark i:nth-child(2) { border-radius: 60% 20%; background: #54844a; }
+.brand-mark i:nth-child(3) { border-radius: 20% 60%; background: #54844a; }
+.workspace { padding-left: 18px; border-left: 1px solid #70917d78; color: #c9d8cb; font-size: 12px; }
+main { padding-block: 34px 48px; }
+.page-header { display: flex; align-items: flex-end; justify-content: space-between; gap: 14px; margin-bottom: 21px; }
+h1 { font-size: clamp(30px, 3.15vw, 45px); font-weight: 720; letter-spacing: -.063em; line-height: 1.1; }
+.period-control { display: flex; align-items: center; gap: 10px; }
+label { color: var(--muted); font-size: 13px; font-weight: 650; }
+.select-wrap { position: relative; display: inline-flex; }
+.select-wrap::after { position: absolute; top: 50%; right: 14px; width: 7px; height: 7px; border: solid #46675a; border-width: 0 1.5px 1.5px 0; content: ''; transform: translateY(-70%) rotate(45deg); pointer-events: none; }
+select { appearance: none; min-height: 42px; padding: 7px 33px 7px 12px; border: 1px solid #aebfb3; border-radius: 7px; background: var(--surface); color: var(--ink); font-weight: 620; font-size: 13px; }
+select:hover { border-color: #6a8b78; }
+.metrics { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin-bottom: 20px; }
+.metric { min-width: 0; display: grid; align-content: center; gap: 6px; min-height: 108px; padding: 17px 21px; border: 1px solid var(--line); border-radius: 11px; background: var(--surface); }
+.metric.highlight { border-color: #cbdabe; background: #eaf1e2; }
+.metric dt { color: var(--muted); font-size: 13px; font-weight: 640; }
+.metric dd { margin: 0; font-size: clamp(28px, 3.1vw, 43px); font-weight: 750; letter-spacing: -.065em; line-height: 1.06; font-variant-numeric: tabular-nums; }
+.metric.highlight dd { color: #1f523d; }
+.dashboard-grid { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); align-items: stretch; gap: 18px; }
+.panel { min-width: 0; display: flex; flex-direction: column; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); }
+.panel-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; padding: 22px 22px 16px; }
+h2 { font-size: 21px; font-weight: 730; letter-spacing: -.045em; line-height: 1.22; }
+.subtitle { margin-top: 4px; color: var(--muted); font-size: 13px; }
+.change { flex: 0 0 auto; display: inline-flex; align-items: center; gap: 5px; padding: 5px 8px; border-radius: 6px; background: var(--danger-bg); color: var(--danger); font-size: 11px; font-weight: 720; font-variant-numeric: tabular-nums; }
+.chart { --axis: 41px; --right: 5px; margin: 0; padding: 4px 20px 21px; }
+canvas { display: block; width: 100%; height: 204px; }
+.trend-values { list-style: none; display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 0; margin: 0 var(--right) 0 var(--axis); padding: 0; text-align: center; }
+.trend-values li { display: grid; gap: 2px; min-width: 0; padding-block: 5px 4px; font-size: 13px; font-weight: 660; color: #34584a; font-variant-numeric: tabular-nums; }
+.trend-values .week { color: var(--muted); font-size: 11px; font-weight: 530; }
+.trend-values .latest { border-radius: 5px; background: #e9f1e6; color: #184c37; font-weight: 800; }
+.chart[data-period="7"] .trend-values li:not(.latest) { color: #586a61; font-weight: 540; }
+.status-control { display: flex; align-items: center; gap: 8px; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+thead { background: #f4f7f2; color: var(--muted); font-size: 11px; }
+th, td { padding: 10px 7px; text-align: left; }
+thead th { font-weight: 680; }
+thead th:first-child, tbody th:first-child { padding-left: 22px; }
+thead th:last-child, tbody td:last-child { padding-right: 22px; }
+tbody { color: var(--ink); font-size: 14px; }
+tbody th { font-weight: 650; }
+tbody tr { border-bottom: 1px solid #e8ede7; }
+tbody th, tbody td { height: 51px; }
+.number { text-align: right; white-space: nowrap; }
+.margin-value { font-weight: 680; }
+.status-cell { padding-left: 16px; white-space: nowrap; }
+.status-pill { display: inline-flex; align-items: center; gap: 5px; padding: 4px 7px; border-radius: 5px; font-size: 11px; font-weight: 690; line-height: 1.3; }
+.status-pill::before { width: 6px; height: 6px; flex: none; border-radius: 50%; background: currentColor; content: ''; }
+.investigate { color: var(--danger); background: var(--danger-bg); }
+.on-track { color: #2f634e; background: #eaf2e9; }
+.watch { color: #775214; background: #f9f2de; }
+.row-action { display: inline-flex; align-items: center; gap: 5px; min-height: 40px; margin-block: -10px; padding: 0; border: 0; background: transparent; color: #225f4c; font-weight: 730; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+.row-action:hover { color: #0f382a; }
+.row-action::after { width: 5px; height: 5px; margin-left: 1px; border: solid currentColor; border-width: 1.5px 1.5px 0 0; content: ''; transform: rotate(45deg); }
+.table-summary { display: flex; align-items: center; gap: 8px; margin-top: auto; padding: 14px 22px 15px; color: var(--muted); font-size: 12px; }
+.table-summary::before { flex: none; width: 7px; height: 7px; border-radius: 50%; background: #b76450; content: ''; }
+dialog { width: min(100% - 32px, 470px); max-height: calc(100% - 32px); padding: 27px; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); color: var(--ink); box-shadow: 0 25px 80px #162a2340; }
+dialog::backdrop { background: #172e25a3; }
+.detail-close { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 8px; margin: -10px 0 10px -8px; border: 0; border-radius: 4px; background: transparent; color: var(--accent); font-weight: 700; font-size: 13px; }
+.detail-close:hover { background: #edf4ed; }
+.detail h2 { font-size: 36px; margin-bottom: 6px; }
+.detail-metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-block: 20px; padding: 15px; border: 1px solid #dce8d8; border-radius: 7px; background: #edf5e9; }
+.detail-metrics dt { color: var(--muted); font-size: 13px; font-weight: 600; }
+.detail-metrics dd { margin: 0; font-size: 27px; line-height: 1.2; font-weight: 740; letter-spacing: -.04em; font-variant-numeric: tabular-nums; }
+.detail h3 { margin-bottom: 5px; font-size: 17px; letter-spacing: -.02em; }
+.detail p { color: var(--muted); }
+@media (max-width: 1050px) {
+  .shell { width: min(100% - 64px, 900px); }
+  canvas { height: 180px; }
+}
+@media (min-width: 790px) and (max-width: 935px) {
+  .chart { --axis: 35px; padding-inline: 14px; }
+  .trend-values li { font-size: 11px; }
+}
+@media (max-width: 789px) {
+  .dashboard-grid { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 600px) {
+  .shell { width: calc(100% - 30px); }
+  .masthead .shell { min-height: 53px; gap: 12px; }
+  .workspace { padding-left: 12px; font-size: 11px; }
+  main { padding-block: 19px 28px; }
+  .page-header { align-items: center; margin-bottom: 13px; }
+  h1 { font-size: clamp(23px, 7.5vw, 32px); }
+  .period-control { gap: 4px; flex-shrink: 0; }
+  .period-control > label { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  select { min-height: 44px; padding-left: 9px; padding-right: 26px; }
+  .select-wrap::after { right: 12px; }
+  .metrics { gap: 7px; margin-bottom: 12px; }
+  .metric { min-height: 75px; gap: 5px; padding: 10px; border-radius: 8px; }
+  .metric dt { font-size: 11px; }
+  .metric dd { font-size: clamp(23px, 6.6vw, 30px); }
+  .dashboard-grid { gap: 12px; }
+  .panel { border-radius: 9px; }
+  .panel-heading { align-items: center; gap: 7px; padding: 13px 12px 10px; }
+  h2 { font-size: 18px; }
+  .subtitle { font-size: 11px; }
+  .change { padding: 5px 6px; font-size: 10px; }
+  .chart { --axis: 30px; --right: 0px; padding: 3px 10px 11px; }
+  canvas { height: 146px; }
+  .trend-values li { font-size: 11px; }
+  .trend-values .week { font-size: 10px; }
+  thead th:first-child, tbody th:first-child { padding-left: 11px; }
+  thead th:last-child, tbody td:last-child { padding-right: 11px; }
+  th, td { padding-left: 4px; padding-right: 4px; }
+  .status-cell { padding-left: 9px; }
+  tbody { font-size: 13px; }
+  tbody th, tbody td { height: 46px; }
+  .status-pill { gap: 4px; padding: 4px 5px; font-size: 10px; }
+  .status-pill::before { width: 5px; height: 5px; }
+  .table-summary { padding: 12px; }
+}
+</style>
+</head>
+<body>
+<header class="masthead">
+  <div class="shell">
+    <div class="brand"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>BrightCart</div>
+    <span class="workspace">Commercial intelligence</span>
+  </div>
+</header>
+<main class="shell">
+  <div class="page-header">
+    <h1>Margin overview</h1>
+    <div class="period-control">
+      <label for="period">Period</label>
+      <span class="select-wrap"><select id="period" data-testid="period"><option value="30">30 days</option><option value="7">7 days</option></select></span>
+    </div>
+  </div>
+  <dl class="metrics" aria-label="Key performance indicators" aria-live="polite">
+    <div class="metric"><dt>Sales</dt><dd data-testid="revenue">$1.28M</dd></div>
+    <div class="metric highlight"><dt>Gross margin</dt><dd data-testid="margin">24.8%</dd></div>
+    <div class="metric"><dt>Stockout rate</dt><dd id="stockout">3.1%</dd></div>
+  </dl>
+  <div class="dashboard-grid">
+    <section class="panel" aria-labelledby="trend-title">
+      <div class="panel-heading">
+        <div>
+          <h2 id="trend-title">Gross margin trend</h2>
+          <p class="subtitle" id="trend-context">Weekly margin, oldest to latest</p>
+        </div>
+        <span class="change"><span aria-hidden="true">↘</span><span id="trend-change">Down 2.7 pts</span></span>
+      </div>
+      <figure class="chart" data-period="30">
+        <canvas aria-hidden="true"></canvas>
+        <figcaption><ol class="trend-values" role="list" aria-label="Weekly gross margin, oldest to latest"></ol></figcaption>
+      </figure>
+    </section>
+    <section class="panel" aria-labelledby="department-title">
+      <div class="panel-heading">
+        <div>
+          <h2 id="department-title">Departments</h2>
+          <p class="subtitle" id="department-period">Sales and margin over 30 days</p>
+        </div>
+        <div class="status-control">
+          <label class="sr-only" for="status">Status</label>
+          <span class="select-wrap"><select id="status" data-testid="status"><option value="all">All statuses</option><option value="investigate">Investigate</option></select></span>
+        </div>
+      </div>
+      <table aria-labelledby="department-title" aria-describedby="department-period">
+        <thead><tr><th scope="col">Department</th><th class="number" scope="col">Sales</th><th class="number" scope="col">Margin</th><th class="status-cell" scope="col">7-day status</th></tr></thead>
+        <tbody data-testid="rows"></tbody>
+      </table>
+      <p class="table-summary" aria-live="polite">2 departments to investigate</p>
+    </section>
+  </div>
+</main>
+<dialog class="detail" data-testid="detail" aria-labelledby="detail-title">
+  <button class="detail-close" data-testid="detail-close" type="button"><span aria-hidden="true">←</span> Back to overview</button>
+  <h2 id="detail-title">Produce</h2>
+  <p id="detail-period"></p>
+  <dl class="detail-metrics">
+    <div><dt>Gross margin</dt><dd id="detail-margin"></dd></div>
+    <div><dt>Sales</dt><dd id="detail-sales"></dd></div>
+  </dl>
+  <h3>Supplier costs</h3>
+  <p>Check whether supplier price changes contributed to the margin decline.</p>
+</dialog>
+<script>
+const periods = {
+  '30': { sales: '$1.28M', margin: '24.8%', stockout: '3.1%' },
+  '7': { sales: '$318K', margin: '22.4%', stockout: '4.2%' },
+};
+const departments = [
+  { name: 'Produce', status: 'Investigate', tone: 'investigate', '30': ['$405K', '20.2%'], '7': ['$95K', '18.1%'] },
+  { name: 'Grocery', status: 'On track', tone: 'on-track', '30': ['$532K', '28.1%'], '7': ['$130K', '27.0%'] },
+  { name: 'Frozen', status: 'Watch', tone: 'watch', '30': ['$204K', '25.2%'], '7': ['$54K', '22.3%'] },
+  { name: 'Bakery', status: 'Investigate', tone: 'investigate', '30': ['$139K', '25.1%'], '7': ['$39K', '19.4%'] },
+];
+const weeklyMargins = [25.1, 26.0, 25.7, 24.9, 24.3, 23.8, 22.4];
+const periodSelect = document.querySelector('#period');
+const statusSelect = document.querySelector('#status');
+const rows = document.querySelector('[data-testid="rows"]');
+const detail = document.querySelector('dialog');
+const chart = document.querySelector('.chart');
+const canvas = chart.querySelector('canvas');
+const ctx = canvas.getContext('2d');
+const periodValues = {
+  sales: document.querySelector('[data-testid="revenue"]'),
+  margin: document.querySelector('[data-testid="margin"]'),
+  stockout: document.querySelector('#stockout'),
+};
+let detailTrigger;
+
+document.querySelector('.trend-values').innerHTML = weeklyMargins.map((value, index) => {
+  const latest = index === weeklyMargins.length - 1;
+  return `<li class="${latest ? 'latest' : ''}"><span class="week"><span aria-hidden="true">W${index + 1}</span><span class="sr-only">Week ${index + 1}${latest ? ', latest' : ''}</span></span><span>${value.toFixed(1)}%</span></li>`;
+}).join('');
+
+function drawChart() {
+  const { width, height } = canvas.getBoundingClientRect();
+  if (!width || !height) return;
+  const pixelRatio = window.devicePixelRatio || 1;
+  canvas.width = Math.round(width * pixelRatio);
+  canvas.height = Math.round(height * pixelRatio);
+  ctx.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
+
+  const layout = getComputedStyle(chart);
+  const left = parseFloat(layout.getPropertyValue('--axis'));
+  const right = width - parseFloat(layout.getPropertyValue('--right'));
+  const step = (right - left) / weeklyMargins.length;
+  const top = 10;
+  const bottom = height - 8;
+  const y = (value) => top + (26.55 - value) * (bottom - top) / 5;
+  const points = weeklyMargins.map((value, index) => [left + (index + 0.5) * step, y(value)]);
+  const [latestX, latestY] = points.at(-1);
+  const shortPeriod = periodSelect.value === '7';
+
+  if (shortPeriod) {
+    ctx.fillStyle = '#edf4e9';
+    ctx.fillRect(latestX - step / 2, 1, step, bottom);
+  }
+  ctx.font = (width < 400 ? '10' : '11') + 'px -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif';
+  ctx.textBaseline = 'middle';
+  ctx.textAlign = 'right';
+  for (const tick of [26, 25, 24, 23, 22]) {
+    const tickY = y(tick);
+    ctx.beginPath();
+    ctx.moveTo(left, tickY);
+    ctx.lineTo(right, tickY);
+    ctx.lineWidth = 1;
+    ctx.strokeStyle = '#e1e8e0';
+    ctx.stroke();
+    ctx.fillStyle = '#51645a';
+    ctx.fillText(tick + '%', left - 6, tickY);
+  }
+
+  const fill = ctx.createLinearGradient(0, top, 0, bottom);
+  fill.addColorStop(0, shortPeriod ? '#dae7dd86' : '#b7d7c6bd');
+  fill.addColorStop(1, '#eff6ef08');
+  ctx.beginPath();
+  ctx.moveTo(points[0][0], bottom);
+  points.forEach(([x, pointY]) => ctx.lineTo(x, pointY));
+  ctx.lineTo(latestX, bottom);
+  ctx.closePath();
+  ctx.fillStyle = fill;
+  ctx.fill();
+
+  ctx.beginPath();
+  points.forEach(([x, pointY], index) => {
+    if (index === 0) ctx.moveTo(x, pointY);
+    else ctx.lineTo(x, pointY);
+  });
+  ctx.lineWidth = 2.5;
+  ctx.lineJoin = 'round';
+  ctx.lineCap = 'round';
+  ctx.strokeStyle = shortPeriod ? '#91ab9e' : '#2b7058';
+  ctx.stroke();
+
+  if (shortPeriod) {
+    ctx.beginPath();
+    ctx.moveTo(...points.at(-2));
+    ctx.lineTo(latestX, latestY);
+    ctx.strokeStyle = '#2b7058';
+    ctx.stroke();
+  }
+
+  points.forEach(([x, pointY], index) => {
+    const latest = index === points.length - 1;
+    if (latest) {
+      ctx.beginPath();
+      ctx.arc(x, pointY, 9, 0, Math.PI * 2);
+      ctx.fillStyle = '#bfddce';
+      ctx.fill();
+    }
+    ctx.beginPath();
+    ctx.arc(x, pointY, latest ? 5 : 3, 0, Math.PI * 2);
+    ctx.fillStyle = latest ? '#205842' : '#fff';
+    ctx.fill();
+    ctx.lineWidth = latest ? 1.5 : 1.8;
+    ctx.strokeStyle = latest ? '#fff' : (shortPeriod ? '#7f9a8c' : '#2b7058');
+    ctx.stroke();
+  });
+}
+
+function renderRows() {
+  const selected = periodSelect.value;
+  const filtered = statusSelect.value === 'investigate';
+  const visible = departments.filter((department) => !filtered || department.tone === 'investigate');
+  rows.innerHTML = visible.map((department) => {
+    const [sales, margin] = department[selected];
+    const departmentLabel = department.name === 'Produce'
+      ? '<button type="button" class="row-action" data-testid="produce" aria-haspopup="dialog">Produce</button>'
+      : department.name;
+    return `<tr><th scope="row">${departmentLabel}</th><td class="number">${sales}</td><td class="number margin-value">${margin}</td><td class="status-cell"><span class="status-pill ${department.tone}">${department.status}</span></td></tr>`;
+  }).join('');
+  document.querySelector('.table-summary').textContent = filtered
+    ? 'Showing 2 departments to investigate' : '2 departments to investigate';
+}
+
+function renderPeriod() {
+  const selected = periodSelect.value;
+  const shortPeriod = selected === '7';
+  Object.entries(periodValues).forEach(([key, element]) => {
+    element.textContent = periods[selected][key];
+  });
+  document.querySelector('#department-period').textContent = `Sales and margin over ${selected} days`;
+  document.querySelector('#trend-context').textContent = shortPeriod
+    ? 'Latest week compared with the prior week' : 'Weekly margin, oldest to latest';
+  const referenceMargin = shortPeriod ? weeklyMargins.at(-2) : weeklyMargins[0];
+  const decrease = referenceMargin - weeklyMargins.at(-1);
+  document.querySelector('#trend-change').textContent = `Down ${decrease.toFixed(1)} pts`;
+  chart.dataset.period = selected;
+  renderRows();
+  drawChart();
+}
+
+periodSelect.addEventListener('change', renderPeriod);
+statusSelect.addEventListener('change', renderRows);
+rows.addEventListener('click', (event) => {
+  const button = event.target.closest('[data-testid="produce"]');
+  if (!button) return;
+  const selected = periodSelect.value;
+  const [sales, margin] = departments[0][selected];
+  detailTrigger = button;
+  document.querySelector('#detail-period').textContent = `Last ${selected} days`;
+  document.querySelector('#detail-margin').textContent = margin;
+  document.querySelector('#detail-sales').textContent = sales;
+  detail.showModal();
+});
+detail.querySelector('button').addEventListener('click', () => detail.close());
+detail.addEventListener('close', () => detailTrigger?.focus());
+
+new ResizeObserver(drawChart).observe(canvas);
+renderPeriod();
+</script>
+</body>
+</html>

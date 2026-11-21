@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Harborline Dispatch</title>
+<style>
+body { background: #fcfaff; font: 16px Arial, sans-serif; }
+header { background: #cee1ff; border: 2px solid #6b79af; padding: 5px; }
+main { border: 2px solid #222; margin: 9px 0; padding: 5px; }
+article { background: white; border: 2px solid #777; margin: 5px 0; padding: 5px; }
+article span { background: #f6edff; padding: 2px; }
+article button { color: #3e2e77; border: 1px solid #3e2e77; }
+</style>
+<header>HARBORLINE &nbsp; | &nbsp; Dispatch</header>
+<main>
+  <h1>Shift queue</h1>
+  <p>Tuesday · East district · 3 scheduled stops</p>
+  <button data-testid="late-only" aria-pressed="false">Late only</button>
+  <div data-testid="stops">
+    <article data-late="true">Riverfront Market <span>Wilmington</span> <span>ETA 10:40</span> <span>24 min late</span> <button data-testid="riverfront-review">Acknowledge</button> <span data-testid="riverfront-state">Needs review</span></article>
+    <article data-late="false" data-testid="oak">Oak Street Co-op <span>Newark</span> <span>ETA 11:10</span> <span>On time</span> <button>Acknowledge</button> <span>Needs review</span></article>
+    <article data-late="true">North Pier Supplies <span>New Castle</span> <span>ETA 11:25</span> <span>11 min late</span> <button>Acknowledge</button> <span>Needs review</span></article>
+  </div>
+</main>
+<script>
+const filter = document.querySelector('[data-testid="late-only"]');
+const stops = [...document.querySelectorAll('article')];
+filter.addEventListener('click', () => {
+  const lateOnly = filter.getAttribute('aria-pressed') !== 'true';
+  filter.setAttribute('aria-pressed', lateOnly);
+  for (const stop of stops) {
+    stop.hidden = lateOnly && stop.dataset.late === 'false';
+  }
+});
+for (const stop of stops) {
+  const button = stop.querySelector('button');
+  button.addEventListener('click', () => {
+    button.nextElementSibling.textContent = 'Reviewed';
+    button.disabled = true;
+  });
+}
+</script>
+</html>

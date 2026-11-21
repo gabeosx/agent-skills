@@ -1,0 +1,110 @@
+{
+  "tasks": {
+    "d1": {
+      "baseline": "ui-6fcc71",
+      "cycle-1": "ui-cc4c21"
+    },
+    "d2": {
+      "cycle-1": "ui-d3aee6",
+      "baseline": "ui-21c6d9"
+    },
+    "d3": {
+      "baseline": "ui-4e94dc",
+      "cycle-1": "ui-616296"
+    },
+    "d4": {
+      "cycle-1": "ui-3bc579",
+      "baseline": "ui-c5f04e"
+    },
+    "d5": {
+      "baseline": "ui-d7886f",
+      "cycle-1": "ui-a399b1"
+    },
+    "d6": {
+      "baseline": "ui-68cd6e",
+      "cycle-1": "ui-6ba9d4"
+    }
+  },
+  "review_order": {
+    "d1": {
+      "outputs_in_review_order": [
+        "ui-6fcc71",
+        "ui-cc4c21"
+      ],
+      "pairs": [
+        [
+          "ui-cc4c21",
+          "ui-6fcc71"
+        ]
+      ]
+    },
+    "d2": {
+      "outputs_in_review_order": [
+        "ui-d3aee6",
+        "ui-21c6d9"
+      ],
+      "pairs": [
+        [
+          "ui-d3aee6",
+          "ui-21c6d9"
+        ]
+      ]
+    },
+    "d3": {
+      "outputs_in_review_order": [
+        "ui-4e94dc",
+        "ui-616296"
+      ],
+      "pairs": [
+        [
+          "ui-4e94dc",
+          "ui-616296"
+        ]
+      ]
+    },
+    "d4": {
+      "outputs_in_review_order": [
+        "ui-3bc579",
+        "ui-c5f04e"
+      ],
+      "pairs": [
+        [
+          "ui-3bc579",
+          "ui-c5f04e"
+        ]
+      ]
+    },
+    "d5": {
+      "outputs_in_review_order": [
+        "ui-d7886f",
+        "ui-a399b1"
+      ],
+      "pairs": [
+        [
+          "ui-a399b1",
+          "ui-d7886f"
+        ]
+      ]
+    },
+    "d6": {
+      "outputs_in_review_order": [
+        "ui-68cd6e",
+        "ui-6ba9d4"
+      ],
+      "pairs": [
+        [
+          "ui-68cd6e",
+          "ui-6ba9d4"
+        ]
+      ]
+    }
+  },
+  "shards": [
+    "cycle-1-12",
+    "cycle-1-34",
+    "cycle-1-56"
+  ],
+  "set": "development",
+  "trial_arm": "cycle-1",
+  "comparator": "baseline"
+}

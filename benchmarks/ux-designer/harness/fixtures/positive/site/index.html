@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Fixture notes</title>
+    <style>
+      body { margin: 0; font: 1rem/1.5 system-ui; background: #f8fafc; color: #172554; }
+      main { max-width: 36rem; margin: 2rem auto; padding: 0 1rem; }
+      label { display: block; margin-top: .75rem; }
+      button, select, input { font: inherit; min-height: 44px; }
+      form { display: grid; gap: .25rem; }
+      button { justify-self: start; margin-top: .5rem; }
+    </style>
+    <script src="workflow.js" defer></script>
+  </head>
+  <body>
+    <main>
+      <h1>Fixture notes</h1>
+      <p data-testid="initial-state">Reading saved notes</p>
+      <form>
+        <label for="note">Note</label>
+        <input id="note" data-testid="note" required>
+        <label for="priority">Priority</label>
+        <select id="priority" data-testid="priority">
+          <option value="ordinary">Ordinary</option>
+          <option value="urgent">Urgent</option>
+        </select>
+        <button data-testid="save">Save note</button>
+      </form>
+      <p data-testid="saved" hidden role="status"></p>
+      <ul data-testid="notes" aria-label="Saved notes"></ul>
+      <p><a data-testid="reload" href="/">Reload saved state</a></p>
+      <button aria-expanded="false" aria-controls="help" data-testid="toggle" type="button">Show help</button>
+      <p id="help" data-testid="help" hidden>Use the form to add a note.</p>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,106 @@
+{
+  "scenarios": [
+    {
+      "name": "mobile validation",
+      "width": 390,
+      "steps": [
+        {
+          "action": "fill",
+          "id": "site-name",
+          "value": "Harbor Annex"
+        },
+        {
+          "action": "fill",
+          "id": "email",
+          "value": "oops"
+        },
+        {
+          "action": "click",
+          "id": "next"
+        },
+        {
+          "action": "visible",
+          "id": "email-error"
+        }
+      ],
+      "capture": true
+    },
+    {
+      "name": "full request",
+      "width": 1440,
+      "steps": [
+        {
+          "action": "fill",
+          "id": "site-name",
+          "value": "Harbor Annex"
+        },
+        {
+          "action": "fill",
+          "id": "email",
+          "value": "ops@example.test"
+        },
+        {
+          "action": "click",
+          "id": "next"
+        },
+        {
+          "action": "select",
+          "id": "system",
+          "value": "hvac"
+        },
+        {
+          "action": "fill",
+          "id": "notes",
+          "value": "Use loading bay"
+        },
+        {
+          "action": "click",
+          "id": "back"
+        },
+        {
+          "action": "click",
+          "id": "next"
+        },
+        {
+          "action": "click",
+          "id": "next"
+        },
+        {
+          "action": "text",
+          "id": "review",
+          "value": "Harbor Annex"
+        },
+        {
+          "action": "text",
+          "id": "review",
+          "value": "ops@example.test"
+        },
+        {
+          "action": "text",
+          "id": "review",
+          "value": "HVAC"
+        },
+        {
+          "action": "text",
+          "id": "review",
+          "value": "Use loading bay"
+        },
+        {
+          "action": "click",
+          "id": "confirm"
+        },
+        {
+          "action": "text",
+          "id": "success",
+          "value": "Inspection requested"
+        },
+        {
+          "action": "text",
+          "id": "success",
+          "value": "FM-2047"
+        }
+      ],
+      "capture": true
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "browser": "159.0.8154.6",
+  "hookSha256": "abcd111e13b7026a3a3033687d16630e89418cb4f5b4535456a65339487b3315",
+  "method": "Playwright role/name match with the complete visible button text as an ordered substring, ignoring case and collapsed whitespace",
+  "viewports": [
+    {
+      "width": 1440,
+      "height": 1000,
+      "pass": true,
+      "controls": [
+        {
+          "hook": "loan-option-approve",
+          "visibleLabel": "Approve installation Handling Release to the gallery Follow-up None",
+          "pass": true,
+          "ariaSnapshot": "- button \"Approve installation Handling Release to the gallery Follow-up None\" [pressed]"
+        },
+        {
+          "hook": "loan-option-update",
+          "visibleLabel": "Request a condition update Handling Keep in the intake area Follow-up Registrar review",
+          "pass": true,
+          "ariaSnapshot": "- button \"Request a condition update Handling Keep in the intake area Follow-up Registrar review\""
+        },
+        {
+          "hook": "loan-option-hold",
+          "visibleLabel": "Place loan on hold Handling Move to secure storage Follow-up Supervisor review",
+          "pass": true,
+          "ariaSnapshot": "- button \"Place loan on hold Handling Move to secure storage Follow-up Supervisor review\""
+        }
+      ]
+    },
+    {
+      "width": 834,
+      "height": 1112,
+      "pass": true,
+      "controls": [
+        {
+          "hook": "loan-option-approve",
+          "visibleLabel": "Approve installation Handling Release to the gallery Follow-up None",
+          "pass": true,
+          "ariaSnapshot": "- button \"Approve installation Handling Release to the gallery Follow-up None\" [pressed]"
+        },
+        {
+          "hook": "loan-option-update",
+          "visibleLabel": "Request a condition update Handling Keep in the intake area Follow-up Registrar review",
+          "pass": true,
+          "ariaSnapshot": "- button \"Request a condition update Handling Keep in the intake area Follow-up Registrar review\""
+        },
+        {
+          "hook": "loan-option-hold",
+          "visibleLabel": "Place loan on hold Handling Move to secure storage Follow-up Supervisor review",
+          "pass": true,
+          "ariaSnapshot": "- button \"Place loan on hold Handling Move to secure storage Follow-up Supervisor review\""
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "pass": true,
+      "controls": [
+        {
+          "hook": "loan-option-approve",
+          "visibleLabel": "Approve installation Handling Release to the gallery Follow-up None",
+          "pass": true,
+          "ariaSnapshot": "- button \"Approve installation Handling Release to the gallery Follow-up None\" [pressed]"
+        },
+        {
+          "hook": "loan-option-update",
+          "visibleLabel": "Request a condition update Handling Keep in the intake area Follow-up Registrar review",
+          "pass": true,
+          "ariaSnapshot": "- button \"Request a condition update Handling Keep in the intake area Follow-up Registrar review\""
+        },
+        {
+          "hook": "loan-option-hold",
+          "visibleLabel": "Place loan on hold Handling Move to secure storage Follow-up Supervisor review",
+          "pass": true,
+          "ariaSnapshot": "- button \"Place loan on hold Handling Move to secure storage Follow-up Supervisor review\""
+        }
+      ]
+    }
+  ],
+  "status": "passed"
+}

@@ -1,36 +1,23 @@
-# Tactical UI Moves (Refactoring UI)
+# Tactical moves
 
-Follow these "shortcuts" to improve any UI instantly:
+## Art direction and composition
 
-## 1. Hierarchy & Attention
-- **De-emphasize first:** Before making something "pop" (more color, bigger font), try de-emphasizing the elements around it. Turn secondary text from black to gray.
-- **Ditch the labels:** If the data is self-explanatory (e.g., an email address or a price), don't add a "Email:" label. Use the format to convey meaning.
-- **Labels are secondary:** If you must use labels, make them small, uppercase, and high-contrast gray to distinguish them from the data.
+Choose visual traits from the purpose and audience. A specialty product might use distinctive display type, a warm surface and considered product imagery. A working tool might use crisp numerals, compact groups and a controlled accent for exceptions. Carry the same decisions into the header, core feature, controls and feedback states.
 
-## 2. Layout & Spacing
-- **Start with the feature:** Don't design the navbar first. Design the actual dashboard widget or the form, then figure out where it lives.
-- **Don't use borders for everything:**
-  - Use subtle background colors to separate sections.
-  - Use shadows to indicate depth.
-  - Use whitespace as the primary separator.
-- **Shrink your containers:** Most web apps are too wide. Limit the max-width of your content area to keep things from feeling sparse.
+Build a focal region from the actual content: a meaningful product sample, representative workflow, decisive comparison, data pattern or photograph that shows a useful detail. Let surrounding elements support it. Establish a common edge or alignment axis, vary the sizes of zones by importance, and leave deliberate space around the focal point. Size navigation by the amount of real navigation it serves.
 
-## 3. Color & Depth
-- **Accent with color:** Use your brand color for the "Primary Action" and maybe a few small accents (icons, active nav states). Don't use it for large background blocks unless necessary.
-- **Overlap shadows:** To make an element look like it's "floating" higher (like a modal), use two shadows: one large and soft for ambient light, one smaller and tighter for the edge.
-- **Grays are not neutral:** Give your grays a tiny bit of saturation from your primary brand color to make the UI feel "connected" rather than cold.
+When imagery is useful, choose a credible subject and art-direct its framing, crop and visible scale. Preserve its focal point at narrow widths. Keep readable text on a predictable surface, or verify the scrim or backing across all crops. Create assets at their intended detail level. For user images, reserve the aspect ratio and handle missing, wide, tall and visually busy cases. Provide text alternatives for meaningful visuals.
 
-## 4. Components
-- **Buttons have a hierarchy:**
-  - **Primary:** High-contrast background (Solid).
-  - **Secondary:** Outline or light background.
-  - **Tertiary:** Just text (Ghost).
-- **Forms:**
-  - Put labels on top of fields for better scannability.
-  - Group related fields (e.g., Name/Email) together with a heading.
-  - Make buttons the same width as the input fields on small screens.
+## Hierarchy and finishing
 
-## 5. Micro-Alignment & Details
-- **Icons need alignment:** When placing an icon (or emoji) next to text, they will rarely align on the baseline naturally. Always use a Flex container with `align-items: center`.
-- **Optical balancing:** Icons often need to be slightly larger than the text or nudged up 1px to feel centered.
-- **Separate meta-data:** When listing small bits of info (e.g., "Date • Category • Author"), don't rely on whitespace alone. Use a visual separator (bullet `•` or pipe `|`) or distinct background badges to ensure the groups are distinct.
+- Quiet secondary actions with readable text, a subtle surface or an outline. Use solid emphasis where it helps the user find the next step. Reserve urgent treatment for actual need.
+- Combine a label and value when a phrase conveys the meaning clearly. Keep and emphasize labels when they are what readers search for, such as in specifications. Keep programmatic and visible input labels appropriate to the interaction.
+- Use fewer competing framing devices. Try a shared surface, a stronger section boundary or more spacing before giving every group the same border and shadow.
+- Add one detail with a clear purpose: a distinctive treatment for the main evidence, an accent edge on an alert, a legible active marker or a useful empty state with a recovery action. Check that the detail helps the product rather than competing with its content.
+- Tune wrapped headings, optical alignment, numeric precision, control states and short labels against real data. Keep decorative type and chrome from delaying the first useful control or content at narrow widths. Reserve space for feedback where it helps preserve context. Verify that keyboard focus remains visible after opening, submitting, dismissing and switching a view.
+
+## Critique in the browser
+
+Look briefly at the first screen without reading every label. Identify the first thing you see and whether it matches the user's priority. Compare the same width and state after adjusting the weakest part. Recheck related controls and the narrow width. When using a strong reference, identify the treatment that works and adapt it to the existing visual language and real content.
+
+[Published design tips](https://medium.com/refactoring-ui/7-practical-tips-for-cheating-at-design-40c736799886), [label preview](https://refactoringui.com/previews/labels-are-a-last-resort), [Laravel.io redesign](https://medium.com/refactoring-ui/redesigning-laravel-io-c47ac495dff0)

@@ -1,0 +1,376 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Report a streetlight outage | Briar Harbor Public Works</title>
+<style>
+  :root {
+    color-scheme: light;
+    --ink: #202d38;
+    --deep: #1c2c39;
+    --muted: #56626b;
+    --paper: #f6f3eb;
+    --surface: #fffdf8;
+    --line: #dedbd2;
+    --warm: #eedab0;
+    --focus: #8b5521;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; color: var(--ink); background: var(--paper); font: 1rem/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+  button, input, select, textarea { font: inherit; }
+  button { cursor: pointer; }
+  :focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+  button, input, select, textarea { -webkit-tap-highlight-color: transparent; }
+  h1, h2, h3, p { margin: 0; }
+  svg { display: block; }
+  [hidden] { display: none !important; }
+  .wrap { width: min(1160px, calc(100% - 96px)); margin-inline: auto; }
+  .masthead { background: var(--deep); color: #f7f2e6; }
+  .masthead .wrap { min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  .brand { display: flex; align-items: center; gap: 12px; }
+  .brand-icon { display: grid; place-items: center; width: 38px; height: 38px; border: 1px solid #6c6d63; border-radius: 50%; color: #ebcb8f; }
+  .brand-name { font-weight: 650; letter-spacing: .002em; }
+  .masthead-tag { color: #e3dbc9; font-size: .83rem; }
+  .hero { position: relative; isolation: isolate; min-height: 223px; display: grid; align-items: center; padding: 28px 0 34px; }
+  .intro { position: relative; z-index: 1; }
+  .eyebrow { display: flex; align-items: center; gap: 9px; color: #694721; font-size: .72rem; font-weight: 750; letter-spacing: .15em; text-transform: uppercase; }
+  .eyebrow::before { content: ""; width: 17px; height: 2px; background: #b88642; }
+  h1 { font: 500 clamp(2.9rem, 5vw, 4.2rem)/1.01 Georgia, serif; letter-spacing: -.055em; margin: 12px 0 13px; max-width: 850px; }
+  .hero p { color: #475560; font-size: 1.055rem; max-width: 535px; }
+  .hero-art { position: absolute; inset: 0 0 0 auto; height: 100%; width: min(36%, 389px); z-index: 0; }
+  .workspace { display: grid; grid-template-columns: minmax(0, 1.43fr) minmax(0, 1fr); align-items: start; gap: 24px; }
+  .card { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; box-shadow: 0 3px 9px #292c2610; }
+  .card-head { padding: 20px 23px 17px; }
+  .head-line { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+  h2 { font-size: 1.29rem; font-weight: 680; letter-spacing: -.028em; }
+  .area { display: inline-flex; align-items: center; gap: 6px; color: #654b2b; font-size: .785rem; background: #f4ebd8; padding: 3px 9px; border-radius: 5px; white-space: nowrap; }
+  .search-field { margin-top: 13px; }
+  label { display: block; font-size: .845rem; font-weight: 660; margin-bottom: 6px; }
+  input, select, textarea { color: var(--ink); width: 100%; min-height: 44px; border: 1px solid #a5a39a; border-radius: 7px; background: #fffefa; padding: 8px 11px; }
+  input::placeholder, textarea::placeholder { color: #68727b; opacity: 1; }
+  .input-frame { position: relative; }
+  .input-frame svg { position: absolute; left: 13px; top: 13px; color: #586772; pointer-events: none; }
+  .input-frame input { padding-left: 39px; }
+  .results-meta { display: flex; align-items: center; justify-content: space-between; gap: 10px; background: #f8f6ef; border-block: 1px solid #e8e4da; padding: 6px 23px; font-size: .76rem; color: #535e65; }
+  .results-meta span:last-child { font-weight: 620; }
+  .pole-list { padding: 0; margin: 0; list-style: none; }
+  .pole-list li + li { border-top: 1px solid #ebe7dd; }
+  .pole { display: grid; grid-template-columns: auto minmax(0, 1fr) auto auto; gap: 12px; align-items: center; width: 100%; min-height: 72px; padding: 8px 19px 8px 23px; border: 0; text-align: left; background: transparent; color: var(--ink); position: relative; }
+  .pole:hover { background: #f8f4e9; }
+  .pole:focus-visible { outline-offset: -4px; }
+  .pole[aria-pressed="true"] { background: #f8efdc; box-shadow: inset 4px 0 #ab7632; }
+  .row-icon { width: 35px; height: 35px; border-radius: 8px; display: grid; place-items: center; color: #5e6a71; background: #f1eee6; }
+  .pole[aria-pressed="true"] .row-icon { color: #69471e; background: #edd9ae; }
+  .pole-address, .pole-landmark, .code { display: block; }
+  .code { font: 650 .675rem/1.3 ui-monospace, Menlo, Consolas, monospace; letter-spacing: .055em; color: #485966; }
+  .pole-address { margin-top: 1px; font-size: 1rem; font-weight: 690; line-height: 1.26; }
+  .pole-landmark { font-size: .81rem; line-height: 1.35; color: var(--muted); }
+  .status { display: inline-flex; align-items: center; justify-self: end; align-self: center; gap: 6px; padding: 4px 8px; border-radius: 5px; background: #edf0eb; color: #3f5148; font-size: .71875rem; font-weight: 650; line-height: 1.28; white-space: nowrap; }
+  .status::before { content: ""; width: 6px; height: 6px; border: 1px solid currentColor; border-radius: 50%; flex: none; }
+  .status[data-state="known"] { background: #f4e6c9; color: #67481e; }
+  .status[data-state="known"]::before, .status[data-state="submitted"]::before { background: currentColor; }
+  .arrow { color: #5b6871; }
+  .no-results { color: var(--muted); padding: 24px 23px; }
+  .report-head { display: flex; align-items: center; gap: 9px; border-bottom: 1px solid #e8e4da; padding-bottom: 17px; }
+  .report-head svg { color: #53616d; }
+  .report-body { min-width: 0; }
+  .placeholder { min-height: 406px; padding: 36px 24px; display: grid; align-content: center; justify-items: center; text-align: center; }
+  .placeholder-icon { display: grid; place-items: center; border-radius: 50%; width: 69px; height: 69px; color: #72501f; background: #f5e8cb; margin-bottom: 17px; }
+  .placeholder h3 { font: 500 1.68rem/1.15 Georgia, serif; letter-spacing: -.025em; }
+  .placeholder p { color: var(--muted); font-size: .935rem; max-width: 265px; margin-top: 8px; }
+  .detail { padding: 21px 23px 23px; }
+  .detail .code { margin-bottom: 4px; }
+  .detail h3 { font-size: 1.36rem; line-height: 1.2; letter-spacing: -.028em; }
+  .landmark { color: var(--muted); font-size: .88rem; margin-top: 4px; }
+  .detail form { border-top: 1px solid #e8e4da; margin-top: 17px; padding-top: 15px; display: grid; gap: 13px; }
+  .optional { color: var(--muted); font-weight: 450; }
+  textarea { min-height: 79px; display: block; resize: vertical; }
+  .primary { width: fit-content; min-height: 44px; border: 1px solid transparent; border-radius: 7px; padding: 9px 16px; background: var(--deep); color: #fffaf0; font-weight: 650; font-size: .875rem; }
+  .primary:hover { background: #31495a; }
+  .report-info { margin-top: 17px; border: 1px solid #ead9b3; border-radius: 8px; padding: 16px; background: #fbf3e3; }
+  .report-info p { font-weight: 670; }
+  .facts { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 12px 0 0; }
+  .facts dt { color: var(--muted); font-size: .76rem; }
+  .facts dd { font-weight: 650; font-size: .89rem; margin: 0; }
+  .confirmation { padding: 25px 23px; }
+  .confirmation .placeholder-icon { margin-bottom: 12px; background: #e9eee5; color: #3f5846; width: 46px; height: 46px; }
+  .confirmation h3 { font: 500 1.86rem/1.13 Georgia, serif; letter-spacing: -.025em; }
+  .confirmation .facts { margin: 16px 0; padding: 15px 0; border-block: 1px solid #e8e4da; }
+  .confirmation .facts div:last-child { grid-column: 1 / -1; }
+  .help { display: flex; gap: 12px; align-items: center; margin: 20px 0 30px; padding: 12px 16px; border-top: 1px solid #ddd6c8; color: #444f59; font-size: .875rem; }
+  .help svg { flex: none; color: #795722; }
+  .help strong { color: var(--ink); font-weight: 670; margin-right: 5px; }
+  @media (max-width: 1000px) {
+    .wrap { width: calc(100% - 64px); }
+    .hero-art { opacity: .75; }
+    .hero p { max-width: 460px; }
+    .workspace { gap: 16px; }
+    .card-head { padding-inline: 17px; }
+    .results-meta { padding-inline: 17px; }
+    .pole { padding-inline: 15px; gap: 8px; }
+    .row-icon { width: 29px; height: 32px; }
+  }
+  @media (min-width: 641px) and (max-width: 745px) {
+    .wrap { width: calc(100% - 40px); }
+    .pole { grid-template-columns: minmax(0, 1fr) auto auto; }
+    .row-icon { display: none; }
+  }
+  @media (max-width: 640px) {
+    .wrap { width: calc(100% - 32px); }
+    .masthead .wrap { min-height: 61px; }
+    .brand { gap: 9px; }
+    .brand-name { font-size: .91rem; }
+    .brand-icon { height: 34px; width: 34px; }
+    .masthead-tag { display: none; }
+    .hero { min-height: auto; padding: 25px 0 24px; }
+    .hero-art { display: none; }
+    h1 { font-size: clamp(2.55rem, 11vw, 3.3rem); }
+    .hero p { font-size: .94rem; }
+    .workspace { grid-template-columns: minmax(0, 1fr); }
+    .card-head { padding: 15px 14px 12px; }
+    .pole { min-height: 72px; padding-inline: 12px; gap: 7px; }
+    .pole-address { font-size: .94rem; }
+    .pole-landmark { font-size: .78rem; }
+    .status { font-size: .65rem; padding: 4px 6px; gap: 4px; }
+    .status::before { width: 5px; height: 5px; }
+    .arrow { width: 13px; }
+    .placeholder { min-height: 220px; padding: 24px 15px; }
+    .detail, .confirmation { padding: 16px 14px 18px; }
+    .primary { width: 100%; }
+    .help { align-items: flex-start; padding-inline: 1px; margin-top: 17px; }
+    .help strong { display: block; }
+  }
+  @media (max-width: 355px) {
+    .pole { grid-template-columns: minmax(0, 1fr) auto auto; }
+    .row-icon { display: none; }
+  }
+</style>
+</head>
+<body>
+<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" width="0" height="0" style="position:absolute">
+  <symbol id="lamp" viewBox="0 0 24 24"><path d="M7 21h8m-4 0V8a4 4 0 0 1 4-4h2m-3 4 2-4h2l2 4h-6Z" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="pin" viewBox="0 0 24 24"><path d="M19 10c0 5-7 10-7 10s-7-5-7-10a7 7 0 1 1 14 0Z" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="10" r="2.3" fill="none" stroke="currentColor" stroke-width="1.7"/></symbol>
+  <symbol id="search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="m15 15 4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+  <symbol id="chevron" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="clipboard" viewBox="0 0 24 24"><path d="M8 5H6a1 1 0 0 0-1 1v14h14V6a1 1 0 0 0-1-1h-2M9 3h6v4H9zm0 9h6m-6 4h6" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linejoin="round" stroke-linecap="round"/></symbol>
+  <symbol id="tag" viewBox="0 0 24 24"><path d="M12 4h7a1 1 0 0 1 1 1v7l-8 8-8-8 8-8Z" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linejoin="round"/><circle cx="16" cy="8" r="1.3" fill="currentColor"/></symbol>
+  <symbol id="check" viewBox="0 0 24 24"><path d="m5 12 4 4 10-10" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</svg>
+<header class="masthead">
+  <div class="wrap">
+    <div class="brand">
+      <span class="brand-icon"><svg width="23" height="23" aria-hidden="true"><use href="#lamp"/></svg></span>
+      <span class="brand-name">Briar Harbor Public Works</span>
+    </div>
+    <span class="masthead-tag">Municipal light service</span>
+  </div>
+</header>
+<main class="wrap">
+  <section class="hero" aria-labelledby="page-title">
+    <div class="intro">
+      <div class="eyebrow">Streetlight service</div>
+      <h1 id="page-title">Report a streetlight outage</h1>
+      <p>Find a light on a public street in East Basin, see if a crew already knows about it, and report an issue.</p>
+    </div>
+    <svg class="hero-art" viewBox="0 0 389 223" preserveAspectRatio="xMaxYMid slice" aria-hidden="true">
+      <defs>
+        <radialGradient id="glow"><stop stop-color="#efcf8a" stop-opacity=".8"/><stop offset="1" stop-color="#f6f3eb" stop-opacity="0"/></radialGradient>
+        <pattern id="points" width="12" height="12" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r=".8" fill="#9c8c71" opacity=".45"/></pattern>
+        <radialGradient id="points-fade"><stop stop-color="white"/><stop offset="1" stop-color="black"/></radialGradient>
+        <mask id="art-fade"><circle cx="274" cy="108" r="150" fill="url(#points-fade)"/></mask>
+      </defs>
+      <path d="M130 0h259v223H130z" fill="url(#points)" mask="url(#art-fade)"/>
+      <circle cx="281" cy="96" r="90" fill="url(#glow)"/>
+      <g fill="none" stroke="#bca279" opacity=".64">
+        <path d="M189 96h182m-90-76v151" stroke-dasharray="2 5"/>
+        <circle cx="281" cy="96" r="51"/><circle cx="281" cy="96" r="73"/>
+        <path d="M199 190h145m-132 5h119"/>
+      </g>
+      <path d="M228 188V78c0-21 13-32 33-32h7m-59 142h38m16-134 8-8h19l11 9v6h-38v-7Z" fill="none" stroke="#334651" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M271 62v2a10 10 0 0 0 20 0v-2m-11 22v9m-18-15-5 6m39-6 5 6" fill="none" stroke="#a9712d" stroke-width="2" stroke-linecap="round"/>
+      <circle cx="355" cy="96" r="3" fill="#a9712d"/><circle cx="281" cy="169" r="2.5" fill="#a9712d"/>
+    </svg>
+  </section>
+
+  <div class="workspace">
+    <section class="card" aria-labelledby="find-heading">
+      <div class="card-head">
+        <div class="head-line">
+          <h2 id="find-heading">Find a streetlight</h2>
+          <span class="area"><svg width="13" height="13" aria-hidden="true"><use href="#pin"/></svg>East Basin</span>
+        </div>
+        <div class="search-field">
+          <label for="pole-search">Search by pole code, address, or landmark</label>
+          <div class="input-frame">
+            <svg width="18" height="18" aria-hidden="true"><use href="#search"/></svg>
+            <input type="search" id="pole-search" data-testid="pole-search" placeholder="e.g. Wren Avenue or BH-1042" autocomplete="off">
+          </div>
+        </div>
+      </div>
+      <div class="results-meta"><span data-testid="result-count" role="status"></span><span>Reporting status</span></div>
+      <ul class="pole-list" id="poles" aria-label="Streetlights"></ul>
+      <p class="no-results" data-testid="no-results" hidden>No streetlights match this search.</p>
+    </section>
+
+    <section class="card" id="report" aria-labelledby="report-heading">
+      <div class="card-head report-head">
+        <svg width="20" height="20" aria-hidden="true"><use href="#clipboard"/></svg>
+        <h2 id="report-heading">Outage report</h2>
+      </div>
+      <div class="report-body" id="report-body"></div>
+    </section>
+  </div>
+
+  <aside class="help">
+    <svg width="21" height="21" aria-hidden="true"><use href="#tag"/></svg>
+    <p><strong>Finding the pole code</strong> The code is printed on a small tag facing the street.</p>
+  </aside>
+</main>
+<script>
+  const poles = [
+    { code: 'BH-1042', address: '18 Wren Avenue', landmark: 'Across from Wren Library' },
+    { code: 'BH-1067', address: '76 Wren Avenue', landmark: 'Outside Harbor Market', known: true },
+    { code: 'BH-2014', address: '9 Mariner Lane', landmark: 'Beside the east park gate' },
+    { code: 'BH-2079', address: '61 Mariner Lane', landmark: 'At the pedestrian crossing' }
+  ];
+  const issues = [
+    ['out', 'Light is out'],
+    ['flicker', 'Light flickers'],
+    ['daytime', 'Light stays on during the day']
+  ];
+  const search = document.querySelector('#pole-search');
+  const count = document.querySelector('[data-testid="result-count"]');
+  const empty = document.querySelector('[data-testid="no-results"]');
+  const list = document.querySelector('#poles');
+  const report = document.querySelector('#report-body');
+  const mobile = matchMedia('(max-width: 640px)');
+  const submitted = new Map();
+  const drafts = new Map();
+  let selected = null;
+
+  function icon(id, size, className = '') {
+    return `<svg width="${size}" height="${size}" class="${className}" aria-hidden="true"><use href="#${id}"/></svg>`;
+  }
+
+  function updateRows() {
+    const query = search.value.trim().toLowerCase();
+    let visible = 0;
+    for (const pole of poles) {
+      const row = pole.button.parentElement;
+      const matches = [pole.code, pole.address, pole.landmark].some(value => value.toLowerCase().includes(query));
+      const status = pole.button.querySelector('.status');
+      row.hidden = !matches;
+      visible += Number(matches);
+      pole.button.setAttribute('aria-pressed', String(selected === pole));
+      status.dataset.state = pole.known ? 'known' : submitted.has(pole.code) ? 'submitted' : 'available';
+      status.textContent = { known: 'Crew notified', submitted: 'Report submitted', available: 'Available to report' }[status.dataset.state];
+    }
+    count.textContent = `${visible} ${visible === 1 ? 'streetlight' : 'streetlights'} found`;
+    empty.hidden = visible !== 0;
+  }
+
+  function showReport() {
+    if (!selected) {
+      report.innerHTML = `<div class="placeholder">
+        <div class="placeholder-icon">${icon('lamp', 39)}</div>
+        <h3>Select a streetlight</h3>
+        <p>Choose a pole to check its status or report an issue.</p>
+      </div>`;
+      return;
+    }
+    const { code, address, landmark, known } = selected;
+    if (submitted.has(code)) {
+      report.innerHTML = `<div class="confirmation" data-testid="confirmation">
+        <div class="placeholder-icon">${icon('check', 24)}</div>
+        <h3 tabindex="-1">Report submitted</h3>
+        <dl class="facts">
+          <div><dt>Reference</dt><dd>SL-5842</dd></div>
+          <div><dt>Pole code</dt><dd>${code}</dd></div>
+          <div><dt>Issue</dt><dd>${submitted.get(code)}</dd></div>
+        </dl>
+        <button class="primary" type="button" data-testid="report-another">Report another light</button>
+      </div>`;
+      report.querySelector('button').addEventListener('click', () => {
+        selected = null;
+        submitted.clear();
+        drafts.clear();
+        search.value = '';
+        updateRows();
+        showReport();
+        search.focus();
+      });
+      return;
+    }
+    report.innerHTML = `<div class="detail" data-testid="pole-detail">
+      <span class="code">${code}</span>
+      <h3 tabindex="-1">${address}</h3>
+      <p class="landmark">${landmark}</p>
+      ${known ? `<div class="report-info">
+        <p>Crew notified</p>
+        <dl class="facts">
+          <div><dt>Report logged</dt><dd>November 18, 2026</dd></div>
+          <div><dt>Reference</dt><dd>SL-5826</dd></div>
+        </dl>
+      </div>` : `<form>
+        <div>
+          <label for="issue">Issue type</label>
+          <select id="issue" data-testid="issue-type">${issues.map(([value, title]) => `<option value="${value}">${title}</option>`).join('')}</select>
+        </div>
+        <div>
+          <label for="notes">Notes <span class="optional">(optional)</span></label>
+          <textarea id="notes" data-testid="report-notes" rows="2"></textarea>
+        </div>
+        <button class="primary" type="submit" data-testid="submit-report">Submit report</button>
+      </form>`}
+    </div>`;
+    const form = report.querySelector('form');
+    if (!form) return;
+    const select = form.querySelector('select');
+    const notes = form.querySelector('textarea');
+    const draft = drafts.get(code);
+    if (draft) {
+      select.value = draft.issue;
+      notes.value = draft.notes;
+    }
+    form.addEventListener('input', () => {
+      drafts.set(code, { issue: select.value, notes: notes.value });
+    });
+    form.addEventListener('submit', event => {
+      event.preventDefault();
+      submitted.set(code, select.selectedOptions[0].textContent);
+      drafts.delete(code);
+      updateRows();
+      showReport();
+      report.querySelector('h3').focus();
+    });
+  }
+
+  for (const pole of poles) {
+    const item = document.createElement('li');
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'pole';
+    button.dataset.testid = `pole-${pole.code}`;
+    button.setAttribute('aria-controls', 'report-body');
+    button.innerHTML = `<span class="row-icon">${icon('lamp', 20)}</span>
+      <span><span class="code">${pole.code}</span><span class="pole-address">${pole.address}</span><span class="pole-landmark">${pole.landmark}</span></span>
+      <span class="status"></span>${icon('chevron', 17, 'arrow')}`;
+    button.addEventListener('click', event => {
+      if (selected !== pole) {
+        selected = pole;
+        updateRows();
+        showReport();
+      }
+      if (mobile.matches || event.detail === 0) report.querySelector('h3')?.focus();
+    });
+    item.append(button);
+    list.append(item);
+    pole.button = button;
+  }
+  search.addEventListener('input', updateRows);
+  updateRows();
+  showReport();
+</script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#102b32">
+  <title>Compare benchtop analyzers | Sensory Bench</title>
+  <link rel="stylesheet" href="design-system-core.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="masthead">
+    <div class="container masthead-inner">
+      <p class="wordmark"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>Sensory Bench</p>
+    </div>
+  </header>
+  <main>
+    <section class="hero" aria-labelledby="page-title">
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <p class="domain">Fragrance quality control</p>
+          <h1 id="page-title">Compare benchtop analyzers</h1>
+          <p class="intro">Compare throughput, operating requirements, and cost for your lab.</p>
+        </div>
+        <div class="spectrum" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+      </div>
+    </section>
+
+    <section class="container workspace" aria-labelledby="specifications-title">
+      <div class="comparison-panel">
+        <div class="toolbar">
+          <div>
+            <h2 id="specifications-title">Specifications</h2>
+            <p class="counts" id="comparison-status" aria-live="polite">3 models · 8 specifications</p>
+          </div>
+          <div class="actions">
+            <label class="switch-label">
+              <input type="checkbox" role="switch" data-testid="differences">
+              <span class="switch-track" aria-hidden="true"></span>
+              <span>Differences only</span>
+            </label>
+            <label class="switch-label">
+              <input type="checkbox" role="switch" data-testid="alder">
+              <span class="switch-track" aria-hidden="true"></span>
+              <span>Hide Alder A2</span>
+            </label>
+            <button class="reset" type="button" data-testid="reset">
+              <span class="reset-icon" aria-hidden="true">↺</span> Reset comparison
+            </button>
+          </div>
+        </div>
+        <p id="scroll-hint" class="scroll-hint" hidden>Scroll to compare all models <span aria-hidden="true">→</span></p>
+
+        <div class="table-scroll" role="region" aria-labelledby="specifications-title" tabindex="0">
+          <table data-testid="comparison">
+            <caption class="visually-hidden">Specifications by benchtop analyzer</caption>
+            <thead>
+              <tr>
+                <th scope="col">Specification</th>
+                <th scope="col" data-alder>
+                  <div class="model">
+                    <div class="instrument instrument-alder" aria-hidden="true"><i></i><b></b></div>
+                    <span>Alder A2</span>
+                  </div>
+                </th>
+                <th scope="col">
+                  <div class="model">
+                    <div class="instrument instrument-birch" aria-hidden="true"><i></i><b></b></div>
+                    <span>Birch X4</span>
+                  </div>
+                </th>
+                <th scope="col">
+                  <div class="model">
+                    <div class="instrument instrument-cedar" aria-hidden="true"><i></i><b></b></div>
+                    <span>Cedar Pro</span>
+                  </div>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="price"><th scope="row">Unit price</th><td data-alder>$12,400</td><td>$16,900</td><td>$19,200</td></tr>
+              <tr data-testid="throughput"><th scope="row">Runs per hour</th><td data-alder>14</td><td>20</td><td>20</td></tr>
+              <tr><th scope="row">Sample volume</th><td data-alder>2 mL</td><td>1 mL</td><td>1 mL</td></tr>
+              <tr><th scope="row">Warm-up</th><td data-alder>12 min</td><td>10 min</td><td>10 min</td></tr>
+              <tr><th scope="row">Export</th><td data-alder>CSV</td><td>CSV + API</td><td>CSV + API</td></tr>
+              <tr data-testid="warranty"><th scope="row">Warranty</th><td data-alder>2 years</td><td>3 years</td><td>5 years</td></tr>
+              <tr><th scope="row">Calibration</th><td data-alder>Weekly</td><td>Daily</td><td>Daily</td></tr>
+              <tr><th scope="row">Operating noise</th><td data-alder>42 dBA</td><td>38 dBA</td><td>38 dBA</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

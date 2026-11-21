@@ -1,0 +1,39 @@
+{
+  "scenarios": [
+    {
+      "name": "Write and restore through the rendered form",
+      "width": 390,
+      "capture": true,
+      "steps": [
+        { "action": "text", "id": "initial-state", "value": "No saved note. Session: null. Cookie: false." },
+        { "action": "count", "id": "item", "count": 0 },
+        { "action": "hidden", "id": "saved" },
+        { "action": "fill", "id": "note", "value": "Inspect inventory" },
+        { "action": "select", "id": "priority", "value": "urgent" },
+        { "action": "click", "id": "save" },
+        { "action": "visible", "id": "saved" },
+        { "action": "text", "id": "saved", "value": "Saved Inspect inventory (urgent)" },
+        { "action": "count", "id": "item", "count": 1 },
+        { "action": "click", "id": "reload" },
+        { "action": "text", "id": "initial-state", "value": "Restored from local storage: Inspect inventory (urgent). Session: kept. Cookie: true." },
+        { "action": "count", "id": "item", "count": 1 },
+        { "action": "text", "id": "item", "value": "Inspect inventory (urgent)" }
+      ]
+    },
+    {
+      "name": "Clean browser context and keyboard help",
+      "width": 834,
+      "capture": true,
+      "steps": [
+        { "action": "text", "id": "root", "value": "Fixture notes" },
+        { "action": "text", "id": "initial-state", "value": "No saved note. Session: null. Cookie: false." },
+        { "action": "count", "id": "item", "count": 0 },
+        { "action": "hidden", "id": "help" },
+        { "action": "attribute", "id": "toggle", "name": "aria-expanded", "value": "false" },
+        { "action": "press", "id": "toggle", "value": "Enter" },
+        { "action": "visible", "id": "help" },
+        { "action": "attribute", "id": "toggle", "name": "aria-expanded", "value": "true" }
+      ]
+    }
+  ]
+}

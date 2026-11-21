@@ -1,3 +1,4 @@
+// Tailwind v3 sample. Merge only the overrides your project uses.
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   theme: {
@@ -7,7 +8,7 @@ module.exports = {
         canvas: 'var(--color-bg-canvas)',
         surface: 'var(--color-bg-surface)',
         subtle: 'var(--color-bg-subtle)',
-        
+
         primary: {
           DEFAULT: 'var(--color-primary)',
           hover: 'var(--color-primary-hover)',
@@ -24,6 +25,7 @@ module.exports = {
         // Border Aliases
         border: {
           subtle: 'var(--color-border-subtle)',
+          control: 'var(--color-border-control)',
           DEFAULT: 'var(--color-border-default)',
         },
 
@@ -31,6 +33,7 @@ module.exports = {
         danger: 'var(--color-danger)',
         success: 'var(--color-success)',
         warning: 'var(--color-warning)',
+        focus: 'var(--color-focus)',
 
         // Raw Scales (optional usage)
         gray: {

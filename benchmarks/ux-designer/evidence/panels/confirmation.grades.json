@@ -1,0 +1,567 @@
+{
+  "tasks": {
+    "h1": {
+      "outputs": {
+        "ui-888934": {
+          "dimensions": {
+            "A": {
+              "score": 18,
+              "rationale": "An address-led list and clear panel headers make the streetlight lookup scannable at all three widths.",
+              "strengths": [
+                "Desktop and tablet rows share a fixed status column; the known outage groups state, date and reference in one callout."
+              ],
+              "defects": [
+                "The extra reporting-status header and large empty report panel take space on mobile."
+              ],
+              "opportunity": "Compress the initial report panel on phones so more of it appears under the rows."
+            },
+            "B": {
+              "score": 13,
+              "rationale": "Serif display headings and sans-serif controls establish roles; heavier addresses and monospaced codes are easy to distinguish.",
+              "strengths": [
+                "The selected address and bold date/reference read clearly in the desktop outage capture."
+              ],
+              "defects": [
+                "Pole codes and badges get notably small on the phone, and the crossing landmark wraps into two lines."
+              ],
+              "opportunity": "Give codes and landmarks more mobile width by simplifying the row furniture."
+            },
+            "C": {
+              "score": 17,
+              "rationale": "The ivory and navy palette separates regions cleanly, with amber concentrated on active or reported states.",
+              "strengths": [
+                "The top-aligned and initially equal-height desktop cards have subtle separators, matching radii and restrained shadows."
+              ],
+              "defects": [
+                "On mobile the repeated icon tiles and chevrons narrow the address column; the East Basin badge is repeated in the intro."
+              ],
+              "opportunity": "Reduce the footprint of the mobile row icons and keep more space for location text."
+            },
+            "D": {
+              "score": 18,
+              "rationale": "A clear civic masthead and a modest schematic lamp form a distinctive and consistent utility identity.",
+              "strengths": [
+                "The illustrated lamp, municipal mark and amber report callout refer back to the service without overwhelming it."
+              ],
+              "defects": [
+                "The masthead service label and hero kicker repeat the service name at desktop and tablet."
+              ],
+              "opportunity": "Use one of those labels to foreground service-area information or remove the duplication."
+            },
+            "E": {
+              "score": 13,
+              "rationale": "The named search, whole-row targets and selected fill support the lookup. The test transcript verifies empty search recovery and mobile submission/reset.",
+              "strengths": [
+                "The selected Harbor Market row has an amber edge, and the right panel shows the existing reference with no submit action."
+              ],
+              "defects": [
+                "The initial mobile report region begins below all four rows, and the mobile task-form and acknowledgment have no visual capture."
+              ],
+              "opportunity": "Make the newly populated report region easy to reach immediately after a phone selection."
+            },
+            "F": {
+              "score": 8,
+              "rationale": "Repeated row and detail styles hold across three widths and the known-outage state; the browser records no overflow or initial accessibility violations.",
+              "strengths": [
+                "The transcript verifies the selected row has aria-pressed=true and the scenario controls respond at their intended widths."
+              ],
+              "defects": [
+                "Panel proportions change markedly between initial and filtered states; keyboard focus treatment is not pictured."
+              ],
+              "opportunity": "Verify focus visibility and continuity through selection, submission and reset."
+            }
+          },
+          "total": 87,
+          "visual_problems": [
+            "The mobile empty-state panel is tall.",
+            "Small code and status text must share the phone row with icon tiles and arrows.",
+            "Desktop and tablet repeat the service label and area context."
+          ],
+          "effective_decisions": [
+            "Desktop and tablet keep the status column aligned across all four rows.",
+            "The single-column phone hero leaves the heading clear of decoration.",
+            "The selected row and existing-report callout use the same amber family."
+          ],
+          "blockers": []
+        },
+        "ui-83d1d6": {
+          "dimensions": {
+            "A": {
+              "score": 16,
+              "rationale": "The service-area lead-in and distinct report surface give a clear reading order; status becomes detached from addresses at narrow widths.",
+              "strengths": [
+                "Four distinct hit areas, a result count and top-aligned report details are easy to find on desktop and tablet."
+              ],
+              "defects": [
+                "On tablet and mobile the badges sit beside the tiny code, above the principal address; the known outage date and reference sit far to the right of their labels."
+              ],
+              "opportunity": "Anchor reporting status to the address line and tighten the selected detail’s key/value spacing."
+            },
+            "B": {
+              "score": 12,
+              "rationale": "Serif title and strong sans-serif addresses are legible, but the pole codes are too subordinate for a search keyed to them.",
+              "strengths": [
+                "Lightly tracked service-area label and bold addresses give distinct reading levels."
+              ],
+              "defects": [
+                "Tiny codes and relatively light landmark text are visually weaker than the status badges, especially on narrow screens."
+              ],
+              "opportunity": "Raise the code size or weight slightly and give location text a little more emphasis on phones."
+            },
+            "C": {
+              "score": 15,
+              "rationale": "Warm paper, ink and pale green establish useful regions, but the lamp silhouette crosses the mobile headline.",
+              "strengths": [
+                "The sage report panel differentiates the work areas, and the amber note below them is restrained."
+              ],
+              "defects": [
+                "The mobile artwork crosses the word streetlight and its glow runs behind the intro; the glow reaches behind text at tablet too."
+              ],
+              "opportunity": "Reserve separate artwork space at narrower widths or omit the lamp below the tablet breakpoint."
+            },
+            "D": {
+              "score": 16,
+              "rationale": "The icon, typography and public-works masthead fit a municipal tool; the service-area kicker provides relevant context.",
+              "strengths": [
+                "The prominent East Basin label and restrained pole-code tip make the civic page feel specific to this task."
+              ],
+              "defects": [
+                "The masthead still repeats a service label on the narrowest frame, while hero decoration competes for that limited space."
+              ],
+              "opportunity": "Streamline the small-screen masthead and let its mark carry more of the identity."
+            },
+            "E": {
+              "score": 13,
+              "rationale": "Results are large targets with a distinct selected border; browser scenarios confirm known-report lookup, phone filing/reset and recovery from empty search.",
+              "strengths": [
+                "The chosen row is marked by an amber border and fill, and all status badges carry explicit text."
+              ],
+              "defects": [
+                "At 390 px the report card begins after the fold beneath the full list; the selected form and confirmation are not pictured."
+              ],
+              "opportunity": "Make the transition from a selected mobile row to its populated report panel more evident."
+            },
+            "F": {
+              "score": 8,
+              "rationale": "Rows and report states remain consistent across captures; the browser verifies no overflow, zero initial accessibility violations and the expected selected state.",
+              "strengths": [
+                "The four buttons reflow into two-line rows at tablet and mobile without cropping the text."
+              ],
+              "defects": [
+                "The decorative hero does not respect the text zone at smaller sizes, and keyboard focus was not captured."
+              ],
+              "opportunity": "Give the hero illustration its own breakpoint treatment and verify the figure stays clear of the heading at intermediate widths."
+            }
+          },
+          "total": 80,
+          "visual_problems": [
+            "The lamp graphic overlaps the mobile title.",
+            "Small codes sit beside visually stronger badges on stacked rows.",
+            "The known-outage labels and values are spaced farther apart than their text requires."
+          ],
+          "effective_decisions": [
+            "The sage report surface remains distinct from the search panel.",
+            "The address and landmark remain paired in every row.",
+            "The selected outline and tinted fill make the state clear in the Harbor Market capture."
+          ],
+          "blockers": []
+        }
+      },
+      "pairs": [
+        {
+          "ids": [
+            "ui-888934",
+            "ui-83d1d6"
+          ],
+          "preference": "ui-888934",
+          "confidence": "high",
+          "rationale": "Both pass the recorded workflows. ui-888934 keeps the phone heading clear, lets residents compare statuses down an aligned column, and groups the known-report date and reference more tightly."
+        }
+      ]
+    },
+    "h2": {
+      "outputs": {
+        "ui-b686a2": {
+          "dimensions": {
+            "A": {
+              "score": 17,
+              "rationale": "The framed and vertically centered proof dominates the desktop and tablet workspaces, with notes clearly separated in the right pane.",
+              "strengths": [
+                "The front artwork and dimensions share a narrow footer; note titles, authors and approval are easy to locate."
+              ],
+              "defects": [
+                "The stacked status header and artwork footer push the note list and open thread farther down on phones."
+              ],
+              "opportunity": "Bring the status up beside the review heading on phones and reclaim some height."
+            },
+            "B": {
+              "score": 12,
+              "rationale": "Bold headings and note titles establish scan order while mono job and size fields suit production metadata.",
+              "strengths": [
+                "The opened note’s author, title and message remain legible in the phone capture."
+              ],
+              "defects": [
+                "Small author text and size readout are subdued, and the tight, heavy review heading has disproportionate emphasis on mobile."
+              ],
+              "opportunity": "Rebalance type scale between section titles and operational metadata, especially at 390 px."
+            },
+            "C": {
+              "score": 18,
+              "rationale": "A continuous charcoal canvas, faint dot grid and registration corners create a balanced physical proof surface.",
+              "strengths": [
+                "At desktop and tablet the artwork is centered over the full available canvas; the amber controls and cream pane support the orange artwork."
+              ],
+              "defects": [
+                "The high-contrast pins occupy substantial portions of the artwork wordmark and weight line at 390 px."
+              ],
+              "opportunity": "Reduce the visible pin disks on phones while retaining their touchable hit areas."
+            },
+            "D": {
+              "score": 18,
+              "rationale": "The Switchyard mark, ink masthead, registration corners and dimensional readout create a coherent production-tool identity.",
+              "strengths": [
+                "The two review zones stay recognizably consistent on phone, tablet and desktop; amber selection in the note view matches the wider palette."
+              ],
+              "defects": [
+                "The filled amber Show pins button competes with the proof for attention, especially in the wrapped toolbar."
+              ],
+              "opportunity": "Give the pin button a quieter, visibly stateful treatment."
+            },
+            "E": {
+              "score": 12,
+              "rationale": "Large annotation targets, numbered rows and distinct selected styles support review. The scenarios verify switching, replying and approving.",
+              "strengths": [
+                "The phone thread screenshot highlights both the matching pin and note row; the approved tablet state removes the action and displays Approved."
+              ],
+              "defects": [
+                "The opened phone note sits below the still-visible list, and the packet does not capture the viewport immediately after a pin click or the open dialog."
+              ],
+              "opportunity": "Verify that pin activation brings the note into view without relying on subsequent scrolling, and check dialog fit on a phone."
+            },
+            "F": {
+              "score": 8,
+              "rationale": "The artwork and percentages track across all three sizes, with no recorded overflow or page errors. The visible selected and approved states fit the same system.",
+              "strengths": [
+                "The transcript verifies version image alt text and toggle pressed state; the phone detail retains the same type and border system."
+              ],
+              "defects": [
+                "Automated contrast was inconclusive for pin numerals due to pseudo-element backgrounds; keyboard focus and Escape behavior are unverified in the packet."
+              ],
+              "opportunity": "Manually check pin contrast and keyboard focus through the canvas, thread and dialog."
+            }
+          },
+          "total": 85,
+          "visual_problems": [
+            "Phone pins obscure parts of the wordmark and weight line.",
+            "The stacked review heading and status delay the mobile notes.",
+            "Show pins has strong amber emphasis for a secondary toolbar control."
+          ],
+          "effective_decisions": [
+            "Registration corners show the proof bounds and lend the canvas a production feel.",
+            "The approval state shifts to a green status without moving the artwork or notes.",
+            "The selected mobile pin and row change treatment together."
+          ],
+          "blockers": []
+        },
+        "ui-b12247": {
+          "dimensions": {
+            "A": {
+              "score": 18,
+              "rationale": "Compact job and review headers keep job metadata, status and notes close to the proof at every breakpoint.",
+              "strengths": [
+                "The desktop masthead keeps job, panel and size together; at 390 px the stacked review pane begins directly after the canvas."
+              ],
+              "defects": [
+                "On desktop and tablet the proof is centered within the dotted portion, leaving the overall left column visibly top-heavy."
+              ],
+              "opportunity": "Center the proof vertically within the entire available canvas when the review pane stretches to viewport height."
+            },
+            "B": {
+              "score": 13,
+              "rationale": "A well-spaced sans-serif hierarchy distinguishes the job name, control labels, note titles and thread text.",
+              "strengths": [
+                "The short job ID and dimensions stay legible together in the phone header, and the phone thread separates author and message well."
+              ],
+              "defects": [
+                "The small author line and note-number badges carry noticeably less weight than other text on tablet and mobile."
+              ],
+              "opportunity": "Lift the author text slightly in the note list without displacing the titles."
+            },
+            "C": {
+              "score": 17,
+              "rationale": "Muted green-black, ivory and soft green provide separation and leave the artwork as the dominant color.",
+              "strengths": [
+                "Selected pins and note cards echo one another; white space within cards and message blocks is even."
+              ],
+              "defects": [
+                "The dotted grid ends abruptly above a blank dark band on desktop and tablet, and phone pins still cover the net-weight line."
+              ],
+              "opportunity": "Carry a continuous canvas treatment to the bottom of the adjacent review pane."
+            },
+            "D": {
+              "score": 17,
+              "rationale": "The restrained paper-and-ink palette and compact badge system fit a small packaging team and form a consistent tool interface.",
+              "strengths": [
+                "The masthead wordmark, production metadata and pane treatments remain consistent from desktop to phone."
+              ],
+              "defects": [
+                "The large flat band below the dots makes the canvas feel divided, and the packaging mark is less identifiable once it drops out on mobile."
+              ],
+              "opportunity": "Refine the canvas edge so the viewing area reads as a single production surface."
+            },
+            "E": {
+              "score": 14,
+              "rationale": "A stateful switch, clear hit targets, matching selection styles and disabled empty-reply feedback make the tested workflows easy to follow.",
+              "strengths": [
+                "On mobile, the active numbered card, selected pin and labeled reply form remain easy to connect; tablet shows Approved and no approval action."
+              ],
+              "defects": [
+                "The open note is below the list on mobile; the full-page capture cannot verify auto-scroll on activation or confirm that the dialog fits 390 px."
+              ],
+              "opportunity": "Verify the scroll position immediately after pin activation and inspect the open approval dialog at phone width."
+            },
+            "F": {
+              "score": 8,
+              "rationale": "Artwork proportions and pin positions stay consistent as the toolbar wraps; browser checks confirm no overflow and the recorded flows pass.",
+              "strengths": [
+                "Version alt text and pressed state are verified by the scenario; headings, status and selected-card treatments stay consistent across captures."
+              ],
+              "defects": [
+                "The automated contrast check left the pin numerals and decorative approval arrow unresolved; keyboard focus and Escape behavior are unverified in the packet."
+              ],
+              "opportunity": "Check pin legibility manually and verify keyboard focus across the thread and dialog transitions."
+            }
+          },
+          "total": 87,
+          "visual_problems": [
+            "The canvas dots end abruptly before the desktop and tablet footer line.",
+            "The proof sits above the visual center of the full tablet column.",
+            "The mobile pins overlap artwork lettering."
+          ],
+          "effective_decisions": [
+            "The compact masthead keeps dimensions with the job at all widths.",
+            "The pin switch gives a clear visual indication of the setting.",
+            "The selected thread and pin use coordinated treatments, and the empty reply action visibly disables."
+          ],
+          "blockers": []
+        }
+      },
+      "pairs": [
+        {
+          "ids": [
+            "ui-b12247",
+            "ui-b686a2"
+          ],
+          "preference": "ui-b12247",
+          "confidence": "medium",
+          "rationale": "ui-b12247 uses the phone viewport more efficiently, groups job metadata, and makes the pin and reply controls easier to read as states. ui-b686a2 has the better-centered, more continuous canvas and a more distinctive proof surround."
+        }
+      ]
+    },
+    "h3": {
+      "outputs": {
+        "ui-d6a40a": {
+          "dimensions": {
+            "A": {
+              "score": 17,
+              "rationale": "The full date, count, and legend appear together above the grid. The phone agenda puts times before titles, and the desktop success state keeps the selected booking in view beside its details.",
+              "strengths": [
+                "Room names sit directly over their lanes, and the full 9:00 AM–1:00 PM axis is visible at 1440 px.",
+                "At 390 px, fixed time, title, and status columns make it easy to scan the two 9:00 AM bookings in room order."
+              ],
+              "defects": [
+                "At 834 px, the badge shares the title row and forces Volunteer Orientation onto two lines despite open space beneath it.",
+                "The large heading and stacked hours take up space above the date controls and grid on tablet."
+              ],
+              "opportunity": "Give the tentative card title a full-width first line at tablet widths by placing the badge on the metadata line."
+            },
+            "B": {
+              "score": 12,
+              "rationale": "The serif heading and compact sans-serif booking titles give the screen a clear typographic hierarchy. The readable time text appears comparatively small alongside the titles and large grid cards.",
+              "strengths": [
+                "Room headers and booking titles remain distinct at 834 px.",
+                "The phone agenda aligns the start and end times down the left and keeps even the longest booking title readable."
+              ],
+              "defects": [
+                "The phone repeats AM or PM on two lines for most bookings, increasing the work of reading a time range.",
+                "Grid times and the status legend are visually small beside the room headers."
+              ],
+              "opportunity": "Give time ranges more typographic weight and retain a stable alignment for their digits."
+            },
+            "C": {
+              "score": 16,
+              "rationale": "Plum, lavender, and warm amber form a restrained palette. Hour and quarter-hour rules are quiet, and the result panel aligns with the top of the schedule.",
+              "strengths": [
+                "A dashed edge, amber fill, and explicit badge make tentative blocks stand out on desktop and tablet.",
+                "The dark plum outline marks the moved selection while the adjacent green message confirms the outcome in words."
+              ],
+              "defects": [
+                "The desktop toolbar separates the date controls and filter by almost the full schedule width, making them feel loosely related.",
+                "The axis places the 9:00 AM label inside the first interval while later hour labels sit on the corresponding rules."
+              ],
+              "opportunity": "Align the first hour label to the start of the grid using the same convention as subsequent ticks."
+            },
+            "D": {
+              "score": 17,
+              "rationale": "The waveform mark and serif title give the station an identity while the grid, agenda, and details use an appropriately quiet treatment for daily coordination.",
+              "strengths": [
+                "The waveform, dark plum masthead, and plum buttons give all three screen sizes a recognizable identity.",
+                "Tentative amber and confirmed lavender carry through from the grid to the agenda and detail badge."
+              ],
+              "defects": [
+                "On the phone, the heading and space around it take up a sizable share of the first screen before the agenda begins."
+              ],
+              "opportunity": "Compress the phone heading area while keeping the serif title and station masthead."
+            },
+            "E": {
+              "score": 10,
+              "rationale": "The grid and chronological agenda preserve the task at their intended widths. The scripted conflict recovery, persistent filter, and phone cancel flows pass. The browser audit flags the booking buttons across every viewport.",
+              "strengths": [
+                "At 390 px, both date controls and the filter fit above the agenda, with room and status visible on each booking.",
+                "The success screenshot shows Signal Check still selected in Edit Booth and gives a written confirmation in its details."
+              ],
+              "defects": [
+                "Axe reports a serious visible-label and accessible-name mismatch on all eight booking buttons at desktop, tablet, and mobile.",
+                "The button's explicit name uses a compressed time range while the phone shows the meridiem on each endpoint, exemplifying a visible and spoken label inconsistency."
+              ],
+              "opportunity": "Build each booking button's accessible name from its displayed label content, then verify keyboard and voice activation."
+            },
+            "F": {
+              "score": 7,
+              "rationale": "Card placement, state treatment, and layout remain coherent across the screenshots. Browser evidence establishes native controls and consistent visible booking counts, with a remaining semantic naming defect.",
+              "strengths": [
+                "No measured horizontal overflow at 1440, 834, or 390 px.",
+                "Calendar placement and the selected detail panel agree after the move, while the scripted native select and cancel flow work on the phone."
+              ],
+              "defects": [
+                "The audit also leaves manual checks for contrast and the legend's ARIA label at desktop and tablet sizes.",
+                "The packet provides no captures of the live conflict form or the phone details and move form, so their layout and focus behavior remain unverified."
+              ],
+              "opportunity": "Resolve the legend's accessible labeling and verify contrast and focus in the open form states."
+            }
+          },
+          "total": 79,
+          "visual_problems": [
+            "The tablet tentative badge forces Volunteer Orientation onto two lines.",
+            "Desktop and tablet devote substantial vertical space to the masthead and heading before the first booking.",
+            "The 9:00 AM axis label uses a different alignment from the later hour labels."
+          ],
+          "effective_decisions": [
+            "Grouping the full date, booking count, and legend above the schedule puts context at the point of use.",
+            "The mobile agenda aligns time, title and room, and status in stable columns.",
+            "The desktop side panel preserves the grid and the selected outline shows the booking's new location."
+          ],
+          "blockers": [
+            "Serious accessibility violation reported for every booking button at all three widths. The accessible names fail to include the displayed labels as required."
+          ]
+        },
+        "ui-8e858c": {
+          "dimensions": {
+            "A": {
+              "score": 17,
+              "rationale": "A compact heading and toolbar bring the schedule above the fold on desktop and tablet. Room lanes and bookings are easy to scan, and the phone fits all eight bookings in the initial view.",
+              "strengths": [
+                "The three room columns begin high on the screen, with a clear reading order from room headers to the top-left title and time on each card.",
+                "The phone shows all eight bookings in chronological order, with the two 9:00 AM sessions ordered by room."
+              ],
+              "defects": [
+                "The booking count and status legend sit beneath the entire desktop and tablet grid, away from the date controls and initial entries.",
+                "On the phone, room appears above title on the left while time appears on the right below status, requiring more eye travel to scan by start time."
+              ],
+              "opportunity": "Move the count and legend closer to the top of the grid so the status key is available before scanning bookings."
+            },
+            "B": {
+              "score": 13,
+              "rationale": "A consistent sans-serif family creates a clear distinction from page title to room labels, booking titles, and times. The wider title line avoids wrapping Volunteer Orientation at 834 px.",
+              "strengths": [
+                "Strong card titles and lighter time ranges are easy to distinguish on both grid widths.",
+                "Single-line mobile ranges align along the right edge and preserve the full AM–PM transition for Midday Rotation."
+              ],
+              "defects": [
+                "The page title's very heavy weight and tight spacing are more pronounced than the rest of the restrained interface.",
+                "The small Tentative label in the grid is visually weaker than the title and time it qualifies."
+              ],
+              "opportunity": "Increase the prominence of the compact Tentative label without reducing the title's usable line length."
+            },
+            "C": {
+              "score": 17,
+              "rationale": "Muted green and warm amber clearly separate booking states, with stronger hour rules and quiet quarter-hour subdivisions. Rectangular cards make their placement legible.",
+              "strengths": [
+                "The grid uses consistent insets and visually clear differences between hour and quarter-hour rules.",
+                "Desktop details sit on their own surface, aligned with the grid, with the success message grouped near the resulting room."
+              ],
+              "defects": [
+                "The isolated hollow markers beside every room heading add visual detail without conveying a room state.",
+                "The legend stays at the far right of the page after the details panel narrows the grid, weakening its visual association with the schedule."
+              ],
+              "opportunity": "Keep the legend aligned to the grid when details are open."
+            },
+            "D": {
+              "score": 17,
+              "rationale": "Forest green, warm neutrals, and the waveform station mark give a coherent identity to a compact internal tool. The same card surfaces carry from calendar to agenda.",
+              "strengths": [
+                "The masthead colors and small waveform icon establish a consistent station identity across all viewports.",
+                "Phone cards reuse the grid's green and amber surfaces and left accents, with status written out on each row."
+              ],
+              "defects": [
+                "Hollow indicators recur before room names, next to tentative status, and inside the filter with different meanings."
+              ],
+              "opportunity": "Reserve status markers for booking status and give the filter its own clear state indicator."
+            },
+            "E": {
+              "score": 10,
+              "rationale": "Dates and filtering remain reachable, and the scripted move and cancel interactions pass. A serious booking-name mismatch reported by the audit affects the primary controls at all three widths.",
+              "strengths": [
+                "The phone shows title, room, time, and status for every booking without sideways scrolling.",
+                "The desktop success state keeps the selected card visible and shows the new room, host, status, and written confirmation in the side panel."
+              ],
+              "defects": [
+                "Axe reports a serious visible-label and accessible-name mismatch on all eight booking controls at each width.",
+                "The filter uses a small empty square that reads as a checkbox. The supplied tablet capture ends with filtering off, so the visual treatment of its active state cannot be verified."
+              ],
+              "opportunity": "Make the booking button names follow their displayed content and verify activation by keyboard and voice."
+            },
+            "F": {
+              "score": 8,
+              "rationale": "Grid, agenda, and adjacent details show consistent styles with no measured horizontal overflow or runtime errors. The native booking buttons use explicit names that omit portions of their visible labels.",
+              "strengths": [
+                "At 834 px the grid retains all three lanes and keeps the full fixture titles visible without horizontal overflow.",
+                "The moved card retains its selection and remains at 10:00–11:00 AM in the new lane, matching the panel's room and time."
+              ],
+              "defects": [
+                "The accessible names override the visible text order on the booking buttons.",
+                "The live conflict form and the phone details and move form have no captures, leaving their layout and focus behavior unverified."
+              ],
+              "opportunity": "Verify focus and label behavior in the detail and move states across keyboard and screen widths."
+            }
+          },
+          "total": 82,
+          "visual_problems": [
+            "The count and status legend are detached from the date controls below the full grid.",
+            "The mobile layout places the time below the status on the opposite side from the title.",
+            "Small hollow symbols near room headings and status convey inconsistent meanings."
+          ],
+          "effective_decisions": [
+            "Compact header spacing and readable tablet cards expose more of the schedule early.",
+            "Tentative and confirmed surfaces stay visually consistent between the grid and agenda.",
+            "Time ranges fit a single line on the phone, and all eight bookings appear in the initial view."
+          ],
+          "blockers": [
+            "Serious accessibility violation reported for every booking button at all three widths. The accessible names fail to include the displayed labels as required."
+          ]
+        }
+      },
+      "pairs": [
+        {
+          "ids": [
+            "ui-8e858c",
+            "ui-d6a40a"
+          ],
+          "preference": "ui-8e858c",
+          "confidence": "medium",
+          "rationale": "The green interface brings the grid into view earlier, keeps Volunteer Orientation on one line at tablet width, and fits all eight complete phone rows and their count within the viewport. The plum interface gives the date, count, and legend a stronger grouping and puts time first on the phone. Both complete the scripted workflows and share the serious booking-label violation."
+        }
+      ]
+    }
+  }
+}

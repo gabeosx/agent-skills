@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shift queue | Harborline Dispatch</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --canvas: #f2f5f8;
+      --surface: #fff;
+      --ink: #152b3b;
+      --muted: #4f6373;
+      --navy: #142d40;
+      --accent: #115d71;
+      --accent-light: #e4f3f5;
+      --rule: #dce4eb;
+      --late: #943c23;
+      --late-light: #f9ebe4;
+      --green: #226347;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin: 0; background: var(--canvas); color: var(--ink); line-height: 1.5; }
+    button { font: inherit; cursor: pointer; }
+    button:focus-visible, .review-state:focus-visible { outline: 3px solid #227d9b; outline-offset: 4px; }
+    [hidden] { display: none !important; }
+    .frame { width: min(1160px, calc(100% - 80px)); margin-inline: auto; }
+
+    .masthead { background: var(--navy); color: #fff; }
+    .masthead-inner { min-height: 68px; display: flex; align-items: center; gap: 17px; }
+    .brand { display: inline-flex; align-items: center; gap: 11px; font-weight: 750; font-size: 20px; letter-spacing: -.025em; }
+    .brand-mark {
+      width: 30px; height: 30px; border-radius: 7px; position: relative; background: #bce6e7;
+      background-image: linear-gradient(150deg, transparent 42%, var(--navy) 43% 57%, transparent 58%);
+      background-size: 19px 14px; background-repeat: repeat-y; background-position: center -2px;
+    }
+    .product { color: #d2dfe9; border-left: 1px solid #547085; padding-left: 17px; font-size: 14px; }
+
+    main { padding-block: 57px 72px; }
+    .heading {
+      display: flex; justify-content: space-between; align-items: flex-end; gap: 24px;
+      margin-bottom: 29px;
+    }
+    .shift-context { margin: 0 0 7px; color: var(--accent); font-size: 14px; font-weight: 700; }
+    h1 { margin: 0; font-size: clamp(38px, 5vw, 56px); line-height: 1.07; letter-spacing: -.052em; }
+    .shift-totals {
+      display: flex; margin: 0 0 3px; align-items: center; border-bottom: 1px solid #cbd8e2; 
+      padding-bottom: 12px; font-variant-numeric: tabular-nums;
+    }
+    .shift-totals div { display: flex; flex-direction: column-reverse; padding-inline: 21px; border-left: 1px solid #cbd8e2; }
+    .shift-totals div:first-child { padding-left: 0; border-left: 0; }
+    .shift-totals div:last-child { padding-right: 0; }
+    .shift-totals dt { color: var(--muted); font-size: 13px; white-space: nowrap; }
+    .shift-totals dd { margin: 0; font-weight: 720; font-size: 24px; line-height: 1.23; }
+    .shift-totals .late { color: var(--late); }
+
+    .queue {
+      border: 1px solid var(--rule); border-radius: 15px; background: var(--surface);
+      box-shadow: 0 2px 3px #1a344608, 0 11px 24px #1a344609;
+    }
+    .queue-bar { display: flex; align-items: center; justify-content: space-between; padding: 20px 26px; gap: 14px; }
+    .queue-title { margin: 0; font-size: 20px; font-weight: 720; letter-spacing: -.025em; }
+    .queue-count { margin: 2px 0 0; color: var(--muted); font-size: 14px; }
+    .filter {
+      min-height: 42px; display: inline-flex; align-items: center; border: 1px solid #aabac7; border-radius: 8px;
+      gap: 10px; background: var(--surface); padding: 7px 12px; color: var(--ink); font-size: 14px; font-weight: 700;
+      white-space: nowrap;
+    }
+    .filter:hover { background: #f0f5f8; }
+    .filter[aria-pressed="true"] { color: #0a5062; background: var(--accent-light); border-color: #5698a6; }
+    .switch { width: 29px; height: 17px; border-radius: 10px; background: #718696; padding: 3px; }
+    .switch::before { content: ""; display: block; height: 11px; width: 11px; background: #fff; border-radius: 50%; }
+    .filter[aria-pressed="true"] .switch { background: var(--accent); }
+    .filter[aria-pressed="true"] .switch::before { transform: translateX(12px); }
+
+    .queue-columns, .stop {
+      display: grid; grid-template-columns: minmax(170px, 1fr) minmax(72px, .31fr) minmax(100px, .5fr) minmax(113px, .52fr) 124px;
+      align-items: center; column-gap: clamp(12px, 2vw, 24px); padding-inline: 26px;
+    }
+    .queue-columns {
+      min-height: 40px; font-size: 12px; color: var(--muted); font-weight: 700; background: #f6f8fa;
+      border-block: 1px solid var(--rule);
+    }
+    .queue-columns span:last-child { text-align: right; }
+    .stop { padding-block: 17px; position: relative; min-height: 87px; }
+    .stop + .stop { border-top: 1px solid var(--rule); }
+    .stop[data-late="true"]::before { content: ""; position: absolute; inset: 17px auto 17px 0; width: 3px; border-radius: 0 2px 2px 0; background: #c77653; }
+    .stop-name { margin: 0; font-size: 17px; letter-spacing: -.019em; line-height: 1.22; }
+    .city { margin: 4px 0 0; font-size: 14px; color: var(--muted); }
+    .schedule { display: contents; }
+    .eta { font-size: 15px; font-weight: 650; font-variant-numeric: tabular-nums; }
+    .eta-label { position: absolute; width: 1px; height: 1px; clip-path: inset(50%); overflow: hidden; white-space: nowrap; }
+    .delay {
+      justify-self: start; display: inline-flex; align-items: center; gap: 6px; padding: 4px 9px;
+      background: #eef5f0; color: var(--green); border-radius: 5px; font-size: 13px;
+      line-height: 1.3; font-weight: 700; white-space: nowrap; font-variant-numeric: tabular-nums;
+    }
+    .delay::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+    [data-late="true"] .delay { background: var(--late-light); color: var(--late); }
+    .review-state { display: inline-flex; align-items: center; gap: 7px; font-size: 14px; color: var(--muted); justify-self: start; }
+    .review-indicator { height: 12px; width: 12px; flex: none; border: 1.5px solid #778d9d; border-radius: 50%; position: relative; }
+    .stop[data-reviewed="true"] .review-state { color: var(--green); font-weight: 700; }
+    .stop[data-reviewed="true"] .review-indicator { border-color: var(--green); background: var(--green); }
+    .stop[data-reviewed="true"] .review-indicator::after {
+      content: ""; position: absolute; width: 4px; height: 6px; border: solid #fff;
+      border-width: 0 1.5px 1.5px 0; transform: rotate(45deg); inset: 1px auto auto 3px;
+    }
+    .review {
+      min-height: 40px; border: 1px solid #9fbdc7; border-radius: 7px; background: #f3f9fa;
+      color: #0d5466; font-weight: 700; font-size: 13px; padding: 7px 10px;
+    }
+    .review:hover:not(:disabled) { background: var(--accent-light); border-color: #498a9c; }
+    .review:disabled { color: #586d7b; background: #f6f8f9; border-color: #dce4eb; cursor: default; }
+
+    @media (max-width: 960px) {
+      .frame { width: calc(100% - 48px); }
+    }
+    @media (max-width: 748px) {
+      .frame { width: calc(100% - 32px); }
+      .masthead-inner { min-height: 59px; gap: 13px; }
+      .product { padding-left: 13px; }
+      main { padding-block: 33px 34px; }
+      .heading { display: block; margin-bottom: 20px; }
+      .shift-context { margin-bottom: 4px; }
+      .shift-totals { border: 0; margin: 16px 0 0; padding: 0; }
+      .shift-totals div { flex-direction: row-reverse; align-items: baseline; gap: 5px; padding-inline: clamp(8px, 3vw, 14px); }
+      .shift-totals dd { font-size: 17px; }
+      .shift-totals dt { font-size: 13px; }
+      .queue-bar { padding: 13px 15px; border-bottom: 1px solid var(--rule); }
+      .queue-title { font-size: 18px; }
+      .queue-count { font-size: 13px; }
+      .filter { min-height: 44px; }
+      .queue-columns { display: none; }
+      .stop {
+        grid-template-columns: minmax(0, 1fr) auto;
+        grid-template-areas: "identity schedule" "state action";
+        gap: 9px 8px; padding: 15px; align-items: start;
+      }
+      .stop-name { font-size: 16px; }
+      .city { margin-top: 2px; }
+      .identity { grid-area: identity; }
+      .schedule { grid-area: schedule; display: flex; flex-direction: column-reverse; align-items: flex-end; gap: 2px; }
+      .eta { font-size: 14px; }
+      .eta-label { position: static; width: auto; height: auto; clip-path: none; color: var(--muted); font-weight: 500; }
+      .delay { margin-top: 1px; }
+      .review-state { grid-area: state; align-self: center; }
+      .review { grid-area: action; min-height: 44px; padding-inline: 12px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="masthead">
+    <div class="frame masthead-inner">
+      <span class="brand"><span class="brand-mark" aria-hidden="true"></span>Harborline</span>
+      <span class="product">Dispatch</span>
+    </div>
+  </header>
+
+  <main class="frame">
+    <div class="heading">
+      <div>
+        <p class="shift-context">Tuesday · East district</p>
+        <h1>Shift queue</h1>
+      </div>
+      <dl class="shift-totals" aria-label="Shift totals">
+        <div><dt>Scheduled stops</dt><dd>3</dd></div>
+        <div><dt>Late</dt><dd class="late">2</dd></div>
+        <div><dt>Reviewed</dt><dd id="reviewed-count">0</dd></div>
+      </dl>
+    </div>
+
+    <section class="queue" aria-labelledby="queue-title">
+      <div class="queue-bar">
+        <div>
+          <h2 class="queue-title" id="queue-title">Stops</h2>
+          <p class="queue-count" id="queue-count" role="status">Showing all 3 stops</p>
+        </div>
+        <button class="filter" type="button" data-testid="late-only" aria-controls="stops" aria-pressed="false">
+          <span class="switch" aria-hidden="true"></span>Late only
+        </button>
+      </div>
+      <div class="queue-columns" aria-hidden="true">
+        <span>Stop</span><span>ETA</span><span>Delay</span><span>Review status</span><span>Action</span>
+      </div>
+      <div id="stops" data-testid="stops">
+        <article class="stop" data-late="true" aria-labelledby="riverfront">
+          <div class="identity"><h3 class="stop-name" id="riverfront">Riverfront Market</h3><p class="city">Wilmington</p></div>
+          <div class="schedule">
+            <span class="eta"><span class="eta-label">ETA </span><time datetime="10:40">10:40</time></span>
+            <span class="delay">24 min late</span>
+          </div>
+          <span class="review-state" data-testid="riverfront-state" tabindex="-1"><span class="review-indicator" aria-hidden="true"></span><span class="review-label">Needs review</span></span>
+          <button class="review" type="button" aria-label="Acknowledge Riverfront Market" data-testid="riverfront-review">Acknowledge</button>
+        </article>
+        <article class="stop" data-late="false" data-testid="oak" aria-labelledby="oak">
+          <div class="identity"><h3 class="stop-name" id="oak">Oak Street Co-op</h3><p class="city">Newark</p></div>
+          <div class="schedule">
+            <span class="eta"><span class="eta-label">ETA </span><time datetime="11:10">11:10</time></span>
+            <span class="delay">On time</span>
+          </div>
+          <span class="review-state" tabindex="-1"><span class="review-indicator" aria-hidden="true"></span><span class="review-label">Needs review</span></span>
+          <button class="review" type="button" aria-label="Acknowledge Oak Street Co-op">Acknowledge</button>
+        </article>
+        <article class="stop" data-late="true" aria-labelledby="north">
+          <div class="identity"><h3 class="stop-name" id="north">North Pier Supplies</h3><p class="city">New Castle</p></div>
+          <div class="schedule">
+            <span class="eta"><span class="eta-label">ETA </span><time datetime="11:25">11:25</time></span>
+            <span class="delay">11 min late</span>
+          </div>
+          <span class="review-state" tabindex="-1"><span class="review-indicator" aria-hidden="true"></span><span class="review-label">Needs review</span></span>
+          <button class="review" type="button" aria-label="Acknowledge North Pier Supplies">Acknowledge</button>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const filter = document.querySelector('.filter');
+    const stops = [...document.querySelectorAll('.stop')];
+    const queueCount = document.getElementById('queue-count');
+    const reviewedCount = document.getElementById('reviewed-count');
+
+    filter.addEventListener('click', () => {
+      const lateOnly = filter.getAttribute('aria-pressed') !== 'true';
+      filter.setAttribute('aria-pressed', lateOnly);
+      for (const stop of stops) {
+        stop.hidden = lateOnly && stop.dataset.late !== 'true';
+      }
+      const visibleCount = stops.filter(stop => !stop.hidden).length;
+      queueCount.textContent = lateOnly
+        ? `Showing ${visibleCount} late stops`
+        : `Showing all ${visibleCount} stops`;
+    });
+
+    for (const stop of stops) {
+      const button = stop.querySelector('.review');
+      const state = stop.querySelector('.review-state');
+      button.addEventListener('click', () => {
+        const moveFocus = document.activeElement === button;
+        stop.dataset.reviewed = 'true';
+        state.querySelector('.review-label').textContent = 'Reviewed';
+        button.disabled = true;
+        reviewedCount.textContent = stops.filter(item => item.dataset.reviewed === 'true').length;
+        if (moveFocus) state.focus({ preventScroll: true });
+      });
+    }
+  </script>
+</body>
+</html>

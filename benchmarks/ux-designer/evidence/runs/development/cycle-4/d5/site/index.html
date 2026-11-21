@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shift queue · Harborline Dispatch</title>
+<style>
+  :root {
+    color-scheme: light;
+    --ink: #182824;
+    --muted: #536661;
+    --paper: #edf1ee;
+    --line: #dae4de;
+    --teal: #185849;
+    --teal-soft: #e9f4ee;
+    --late-ink: #903c21;
+    --late-paper: #fff0e5;
+    font-family: system-ui, sans-serif;
+    font-size: 16px;
+    color: var(--ink);
+    background: var(--paper);
+  }
+
+  * { box-sizing: border-box; }
+  body { margin: 0; }
+  [hidden] { display: none !important; }
+  button { font: inherit; }
+  button:focus-visible, [tabindex="-1"]:focus-visible {
+    outline: 3px solid #197c65;
+    outline-offset: 4px;
+  }
+  .width { width: min(1120px, calc(100% - 72px)); margin-inline: auto; }
+  .masthead { background: #142b27; color: #f3f8f3; border-bottom: 1px solid #334942; }
+  .masthead .width { height: 68px; display: flex; align-items: center; gap: 15px; }
+  .wordmark { display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 750; letter-spacing: -.015em; }
+  .mark {
+    width: 28px; height: 28px; border: 1px solid #5b8a78; border-radius: 7px;
+    background: #24473b; color: #c9ebcf; display: grid; place-content: center;
+  }
+  .mark i { width: 13px; height: 2px; background: currentColor; transform: skewX(-28deg); box-shadow: 0 4px 0 currentColor, 0 -4px 0 currentColor; }
+  .product { border-left: 1px solid #527168; padding-left: 15px; color: #c0cec8; font-size: 13px; font-weight: 550; }
+  .hero {
+    color: #f5faf5;
+    background: #19362e;
+  }
+  .hero .width {
+    display: flex; align-items: end; justify-content: space-between; gap: 28px;
+    padding-block: 48px 51px;
+  }
+  h1, h2, h3, p { margin: 0; }
+  h1 { font-size: clamp(2.5rem, 5.3vw, 3.5rem); font-weight: 720; letter-spacing: -.055em; line-height: 1.06; }
+  .shift { color: #c3d8cd; font-size: 15px; margin-top: 12px; }
+  .shift span { display: inline-block; margin-inline: 5px; color: #80ad9c; }
+  .overview { display: flex; padding: 0; margin: 0; }
+  .overview div { min-width: 112px; padding-left: 18px; border-left: 1px solid #567468; }
+  .overview div + div { margin-left: 15px; }
+  .overview dt { font-size: 13px; color: #c3d8cd; }
+  .overview dd { margin: 0 0 3px; line-height: 1.1; font-size: 31px; font-weight: 660; letter-spacing: -.04em; font-variant-numeric: tabular-nums; }
+  .overview .running-late { color: #ffd1ac; }
+  .queue { padding-block: 34px 64px; }
+  .queue-panel { border: 1px solid #d1ddd5; border-radius: 15px; overflow: clip; background: #fff; box-shadow: 0 10px 32px #1d34250a; }
+  .queue-tools { min-height: 88px; display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 17px 23px; }
+  h2 { font-size: 23px; line-height: 1.2; font-weight: 720; letter-spacing: -.035em; }
+  .filter-result { font-size: 13px; color: var(--muted); margin-top: 4px; }
+  .filter {
+    background: #fff; color: #253b33; border: 1px solid #b4c8bd; border-radius: 8px; min-height: 44px;
+    padding: 8px 12px; display: inline-flex; align-items: center; gap: 9px;
+    font-size: 14px; font-weight: 680; flex-shrink: 0; cursor: pointer;
+  }
+  .filter:hover { background: #f3f8f4; }
+  .filter[aria-pressed="true"] { border-color: #185849; background: #e5f4eb; color: #174b3e; }
+  .switch { position: relative; width: 29px; height: 17px; border-radius: 20px; background: #e5ece7; border: 1px solid #788e83; }
+  .switch::after { content: ""; position: absolute; left: 2px; top: 2px; width: 11px; height: 11px; border-radius: 50%; background: #63796e; transition: transform .15s; }
+  .filter[aria-pressed="true"] .switch { background: #236652; border-color: #236652; }
+  .filter[aria-pressed="true"] .switch::after { transform: translateX(12px); background: #fff; }
+
+  .columns, .stop {
+    display: grid;
+    grid-template-columns: minmax(180px, 1.4fr) minmax(96px, .83fr) 62px minmax(108px, .8fr) minmax(105px, .85fr) 122px;
+    align-items: center; column-gap: clamp(10px, 2vw, 32px); padding-inline: 23px;
+  }
+  .columns {
+    min-height: 44px; border-block: 1px solid var(--line); background: #f5f8f5;
+    color: #4c6359; font-size: 12px; font-weight: 700;
+  }
+  .columns :nth-child(3), .stop .eta { text-align: right; }
+  .columns :last-child { text-align: right; }
+  .stop { position: relative; min-height: 84px; padding-block: 16px; }
+  .stop + .stop { border-top: 1px solid var(--line); }
+  .stop[data-late="true"]::before {
+    content: ""; width: 3px; height: 29px; border-radius: 0 3px 3px 0;
+    background: #ca6d45; position: absolute; left: 0; top: 50%; translate: 0 -50%;
+  }
+  .stop h3 { font-size: 16px; font-weight: 730; line-height: 1.3; letter-spacing: -.018em; }
+  .city, .eta { font-size: 14px; color: #465c53; }
+  .eta { font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .label-eta { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+  .delay {
+    justify-self: start; display: inline-flex; gap: 6px; align-items: center;
+    border-radius: 5px; padding: 4px 7px; color: #37564a; background: #eef4ef;
+    font-size: 13px; font-weight: 680; white-space: nowrap; font-variant-numeric: tabular-nums;
+  }
+  .delay::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: #57856d; }
+  .stop[data-late="true"] .delay { color: var(--late-ink); background: var(--late-paper); }
+  .stop[data-late="true"] .delay::before { background: #ad522c; }
+  .status { display: flex; align-items: center; gap: 7px; color: #4c6259; font-size: 13px; white-space: nowrap; }
+  .status::before { content: ""; flex: none; width: 8px; height: 8px; border: 1px solid #748d81; border-radius: 50%; }
+  .stop[data-reviewed] .status { color: #1b6049; font-weight: 680; }
+  .stop[data-reviewed] .status::before { width: 8px; height: 5px; border: solid currentColor; border-width: 0 0 2px 2px; border-radius: 0; transform: translateY(-2px) rotate(-45deg); }
+  .ack {
+    justify-self: end; color: #185849; background: #f9fcfa; min-height: 44px; border: 1px solid #aec9b9;
+    border-radius: 8px; padding: 8px 11px; font-size: 13px; font-weight: 720; cursor: pointer;
+  }
+  .ack:hover { background: var(--teal-soft); border-color: #78a991; }
+  .ack:disabled { cursor: default; color: #5b7066; background: #f1f5f1; border-color: #d9e2db; }
+
+  @media (max-width: 925px) {
+    .width { width: calc(100% - 48px); }
+    .columns, .stop { grid-template-columns: minmax(152px, 1.4fr) minmax(78px, .8fr) 47px 99px 100px 112px; column-gap: 12px; padding-inline: 17px; }
+    .queue-tools { padding-inline: 17px; }
+  }
+
+  @media (max-width: 735px) {
+    .width { width: calc(100% - 32px); }
+    .masthead .width { height: 58px; }
+    .hero .width { display: block; padding-block: 30px 25px; }
+    .shift { margin-top: 9px; }
+    .overview { margin-top: 23px; }
+    .overview div { min-width: 97px; padding-left: 12px; }
+    .overview dd { font-size: 25px; }
+    .queue { padding-block: 19px 36px; }
+    .queue-panel { border-radius: 12px; }
+    .queue-tools { min-height: 76px; padding: 12px 13px; }
+    h2 { font-size: 20px; }
+    .columns { display: none; }
+    .stop {
+      grid-template-columns: minmax(0, 1fr) auto;
+      grid-template-areas: "name delay" "city eta" "state action";
+      gap: 5px 8px; border-top: 1px solid var(--line);
+      padding: 14px 13px 12px;
+    }
+    .stop[data-late="true"]::before { top: 16px; translate: none; height: 20px; }
+    .stop h3 { grid-area: name; }
+    .city { grid-area: city; }
+    .eta { grid-area: eta; }
+    .label-eta { position: static; width: auto; height: auto; overflow: visible; clip-path: none; }
+    .delay { grid-area: delay; justify-self: end; }
+    .status { grid-area: state; align-self: center; margin-top: 6px; }
+    .ack { grid-area: action; margin-top: 6px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .switch::after { transition: none; }
+  }
+</style>
+</head>
+<body>
+  <header class="masthead">
+    <div class="width">
+      <div class="wordmark"><span class="mark" aria-hidden="true"><i></i></span> Harborline</div>
+      <div class="product">Dispatch</div>
+    </div>
+  </header>
+
+  <main>
+    <div class="hero">
+      <div class="width">
+        <div>
+          <h1>Shift queue</h1>
+          <p class="shift">Tuesday <span aria-hidden="true">·</span> East district</p>
+        </div>
+        <dl class="overview" aria-label="Shift totals">
+          <div><dt>Scheduled</dt><dd>3</dd></div>
+          <div><dt>Running late</dt><dd class="running-late">2</dd></div>
+        </dl>
+      </div>
+    </div>
+
+    <section class="queue width" aria-labelledby="queue-title">
+      <div class="queue-panel">
+        <div class="queue-tools">
+          <div>
+            <h2 id="queue-title">Scheduled stops</h2>
+            <p class="filter-result" role="status">Showing all 3 stops</p>
+          </div>
+          <button class="filter" type="button" data-testid="late-only" aria-pressed="false" aria-controls="stops">
+            <span class="switch" aria-hidden="true"></span>Late only
+          </button>
+        </div>
+        <div class="columns" aria-hidden="true">
+          <span>Stop</span><span>City</span><span>ETA</span><span>Delay</span><span>Review state</span><span>Action</span>
+        </div>
+        <div id="stops" data-testid="stops">
+          <article class="stop" data-late="true" aria-labelledby="riverfront-name">
+            <h3 id="riverfront-name">Riverfront Market</h3>
+            <span class="city">Wilmington</span>
+            <span class="eta"><span class="label-eta">ETA</span> <time datetime="10:40">10:40</time></span>
+            <span class="delay">24 min late</span>
+            <span class="status" data-testid="riverfront-state" tabindex="-1">Needs review</span>
+            <button class="ack" data-testid="riverfront-review" type="button" aria-label="Acknowledge Riverfront Market">Acknowledge</button>
+          </article>
+          <article class="stop" data-late="false" data-testid="oak" aria-labelledby="oak-name">
+            <h3 id="oak-name">Oak Street Co-op</h3>
+            <span class="city">Newark</span>
+            <span class="eta"><span class="label-eta">ETA</span> <time datetime="11:10">11:10</time></span>
+            <span class="delay">On time</span>
+            <span class="status" tabindex="-1">Needs review</span>
+            <button class="ack" type="button" aria-label="Acknowledge Oak Street Co-op">Acknowledge</button>
+          </article>
+          <article class="stop" data-late="true" aria-labelledby="north-pier-name">
+            <h3 id="north-pier-name">North Pier Supplies</h3>
+            <span class="city">New Castle</span>
+            <span class="eta"><span class="label-eta">ETA</span> <time datetime="11:25">11:25</time></span>
+            <span class="delay">11 min late</span>
+            <span class="status" tabindex="-1">Needs review</span>
+            <button class="ack" type="button" aria-label="Acknowledge North Pier Supplies">Acknowledge</button>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+<script>
+  const filter = document.querySelector('.filter');
+  const filterResult = document.querySelector('.filter-result');
+  const stops = [...document.querySelectorAll('.stop')];
+
+  filter.addEventListener('click', () => {
+    const lateOnly = filter.getAttribute('aria-pressed') === 'false';
+    filter.setAttribute('aria-pressed', String(lateOnly));
+
+    for (const stop of stops) {
+      stop.hidden = lateOnly && stop.dataset.late !== 'true';
+    }
+
+    const shown = stops.filter((stop) => !stop.hidden).length;
+    filterResult.textContent = lateOnly ? `Showing ${shown} late stops` : `Showing all ${shown} stops`;
+  });
+
+  for (const stop of stops) {
+    const review = stop.querySelector('.ack');
+    const status = stop.querySelector('.status');
+
+    review.addEventListener('click', () => {
+      stop.setAttribute('data-reviewed', '');
+      status.textContent = 'Reviewed';
+      status.focus({ preventScroll: true });
+      review.disabled = true;
+    });
+  }
+</script>
+</body>
+</html>

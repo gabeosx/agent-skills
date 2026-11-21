@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#164438">
+  <title>Restore prime · Atlas Works</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="docs.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#article">Skip to procedure</a>
+  <header class="site-header">
+    <div class="header-frame">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true"><i></i></span>
+        <span class="brand-name">Atlas Works</span>
+        <span class="brand-section">Service documentation</span>
+      </div>
+      <button class="nav-toggle" type="button" data-testid="nav-toggle" aria-expanded="false" aria-controls="docs-nav">
+        <span class="menu-icon" aria-hidden="true"></span> Docs menu
+      </button>
+    </div>
+  </header>
+
+  <div class="layout">
+    <nav class="docs-nav" id="docs-nav" data-testid="docs-nav" aria-label="Documentation">
+      <ul class="categories">
+        <li><a class="category" href="#doc-context" data-doc="start" aria-haspopup="dialog">Start here</a></li>
+        <li>
+          <button class="category disclosure" type="button" data-testid="equipment-toggle" aria-expanded="false" aria-controls="equipment-links">
+            Equipment <span class="chevron" aria-hidden="true"></span>
+          </button>
+          <ul class="subnav" id="equipment-links" data-testid="equipment-links" hidden>
+            <li><a href="#doc-context" data-doc="pump" aria-haspopup="dialog">Centrifugal pump</a></li>
+            <li><a href="#doc-context" data-doc="skid" aria-haspopup="dialog">Dosing skid</a></li>
+          </ul>
+        </li>
+        <li>
+          <span class="category category-heading">Procedures</span>
+          <ul class="subnav">
+            <li><a href="#article" aria-current="page">Restore prime</a></li>
+            <li><a href="#doc-context" data-doc="seal" aria-haspopup="dialog">Replace a seal</a></li>
+            <li><a href="#doc-context" data-doc="flow" aria-haspopup="dialog">Check flow</a></li>
+          </ul>
+        </li>
+        <li><a class="category" href="#doc-context" data-doc="troubleshoot" aria-haspopup="dialog">Troubleshooting</a></li>
+      </ul>
+    </nav>
+
+    <main class="article-layout" id="article" tabindex="-1">
+      <div class="article-intro">
+        <p class="breadcrumb">Procedures <span aria-hidden="true">/</span> Restore prime</p>
+        <h1>Restore prime</h1>
+        <p class="summary">Restore flow after a routine loss of prime by refilling the pump chamber and confirming flow on restart.</p>
+
+        <aside class="safety" aria-labelledby="safety-title">
+          <span class="safety-icon" aria-hidden="true">!</span>
+          <div>
+            <h2 id="safety-title">Do not run the pump dry.</h2>
+            <p>Fill and close the chamber before restarting the pump.</p>
+          </div>
+        </aside>
+      </div>
+
+      <aside class="outline">
+        <nav aria-label="On this page">
+          <h2>On this page</h2>
+          <ol>
+            <li><a href="#isolate">Isolate the pump</a></li>
+            <li><a href="#refill">Refill the chamber</a></li>
+            <li><a href="#verify" data-testid="jump-verify">Verify flow</a></li>
+          </ol>
+        </nav>
+      </aside>
+
+      <div class="procedure">
+        <section class="step" id="isolate" aria-labelledby="isolate-title" tabindex="-1">
+          <span class="step-number" aria-hidden="true">1</span>
+          <div class="step-content">
+            <h2 id="isolate-title">Isolate the pump</h2>
+            <p>Switch the pump off. Apply your site’s lockout procedure and verify zero energy before opening the fill port.</p>
+          </div>
+        </section>
+        <section class="step" id="refill" aria-labelledby="refill-title" tabindex="-1">
+          <span class="step-number" aria-hidden="true">2</span>
+          <div class="step-content">
+            <h2 id="refill-title">Refill the chamber</h2>
+            <p>Open the fill port and add approved priming fluid until the chamber is full. Close the fill port securely.</p>
+          </div>
+        </section>
+        <section class="step" id="verify" data-testid="verify" aria-labelledby="verify-title" tabindex="-1">
+          <span class="step-number" aria-hidden="true">3</span>
+          <div class="step-content">
+            <h2 id="verify-title">Verify flow</h2>
+            <p>Clear the work area, follow your site’s restart procedure, and confirm flow on the gauge.</p>
+            <p><strong>If flow does not recover, stop the pump and notify maintenance.</strong></p>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <dialog id="doc-context" class="context" aria-labelledby="context-title">
+    <div class="context-header">
+      <h2 id="context-title"></h2>
+      <form method="dialog">
+        <button type="submit" class="close-context" aria-label="Close reference" autofocus>×</button>
+      </form>
+    </div>
+    <p id="context-body"></p>
+  </dialog>
+</body>
+</html>

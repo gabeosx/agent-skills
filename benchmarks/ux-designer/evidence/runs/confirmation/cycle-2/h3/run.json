@@ -1,0 +1,18 @@
+{
+  "actor": "8e46",
+  "model": "inherited Codex",
+  "started": "2026-11-21T19:45:30+00:00",
+  "actor_collected_at": "2026-11-21T19:52:07+00:00",
+  "attempt": 1,
+  "brief": "briefs/h3/brief.md",
+  "brief_sha256": "25eba75f88dafc8c19779dc55d47089aa49877912663e03b59dae5b381498aa5",
+  "checks_sha256": "3fa4e2841d5d1bb39d9a0256eca47436f3db8868e7b80f9d9d413b8ec1a84dea",
+  "starter_files": {},
+  "skill_sha256": "92359a8886f08df494ee290af4cd23c63bc457d5df70e00ad577955f840de1be",
+  "source": {
+    "index.html": "6e0b619a2c49c1195cc374a1c9a7a41686ceb026991a767d9bc0f71a20b85405"
+  },
+  "actor_result": "Complete. Agent reports visual and interaction checks at all widths, mobile ordering, keyboard and focus, conflict and adjacent moves, filter/date persistence, cancel and reset.",
+  "usage": null,
+  "charge": null
+}

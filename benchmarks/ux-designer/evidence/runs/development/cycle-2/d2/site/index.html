@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BrightCart | Margin overview</title>
+<style>
+:root{color-scheme:light;--page:#f1f4f1;--paper:#fff;--ink:#15251f;--muted:#52665b;--rule:#dce5df;--green:#124d38;--chart:#152c23;--mint:#c4ee9d;--sans:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}
+*{box-sizing:border-box}body{margin:0;background:var(--page);color:var(--ink);font:15px/1.45 var(--sans);font-variant-numeric:tabular-nums}h1,h2,p,figure{margin:0}button,select{font:inherit}button,select{cursor:pointer}:focus-visible{outline:2px solid #40765d;outline-offset:3px}
+.shell{width:min(1240px,calc(100% - 96px));margin-inline:auto}
+.mast{background:#152a22;color:#f5faf3}
+.mast .shell{height:61px;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.brand{display:flex;align-items:center;gap:10px;font-size:22px;letter-spacing:-.045em;font-weight:720;white-space:nowrap}
+.brand-mark{width:28px;height:28px;display:flex;align-items:end;justify-content:center;padding-bottom:7px;gap:2px;border-radius:7px;background:var(--mint)}
+.brand-mark i{width:3px;display:block;background:#214933;border-radius:1px}
+.brand-mark i:nth-child(1){height:5px}.brand-mark i:nth-child(2){height:9px}.brand-mark i:nth-child(3){height:13px}
+.mast p{font-size:12px;color:#c6d8ca}
+main{padding-block:28px 40px}
+.titlebar{display:flex;justify-content:space-between;align-items:end;gap:16px;margin-bottom:20px}
+h1{font-size:clamp(32px,3.3vw,45px);line-height:1.04;letter-spacing:-.055em}
+.titlebar p{color:var(--muted);margin-top:7px}
+.control{display:flex;align-items:center;gap:9px;white-space:nowrap;color:var(--muted);font-size:13px;font-weight:600}
+select{background:var(--paper);border:1px solid #aebdb4;color:var(--ink);border-radius:6px;min-height:39px;padding:0 11px;font-size:13px;font-weight:650}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);margin:0 0 17px;border:1px solid var(--rule);background:var(--paper);border-radius:11px;overflow:hidden}
+.kpi{padding:17px 22px 16px}.kpi+.kpi{border-left:1px solid var(--rule)}
+.kpi:nth-child(2){background:#e8f1e9}
+.kpi dt{color:var(--muted);font-size:13px;font-weight:660}
+.kpi dd{margin:3px 0 0;font-size:clamp(23px,2.8vw,37px);font-weight:715;line-height:1.1;letter-spacing:-.045em}
+.trend{background:var(--chart);border-radius:11px;color:#f6fbf6;margin-bottom:17px;padding:20px 22px}
+.trend h2,.departments h2{font-size:22px;line-height:1.1;letter-spacing:-.035em;font-weight:700}
+.graph-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(185px,23%);gap:26px;margin-top:12px;align-items:stretch}
+.graph{min-width:0}
+.plot{height:112px;position:relative;isolation:isolate;margin-left:35px;margin-right:16px}
+.axis{position:absolute;width:calc(100% + 10px);left:-5px;border-top:1px solid #adc7b143}
+.axis span{position:absolute;right:calc(100% + 6px);transform:translateY(-53%);font-size:10px;color:#b7cfc0}
+.plot canvas{position:absolute;inset:0;width:100%;height:100%}
+.value{position:absolute;transform:translate(-50%,-155%);white-space:nowrap;color:#edf7ec;padding:0 2px;font-size:11px;font-weight:650;background:var(--chart);line-height:1.15}
+.value.latest{color:var(--mint);font-weight:800}
+.plot[data-period="7"] .value:not(.latest){color:#aec6b6}
+.weeks{display:grid;grid-template-columns:repeat(7,1fr);text-align:center;margin:0 16px 0 35px;padding:0;list-style:none;color:#b7cfc0;font-size:10px;font-weight:620}
+.weeks li:last-child{color:#f1ffd9}
+.latest-summary{border-left:1px solid #a2c7ae50;padding-left:22px;align-self:center}
+.latest-summary p:first-child{color:#c4d8ca;font-size:12px;font-weight:670}
+.latest-summary strong{display:block;color:var(--mint);font-size:34px;line-height:1.17;letter-spacing:-.045em;margin:3px 0}
+.latest-summary p:last-child{font-size:12px;color:#d7e5da;max-width:23ch}
+.departments{border:1px solid var(--rule);border-radius:11px;background:var(--paper);overflow:hidden}
+.table-head{min-height:65px;padding:12px 21px;display:flex;align-items:center;justify-content:space-between;gap:10px}
+.table-heading{display:flex;align-items:baseline;gap:11px;flex-wrap:wrap}
+.table-heading p{font-size:12px;color:var(--muted)}
+table{border-collapse:collapse;width:100%;table-layout:fixed}
+thead{background:#f4f7f4;border-block:1px solid #e4ebe5;color:var(--muted)}
+th,td{text-align:left;padding:9px 21px}
+thead th{font-size:12px;font-weight:670}
+thead th:first-child{width:38%}
+thead th:last-child{width:25%}
+tbody th,tbody td{height:48px;font-size:14px;border-bottom:1px solid #e7ede8}
+tbody th{font-weight:650}
+tbody tr:last-child > *{border-bottom:0}
+tbody tr:hover{background:#fafcf9}
+.num{text-align:right;font-weight:670}
+.status-badge{display:inline-flex;align-items:center;gap:6px;min-height:25px;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:700;white-space:nowrap}
+.status-badge::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
+.investigate{background:#fae8df;color:#8b3f28}.watch{background:#fbf0d8;color:#735209}.on-track{background:#e2f1e6;color:#28583c}
+.row-action{background:none;border:0;padding:5px 0;color:var(--green);font-weight:720;text-decoration:underline;text-underline-offset:4px}
+.row-action:hover{color:#327151}.row-action span{font-size:13px;display:inline-block;margin-left:5px;text-decoration:none}
+.mobile-sales{display:none}
+dialog{width:min(480px,calc(100% - 28px));max-height:calc(100% - 28px);background:var(--paper);color:var(--ink);border:1px solid var(--rule);border-radius:11px;box-shadow:0 20px 90px #09181261;padding:28px}
+dialog::backdrop{background:#0e261c91;backdrop-filter:blur(3px)}
+dialog .status-badge{margin-right:45px}dialog h2{font-size:34px;margin:6px 0 17px;letter-spacing:-.04em}
+.detail-figure{display:flex;align-items:baseline;gap:7px;border-block:1px solid var(--rule);padding-block:12px;color:var(--muted)}
+.detail-figure strong{color:var(--ink);font-size:26px;letter-spacing:-.035em}
+dialog h3{margin:17px 0 5px;font-size:17px}
+dialog .detail-description{color:var(--muted);font-size:14px}
+.detail-close{position:absolute;top:12px;right:12px;width:43px;height:43px;border:1px solid #bdcbc2;border-radius:6px;background:#f4f7f3;color:var(--ink);font-size:21px}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}
+@media(max-width:930px){.shell{width:calc(100% - 56px)}.kpi{padding-inline:17px}.graph-layout{gap:19px}.latest-summary{padding-left:17px}}
+@media(max-width:580px){.shell{width:calc(100% - 30px)}.mast .shell{height:53px}.brand{font-size:20px}.mast p{font-size:11px}main{padding-block:22px 28px}.titlebar{align-items:start;gap:12px;flex-direction:column;margin-bottom:13px}.titlebar p{font-size:13px;margin-top:5px}.control{font-size:12px;gap:6px}select{min-height:38px;padding-inline:8px}.kpis{margin-bottom:12px}.kpi{padding:12px 8px 11px}.kpi dt{font-size:11px}.kpi dd{font-size:22px}.trend{padding:15px 12px;margin-bottom:12px}.trend h2,.departments h2{font-size:19px}.graph-layout{grid-template-columns:minmax(0,1fr);gap:11px}.plot{height:98px;margin-right:10px;margin-left:28px}.axis span{right:calc(100% + 4px);font-size:9px}.value{font-size:9px}.weeks{font-size:9px;margin-left:28px;margin-right:10px}.latest-summary{border-left:0;border-top:1px solid #a2c7ae50;padding:9px 0 0;display:flex;align-items:center;gap:8px;flex-wrap:wrap}.latest-summary p:first-child,.latest-summary p:last-child{font-size:11px}.latest-summary strong{font-size:20px;margin:0}.latest-summary p:last-child{max-width:none;flex:1 1 135px}.table-head{min-height:57px;padding:8px 10px}.table-heading{display:block}.table-heading p{font-size:11px}.table-head .control label{font-size:11px}.table-head select{max-width:112px}th,td{padding:8px 8px}thead th{font-size:10px}thead th:first-child{width:38%}thead th:last-child{width:35%}tbody th,tbody td{height:50px;font-size:13px}.sales-column{display:none}.mobile-sales{display:block;font-size:11px;color:var(--muted);font-weight:500}.status-badge{padding-inline:6px}}
+</style>
+</head>
+<body>
+<header class="mast">
+  <div class="shell">
+    <div class="brand"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>BrightCart</div>
+    <p>Commercial intelligence</p>
+  </div>
+</header>
+<main class="shell">
+  <div class="titlebar">
+    <div>
+      <h1>Margin overview</h1>
+      <p>Track performance and spot departments that need attention.</p>
+    </div>
+    <div class="control">
+      <label for="period">Period</label>
+      <select id="period" data-testid="period"><option value="30">Last 30 days</option><option value="7">Last 7 days</option></select>
+    </div>
+  </div>
+
+  <dl class="kpis" aria-label="Performance indicators" aria-live="polite">
+    <div class="kpi"><dt>Sales</dt><dd data-testid="revenue">$1.28M</dd></div>
+    <div class="kpi"><dt>Gross margin</dt><dd data-testid="margin">24.8%</dd></div>
+    <div class="kpi"><dt>Stockout rate</dt><dd id="stockouts">3.1%</dd></div>
+  </dl>
+
+  <figure class="trend" aria-labelledby="trend-title" aria-describedby="weekly-values">
+    <h2 id="trend-title">Weekly gross margin</h2>
+    <div class="graph-layout">
+      <div class="graph" aria-hidden="true">
+        <div class="plot" data-period="30">
+          <div class="axis" style="top:19%"><span>27%</span></div>
+          <div class="axis" style="top:42%"><span>25%</span></div>
+          <div class="axis" style="top:65%"><span>23%</span></div>
+          <div class="axis" style="top:88%"><span>21%</span></div>
+          <canvas></canvas>
+          <div id="point-labels"></div>
+        </div>
+        <ol class="weeks"><li>Week 1</li><li>Week 2</li><li>Week 3</li><li>Week 4</li><li>Week 5</li><li>Week 6</li><li>Week 7</li></ol>
+      </div>
+      <div class="latest-summary">
+        <p>Latest week</p>
+        <strong>22.4%</strong>
+        <p>Down 1.4 percentage points from the prior week</p>
+      </div>
+    </div>
+    <figcaption id="weekly-values" class="sr-only">Gross margin by week, oldest first. Week 1: 25.1%. Week 2: 26.0%. Week 3: 25.7%. Week 4: 24.9%. Week 5: 24.3%. Week 6: 23.8%. Week 7: 22.4%, down 1.4 percentage points from the prior week.</figcaption>
+  </figure>
+
+  <section class="departments" aria-labelledby="department-title">
+    <header class="table-head">
+      <div class="table-heading">
+        <h2 id="department-title">Departments</h2>
+        <p id="row-count" role="status">4 departments</p>
+      </div>
+      <div class="control">
+        <label for="status">Status</label>
+        <select id="status" data-testid="status"><option value="all">All statuses</option><option value="investigate">Investigate</option></select>
+      </div>
+    </header>
+    <table aria-labelledby="department-title">
+      <thead><tr><th scope="col">Department</th><th scope="col" class="num sales-column">Sales</th><th scope="col" class="num">Gross margin</th><th scope="col">Status (7 days)</th></tr></thead>
+      <tbody data-testid="rows"></tbody>
+    </table>
+  </section>
+</main>
+
+<dialog data-testid="detail" aria-labelledby="detail-title">
+  <span class="status-badge investigate">Investigate</span>
+  <button type="button" class="detail-close" aria-label="Back to overview" data-testid="detail-close">×</button>
+  <h2 id="detail-title">Produce</h2>
+  <p class="detail-figure"><strong id="produce-margin"></strong> gross margin <span id="produce-period"></span></p>
+  <h3>Supplier costs</h3>
+  <p class="detail-description">Compare supplier costs in Produce with the selected period’s gross margin to investigate the decline.</p>
+</dialog>
+
+<script>
+const periods = {
+  '30': { sales: '$1.28M', margin: '24.8%', stockouts: '3.1%' },
+  '7': { sales: '$318K', margin: '22.4%', stockouts: '4.2%' }
+};
+const departments = [
+  {name: 'Produce', status: 'Investigate', '30': ['$405K', '20.2%'], '7': ['$95K', '18.1%']},
+  {name: 'Grocery', status: 'On track', '30': ['$532K', '28.1%'], '7': ['$130K', '27.0%']},
+  {name: 'Frozen', status: 'Watch', '30': ['$204K', '25.2%'], '7': ['$54K', '22.3%']},
+  {name: 'Bakery', status: 'Investigate', '30': ['$139K', '25.1%'], '7': ['$39K', '19.4%']}
+];
+const period = document.getElementById('period');
+const status = document.getElementById('status');
+const rows = document.querySelector('[data-testid="rows"]');
+const detail = document.querySelector('dialog');
+const plot = document.querySelector('.plot');
+const chart = plot.querySelector('canvas');
+const weeklyMargins = [25.1, 26.0, 25.7, 24.9, 24.3, 23.8, 22.4];
+
+function showProduce() {
+  document.getElementById('produce-margin').textContent = departments[0][period.value][1];
+  document.getElementById('produce-period').textContent = '· Last ' + period.value + ' days';
+  detail.showModal();
+}
+detail.querySelector('button').addEventListener('click', () => detail.close());
+rows.addEventListener('click', event => {
+  if (event.target.closest('[data-testid="produce"]')) showProduce();
+});
+
+function renderRows() {
+  const visible = departments.filter(department => status.value === 'all' || department.status === 'Investigate');
+  rows.innerHTML = visible.map(department => {
+    const [sales, margin] = department[period.value];
+    const label = department.name === 'Produce'
+      ? '<button class="row-action" type="button" data-testid="produce">Produce <span aria-hidden="true">↗</span></button>'
+      : department.name;
+    const statusClass = department.status.toLowerCase().replace(' ', '-');
+    return '<tr><th scope="row">' + label + '<span class="mobile-sales">' + sales
+      + ' sales</span></th><td class="num sales-column">' + sales + '</td><td class="num">'
+      + margin + '</td><td><span class="status-badge ' + statusClass + '">' + department.status + '</span></td></tr>';
+  }).join('');
+  document.getElementById('row-count').textContent = visible.length + ' departments';
+}
+
+function paintTrend() {
+  const {clientWidth: width, clientHeight: height} = chart;
+  const ratio = window.devicePixelRatio;
+  chart.width = width * ratio;
+  chart.height = height * ratio;
+  const ctx = chart.getContext('2d');
+  ctx.scale(ratio, ratio);
+  const points = weeklyMargins.map((value, index) => ({
+    x: (index + .5) * width / weeklyMargins.length,
+    y: height * (.19 + (27 - value) * .115)
+  }));
+  const finalPoint = points.at(-1);
+  const previousPoint = points.at(-2);
+
+  ctx.beginPath();
+  ctx.moveTo(points[0].x, points[0].y);
+  points.slice(1).forEach(point => ctx.lineTo(point.x, point.y));
+  ctx.lineTo(finalPoint.x, height);
+  ctx.lineTo(points[0].x, height);
+  ctx.closePath();
+  const fill = ctx.createLinearGradient(0, 0, 0, height);
+  fill.addColorStop(0, period.value === '30' ? '#b7ed8e45' : '#b7ed8e17');
+  fill.addColorStop(1, '#b7ed8e00');
+  ctx.fillStyle = fill;
+  ctx.fill();
+
+  ctx.beginPath();
+  ctx.moveTo(points[0].x, points[0].y);
+  points.slice(1).forEach(point => ctx.lineTo(point.x, point.y));
+  ctx.strokeStyle = period.value === '30' ? '#b0e186' : '#769884';
+  ctx.lineWidth = 2;
+  ctx.stroke();
+
+  if (period.value === '7') {
+    ctx.beginPath();
+    ctx.moveTo(previousPoint.x, previousPoint.y);
+    ctx.lineTo(finalPoint.x, finalPoint.y);
+    ctx.strokeStyle = '#c4ee9d';
+    ctx.lineWidth = 3;
+    ctx.stroke();
+  }
+
+  points.forEach((point, index) => {
+    const isLatest = index === points.length - 1;
+    ctx.beginPath();
+    ctx.arc(point.x, point.y, isLatest ? 4.5 : 2.8, 0, Math.PI * 2);
+    ctx.fillStyle = isLatest || period.value === '30' ? '#d3f6b2' : '#9cb8a8';
+    ctx.fill();
+  });
+
+  document.getElementById('point-labels').innerHTML = points.map((point, index) =>
+    '<span class="value' + (index === points.length - 1 ? ' latest' : '') + '" style="left:' + point.x
+    + 'px;top:' + point.y + 'px">' + weeklyMargins[index].toFixed(1) + '%</span>'
+  ).join('');
+}
+
+function renderPeriod() {
+  const data = periods[period.value];
+  document.querySelector('[data-testid="revenue"]').textContent = data.sales;
+  document.querySelector('[data-testid="margin"]').textContent = data.margin;
+  document.getElementById('stockouts').textContent = data.stockouts;
+  plot.dataset.period = period.value;
+  renderRows();
+  paintTrend();
+}
+status.addEventListener('change', renderRows);
+period.addEventListener('change', renderPeriod);
+new ResizeObserver(paintTrend).observe(chart);
+renderPeriod();
+</script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+{
+  "actor": "a9ef",
+  "model": "inherited Codex",
+  "started": "2026-11-21T18:38:54+00:00",
+  "actor_collected_at": "2026-11-21T18:45:40+00:00",
+  "attempt": 1,
+  "brief": "briefs/d5/brief.md",
+  "brief_sha256": "1f78fe7acfb9fa1c9f840b7855c11dca0b387e2b14105e8a1d1e3b21720e3e58",
+  "checks_sha256": "e94ae9092535c4cd350ac4a88d21a641b93ea05df2ffd006a8c7cad190385f42",
+  "starter_files": {
+    "index.html": "1f62c3baf411b08940e52609baf9f709b2407876276671c8275b2f1f4733a262"
+  },
+  "skill_sha256": "ad92dafd139c78ea3b87e186b5a787186f291e6a0e2c846d555a021432f3e4be",
+  "source": {
+    "design-system-core.css": "2e1dc47164205b5aef1af967821ea7bcacb53e9b8ae556f6b20662c20544f188",
+    "index.html": "fb5611f478b38d2a9a5bfe78e5b285cc574e09e8b69a68679ea9682c76c56c37",
+    "queue.js": "0fbd7e0afc07dea8cfb423ec5929d30eabf4fdb7a7c600816533653e5e8a34fd",
+    "style.css": "e161b88a9e17bd72cf7181d968a07a352eec8dca4a428284394a9ccc0d7ec3ba"
+  },
+  "actor_result": "Both complete. Agent reports visual inspection and responsive interaction checks for filter, review, navigation, anchors, dialogs and Escape. Parent shared the Chromium launch workaround during actor self-verification.",
+  "usage": null,
+  "charge": null
+}

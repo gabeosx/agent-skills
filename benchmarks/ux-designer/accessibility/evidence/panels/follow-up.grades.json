@@ -1,0 +1,423 @@
+{
+  "tasks": {
+    "f1": {
+      "outputs": {
+        "ui-fc5a2c": {
+          "dimensions": {
+            "A": {
+              "score": 16,
+              "rationale": "Clear queue-to-detail hierarchy with large location names, but the tall detail banner and equally prominent handover rows defer the most actionable text.",
+              "strengths": [
+                "Consistent card order presents ID, location and fault before a labeled metadata row.",
+                "At 834 px, both headings and both panels are readable side by side."
+              ],
+              "defects": [
+                "The green detail banner is approximately 176 px tall at both wide widths.",
+                "The assigned crew and next action have nearly identical emphasis."
+              ],
+              "opportunity": "Shorten the detail banner and give the next action a distinct treatment."
+            },
+            "B": {
+              "score": 12,
+              "rationale": "Strong location names and compact monospaced IDs and times fit a dispatch queue. Supporting metadata is relatively small and dense.",
+              "strengths": [
+                "Monospaced IDs and times support quick comparisons.",
+                "Bold location titles and lighter fault descriptions distinguish the two scan levels."
+              ],
+              "defects": [
+                "The Logged and Status labels and the small status chips are visually subdued at 390 px.",
+                "The next action wraps on desktop despite a generous text area, leaving a short second line."
+              ],
+              "opportunity": "Increase the metadata size slightly and let the next action use more of the detail column."
+            },
+            "C": {
+              "score": 17,
+              "rationale": "Pale green surfaces, thin rules and color-coded status chips work together. Vertical space is concentrated in the detail banner and field padding.",
+              "strengths": [
+                "Selected tint, leading stripe and checkmark reinforce one another.",
+                "Neutral card surfaces let the amber follow-up badge stand out."
+              ],
+              "defects": [
+                "The desktop detail banner has a substantial blank area around the location.",
+                "On mobile, the banner and two roomy detail rows make the selected report section tall."
+              ],
+              "opportunity": "Reduce vertical padding in the selected report while retaining the existing field alignment."
+            },
+            "D": {
+              "score": 18,
+              "rationale": "The track symbol, route-line motif and green palette give the operations interface a coherent transit identity.",
+              "strengths": [
+                "The brand mark and detail illustration share a track motif.",
+                "The compact morning-shift label provides persistent context at each screen width."
+              ],
+              "defects": [
+                "At mobile width, the track motif approaches the location heading and draws attention inside a small banner."
+              ],
+              "opportunity": "Contain the motif more tightly at small widths to preserve space around the report title."
+            },
+            "E": {
+              "score": 12,
+              "rationale": "Selection is evident from the checkmark and border. Browser scenarios confirm pointer and keyboard activation, and all three widths avoid horizontal overflow.",
+              "strengths": [
+                "Handover details update on desktop clicks, tablet Enter and Space, and repeated mobile selection.",
+                "Open circles and the selected checkmark distinguish states by shape."
+              ],
+              "defects": [
+                "At 390 px, the initial 844 px viewport reaches the selected location heading but leaves the crew and next action below it."
+              ],
+              "opportunity": "Bring more of the selected report into the initial mobile viewport by tightening the queue and detail header."
+            },
+            "F": {
+              "score": 8,
+              "rationale": "The repeated card, metadata and detail patterns remain consistent across widths. The evidence supports layout integrity and tested behavior.",
+              "strengths": [
+                "Expected report names pass 3 of 3 checks at every width.",
+                "Viewport measurements match the content width across all three layouts."
+              ],
+              "defects": [
+                "The detail banner remains equally tall on desktop and tablet as the title scale changes."
+              ],
+              "opportunity": "Make detail banner spacing adapt with the title scale."
+            }
+          },
+          "total": 83,
+          "visual_problems": [
+            "The oversized detail banner delays the handover text, especially at 390 px.",
+            "Assigned crew competes with the more urgent next action.",
+            "Logged and Status metadata is noticeably small relative to the card title."
+          ],
+          "effective_decisions": [
+            "Track-line visual identity and persistent shift label.",
+            "Checkmark, edge stripe and tint produce a clear selection.",
+            "Readable two-column tablet layout with consistent report cards."
+          ],
+          "blockers": [],
+          "evidence_gaps": [
+            "No post-selection, hover or focus screenshots were requested or supplied. Activation and changed detail text are recorded in the browser scenarios.",
+            "Source-level component reuse and detailed semantics were beyond the supplied packet."
+          ]
+        },
+        "ui-746c9a": {
+          "dimensions": {
+            "A": {
+              "score": 18,
+              "rationale": "The desktop metadata columns make cross-report scanning efficient, and the next-action panel establishes a clear second focal point after the location.",
+              "strengths": [
+                "At 1440 px, logged time and status align vertically in a fixed location across all report cards.",
+                "A labeled inset sets the next task apart from the crew field."
+              ],
+              "defects": [
+                "At 834 and 390 px, metadata moves below the fault, which increases card height and slows cross-report comparisons."
+              ],
+              "opportunity": "Preserve the compact desktop density on tablet while keeping the in-card breaks readable."
+            },
+            "B": {
+              "score": 13,
+              "rationale": "The hierarchy separates locations, faults and structured data clearly. Logs and statuses remain well sized at 390 px.",
+              "strengths": [
+                "Time values are easy to distinguish from their labels and align down the desktop queue.",
+                "The next-action sentence uses comfortable size and leading on tablet and mobile."
+              ],
+              "defects": [
+                "The compact heading tracking reads tight at the largest sizes.",
+                "The isolated uppercase morning-shift line takes space above the mobile title."
+              ],
+              "opportunity": "Loosen the largest heading slightly and reduce the mobile space used by the shift eyebrow."
+            },
+            "C": {
+              "score": 17,
+              "rationale": "Blue selection and action surfaces are coordinated on a pale canvas. The selected detail panel could use a clearer relationship between its two field insets.",
+              "strengths": [
+                "Status colors stay secondary to the selected card outline and checkmark.",
+                "Desktop card proportions fit the shorter split metadata layout without crowding values."
+              ],
+              "defects": [
+                "The crew label and action callout use different left insets and icon alignments.",
+                "The tablet card leaves spare space below the next-action inset."
+              ],
+              "opportunity": "Align crew and action text to a shared inset and trim excess card padding on tablet."
+            },
+            "D": {
+              "score": 17,
+              "rationale": "Navy, transit blue, a recognizable tram icon and a single restrained line motif suit an operations screen.",
+              "strengths": [
+                "Header icon identifies transit and remains legible at mobile width.",
+                "Borders, typography and the checkmark repeat a consistent control language."
+              ],
+              "defects": [
+                "The detail-banner arcs read as a generic ornament beside the more specific tram icon."
+              ],
+              "opportunity": "Tie the detail illustration more directly to the tram identity while keeping it subdued."
+            },
+            "E": {
+              "score": 13,
+              "rationale": "The checkmark gives visible selection and the action remains readable after the responsive reflow. All scripted selection paths passed.",
+              "strengths": [
+                "Tall cards present broad touch targets on mobile.",
+                "Desktop clicks, tablet keyboard actions and mobile reselection produce the expected report details."
+              ],
+              "defects": [
+                "Unchecked cards lack the circular affordance shown by the selected checkmark, making the selection control pattern less explicit before interaction.",
+                "At 390 px the action text is below the initial 844 px viewport."
+              ],
+              "opportunity": "Use a neutral indicator on unselected cards and retain a strong distinction for the chosen one."
+            },
+            "F": {
+              "score": 8,
+              "rationale": "Card patterns, text ordering and the next-action panel stay intact through the responsive layout. The packet confirms no horizontal overflow or runner errors.",
+              "strengths": [
+                "Expected report names pass 3 of 3 checks at each width.",
+                "Mobile revisits return the expected next action with one selected report ID."
+              ],
+              "defects": [
+                "The next-action icon differs from the outlined person icon in scale and stroke treatment."
+              ],
+              "opportunity": "Standardize the detail field icons and their alignment."
+            }
+          },
+          "total": 86,
+          "visual_problems": [
+            "Crew and next-action insets do not share the same visual alignment.",
+            "Unselected cards have a weaker selection affordance.",
+            "Tablet switches to taller card rows and loses the desktop metadata columns."
+          ],
+          "effective_decisions": [
+            "Aligned desktop time and status fields make repeated comparisons easy.",
+            "The next-action inset gives the handover instruction a clear priority.",
+            "The shorter mobile detail header exposes the crew and next action sooner in the scroll."
+          ],
+          "blockers": [],
+          "evidence_gaps": [
+            "No post-selection, hover or focus screenshots were requested or supplied. Activation and changed detail text are recorded in the browser scenarios.",
+            "Source-level component reuse and detailed semantics were beyond the supplied packet."
+          ],
+          "automation_limitations": [
+            "The contrast checker returned an incomplete result on the decorative, aria-hidden next-action arrow at all three widths. It recorded no contrast violation."
+          ]
+        }
+      },
+      "pairs": [
+        {
+          "ids": [
+            "ui-fc5a2c",
+            "ui-746c9a"
+          ],
+          "preference": "ui-746c9a",
+          "confidence": "medium",
+          "rationale": "The navy layout aligns time and status across desktop cards, makes the next action a distinct focus, and shortens the path to the detail on mobile. The green layout has a more cohesive transit motif and clearer unchecked affordances. The available interaction outcomes are comparable."
+        }
+      ]
+    },
+    "f2": {
+      "outputs": {
+        "ui-ad9dd9": {
+          "dimensions": {
+            "A": {
+              "score": 17,
+              "rationale": "The title, amber finding, three options and distinct review area establish a clear order. The wide layout keeps approval and the primary action visible without scrolling.",
+              "strengths": [
+                "Desktop balances the finding against the large artwork title.",
+                "Decision titles, handling and follow-up retain the same order on mobile."
+              ],
+              "defects": [
+                "On desktop the finding starts lower and far to the right of the title, weakening its place in the reading sequence.",
+                "At 834 px, the wrapped middle title creates extra blank vertical space below the two shorter option titles."
+              ],
+              "opportunity": "Place the finding along the normal title-to-decision reading path while retaining the compact desktop height."
+            },
+            "B": {
+              "score": 12,
+              "rationale": "Serif headings establish a museum voice, and the compact sans-serif interface remains readable. The option metadata is cramped at tablet width.",
+              "strengths": [
+                "The navy artwork title, serif section headers and sans-serif field labels make distinct typographic tiers.",
+                "A monospaced loan ID separates the reference code from the lender name."
+              ],
+              "defects": [
+                "At 834 px, Follow-up sits very close to its value in all three cards.",
+                "Heavy treatment of both option titles and metadata values makes the cards denser than needed."
+              ],
+              "opportunity": "Give label and value columns a defined gap and reduce the weight of the values."
+            },
+            "C": {
+              "score": 16,
+              "rationale": "Navy selection, warm paper tones and an amber finding have clear roles. The review area and option rows have a few loose alignments.",
+              "strengths": [
+                "Parallel card dividers and equal heights make the desktop decisions comparable.",
+                "The amber finding contrasts with the blue controls while staying readable."
+              ],
+              "defects": [
+                "The desktop review area has a broad unstructured gap between the current choice and the note.",
+                "On mobile, the current choice runs into the form grouping with only a small spacing break."
+              ],
+              "opportunity": "Use a responsive separator between the current choice and the note, and rebalance their columns."
+            },
+            "D": {
+              "score": 17,
+              "rationale": "The museum medallion, warm canvas and serif titling are appropriate to the registrar's work and remain consistent across sizes.",
+              "strengths": [
+                "The museum symbol gives the otherwise minimal header an identifiable mark.",
+                "Typography carries the institutional tone through the disposition and review headings."
+              ],
+              "defects": [
+                "The all-blue artwork title gives the title and year equal emphasis, flattening the opening catalog information."
+              ],
+              "opportunity": "Set the year off tonally while keeping it within the artwork title."
+            },
+            "E": {
+              "score": 13,
+              "rationale": "A prominent submit button, labeled note and visible checkmark help complete the task. The tested error and success text appear at the expected steps.",
+              "strengths": [
+                "The mobile submit button spans the form width.",
+                "Desktop approval without a note, tablet correction of an empty note, and mobile hold with a recorded note passed."
+              ],
+              "defects": [
+                "The default note rule reads only Optional and is aligned to the far edge of the wide desktop form, away from the field label."
+              ],
+              "opportunity": "Make the note rule explicit about the current choice and keep it visually associated with the label at wide widths."
+            },
+            "F": {
+              "score": 8,
+              "rationale": "The disposition cards align and reflow consistently. Layout measurements and the tested submission paths support basic implementation integrity.",
+              "strengths": [
+                "All three expected decision names pass at every width.",
+                "The browser scenarios show conditional error, confirmation and note text appearing and clearing as tested."
+              ],
+              "defects": [
+                "The shared tablet metadata layout squeezes the Follow-up label and value together across all three options."
+              ],
+              "opportunity": "Use consistent minimum spacing in the shared metadata layout."
+            }
+          },
+          "total": 83,
+          "visual_problems": [
+            "Follow-up labels collide optically with their values at 834 px.",
+            "The intake finding sits apart from the main desktop reading path.",
+            "The review panel lacks a strong division between the choice summary and note field."
+          ],
+          "effective_decisions": [
+            "Navy and amber distinguish interactive choices from the intake finding.",
+            "Equal-width desktop cards and a simple mobile stack support scanning.",
+            "Full-width mobile submit and a checked selection make actions easy to locate."
+          ],
+          "blockers": [],
+          "evidence_gaps": [
+            "No post-interaction captures were requested or supplied, leaving focus, hover, validation styling, required-rule display and confirmation placement visually unverified.",
+            "The scenarios exercise a blank note, with no whitespace-only input recorded. Source-level reuse and detailed semantics were beyond the supplied packet."
+          ],
+          "automation_limitations": [
+            "Contrast checking was incomplete for the aria-hidden arrow in Record decision at all three widths. No violation was reported."
+          ]
+        },
+        "ui-fac496": {
+          "dimensions": {
+            "A": {
+              "score": 18,
+              "rationale": "The full-width intake finding creates a clear step between identifying the artwork and comparing dispositions. The choice summary is well separated from note entry.",
+              "strengths": [
+                "Reading order from title through finding, decisions and review remains stable at all widths.",
+                "A clear divider groups the decision summary separately from note entry on desktop and mobile."
+              ],
+              "defects": [
+                "At 1440 px, the loan ID and lender sit far right of the artwork title, so the opening metadata requires a long eye movement."
+              ],
+              "opportunity": "Bring the loan metadata closer to the title on desktop to tighten the identification block."
+            },
+            "B": {
+              "score": 14,
+              "rationale": "The serif title and quieter year establish a distinct opening. Bold labels and normal-weight values are legible in the decision cards at all three widths.",
+              "strengths": [
+                "Aligned label and value columns remain readable at 834 and 390 px.",
+                "The quieter color of the year provides a clear distinction without obscuring the complete title."
+              ],
+              "defects": [
+                "Tracked uppercase Current choice is small on the mobile review panel.",
+                "At tablet width the longest decision title needs two lines, creating a somewhat large gap in each shorter card."
+              ],
+              "opportunity": "Use a slightly larger sentence-case label for the choice summary and keep the option title rows comfortably compact."
+            },
+            "C": {
+              "score": 18,
+              "rationale": "Forest green, warm paper and amber support a restrained institutional palette. Card padding, form rules and outlines hold up well across sizes.",
+              "strengths": [
+                "Green selection, a warm finding and a dark submit control have distinct jobs.",
+                "Card padding and aligned rules keep the three tablet choices readable even when one title wraps."
+              ],
+              "defects": [
+                "The desktop title and metadata are separated by a large blank span.",
+                "The full-width amber bar carries a short sentence on desktop, leaving substantial unused space on its right."
+              ],
+              "opportunity": "Tighten the wide content proportions while maintaining the uninterrupted reading order."
+            },
+            "D": {
+              "score": 18,
+              "rationale": "The forest-green masthead, quiet monogram and serif headings give the screen a coherent collections identity and keep the task in focus.",
+              "strengths": [
+                "Serif display typography is reserved for institutional and section headings.",
+                "Green accents recur in the header, selected option, current choice and primary action."
+              ],
+              "defects": [
+                "On mobile, the tracked all-caps Collections & Loans label is small and occupies much of the right side of the header."
+              ],
+              "opportunity": "Use a shorter or less tracked mobile department label."
+            },
+            "E": {
+              "score": 13,
+              "rationale": "Large option buttons and the visible checkmark support selection. The note rule explicitly refers to the chosen decision, and the tested recording flows succeed.",
+              "strengths": [
+                "The submit button is prominent in the form and spans its full width at 390 px.",
+                "At tablet width the browser exercise confirms Space selection, empty-note error, and successful retry with the recorded note."
+              ],
+              "defects": [
+                "The initial mobile viewport ends around the current choice, so the note and record action require further scrolling.",
+                "At wide widths the note rule sits at the far edge of the field, distant from the Registrar note label."
+              ],
+              "opportunity": "Reduce vertical overhead above the mobile form and bring the wide-screen note rule nearer to its label."
+            },
+            "F": {
+              "score": 8,
+              "rationale": "Decision surfaces and metadata columns remain coherent across layouts, and the review split adapts cleanly from vertical to horizontal separation.",
+              "strengths": [
+                "All three expected decision names pass at every width.",
+                "Measurements show no horizontal overflow, and all three recording scenarios return their expected confirmation."
+              ],
+              "defects": [
+                "At 834 px the hold handling value runs close to the right padding, leaving limited room if this field grows."
+              ],
+              "opportunity": "Leave more space for longer option values to wrap with a stable label alignment."
+            }
+          },
+          "total": 89,
+          "visual_problems": [
+            "Desktop title and lender metadata are farther apart than the information grouping warrants.",
+            "The tablet middle option wraps and creates excess space above details in the shorter cards.",
+            "The mobile review action is below the first viewport."
+          ],
+          "effective_decisions": [
+            "The full-width intake finding anchors the path from artwork to disposition.",
+            "Regular-weight values, aligned labels and comfortable gaps make comparison easier.",
+            "Review separators and an explicit note rule clarify what the registrar will record."
+          ],
+          "blockers": [],
+          "evidence_gaps": [
+            "No post-interaction captures were requested or supplied, leaving focus, hover, validation styling, required-rule display and confirmation placement visually unverified.",
+            "The scenarios exercise a blank note, with no whitespace-only input recorded. Source-level reuse and detailed semantics were beyond the supplied packet."
+          ],
+          "automation_limitations": [
+            "Contrast checking was incomplete for the aria-hidden arrow in Record decision at all three widths. No violation was reported."
+          ]
+        }
+      },
+      "pairs": [
+        {
+          "ids": [
+            "ui-ad9dd9",
+            "ui-fac496"
+          ],
+          "preference": "ui-fac496",
+          "confidence": "medium",
+          "rationale": "The green design keeps the intake finding in the main reading path, provides cleaner label-to-value spacing at 834 px, and clearly separates the current choice from note entry at all widths. The blue design's compact desktop overview is useful. The browser scenarios show equivalent tested outcomes and the packet lacks state imagery for a visual comparison of error and confirmation treatments."
+        }
+      ]
+    }
+  }
+}

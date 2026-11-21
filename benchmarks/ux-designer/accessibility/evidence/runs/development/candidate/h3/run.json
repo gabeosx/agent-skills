@@ -1,0 +1,20 @@
+{
+  "actor": "d9a4",
+  "model": "inherited Codex",
+  "started": "2026-11-21T20:33:57+00:00",
+  "actor_collected_at": "2026-11-21T20:39:53+00:00",
+  "attempt": 1,
+  "brief": "briefs/h3/brief.md",
+  "brief_sha256": "25eba75f88dafc8c19779dc55d47089aa49877912663e03b59dae5b381498aa5",
+  "checks_sha256": "3fa4e2841d5d1bb39d9a0256eca47436f3db8868e7b80f9d9d413b8ec1a84dea",
+  "starter_files": {},
+  "skill_sha256": "accaa3158a8a9c9ba6a6f457406c8f96024415d1d379f3dd0c699c51b570849a",
+  "source": {
+    "index.html": "121fcc9fc2196706b60d69a5ff06e105a8faf30ed7902ce1f35f94ede0f85691",
+    "schedule.js": "9e6f119895edab4cb67b7aa2dd374dc7b745451a9b018ca18b8d7585abf0c17e",
+    "styles.css": "45a974757e32c1926da84565b43b5295bf5a69e8e05adb64814dc9183017ed4e"
+  },
+  "actor_result": "Complete. Actor reports the required booking flows and keyboard/details checks at the three widths, including endpoint-adjacent moves and reset with local requests only.",
+  "usage": null,
+  "charge": null
+}

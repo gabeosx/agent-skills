@@ -1,0 +1,715 @@
+{
+  "schemaVersion": 1,
+  "status": "passed",
+  "browser": {
+    "version": "159.0.8154.6",
+    "source": "playwright",
+    "executablePath": "/Users/gabe/Library/Caches/ms-playwright/chromium-1255/chrome-mac-arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing",
+    "headless": true,
+    "args": [
+      "--disable-quic",
+      "--force-webrtc-ip-handling-policy=disable_non_proxied_udp",
+      "--host-resolver-rules=MAP * ~NOTFOUND, EXCLUDE 127.0.0.1",
+      "--no-proxy-server"
+    ]
+  },
+  "config": {
+    "node": "v26.13.0",
+    "platform": "darwin",
+    "architecture": "arm64",
+    "playwright": "1.65.1",
+    "axe": "4.14.1",
+    "axeTags": [
+      "wcag2a",
+      "wcag2aa",
+      "wcag21a",
+      "wcag21aa",
+      "wcag22a",
+      "wcag22aa"
+    ],
+    "context": {
+      "colorScheme": "light",
+      "deviceScaleFactor": 1,
+      "locale": "en-US",
+      "reducedMotion": "reduce",
+      "serviceWorkers": "block",
+      "timezoneId": "UTC"
+    },
+    "viewports": {
+      "desktop": {
+        "width": 1440,
+        "height": 1000
+      },
+      "tablet": {
+        "width": 834,
+        "height": 1112
+      },
+      "mobile": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    "timeoutsMs": {
+      "navigation": 10000,
+      "step": 2500,
+      "capture": 10000,
+      "accessibility": 10000
+    },
+    "network": "localhost-static-origin-only"
+  },
+  "source": {
+    "checksSha256": "bfc7a306d7933a98223d22cea766e4840810fe74d480cf4edd3f46e7ed402669",
+    "site": {
+      "sha256": "c608a18cb3f9db9bc2e70731b4b54c934f5d98ed2f992b7bc099aa26cdd2aad5",
+      "files": [
+        {
+          "path": "dashboard.js",
+          "sha256": "f5eb880d39f78500571bcfe225726071e0f2e80491cae25a1e85f4e4be085992"
+        },
+        {
+          "path": "index.html",
+          "sha256": "a589949cb27c9734ff3bd3dcd1a5af90b785b55f8a33b74ee264ec5b17268edb"
+        },
+        {
+          "path": "styles.css",
+          "sha256": "9526c7e154f3de2c5eabddd205fa8c4c2b868459af528e0a3d7130b32950b1d9"
+        }
+      ]
+    },
+    "harness": {
+      "sha256": "6c881823017ece00658aa02b1817a074668453398b4905f0208e23ef5bcda8d1",
+      "files": [
+        {
+          "path": "capture.mjs",
+          "sha256": "92bc6c8b9c97e64bd0dbcc746c6505f0ed30e9ecaba15ba32a35d1348afaf77e"
+        },
+        {
+          "path": "package-lock.json",
+          "sha256": "9e166f03feded2ba877c95cbbb4bce6b15453e267c7bf4a69a384ec2a3e1fbc1"
+        },
+        {
+          "path": "package.json",
+          "sha256": "e53398841d514c8588ddfad5569cc1f7aed5d67a6f7b71f4ab05a70cfca4817b"
+        }
+      ]
+    }
+  },
+  "timing": {
+    "startedAt": "2026-11-21T18:55:59.994Z",
+    "completedAt": "2026-11-21T18:56:02.144Z",
+    "elapsedMs": 2151
+  },
+  "viewports": [
+    {
+      "name": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "status": "passed",
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "screenshot": {
+        "path": "desktop.png",
+        "bytes": 108599,
+        "sha256": "acef60527994508798261fa842c744a30c62c7748d0f2916c3235fa2ae27d072"
+      },
+      "layout": {
+        "clientWidth": 1440,
+        "scrollWidth": 1440,
+        "bodyScrollWidth": 1440,
+        "horizontalOverflow": false
+      },
+      "accessibility": {
+        "status": "no-violations",
+        "counts": {
+          "passes": 30,
+          "violations": 0,
+          "incomplete": 1,
+          "inapplicable": 34
+        },
+        "violations": [],
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "tags": [
+              "cat.color",
+              "wcag2aa",
+              "wcag143",
+              "TTv5",
+              "TT13.c",
+              "EN-301-549",
+              "EN-9.1.4.3",
+              "ACT",
+              "RGAAv4",
+              "RGAA-3.2.1"
+            ],
+            "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+            "help": "Elements must meet minimum color contrast ratio thresholds",
+            "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+            "nodes": [
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "10.3pt (13.76px)",
+                      "fontWeight": "normal",
+                      "messageKey": "bgGradient",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<select data-testid=\"period\">\n          <option value=\"30\" selected=\"\">Last 30 days</option>\n          <option value=\"7\">Last 7 days</option>\n        </select>",
+                        "target": [
+                          "select[data-testid=\"period\"]"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined due to a background gradient"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<select data-testid=\"period\">\n          <option value=\"30\" selected=\"\">Last 30 days</option>\n          <option value=\"7\">Last 7 days</option>\n        </select>",
+                "target": [
+                  "select[data-testid=\"period\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "10.3pt (13.76px)",
+                      "fontWeight": "normal",
+                      "messageKey": "bgGradient",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<select data-testid=\"status\">\n            <option value=\"all\" selected=\"\">All statuses</option>\n            <option value=\"investigate\">Investigate</option>\n          </select>",
+                        "target": [
+                          "select[data-testid=\"status\"]"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined due to a background gradient"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<select data-testid=\"status\">\n            <option value=\"all\" selected=\"\">All statuses</option>\n            <option value=\"investigate\">Investigate</option>\n          </select>",
+                "target": [
+                  "select[data-testid=\"status\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "tablet",
+      "viewport": {
+        "width": 834,
+        "height": 1112
+      },
+      "status": "passed",
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "screenshot": {
+        "path": "tablet.png",
+        "bytes": 98738,
+        "sha256": "e127cd18b9c0d34fcfa292320a3fdd890f5bc0092f64495a9405fbf7b9782594"
+      },
+      "layout": {
+        "clientWidth": 834,
+        "scrollWidth": 834,
+        "bodyScrollWidth": 834,
+        "horizontalOverflow": false
+      },
+      "accessibility": {
+        "status": "no-violations",
+        "counts": {
+          "passes": 30,
+          "violations": 0,
+          "incomplete": 1,
+          "inapplicable": 34
+        },
+        "violations": [],
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "tags": [
+              "cat.color",
+              "wcag2aa",
+              "wcag143",
+              "TTv5",
+              "TT13.c",
+              "EN-301-549",
+              "EN-9.1.4.3",
+              "ACT",
+              "RGAAv4",
+              "RGAA-3.2.1"
+            ],
+            "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+            "help": "Elements must meet minimum color contrast ratio thresholds",
+            "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+            "nodes": [
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "10.3pt (13.76px)",
+                      "fontWeight": "normal",
+                      "messageKey": "bgGradient",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<select data-testid=\"period\">\n          <option value=\"30\" selected=\"\">Last 30 days</option>\n          <option value=\"7\">Last 7 days</option>\n        </select>",
+                        "target": [
+                          "select[data-testid=\"period\"]"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined due to a background gradient"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<select data-testid=\"period\">\n          <option value=\"30\" selected=\"\">Last 30 days</option>\n          <option value=\"7\">Last 7 days</option>\n        </select>",
+                "target": [
+                  "select[data-testid=\"period\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "10.3pt (13.76px)",
+                      "fontWeight": "normal",
+                      "messageKey": "bgGradient",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<select data-testid=\"status\">\n            <option value=\"all\" selected=\"\">All statuses</option>\n            <option value=\"investigate\">Investigate</option>\n          </select>",
+                        "target": [
+                          "select[data-testid=\"status\"]"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined due to a background gradient"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<select data-testid=\"status\">\n            <option value=\"all\" selected=\"\">All statuses</option>\n            <option value=\"investigate\">Investigate</option>\n          </select>",
+                "target": [
+                  "select[data-testid=\"status\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "status": "passed",
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "screenshot": {
+        "path": "mobile.png",
+        "bytes": 76478,
+        "sha256": "a558d8813c609ae0845d5e78cea2a9c96f5466009849a12992c252792c38bf94"
+      },
+      "layout": {
+        "clientWidth": 390,
+        "scrollWidth": 390,
+        "bodyScrollWidth": 390,
+        "horizontalOverflow": false
+      },
+      "accessibility": {
+        "status": "no-violations",
+        "counts": {
+          "passes": 30,
+          "violations": 0,
+          "incomplete": 1,
+          "inapplicable": 34
+        },
+        "violations": [],
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "tags": [
+              "cat.color",
+              "wcag2aa",
+              "wcag143",
+              "TTv5",
+              "TT13.c",
+              "EN-301-549",
+              "EN-9.1.4.3",
+              "ACT",
+              "RGAAv4",
+              "RGAA-3.2.1"
+            ],
+            "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+            "help": "Elements must meet minimum color contrast ratio thresholds",
+            "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+            "nodes": [
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "10.3pt (13.76px)",
+                      "fontWeight": "normal",
+                      "messageKey": "bgGradient",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<select data-testid=\"period\">\n          <option value=\"30\" selected=\"\">Last 30 days</option>\n          <option value=\"7\">Last 7 days</option>\n        </select>",
+                        "target": [
+                          "select[data-testid=\"period\"]"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined due to a background gradient"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<select data-testid=\"period\">\n          <option value=\"30\" selected=\"\">Last 30 days</option>\n          <option value=\"7\">Last 7 days</option>\n        </select>",
+                "target": [
+                  "select[data-testid=\"period\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "9.1pt (12.16px)",
+                      "fontWeight": "normal",
+                      "messageKey": "bgGradient",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<select data-testid=\"status\">\n            <option value=\"all\" selected=\"\">All statuses</option>\n            <option value=\"investigate\">Investigate</option>\n          </select>",
+                        "target": [
+                          "select[data-testid=\"status\"]"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined due to a background gradient"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<select data-testid=\"status\">\n            <option value=\"all\" selected=\"\">All statuses</option>\n            <option value=\"investigate\">Investigate</option>\n          </select>",
+                "target": [
+                  "select[data-testid=\"status\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "scenarios": [
+    {
+      "name": "period update",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "captureRequested": true,
+      "status": "passed",
+      "steps": [
+        {
+          "index": 1,
+          "expected": {
+            "action": "text",
+            "id": "revenue",
+            "value": "$1.28M"
+          },
+          "status": "passed",
+          "actual": "$1.28M",
+          "elapsedMs": 9
+        },
+        {
+          "index": 2,
+          "expected": {
+            "action": "select",
+            "id": "period",
+            "value": "7"
+          },
+          "status": "passed",
+          "actual": [
+            "7"
+          ],
+          "elapsedMs": 9
+        },
+        {
+          "index": 3,
+          "expected": {
+            "action": "text",
+            "id": "revenue",
+            "value": "$318K"
+          },
+          "status": "passed",
+          "actual": "$318K",
+          "elapsedMs": 1
+        },
+        {
+          "index": 4,
+          "expected": {
+            "action": "text",
+            "id": "margin",
+            "value": "22.4%"
+          },
+          "status": "passed",
+          "actual": "22.4%",
+          "elapsedMs": 1
+        },
+        {
+          "index": 5,
+          "expected": {
+            "action": "text",
+            "id": "rows",
+            "value": "$95K"
+          },
+          "status": "passed",
+          "actual": "Produce ↗ $95K 18.1% Investigate Grocery $130K 27.0% On track Frozen $54K 22.3% Watch Bakery $39K 19.4% Investigate",
+          "elapsedMs": 1
+        }
+      ],
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "screenshot": {
+        "path": "scenario-01-period-update.png",
+        "bytes": 107285,
+        "sha256": "f32f26262282d963377f4a84320703ab22fa22de014fbf7b63b48212eddffdee"
+      },
+      "unrunSteps": 0
+    },
+    {
+      "name": "filter and drilldown",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "captureRequested": true,
+      "status": "passed",
+      "steps": [
+        {
+          "index": 1,
+          "expected": {
+            "action": "select",
+            "id": "period",
+            "value": "7"
+          },
+          "status": "passed",
+          "actual": [
+            "7"
+          ],
+          "elapsedMs": 12
+        },
+        {
+          "index": 2,
+          "expected": {
+            "action": "select",
+            "id": "status",
+            "value": "investigate"
+          },
+          "status": "passed",
+          "actual": [
+            "investigate"
+          ],
+          "elapsedMs": 2
+        },
+        {
+          "index": 3,
+          "expected": {
+            "action": "text",
+            "id": "rows",
+            "value": "Bakery"
+          },
+          "status": "passed",
+          "actual": "Produce ↗ 18.1% Investigate Bakery 19.4% Investigate",
+          "elapsedMs": 7
+        },
+        {
+          "index": 4,
+          "expected": {
+            "action": "click",
+            "id": "produce"
+          },
+          "status": "passed",
+          "elapsedMs": 37
+        },
+        {
+          "index": 5,
+          "expected": {
+            "action": "text",
+            "id": "detail",
+            "value": "Supplier costs"
+          },
+          "status": "passed",
+          "actual": "← Back to overview Produce Investigate 7-day gross margin 18.1% Supplier costs Compare recent supplier invoices with unit costs in your pricing file to see whether purchase costs are squeezing gross margin.",
+          "elapsedMs": 1
+        },
+        {
+          "index": 6,
+          "expected": {
+            "action": "text",
+            "id": "detail",
+            "value": "18.1%"
+          },
+          "status": "passed",
+          "actual": "← Back to overview Produce Investigate 7-day gross margin 18.1% Supplier costs Compare recent supplier invoices with unit costs in your pricing file to see whether purchase costs are squeezing gross margin.",
+          "elapsedMs": 1
+        }
+      ],
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "screenshot": {
+        "path": "scenario-02-filter-and-drilldown.png",
+        "bytes": 27032,
+        "sha256": "acecf46018211833e2da61e8ef6c11b797a8803efea88b121a191ad466741ecf"
+      },
+      "unrunSteps": 0
+    },
+    {
+      "name": "filter reset and return",
+      "viewport": {
+        "width": 834,
+        "height": 1112
+      },
+      "captureRequested": false,
+      "status": "passed",
+      "steps": [
+        {
+          "index": 1,
+          "expected": {
+            "action": "select",
+            "id": "status",
+            "value": "investigate"
+          },
+          "status": "passed",
+          "actual": [
+            "investigate"
+          ],
+          "elapsedMs": 12
+        },
+        {
+          "index": 2,
+          "expected": {
+            "action": "select",
+            "id": "status",
+            "value": "all"
+          },
+          "status": "passed",
+          "actual": [
+            "all"
+          ],
+          "elapsedMs": 2
+        },
+        {
+          "index": 3,
+          "expected": {
+            "action": "text",
+            "id": "rows",
+            "value": "Grocery"
+          },
+          "status": "passed",
+          "actual": "Produce ↗ $405K 20.2% Investigate Grocery $532K 28.1% On track Frozen $204K 25.2% Watch Bakery $139K 25.1% Investigate",
+          "elapsedMs": 7
+        },
+        {
+          "index": 4,
+          "expected": {
+            "action": "click",
+            "id": "produce"
+          },
+          "status": "passed",
+          "elapsedMs": 39
+        },
+        {
+          "index": 5,
+          "expected": {
+            "action": "click",
+            "id": "detail-close"
+          },
+          "status": "passed",
+          "elapsedMs": 32
+        },
+        {
+          "index": 6,
+          "expected": {
+            "action": "hidden",
+            "id": "detail"
+          },
+          "status": "passed",
+          "elapsedMs": 1
+        }
+      ],
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "unrunSteps": 0
+    }
+  ],
+  "criticalFailures": [],
+  "runnerErrors": []
+}

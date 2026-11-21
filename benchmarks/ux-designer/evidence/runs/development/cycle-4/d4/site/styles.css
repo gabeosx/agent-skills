@@ -1,0 +1,128 @@
+:root {
+  color-scheme: light;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #24342d;
+  background: #f7f5ee;
+  --forest: #23473b;
+  --forest-hover: #18382d;
+  --ink: #24342d;
+  --quiet: #515c53;
+  --faint-stroke: #dddcd0;
+  --control-stroke: #8a958b;
+  --error: #902e22;
+}
+* { box-sizing: border-box; }
+body { margin: 0; }
+[hidden] { display: none !important; }
+input, textarea, select, button { font: inherit; }
+.masthead { background: #203d33; color: #fffdf6; }
+.masthead-inner {
+  max-width: 1128px;
+  padding: 0 36px;
+  min-height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 auto;
+}
+.brand { display: flex; align-items: center; gap: 10px; font-size: 22px; font-weight: 670; letter-spacing: -.043em; }
+.brand-mark {
+  width: 24px;
+  height: 24px;
+  color: #e4c890;
+  border: 1px solid currentColor;
+  border-radius: 4px;
+  background: linear-gradient(145deg, currentColor 48%, transparent 49%) 5px 5px / 11px 10px no-repeat,
+    linear-gradient(145deg, transparent 51%, currentColor 52%) 9px 9px / 9px 9px no-repeat;
+}
+.workspace-label { color: #e1e9dd; font-size: 14px; }
+.page { max-width: 1128px; margin: 0 auto; padding: 56px 36px 48px; }
+.intro { padding-bottom: 34px; border-bottom: 1px solid #d9dbcd; }
+.intro h1 { margin: 0; font: 500 clamp(2.6rem, 5.3vw, 4rem)/1.02 Georgia, "Times New Roman", serif; letter-spacing: -.051em; color: #203d33; }
+.intro > p { margin: 13px 0 0; font-size: 17px; line-height: 1.45; color: var(--quiet); }
+.request-layout {
+  display: grid;
+  grid-template-columns: 224px minmax(0, 690px);
+  align-items: start;
+  gap: 42px;
+  margin-top: 32px;
+}
+.progress { padding: 13px 0 0; }
+.progress h2 { margin: 0 0 23px; font-size: 13px; color: #525e55; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; }
+.progress ol { list-style: none; padding: 0; margin: 0; }
+.progress li { display: flex; align-items: center; gap: 13px; min-height: 34px; margin-bottom: 25px; font-size: 15px; color: var(--quiet); position: relative; }
+.progress li:not(:last-child)::after { content: ""; position: absolute; width: 1px; height: 25px; background: #aeb5ab; left: 16px; top: 34px; }
+.step-marker { width: 34px; height: 34px; display: grid; place-items: center; flex: none; border: 1px solid #959f91; border-radius: 50%; font-size: 13px; font-variant-numeric: tabular-nums; font-weight: 650; background: #fbfaf5; color: #39483e; }
+.progress li[aria-current="step"] { color: #1d3f33; font-weight: 720; }
+.progress li[aria-current="step"] .step-marker { background: var(--forest); border-color: var(--forest); color: white; }
+.progress li.complete .step-marker { color: #2b523f; background: #dfeae1; border-color: #748979; font-size: 16px; }
+.request-card { background: #fffdf8; border: 1px solid #d8dbd0; border-radius: 13px; overflow: hidden; box-shadow: 0 8px 28px #343b2a09; }
+.card-body { padding: 34px 39px 36px; }
+.card-body h2 { margin: 0; color: var(--ink); font-size: 29px; line-height: 1.16; letter-spacing: -.031em; }
+.intro-note { margin: 9px 0 0; color: var(--quiet); font-size: 15px; line-height: 1.5; }
+.fields { display: grid; gap: 22px; margin-top: 27px; }
+.field label { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 8px; font-size: 15px; font-weight: 670; }
+.field-qualifier { font-size: 13px; font-weight: 500; color: var(--quiet); }
+.field input,
+.field select,
+.field textarea { color: var(--ink); background: #fff; border: 1px solid var(--control-stroke); border-radius: 6px; min-height: 48px; width: 100%; padding: 10px 13px; font-size: 16px; line-height: 1.4; }
+.field textarea { display: block; resize: vertical; }
+.field textarea::placeholder { color: #5b665f; opacity: 1; }
+.field select { padding-inline-end: 40px; appearance: none; background: linear-gradient(45deg, transparent 47%, #526259 48% 62%, transparent 63%) calc(100% - 19px) center / 7px 7px no-repeat, linear-gradient(-45deg, transparent 47%, #526259 48% 62%, transparent 63%) calc(100% - 13px) center / 7px 7px no-repeat, #fff; }
+.field [aria-invalid="true"] { border: 2px solid var(--error); padding: 9px 12px; }
+.field select[aria-invalid="true"] { padding-inline-end: 39px; }
+.field-error { color: var(--error); margin: 7px 0 0; font-size: 14px; line-height: 1.4; font-weight: 550; }
+.field-error::before { content: "!"; display: inline-flex; justify-content: center; align-items: center; margin-inline-end: 6px; width: 13px; height: 13px; border: 1px solid; border-radius: 50%; font-size: 10px; font-weight: 750; }
+.card-footer { display: flex; gap: 12px; align-items: center; border-top: 1px solid #e2e4d9; background: #f4f5ed; padding: 17px 39px; }
+button { cursor: pointer; text-align: center; min-height: 45px; padding: 9px 15px; border-radius: 6px; font-size: 15px; font-weight: 650; }
+button span { line-height: 1; font-size: 17px; }
+.primary { display: inline-flex; justify-content: center; align-items: center; gap: 12px; min-width: 128px; margin-left: auto; background: var(--forest); border: 1px solid var(--forest); color: #fff; }
+.primary:hover { background: var(--forest-hover); }
+.secondary { display: inline-flex; align-items: center; gap: 8px; color: #23473b; background: #fffdf8; border: 1px solid #9ca99b; }
+.secondary:hover { background: #e8eee4; }
+:focus-visible { outline: 2px solid #39725d; outline-offset: 3px; }
+.field [aria-invalid="true"]:focus-visible { outline-color: var(--error); }
+.review-details { margin: 24px 0 0; border-top: 1px solid var(--faint-stroke); }
+.review-details > div { display: grid; grid-template-columns: minmax(115px, 32%) minmax(0, 1fr); gap: 16px; padding: 13px 0; border-bottom: 1px solid var(--faint-stroke); font-size: 15px; line-height: 1.4; }
+.review-details dt { font-weight: 650; }
+.review-details dd { margin: 0; overflow-wrap: anywhere; white-space: pre-wrap; }
+.success-body { padding-bottom: 40px; }
+.success-mark { height: 48px; width: 48px; display: grid; place-items: center; background: #e0ece3; border: 1px solid #a4b8a8; color: var(--forest); border-radius: 50%; margin-bottom: 18px; }
+.success-mark::before { content: ""; width: 9px; height: 17px; transform: translateY(-2px) rotate(45deg); border: solid currentColor; border-width: 0 3px 3px 0; }
+.request-reference { display: inline-flex; gap: 12px; flex-wrap: wrap; align-items: center; background: #f0eee1; color: #3f4b3a; border: 1px solid #dedbcc; border-radius: 6px; padding: 10px 13px; margin-top: 23px; font-size: 14px; }
+.request-reference strong { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 15px; color: #263d30; }
+.visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+@media (max-width: 980px) {
+  .request-layout { grid-template-columns: 174px minmax(0, 1fr); gap: 26px; }
+  .card-body { padding-inline: 30px; }
+  .card-footer { padding-inline: 30px; }
+}
+@media (max-width: 680px) {
+  .masthead-inner { padding-inline: 20px; min-height: 56px; }
+  .brand { font-size: 20px; }
+  .workspace-label { font-size: 13px; }
+  .page { padding: 29px 20px 34px; }
+  .intro { padding-bottom: 20px; }
+  .intro h1 { font-size: clamp(2.2rem, 9.8vw, 3rem); letter-spacing: -.048em; }
+  .intro > p { margin-top: 9px; font-size: 15px; }
+  .request-layout { display: block; margin-top: 15px; }
+  .progress { padding: 0; margin-bottom: 17px; }
+  .progress h2 { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  .progress ol { display: grid; grid-template-columns: 1.1fr 1fr 1fr; gap: 8px; }
+  .progress li { margin: 0; gap: 6px; font-size: 13px; line-height: 1.2; }
+  .progress li:not(:last-child)::after { display: none; }
+  .step-marker { width: 25px; height: 25px; font-size: 12px; }
+  .progress li.complete .step-marker { font-size: 14px; }
+  .card-body { padding: 24px 20px; }
+  .card-body h2 { font-size: 25px; }
+  .intro-note { margin-top: 6px; }
+  .fields { gap: 17px; margin-top: 22px; }
+  .card-footer { padding: 14px 20px; }
+  .field label { margin-bottom: 6px; }
+  .review-details > div { grid-template-columns: 1fr; gap: 4px; padding-block: 10px; }
+}
+@media (max-width: 350px) {
+  .page, .masthead-inner { padding-inline: 15px; }
+  .progress li { gap: 4px; }
+  .card-body, .card-footer { padding-inline: 16px; }
+}

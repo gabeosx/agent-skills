@@ -1,0 +1,20 @@
+{
+  "actor": "ab44",
+  "model": "inherited Codex",
+  "started": "2026-11-21T18:59:41+00:00",
+  "actor_collected_at": "2026-11-21T19:06:31+00:00",
+  "attempt": 1,
+  "brief": "briefs/d4/brief.md",
+  "brief_sha256": "a3080a3f9747777f7139b68553609ec37c19a609c345de68f511567aa5655717",
+  "checks_sha256": "6e147ab3ae41cea81de050e2d5bce5e17d33e3896566979453757be0297a7df0",
+  "starter_files": {},
+  "skill_sha256": "92359a8886f08df494ee290af4cd23c63bc457d5df70e00ad577955f840de1be",
+  "source": {
+    "index.html": "2a582378821e6328c27f449b966ff0c3e71ebcb842d8ae91464194adeff23ed0",
+    "request.js": "37d6f5f95f57d451fc3d9961c42803031bf8605a46ed4973b569b568f46978bf",
+    "styles.css": "4a2f961331340b9f485589e9498787404342d9063a0b4555ce1346a4e620f50e"
+  },
+  "actor_result": "Both complete and safe to freeze. Agent reports browser behavior checks at all three widths. Parent clarified site paths and actor relocated the same generated files before capture.",
+  "usage": null,
+  "charge": null
+}

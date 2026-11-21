@@ -1,83 +1,32 @@
-# Design Standards & Visual System
+# Visual system
 
-## 1. Spacing System
-**Rule:** Use a fixed scale to avoid "pixel-pushing."
+## Spacing and sizing
 
-**The Scale:**
-- `2, 4, 8, 12, 16, 24, 32, 48, 64, 96, 128, 192, 256` (px)
+Start with enough space to see the groups, then remove space where side-by-side comparison, speed or available height demands it. Keep a label and its value closer than adjacent field groups. Shared edges and steady row rhythm often group related content more clearly than another surrounding card. Use a divider when two adjacent items genuinely need a boundary.
 
-**Tactical Rules:**
-- **Grouping:** Use spacing to group related elements. The space *between* groups should be significantly larger than the space *within* a group.
-- **Remove borders:** Before adding a border to separate sections, try adding more whitespace first.
-- **Padding:** Use generous padding for "hero" sections and modals to make them feel premium.
+Choose a local spacing rhythm such as 4, 8, 12, 16, 24, 32, 48 and 64. Extend it for repeated needs and allow an optical nudge, responsive dimension or one-off asset crop where purposeful. Choose the width of a reading column, form, chart or table independently of the outer layout. Let the content determine when the layout changes. Use min-height for controls whose labels may wrap or grow with text scaling.
 
-## 2. Typography System
-**Rule:** Use a limited set of sizes to establish hierarchy.
+## Typography
 
-**The Scale:**
-- `12, 14, 16, 18, 20, 24, 30, 36, 48, 60, 72` (px)
+Try the actual headline, supporting line, long item name, field label and representative number together. Choose a face with clear glyphs in the sizes and weights the UI will use. Pair a display face with a quieter text face when the contrast supports the personality. One well-chosen family can do both jobs. Keep a reliable fallback and control layout shift if fonts load late.
 
-**Refactoring UI Moves:**
-- **Hierarchy through contrast:** Don't just make text bigger to make it more important. Try making the *other* text smaller, lighter in weight, or lighter in color (gray).
-- **Avoid "Gray Opacity":** On colored backgrounds, don't use white with opacity for secondary text (it looks washed out). Pick a hand-selected lighter shade of the background color.
-- **Limit line length:** For readability, keep body text containers between 45–75 characters wide.
+- Start from body and control text, then define display, heading, label and metadata roles. Keep a noticeable step between the page title, section title and labels using size, weight or contrast. Use a regular body face and moderate weight for most supporting controls. Reserve very heavy or condensed type for a role that earns the attention. Rough type steps such as 13, 15, 17, 22, 28, 36 and 48 are a starting point. Use relative units and allow readable variation across widths.
+- Give body text a comfortable measure, often about 45–75 characters per line. Use more leading for long or small text and tighter leading for display text. Check actual wraps, ascenders and descenders.
+- Align mixed text sizes by baseline when they share a line. Optically align icons with the surrounding glyphs. Start from the face’s own spacing. Adjust headlines in small increments, checking word spaces and dark gaps at each width. Leave running and control text close to its natural tracking. Use extra tracking sparingly for short uppercase labels that earn their place.
+- Use tabular digits and consistent precision for comparable values. Right-align numeric columns, and place units consistently so magnitudes are easy to scan. Keep real inline links identifiable in prose.
 
-## 3. Color System
-**Rule:** Maintain hue discipline. Ensure WCAG AA contrast.
+## Color
 
-**Palette Structure:**
-- **Neutrals (Cool Gray):**
-  - Use `gray-50` to `gray-900` for the raw scale.
-  - **Aliases:**
-    - `text.primary`: `gray-900` (Near-black)
-    - `text.secondary`: `gray-500` (Mid-gray)
-    - `text.tertiary`: `gray-400` (Light-gray)
-    - `bg.canvas`: `gray-50` (Page background)
-    - `bg.surface`: `white` (Card/Modal background)
-    - `border.subtle`: `gray-200` (Light borders)
-- **Primary Action (Brand):**
-  - `primary`: `brand-600`
-  - `primary.hover`: `brand-700`
-  - `on-primary`: `white`
-- **Feedback:**
-  - `danger`: Red (`#ef4444`)
-  - `success`: Green (`#10b981`)
-  - `warning`: Amber (`#f59e0b`)
+Start from the roles the interface needs. Pick a neutral ink and canvas, a dominant accent suitable for the key action, and feedback hues suited to the meanings in the product. Choose the useful middle shade and the light and dark endpoints of each family. Fill intermediate shades where a border, hover, surface tint or supporting foreground needs them.
 
-**Dark Mode Strategy:**
-- Flip to "Light text on Dark background".
-- Do not use pure black (#000000) for backgrounds; use dark grays (#121212).
+Use HSL or OKLCH to reason about hue, lightness and chroma. Adjust endpoints by eye, then measure the final rendered pairs. Neutrals may have a small warm or cool tint. On a colored surface, choose a readable related foreground with enough contrast to retain its quiet role. If a saturated badge competes for attention, test darker text on a pale tint for that role.
 
-## 4. Elevation & Depth
-**Rule:** Shadows encode elevation/z-index. Do not decorate.
+- Check text/canvas, text/surface, muted text, link, status, on-action, hover and focus pairs. WCAG AA uses 4.5:1 for typical text, 3:1 for qualifying large text and 3:1 for applicable non-text controls and state indicators. Test focus against adjacent surfaces and account for compositing. Provide a text label, shape or position when color carries meaning.
+- Give status text, status surface and control boundaries their own roles. A subtle separator can be lower contrast when it conveys no essential state or boundary. Define dark theme pairs deliberately when the product has a dark theme.
+- Name repeated values by their purpose. An optional example lives in [the prototype tokens](../assets/design-system-core.css). Choose the palette for the actual product.
 
-**Elevation Clearance:**
-- **Padding Formula:** If a component extends outside its bounds (e.g., `transform: translateY(-4px)` + `top: -8px` badge), the container MUST have padding > sum of extensions.
-  - *Example:* 12px extension → Use `pt-4` (16px) or `pt-6` (24px).
-- **Z-Index:** Explicitly define z-index layers for elevated elements to ensure they don't slide *under* headers or sidebars.
+## Depth
 
-**Levels:**
-- **Level 0 (Flat):** Base content, cards on canvas (if bordered).
-- **Level 1 (Raised):** Hover states, small dropdowns.
-- **Level 2 (Overlay):** Dropdowns, popovers, sticky headers.
-- **Level 3 (Modal):** Dialogs, drawers.
-- **Level 4 (Toast):** Notifications, critical alerts.
+Establish the visible surface order using background tone, subtle edges, overlap and shadow as needed. Keep the virtual light direction consistent. A compact edge shadow and a softer ambient shadow can distinguish a raised surface. Use different elevation treatments only when they clarify relationships or interaction. Check that sticky elements, dialogs, badges and focus rings fit their scroll context without clipping or hiding content.
 
-**Shadow Composition:**
-- Use "Two-part" shadows:
-  1. **Ambient:** Soft, large spread, low opacity (adds depth).
-  2. **Key:** Sharp, vertical offset, higher opacity (defines edge).
-
-## 5. Imagery
-- **Quality:** No low-res placeholders.
-- **Contrast:** When placing text on images, use scrims (overlays) or soft shadows to guarantee readability.
-
-## 6. Responsive Behavior
-**Rule:** Large elements compress faster than small ones.
-
-- **Typography:** Scale down headers significantly on mobile; body text stays ~16px.
-- **Padding:** Reduce section padding (e.g., 64px → 24px).
-- **Layout:**
-  - Desktop: Multi-column.
-  - Mobile: Single column (stack).
-- **Touch:** Minimum tap target 44x44px.
+Sources for the design techniques. [Book inventory and examples](https://refactoringui.com/), [type leading preview](https://refactoringui.com/previews/line-height-is-proportional/), [palette preview](https://refactoringui.com/previews/building-your-color-palette), [contrast requirements](https://www.w3.org/TR/WCAG22/)

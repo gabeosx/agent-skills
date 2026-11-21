@@ -1,0 +1,61 @@
+{
+  "tasks": {
+    "h1": {
+      "cycle-2": "ui-888934",
+      "baseline": "ui-83d1d6"
+    },
+    "h2": {
+      "cycle-2": "ui-b686a2",
+      "baseline": "ui-b12247"
+    },
+    "h3": {
+      "baseline": "ui-d6a40a",
+      "cycle-2": "ui-8e858c"
+    }
+  },
+  "review_order": {
+    "h1": {
+      "outputs_in_review_order": [
+        "ui-888934",
+        "ui-83d1d6"
+      ],
+      "pairs": [
+        [
+          "ui-888934",
+          "ui-83d1d6"
+        ]
+      ]
+    },
+    "h2": {
+      "outputs_in_review_order": [
+        "ui-b686a2",
+        "ui-b12247"
+      ],
+      "pairs": [
+        [
+          "ui-b12247",
+          "ui-b686a2"
+        ]
+      ]
+    },
+    "h3": {
+      "outputs_in_review_order": [
+        "ui-d6a40a",
+        "ui-8e858c"
+      ],
+      "pairs": [
+        [
+          "ui-8e858c",
+          "ui-d6a40a"
+        ]
+      ]
+    }
+  },
+  "shards": [
+    "confirmation-12",
+    "confirmation-3"
+  ],
+  "set": "confirmation",
+  "trial_arm": "cycle-2",
+  "comparator": "baseline"
+}

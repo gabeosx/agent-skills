@@ -1,0 +1,52 @@
+{
+  "scenarios": [
+    {
+      "name": "Look up a known outage",
+      "width": 1440,
+      "steps": [
+        {"action": "text", "id": "result-count", "value": "4"},
+        {"action": "fill", "id": "pole-search", "value": "HARBOR MARKET"},
+        {"action": "text", "id": "result-count", "value": "1"},
+        {"action": "hidden", "id": "pole-BH-1042"},
+        {"action": "click", "id": "pole-BH-1067"},
+        {"action": "attribute", "id": "pole-BH-1067", "name": "aria-pressed", "value": "true"},
+        {"action": "text", "id": "pole-detail", "value": "Crew notified"},
+        {"action": "text", "id": "pole-detail", "value": "SL-5826"},
+        {"action": "hidden", "id": "submit-report"}
+      ],
+      "capture": true
+    },
+    {
+      "name": "Recover from an empty search",
+      "width": 834,
+      "steps": [
+        {"action": "fill", "id": "pole-search", "value": "Bridge Road"},
+        {"action": "text", "id": "no-results", "value": "No streetlights match this search."},
+        {"action": "fill", "id": "pole-search", "value": ""},
+        {"action": "text", "id": "result-count", "value": "4"},
+        {"action": "hidden", "id": "no-results"},
+        {"action": "click", "id": "pole-BH-2079"},
+        {"action": "text", "id": "pole-detail", "value": "At the pedestrian crossing"},
+        {"action": "visible", "id": "issue-type"}
+      ]
+    },
+    {
+      "name": "File and reset a report on a phone",
+      "width": 390,
+      "steps": [
+        {"action": "fill", "id": "pole-search", "value": "2014"},
+        {"action": "click", "id": "pole-BH-2014"},
+        {"action": "select", "id": "issue-type", "value": "flicker"},
+        {"action": "fill", "id": "report-notes", "value": "It flickers every few seconds."},
+        {"action": "click", "id": "submit-report"},
+        {"action": "text", "id": "confirmation", "value": "Report submitted"},
+        {"action": "text", "id": "confirmation", "value": "BH-2014"},
+        {"action": "text", "id": "confirmation", "value": "SL-5842"},
+        {"action": "text", "id": "confirmation", "value": "Light flickers"},
+        {"action": "click", "id": "report-another"},
+        {"action": "hidden", "id": "confirmation"},
+        {"action": "text", "id": "result-count", "value": "4"}
+      ]
+    }
+  ]
+}

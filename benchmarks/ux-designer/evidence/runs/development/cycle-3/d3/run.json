@@ -1,0 +1,18 @@
+{
+  "actor": "0efa",
+  "model": "inherited Codex",
+  "started": "2026-11-21T19:11:26+00:00",
+  "actor_collected_at": "2026-11-21T19:18:19+00:00",
+  "attempt": 1,
+  "brief": "briefs/d3/brief.md",
+  "brief_sha256": "adf9f136baf804f3378e55eb17e854250fadd5a946d06fa1e853a0c3fa46ed81",
+  "checks_sha256": "3f46f75aa4f6a12d4e0dc8c9c45d5e92243d8c863c71374135c63d1294bfff01",
+  "starter_files": {},
+  "skill_sha256": "86ef09ed988210d523cb555fe9b722846d5a7990e103f8e31dcc39ef9908361b",
+  "source": {
+    "index.html": "0f2acf2fb4565f860b3957cd8aecc5b2922d9048554051e650d297b2ff7aca38"
+  },
+  "actor_result": "Both complete. Agent reports Playwright and visual checks at all three widths including sticky comparison labels, narrow email error, retained inputs, review and success.",
+  "usage": null,
+  "charge": null
+}

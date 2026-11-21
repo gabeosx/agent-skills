@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="520" height="620" viewBox="0 0 520 620">
+  <rect x="75" y="35" width="370" height="550" rx="12" fill="#f3ad42"/>
+  <path d="M75 57h370M75 565h370" stroke="#a64129" stroke-width="3" stroke-dasharray="4 7"/>
+  <path d="M90 78h340v465H90z" fill="none" stroke="#742c26" stroke-width="2"/>
+  <path d="M91 333c90-105 194 99 338-44v167H91z" fill="#a7392d"/>
+  <circle cx="271" cy="366" r="83" fill="#f9c96b" stroke="#742c26" stroke-width="5"/>
+  <circle cx="271" cy="366" r="68" fill="#ee7040" stroke="#742c26" stroke-width="2"/>
+  <path d="M271 299v134m-68-67h136m-115-47 94 94m-94 0 94-94" stroke="#f9c96b" stroke-width="4"/>
+  <circle cx="271" cy="366" r="9" fill="#f9c96b"/>
+  <path d="M275 284c7-30 24-45 65-48-7 27-25 43-65 48z" fill="#385343" stroke="#742c26" stroke-width="3"/>
+  <text x="260" y="124" fill="#742c26" text-anchor="middle" font-family="sans-serif" font-size="13" letter-spacing="3">SWITCHYARD PANTRY</text>
+  <text x="260" y="197" fill="#742c26" text-anchor="middle" font-family="Georgia,serif" font-weight="bold" font-size="72">Blood</text>
+  <text x="260" y="260" fill="#742c26" text-anchor="middle" font-family="Georgia,serif" font-weight="bold" font-size="70">Orange</text>
+  <text x="260" y="497" fill="#742c26" text-anchor="middle" font-family="sans-serif" font-size="17" font-weight="bold" letter-spacing="4">DRIED SLICES</text>
+  <text x="260" y="522" fill="#742c26" text-anchor="middle" font-family="sans-serif" font-size="12" letter-spacing="2">NET WT 2.1 OZ / 60 G</text>
+</svg>

@@ -1,0 +1,1774 @@
+{
+  "schemaVersion": 1,
+  "status": "failed",
+  "browser": {
+    "version": "159.0.8154.6",
+    "source": "playwright",
+    "executablePath": "/Users/gabe/Library/Caches/ms-playwright/chromium-1255/chrome-mac-arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing",
+    "headless": true,
+    "args": [
+      "--disable-quic",
+      "--force-webrtc-ip-handling-policy=disable_non_proxied_udp",
+      "--host-resolver-rules=MAP * ~NOTFOUND, EXCLUDE 127.0.0.1",
+      "--no-proxy-server"
+    ]
+  },
+  "config": {
+    "node": "v26.13.0",
+    "platform": "darwin",
+    "architecture": "arm64",
+    "playwright": "1.65.1",
+    "axe": "4.14.1",
+    "axeTags": [
+      "wcag2a",
+      "wcag2aa",
+      "wcag21a",
+      "wcag21aa",
+      "wcag22a",
+      "wcag22aa"
+    ],
+    "context": {
+      "colorScheme": "light",
+      "deviceScaleFactor": 1,
+      "locale": "en-US",
+      "reducedMotion": "reduce",
+      "serviceWorkers": "block",
+      "timezoneId": "UTC"
+    },
+    "viewports": {
+      "desktop": {
+        "width": 1440,
+        "height": 1000
+      },
+      "tablet": {
+        "width": 834,
+        "height": 1112
+      },
+      "mobile": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    "timeoutsMs": {
+      "navigation": 10000,
+      "step": 2500,
+      "capture": 10000,
+      "accessibility": 10000
+    },
+    "network": "localhost-static-origin-only"
+  },
+  "source": {
+    "checksSha256": "3fa4e2841d5d1bb39d9a0256eca47436f3db8868e7b80f9d9d413b8ec1a84dea",
+    "site": {
+      "sha256": "5e6ea89fc89907e6de1a57a45cb8e064dbd3b85300253601642878a8811c9514",
+      "files": [
+        {
+          "path": "design-system-core.css",
+          "sha256": "2e1dc47164205b5aef1af967821ea7bcacb53e9b8ae556f6b20662c20544f188"
+        },
+        {
+          "path": "index.html",
+          "sha256": "7bf5c7799ed73089e576843dd94b22608a7d75ad4c10a395794db173f769989e"
+        },
+        {
+          "path": "schedule.js",
+          "sha256": "f378efc0ab11ca1329f871895f1756ae9b78b06c5fe7cf7c0f6405534885cda5"
+        },
+        {
+          "path": "style.css",
+          "sha256": "0d8bc73d44325711a7c31eed1c761781a95d3d58f4c4aa56fc435c0427584a6f"
+        }
+      ]
+    },
+    "harness": {
+      "sha256": "6c881823017ece00658aa02b1817a074668453398b4905f0208e23ef5bcda8d1",
+      "files": [
+        {
+          "path": "capture.mjs",
+          "sha256": "92bc6c8b9c97e64bd0dbcc746c6505f0ed30e9ecaba15ba32a35d1348afaf77e"
+        },
+        {
+          "path": "package-lock.json",
+          "sha256": "9e166f03feded2ba877c95cbbb4bce6b15453e267c7bf4a69a384ec2a3e1fbc1"
+        },
+        {
+          "path": "package.json",
+          "sha256": "e53398841d514c8588ddfad5569cc1f7aed5d67a6f7b71f4ab05a70cfca4817b"
+        }
+      ]
+    }
+  },
+  "timing": {
+    "startedAt": "2026-11-21T19:45:46.696Z",
+    "completedAt": "2026-11-21T19:45:49.139Z",
+    "elapsedMs": 2444
+  },
+  "viewports": [
+    {
+      "name": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "status": "failed",
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "screenshot": {
+        "path": "desktop.png",
+        "bytes": 82305,
+        "sha256": "f4d53bd77795a420c8f2ef326169e6e936e3be359dfd454baf4e6aaacf56068c"
+      },
+      "layout": {
+        "clientWidth": 1440,
+        "scrollWidth": 1440,
+        "bodyScrollWidth": 1440,
+        "horizontalOverflow": false
+      },
+      "accessibility": {
+        "status": "violations",
+        "counts": {
+          "passes": 20,
+          "violations": 1,
+          "incomplete": 2,
+          "inapplicable": 43
+        },
+        "violations": [
+          {
+            "id": "label-content-name-mismatch",
+            "impact": "serious",
+            "tags": [
+              "cat.semantics",
+              "wcag21a",
+              "wcag253",
+              "EN-301-549",
+              "EN-9.2.5.3",
+              "RGAAv4",
+              "RGAA-6.1.5"
+            ],
+            "description": "Ensure that elements labelled through their content must have their visible text as part of their accessible name",
+            "help": "Elements must have their visible text as part of their accessible name",
+            "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/label-content-name-mismatch?application=axeAPI",
+            "nodes": [
+              {
+                "any": [
+                  {
+                    "id": "label-content-name-mismatch",
+                    "data": null,
+                    "relatedNodes": [],
+                    "impact": "serious",
+                    "message": "Text inside the element is not included in the accessible name"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<button type=\"button\" class=\"booking-card\" aria-pressed=\"false\" data-testid=\"booking-morning-mix\" aria-label=\"Morning Mix, Studio A, 9:00–9:45 AM, Confirmed\">",
+                "target": [
+                  "button[data-testid=\"booking-morning-mix\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+              },
+              {
+                "any": [
+                  {
+                    "id": "label-content-name-mismatch",
+                    "data": null,
+                    "relatedNodes": [],
+                    "impact": "serious",
+                    "message": "Text inside the element is not included in the accessible name"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<button type=\"button\" class=\"booking-card is-tentative\" aria-pressed=\"false\" data-testid=\"booking-field-notes\" aria-label=\"Field Notes, Studio B, 9:00–10:00 AM, Tentative\">",
+                "target": [
+                  "button[data-testid=\"booking-field-notes\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+              },
+              {
+                "any": [
+                  {
+                    "id": "label-content-name-mismatch",
+                    "data": null,
+                    "relatedNodes": [],
+                    "impact": "serious",
+                    "message": "Text inside the element is not included in the accessible name"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<button type=\"button\" class=\"booking-card\" aria-pressed=\"false\" data-testid=\"booking-tape-transfer\" aria-label=\"Tape Transfer, Edit Booth, 9:30–10:00 AM, Confirmed\">",
+                "target": [
+                  "button[data-testid=\"booking-tape-transfer\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+              },
+              {
+                "any": [
+                  {
+                    "id": "label-content-name-mismatch",
+                    "data": null,
+                    "relatedNodes": [],
+                    "impact": "serious",
+                    "message": "Text inside the element is not included in the accessible name"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<button type=\"button\" class=\"booking-card\" aria-pressed=\"false\" data-testid=\"booking-signal-check\" aria-label=\"Signal Check, Studio A, 10:00–11:00 AM, Confirmed\">",
+                "target": [
+                  "button[data-testid=\"booking-signal-check\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+              },
+              {
+                "any": [
+                  {
+                    "id": "label-content-name-mismatch",
+                    "data": null,
+                    "relatedNodes": [],
+                    "impact": "serious",
+                    "message": "Text inside the element is not included in the accessible name"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<button type=\"button\" class=\"booking-card\" aria-pressed=\"false\" data-testid=\"booking-studio-coaching\" aria-label=\"Studio Coaching, Studio B, 10:30–11:15 AM, Confirmed\">",
+                "target": [
+                  "button[data-testid=\"booking-studio-coaching\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+              },
+              {
+                "any": [
+                  {
+                    "id": "label-content-name-mismatch",
+                    "data": null,
+                    "relatedNodes": [],
+                    "impact": "serious",
+                    "message": "Text inside the element is not included in the accessible name"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<button type=\"button\" class=\"booking-card\" aria-pressed=\"false\" data-testid=\"booking-promo-edit\" aria-label=\"Promo Edit, Edit Booth, 11:00–11:45 AM, Confirmed\">",
+                "target": [
+                  "button[data-testid=\"booking-promo-edit\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+              },
+              {
+                "any": [
+                  {
+                    "id": "label-content-name-mismatch",
+                    "data": null,
+                    "relatedNodes": [],
+                    "impact": "serious",
+                    "message": "Text inside the element is not included in the accessible name"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<button type=\"button\" class=\"booking-card\" aria-pressed=\"false\" data-testid=\"booking-midday-rotation\" aria-label=\"Midday Rotation, Studio A, 11:30 AM–12:30 PM, Confirmed\">",
+                "target": [
+                  "button[data-testid=\"booking-midday-rotation\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+              },
+              {
+                "any": [
+                  {
+                    "id": "label-content-name-mismatch",
+                    "data": null,
+                    "relatedNodes": [],
+                    "impact": "serious",
+                    "message": "Text inside the element is not included in the accessible name"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<button type=\"button\" class=\"booking-card is-tentative\" aria-pressed=\"false\" data-testid=\"booking-volunteer-orientation\" aria-label=\"Volunteer Orientation, Studio B, 12:00–12:45 PM, Tentative\">",
+                "target": [
+                  "button[data-testid=\"booking-volunteer-orientation\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+              }
+            ]
+          }
+        ],
+        "incomplete": [
+          {
+            "id": "aria-prohibited-attr",
+            "impact": "serious",
+            "tags": [
+              "cat.aria",
+              "wcag2a",
+              "wcag412",
+              "EN-301-549",
+              "EN-9.4.1.2",
+              "RGAAv4",
+              "RGAA-7.1.1"
+            ],
+            "description": "Ensure ARIA attributes are not prohibited for an element's role",
+            "help": "Elements must only use permitted ARIA attributes",
+            "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/aria-prohibited-attr?application=axeAPI",
+            "nodes": [
+              {
+                "any": [],
+                "all": [],
+                "none": [
+                  {
+                    "id": "aria-prohibited-attr",
+                    "data": {
+                      "role": null,
+                      "nodeName": "div",
+                      "messageKey": "noRoleSingular",
+                      "prohibited": [
+                        "aria-label"
+                      ]
+                    },
+                    "relatedNodes": [],
+                    "impact": "serious",
+                    "message": "aria-label attribute is not well supported on \"div\" elements with no valid role attribute."
+                  }
+                ],
+                "impact": "serious",
+                "html": "<div class=\"legend\" aria-label=\"Booking status legend\">\n            <span><i class=\"legend-confirmed\" aria-hidden=\"true\"></i>Confirmed</span>\n            <span><i class=\"legend-tentative\" aria-hidden=\"true\"></i>Tentative</span>\n          </div>",
+                "target": [
+                  ".legend"
+                ],
+                "failureSummary": "Fix all of the following:\n  aria-label attribute is not well supported on \"div\" elements with no valid role attribute."
+              }
+            ]
+          },
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "tags": [
+              "cat.color",
+              "wcag2aa",
+              "wcag143",
+              "TTv5",
+              "TT13.c",
+              "EN-301-549",
+              "EN-9.1.4.3",
+              "ACT",
+              "RGAAv4",
+              "RGAA-3.2.1"
+            ],
+            "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+            "help": "Elements must meet minimum color contrast ratio thresholds",
+            "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+            "nodes": [
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "9.0pt (12px)",
+                      "fontWeight": "normal",
+                      "messageKey": "bgOverlap",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined because it is overlapped by another element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<span>9:00 <small>AM</small></span>",
+                "target": [
+                  ".hour-axis > span:nth-child(1)"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "9.0pt (12px)",
+                      "fontWeight": "normal",
+                      "messageKey": "bgOverlap",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined because it is overlapped by another element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<small>AM</small>",
+                "target": [
+                  "span:nth-child(1) > small"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "9.0pt (12px)",
+                      "fontWeight": "normal",
+                      "messageKey": "bgOverlap",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined because it is overlapped by another element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<span>10:00 <small>AM</small></span>",
+                "target": [
+                  ".hour-axis > span:nth-child(2)"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "9.0pt (12px)",
+                      "fontWeight": "normal",
+                      "messageKey": "bgOverlap",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined because it is overlapped by another element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<small>AM</small>",
+                "target": [
+                  "span:nth-child(2) > small"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "9.0pt (12px)",
+                      "fontWeight": "normal",
+                      "messageKey": "bgOverlap",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined because it is overlapped by another element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<span>11:00 <small>AM</small></span>",
+                "target": [
+                  ".hour-axis > span:nth-child(3)"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "9.0pt (12px)",
+                      "fontWeight": "normal",
+                      "messageKey": "bgOverlap",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined because it is overlapped by another element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<small>AM</small>",
+                "target": [
+                  "span:nth-child(3) > small"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "9.0pt (12px)",
+                      "fontWeight": "normal",
+                      "messageKey": "bgOverlap",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined because it is overlapped by another element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<span>12:00 <small>PM</small></span>",
+                "target": [
+                  ".hour-axis > span:nth-child(4)"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "9.0pt (12px)",
+                      "fontWeight": "normal",
+                      "messageKey": "bgOverlap",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined because it is overlapped by another element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<small>PM</small>",
+                "target": [
+                  "span:nth-child(4) > small"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "9.0pt (12px)",
+                      "fontWeight": "normal",
+                      "messageKey": "bgOverlap",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined because it is overlapped by another element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<span>1:00 <small>PM</small></span>",
+                "target": [
+                  "span:nth-child(5)"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "tablet",
+      "viewport": {
+        "width": 834,
+        "height": 1112
+      },
+      "status": "failed",
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "screenshot": {
+        "path": "tablet.png",
+        "bytes": 78469,
+        "sha256": "6e592df16277cdaed378337187029e8431d4d60be11b9a175ef8a36bb83ae815"
+      },
+      "layout": {
+        "clientWidth": 834,
+        "scrollWidth": 834,
+        "bodyScrollWidth": 834,
+        "horizontalOverflow": false
+      },
+      "accessibility": {
+        "status": "violations",
+        "counts": {
+          "passes": 20,
+          "violations": 1,
+          "incomplete": 2,
+          "inapplicable": 43
+        },
+        "violations": [
+          {
+            "id": "label-content-name-mismatch",
+            "impact": "serious",
+            "tags": [
+              "cat.semantics",
+              "wcag21a",
+              "wcag253",
+              "EN-301-549",
+              "EN-9.2.5.3",
+              "RGAAv4",
+              "RGAA-6.1.5"
+            ],
+            "description": "Ensure that elements labelled through their content must have their visible text as part of their accessible name",
+            "help": "Elements must have their visible text as part of their accessible name",
+            "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/label-content-name-mismatch?application=axeAPI",
+            "nodes": [
+              {
+                "any": [
+                  {
+                    "id": "label-content-name-mismatch",
+                    "data": null,
+                    "relatedNodes": [],
+                    "impact": "serious",
+                    "message": "Text inside the element is not included in the accessible name"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<button type=\"button\" class=\"booking-card\" aria-pressed=\"false\" data-testid=\"booking-morning-mix\" aria-label=\"Morning Mix, Studio A, 9:00–9:45 AM, Confirmed\">",
+                "target": [
+                  "button[data-testid=\"booking-morning-mix\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+              },
+              {
+                "any": [
+                  {
+                    "id": "label-content-name-mismatch",
+                    "data": null,
+                    "relatedNodes": [],
+                    "impact": "serious",
+                    "message": "Text inside the element is not included in the accessible name"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<button type=\"button\" class=\"booking-card is-tentative\" aria-pressed=\"false\" data-testid=\"booking-field-notes\" aria-label=\"Field Notes, Studio B, 9:00–10:00 AM, Tentative\">",
+                "target": [
+                  "button[data-testid=\"booking-field-notes\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+              },
+              {
+                "any": [
+                  {
+                    "id": "label-content-name-mismatch",
+                    "data": null,
+                    "relatedNodes": [],
+                    "impact": "serious",
+                    "message": "Text inside the element is not included in the accessible name"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<button type=\"button\" class=\"booking-card\" aria-pressed=\"false\" data-testid=\"booking-tape-transfer\" aria-label=\"Tape Transfer, Edit Booth, 9:30–10:00 AM, Confirmed\">",
+                "target": [
+                  "button[data-testid=\"booking-tape-transfer\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+              },
+              {
+                "any": [
+                  {
+                    "id": "label-content-name-mismatch",
+                    "data": null,
+                    "relatedNodes": [],
+                    "impact": "serious",
+                    "message": "Text inside the element is not included in the accessible name"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<button type=\"button\" class=\"booking-card\" aria-pressed=\"false\" data-testid=\"booking-signal-check\" aria-label=\"Signal Check, Studio A, 10:00–11:00 AM, Confirmed\">",
+                "target": [
+                  "button[data-testid=\"booking-signal-check\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+              },
+              {
+                "any": [
+                  {
+                    "id": "label-content-name-mismatch",
+                    "data": null,
+                    "relatedNodes": [],
+                    "impact": "serious",
+                    "message": "Text inside the element is not included in the accessible name"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<button type=\"button\" class=\"booking-card\" aria-pressed=\"false\" data-testid=\"booking-studio-coaching\" aria-label=\"Studio Coaching, Studio B, 10:30–11:15 AM, Confirmed\">",
+                "target": [
+                  "button[data-testid=\"booking-studio-coaching\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+              },
+              {
+                "any": [
+                  {
+                    "id": "label-content-name-mismatch",
+                    "data": null,
+                    "relatedNodes": [],
+                    "impact": "serious",
+                    "message": "Text inside the element is not included in the accessible name"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<button type=\"button\" class=\"booking-card\" aria-pressed=\"false\" data-testid=\"booking-promo-edit\" aria-label=\"Promo Edit, Edit Booth, 11:00–11:45 AM, Confirmed\">",
+                "target": [
+                  "button[data-testid=\"booking-promo-edit\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+              },
+              {
+                "any": [
+                  {
+                    "id": "label-content-name-mismatch",
+                    "data": null,
+                    "relatedNodes": [],
+                    "impact": "serious",
+                    "message": "Text inside the element is not included in the accessible name"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<button type=\"button\" class=\"booking-card\" aria-pressed=\"false\" data-testid=\"booking-midday-rotation\" aria-label=\"Midday Rotation, Studio A, 11:30 AM–12:30 PM, Confirmed\">",
+                "target": [
+                  "button[data-testid=\"booking-midday-rotation\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+              },
+              {
+                "any": [
+                  {
+                    "id": "label-content-name-mismatch",
+                    "data": null,
+                    "relatedNodes": [],
+                    "impact": "serious",
+                    "message": "Text inside the element is not included in the accessible name"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<button type=\"button\" class=\"booking-card is-tentative\" aria-pressed=\"false\" data-testid=\"booking-volunteer-orientation\" aria-label=\"Volunteer Orientation, Studio B, 12:00–12:45 PM, Tentative\">",
+                "target": [
+                  "button[data-testid=\"booking-volunteer-orientation\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+              }
+            ]
+          }
+        ],
+        "incomplete": [
+          {
+            "id": "aria-prohibited-attr",
+            "impact": "serious",
+            "tags": [
+              "cat.aria",
+              "wcag2a",
+              "wcag412",
+              "EN-301-549",
+              "EN-9.4.1.2",
+              "RGAAv4",
+              "RGAA-7.1.1"
+            ],
+            "description": "Ensure ARIA attributes are not prohibited for an element's role",
+            "help": "Elements must only use permitted ARIA attributes",
+            "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/aria-prohibited-attr?application=axeAPI",
+            "nodes": [
+              {
+                "any": [],
+                "all": [],
+                "none": [
+                  {
+                    "id": "aria-prohibited-attr",
+                    "data": {
+                      "role": null,
+                      "nodeName": "div",
+                      "messageKey": "noRoleSingular",
+                      "prohibited": [
+                        "aria-label"
+                      ]
+                    },
+                    "relatedNodes": [],
+                    "impact": "serious",
+                    "message": "aria-label attribute is not well supported on \"div\" elements with no valid role attribute."
+                  }
+                ],
+                "impact": "serious",
+                "html": "<div class=\"legend\" aria-label=\"Booking status legend\">\n            <span><i class=\"legend-confirmed\" aria-hidden=\"true\"></i>Confirmed</span>\n            <span><i class=\"legend-tentative\" aria-hidden=\"true\"></i>Tentative</span>\n          </div>",
+                "target": [
+                  ".legend"
+                ],
+                "failureSummary": "Fix all of the following:\n  aria-label attribute is not well supported on \"div\" elements with no valid role attribute."
+              }
+            ]
+          },
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "tags": [
+              "cat.color",
+              "wcag2aa",
+              "wcag143",
+              "TTv5",
+              "TT13.c",
+              "EN-301-549",
+              "EN-9.1.4.3",
+              "ACT",
+              "RGAAv4",
+              "RGAA-3.2.1"
+            ],
+            "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+            "help": "Elements must meet minimum color contrast ratio thresholds",
+            "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+            "nodes": [
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "9.0pt (12px)",
+                      "fontWeight": "normal",
+                      "messageKey": "bgOverlap",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined because it is overlapped by another element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<span>9:00 <small>AM</small></span>",
+                "target": [
+                  ".hour-axis > span:nth-child(1)"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "9.0pt (12px)",
+                      "fontWeight": "normal",
+                      "messageKey": "bgOverlap",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined because it is overlapped by another element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<small>AM</small>",
+                "target": [
+                  "span:nth-child(1) > small"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "9.0pt (12px)",
+                      "fontWeight": "normal",
+                      "messageKey": "bgOverlap",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined because it is overlapped by another element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<span>10:00 <small>AM</small></span>",
+                "target": [
+                  ".hour-axis > span:nth-child(2)"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "9.0pt (12px)",
+                      "fontWeight": "normal",
+                      "messageKey": "bgOverlap",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined because it is overlapped by another element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<small>AM</small>",
+                "target": [
+                  "span:nth-child(2) > small"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "9.0pt (12px)",
+                      "fontWeight": "normal",
+                      "messageKey": "bgOverlap",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined because it is overlapped by another element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<span>11:00 <small>AM</small></span>",
+                "target": [
+                  ".hour-axis > span:nth-child(3)"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "9.0pt (12px)",
+                      "fontWeight": "normal",
+                      "messageKey": "bgOverlap",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined because it is overlapped by another element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<small>AM</small>",
+                "target": [
+                  "span:nth-child(3) > small"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "9.0pt (12px)",
+                      "fontWeight": "normal",
+                      "messageKey": "bgOverlap",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined because it is overlapped by another element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<span>12:00 <small>PM</small></span>",
+                "target": [
+                  ".hour-axis > span:nth-child(4)"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "9.0pt (12px)",
+                      "fontWeight": "normal",
+                      "messageKey": "bgOverlap",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined because it is overlapped by another element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<small>PM</small>",
+                "target": [
+                  "span:nth-child(4) > small"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
+              },
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "9.0pt (12px)",
+                      "fontWeight": "normal",
+                      "messageKey": "bgOverlap",
+                      "expectedContrastRatio": "4.5:1"
+                    },
+                    "relatedNodes": [],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined because it is overlapped by another element"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<span>1:00 <small>PM</small></span>",
+                "target": [
+                  "span:nth-child(5)"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "mobile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "status": "failed",
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "screenshot": {
+        "path": "mobile.png",
+        "bytes": 71201,
+        "sha256": "994dcc02f5345426cbdcad31a24db6a896d35b37b60f34b1723e7e8f968edc9b"
+      },
+      "layout": {
+        "clientWidth": 390,
+        "scrollWidth": 390,
+        "bodyScrollWidth": 390,
+        "horizontalOverflow": false
+      },
+      "accessibility": {
+        "status": "violations",
+        "counts": {
+          "passes": 20,
+          "violations": 1,
+          "incomplete": 0,
+          "inapplicable": 43
+        },
+        "violations": [
+          {
+            "id": "label-content-name-mismatch",
+            "impact": "serious",
+            "tags": [
+              "cat.semantics",
+              "wcag21a",
+              "wcag253",
+              "EN-301-549",
+              "EN-9.2.5.3",
+              "RGAAv4",
+              "RGAA-6.1.5"
+            ],
+            "description": "Ensure that elements labelled through their content must have their visible text as part of their accessible name",
+            "help": "Elements must have their visible text as part of their accessible name",
+            "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/label-content-name-mismatch?application=axeAPI",
+            "nodes": [
+              {
+                "any": [
+                  {
+                    "id": "label-content-name-mismatch",
+                    "data": null,
+                    "relatedNodes": [],
+                    "impact": "serious",
+                    "message": "Text inside the element is not included in the accessible name"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<button type=\"button\" class=\"booking-card\" aria-pressed=\"false\" data-testid=\"booking-morning-mix\" aria-label=\"Morning Mix, Studio A, 9:00–9:45 AM, Confirmed\">",
+                "target": [
+                  "button[data-testid=\"booking-morning-mix\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+              },
+              {
+                "any": [
+                  {
+                    "id": "label-content-name-mismatch",
+                    "data": null,
+                    "relatedNodes": [],
+                    "impact": "serious",
+                    "message": "Text inside the element is not included in the accessible name"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<button type=\"button\" class=\"booking-card is-tentative\" aria-pressed=\"false\" data-testid=\"booking-field-notes\" aria-label=\"Field Notes, Studio B, 9:00–10:00 AM, Tentative\">",
+                "target": [
+                  "button[data-testid=\"booking-field-notes\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+              },
+              {
+                "any": [
+                  {
+                    "id": "label-content-name-mismatch",
+                    "data": null,
+                    "relatedNodes": [],
+                    "impact": "serious",
+                    "message": "Text inside the element is not included in the accessible name"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<button type=\"button\" class=\"booking-card\" aria-pressed=\"false\" data-testid=\"booking-tape-transfer\" aria-label=\"Tape Transfer, Edit Booth, 9:30–10:00 AM, Confirmed\">",
+                "target": [
+                  "button[data-testid=\"booking-tape-transfer\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+              },
+              {
+                "any": [
+                  {
+                    "id": "label-content-name-mismatch",
+                    "data": null,
+                    "relatedNodes": [],
+                    "impact": "serious",
+                    "message": "Text inside the element is not included in the accessible name"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<button type=\"button\" class=\"booking-card\" aria-pressed=\"false\" data-testid=\"booking-signal-check\" aria-label=\"Signal Check, Studio A, 10:00–11:00 AM, Confirmed\">",
+                "target": [
+                  "button[data-testid=\"booking-signal-check\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+              },
+              {
+                "any": [
+                  {
+                    "id": "label-content-name-mismatch",
+                    "data": null,
+                    "relatedNodes": [],
+                    "impact": "serious",
+                    "message": "Text inside the element is not included in the accessible name"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<button type=\"button\" class=\"booking-card\" aria-pressed=\"false\" data-testid=\"booking-studio-coaching\" aria-label=\"Studio Coaching, Studio B, 10:30–11:15 AM, Confirmed\">",
+                "target": [
+                  "button[data-testid=\"booking-studio-coaching\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+              },
+              {
+                "any": [
+                  {
+                    "id": "label-content-name-mismatch",
+                    "data": null,
+                    "relatedNodes": [],
+                    "impact": "serious",
+                    "message": "Text inside the element is not included in the accessible name"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<button type=\"button\" class=\"booking-card\" aria-pressed=\"false\" data-testid=\"booking-promo-edit\" aria-label=\"Promo Edit, Edit Booth, 11:00–11:45 AM, Confirmed\">",
+                "target": [
+                  "button[data-testid=\"booking-promo-edit\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+              },
+              {
+                "any": [
+                  {
+                    "id": "label-content-name-mismatch",
+                    "data": null,
+                    "relatedNodes": [],
+                    "impact": "serious",
+                    "message": "Text inside the element is not included in the accessible name"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<button type=\"button\" class=\"booking-card\" aria-pressed=\"false\" data-testid=\"booking-midday-rotation\" aria-label=\"Midday Rotation, Studio A, 11:30 AM–12:30 PM, Confirmed\">",
+                "target": [
+                  "button[data-testid=\"booking-midday-rotation\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+              },
+              {
+                "any": [
+                  {
+                    "id": "label-content-name-mismatch",
+                    "data": null,
+                    "relatedNodes": [],
+                    "impact": "serious",
+                    "message": "Text inside the element is not included in the accessible name"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<button type=\"button\" class=\"booking-card is-tentative\" aria-pressed=\"false\" data-testid=\"booking-volunteer-orientation\" aria-label=\"Volunteer Orientation, Studio B, 12:00–12:45 PM, Tentative\">",
+                "target": [
+                  "button[data-testid=\"booking-volunteer-orientation\"]"
+                ],
+                "failureSummary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+              }
+            ]
+          }
+        ],
+        "incomplete": []
+      }
+    }
+  ],
+  "scenarios": [
+    {
+      "name": "Recover from a room conflict",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "captureRequested": true,
+      "status": "passed",
+      "steps": [
+        {
+          "index": 1,
+          "expected": {
+            "action": "count",
+            "id": "booking",
+            "count": 8
+          },
+          "status": "passed",
+          "actual": 8,
+          "elapsedMs": 10
+        },
+        {
+          "index": 2,
+          "expected": {
+            "action": "click",
+            "id": "booking-signal-check"
+          },
+          "status": "passed",
+          "elapsedMs": 41
+        },
+        {
+          "index": 3,
+          "expected": {
+            "action": "text",
+            "id": "booking-details",
+            "value": "Studio A"
+          },
+          "status": "passed",
+          "actual": "Confirmed Signal Check Room Studio A Time 10:00–11:00 AM Host Mara Ortiz Move booking",
+          "elapsedMs": 6
+        },
+        {
+          "index": 4,
+          "expected": {
+            "action": "text",
+            "id": "booking-details",
+            "value": "Mara Ortiz"
+          },
+          "status": "passed",
+          "actual": "Confirmed Signal Check Room Studio A Time 10:00–11:00 AM Host Mara Ortiz Move booking",
+          "elapsedMs": 23
+        },
+        {
+          "index": 5,
+          "expected": {
+            "action": "click",
+            "id": "move-booking"
+          },
+          "status": "passed",
+          "elapsedMs": 14
+        },
+        {
+          "index": 6,
+          "expected": {
+            "action": "select",
+            "id": "destination-room",
+            "value": "studio-b"
+          },
+          "status": "passed",
+          "actual": [
+            "studio-b"
+          ],
+          "elapsedMs": 2
+        },
+        {
+          "index": 7,
+          "expected": {
+            "action": "click",
+            "id": "save-move"
+          },
+          "status": "passed",
+          "elapsedMs": 30
+        },
+        {
+          "index": 8,
+          "expected": {
+            "action": "text",
+            "id": "move-conflict",
+            "value": "Overlaps Studio Coaching in Studio B."
+          },
+          "status": "passed",
+          "actual": "Overlaps Studio Coaching in Studio B.",
+          "elapsedMs": 1
+        },
+        {
+          "index": 9,
+          "expected": {
+            "action": "text",
+            "id": "booking-details",
+            "value": "Studio A"
+          },
+          "status": "passed",
+          "actual": "Confirmed Signal Check Room Studio A Time 10:00–11:00 AM Host Mara Ortiz Destination room Studio A Studio B Edit Booth Overlaps Studio Coaching in Studio B. Save move Cancel",
+          "elapsedMs": 1
+        },
+        {
+          "index": 10,
+          "expected": {
+            "action": "select",
+            "id": "destination-room",
+            "value": "edit-booth"
+          },
+          "status": "passed",
+          "actual": [
+            "edit-booth"
+          ],
+          "elapsedMs": 1
+        },
+        {
+          "index": 11,
+          "expected": {
+            "action": "click",
+            "id": "save-move"
+          },
+          "status": "passed",
+          "elapsedMs": 31
+        },
+        {
+          "index": 12,
+          "expected": {
+            "action": "hidden",
+            "id": "move-form"
+          },
+          "status": "passed",
+          "elapsedMs": 1
+        },
+        {
+          "index": 13,
+          "expected": {
+            "action": "text",
+            "id": "move-success",
+            "value": "Booking moved to Edit Booth."
+          },
+          "status": "passed",
+          "actual": "Booking moved to Edit Booth.",
+          "elapsedMs": 1
+        },
+        {
+          "index": 14,
+          "expected": {
+            "action": "text",
+            "id": "booking-details",
+            "value": "Edit Booth"
+          },
+          "status": "passed",
+          "actual": "Confirmed Signal Check Room Edit Booth Time 10:00–11:00 AM Host Mara Ortiz Booking moved to Edit Booth. Move booking",
+          "elapsedMs": 0
+        },
+        {
+          "index": 15,
+          "expected": {
+            "action": "count",
+            "id": "booking",
+            "count": 8
+          },
+          "status": "passed",
+          "actual": 8,
+          "elapsedMs": 0
+        }
+      ],
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "screenshot": {
+        "path": "scenario-01-recover-from-a-room-conflict.png",
+        "bytes": 100293,
+        "sha256": "c3d6d93c9233585c715ba92dfdc5dacd97c7cb9d8f733b5c5c22b9d83465356e"
+      },
+      "unrunSteps": 0
+    },
+    {
+      "name": "Carry the tentative filter across dates",
+      "viewport": {
+        "width": 834,
+        "height": 1112
+      },
+      "captureRequested": true,
+      "status": "passed",
+      "steps": [
+        {
+          "index": 1,
+          "expected": {
+            "action": "click",
+            "id": "tentative-only"
+          },
+          "status": "passed",
+          "elapsedMs": 40
+        },
+        {
+          "index": 2,
+          "expected": {
+            "action": "attribute",
+            "id": "tentative-only",
+            "name": "aria-pressed",
+            "value": "true"
+          },
+          "status": "passed",
+          "actual": "true",
+          "elapsedMs": 6
+        },
+        {
+          "index": 3,
+          "expected": {
+            "action": "count",
+            "id": "booking",
+            "count": 2
+          },
+          "status": "passed",
+          "actual": 2,
+          "elapsedMs": 0
+        },
+        {
+          "index": 4,
+          "expected": {
+            "action": "visible",
+            "id": "booking-field-notes"
+          },
+          "status": "passed",
+          "elapsedMs": 1
+        },
+        {
+          "index": 5,
+          "expected": {
+            "action": "hidden",
+            "id": "booking-signal-check"
+          },
+          "status": "passed",
+          "elapsedMs": 0
+        },
+        {
+          "index": 6,
+          "expected": {
+            "action": "click",
+            "id": "day-wed"
+          },
+          "status": "passed",
+          "elapsedMs": 34
+        },
+        {
+          "index": 7,
+          "expected": {
+            "action": "attribute",
+            "id": "day-wed",
+            "name": "aria-pressed",
+            "value": "true"
+          },
+          "status": "passed",
+          "actual": "true",
+          "elapsedMs": 1
+        },
+        {
+          "index": 8,
+          "expected": {
+            "action": "count",
+            "id": "booking",
+            "count": 1
+          },
+          "status": "passed",
+          "actual": 1,
+          "elapsedMs": 0
+        },
+        {
+          "index": 9,
+          "expected": {
+            "action": "visible",
+            "id": "booking-show-prep"
+          },
+          "status": "passed",
+          "elapsedMs": 1
+        },
+        {
+          "index": 10,
+          "expected": {
+            "action": "click",
+            "id": "tentative-only"
+          },
+          "status": "passed",
+          "elapsedMs": 21
+        },
+        {
+          "index": 11,
+          "expected": {
+            "action": "count",
+            "id": "booking",
+            "count": 3
+          },
+          "status": "passed",
+          "actual": 3,
+          "elapsedMs": 0
+        },
+        {
+          "index": 12,
+          "expected": {
+            "action": "visible",
+            "id": "booking-interview-pickup"
+          },
+          "status": "passed",
+          "elapsedMs": 1
+        }
+      ],
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "screenshot": {
+        "path": "scenario-02-carry-the-tentative-filter-across-dates.png",
+        "bytes": 59048,
+        "sha256": "2403a099c2ba34e12d38cd6eb168c9d725d20d440d46ed8bf83d780b218d657b"
+      },
+      "unrunSteps": 0
+    },
+    {
+      "name": "Inspect and leave phone booking details",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "captureRequested": false,
+      "status": "passed",
+      "steps": [
+        {
+          "index": 1,
+          "expected": {
+            "action": "click",
+            "id": "day-wed"
+          },
+          "status": "passed",
+          "elapsedMs": 35
+        },
+        {
+          "index": 2,
+          "expected": {
+            "action": "click",
+            "id": "booking-interview-pickup"
+          },
+          "status": "passed",
+          "elapsedMs": 42
+        },
+        {
+          "index": 3,
+          "expected": {
+            "action": "text",
+            "id": "booking-details",
+            "value": "Nina Flores"
+          },
+          "status": "passed",
+          "actual": "Confirmed Interview Pickup Room Studio A Time 9:15–10:15 AM Host Nina Flores Move booking",
+          "elapsedMs": 7
+        },
+        {
+          "index": 4,
+          "expected": {
+            "action": "text",
+            "id": "booking-details",
+            "value": "Confirmed"
+          },
+          "status": "passed",
+          "actual": "Confirmed Interview Pickup Room Studio A Time 9:15–10:15 AM Host Nina Flores Move booking",
+          "elapsedMs": 1
+        },
+        {
+          "index": 5,
+          "expected": {
+            "action": "click",
+            "id": "move-booking"
+          },
+          "status": "passed",
+          "elapsedMs": 33
+        },
+        {
+          "index": 6,
+          "expected": {
+            "action": "select",
+            "id": "destination-room",
+            "value": "studio-b"
+          },
+          "status": "passed",
+          "actual": [
+            "studio-b"
+          ],
+          "elapsedMs": 1
+        },
+        {
+          "index": 7,
+          "expected": {
+            "action": "click",
+            "id": "cancel-move"
+          },
+          "status": "passed",
+          "elapsedMs": 65
+        },
+        {
+          "index": 8,
+          "expected": {
+            "action": "hidden",
+            "id": "move-form"
+          },
+          "status": "passed",
+          "elapsedMs": 1
+        },
+        {
+          "index": 9,
+          "expected": {
+            "action": "text",
+            "id": "booking-details",
+            "value": "Studio A"
+          },
+          "status": "passed",
+          "actual": "Confirmed Interview Pickup Room Studio A Time 9:15–10:15 AM Host Nina Flores Move booking",
+          "elapsedMs": 1
+        },
+        {
+          "index": 10,
+          "expected": {
+            "action": "click",
+            "id": "close-details"
+          },
+          "status": "passed",
+          "elapsedMs": 32
+        },
+        {
+          "index": 11,
+          "expected": {
+            "action": "hidden",
+            "id": "booking-details"
+          },
+          "status": "passed",
+          "elapsedMs": 1
+        }
+      ],
+      "pageErrors": [],
+      "nativeDialogs": [],
+      "blockedRequests": [],
+      "localHttpErrors": [],
+      "unrunSteps": 0
+    }
+  ],
+  "criticalFailures": [
+    {
+      "viewport": "desktop",
+      "kind": "accessibility",
+      "rule": "label-content-name-mismatch",
+      "impact": "serious"
+    },
+    {
+      "viewport": "tablet",
+      "kind": "accessibility",
+      "rule": "label-content-name-mismatch",
+      "impact": "serious"
+    },
+    {
+      "viewport": "mobile",
+      "kind": "accessibility",
+      "rule": "label-content-name-mismatch",
+      "impact": "serious"
+    }
+  ],
+  "runnerErrors": []
+}
